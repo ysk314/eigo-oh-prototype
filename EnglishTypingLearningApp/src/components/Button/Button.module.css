@@ -1,0 +1,130 @@
+.button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-sm);
+    border: none;
+    border-radius: var(--radius-md);
+    font-family: var(--font-family-sans);
+    font-weight: var(--font-weight-semibold);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    white-space: nowrap;
+}
+
+.button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.button:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+}
+
+/* Variants */
+.primary {
+    background: var(--color-primary);
+    color: var(--color-text-inverse);
+}
+
+.primary:hover:not(:disabled) {
+    background: var(--color-primary-dark);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-md);
+}
+
+.primary:active:not(:disabled) {
+    transform: translateY(0);
+}
+
+.secondary {
+    background: var(--color-bg-card);
+    color: var(--color-primary);
+    border: 2px solid var(--color-primary);
+}
+
+.secondary:hover:not(:disabled) {
+    background: var(--color-primary-soft);
+}
+
+.ghost {
+    background: transparent;
+    color: var(--color-text-secondary);
+}
+
+.ghost:hover:not(:disabled) {
+    background: var(--color-primary-soft);
+    color: var(--color-primary);
+}
+
+.danger {
+    background: var(--color-error);
+    color: var(--color-text-inverse);
+}
+
+.danger:hover:not(:disabled) {
+    background: #d32f2f;
+}
+
+/* Sizes */
+.sm {
+    padding: var(--space-xs) var(--space-md);
+    font-size: var(--font-size-sm);
+    height: 32px;
+}
+
+.md {
+    padding: var(--space-sm) var(--space-lg);
+    font-size: var(--font-size-base);
+    height: 40px;
+}
+
+.lg {
+    padding: var(--space-md) var(--space-xl);
+    font-size: var(--font-size-lg);
+    height: 48px;
+}
+
+/* Full width */
+.fullWidth {
+    width: 100%;
+}
+
+/* Loading */
+.loading .text {
+    opacity: 0.7;
+}
+
+.spinner {
+    width: 16px;
+    height: 16px;
+    animation: spin 1s linear infinite;
+}
+
+.spinner svg {
+    width: 100%;
+    height: 100%;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Icon */
+.icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.text {
+    display: inline-flex;
+    align-items: center;
+}

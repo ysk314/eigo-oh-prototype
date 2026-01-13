@@ -1,0 +1,93 @@
+.button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    border-radius: var(--radius-md);
+    font-family: var(--font-family-sans);
+    font-weight: var(--font-weight-bold);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+/* Sizes */
+.sm {
+    width: 40px;
+    height: 40px;
+    font-size: var(--font-size-lg);
+}
+
+.md {
+    width: 56px;
+    height: 56px;
+    font-size: var(--font-size-2xl);
+}
+
+.lg {
+    width: 72px;
+    height: 72px;
+    font-size: var(--font-size-3xl);
+}
+
+/* Mode Colors - Unlocked */
+.mode1.unlocked {
+    background: var(--color-primary);
+    color: var(--color-text-inverse);
+    box-shadow: 0 4px 0 var(--color-primary-dark);
+}
+
+.mode2.unlocked {
+    background: var(--color-accent);
+    color: var(--color-text-primary);
+    box-shadow: 0 4px 0 var(--color-accent-dark);
+}
+
+.mode3.unlocked {
+    background: var(--color-primary);
+    color: var(--color-text-inverse);
+    box-shadow: 0 4px 0 var(--color-primary-dark);
+}
+
+/* Locked */
+.locked {
+    background: #E0E0E0;
+    color: #9E9E9E;
+    box-shadow: 0 4px 0 #BDBDBD;
+    cursor: not-allowed;
+}
+
+/* Hover */
+.unlocked:hover {
+    transform: translateY(-2px);
+}
+
+.unlocked:active {
+    transform: translateY(2px);
+    box-shadow: none;
+}
+
+/* Active state */
+.active {
+    outline: 3px solid var(--color-text-inverse);
+    outline-offset: 2px;
+}
+
+/* Number */
+.number {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Lock Icon */
+.lockIcon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0.5;
+}
+
+.lockIcon svg {
+    width: 50%;
+    height: 50%;
+}
