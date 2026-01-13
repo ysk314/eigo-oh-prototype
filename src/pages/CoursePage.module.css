@@ -1,0 +1,101 @@
+.page {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.content {
+    display: flex;
+    flex: 1;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 200px;
+    background: linear-gradient(180deg, var(--color-primary-soft) 0%, var(--color-bg-gradient-end) 100%);
+    border-right: 1px solid var(--color-primary-soft);
+    flex-shrink: 0;
+}
+
+/* Main */
+.main {
+    flex: 1;
+    padding: var(--space-xl);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+}
+
+/* Mode Header */
+.modeHeader {
+    display: flex;
+    justify-content: flex-end;
+    gap: var(--space-md);
+    padding-right: var(--space-lg);
+}
+
+.modeLabel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-xs);
+    padding: var(--space-sm) var(--space-md);
+    border-radius: var(--radius-lg);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-semibold);
+    text-align: center;
+    line-height: 1.3;
+}
+
+.modeLabel[data-mode="1"] {
+    background: var(--color-primary);
+    color: var(--color-text-inverse);
+}
+
+.modeLabel[data-mode="2"] {
+    background: var(--color-accent);
+    color: var(--color-text-primary);
+}
+
+.modeLabel[data-mode="3"] {
+    background: var(--color-text-secondary);
+    color: var(--color-text-inverse);
+}
+
+.modeIcon {
+    font-size: var(--font-size-lg);
+}
+
+/* Sections */
+.sections {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+}
+
+.emptyState {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-3xl);
+    color: var(--color-text-muted);
+    font-size: var(--font-size-lg);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .content {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+        border-right: none;
+        border-bottom: 1px solid var(--color-primary-soft);
+    }
+
+    .modeHeader {
+        justify-content: center;
+        padding-right: 0;
+    }
+}

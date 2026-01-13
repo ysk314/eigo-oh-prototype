@@ -1,0 +1,108 @@
+.button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--color-primary);
+    border: none;
+    border-radius: 50%;
+    color: var(--color-text-inverse);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.button:hover:not(:disabled) {
+    background: var(--color-primary-dark);
+    transform: scale(1.05);
+}
+
+.button:active:not(:disabled) {
+    transform: scale(0.95);
+}
+
+.disabled {
+    background: var(--color-locked);
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+
+/* Sizes */
+.sm {
+    width: 36px;
+    height: 36px;
+}
+
+.sm .icon {
+    width: 18px;
+    height: 18px;
+}
+
+.md {
+    width: 48px;
+    height: 48px;
+}
+
+.md .icon {
+    width: 24px;
+    height: 24px;
+}
+
+.lg {
+    width: 64px;
+    height: 64px;
+}
+
+.lg .icon {
+    width: 32px;
+    height: 32px;
+}
+
+/* Icon */
+.icon {
+    display: block;
+}
+
+/* Playing animation */
+.playing {
+    background: var(--color-primary-dark);
+}
+
+.waves {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+    height: 24px;
+}
+
+.wave {
+    width: 4px;
+    background: currentColor;
+    border-radius: 2px;
+    animation: wave 0.8s ease-in-out infinite;
+}
+
+.wave:nth-child(1) {
+    height: 40%;
+    animation-delay: 0s;
+}
+
+.wave:nth-child(2) {
+    height: 70%;
+    animation-delay: 0.2s;
+}
+
+.wave:nth-child(3) {
+    height: 40%;
+    animation-delay: 0.4s;
+}
+
+@keyframes wave {
+
+    0%,
+    100% {
+        transform: scaleY(1);
+    }
+
+    50% {
+        transform: scaleY(1.5);
+    }
+}

@@ -1,0 +1,1193 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eigo-Oh! - 英語タイピング学習</title>
+
+    <!-- Libraries -->
+    <script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <style>
+        /* =========================================
+       CSS Variables & Global Styles
+       ========================================= */
+        :root {
+            --color-primary: #E57373;
+            --color-primary-light: #FFAB91;
+            --color-primary-dark: #D32F2F;
+            --color-primary-soft: #FFCDD2;
+            --color-accent: #FFB74D;
+            --color-accent-light: #FFE0B2;
+            --color-accent-dark: #FF9800;
+            --color-bg-base: #FFF8F6;
+            --color-bg-card: #FFFFFF;
+            --color-bg-gradient-start: #FFF0ED;
+            --color-bg-gradient-end: #FFE4E1;
+            --color-text-primary: #424242;
+            --color-text-secondary: #757575;
+            --color-text-muted: #9E9E9E;
+            --color-text-inverse: #FFFFFF;
+            --color-success: #81C784;
+            --color-success-light: #C8E6C9;
+            --color-error: #EF5350;
+            --color-error-light: #FFCDD2;
+            --color-locked: #BDBDBD;
+
+            --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.08);
+            --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.12);
+
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 16px;
+            --radius-xl: 24px;
+            --radius-full: 9999px;
+
+            --font-family: 'Inter', 'Noto Sans JP', sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-family);
+            color: var(--color-text-primary);
+            background: linear-gradient(135deg, var(--color-bg-gradient-start) 0%, var(--color-bg-gradient-end) 100%);
+            min-height: 100vh;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        button {
+            font-family: inherit;
+        }
+
+        /* =========================================
+       Component Styles
+       ========================================= */
+
+        /* Button */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            border: none;
+            border-radius: var(--radius-md);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            white-space: nowrap;
+        }
+
+        .btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .btn-primary {
+            background: var(--color-primary);
+            color: #fff;
+        }
+
+        .btn-primary:hover:not(:disabled) {
+            background: var(--color-primary-dark);
+            transform: translateY(-1px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .btn-secondary {
+            background: #fff;
+            color: var(--color-primary);
+            border: 2px solid var(--color-primary);
+        }
+
+        .btn-secondary:hover:not(:disabled) {
+            background: var(--color-primary-soft);
+        }
+
+        .btn-ghost {
+            background: transparent;
+            color: var(--color-text-secondary);
+        }
+
+        .btn-ghost:hover {
+            background: var(--color-primary-soft);
+            color: var(--color-primary);
+        }
+
+        .btn-sm {
+            height: 32px;
+            padding: 0 12px;
+            font-size: 0.875rem;
+        }
+
+        .btn-md {
+            height: 40px;
+            padding: 0 20px;
+            font-size: 1rem;
+        }
+
+        .btn-lg {
+            height: 48px;
+            padding: 0 32px;
+            font-size: 1.125rem;
+        }
+
+        /* Card */
+        .card {
+            background: #fff;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .card-p-md {
+            padding: 16px;
+        }
+
+        .card-p-lg {
+            padding: 24px;
+        }
+
+        .card:hover.hoverable {
+            box-shadow: var(--shadow-lg);
+            transform: translateY(-2px);
+            transition: all 0.2s;
+        }
+
+        /* Header */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 24px;
+            background: var(--color-primary);
+            color: #fff;
+        }
+
+        .header-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+        }
+
+        .breadcrumb {
+            display: flex;
+            gap: 8px;
+            font-weight: 500;
+        }
+
+        .header-btn {
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            border-radius: 99px;
+            padding: 4px 12px;
+            color: #fff;
+            cursor: pointer;
+            font-size: 0.875rem;
+        }
+
+        /* PageList */
+        .page-list {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .page-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px 16px;
+            background: rgba(255, 255, 255, 0.4);
+            border: none;
+            border-radius: var(--radius-md);
+            cursor: pointer;
+            width: 100%;
+            text-align: left;
+            transition: all 0.2s;
+        }
+
+        .page-item:hover {
+            background: rgba(255, 255, 255, 0.8);
+        }
+
+        .page-item.selected {
+            background: var(--color-primary);
+            color: #fff;
+            font-weight: bold;
+        }
+
+        .page-item.selected .page-count {
+            opacity: 0.9;
+        }
+
+        .page-count {
+            font-size: 0.85rem;
+            opacity: 0.6;
+        }
+
+        /* SectionCard */
+        .section-card {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background: #fff;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-sm);
+        }
+
+        @media (max-width: 600px) {
+            .section-card {
+                flex-direction: column;
+                gap: 16px;
+                align-items: stretch;
+                text-align: center;
+            }
+
+            .modes {
+                justify-content: center;
+            }
+        }
+
+        .section-title {
+            font-size: 1.125rem;
+            font-weight: 700;
+            color: var(--color-primary);
+        }
+
+        .modes {
+            display: flex;
+            gap: 12px;
+        }
+
+        /* ModeButton */
+        .mode-btn {
+            width: 56px;
+            height: 56px;
+            border: none;
+            border-radius: var(--radius-md);
+            font-weight: bold;
+            font-size: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+            position: relative;
+        }
+
+        .mode-btn:hover:not(:disabled) {
+            transform: translateY(-2px);
+        }
+
+        .mode-btn.unlocked.m1 {
+            background: var(--color-primary);
+            color: #fff;
+            box-shadow: 0 4px 0 var(--color-primary-dark);
+        }
+
+        .mode-btn.unlocked.m2 {
+            background: var(--color-accent);
+            color: var(--color-text-primary);
+            box-shadow: 0 4px 0 var(--color-accent-dark);
+        }
+
+        .mode-btn.unlocked.m3 {
+            background: var(--color-primary);
+            color: #fff;
+            box-shadow: 0 4px 0 var(--color-primary-dark);
+        }
+
+        .mode-btn:disabled {
+            background: #E0E0E0;
+            color: #9E9E9E;
+            box-shadow: 0 4px 0 #BDBDBD;
+            cursor: not-allowed;
+        }
+
+        /* Rank Styles - Ensure these override defaults */
+        .mode-btn.rank-s {
+            background: #FFD700 !important;
+            /* Gold */
+            color: #fff !important;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+            border: 2px solid #FFA000 !important;
+            box-shadow: 0 4px 0 #FFA000 !important;
+        }
+
+        .mode-btn.rank-a {
+            background: #42A5F5 !important;
+            /* Blue */
+            color: #fff !important;
+            box-shadow: 0 4px 0 #1E88E5 !important;
+        }
+
+        .mode-btn.rank-b {
+            background: #9CCC65 !important;
+            /* Light Green */
+            color: #fff !important;
+            box-shadow: 0 4px 0 #7CB342 !important;
+        }
+
+        /* Play Screen */
+        .play-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 24px;
+            text-align: center;
+            /* レイアウト調整: 上寄せにする */
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            padding-top: 10vh;
+        }
+
+        .prompt {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+
+        .english-area {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            margin-bottom: 40px;
+            min-height: 80px;
+        }
+
+        .english-text {
+            font-size: 2.5rem;
+            font-weight: 700;
+            letter-spacing: 0.02em;
+        }
+
+        .highlight {
+            color: var(--color-accent-dark);
+        }
+
+        .hidden-text {
+            color: #ddd;
+            letter-spacing: 0.1em;
+        }
+
+        /* Typing Input */
+        .typing-box {
+            background: #fff;
+            padding: 32px;
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow-md);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 16px;
+            outline: none;
+        }
+
+        .typing-box:focus {
+            box-shadow: var(--shadow-lg), 0 0 0 3px var(--color-primary-soft);
+        }
+
+        .typing-display {
+            font-size: 2rem;
+            font-family: monospace;
+            font-weight: bold;
+        }
+
+        .typed {
+            color: var(--color-success);
+        }
+
+        .current-char {
+            background: var(--color-primary-soft);
+            color: var(--color-primary);
+            padding: 0 2px;
+            border-radius: 4px;
+        }
+
+        .remaining {
+            color: #ccc;
+        }
+
+        .error-flash {
+            animation: flash 0.3s;
+        }
+
+        @keyframes flash {
+
+            0%,
+            100% {
+                background: #fff;
+            }
+
+            50% {
+                background: var(--color-error-light);
+            }
+        }
+
+        /* Audio Button */
+        .audio-btn {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            border: none;
+            background: var(--color-primary);
+            color: #fff;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.2s;
+        }
+
+        .audio-btn:hover:not(:disabled) {
+            transform: scale(1.1);
+        }
+
+        .audio-btn:disabled {
+            background: #ddd;
+            cursor: not-allowed;
+        }
+
+        .playing .wave {
+            animation: wave 0.8s infinite;
+        }
+
+        @keyframes wave {
+
+            0%,
+            100% {
+                height: 40%;
+            }
+
+            50% {
+                height: 80%;
+            }
+        }
+
+        /* Timer Gauge */
+        .timer-bar-container {
+            width: 100%;
+            height: 8px;
+            background: #eee;
+            border-radius: 4px;
+            margin-bottom: 24px;
+            overflow: hidden;
+        }
+
+        .timer-bar {
+            height: 100%;
+            background: var(--color-primary);
+            transition: width 1s linear;
+        }
+
+        /* Layout */
+        .sidebar {
+            width: 220px;
+            background: rgba(255, 255, 255, 0.5);
+            border-right: 1px solid rgba(0, 0, 0, 0.05);
+            padding: 16px;
+        }
+
+        .content-area {
+            flex: 1;
+            padding: 24px;
+            overflow-y: auto;
+            height: calc(100vh - 64px);
+        }
+
+        .layout-flex {
+            display: flex;
+            height: calc(100vh - 64px);
+        }
+
+        @media (max-width: 768px) {
+            .layout-flex {
+                flex-direction: column;
+            }
+
+            .sidebar {
+                width: 100%;
+                height: auto;
+                border: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+        const { useState, useEffect, useMemo, useReducer, useCallback, createContext, useContext, useRef } = React;
+
+        // ==========================================
+        // DATA
+        // ==========================================
+        const QUESTIONS = [
+            { id: 'q1', page: 'p30-31', section: 'elementary_words', label: '小学校の単語', jp: 'セブ', en: 'Cebu' },
+            { id: 'q2', page: 'p30-31', section: 'elementary_words', label: '小学校の単語', jp: '友達', en: 'friend' },
+            { id: 'q3', page: 'p30-31', section: 'elementary_words', label: '小学校の単語', jp: '学校', en: 'school' },
+            { id: 'q7', page: 'p30-31', section: 'new_words', label: 'New Words', jp: '勝つ', en: 'win' },
+            { id: 'q8', page: 'p30-31', section: 'new_words', label: 'New Words', jp: '試合', en: 'game' },
+            { id: 'q13', page: 'p30-31', section: 'key_sentences', label: 'キーセンテンス', jp: '私は試合に勝ちたいです。', en: 'I want to win the game.', highlight: ['win'] },
+
+            { id: 'q19', page: 'p32-33', section: 'new_words', label: 'New Words', jp: '訪問する', en: 'visit' },
+            { id: 'q23', page: 'p32-33', section: 'key_sentences', label: 'キーセンテンス', jp: '私は日本を訪れたいです。', en: 'I want to visit Japan.', highlight: ['visit'] }
+        ];
+
+        const PAGES = [
+            { id: 'p30-31', label: 'p30-31', count: 6 },
+            { id: 'p32-33', label: 'p32-33', count: 2 },
+            { id: 'p34-35', label: 'p34-35', count: 0 },
+        ];
+
+        const SECTIONS = [
+            { id: 'elementary_words', label: '小学校の単語' },
+            { id: 'new_words', label: 'New Words' },
+            { id: 'key_sentences', label: 'キーセンテンス' },
+            { id: 'summary', label: 'まとめ' }
+        ];
+
+        // ==========================================
+        // UTILS
+        // ==========================================
+
+        // Voice Loading
+        let availableVoices = [];
+
+        const loadVoices = () => {
+            availableVoices = window.speechSynthesis.getVoices();
+        };
+
+        // Chromeなどは非同期ロードなのでイベントリッスン
+        window.speechSynthesis.onvoiceschanged = loadVoices;
+        loadVoices();
+
+        // ==========================================
+        // SOUND EFFECTS (Web Audio API)
+        // ==========================================
+        const SoundEffects = {
+            ctx: null,
+            init: () => {
+                if (!SoundEffects.ctx) {
+                    SoundEffects.ctx = new (window.AudioContext || window.webkitAudioContext)();
+                }
+            },
+            play: (type) => {
+                if (!SoundEffects.ctx) SoundEffects.init();
+                const ctx = SoundEffects.ctx;
+                if (ctx.state === 'suspended') ctx.resume();
+
+                const now = ctx.currentTime;
+
+                if (type === 'type') {
+                    // Key stroke sound (High click)
+                    const osc = ctx.createOscillator();
+                    const gain = ctx.createGain();
+                    osc.connect(gain);
+                    gain.connect(ctx.destination);
+
+                    osc.type = 'sine';
+                    osc.frequency.setValueAtTime(800, now);
+                    osc.frequency.exponentialRampToValueAtTime(400, now + 0.05);
+                    gain.gain.setValueAtTime(0.2, now);
+                    gain.gain.exponentialRampToValueAtTime(0.01, now + 0.05);
+                    osc.start(now);
+                    osc.stop(now + 0.05);
+                } else if (type === 'error') {
+                    // Buzzer (Low Sawtooth)
+                    const osc = ctx.createOscillator();
+                    const gain = ctx.createGain();
+                    osc.connect(gain);
+                    gain.connect(ctx.destination);
+
+                    osc.type = 'sawtooth';
+                    osc.frequency.setValueAtTime(150, now);
+                    osc.frequency.linearRampToValueAtTime(100, now + 0.15);
+                    gain.gain.setValueAtTime(0.3, now);
+                    gain.gain.exponentialRampToValueAtTime(0.01, now + 0.15);
+                    osc.start(now);
+                    osc.stop(now + 0.15);
+                } else if (type === 'fanfare') {
+                    // Success Fanfare (Arpeggio)
+                    const notes = [523.25, 659.25, 783.99, 1046.50]; // C, E, G, High C
+                    notes.forEach((freq, i) => {
+                        const o = ctx.createOscillator();
+                        const g = ctx.createGain();
+                        o.connect(g);
+                        g.connect(ctx.destination);
+                        o.type = 'triangle';
+                        o.frequency.value = freq;
+                        g.gain.setValueAtTime(0, now + i * 0.1);
+                        g.gain.linearRampToValueAtTime(0.3, now + i * 0.1 + 0.05);
+                        g.gain.exponentialRampToValueAtTime(0.01, now + i * 0.1 + 0.5);
+                        o.start(now + i * 0.1);
+                        o.stop(now + i * 0.1 + 0.6);
+                    });
+                } else if (type === 'countdown') {
+                    // Countdown Blip
+                    const osc = ctx.createOscillator();
+                    const gain = ctx.createGain();
+                    osc.connect(gain);
+                    gain.connect(ctx.destination);
+                    osc.type = 'sine';
+                    osc.frequency.setValueAtTime(600, now);
+                    osc.frequency.exponentialRampToValueAtTime(800, now + 0.1);
+                    gain.gain.setValueAtTime(0.1, now);
+                    gain.gain.exponentialRampToValueAtTime(0.01, now + 0.1);
+                    osc.start(now);
+                    osc.stop(now + 0.1);
+                }
+            }
+        };
+
+        const playAudio = (text) => {
+            window.speechSynthesis.cancel();
+            const u = new SpeechSynthesisUtterance(text);
+            u.lang = 'en-US';
+            u.rate = 1.0;
+            u.pitch = 1.0;
+
+            if (availableVoices.length === 0) {
+                availableVoices = window.speechSynthesis.getVoices();
+            }
+
+            // 英語のボイスのみを抽出 (日本語訛りを排除するため en- で始まるもののみ)
+            const englishVoices = availableVoices.filter(v =>
+                v.lang.startsWith('en') && !v.name.includes('Japanese') && !v.name.includes('Japan')
+            );
+
+            // 高品質な英語ボイスを優先的に検索
+            const preferredVoice =
+                englishVoices.find(v => v.name.includes('Google') && v.name.includes('US')) ||
+                englishVoices.find(v => v.name.includes('Zira')) ||
+                englishVoices.find(v => v.name.includes('Samantha')) ||
+                englishVoices.find(v => v.name.includes('Tom')) ||
+                englishVoices.find(v => v.lang === 'en-US' && v.localService === false) ||
+                englishVoices.find(v => v.lang === 'en-US') ||
+                englishVoices.find(v => v.lang.startsWith('en'));
+
+            if (preferredVoice) {
+                u.voice = preferredVoice;
+                // console.log('Using voice:', preferredVoice.name);
+            }
+
+            window.speechSynthesis.speak(u);
+        };
+
+        // ==========================================
+        // COMPONENTS
+        // ==========================================
+
+        function Button({ children, onClick, variant = 'primary', size = 'md', disabled, className = '' }) {
+            return (
+                <button
+                    className={`btn btn-${variant} btn-${size} ${className}`}
+                    onClick={onClick}
+                    disabled={disabled}
+                >
+                    {children}
+                </button>
+            );
+        }
+
+        function AudioButton({ text, disabled, autoPlay }) {
+            const [playing, setPlaying] = useState(false);
+
+            const handlePlay = useCallback(() => {
+                if (disabled) return;
+                setPlaying(true);
+                playAudio(text);
+                setTimeout(() => setPlaying(false), 2000);
+            }, [text, disabled]);
+
+            // Auto Play hook
+            useEffect(() => {
+                if (autoPlay && !disabled) {
+                    const timer = setTimeout(() => {
+                        handlePlay();
+                    }, 500);
+                    return () => clearTimeout(timer);
+                }
+            }, [text, autoPlay, disabled, handlePlay]);
+
+            return (
+                <button className={`audio-btn ${playing ? 'playing' : ''}`} onClick={handlePlay} disabled={disabled}>
+                    {playing ? (
+                        <div style={{ display: 'flex', gap: 2, alignItems: 'flex-end', height: 16 }}>
+                            <div style={{ width: 3, background: '#fff', height: '60%' }} className="wave"></div>
+                            <div style={{ width: 3, background: '#fff', height: '100%' }} className="wave"></div>
+                            <div style={{ width: 3, background: '#fff', height: '40%' }} className="wave"></div>
+                        </div>
+                    ) : (
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z" />
+                        </svg>
+                    )}
+                </button>
+            );
+
+        }
+
+        function Countdown({ count }) {
+            return (
+                <div style={{
+                    position: 'fixed', top: 0, left: 0, right: 0, bottom: 0,
+                    background: 'rgba(255,255,255,0.9)', zIndex: 100,
+                    display: 'flex', alignItems: 'center', justifyContent: 'center'
+                }}>
+                    <div style={{ fontSize: '10rem', fontWeight: 'bold', color: 'var(--color-primary)', animation: 'popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275)' }}>
+                        {count}
+                    </div>
+                    <style>{`@keyframes popIn { from { transform: scale(0.5); opacity: 0; } to { transform: scale(1); opacity: 1; } }`}</style>
+                </div>
+            );
+        }
+        function TypingArea({ targetText, onComplete, showHint }) {
+            const [input, setInput] = useState('');
+            const [miss, setMiss] = useState(0);
+            const [error, setError] = useState(false);
+            const containerRef = useRef(null);
+
+            // Normalize spaces
+            const target = targetText.replace(/\s+/g, ' ').trim();
+
+            useEffect(() => {
+                setInput('');
+                setMiss(0);
+                setError(false);
+                containerRef.current?.focus();
+            }, [targetText]);
+
+            const handleKeyDown = (e) => {
+                if (input.length >= target.length) return;
+                if (e.key.length !== 1) return;
+
+                const nextChar = target[input.length];
+
+                if (e.key === nextChar) {
+                    SoundEffects.play('type');
+                    const nextInput = input + e.key;
+                    setInput(nextInput);
+                    if (nextInput.length === target.length) {
+                        setTimeout(() => onComplete(miss), 300);
+                    }
+                } else {
+                    SoundEffects.play('error');
+                    setMiss(m => m + 1);
+                    setError(true);
+                    setTimeout(() => setError(false), 200);
+                }
+            };
+
+            return (
+                <div
+                    className={`typing-box ${error ? 'error-flash' : ''}`}
+                    tabIndex={0}
+                    ref={containerRef}
+                    onKeyDown={handleKeyDown}
+                >
+                    <div className="typing-display">
+                        <span className="typed">{input}</span>
+                        <span className="current-char">
+                            {showHint ? (target[input.length] || '') : (input.length < target.length ? '_' : '')}
+                        </span>
+                        <span className="remaining">
+                            {showHint
+                                ? target.slice(input.length + 1)
+                                : '_'.repeat(Math.max(0, target.length - input.length - 1))}
+                        </span>
+                    </div>
+                    <div style={{ fontSize: '0.9rem', color: '#888' }}>
+                        キーボードで入力してください {miss > 0 && <span style={{ color: 'red', marginLeft: 8 }}>Miss: {miss}</span>}
+                    </div>
+                </div>
+            );
+        }
+
+        // ==========================================
+        // APP LOGIC
+        // ==========================================
+
+        function App() {
+            // Views: 'home', 'course', 'countdown', 'play', 'result'
+            const [view, setView] = useState('home');
+            const [currentUser, setCurrentUser] = useState('ゲスト');
+
+            // Selection
+            const [selectedPage, setSelectedPage] = useState('p30-31');
+            const [selectedSection, setSelectedSection] = useState(null);
+            const [mode, setMode] = useState(1);
+
+            // Play State
+            const [playQueue, setPlayQueue] = useState([]);
+            const [qIndex, setQIndex] = useState(0);
+            const [results, setResults] = useState({ correct: 0, miss: 0 });
+            const [countdown, setCountdown] = useState(3);
+            const [timeLimit, setTimeLimit] = useState(60);
+            const [timeLeft, setTimeLeft] = useState(60);
+            const [finalScore, setFinalScore] = useState(0);
+
+            // Progress (Mock)
+            const [progress, setProgress] = useState({});
+
+            // Navigation Handlers
+            const goHome = () => setView('home');
+            const goCourse = () => setView('course');
+
+            const startPlay = (sectionId, selectedMode) => {
+                SoundEffects.init();
+                setSelectedSection(sectionId);
+                setMode(selectedMode);
+
+                const qs = QUESTIONS.filter(q => q.page === selectedPage && q.section === sectionId);
+                if (qs.length === 0) {
+                    alert('問題がありません');
+                    return;
+                }
+
+                // Calculate Time Limit based on total chars
+                // E.g., 1 sec per char + 5 sec buffer
+                const totalChars = qs.reduce((acc, q) => acc + q.en.length, 0);
+                const limit = Math.floor(totalChars * 1.0 + 10);
+
+                setTimeLimit(limit);
+                setTimeLeft(limit);
+
+                setPlayQueue(qs);
+                setQIndex(0);
+                setResults({ correct: 0, miss: 0 });
+                setFinalScore(0);
+
+                // Start Countdown
+                setCountdown(3);
+                setView('countdown');
+            };
+
+            // Countdown Timer
+            useEffect(() => {
+                if (view === 'countdown') {
+                    if (countdown > 0) {
+                        SoundEffects.play('countdown');
+                        const timer = setTimeout(() => setCountdown(c => c - 1), 1000);
+                        return () => clearTimeout(timer);
+                    } else {
+                        SoundEffects.play('countdown'); // Start sound
+                        setView('play');
+                    }
+                }
+            }, [view, countdown]);
+
+            // Play Timer
+            useEffect(() => {
+                if (view === 'play' && timeLeft > 0) {
+                    const timer = setInterval(() => {
+                        setTimeLeft(prev => {
+                            if (prev <= 1) {
+                                clearInterval(timer);
+                                return 0;
+                            }
+                            return prev - 1;
+                        });
+                    }, 1000);
+                    return () => clearInterval(timer);
+                } else if (view === 'play' && timeLeft === 0) {
+                    // Time Up (Game Over logic can be here, or simplified to just standard finish)
+                    // 要望: Time limit exceeded -> Game Over (rest treated as incorrect)
+                    // For now, let's finish the game immediately
+                    handleGameFinish({ timeUp: true });
+                }
+            }, [view, timeLeft]);
+
+            const handlePlayComplete = (missCount) => {
+                const newResults = { ...results, correct: results.correct + 1, miss: results.miss + missCount };
+                setResults(newResults);
+
+                if (qIndex < playQueue.length - 1) {
+                    setQIndex(qIndex + 1);
+                } else {
+                    handleGameFinish({ timeUp: false, finalResults: newResults });
+                }
+            };
+
+            const handleGameFinish = ({ timeUp, finalResults }) => {
+                // Calculate params
+                const res = finalResults || results;
+
+                // Score Calculation
+                // Accuracy Score: Deduct 5 points per miss from 100. Min 0.
+                const accuracyScore = Math.max(0, 100 - (res.miss * 5));
+
+                // Time Score: (Remaining / Limit) * 50. If timeUp, 0. Only add speed bonus if no miss.
+                const timeScore = (timeUp || res.miss > 0) ? 0 : Math.floor((timeLeft / timeLimit) * 50);
+
+                // Total
+                const totalScore = accuracyScore + timeScore;
+
+                // Determine Rank based on Total Score
+                // S = 100+ (Miss 0)
+                let rank = 'C';
+                if (totalScore >= 100 && !timeUp) {
+                    rank = 'S';
+                } else if (totalScore >= 80 && !timeUp) {
+                    rank = 'A';
+                } else if (totalScore >= 60 && !timeUp) {
+                    rank = 'B';
+                } else {
+                    rank = 'C';
+                }
+
+                // Update Progress if S rank (Unlock next level) OR just save best rank?
+                // User wants to see Crown for S.
+                // We should save the best rank. For now simpler: overwrite if better or just overwrite.
+
+                // Logic: Unlock requires S.
+                // But we want to show Crown even if played again.
+                // Let's save the rank if it's S (for unlock) or just save the result.
+                // Requirement: "Sランクの場合は王冠". Implies saving S.
+
+                if (!timeUp) {
+                    const key = `${selectedPage}-${selectedSection}`;
+                    const modeKey = `m${mode}`;
+                    // Save if S, or maybe we want to save A/B too?
+                    // Current logic: progress key stores 'true' for unlock.
+                    // New logic: progress key stores 'S', 'A', 'B', 'C'.
+
+                    // We should only overwrite if new rank is better?
+                    // Hierarchy: S > A > B > C > undefined.
+                    // For simplicity, let's just save if it's S (to ensure unlock), 
+                    // OR if we want to show "A", we save A.
+                    // Let's safe-guard: if existing is S, don't overwrite with A.
+                    const currentBest = progress[key]?.[modeKey];
+                    const ranks = ['S', 'A', 'B', 'C'];
+
+                    // helper to compare
+                    const isBetter = (newR, oldR) => {
+                        if (!oldR) return true;
+                        return ranks.indexOf(newR) < ranks.indexOf(oldR);
+                    };
+
+                    if (isBetter(rank, currentBest)) {
+                        setProgress(prev => ({
+                            ...prev,
+                            [key]: { ...(prev[key] || {}), [modeKey]: rank }
+                        }));
+
+                        // Only play fanfare for S
+                        if (rank === 'S') SoundEffects.play('fanfare');
+                    }
+                }
+
+                // Pass breakdown to result view via state or just calculate there again?
+                // Ideally, set state. For simplicity, we can store breakdown in 'results' or a new state.
+                // We'll add 'breakdown' to results object for convenience
+                setResults({ ...res, accuracyScore, timeScore });
+
+                setView('result');
+            };
+
+            // Render Views
+            if (view === 'home') {
+                return (
+                    <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: 20 }}>
+                        <h1 style={{ fontSize: '3rem', color: 'var(--color-primary)', marginBottom: 10 }}>Eigo-Oh!</h1>
+                        <p style={{ marginBottom: 40, color: '#666' }}>楽しく英語タイピング</p>
+                        <div className="card card-p-lg" style={{ width: '100%', maxWidth: 400, textAlign: 'center' }}>
+                            <h2 style={{ marginBottom: 20 }}>学習をはじめる</h2>
+                            <div style={{ marginBottom: 20 }}>
+                                <label style={{ display: 'block', marginBottom: 8, textAlign: 'left' }}>名前</label>
+                                <input type="text" value={currentUser} onChange={e => setCurrentUser(e.target.value)} style={{ width: '100%', padding: 10, borderRadius: 8, border: '1px solid #ddd', fontSize: '1rem' }} />
+                            </div>
+                            <Button onClick={goCourse} size="lg" className="w-100" style={{ width: '100%' }}>New Horizon 1 をはじめる</Button>
+                        </div>
+                    </div>
+                );
+            }
+
+            if (view === 'course') {
+                const activeSections = SECTIONS.filter(sect => QUESTIONS.some(q => q.page === selectedPage && q.section === sect.id));
+                const isUnlocked = (sectId, m) => {
+                    if (m === 1) return true;
+                    const key = `${selectedPage}-${sectId}`;
+                    const prevMode = `m${m - 1}`;
+                    const prevRank = progress[key]?.[prevMode];
+                    // Only unlock if previous mode rank is 'S'
+                    return prevRank === 'S';
+                };
+                const getRank = (sectId, m) => {
+                    const key = `${selectedPage}-${sectId}`;
+                    const modeKey = `m${m}`;
+                    return progress[key]?.[modeKey];
+                };
+                return (
+                    <div style={{ display: 'flex', flexDirection: 'column', height: '100vh' }}>
+                        <header className="header">
+                            <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
+                                <button className="header-btn" onClick={goHome}>← Home</button>
+                                <div className="breadcrumb">New Horizon 1 / {selectedPage}</div>
+                            </div>
+                            <div>{currentUser}</div>
+                        </header>
+                        <div className="layout-flex">
+                            <nav className="sidebar">
+                                <div className="page-list">
+                                    {PAGES.map(p => (
+                                        <button key={p.id} className={`page-item ${selectedPage === p.id ? 'selected' : ''}`} onClick={() => setSelectedPage(p.id)}>
+                                            <span>{p.label}</span>
+                                            <span className="page-count">{p.count}問</span>
+                                        </button>
+                                    ))}
+                                </div>
+                            </nav>
+                            <main className="content-area">
+                                <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
+                                    {activeSections.length > 0 ? activeSections.map(sect => (
+                                        <div className="section-card" key={sect.id}>
+                                            <div className="section-title">{sect.label}</div>
+                                            <div className="modes">
+                                                {[1, 2, 3].map(m => {
+                                                    const unlocked = isUnlocked(sect.id, m);
+                                                    const rank = getRank(sect.id, m);
+                                                    const rankClass = rank ? `rank-${rank.toLowerCase()}` : '';
+                                                    return (
+                                                        <button
+                                                            key={m}
+                                                            className={`mode-btn m${m} ${unlocked ? 'unlocked' : ''} ${rankClass}`}
+                                                            disabled={!unlocked}
+                                                            onClick={() => startPlay(sect.id, m)}
+                                                        >
+                                                            {unlocked ? m : <span>🔒</span>}
+                                                        </button>
+                                                    );
+                                                })}
+                                            </div>
+                                        </div>
+                                    )) : <div style={{ color: '#888' }}>このページのコンテンツはまだありません</div>}
+                                </div>
+                            </main>
+                        </div>
+                    </div>
+                );
+            }
+
+            if (view === 'countdown') {
+                return (
+                    <Countdown count={countdown} />
+                );
+            }
+
+            if (view === 'play') {
+                const q = playQueue[qIndex];
+                // Mode logic
+                const isSpellingHidden = mode === 2 || mode === 3;
+                const isAudioEnabled = mode === 1 || mode === 2;
+
+                const renderEnglish = () => {
+                    if (!isSpellingHidden) return null; // Default display
+                    if (mode === 2) return <span className="hidden-text">{q.en.replace(/[a-zA-Z]/g, '_')}</span>;
+                    if (mode === 3) return <span className="hidden-text">HIDDEN</span>;
+                };
+
+                return (
+                    <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
+                        <header className="header" style={{ background: '#fff', color: 'var(--color-text-primary)', borderBottom: '1px solid #eee' }}>
+                            <Button variant="ghost" onClick={goCourse}>中断する</Button>
+                            <div style={{ fontWeight: 'bold' }}>{qIndex + 1} / {playQueue.length}</div>
+                            <div>{currentUser}</div>
+                        </header>
+
+                        <main className="play-container">
+
+                            <div className="timer-bar-container">
+                                <div className="timer-bar" style={{ width: `${(timeLeft / timeLimit) * 100}%`, background: timeLeft < 10 ? 'var(--color-error)' : 'var(--color-primary)' }}></div>
+                            </div>
+                            <div style={{ textAlign: 'right', marginBottom: 16, fontWeight: 'bold', color: '#888' }}>
+                                残り {timeLeft} / {timeLimit} 秒
+                            </div>
+
+                            <h2 className="prompt">{q.jp}</h2>
+                            <div className="english-area">
+                                <AudioButton text={q.en} disabled={!isAudioEnabled} autoPlay={true} />
+                                <div className="english-text" style={{ visibility: isSpellingHidden ? 'hidden' : 'visible' }}>
+                                    {renderEnglish() || q.en}
+                                </div>
+                            </div>
+                            <TypingArea targetText={q.en} onComplete={handlePlayComplete} showHint={mode === 1} />
+                        </main>
+                    </div>
+                );
+            }
+
+            if (view === 'result') {
+
+                let rank = 'C';
+                let message = 'Nice Try!';
+                let color = '#757575';
+
+                // Recalculate for render if needed, or use stored if available.
+                // Since we updated results with scores, check if they exist, else recalc (fallback)
+                const accScore = results.accuracyScore !== undefined ? results.accuracyScore : Math.max(0, 100 - (results.miss * 5));
+                const tmScore = results.timeScore !== undefined ? results.timeScore : 0; // Fallback 0
+                const totScore = accScore + tmScore;
+
+                if (totScore >= 100 && timeLeft > 0) {
+                    rank = 'S'; message = 'Perfect!!'; color = '#4CAF50';
+                } else if (totScore >= 80 && timeLeft > 0) {
+                    rank = 'A'; message = 'Great Job!'; color = '#2196F3';
+                } else if (totScore >= 60 && timeLeft > 0) {
+                    rank = 'B'; message = 'Good!'; color = '#8BC34A';
+                }
+
+                return (
+                    <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', background: '#fff' }}>
+                        <h1 style={{ fontSize: '3rem', color: 'var(--color-primary)', marginBottom: 10 }}>{message}</h1>
+                        <div style={{ fontSize: '1.5rem', color: color, marginBottom: 10, fontWeight: 'bold' }}>Rank {rank}</div>
+                        <div style={{ fontSize: '2.5rem', fontWeight: 'bold', marginBottom: 30 }}>Score: {totScore}</div>
+
+                        <div style={{ display: 'flex', gap: 40, marginBottom: 30 }}>
+                            <div style={{ textAlign: 'center' }}>
+                                <div style={{ color: '#888' }}>正解数</div>
+                                <div style={{ fontSize: '2rem', fontWeight: 'bold' }}>{results.correct}</div>
+                            </div>
+                            <div style={{ textAlign: 'center' }}>
+                                <div style={{ color: '#888' }}>ミス数</div>
+                                <div style={{ fontSize: '2rem', fontWeight: 'bold', color: 'var(--color-error)' }}>{results.miss}</div>
+                            </div>
+                            <div style={{ textAlign: 'center' }}>
+                                <div style={{ color: '#888' }}>残り時間</div>
+                                <div style={{ fontSize: '2rem', fontWeight: 'bold' }}>{timeLeft}s</div>
+                            </div>
+                        </div>
+
+                        {rank === 'S' && <div style={{ marginBottom: 20, color: 'var(--color-primary)', fontWeight: 'bold', animation: 'popIn 0.5s' }}>✨ Unlock Next Level! ✨</div>}
+                        <div style={{ display: 'flex', gap: 16 }}>
+                            <Button variant="secondary" onClick={() => startPlay(selectedSection, mode)}>もう一度</Button>
+                            <Button onClick={goCourse}>コースに戻る</Button>
+                        </div>
+                    </div>
+                );
+            }
+            return null;
+        }
+
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<App />);
+    </script>
+</body>
+
+</html>

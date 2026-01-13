@@ -1,0 +1,169 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-md);
+    padding: var(--space-xl);
+    background: var(--color-bg-card);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-md);
+    min-height: 120px;
+    outline: none;
+    transition: all var(--transition-fast);
+}
+
+.container:focus {
+    box-shadow: var(--shadow-lg), 0 0 0 3px var(--color-primary-soft);
+}
+
+.disabled {
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+.error {
+    animation: errorFlash 0.3s ease;
+}
+
+@keyframes errorFlash {
+
+    0%,
+    100% {
+        background: var(--color-bg-card);
+    }
+
+    50% {
+        background: var(--color-error-light);
+    }
+}
+
+/* Display */
+.display {
+    font-size: var(--font-size-4xl);
+    font-weight: var(--font-weight-bold);
+    font-family: 'Inter', monospace;
+    letter-spacing: 0.05em;
+    line-height: 1.2;
+    min-height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.completed {
+    color: var(--color-success);
+}
+
+.current {
+    color: var(--color-primary);
+    background: var(--color-primary-soft);
+    padding: 0 2px;
+    border-radius: 4px;
+    position: relative;
+}
+
+.current::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--color-primary);
+    border-radius: 2px;
+    animation: blink 1s infinite;
+}
+
+@keyframes blink {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.3;
+    }
+}
+
+.remaining {
+    color: var(--color-text-muted);
+}
+
+.shake {
+    animation: shake 0.3s ease-in-out;
+}
+
+@keyframes shake {
+
+    0%,
+    100% {
+        transform: translateX(0);
+    }
+
+    20%,
+    60% {
+        transform: translateX(-4px);
+    }
+
+    40%,
+    80% {
+        transform: translateX(4px);
+    }
+}
+
+/* Cursor */
+.cursor {
+    display: none;
+}
+
+/* Miss Count */
+.missCount {
+    font-size: var(--font-size-sm);
+    color: var(--color-error);
+    background: var(--color-error-light);
+    padding: var(--space-xs) var(--space-md);
+    border-radius: var(--radius-full);
+}
+
+/* Complete */
+.complete {
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-success);
+    background: var(--color-success-light);
+    padding: var(--space-sm) var(--space-lg);
+    border-radius: var(--radius-full);
+    animation: scaleIn 0.3s ease;
+}
+
+@keyframes scaleIn {
+    from {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* Hint */
+.hint {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-muted);
+    margin: 0;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .display {
+        font-size: var(--font-size-2xl);
+    }
+
+    .container {
+        padding: var(--space-lg);
+    }
+}
