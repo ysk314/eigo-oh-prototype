@@ -889,70 +889,97 @@
                     style={{ borderColor: error ? 'var(--color-error)' : 'transparent', borderWidth: 2, borderStyle: 'solid' }}
                 >
                     <div className="typing-display">
-                        <div style={{ fontSize: '0.9rem', color: '#888' }}>
-                            キーボードで入力してください {miss > 0 && <span style={{ color: 'red', marginLeft: 8 }}>Miss: {miss}</span>}
-                        </div>
+                        <span style={{ color: 'var(--color-text-primary)' }}>{input}</span>
+                        <span style={{ color: '#ccc', borderBottom: '2px solid var(--color-primary)' }}>
+                            {input.length < target.length && (
+                                consecutiveMiss >= 2
+                                    ? <span className="hint-char">{target[input.length]}</span>
+                                    : '_'
+                            )}
+                        </span>
                     </div>
-                    );
+                    <div style={{ color: '#aaa', fontSize: '0.9rem' }}>
+                        キーボード入力してください
+                    </div>
+                </div>
+            );
         }
 
-                    // ==========================================
-                    // APP LOGIC
-                    // ==========================================
+        function QuestionProgress({ total, current }) {
+            return (
+                <div style={{ display: 'flex', gap: 6, marginBottom: 8, justifyContent: 'center', flexWrap: 'wrap' }}>
+                    {Array.from({ length: total }, (_, i) => i + 1).map(num => (
+                        <div key={num} style={{
+                            width: 28, height: 28, display: 'flex', alignItems: 'center', justifyContent: 'center',
+                            background: num === current ? 'var(--color-primary)' : num < current ? '#e0e0e0' : '#f5f5f5',
+                            color: num === current ? '#fff' : '#aaa',
+                            borderRadius: 6, fontSize: '0.85rem', fontWeight: 'bold',
+                            border: num === current ? 'none' : '1px solid #eee'
+                        }}>
+                            {num}
+                        </div>
+                    ))}
+                </div>
+            );
+        }
 
-                    function App() {
+        // ==========================================
+        // APP LOGIC
+        // ==========================================
+
+        function App() {
             // Views: 'home', 'course', 'countdown', 'play', 'result'
             const [view, setView] = useState('home');
-                    const [currentUser, setCurrentUser] = useState('ゲスト');
+            const [currentUser, setCurrentUser] = useState('ゲスト');
 
-                    // Selection
-                    const [selectedPage, setSelectedPage] = useState('p30-31');
-                    const [selectedSection, setSelectedSection] = useState(null);
-                    const [mode, setMode] = useState(1);
+            // Selection
+            const [selectedPage, setSelectedPage] = useState('p30-31');
+            const [selectedSection, setSelectedSection] = useState(null);
+            const [mode, setMode] = useState(1);
 
-                    // Play State
-                    const [playQueue, setPlayQueue] = useState([]);
-                    const [qIndex, setQIndex] = useState(0);
-                    const [results, setResults] = useState({correct: 0, miss: 0 });
-                    const [countdown, setCountdown] = useState(3);
-                    const [timeLimit, setTimeLimit] = useState(60);
-                    const [timeLeft, setTimeLeft] = useState(60);
-                    const [finalScore, setFinalScore] = useState(0);
+            // Play State
+            const [playQueue, setPlayQueue] = useState([]);
+            const [qIndex, setQIndex] = useState(0);
+            const [results, setResults] = useState({ correct: 0, miss: 0 });
+            const [countdown, setCountdown] = useState(3);
+            const [timeLimit, setTimeLimit] = useState(60);
+            const [timeLeft, setTimeLeft] = useState(60);
+            const [finalScore, setFinalScore] = useState(0);
 
-                    // Progress (Mock)
-                    const [progress, setProgress] = useState({ });
+            // Progress (Mock)
+            const [progress, setProgress] = useState({});
 
             // Navigation Handlers
             const goHome = () => setView('home');
             const goCourse = () => setView('course');
 
             const startPlay = (sectionId, selectedMode) => {
-                        SoundEffects.init();
-                    setSelectedSection(sectionId);
-                    setMode(selectedMode);
+                SoundEffects.init();
+                setSelectedSection(sectionId);
+                setMode(selectedMode);
 
                 const qs = QUESTIONS.filter(q => q.page === selectedPage && q.section === sectionId);
-                    if (qs.length === 0) {
-                        alert('問題がありません');
+                if (qs.length === 0) {
+                    alert('問題がありません');
                     return;
                 }
 
                 // Calculate Time Limit based on total chars
                 // E.g., 1 sec per char + 5 sec buffer
                 const totalChars = qs.reduce((acc, q) => acc + q.en.length, 0);
-                    const limit = Math.floor(totalChars * 1.0 + 10);
+                const limit = Math.floor(totalChars * 1.0 + 10);
 
-                    setTimeLimit(limit);
-                    setTimeLeft(limit);
+                setTimeLimit(limit);
+                setTimeLeft(limit);
 
-                    setPlayQueue(qs);
-                    setQIndex(0);
-                    setResults({correct: 0, miss: 0 });
-                    setFinalScore(0);
+                setPlayQueue(qs);
+                setQIndex(0);
+                setResults({ correct: 0, miss: 0 });
+                setFinalScore(0);
 
-                    // Start Countdown
-                    setCountdown(3);
-                    setView('countdown');
+                // Start Countdown
+                setCountdown(3);
+                setView('countdown');
             };
 
             // Countdown Timer
@@ -964,7 +991,7 @@
                         return () => clearTimeout(timer);
                     } else {
                         SoundEffects.play('countdown'); // Start sound
-                    setView('play');
+                        setView('play');
                     }
                 }
             }, [view, countdown]);
@@ -983,61 +1010,61 @@
                     }, 1000);
                     return () => clearInterval(timer);
                 } else if (view === 'play' && timeLeft === 0) {
-                        // Time Up (Game Over logic can be here, or simplified to just standard finish)
-                        // 要望: Time limit exceeded -> Game Over (rest treated as incorrect)
-                        // For now, let's finish the game immediately
-                        handleGameFinish({ timeUp: true });
+                    // Time Up (Game Over logic can be here, or simplified to just standard finish)
+                    // 要望: Time limit exceeded -> Game Over (rest treated as incorrect)
+                    // For now, let's finish the game immediately
+                    handleGameFinish({ timeUp: true });
                 }
             }, [view, timeLeft]);
 
             const handlePlayComplete = (missCount) => {
-                const newResults = {...results, correct: results.correct + 1, miss: results.miss + missCount };
-                    setResults(newResults);
+                const newResults = { ...results, correct: results.correct + 1, miss: results.miss + missCount };
+                setResults(newResults);
 
-                    if (qIndex < playQueue.length - 1) {
-                        setQIndex(qIndex + 1);
+                if (qIndex < playQueue.length - 1) {
+                    setQIndex(qIndex + 1);
                 } else {
-                        handleGameFinish({ timeUp: false, finalResults: newResults });
+                    handleGameFinish({ timeUp: false, finalResults: newResults });
                 }
             };
 
-                    const handleGameFinish = ({timeUp, finalResults}) => {
+            const handleGameFinish = ({ timeUp, finalResults }) => {
                 // Calculate params
                 const res = finalResults || results;
 
-                    // Score Calculation
-                    // Accuracy Score: Deduct 5 points per miss from 100. Min 0.
-                    const accuracyScore = Math.max(0, 100 - (res.miss * 5));
+                // Score Calculation
+                // Accuracy Score: Deduct 5 points per miss from 100. Min 0.
+                const accuracyScore = Math.max(0, 100 - (res.miss * 5));
 
                 // Time Score: (Remaining / Limit) * 50. If timeUp, 0. Only add speed bonus if no miss.
                 const timeScore = (timeUp || res.miss > 0) ? 0 : Math.floor((timeLeft / timeLimit) * 50);
 
-                    // Total
-                    const totalScore = accuracyScore + timeScore;
+                // Total
+                const totalScore = accuracyScore + timeScore;
 
-                    // Determine Rank based on Total Score
-                    // S = 100+ (Miss 0)
-                    let rank = 'C';
+                // Determine Rank based on Total Score
+                // S = 100+ (Miss 0)
+                let rank = 'C';
                 if (totalScore >= 100 && !timeUp) {
-                        rank = 'S';
+                    rank = 'S';
                 } else if (totalScore >= 80 && !timeUp) {
-                        rank = 'A';
+                    rank = 'A';
                 } else if (totalScore >= 60 && !timeUp) {
-                        rank = 'B';
+                    rank = 'B';
                 } else {
-                        rank = 'C';
+                    rank = 'C';
                 }
 
-                    // Update Progress if S rank (Unlock next level) OR just save best rank?
-                    // User wants to see Crown for S.
-                    // We should save the best rank. For now simpler: overwrite if better or just overwrite.
+                // Update Progress if S rank (Unlock next level) OR just save best rank?
+                // User wants to see Crown for S.
+                // We should save the best rank. For now simpler: overwrite if better or just overwrite.
 
-                    // Logic: Unlock requires S.
-                    // But we want to show Crown even if played again.
-                    // Let's save the rank if it's S (for unlock) or just save the result.
-                    // Requirement: "Sランクの場合は王冠". Implies saving S.
+                // Logic: Unlock requires S.
+                // But we want to show Crown even if played again.
+                // Let's save the rank if it's S (for unlock) or just save the result.
+                // Requirement: "Sランクの場合は王冠". Implies saving S.
 
-                    if (!timeUp) {
+                if (!timeUp) {
                     const key = `${selectedPage}-${selectedSection}`;
                     const modeKey = `m${mode}`;
                     // Save if S, or maybe we want to save A/B too?
@@ -1055,7 +1082,7 @@
                     // helper to compare
                     const isBetter = (newR, oldR) => {
                         if (!oldR) return true;
-                    return ranks.indexOf(newR) < ranks.indexOf(oldR);
+                        return ranks.indexOf(newR) < ranks.indexOf(oldR);
                     };
 
                     if (isBetter(rank, currentBest)) {
@@ -1065,13 +1092,13 @@
                         }));
 
 
-                    // Only play fanfare for S
-                    if (rank === 'S') {
-                        SoundEffects.play('fanfare');
+                        // Only play fanfare for S
+                        if (rank === 'S') {
+                            SoundEffects.play('fanfare');
                         } else if (rank === 'A' || rank === 'B') {
-                        SoundEffects.play('success');
+                            SoundEffects.play('success');
                         } else {
-                        SoundEffects.play('try-again');
+                            SoundEffects.play('try-again');
                         }
                     } else if (!timeUp && rank === 'C') {
                         // Fail without timeup? (Just low score)
@@ -1081,16 +1108,16 @@
                     }
                 }
 
-                    // Pass breakdown to result view via state or just calculate there again?
-                    // Ideally, set state. For simplicity, we can store breakdown in 'results' or a new state.
-                    // We'll add 'breakdown' to results object for convenience
-                    setResults({...res, accuracyScore, timeScore});
+                // Pass breakdown to result view via state or just calculate there again?
+                // Ideally, set state. For simplicity, we can store breakdown in 'results' or a new state.
+                // We'll add 'breakdown' to results object for convenience
+                setResults({ ...res, accuracyScore, timeScore });
 
-                    setView('result');
+                setView('result');
             };
 
-                    // Render Views
-                    if (view === 'home') {
+            // Render Views
+            if (view === 'home') {
                 return (
                     <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: 20 }}>
                         <h1 style={{ fontSize: '3rem', color: 'var(--color-primary)', marginBottom: 10 }}>Eigo-Oh!</h1>
@@ -1104,10 +1131,10 @@
                             <Button onClick={goCourse} size="lg" className="w-100" style={{ width: '100%' }}>New Horizon 1 をはじめる</Button>
                         </div>
                     </div>
-                    );
+                );
             }
 
-                    if (view === 'course') {
+            if (view === 'course') {
                 const activeSections = SECTIONS.filter(sect => QUESTIONS.some(q => q.page === selectedPage && q.section === sect.id));
                 const isUnlocked = (sectId, m) => {
                     if (m === 1) return true;
@@ -1122,7 +1149,7 @@
                     const modeKey = `m${m}`;
                     return progress[key]?.[modeKey];
                 };
-                    return (
+                return (
                     <div style={{ display: 'flex', flexDirection: 'column', height: '100vh' }}>
                         <header className="header">
                             <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
@@ -1153,13 +1180,24 @@
                                                     const rank = getRank(sect.id, m);
                                                     const rankClass = rank ? `rank-${rank.toLowerCase()}` : '';
                                                     return (
+
                                                         <button
                                                             key={m}
                                                             className={`mode-btn m${m} ${unlocked ? 'unlocked' : ''} ${rankClass}`}
                                                             disabled={!unlocked}
                                                             onClick={() => startPlay(sect.id, m)}
+                                                            style={{ flexDirection: 'column', gap: 4, height: 'auto', padding: '12px 8px' }}
                                                         >
-                                                            {unlocked ? m : <span>🔒</span>}
+                                                            {unlocked ? (
+                                                                <>
+                                                                    <span style={{ fontSize: '1.4rem', fontWeight: 'bold' }}>Level {m}</span>
+                                                                    <span style={{ fontSize: '0.75rem', opacity: 0.9, lineHeight: 1.3 }}>
+                                                                        {m === 1 && <>♪ 音あり<br />A スペルあり</>}
+                                                                        {m === 2 && <>♪ 音あり<br />A スペルなし</>}
+                                                                        {m === 3 && <>🔇 音なし<br />A スペルなし</>}
+                                                                    </span>
+                                                                </>
+                                                            ) : <span>🔒</span>}
                                                         </button>
                                                     );
                                                 })}
@@ -1170,20 +1208,20 @@
                             </main>
                         </div>
                     </div>
-                    );
+                );
             }
 
-                    if (view === 'countdown') {
+            if (view === 'countdown') {
                 return (
                     <Countdown count={countdown} />
-                    );
+                );
             }
 
-                    if (view === 'play') {
+            if (view === 'play') {
                 const q = playQueue[qIndex];
-                    // Mode logic
-                    const isSpellingHidden = mode === 2 || mode === 3;
-                    const isAudioEnabled = mode === 1 || mode === 2;
+                // Mode logic
+                const isSpellingHidden = mode === 2 || mode === 3;
+                const isAudioEnabled = mode === 1 || mode === 2;
 
                 const renderEnglish = () => {
                     if (!isSpellingHidden) return null; // Default display
@@ -1191,21 +1229,25 @@
                     if (mode === 3) return <span className="hidden-text">HIDDEN</span>;
                 };
 
-                    return (
+                return (
                     <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
                         <header className="header" style={{ background: '#fff', color: 'var(--color-text-primary)', borderBottom: '1px solid #eee' }}>
-                            <Button variant="ghost" onClick={goCourse}>中断する</Button>
-                            <div style={{ fontWeight: 'bold' }}>{qIndex + 1} / {playQueue.length}</div>
-                            <div>{currentUser}</div>
+                            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '100%' }}>
+                                <Button variant="ghost" onClick={goCourse}>中断する</Button>
+                                <div>{currentUser}</div>
+                            </div>
                         </header>
 
                         <main className="play-container">
 
-                            <div className="timer-bar-container">
-                                <div className="timer-bar" style={{ width: `${(timeLeft / timeLimit) * 100}%`, background: timeLeft < 10 ? 'var(--color-error)' : 'var(--color-primary)' }}></div>
-                            </div>
-                            <div style={{ textAlign: 'right', marginBottom: 16, fontWeight: 'bold', color: '#888' }}>
-                                残り {timeLeft} / {timeLimit} 秒
+                            <div style={{ width: '100%', maxWidth: 600, margin: '0 auto 30px' }}>
+                                <QuestionProgress total={playQueue.length} current={qIndex + 1} />
+                                <div className="timer-bar-container" style={{ marginTop: 8 }}>
+                                    <div className="timer-bar" style={{ width: `${(timeLeft / timeLimit) * 100}%`, background: timeLeft < 10 ? 'var(--color-error)' : 'var(--color-primary)' }}></div>
+                                </div>
+                                <div style={{ textAlign: 'right', fontSize: '0.8rem', color: '#888', marginTop: 4 }}>
+                                    残り {timeLeft} / {timeLimit} 秒
+                                </div>
                             </div>
 
                             <h2 className="prompt">{q.jp}</h2>
@@ -1218,27 +1260,27 @@
                             <TypingArea targetText={q.en} onComplete={handlePlayComplete} showHint={mode === 1} />
                         </main>
                     </div>
-                    );
+                );
             }
 
-                    if (view === 'result') {
+            if (view === 'result') {
 
-                        let rank = 'C';
-                    let message = 'Nice Try!';
-                    let color = '#757575';
+                let rank = 'C';
+                let message = 'Nice Try!';
+                let color = '#757575';
 
-                    // Recalculate for render if needed, or use stored if available.
-                    // Since we updated results with scores, check if they exist, else recalc (fallback)
-                    const accScore = results.accuracyScore !== undefined ? results.accuracyScore : Math.max(0, 100 - (results.miss * 5));
-                    const tmScore = results.timeScore !== undefined ? results.timeScore : 0; // Fallback 0
-                    const totScore = accScore + tmScore;
+                // Recalculate for render if needed, or use stored if available.
+                // Since we updated results with scores, check if they exist, else recalc (fallback)
+                const accScore = results.accuracyScore !== undefined ? results.accuracyScore : Math.max(0, 100 - (results.miss * 5));
+                const tmScore = results.timeScore !== undefined ? results.timeScore : 0; // Fallback 0
+                const totScore = accScore + tmScore;
 
                 if (totScore >= 100 && timeLeft > 0) {
-                        rank = 'S'; message = 'Perfect!!'; color = '#4CAF50';
+                    rank = 'S'; message = 'Perfect!!'; color = '#4CAF50';
                 } else if (totScore >= 80 && timeLeft > 0) {
-                        rank = 'A'; message = 'Great Job!'; color = '#2196F3';
+                    rank = 'A'; message = 'Great Job!'; color = '#2196F3';
                 } else if (totScore >= 60 && timeLeft > 0) {
-                        rank = 'B'; message = 'Good!'; color = '#8BC34A';
+                    rank = 'B'; message = 'Good!'; color = '#8BC34A';
                 }
 
                 // Generate confetti if Rank S
@@ -1246,16 +1288,16 @@
                     if (rank !== 'S') return null;
                     const colors = ['#FFC107', '#2196F3', '#4CAF50', '#E91E63'];
                     return [...Array(30)].map((_, i) => (
-                    <div key={i} className="confetti" style={{
-                        left: `${Math.random() * 100}%`,
-                        backgroundColor: colors[Math.floor(Math.random() * colors.length)],
-                        animationDelay: `${Math.random() * 2}s`,
-                        animationDuration: `${2 + Math.random() * 3}s`
-                    }} />
+                        <div key={i} className="confetti" style={{
+                            left: `${Math.random() * 100}%`,
+                            backgroundColor: colors[Math.floor(Math.random() * colors.length)],
+                            animationDelay: `${Math.random() * 2}s`,
+                            animationDuration: `${2 + Math.random() * 3}s`
+                        }} />
                     ));
                 };
 
-                    return (
+                return (
                     <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', background: '#fff', position: 'relative', overflow: 'hidden' }}>
                         {renderConfetti()}
                         <h1 className={rank === 'S' ? 'rank-s-text' : ''} style={{ fontSize: '3rem', color: (rank === 'S' ? undefined : 'var(--color-primary)'), marginBottom: 10 }}>{message}</h1>
@@ -1283,13 +1325,13 @@
                             <Button onClick={goCourse}>コースに戻る</Button>
                         </div>
                     </div>
-                    );
+                );
             }
-                    return null;
+            return null;
         }
 
-                    const root = ReactDOM.createRoot(document.getElementById('root'));
-                    root.render(<App />);
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<App />);
     </script>
 </body>
 
