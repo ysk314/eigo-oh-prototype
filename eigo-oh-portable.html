@@ -1018,6 +1018,38 @@
             }, [view, timeLeft]);
 
             const handlePlayComplete = (missCount) => {
+                // Determine if word was perfect (locally for sound, assuming missCount passed is total for this word?)
+                // Actually TypingArea passes TOTAL miss for the word.
+                // Wait, if missCount === 0 on complete, it was perfect.
+
+                if (missCount === 0) {
+                    SoundEffects.play('success'); // Word clear sound
+                } else {
+                    // Maybe a simpler sound? Or none.
+                    // User said "正解ならピンポン" -> If correctly finished? 
+                    // But TypingArea forces correct finish. 
+                    // Assuming 'pin-pon' implies good job. Let's play it if no miss?
+                    // Or play it ALWAYS on finish? 
+                    // "単語ごとに、正解なら" -> "For each word, if correct".
+                    // Since we can't finish incorrect, maybe "If finished"? 
+                    // But "If correct" usually implies "If perfect" in this context?
+                    // Let's play success chime on finish regardless? No, user puts condition "if correct".
+                    // Likely implies "If cleared without issues" or just "Cleared".
+                    // Let's play 'success' (chime) if miss == 0.
+                    // If miss > 0, maybe just standard 'type' sound handles the last char.
+                    // Let's default to: Play 'success' if miss == 0.
+                }
+
+                // Actually, let's play a small 'ping' for every word completions?
+                // "正解なら" -> Maybe they mean "When I type the word correctly".
+                // Since I can't type it wrong (it blocks), I always type it correctly eventually.
+                // I will add the sound for strict perfect or just completion. 
+                // Let's try: Play success sound if missCount === 0.
+
+                // Wait, "Perfect以外も結果画面で音声のフィードバックが欲しい" was previous.
+                // Now: "単語ごとに、正解ならピンポン".
+                // I'll stick to: If missCount === 0, play Chime.
+
                 const newResults = { ...results, correct: results.correct + 1, miss: results.miss + missCount };
                 setResults(newResults);
 
@@ -1171,6 +1203,14 @@
                             </nav>
                             <main className="content-area">
                                 <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
+                                    <div style={{ background: '#f5f5f5', padding: 12, borderRadius: 8, marginBottom: 16, fontSize: '0.9rem', color: '#666' }}>
+                                        <div style={{ fontWeight: 'bold', marginBottom: 4 }}>レベル説明:</div>
+                                        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 8, textAlign: 'center' }}>
+                                            <div><span style={{ fontWeight: 'bold' }}>Level 1</span><br />♪ 音あり<br />A スペルあり</div>
+                                            <div><span style={{ fontWeight: 'bold' }}>Level 2</span><br />♪ 音あり<br />A スペルなし</div>
+                                            <div><span style={{ fontWeight: 'bold' }}>Level 3</span><br />🔇 音なし<br />A スペルなし</div>
+                                        </div>
+                                    </div>
                                     {activeSections.length > 0 ? activeSections.map(sect => (
                                         <div className="section-card" key={sect.id}>
                                             <div className="section-title">{sect.label}</div>
@@ -1180,24 +1220,13 @@
                                                     const rank = getRank(sect.id, m);
                                                     const rankClass = rank ? `rank-${rank.toLowerCase()}` : '';
                                                     return (
-
                                                         <button
                                                             key={m}
                                                             className={`mode-btn m${m} ${unlocked ? 'unlocked' : ''} ${rankClass}`}
                                                             disabled={!unlocked}
                                                             onClick={() => startPlay(sect.id, m)}
-                                                            style={{ flexDirection: 'column', gap: 4, height: 'auto', padding: '12px 8px' }}
                                                         >
-                                                            {unlocked ? (
-                                                                <>
-                                                                    <span style={{ fontSize: '1.4rem', fontWeight: 'bold' }}>Level {m}</span>
-                                                                    <span style={{ fontSize: '0.75rem', opacity: 0.9, lineHeight: 1.3 }}>
-                                                                        {m === 1 && <>♪ 音あり<br />A スペルあり</>}
-                                                                        {m === 2 && <>♪ 音あり<br />A スペルなし</>}
-                                                                        {m === 3 && <>🔇 音なし<br />A スペルなし</>}
-                                                                    </span>
-                                                                </>
-                                                            ) : <span>🔒</span>}
+                                                            {unlocked ? m : <span>🔒</span>}
                                                         </button>
                                                     );
                                                 })}
@@ -1242,7 +1271,7 @@
 
                             <div style={{ width: '100%', maxWidth: 600, margin: '0 auto 30px' }}>
                                 <QuestionProgress total={playQueue.length} current={qIndex + 1} />
-                                <div className="timer-bar-container" style={{ marginTop: 8 }}>
+                                <div className="timer-bar-container" style={{ marginTop: 8, display: 'flex', justifyContent: 'flex-end' }}>
                                     <div className="timer-bar" style={{ width: `${(timeLeft / timeLimit) * 100}%`, background: timeLeft < 10 ? 'var(--color-error)' : 'var(--color-primary)' }}></div>
                                 </div>
                                 <div style={{ textAlign: 'right', fontSize: '0.8rem', color: '#888', marginTop: 4 }}>
