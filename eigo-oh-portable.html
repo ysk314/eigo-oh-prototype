@@ -79,6 +79,48 @@
        Component Styles
        ========================================= */
 
+        /* Results */
+        .rank-s-text {
+            color: #4CAF50;
+            text-shadow: 0 0 10px #4CAF50, 0 0 20px #81C784;
+            animation: pulse 1s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.05);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        /* Simple CSS Confetti */
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: #f00;
+            animation: confetti-fall 3s linear infinite;
+        }
+
+        @keyframes confetti-fall {
+            0% {
+                transform: translateY(-10vh) rotate(0deg);
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateY(110vh) rotate(720deg);
+                opacity: 0;
+            }
+        }
+
         /* Button */
         .btn {
             display: inline-flex;
@@ -639,6 +681,35 @@
                         o.start(now + i * 0.1);
                         o.stop(now + i * 0.1 + 0.6);
                     });
+                } else if (type === 'success') {
+                    // Standard Success Chime (Major Third)
+                    const notes = [523.25, 659.25]; // C, E
+                    notes.forEach((freq, i) => {
+                        const o = ctx.createOscillator();
+                        const g = ctx.createGain();
+                        o.connect(g);
+                        g.connect(ctx.destination);
+                        o.type = 'sine';
+                        o.frequency.value = freq;
+                        g.gain.setValueAtTime(0, now + i * 0.15);
+                        g.gain.linearRampToValueAtTime(0.2, now + i * 0.15 + 0.05);
+                        g.gain.exponentialRampToValueAtTime(0.01, now + i * 0.15 + 0.4);
+                        o.start(now + i * 0.15);
+                        o.stop(now + i * 0.15 + 0.5);
+                    });
+                } else if (type === 'try-again') {
+                    // Try Again (Low Descending)
+                    const osc = ctx.createOscillator();
+                    const gain = ctx.createGain();
+                    osc.connect(gain);
+                    gain.connect(ctx.destination);
+                    osc.type = 'sawtooth';
+                    osc.frequency.setValueAtTime(150, now);
+                    osc.frequency.exponentialRampToValueAtTime(80, now + 0.4);
+                    gain.gain.setValueAtTime(0.2, now);
+                    gain.gain.linearRampToValueAtTime(0, now + 0.4);
+                    osc.start(now);
+                    osc.stop(now + 0.4);
                 } else if (type === 'countdown') {
                     // Countdown Blip
                     const osc = ctx.createOscillator();
@@ -988,8 +1059,20 @@
                             [key]: { ...(prev[key] || {}), [modeKey]: rank }
                         }));
 
+
                         // Only play fanfare for S
-                        if (rank === 'S') SoundEffects.play('fanfare');
+                        if (rank === 'S') {
+                            SoundEffects.play('fanfare');
+                        } else if (rank === 'A' || rank === 'B') {
+                            SoundEffects.play('success');
+                        } else {
+                            SoundEffects.play('try-again');
+                        }
+                    } else if (!timeUp && rank === 'C') {
+                        // Fail without timeup? (Just low score)
+                        SoundEffects.play('try-again');
+                    } else if (timeUp) {
+                        SoundEffects.play('try-again');
                     }
                 }
 
@@ -1153,9 +1236,24 @@
                     rank = 'B'; message = 'Good!'; color = '#8BC34A';
                 }
 
+                // Generate confetti if Rank S
+                const renderConfetti = () => {
+                    if (rank !== 'S') return null;
+                    const colors = ['#FFC107', '#2196F3', '#4CAF50', '#E91E63'];
+                    return [...Array(30)].map((_, i) => (
+                        <div key={i} className="confetti" style={{
+                            left: `${Math.random() * 100}%`,
+                            backgroundColor: colors[Math.floor(Math.random() * colors.length)],
+                            animationDelay: `${Math.random() * 2}s`,
+                            animationDuration: `${2 + Math.random() * 3}s`
+                        }} />
+                    ));
+                };
+
                 return (
-                    <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', background: '#fff' }}>
-                        <h1 style={{ fontSize: '3rem', color: 'var(--color-primary)', marginBottom: 10 }}>{message}</h1>
+                    <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', background: '#fff', position: 'relative', overflow: 'hidden' }}>
+                        {renderConfetti()}
+                        <h1 className={rank === 'S' ? 'rank-s-text' : ''} style={{ fontSize: '3rem', color: (rank === 'S' ? undefined : 'var(--color-primary)'), marginBottom: 10 }}>{message}</h1>
                         <div style={{ fontSize: '1.5rem', color: color, marginBottom: 10, fontWeight: 'bold' }}>Rank {rank}</div>
                         <div style={{ fontSize: '2.5rem', fontWeight: 'bold', marginBottom: 30 }}>Score: {totScore}</div>
 
