@@ -1017,45 +1017,22 @@
                 }
             }, [view, timeLeft]);
 
-            const handlePlayComplete = (missCount) => {
-                // Determine if word was perfect (locally for sound, assuming missCount passed is total for this word?)
-                // Actually TypingArea passes TOTAL miss for the word.
-                // Wait, if missCount === 0 on complete, it was perfect.
+            const handlePlayComplete = ({ miss: missCount }) => {
+                // Previously, missCount was expected as number, but TypingArea passes { miss }.
+                // Now destructured correctly.
 
                 if (missCount === 0) {
                     SoundEffects.play('success'); // Word clear sound
-                } else {
-                    // Maybe a simpler sound? Or none.
-                    // User said "正解ならピンポン" -> If correctly finished? 
-                    // But TypingArea forces correct finish. 
-                    // Assuming 'pin-pon' implies good job. Let's play it if no miss?
-                    // Or play it ALWAYS on finish? 
-                    // "単語ごとに、正解なら" -> "For each word, if correct".
-                    // Since we can't finish incorrect, maybe "If finished"? 
-                    // But "If correct" usually implies "If perfect" in this context?
-                    // Let's play success chime on finish regardless? No, user puts condition "if correct".
-                    // Likely implies "If cleared without issues" or just "Cleared".
-                    // Let's play 'success' (chime) if miss == 0.
-                    // If miss > 0, maybe just standard 'type' sound handles the last char.
-                    // Let's default to: Play 'success' if miss == 0.
                 }
 
-                // Actually, let's play a small 'ping' for every word completions?
-                // "正解なら" -> Maybe they mean "When I type the word correctly".
-                // Since I can't type it wrong (it blocks), I always type it correctly eventually.
-                // I will add the sound for strict perfect or just completion. 
-                // Let's try: Play success sound if missCount === 0.
-
-                // Wait, "Perfect以外も結果画面で音声のフィードバックが欲しい" was previous.
-                // Now: "単語ごとに、正解ならピンポン".
-                // I'll stick to: If missCount === 0, play Chime.
-
+                // Update results state for current progress tracking
                 const newResults = { ...results, correct: results.correct + 1, miss: results.miss + missCount };
                 setResults(newResults);
 
                 if (qIndex < playQueue.length - 1) {
                     setQIndex(qIndex + 1);
                 } else {
+                    // Pass the final state directly to avoid setState async issues
                     handleGameFinish({ timeUp: false, finalResults: newResults });
                 }
             };
