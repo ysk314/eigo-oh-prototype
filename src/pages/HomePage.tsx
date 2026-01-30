@@ -42,6 +42,7 @@ export function HomePage() {
             <main className={styles.main}>
                 <div className={styles.hero}>
                     <h1 className={styles.title}>Welcome to Eigo-Oh!</h1>
+                    <div className={styles.versionBadge}>v2</div>
                     <p className={styles.subtitle}>楽しく英語タイピングをマスターしよう</p>
                 </div>
 
