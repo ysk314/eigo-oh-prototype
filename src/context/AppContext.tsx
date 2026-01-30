@@ -3,7 +3,7 @@
 // ================================
 
 import React, { createContext, useContext, useReducer, useEffect, ReactNode } from 'react';
-import { AppState, AppAction, User, LearningMode, UserProgress, SectionProgress } from '@/types';
+import { AppState, AppAction, User, LearningMode, UserProgress, SectionProgress, Rank } from '@/types';
 import { appReducer, initialState } from './AppReducer';
 import { loadFromStorage, saveToStorage, storageToAppState, getProgressKey, getSectionProgressKey } from '@/utils/storage';
 
@@ -23,6 +23,7 @@ interface AppContextValue {
     setShuffledIds: (ids: string[]) => void;
     updateProgress: (questionId: string, data: Partial<UserProgress>) => void;
     markSectionCleared: (sectionId: string, mode: LearningMode) => void;
+    setSectionRank: (sectionId: string, mode: LearningMode, rank: Rank) => void;
     getProgressForQuestion: (questionId: string) => UserProgress | undefined;
     getSectionProgressData: (sectionId: string) => SectionProgress | undefined;
     isModeUnlocked: (sectionId: string, mode: LearningMode) => boolean;
@@ -110,6 +111,10 @@ export function AppProvider({ children }: AppProviderProps) {
         dispatch({ type: 'MARK_SECTION_CLEARED', payload: { sectionId, mode } });
     };
 
+    const setSectionRank = (sectionId: string, mode: LearningMode, rank: Rank) => {
+        dispatch({ type: 'SET_SECTION_RANK', payload: { sectionId, mode, rank } });
+    };
+
     const getProgressForQuestion = (questionId: string): UserProgress | undefined => {
         if (!state.currentUser) return undefined;
         const key = getProgressKey(state.currentUser.id, questionId);
@@ -130,9 +135,9 @@ export function AppProvider({ children }: AppProviderProps) {
 
         switch (mode) {
             case 2:
-                return progress.mode1Cleared;
+                return progress.mode1Rank === 'S' || progress.mode1Cleared;
             case 3:
-                return progress.mode2Cleared;
+                return progress.mode2Rank === 'S' || progress.mode2Cleared;
             default:
                 return false;
         }
@@ -152,6 +157,7 @@ export function AppProvider({ children }: AppProviderProps) {
         setShuffledIds,
         updateProgress,
         markSectionCleared,
+        setSectionRank,
         getProgressForQuestion,
         getSectionProgressData,
         isModeUnlocked,

@@ -2,7 +2,7 @@
 // App Reducer
 // ================================
 
-import { AppState, AppAction, LearningMode } from '@/types';
+import { AppState, AppAction, LearningMode, Rank } from '@/types';
 
 export const initialState: AppState = {
     currentUser: null,
@@ -121,6 +121,9 @@ export function appReducer(state: AppState, action: AppAction): AppState {
                 mode1Cleared: false,
                 mode2Cleared: false,
                 mode3Cleared: false,
+                mode1Rank: null,
+                mode2Rank: null,
+                mode3Rank: null,
                 totalAttempts: 0,
                 totalCorrect: 0,
                 totalMiss: 0,
@@ -135,6 +138,46 @@ export function appReducer(state: AppState, action: AppAction): AppState {
                     [key]: {
                         ...currentProgress,
                         [modeKey]: true,
+                    },
+                },
+            };
+        }
+
+        case 'SET_SECTION_RANK': {
+            const { sectionId, mode, rank } = action.payload;
+            const key = state.currentUser
+                ? `${state.currentUser.id}-${sectionId}`
+                : sectionId;
+
+            const currentProgress = state.sectionProgress[key] || {
+                sectionId,
+                mode1Cleared: false,
+                mode2Cleared: false,
+                mode3Cleared: false,
+                mode1Rank: null,
+                mode2Rank: null,
+                mode3Rank: null,
+                totalAttempts: 0,
+                totalCorrect: 0,
+                totalMiss: 0,
+            };
+
+            const rankKey = `mode${mode}Rank` as keyof typeof currentProgress;
+            const clearedKey = `mode${mode}Cleared` as keyof typeof currentProgress;
+
+            const rankOrder: Rank[] = ['S', 'A', 'B', 'C'];
+            const currentRank = currentProgress[rankKey] as Rank | null;
+            const isBetter =
+                !currentRank || rankOrder.indexOf(rank) < rankOrder.indexOf(currentRank);
+
+            return {
+                ...state,
+                sectionProgress: {
+                    ...state.sectionProgress,
+                    [key]: {
+                        ...currentProgress,
+                        [rankKey]: isBetter ? rank : currentRank,
+                        [clearedKey]: rank === 'S' ? true : currentProgress[clearedKey],
                     },
                 },
             };

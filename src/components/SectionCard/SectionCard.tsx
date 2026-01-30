@@ -3,7 +3,7 @@
 // ================================
 
 import React from 'react';
-import { Section, LearningMode } from '@/types';
+import { Section, LearningMode, Rank } from '@/types';
 import { useApp } from '@/context/AppContext';
 import { ModeButton } from '@/components/ModeButton';
 import styles from './SectionCard.module.css';
@@ -19,8 +19,15 @@ export function SectionCard({
     completedCount = 0,
     onModeSelect,
 }: SectionCardProps) {
-    const { isModeUnlocked } = useApp();
+    const { isModeUnlocked, getSectionProgressData } = useApp();
     const totalCount = section.questionIds.length;
+    const progress = getSectionProgressData(section.id);
+
+    const getRankForMode = (mode: LearningMode): Rank | null => {
+        if (!progress) return null;
+        const key = `mode${mode}Rank` as const;
+        return progress[key] ?? null;
+    };
 
     const handleModeClick = (mode: LearningMode) => {
         if (isModeUnlocked(section.id, mode)) {
@@ -41,16 +48,19 @@ export function SectionCard({
                 <ModeButton
                     mode={1}
                     isUnlocked={isModeUnlocked(section.id, 1)}
+                    rank={getRankForMode(1)}
                     onClick={() => handleModeClick(1)}
                 />
                 <ModeButton
                     mode={2}
                     isUnlocked={isModeUnlocked(section.id, 2)}
+                    rank={getRankForMode(2)}
                     onClick={() => handleModeClick(2)}
                 />
                 <ModeButton
                     mode={3}
                     isUnlocked={isModeUnlocked(section.id, 3)}
+                    rank={getRankForMode(3)}
                     onClick={() => handleModeClick(3)}
                 />
             </div>

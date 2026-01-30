@@ -15,6 +15,7 @@ interface TypingInputProps {
     answer: string;
     onComplete: (result: { missCount: number; timeMs: number }) => void;
     onProgress?: (current: number, total: number) => void;
+    onKeyResult?: (isCorrect: boolean) => void;
     disabled?: boolean;
     showHint?: boolean;
 }
@@ -23,6 +24,7 @@ export function TypingInput({
     answer,
     onComplete,
     onProgress,
+    onKeyResult,
     disabled = false,
     showHint = true,
 }: TypingInputProps) {
@@ -30,12 +32,14 @@ export function TypingInput({
         createTypingState(answer)
     );
     const [lastError, setLastError] = useState(false);
+    const [consecutiveMiss, setConsecutiveMiss] = useState(0);
     const containerRef = useRef<HTMLDivElement>(null);
 
     // 回答が変わったらリセット
     useEffect(() => {
         setTypingState(createTypingState(answer));
         setLastError(false);
+        setConsecutiveMiss(0);
     }, [answer]);
 
     // 進捗を通知
@@ -74,6 +78,8 @@ export function TypingInput({
         // エラー表示
         const isError = inputChar !== typingState.normalizedAnswer[typingState.currentIndex];
         setLastError(isError);
+        onKeyResult?.(!isError);
+        setConsecutiveMiss(prev => (isError ? prev + 1 : 0));
 
         if (isError) {
             // エラーアニメーション後にリセット
@@ -93,6 +99,9 @@ export function TypingInput({
     }, []);
 
     const displayState = getDisplayState(typingState);
+    const currentCharDisplay = showHint
+        ? displayState.currentChar
+        : (consecutiveMiss >= 2 ? displayState.currentChar : '_');
 
     return (
         <div
@@ -106,7 +115,7 @@ export function TypingInput({
             <div className={styles.display}>
                 <span className={styles.completed}>{displayState.completedText}</span>
                 <span className={`${styles.current} ${lastError ? styles.shake : ''}`}>
-                    {displayState.currentChar || ''}
+                    {currentCharDisplay || ''}
                 </span>
                 <span className={styles.remaining}>
                     {showHint ? displayState.remainingText : '_'.repeat(displayState.remainingText.length)}

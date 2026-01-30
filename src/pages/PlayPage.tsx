@@ -12,10 +12,12 @@ import { ProgressBar } from '@/components/ProgressBar';
 import { QuestionNav } from '@/components/QuestionNav'; // ナビ追加
 import { Button } from '@/components/Button';
 import { Card } from '@/components/Card';
-import { getQuestionById, getQuestionsBySection } from '@/data/questions';
+import { getQuestionsBySection } from '@/data/questions';
 import { shuffleWithNoConsecutive } from '@/utils/shuffle';
-import { checkSectionCleared } from '@/utils/progress';
 import { UserProgress } from '@/types';
+import { buildScoreResult, ScoreResult } from '@/utils/score';
+import { calculateTimeLimit, calculateTotalChars, calculateTimeBarPercent } from '@/utils/timer';
+import { playSound } from '@/utils/sound';
 import styles from './PlayPage.module.css';
 
 export function PlayPage() {
@@ -24,7 +26,8 @@ export function PlayPage() {
         state,
         updateProgress,
         setQuestionIndex,
-        markSectionCleared
+        markSectionCleared,
+        setSectionRank
     } = useApp();
 
     const { selectedPageRange, selectedSection, selectedMode, currentUser, shuffleMode } = state;
@@ -44,16 +47,98 @@ export function PlayPage() {
     const [currentIndex, setCurrentIndex] = useState(0);
     const [isFinished, setIsFinished] = useState(false);
     const [sessionResults, setSessionResults] = useState<UserProgress[]>([]);
+    const [countdown, setCountdown] = useState<number | null>(null);
+    const [isCountingDown, setIsCountingDown] = useState(false);
+    const [timeLimit, setTimeLimit] = useState(0);
+    const [timeLeft, setTimeLeft] = useState(0);
+    const [timeUp, setTimeUp] = useState(false);
+    const [scoreResult, setScoreResult] = useState<ScoreResult | null>(null);
 
     const currentQuestion = questions[currentIndex];
-    const progressPercent = questions.length > 0 ? Math.round(((currentIndex) / questions.length) * 100) : 0;
-
     // 初期化チェック
     useEffect(() => {
         if (!selectedSection || questions.length === 0) {
             navigate('/course'); // 何も選択されてなければ戻る
         }
     }, [selectedSection, questions, navigate]);
+
+    // セッション初期化（問題セット変更時）
+    useEffect(() => {
+        if (questions.length === 0) return;
+        const totalChars = calculateTotalChars(questions);
+        const limit = calculateTimeLimit(totalChars, 1, 10);
+
+        setCurrentIndex(0);
+        setQuestionIndex(0);
+        setIsFinished(false);
+        setTimeUp(false);
+        setSessionResults([]);
+        setScoreResult(null);
+        setTimeLimit(limit);
+        setTimeLeft(limit);
+        setCountdown(3);
+        setIsCountingDown(true);
+    }, [questions, setQuestionIndex]);
+
+    // カウントダウン処理
+    useEffect(() => {
+        if (!isCountingDown || countdown === null) return;
+
+        if (countdown > 0) {
+            playSound('countdown');
+            const timer = setTimeout(() => {
+                setCountdown(prev => (prev === null ? null : prev - 1));
+            }, 1000);
+            return () => clearTimeout(timer);
+        }
+
+        if (countdown === 0) {
+            playSound('countdown');
+            const timer = setTimeout(() => {
+                setIsCountingDown(false);
+                setCountdown(null);
+            }, 300);
+            return () => clearTimeout(timer);
+        }
+    }, [isCountingDown, countdown]);
+
+    // タイマー処理
+    useEffect(() => {
+        if (isCountingDown || isFinished || timeLimit === 0) return;
+
+        if (timeLeft <= 0) {
+            if (!timeUp && !isFinished) {
+                setTimeUp(true);
+                finishSession(true);
+            }
+            return;
+        }
+
+        const interval = setInterval(() => {
+            setTimeLeft(prev => (prev <= 1 ? 0 : prev - 1));
+        }, 1000);
+
+        return () => clearInterval(interval);
+    }, [isCountingDown, isFinished, timeLeft, timeLimit, timeUp]);
+
+    const finalScore = useMemo(() => {
+        if (!isFinished) return null;
+        const totalMiss = sessionResults.reduce((acc, cur) => acc + cur.missCount, 0);
+        return scoreResult ?? buildScoreResult({
+            missCount: totalMiss,
+            timeLeft,
+            timeLimit,
+            timeUp,
+        });
+    }, [isFinished, scoreResult, sessionResults, timeLeft, timeLimit, timeUp]);
+
+    useEffect(() => {
+        if (!isFinished || !finalScore || !selectedSection) return;
+        if (finalScore.rank === 'S') {
+            markSectionCleared(selectedSection, selectedMode);
+        }
+        setSectionRank(selectedSection, selectedMode, finalScore.rank);
+    }, [isFinished, finalScore, selectedSection, selectedMode, markSectionCleared, setSectionRank]);
 
     // デバッグ用: 進捗ログ
     useEffect(() => {
@@ -62,7 +147,7 @@ export function PlayPage() {
 
     // 問題完了時の処理
     const handleQuestionComplete = useCallback((result: { missCount: number; timeMs: number }) => {
-        if (!currentQuestion) return;
+        if (!currentQuestion || isFinished || timeUp) return;
 
         const isCorrect = result.missCount === 0; // 一度もミスなしならPerfect扱い？(要件次第だが今回は完了ベース)
 
@@ -74,45 +159,50 @@ export function PlayPage() {
         });
 
         // セッション結果を記録（後でクリア判定に使用）
-        setSessionResults(prev => [...prev, {
+        const nextResult: UserProgress = {
             questionId: currentQuestion.id,
             attemptsCount: 1,
             correctCount: 1,
             missCount: result.missCount,
             clearedMode: selectedMode, // 仮
-        }]);
+        };
+        setSessionResults(prev => [...prev, nextResult]);
+
+        if (isCorrect) {
+            playSound('success');
+        }
 
         // 少し待って次の問題へ
         setTimeout(() => {
-            if (currentIndex < questions.length - 1) {
+            if (currentIndex < questions.length - 1 && !timeUp) {
                 setCurrentIndex(prev => prev + 1);
                 setQuestionIndex(currentIndex + 1);
             } else {
-                finishSession();
+                finishSession(false, [...sessionResults, nextResult]);
             }
         }, 800);
-    }, [currentQuestion, currentIndex, questions.length, updateProgress, setQuestionIndex, selectedMode]);
+    }, [currentQuestion, currentIndex, questions.length, updateProgress, setQuestionIndex, selectedMode, isFinished, timeUp, sessionResults]);
 
     // セッション完了処理
-    const finishSession = () => {
+    const finishSession = (timeUpFlag: boolean, resultsOverride?: UserProgress[]) => {
         setIsFinished(true);
+        const results = resultsOverride ?? sessionResults;
+        const totalMiss = results.reduce((acc, cur) => acc + cur.missCount, 0);
+        const score = buildScoreResult({
+            missCount: totalMiss,
+            timeLeft,
+            timeLimit,
+            timeUp: timeUpFlag,
+        });
+        setScoreResult(score);
 
-        // セクションクリア判定
-        // 注: sessionResultsはstate更新のタイミングでまだ最新じゃない可能性があるため、ここで最新の計算を行う必要があるが
-        // 簡易的に現状のsessionResults + 今回の結果で判定すべき。
-        // ここではContext側のProgressが更新されていることを前提に、後ほど判定するか
-        // あるいはローカルの集計で判定する。
-
-        // 簡易実装: 今回のセッションで全問正解(入力完了)しているので、ミス率だけで判定
-        // 仕様: 正答率90%以上
-
-        // 実際の判定はResult画面で行うか、ここで行ってResultに渡す
-    };
-
-    const handleNextMode = () => {
-        // 次のモードへ（未実装：モード切替してリロード）
-        // とりあえずコース画面へ戻る
-        navigate('/course');
+        if (score.rank === 'S') {
+            playSound('fanfare');
+        } else if (score.rank === 'A' || score.rank === 'B') {
+            playSound('success');
+        } else {
+            playSound('try-again');
+        }
     };
 
     const handleRetry = () => {
@@ -120,6 +210,11 @@ export function PlayPage() {
         setQuestionIndex(0);
         setIsFinished(false);
         setSessionResults([]);
+        setScoreResult(null);
+        setTimeUp(false);
+        setTimeLeft(timeLimit);
+        setCountdown(3);
+        setIsCountingDown(true);
     };
 
     const handleBack = () => {
@@ -138,23 +233,47 @@ export function PlayPage() {
             ? Math.round((totalChars / (totalChars + totalMiss)) * 100)
             : 0;
 
-        const isCleared = accuracy >= 90;
-
-        // クリア状態を保存
-        if (isCleared && selectedSection) {
-            markSectionCleared(selectedSection, selectedMode);
-        }
+        if (!finalScore) return null;
+        const isCleared = finalScore.rank === 'S';
 
         return (
             <div className={styles.page}>
                 <Header title="結果発表" showUserSelect={false} />
                 <main className={styles.resultMain}>
+                    {finalScore.rank === 'S' && (
+                        <div className={styles.confettiWrapper} aria-hidden="true">
+                            {Array.from({ length: 30 }).map((_, i) => {
+                                const colors = ['#FFC107', '#2196F3', '#4CAF50', '#E91E63'];
+                                const left = `${Math.random() * 100}%`;
+                                const delay = `${Math.random() * 2}s`;
+                                const duration = `${2 + Math.random() * 3}s`;
+                                return (
+                                    <span
+                                        key={i}
+                                        className={styles.confetti}
+                                        style={{
+                                            left,
+                                            backgroundColor: colors[i % colors.length],
+                                            animationDelay: delay,
+                                            animationDuration: duration,
+                                        }}
+                                    />
+                                );
+                            })}
+                        </div>
+                    )}
                     <Card className={styles.resultCard} padding="lg">
                         <h2 className={styles.resultTitle}>
-                            {isCleared ? '🎉 Excellent! 🎉' : 'Good Job!'}
+                            {finalScore.rank === 'S' ? '🎉 Excellent! 🎉' : 'Good Job!'}
                         </h2>
 
                         <div className={styles.stats}>
+                            <div className={styles.statItem}>
+                                <span className={styles.statLabel}>ランク</span>
+                                <span className={`${styles.statValue} ${finalScore.rank === 'S' ? styles.success : ''}`}>
+                                    {finalScore.rank}
+                                </span>
+                            </div>
                             <div className={styles.statItem}>
                                 <span className={styles.statLabel}>正答率</span>
                                 <span className={`${styles.statValue} ${isCleared ? styles.success : ''}`}>
@@ -164,6 +283,10 @@ export function PlayPage() {
                             <div className={styles.statItem}>
                                 <span className={styles.statLabel}>ミス回数</span>
                                 <span className={styles.statValue}>{totalMiss}回</span>
+                            </div>
+                            <div className={styles.statItem}>
+                                <span className={styles.statLabel}>スコア</span>
+                                <span className={styles.statValue}>{finalScore.totalScore}</span>
                             </div>
                         </div>
 
@@ -207,6 +330,18 @@ export function PlayPage() {
             </header>
 
             <main className={styles.playMain}>
+                <div className={styles.timerWrapper}>
+                    <div className={styles.timerBarContainer}>
+                        <div
+                            className={`${styles.timerBar} ${timeLeft < 10 ? styles.timerDanger : ''}`}
+                            style={{ width: `${calculateTimeBarPercent(timeLeft, timeLimit)}%` }}
+                        />
+                    </div>
+                    <div className={styles.timerLabel}>
+                        残り {timeLeft} / {timeLimit} 秒
+                    </div>
+                </div>
+
                 {/* 問題番号ナビゲーション (オプション) */}
                 <div className={styles.navWrapper}>
                     <QuestionNav
@@ -228,7 +363,8 @@ export function PlayPage() {
                             <TypingInput
                                 answer={currentQuestion.answerEn}
                                 onComplete={handleQuestionComplete}
-                                disabled={false}
+                                onKeyResult={(isCorrect) => playSound(isCorrect ? 'type' : 'error')}
+                                disabled={isCountingDown || timeUp}
                                 showHint={selectedMode !== 3} // モード3以外はヒント（アンダースコア等）あり
                             />
                         </div>
@@ -243,6 +379,12 @@ export function PlayPage() {
                 {/* 必要であればここにKeyboardGuideコンポーネントを配置 */}
                 {/* 今回は画像のみの指定だったので簡易実装も可だが、要件にあったのでスペース確保 */}
             </footer>
+
+            {isCountingDown && countdown !== null && (
+                <div className={styles.countdownOverlay} aria-live="polite">
+                    <div className={styles.countdownNumber}>{countdown}</div>
+                </div>
+            )}
         </div>
     );
 }

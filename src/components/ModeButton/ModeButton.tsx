@@ -3,12 +3,13 @@
 // ================================
 
 import React from 'react';
-import { LearningMode } from '@/types';
+import { LearningMode, Rank } from '@/types';
 import styles from './ModeButton.module.css';
 
 interface ModeButtonProps {
     mode: LearningMode;
     isUnlocked: boolean;
+    rank?: Rank | null;
     isActive?: boolean;
     onClick?: () => void;
     size?: 'sm' | 'md' | 'lg';
@@ -23,6 +24,7 @@ const modeLabels: Record<LearningMode, { title: string; subtitle: string }> = {
 export function ModeButton({
     mode,
     isUnlocked,
+    rank = null,
     isActive = false,
     onClick,
     size = 'md',
@@ -34,6 +36,7 @@ export function ModeButton({
         styles[`mode${mode}`],
         styles[size],
         isUnlocked ? styles.unlocked : styles.locked,
+        rank ? styles[`rank${rank}`] : '',
         isActive ? styles.active : '',
     ].filter(Boolean).join(' ');
 

@@ -8,6 +8,9 @@ export type LearningMode = 1 | 2 | 3;
 // 2: 音あり・スペルなし
 // 3: 音なし・スペルなし
 
+// Rank Types
+export type Rank = 'S' | 'A' | 'B' | 'C';
+
 export type SectionType =
     | 'elementary_words'   // 小学校の単語
     | 'new_words'          // New Words
@@ -71,6 +74,9 @@ export interface SectionProgress {
     mode1Cleared: boolean;
     mode2Cleared: boolean;
     mode3Cleared: boolean;
+    mode1Rank: Rank | null;
+    mode2Rank: Rank | null;
+    mode3Rank: Rank | null;
     totalAttempts: number;
     totalCorrect: number;
     totalMiss: number;
@@ -121,6 +127,7 @@ export type AppAction =
     | { type: 'SET_SHUFFLED_IDS'; payload: string[] }
     | { type: 'UPDATE_PROGRESS'; payload: Partial<UserProgress> & { questionId: string } }
     | { type: 'MARK_SECTION_CLEARED'; payload: { sectionId: string; mode: LearningMode } }
+    | { type: 'SET_SECTION_RANK'; payload: { sectionId: string; mode: LearningMode; rank: Rank } }
     | { type: 'TOGGLE_AUTO_PLAY_AUDIO' }
     | { type: 'LOAD_STATE'; payload: Partial<AppState> }
     | { type: 'RESET_STATE' };
