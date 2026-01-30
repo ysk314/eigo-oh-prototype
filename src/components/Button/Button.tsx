@@ -2,16 +2,16 @@
 // Button Component
 // ================================
 
-import React from 'react';
+import type { ButtonHTMLAttributes, ReactNode } from 'react';
 import styles from './Button.module.css';
 
-interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     variant?: 'primary' | 'secondary' | 'ghost' | 'danger';
     size?: 'sm' | 'md' | 'lg';
     fullWidth?: boolean;
     isLoading?: boolean;
-    leftIcon?: React.ReactNode;
-    rightIcon?: React.ReactNode;
+    leftIcon?: ReactNode;
+    rightIcon?: ReactNode;
 }
 
 export function Button({

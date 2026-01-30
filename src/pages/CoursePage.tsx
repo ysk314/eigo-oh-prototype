@@ -2,7 +2,7 @@
 // Course Page
 // ================================
 
-import React, { useMemo } from 'react';
+import { useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useApp } from '@/context/AppContext';
 import { Header } from '@/components/Header';

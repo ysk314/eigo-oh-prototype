@@ -2,7 +2,6 @@
 // Question Display Component
 // ================================
 
-import React from 'react';
 import { Question, LearningMode } from '@/types';
 import { highlightTokens } from '@/utils/typing';
 import { AudioPlayer } from '@/components/AudioPlayer';

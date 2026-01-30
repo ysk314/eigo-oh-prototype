@@ -2,7 +2,6 @@
 // Progress Bar Component
 // ================================
 
-import React from 'react';
 import styles from './ProgressBar.module.css';
 
 interface ProgressBarProps {

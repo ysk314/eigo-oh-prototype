@@ -2,7 +2,6 @@
 // Page List Component
 // ================================
 
-import React from 'react';
 import { PageRange } from '@/types';
 import styles from './PageList.module.css';
 

@@ -2,11 +2,11 @@
 // Card Component
 // ================================
 
-import React from 'react';
+import type { ReactNode } from 'react';
 import styles from './Card.module.css';
 
 interface CardProps {
-    children: React.ReactNode;
+    children: ReactNode;
     className?: string;
     variant?: 'default' | 'elevated' | 'outlined';
     padding?: 'none' | 'sm' | 'md' | 'lg';

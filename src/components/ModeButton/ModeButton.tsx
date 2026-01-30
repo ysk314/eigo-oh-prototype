@@ -2,7 +2,6 @@
 // Mode Button Component
 // ================================
 
-import React from 'react';
 import { LearningMode, Rank } from '@/types';
 import styles from './ModeButton.module.css';
 

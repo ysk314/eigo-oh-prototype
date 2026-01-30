@@ -2,7 +2,7 @@
 // Audio Player Component
 // ================================
 
-import React, { useState, useRef, useCallback, useEffect } from 'react';
+import { useState, useRef, useCallback, useEffect } from 'react';
 import styles from './AudioPlayer.module.css';
 
 interface AudioPlayerProps {

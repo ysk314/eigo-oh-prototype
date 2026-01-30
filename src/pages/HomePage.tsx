@@ -2,7 +2,7 @@
 // Home Page
 // ================================
 
-import React, { useState } from 'react';
+import { useState, type FormEvent } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useApp } from '@/context/AppContext';
 import { Card } from '@/components/Card';
@@ -23,7 +23,7 @@ export function HomePage() {
         }
     };
 
-    const handleAddUser = (e: React.FormEvent) => {
+    const handleAddUser = (e: FormEvent) => {
         e.preventDefault();
         if (newUserName.trim()) {
             addUser(newUserName.trim());

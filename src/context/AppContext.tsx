@@ -2,14 +2,14 @@
 // App Context
 // ================================
 
-import React, { createContext, useContext, useReducer, useEffect, ReactNode } from 'react';
+import { createContext, useContext, useReducer, useEffect, type ReactNode, type Dispatch } from 'react';
 import { AppState, AppAction, User, LearningMode, UserProgress, SectionProgress, Rank } from '@/types';
 import { appReducer, initialState } from './AppReducer';
 import { loadFromStorage, saveToStorage, storageToAppState, getProgressKey, getSectionProgressKey } from '@/utils/storage';
 
 interface AppContextValue {
     state: AppState;
-    dispatch: React.Dispatch<AppAction>;
+    dispatch: Dispatch<AppAction>;
 
     // Convenience methods
     setUser: (user: User) => void;

@@ -2,7 +2,6 @@
 // Section Card Component
 // ================================
 
-import React from 'react';
 import { Section, LearningMode, Rank } from '@/types';
 import { useApp } from '@/context/AppContext';
 import { ModeButton } from '@/components/ModeButton';

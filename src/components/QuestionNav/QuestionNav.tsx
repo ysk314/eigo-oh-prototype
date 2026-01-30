@@ -2,7 +2,6 @@
 // Question Navigation Component
 // ================================
 
-import React from 'react';
 import styles from './QuestionNav.module.css';
 
 interface QuestionNavProps {

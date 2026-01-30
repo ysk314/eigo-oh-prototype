@@ -2,7 +2,7 @@
 // Header Component
 // ================================
 
-import React from 'react';
+import { Fragment, type ChangeEvent } from 'react';
 import { useApp } from '@/context/AppContext';
 import styles from './Header.module.css';
 
@@ -25,7 +25,7 @@ export function Header({
 }: HeaderProps) {
     const { state, setUser, toggleShuffle } = useApp();
 
-    const handleUserChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const handleUserChange = (e: ChangeEvent<HTMLSelectElement>) => {
         const user = state.users.find(u => u.id === e.target.value);
         if (user) {
             setUser(user);
@@ -50,12 +50,12 @@ export function Header({
                 {breadcrumb.length > 0 ? (
                     <nav className={styles.breadcrumb} aria-label="パンくずリスト">
                         {breadcrumb.map((item, index) => (
-                            <React.Fragment key={index}>
+                            <Fragment key={index}>
                                 {index > 0 && <span className={styles.separator}>/</span>}
                                 <span className={index === breadcrumb.length - 1 ? styles.current : ''}>
                                     {item}
                                 </span>
-                            </React.Fragment>
+                            </Fragment>
                         ))}
                     </nav>
                 ) : title ? (
