@@ -25,22 +25,22 @@
 - 型定義: `src/types/index.ts`
 - 問題データ + コース構造: `src/data/questions.ts`
   - `questions[]` が問題一覧
-  - `courseStructure` がページ/セクション構成
-  - `getQuestionById`, `getQuestionsBySection`, `getSectionsByPageRange` などのヘルパー
+  - `courseStructure` が Unit/Part/Section 構成
+  - `getQuestionById`, `getQuestionsBySection`, `getSectionsByPart` などのヘルパー
 
 ## 状態管理（Context/Reducer）
 - `src/context/AppContext.tsx`: Context Provider、localStorage 連携、便利メソッド
 - `src/context/AppReducer.ts`: state 更新ロジック
 - 主な state
   - ユーザー: `currentUser`, `users`
-  - 選択状態: `selectedCourse`, `selectedPageRange`, `selectedSection`, `selectedMode`
+  - 選択状態: `selectedCourse`, `selectedUnit`, `selectedPart`, `selectedSection`, `selectedMode`
   - プレイ状態: `currentQuestionIndex`, `shuffleMode`, `shuffledQuestionIds`
   - 進捗: `userProgress`, `sectionProgress`
   - 設定: `autoPlayAudio`
 
 ## 主要コンポーネント
 - `Header`: ユーザー選択/シャッフル切替/パンくず/戻る
-- `PageList`: ページ一覧 + 進捗表示
+- `PartList`: Unit/Part 一覧 + 進捗表示
 - `SectionCard`: セクション + モード選択（ロック表示あり）
 - `QuestionDisplay`: 日本語プロンプト + 英語表示 + 音声
 - `TypingInput`: タイピング判定 + ヒント + ミス数 + 完了表示

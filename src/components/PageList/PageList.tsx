@@ -2,11 +2,11 @@
 // Page List Component
 // ================================
 
-import { PageRange } from '@/types';
+import { Part } from '@/types';
 import styles from './PageList.module.css';
 
 interface PageListProps {
-    pages: PageRange[];
+    pages: Part[];
     selectedPageId: string | null;
     onPageSelect: (pageId: string) => void;
     getCompletedCount?: (pageId: string) => number;
@@ -33,7 +33,7 @@ export function PageList({
                         disabled={isEmpty}
                         aria-current={isSelected ? 'page' : undefined}
                     >
-                        <span className={styles.range}>{page.range}</span>
+                        <span className={styles.range}>{page.label}</span>
                         <span className={styles.count}>
                             {isEmpty ? '-' : `${completed}/${page.totalQuestions}`}
                         </span>

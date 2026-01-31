@@ -30,18 +30,18 @@ export function PlayPage() {
         setSectionRank
     } = useApp();
 
-    const { selectedPageRange, selectedSection, selectedMode, currentUser, shuffleMode } = state;
+    const { selectedPart, selectedSection, selectedMode, currentUser, shuffleMode } = state;
 
     // セクションの問題をロード & シャッフル
     const questions = useMemo(() => {
-        if (!selectedPageRange || !selectedSection) return [];
-        const baseQuestions = getQuestionsBySection(selectedPageRange, selectedSection);
+        if (!selectedPart || !selectedSection) return [];
+        const baseQuestions = getQuestionsBySection(selectedPart, selectedSection);
 
         if (shuffleMode) {
             return shuffleWithNoConsecutive(baseQuestions, (q) => q.answerEn);
         }
         return baseQuestions.sort((a, b) => a.orderIndex - b.orderIndex);
-    }, [selectedPageRange, selectedSection, shuffleMode]);
+    }, [selectedPart, selectedSection, shuffleMode]);
 
     // 現在の状態
     const [currentIndex, setCurrentIndex] = useState(0);

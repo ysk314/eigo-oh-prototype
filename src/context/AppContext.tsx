@@ -15,7 +15,8 @@ interface AppContextValue {
     setUser: (user: User) => void;
     addUser: (name: string) => void;
     setCourse: (courseId: string | null) => void;
-    setPageRange: (pageRangeId: string | null) => void;
+    setUnit: (unitId: string | null) => void;
+    setPart: (partId: string | null) => void;
     setSection: (sectionId: string | null) => void;
     setMode: (mode: LearningMode) => void;
     setQuestionIndex: (index: number) => void;
@@ -79,8 +80,12 @@ export function AppProvider({ children }: AppProviderProps) {
         dispatch({ type: 'SET_COURSE', payload: courseId });
     }, []);
 
-    const setPageRange = useCallback((pageRangeId: string | null) => {
-        dispatch({ type: 'SET_PAGE_RANGE', payload: pageRangeId });
+    const setUnit = useCallback((unitId: string | null) => {
+        dispatch({ type: 'SET_UNIT', payload: unitId });
+    }, []);
+
+    const setPart = useCallback((partId: string | null) => {
+        dispatch({ type: 'SET_PART', payload: partId });
     }, []);
 
     const setSection = useCallback((sectionId: string | null) => {
@@ -149,7 +154,8 @@ export function AppProvider({ children }: AppProviderProps) {
         setUser,
         addUser,
         setCourse,
-        setPageRange,
+        setUnit,
+        setPart,
         setSection,
         setMode,
         setQuestionIndex,

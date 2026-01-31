@@ -8,7 +8,8 @@ export const initialState: AppState = {
     currentUser: null,
     users: [],
     selectedCourse: null,
-    selectedPageRange: null,
+    selectedUnit: null,
+    selectedPart: null,
     selectedSection: null,
     selectedMode: 1,
     currentQuestionIndex: 0,
@@ -38,15 +39,25 @@ export function appReducer(state: AppState, action: AppAction): AppState {
             return {
                 ...state,
                 selectedCourse: action.payload,
-                selectedPageRange: null,
+                selectedUnit: null,
+                selectedPart: null,
                 selectedSection: null,
                 currentQuestionIndex: 0,
             };
 
-        case 'SET_PAGE_RANGE':
+        case 'SET_UNIT':
             return {
                 ...state,
-                selectedPageRange: action.payload,
+                selectedUnit: action.payload,
+                selectedPart: null,
+                selectedSection: null,
+                currentQuestionIndex: 0,
+            };
+
+        case 'SET_PART':
+            return {
+                ...state,
+                selectedPart: action.payload,
                 selectedSection: null,
                 currentQuestionIndex: 0,
             };

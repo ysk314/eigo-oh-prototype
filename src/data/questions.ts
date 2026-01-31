@@ -3,7 +3,7 @@
 // New Horizon 1 - Unit 6 サンプル
 // ================================
 
-import { Question, Course, PageRange, Section } from '@/types';
+import { Question, Course, Part, Section } from '@/types';
 
 // 問題データ
 export const questions: Question[] = [
@@ -12,7 +12,7 @@ export const questions: Question[] = [
         id: 'q1',
         course: 'New Horizon 1',
         unit: 'Unit 6',
-        pageRange: 'p30-31',
+        part: 'p30-31',
         section: 'elementary_words',
         sectionLabel: '小学校の単語',
         promptJp: 'セブ（地名）',
@@ -23,7 +23,7 @@ export const questions: Question[] = [
         id: 'q2',
         course: 'New Horizon 1',
         unit: 'Unit 6',
-        pageRange: 'p30-31',
+        part: 'p30-31',
         section: 'elementary_words',
         sectionLabel: '小学校の単語',
         promptJp: '友達',
@@ -34,7 +34,7 @@ export const questions: Question[] = [
         id: 'q3',
         course: 'New Horizon 1',
         unit: 'Unit 6',
-        pageRange: 'p30-31',
+        part: 'p30-31',
         section: 'elementary_words',
         sectionLabel: '小学校の単語',
         promptJp: '学校',
@@ -45,7 +45,7 @@ export const questions: Question[] = [
         id: 'q4',
         course: 'New Horizon 1',
         unit: 'Unit 6',
-        pageRange: 'p30-31',
+        part: 'p30-31',
         section: 'elementary_words',
         sectionLabel: '小学校の単語',
         promptJp: '先生',
@@ -56,7 +56,7 @@ export const questions: Question[] = [
         id: 'q5',
         course: 'New Horizon 1',
         unit: 'Unit 6',
-        pageRange: 'p30-31',
+        part: 'p30-31',
         section: 'elementary_words',
         sectionLabel: '小学校の単語',
         promptJp: '生徒',
@@ -67,7 +67,7 @@ export const questions: Question[] = [
         id: 'q6',
         course: 'New Horizon 1',
         unit: 'Unit 6',
-        pageRange: 'p30-31',
+        part: 'p30-31',
         section: 'elementary_words',
         sectionLabel: '小学校の単語',
         promptJp: '本',
@@ -80,7 +80,7 @@ export const questions: Question[] = [
         id: 'q7',
         course: 'New Horizon 1',
         unit: 'Unit 6',
-        pageRange: 'p30-31',
+        part: 'p30-31',
         section: 'new_words',
         sectionLabel: 'New Words',
         promptJp: '勝つ',
@@ -91,7 +91,7 @@ export const questions: Question[] = [
         id: 'q8',
         course: 'New Horizon 1',
         unit: 'Unit 6',
-        pageRange: 'p30-31',
+        part: 'p30-31',
         section: 'new_words',
         sectionLabel: 'New Words',
         promptJp: '試合',
@@ -102,7 +102,7 @@ export const questions: Question[] = [
         id: 'q9',
         course: 'New Horizon 1',
         unit: 'Unit 6',
-        pageRange: 'p30-31',
+        part: 'p30-31',
         section: 'new_words',
         sectionLabel: 'New Words',
         promptJp: '〜したい',
@@ -113,7 +113,7 @@ export const questions: Question[] = [
         id: 'q10',
         course: 'New Horizon 1',
         unit: 'Unit 6',
-        pageRange: 'p30-31',
+        part: 'p30-31',
         section: 'new_words',
         sectionLabel: 'New Words',
         promptJp: '練習する',
@@ -124,7 +124,7 @@ export const questions: Question[] = [
         id: 'q11',
         course: 'New Horizon 1',
         unit: 'Unit 6',
-        pageRange: 'p30-31',
+        part: 'p30-31',
         section: 'new_words',
         sectionLabel: 'New Words',
         promptJp: '一生懸命に',
@@ -135,7 +135,7 @@ export const questions: Question[] = [
         id: 'q12',
         course: 'New Horizon 1',
         unit: 'Unit 6',
-        pageRange: 'p30-31',
+        part: 'p30-31',
         section: 'new_words',
         sectionLabel: 'New Words',
         promptJp: '毎日',
@@ -148,7 +148,7 @@ export const questions: Question[] = [
         id: 'q13',
         course: 'New Horizon 1',
         unit: 'Unit 6',
-        pageRange: 'p30-31',
+        part: 'p30-31',
         section: 'key_sentences',
         sectionLabel: 'キーセンテンス',
         promptJp: '私は試合に勝ちたいです。',
@@ -160,7 +160,7 @@ export const questions: Question[] = [
         id: 'q14',
         course: 'New Horizon 1',
         unit: 'Unit 6',
-        pageRange: 'p30-31',
+        part: 'p30-31',
         section: 'key_sentences',
         sectionLabel: 'キーセンテンス',
         promptJp: '彼女は英語を勉強したいです。',
@@ -172,7 +172,7 @@ export const questions: Question[] = [
         id: 'q15',
         course: 'New Horizon 1',
         unit: 'Unit 6',
-        pageRange: 'p30-31',
+        part: 'p30-31',
         section: 'key_sentences',
         sectionLabel: 'キーセンテンス',
         promptJp: '私たちは一緒にサッカーをしたいです。',
@@ -184,7 +184,7 @@ export const questions: Question[] = [
         id: 'q16',
         course: 'New Horizon 1',
         unit: 'Unit 6',
-        pageRange: 'p30-31',
+        part: 'p30-31',
         section: 'key_sentences',
         sectionLabel: 'キーセンテンス',
         promptJp: '彼は医者になりたいです。',
@@ -198,7 +198,7 @@ export const questions: Question[] = [
         id: 'q17',
         course: 'New Horizon 1',
         unit: 'Unit 6',
-        pageRange: 'p30-31',
+        part: 'p30-31',
         section: 'summary',
         sectionLabel: 'まとめ',
         promptJp: '私は音楽を聴きたいです。',
@@ -209,7 +209,7 @@ export const questions: Question[] = [
         id: 'q18',
         course: 'New Horizon 1',
         unit: 'Unit 6',
-        pageRange: 'p30-31',
+        part: 'p30-31',
         section: 'summary',
         sectionLabel: 'まとめ',
         promptJp: '彼女は本を読みたいです。',
@@ -222,7 +222,7 @@ export const questions: Question[] = [
         id: 'q19',
         course: 'New Horizon 1',
         unit: 'Unit 6',
-        pageRange: 'p32-33',
+        part: 'p32-33',
         section: 'new_words',
         sectionLabel: 'New Words',
         promptJp: '訪問する',
@@ -233,7 +233,7 @@ export const questions: Question[] = [
         id: 'q20',
         course: 'New Horizon 1',
         unit: 'Unit 6',
-        pageRange: 'p32-33',
+        part: 'p32-33',
         section: 'new_words',
         sectionLabel: 'New Words',
         promptJp: '国',
@@ -244,7 +244,7 @@ export const questions: Question[] = [
         id: 'q21',
         course: 'New Horizon 1',
         unit: 'Unit 6',
-        pageRange: 'p32-33',
+        part: 'p32-33',
         section: 'new_words',
         sectionLabel: 'New Words',
         promptJp: '美しい',
@@ -255,7 +255,7 @@ export const questions: Question[] = [
         id: 'q22',
         course: 'New Horizon 1',
         unit: 'Unit 6',
-        pageRange: 'p32-33',
+        part: 'p32-33',
         section: 'new_words',
         sectionLabel: 'New Words',
         promptJp: '場所',
@@ -268,7 +268,7 @@ export const questions: Question[] = [
         id: 'q23',
         course: 'New Horizon 1',
         unit: 'Unit 6',
-        pageRange: 'p32-33',
+        part: 'p32-33',
         section: 'key_sentences',
         sectionLabel: 'キーセンテンス',
         promptJp: '私は日本を訪れたいです。',
@@ -280,7 +280,7 @@ export const questions: Question[] = [
         id: 'q24',
         course: 'New Horizon 1',
         unit: 'Unit 6',
-        pageRange: 'p32-33',
+        part: 'p32-33',
         section: 'key_sentences',
         sectionLabel: 'キーセンテンス',
         promptJp: '彼は美しい場所を見たいです。',
@@ -298,10 +298,10 @@ export const courseStructure: Course = {
         {
             id: 'unit6',
             name: 'Unit 6',
-            pages: [
+            parts: [
                 {
                     id: 'p30-31',
-                    range: 'p30-31',
+                    label: 'p30-31',
                     totalQuestions: 18,
                     sections: [
                         {
@@ -332,7 +332,7 @@ export const courseStructure: Course = {
                 },
                 {
                     id: 'p32-33',
-                    range: 'p32-33',
+                    label: 'p32-33',
                     totalQuestions: 6,
                     sections: [
                         {
@@ -351,19 +351,19 @@ export const courseStructure: Course = {
                 },
                 {
                     id: 'p34-35',
-                    range: 'p34-35',
+                    label: 'p34-35',
                     totalQuestions: 0,
                     sections: [],
                 },
                 {
                     id: 'p36-37',
-                    range: 'p36-37',
+                    label: 'p36-37',
                     totalQuestions: 0,
                     sections: [],
                 },
                 {
                     id: 'p38',
-                    range: 'p38',
+                    label: 'p38',
                     totalQuestions: 0,
                     sections: [],
                 },
@@ -377,24 +377,24 @@ export function getQuestionById(id: string): Question | undefined {
     return questions.find(q => q.id === id);
 }
 
-export function getQuestionsBySection(pageRangeId: string, sectionId: string): Question[] {
-    const page = getPageRanges().find((range) => range.id === pageRangeId);
-    const section = page?.sections.find((entry) => entry.id === sectionId);
+export function getQuestionsBySection(partId: string, sectionId: string): Question[] {
+    const part = getParts().find((entry) => entry.id === partId);
+    const section = part?.sections.find((entry) => entry.id === sectionId);
 
-    if (!page || !section) {
+    if (!part || !section) {
         return [];
     }
 
     return questions.filter(
-        (question) => question.pageRange === page.range && question.section === section.type
+        (question) => question.part === part.id && question.section === section.type
     );
 }
 
-export function getPageRanges(): PageRange[] {
-    return courseStructure.units.flatMap(unit => unit.pages);
+export function getParts(): Part[] {
+    return courseStructure.units.flatMap(unit => unit.parts);
 }
 
-export function getSectionsByPageRange(pageRangeId: string): Section[] {
-    const page = getPageRanges().find(p => p.id === pageRangeId);
-    return page?.sections || [];
+export function getSectionsByPart(partId: string): Section[] {
+    const part = getParts().find(p => p.id === partId);
+    return part?.sections || [];
 }
