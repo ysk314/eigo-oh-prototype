@@ -54,6 +54,9 @@ export function PlayPage() {
     const [timeUp, setTimeUp] = useState(false);
     const [scoreResult, setScoreResult] = useState<ScoreResult | null>(null);
     const sessionResultsRef = useRef<UserProgress[]>([]);
+    const isAdvancingRef = useRef(false);
+    const timeUpRef = useRef(false);
+    const isFinishedRef = useRef(false);
 
     const currentQuestion = questions[currentIndex];
     // 初期化チェック
@@ -129,6 +132,18 @@ export function PlayPage() {
         return () => clearInterval(interval);
     }, [isCountingDown, isFinished, timeLeft, timeLimit, timeUp]);
 
+    useEffect(() => {
+        timeUpRef.current = timeUp;
+    }, [timeUp]);
+
+    useEffect(() => {
+        isFinishedRef.current = isFinished;
+    }, [isFinished]);
+
+    useEffect(() => {
+        isAdvancingRef.current = false;
+    }, [currentIndex]);
+
     const finalScore = useMemo(() => {
         if (!isFinished) return null;
         const totalMiss = sessionResults.reduce((acc, cur) => acc + cur.missCount, 0);
@@ -155,7 +170,8 @@ export function PlayPage() {
 
     // 問題完了時の処理
     const handleQuestionComplete = useCallback((result: { missCount: number; timeMs: number }) => {
-        if (!currentQuestion || isFinished || timeUp) return;
+        if (!currentQuestion || isFinished || timeUp || isAdvancingRef.current) return;
+        isAdvancingRef.current = true;
 
         const isCorrect = result.missCount === 0; // 一度もミスなしならPerfect扱い？(要件次第だが今回は完了ベース)
 
@@ -184,7 +200,10 @@ export function PlayPage() {
 
         // 少し待って次の問題へ
         setTimeout(() => {
-            if (currentIndex < questions.length - 1 && !timeUp) {
+            if (isFinishedRef.current || timeUpRef.current) {
+                return;
+            }
+            if (currentIndex < questions.length - 1) {
                 setCurrentIndex(prev => prev + 1);
                 setQuestionIndex(currentIndex + 1);
             } else {
@@ -366,7 +385,7 @@ export function PlayPage() {
                         <QuestionDisplay
                             question={currentQuestion}
                             mode={selectedMode}
-                            autoPlayAudio={state.autoPlayAudio}
+                            autoPlayAudio={state.autoPlayAudio && !isCountingDown}
                         />
 
                         <div className={styles.inputArea}>
