@@ -11,11 +11,8 @@ export type LearningMode = 1 | 2 | 3;
 // Rank Types
 export type Rank = 'S' | 'A' | 'B' | 'C';
 
-export type SectionType =
-    | 'elementary_words'   // 小学校の単語
-    | 'new_words'          // New Words
-    | 'key_sentences'      // キーセンテンス
-    | 'summary';           // まとめ
+// CSV由来の自由形式に対応
+export type SectionType = string;
 
 // Question Data
 export interface Question {
