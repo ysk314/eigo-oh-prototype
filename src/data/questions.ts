@@ -377,8 +377,17 @@ export function getQuestionById(id: string): Question | undefined {
     return questions.find(q => q.id === id);
 }
 
-export function getQuestionsBySection(pageRange: string, sectionType: string): Question[] {
-    return questions.filter(q => q.pageRange === pageRange && q.section === sectionType);
+export function getQuestionsBySection(pageRangeId: string, sectionId: string): Question[] {
+    const page = getPageRanges().find((range) => range.id === pageRangeId);
+    const section = page?.sections.find((entry) => entry.id === sectionId);
+
+    if (!page || !section) {
+        return [];
+    }
+
+    return questions.filter(
+        (question) => question.pageRange === page.range && question.section === section.type
+    );
 }
 
 export function getPageRanges(): PageRange[] {

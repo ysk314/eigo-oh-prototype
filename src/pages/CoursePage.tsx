@@ -28,6 +28,7 @@ export function CoursePage() {
     };
 
     const handleModeSelect = (sectionId: string, mode: LearningMode) => {
+        setPageRange(selectedPageId);
         setSection(sectionId);
         setMode(mode);
         navigate('/play');

@@ -2,7 +2,7 @@
 // App Context
 // ================================
 
-import { createContext, useContext, useReducer, useEffect, type ReactNode, type Dispatch } from 'react';
+import { createContext, useContext, useReducer, useEffect, useCallback, type ReactNode, type Dispatch } from 'react';
 import { AppState, AppAction, User, LearningMode, UserProgress, SectionProgress, Rank } from '@/types';
 import { appReducer, initialState } from './AppReducer';
 import { loadFromStorage, saveToStorage, storageToAppState, getProgressKey, getSectionProgressKey } from '@/utils/storage';
@@ -62,58 +62,58 @@ export function AppProvider({ children }: AppProviderProps) {
     }, [state.users, state.currentUser, state.userProgress, state.sectionProgress, state.shuffleMode, state.autoPlayAudio]);
 
     // Convenience methods
-    const setUser = (user: User) => {
+    const setUser = useCallback((user: User) => {
         dispatch({ type: 'SET_USER', payload: user });
-    };
+    }, []);
 
-    const addUser = (name: string) => {
+    const addUser = useCallback((name: string) => {
         const newUser: User = {
             id: `user-${Date.now()}`,
             name,
             createdAt: new Date().toISOString(),
         };
         dispatch({ type: 'ADD_USER', payload: newUser });
-    };
+    }, []);
 
-    const setCourse = (courseId: string | null) => {
+    const setCourse = useCallback((courseId: string | null) => {
         dispatch({ type: 'SET_COURSE', payload: courseId });
-    };
+    }, []);
 
-    const setPageRange = (pageRangeId: string | null) => {
+    const setPageRange = useCallback((pageRangeId: string | null) => {
         dispatch({ type: 'SET_PAGE_RANGE', payload: pageRangeId });
-    };
+    }, []);
 
-    const setSection = (sectionId: string | null) => {
+    const setSection = useCallback((sectionId: string | null) => {
         dispatch({ type: 'SET_SECTION', payload: sectionId });
-    };
+    }, []);
 
-    const setMode = (mode: LearningMode) => {
+    const setMode = useCallback((mode: LearningMode) => {
         dispatch({ type: 'SET_MODE', payload: mode });
-    };
+    }, []);
 
-    const setQuestionIndex = (index: number) => {
+    const setQuestionIndex = useCallback((index: number) => {
         dispatch({ type: 'SET_QUESTION_INDEX', payload: index });
-    };
+    }, []);
 
-    const toggleShuffle = () => {
+    const toggleShuffle = useCallback(() => {
         dispatch({ type: 'TOGGLE_SHUFFLE' });
-    };
+    }, []);
 
-    const setShuffledIds = (ids: string[]) => {
+    const setShuffledIds = useCallback((ids: string[]) => {
         dispatch({ type: 'SET_SHUFFLED_IDS', payload: ids });
-    };
+    }, []);
 
-    const updateProgress = (questionId: string, data: Partial<UserProgress>) => {
+    const updateProgress = useCallback((questionId: string, data: Partial<UserProgress>) => {
         dispatch({ type: 'UPDATE_PROGRESS', payload: { questionId, ...data } });
-    };
+    }, []);
 
-    const markSectionCleared = (sectionId: string, mode: LearningMode) => {
+    const markSectionCleared = useCallback((sectionId: string, mode: LearningMode) => {
         dispatch({ type: 'MARK_SECTION_CLEARED', payload: { sectionId, mode } });
-    };
+    }, []);
 
-    const setSectionRank = (sectionId: string, mode: LearningMode, rank: Rank) => {
+    const setSectionRank = useCallback((sectionId: string, mode: LearningMode, rank: Rank) => {
         dispatch({ type: 'SET_SECTION_RANK', payload: { sectionId, mode, rank } });
-    };
+    }, []);
 
     const getProgressForQuestion = (questionId: string): UserProgress | undefined => {
         if (!state.currentUser) return undefined;

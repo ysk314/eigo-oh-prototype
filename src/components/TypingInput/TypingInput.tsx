@@ -33,6 +33,7 @@ export function TypingInput({
     );
     const [lastError, setLastError] = useState(false);
     const [consecutiveMiss, setConsecutiveMiss] = useState(0);
+    const hasCompletedRef = useRef(false);
     const containerRef = useRef<HTMLDivElement>(null);
 
     // 回答が変わったらリセット
@@ -40,6 +41,7 @@ export function TypingInput({
         setTypingState(createTypingState(answer));
         setLastError(false);
         setConsecutiveMiss(0);
+        hasCompletedRef.current = false;
     }, [answer]);
 
     // 進捗を通知
@@ -51,13 +53,15 @@ export function TypingInput({
 
     // 完了を通知
     useEffect(() => {
-        if (typingState.isComplete && typingState.startTime) {
-            const timeMs = Date.now() - typingState.startTime;
-            onComplete({
-                missCount: typingState.missCount,
-                timeMs,
-            });
-        }
+        if (!typingState.isComplete || !typingState.startTime) return;
+        if (hasCompletedRef.current) return;
+
+        hasCompletedRef.current = true;
+        const timeMs = Date.now() - typingState.startTime;
+        onComplete({
+            missCount: typingState.missCount,
+            timeMs,
+        });
     }, [typingState.isComplete, typingState.startTime, typingState.missCount, onComplete]);
 
     // キー入力ハンドラ
