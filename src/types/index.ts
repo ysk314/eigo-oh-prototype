@@ -19,7 +19,7 @@ export interface Question {
     id: string;
     course: string;           // "New Horizon 1"
     unit: string;             // "Unit 6"
-    part: string;             // "p30-31"
+    partId: string;           // Part.id
     section: SectionType;
     sectionLabel: string;     // 日本語表示用 "小学校の単語"
     promptJp: string;         // "セブ" or "私は試合に勝ちたいです。"
