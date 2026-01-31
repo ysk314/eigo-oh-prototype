@@ -200,15 +200,15 @@ export function PlayPage() {
 
         // 少し待って次の問題へ
         setTimeout(() => {
-            if (isFinishedRef.current || timeUpRef.current) {
+            if (isFinishedRef.current) {
                 return;
             }
-            if (currentIndex < questions.length - 1) {
+            if (currentIndex < questions.length - 1 && !timeUpRef.current) {
                 setCurrentIndex(prev => prev + 1);
                 setQuestionIndex(currentIndex + 1);
-            } else {
-                finishSession(false, nextResults);
+                return;
             }
+            finishSession(timeUpRef.current, nextResults);
         }, 800);
     }, [currentQuestion, currentIndex, questions.length, updateProgress, setQuestionIndex, selectedMode, isFinished, timeUp]);
 
