@@ -6,7 +6,6 @@ import { useMemo, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useApp } from '@/context/AppContext';
 import { Header } from '@/components/Header';
-import { PartList } from '@/components/PartList';
 import { SectionCard } from '@/components/SectionCard';
 import { courseStructure, getSectionsByPart } from '@/data/questions';
 import { LearningMode } from '@/types';
@@ -36,6 +35,13 @@ export function CoursePage() {
         }
     }, [state.selectedUnit, state.selectedPart, units, setUnit, setPart]);
 
+    const handleUnitSelect = (unitId: string) => {
+        setUnit(unitId);
+        const nextUnit = units.find((unit) => unit.id === unitId);
+        const nextPartId = nextUnit?.parts[0]?.id || null;
+        setPart(nextPartId);
+    };
+
     const handlePartSelect = (unitId: string, partId: string) => {
         setUnit(unitId);
         setPart(partId);
@@ -58,6 +64,12 @@ export function CoursePage() {
         return 0;
     };
 
+    const getUnitTotalQuestions = (unitId: string) => {
+        const unit = units.find((item) => item.id === unitId);
+        if (!unit) return 0;
+        return unit.parts.reduce((sum, part) => sum + part.totalQuestions, 0);
+    };
+
     return (
         <div className={styles.page}>
             <Header
@@ -70,12 +82,59 @@ export function CoursePage() {
             <div className={styles.content}>
                 {/* 左サイドバー: Unit / Part 一覧 */}
                 <aside className={styles.sidebar}>
-                    <PartList
-                        units={units}
-                        selectedPartId={selectedPartId}
-                        onPartSelect={handlePartSelect}
-                        getCompletedCount={getCompletedCount}
-                    />
+                    <div className={styles.sidebarGrid}>
+                        <section className={styles.sidebarColumn} aria-label="ユニット一覧">
+                            <h3 className={styles.sidebarTitle}>Unit</h3>
+                            <div className={styles.navList}>
+                                {units.map((unit) => {
+                                    const totalQuestions = getUnitTotalQuestions(unit.id);
+                                    const isSelected = unit.id === selectedUnitId;
+                                    const isEmpty = totalQuestions === 0;
+
+                                    return (
+                                        <button
+                                            key={unit.id}
+                                            className={`${styles.navItem} ${isSelected ? styles.selected : ''} ${isEmpty ? styles.empty : ''}`}
+                                            onClick={() => !isEmpty && handleUnitSelect(unit.id)}
+                                            disabled={isEmpty}
+                                            aria-current={isSelected ? 'page' : undefined}
+                                        >
+                                            <span className={styles.navLabel}>{unit.name}</span>
+                                            <span className={styles.navCount}>
+                                                {isEmpty ? '-' : `${totalQuestions}問`}
+                                            </span>
+                                        </button>
+                                    );
+                                })}
+                            </div>
+                        </section>
+
+                        <section className={styles.sidebarColumn} aria-label="パート一覧">
+                            <h3 className={styles.sidebarTitle}>Part</h3>
+                            <div className={styles.navList}>
+                                {(selectedUnit?.parts || []).map((part) => {
+                                    const completed = getCompletedCount(part.id);
+                                    const isSelected = part.id === selectedPartId;
+                                    const isEmpty = part.totalQuestions === 0;
+
+                                    return (
+                                        <button
+                                            key={part.id}
+                                            className={`${styles.navItem} ${isSelected ? styles.selected : ''} ${isEmpty ? styles.empty : ''}`}
+                                            onClick={() => !isEmpty && handlePartSelect(selectedUnit?.id || '', part.id)}
+                                            disabled={isEmpty}
+                                            aria-current={isSelected ? 'page' : undefined}
+                                        >
+                                            <span className={styles.navLabel}>{part.label}</span>
+                                            <span className={styles.navCount}>
+                                                {isEmpty ? '-' : `${completed}/${part.totalQuestions}`}
+                                            </span>
+                                        </button>
+                                    );
+                                })}
+                            </div>
+                        </section>
+                    </div>
                 </aside>
 
                 {/* メインエリア: セクションカード */}
