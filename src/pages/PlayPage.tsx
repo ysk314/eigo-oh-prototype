@@ -200,6 +200,7 @@ export function PlayPage() {
 
         // 少し待って次の問題へ
         setTimeout(() => {
+            isAdvancingRef.current = false;
             if (isFinishedRef.current) {
                 return;
             }
