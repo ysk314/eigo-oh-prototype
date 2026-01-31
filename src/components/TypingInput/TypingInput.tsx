@@ -53,6 +53,7 @@ export function TypingInput({
 
     // 完了を通知
     useEffect(() => {
+        if (typingState.answer !== answer) return;
         if (!typingState.isComplete || !typingState.startTime) return;
         if (hasCompletedRef.current) return;
 
