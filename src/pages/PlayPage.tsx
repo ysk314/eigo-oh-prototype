@@ -297,16 +297,28 @@ export function PlayPage() {
     };
 
     const activeKeyId = selectedMode === 1 ? getKeyIdForChar(currentChar) : null;
+    const getFingerIdForKeyLabel = (label: string) => {
+        if (label === 'space') return 'thumb';
+        if ("`~1!QAZ".includes(label)) return 'left-pinky';
+        if ("2@WSX".includes(label)) return 'left-ring';
+        if ("3#EDC".includes(label)) return 'left-middle';
+        if ("4$5%RTFGVB".includes(label)) return 'left-index';
+        if ("6^7&YHNUJM".includes(label)) return 'right-index';
+        if ("8*IK,<".includes(label)) return 'right-middle';
+        if ("9(OL.>".includes(label)) return 'right-ring';
+        if ("0)-P;:/?[]@".includes(label)) return 'right-pinky';
+        return null;
+    };
     const fingerItems = [
         { id: 'left-pinky', label: '左小指' },
         { id: 'left-ring', label: '左薬指' },
         { id: 'left-middle', label: '左中指' },
         { id: 'left-index', label: '左人差指' },
+        { id: 'thumb', label: '親指(スペース)' },
         { id: 'right-index', label: '右人差指' },
         { id: 'right-middle', label: '右中指' },
         { id: 'right-ring', label: '右薬指' },
         { id: 'right-pinky', label: '右小指' },
-        { id: 'thumb', label: '親指(スペース)' },
     ];
 
     // 完了画面
@@ -468,7 +480,7 @@ export function PlayPage() {
                                                 {row.map((key) => (
                                                     <div
                                                         key={key}
-                                                        className={`${styles.key} ${activeKeyId === key ? styles.keyActive : ''}`}
+                                                        className={`${styles.key} ${styles[`key-${getFingerIdForKeyLabel(key)}`] || ''} ${activeKeyId === key ? styles.keyActive : ''}`}
                                                     >
                                                         {key}
                                                     </div>
@@ -476,7 +488,7 @@ export function PlayPage() {
                                             </div>
                                         ))}
                                         <div className={styles.keyboardRow}>
-                                            <div className={styles.spaceBar + (activeKeyId === 'space' ? ` ${styles.keyActive}` : '')}>
+                                            <div className={`${styles.spaceBar} ${styles['key-thumb']} ${activeKeyId === 'space' ? styles.keyActive : ''}`}>
                                                 space
                                             </div>
                                         </div>

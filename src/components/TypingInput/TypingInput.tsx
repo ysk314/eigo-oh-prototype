@@ -129,11 +129,14 @@ export function TypingInput({
     return (
         <div
             ref={containerRef}
-            className={`${styles.container} ${lastError ? styles.error : ''} ${disabled ? styles.disabled : ''}`}
+            className={`${styles.container} ${lastError ? styles.error : ''} ${disabled ? styles.disabled : ''} ${isComplete ? styles.isComplete : ''}`}
             tabIndex={0}
             role="textbox"
             aria-label="タイピング入力"
         >
+            <div className={styles.completeIndicator} aria-hidden="true">
+                ✓
+            </div>
             {/* 入力表示エリア */}
             <div className={styles.display}>
                 <span className={styles.completed}>{displayState.completedText}</span>
@@ -152,12 +155,6 @@ export function TypingInput({
                 {typingState.missCount > 0 && (
                     <div className={styles.missCount}>
                         ミス: {typingState.missCount}
-                    </div>
-                )}
-
-                {typingState.isComplete && (
-                    <div className={styles.complete}>
-                        ✓ 完了！
                     </div>
                 )}
             </div>

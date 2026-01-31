@@ -95,7 +95,7 @@
     width: 100%;
     display: flex;
     flex-direction: column;
-    gap: var(--space-2xl);
+    gap: var(--space-lg);
     animation: fadeIn 0.5s ease-out;
 }
 
@@ -109,11 +109,13 @@
     width: 100%;
     background: rgba(255, 255, 255, 0.85);
     border-radius: var(--radius-lg);
-    padding: var(--space-lg);
+    padding: var(--space-md);
     box-shadow: var(--shadow-sm);
     display: flex;
     flex-direction: column;
-    gap: var(--space-md);
+    gap: var(--space-sm);
+    max-width: 920px;
+    margin: 0 auto;
 }
 
 .keyboardHeader {
@@ -146,19 +148,20 @@
 .keyboardRow {
     display: grid;
     grid-template-columns: repeat(12, minmax(0, 1fr));
-    gap: var(--space-xs);
+    gap: 6px;
 }
 
 .key {
-    background: #fff;
-    border: 2px solid rgba(0, 0, 0, 0.1);
+    background: #ffffff;
+    border: 2px solid rgba(0, 0, 0, 0.12);
     border-radius: 10px;
-    height: 44px;
+    height: 36px;
     display: flex;
     align-items: center;
     justify-content: center;
     font-weight: var(--font-weight-semibold);
     color: var(--color-text-secondary);
+    box-shadow: 0 2px 0 rgba(0, 0, 0, 0.04);
 }
 
 .keyActive {
@@ -170,9 +173,9 @@
 .spaceBar {
     grid-column: 1 / -1;
     background: #fff;
-    border: 2px solid rgba(0, 0, 0, 0.1);
+    border: 2px solid rgba(0, 0, 0, 0.12);
     border-radius: 12px;
-    height: 44px;
+    height: 36px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -183,18 +186,21 @@
 .fingerRow {
     display: flex;
     justify-content: center;
-    gap: var(--space-sm);
+    gap: 10px;
+    align-items: flex-end;
 }
 
 .fingerItem {
-    width: 48px;
-    height: 80px;
-    border-radius: 999px;
-    background: #e0e0e0;
+    width: 42px;
+    height: 70px;
+    border-radius: 999px 999px 16px 16px;
+    background: #d9d9d9;
     display: flex;
     align-items: flex-end;
     justify-content: center;
     transition: transform var(--transition-fast), background var(--transition-fast);
+    border: 2px solid rgba(0, 0, 0, 0.08);
+    box-shadow: inset 0 -2px 0 rgba(0, 0, 0, 0.05);
 }
 
 .fingerDot {
@@ -207,15 +213,25 @@
     background: #ff9800;
 }
 
-.left-pinky { color: #e57373; }
-.left-ring { color: #f06292; }
-.left-middle { color: #ba68c8; }
-.left-index { color: #64b5f6; }
-.right-index { color: #4dd0e1; }
-.right-middle { color: #81c784; }
-.right-ring { color: #ffd54f; }
-.right-pinky { color: #ffb74d; }
-.thumb { color: #90a4ae; }
+.key-left-pinky { background: #cfe8ff; }
+.key-left-ring { background: #d9f0ff; }
+.key-left-middle { background: #d8f5e6; }
+.key-left-index { background: #f5f0c4; }
+.key-right-index { background: #ffe0b2; }
+.key-right-middle { background: #ffd6da; }
+.key-right-ring { background: #f6d9ff; }
+.key-right-pinky { background: #d9f1ff; }
+.key-thumb { background: #cfc9ff; }
+
+.left-pinky { background: #b7d9ff; }
+.left-ring { background: #c7e8ff; height: 76px; }
+.left-middle { background: #bfead6; height: 86px; }
+.left-index { background: #f0e7a0; height: 80px; }
+.right-index { background: #ffd59c; }
+.right-middle { background: #ffc7d1; height: 86px; }
+.right-ring { background: #eec3ff; height: 76px; }
+.right-pinky { background: #c6e6ff; height: 70px; }
+.thumb { background: #bdb4ff; height: 58px; margin: 0 8px; }
 
 /* Result Screen */
 .resultMain {

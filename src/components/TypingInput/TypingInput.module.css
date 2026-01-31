@@ -10,6 +10,7 @@
     min-height: 160px;
     outline: none;
     transition: all var(--transition-fast);
+    position: relative;
 }
 
 .container:focus {
@@ -48,7 +49,10 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
+    white-space: nowrap;
+    max-width: 100%;
+    overflow-x: auto;
 }
 
 .completed {
@@ -136,26 +140,31 @@
 }
 
 /* Complete */
-.complete {
-    font-size: var(--font-size-lg);
+.completeIndicator {
+    position: absolute;
+    top: var(--space-sm);
+    right: var(--space-sm);
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: var(--color-success);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     font-weight: var(--font-weight-bold);
-    color: var(--color-success);
-    background: var(--color-success-light);
-    padding: var(--space-sm) var(--space-lg);
-    border-radius: var(--radius-full);
-    animation: scaleIn 0.3s ease;
+    opacity: 0;
+    transform: scale(0.8);
+    transition: opacity 0.2s ease, transform 0.2s ease;
 }
 
-@keyframes scaleIn {
-    from {
-        transform: scale(0.8);
-        opacity: 0;
-    }
+.isComplete .completeIndicator {
+    opacity: 1;
+    transform: scale(1);
+}
 
-    to {
-        transform: scale(1);
-        opacity: 1;
-    }
+.isComplete {
+    box-shadow: var(--shadow-lg), 0 0 0 3px var(--color-success-light);
 }
 
 /* Hint */
