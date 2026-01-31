@@ -174,11 +174,21 @@
     color: var(--color-text-secondary);
 }
 
+.spaceActive {
+    background: #ff9800;
+    border-color: #ff9800;
+    color: #000;
+}
+
 .fingerRow {
     display: flex;
     justify-content: center;
     gap: 10px;
     align-items: flex-end;
+}
+
+.fingerItem:nth-child(6) {
+    margin-left: 20px;
 }
 
 .fingerItem {

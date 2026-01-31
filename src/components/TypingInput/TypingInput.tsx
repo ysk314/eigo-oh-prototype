@@ -126,6 +126,7 @@ export function TypingInput({
         ? ''
         : (showHint ? displayState.remainingText : '');
     const isSpaceExpected = !isComplete && typingState.normalizedAnswer[typingState.currentIndex] === ' ';
+    const answerLength = typingState.normalizedAnswer.length || 1;
 
     return (
         <div
@@ -139,7 +140,10 @@ export function TypingInput({
                 ✓
             </div>
             {/* 入力表示エリア */}
-            <div className={styles.display}>
+            <div
+                className={styles.display}
+                style={{ ['--answer-length' as string]: answerLength }}
+            >
                 <span className={styles.completed}>{displayState.completedText}</span>
                 <span className={`${styles.current} ${lastError ? styles.shake : ''} ${isSpaceExpected ? styles.space : ''}`}>
                     {currentCharDisplay || ''}

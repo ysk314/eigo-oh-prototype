@@ -481,7 +481,7 @@ export function PlayPage() {
                                             </div>
                                         ))}
                                         <div className={styles.keyboardRow}>
-                                            <div className={`${styles.spaceBar} ${styles['key-thumb']} ${activeKeyId === 'space' ? styles.keyActive : ''}`}>
+                                            <div className={`${styles.spaceBar} ${styles['key-thumb']} ${activeKeyId === 'space' ? styles.spaceActive : ''}`}>
                                                 space
                                             </div>
                                         </div>

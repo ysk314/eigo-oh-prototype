@@ -46,6 +46,7 @@
     letter-spacing: 0.05em;
     line-height: 1.2;
     min-height: 60px;
+    min-width: calc(var(--answer-length) * 0.65em + 1.5em);
     display: flex;
     align-items: center;
     justify-content: center;
