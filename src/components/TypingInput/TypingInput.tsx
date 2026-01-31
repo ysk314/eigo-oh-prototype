@@ -104,9 +104,15 @@ export function TypingInput({
     }, []);
 
     const displayState = getDisplayState(typingState);
-    const currentCharDisplay = showHint
-        ? displayState.currentChar
-        : (consecutiveMiss >= 2 ? displayState.currentChar : '_');
+    const isComplete = typingState.isComplete;
+    const currentCharDisplay = isComplete
+        ? ''
+        : showHint
+            ? displayState.currentChar
+            : (consecutiveMiss >= 2 ? displayState.currentChar : '_');
+    const remainingDisplay = isComplete
+        ? ''
+        : (showHint ? displayState.remainingText : '');
 
     return (
         <div
@@ -123,7 +129,7 @@ export function TypingInput({
                     {currentCharDisplay || ''}
                 </span>
                 <span className={styles.remaining}>
-                    {showHint ? displayState.remainingText : '_'.repeat(displayState.remainingText.length)}
+                    {remainingDisplay}
                 </span>
             </div>
 

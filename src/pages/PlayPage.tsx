@@ -395,7 +395,7 @@ export function PlayPage() {
                                 onComplete={handleQuestionComplete}
                                 onKeyResult={(isCorrect) => playSound(isCorrect ? 'type' : 'error')}
                                 disabled={isCountingDown || timeUp}
-                                showHint={selectedMode !== 3} // モード3以外はヒント（アンダースコア等）あり
+                                showHint={selectedMode === 1} // ヒントはモード1のみ表示
                             />
                         </div>
                     </div>
