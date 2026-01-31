@@ -148,26 +148,19 @@ export function TypingInput({
             {/* 入力位置カーソル */}
             <div className={styles.cursor} />
 
-            {/* ミスカウント */}
-            {typingState.missCount > 0 && (
-                <div className={styles.missCount}>
-                    ミス: {typingState.missCount}
-                </div>
-            )}
+            <div className={styles.statusRow} aria-live="polite">
+                {typingState.missCount > 0 && (
+                    <div className={styles.missCount}>
+                        ミス: {typingState.missCount}
+                    </div>
+                )}
 
-            {/* 完了表示 */}
-            {typingState.isComplete && (
-                <div className={styles.complete}>
-                    ✓ 完了！
-                </div>
-            )}
-
-            {/* ヒント */}
-            {!disabled && !typingState.isComplete && (
-                <p className={styles.hint}>
-                    キーボードで入力してください
-                </p>
-            )}
+                {typingState.isComplete && (
+                    <div className={styles.complete}>
+                        ✓ 完了！
+                    </div>
+                )}
+            </div>
         </div>
     );
 }

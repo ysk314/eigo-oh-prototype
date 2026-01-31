@@ -91,12 +91,6 @@
     color: var(--color-text-secondary);
 }
 
-.navWrapper {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-}
-
 .questionArea {
     width: 100%;
     display: flex;
@@ -111,7 +105,7 @@
     margin: 0 auto;
 }
 
-.fingerGuide {
+.keyboardGuide {
     width: 100%;
     background: rgba(255, 255, 255, 0.85);
     border-radius: var(--radius-lg);
@@ -122,19 +116,19 @@
     gap: var(--space-md);
 }
 
-.fingerHeader {
+.keyboardHeader {
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
 
-.fingerTitle {
+.keyboardTitle {
     font-size: var(--font-size-sm);
     color: var(--color-text-secondary);
     font-weight: var(--font-weight-semibold);
 }
 
-.fingerChar {
+.keyboardChar {
     font-size: var(--font-size-2xl);
     font-weight: var(--font-weight-bold);
     color: var(--color-text-primary);
@@ -143,39 +137,74 @@
     padding: var(--space-xs) var(--space-md);
 }
 
-.fingerRow {
+.keyboard {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+}
+
+.keyboardRow {
     display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    gap: var(--space-xs);
+}
+
+.key {
+    background: #fff;
+    border: 2px solid rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-secondary);
+}
+
+.keyActive {
+    background: #ff9800;
+    border-color: #ff9800;
+    color: #fff;
+}
+
+.spaceBar {
+    grid-column: 1 / -1;
+    background: #fff;
+    border: 2px solid rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-secondary);
+}
+
+.fingerRow {
+    display: flex;
+    justify-content: center;
     gap: var(--space-sm);
 }
 
 .fingerItem {
+    width: 48px;
+    height: 80px;
+    border-radius: 999px;
+    background: #e0e0e0;
     display: flex;
-    align-items: center;
-    gap: var(--space-xs);
-    padding: var(--space-sm);
-    border-radius: var(--radius-md);
-    background: rgba(255, 255, 255, 0.7);
-    border: 1px solid rgba(0, 0, 0, 0.05);
-    transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+    align-items: flex-end;
+    justify-content: center;
+    transition: transform var(--transition-fast), background var(--transition-fast);
 }
 
 .fingerDot {
-    width: 14px;
-    height: 14px;
-    border-radius: 50%;
-    background: currentColor;
-}
-
-.fingerLabel {
-    font-size: var(--font-size-xs);
-    color: var(--color-text-primary);
+    width: 0;
+    height: 0;
 }
 
 .activeFinger {
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-md);
-    background: rgba(255, 255, 255, 0.95);
+    transform: translateY(-6px);
+    background: #ff9800;
 }
 
 .left-pinky { color: #e57373; }
@@ -328,7 +357,7 @@
         gap: var(--space-lg);
     }
 
-    .fingerRow {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+    .keyboardRow {
+        grid-template-columns: repeat(10, minmax(0, 1fr));
     }
 }

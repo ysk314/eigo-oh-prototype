@@ -13,6 +13,7 @@ interface QuestionDisplayProps {
     showEnglish?: boolean;
     autoPlayAudio?: boolean;
     inputSlot?: React.ReactNode;
+    showModeIndicator?: boolean;
 }
 
 export function QuestionDisplay({
@@ -21,6 +22,7 @@ export function QuestionDisplay({
     showEnglish = true,
     autoPlayAudio = false,
     inputSlot,
+    showModeIndicator = true,
 }: QuestionDisplayProps) {
     const isAudioEnabled = mode !== 3;
     const isSpellingVisible = mode === 1;
@@ -80,13 +82,15 @@ export function QuestionDisplay({
             </div>
 
             {/* モード表示 */}
-            <div className={styles.modeIndicator}>
-                <span className={styles.modeLabel}>
-                    {mode === 1 && '音声あり・スペルあり'}
-                    {mode === 2 && '音声あり・スペルなし'}
-                    {mode === 3 && '音声なし・スペルなし'}
-                </span>
-            </div>
+            {showModeIndicator && (
+                <div className={styles.modeIndicator}>
+                    <span className={styles.modeLabel}>
+                        {mode === 1 && '音声あり・スペルあり'}
+                        {mode === 2 && '音声あり・スペルなし'}
+                        {mode === 3 && '音声なし・スペルなし'}
+                    </span>
+                </div>
+            )}
         </div>
     );
 }

@@ -9,7 +9,6 @@ import { Header } from '@/components/Header';
 import { QuestionDisplay } from '@/components/QuestionDisplay';
 import { TypingInput } from '@/components/TypingInput';
 import { ProgressBar } from '@/components/ProgressBar';
-import { QuestionNav } from '@/components/QuestionNav'; // ナビ追加
 import { Button } from '@/components/Button';
 import { Card } from '@/components/Card';
 import { getQuestionsBySection } from '@/data/questions';
@@ -94,7 +93,7 @@ export function PlayPage() {
         const interval = setInterval(() => {
             setCountdown((prev) => {
                 if (prev === null) return null;
-                if (prev <= 1) return 0;
+                if (prev <= 1) return null;
                 playSound('countdown');
                 return prev - 1;
             });
@@ -104,11 +103,10 @@ export function PlayPage() {
     }, [isCountingDown]);
 
     useEffect(() => {
-        if (!isCountingDown || countdown !== 0) return;
+        if (!isCountingDown || countdown !== null) return;
 
         const timer = setTimeout(() => {
             setIsCountingDown(false);
-            setCountdown(null);
         }, 300);
 
         return () => clearTimeout(timer);
@@ -272,6 +270,33 @@ export function PlayPage() {
 
     const activeFingerId = selectedMode === 1 ? getFingerIdForChar(currentChar) : null;
     const displayChar = currentChar === ' ' ? 'SPACE' : currentChar;
+    const getKeyIdForChar = (char: string | null) => {
+        if (!char) return null;
+        const key = char.toLowerCase();
+        if (key === ' ') return 'space';
+        if (key >= 'a' && key <= 'z') return key.toUpperCase();
+        const map: Record<string, string> = {
+            '1': '1',
+            '2': '2',
+            '3': '3',
+            '4': '4',
+            '5': '5',
+            '6': '6',
+            '7': '7',
+            '8': '8',
+            '9': '9',
+            '0': '0',
+            '-': '-',
+            '@': '@',
+            '.': '.',
+            ',': ',',
+            '/': '/',
+            ';': ';',
+        };
+        return map[key] ?? null;
+    };
+
+    const activeKeyId = selectedMode === 1 ? getKeyIdForChar(currentChar) : null;
     const fingerItems = [
         { id: 'left-pinky', label: '左小指' },
         { id: 'left-ring', label: '左薬指' },
@@ -403,14 +428,6 @@ export function PlayPage() {
                 </div>
 
                 {/* 問題番号ナビゲーション (オプション) */}
-                <div className={styles.navWrapper}>
-                    <QuestionNav
-                        total={questions.length}
-                        current={currentIndex}
-                        enableJump={false} // プレイ中はジャンプ不可
-                    />
-                </div>
-
                 {currentQuestion ? (
                     <div className={styles.questionArea}>
                         <QuestionDisplay
@@ -418,6 +435,7 @@ export function PlayPage() {
                             mode={selectedMode}
                             autoPlayAudio={state.autoPlayAudio && !isCountingDown}
                             showEnglish={false}
+                            showModeIndicator={false}
                             inputSlot={
                                 <TypingInput
                                     answer={currentQuestion.answerEn}
@@ -432,12 +450,36 @@ export function PlayPage() {
 
                         <div className={styles.inputArea}>
                             {selectedMode === 1 && (
-                                <div className={styles.fingerGuide} aria-live="polite">
-                                    <div className={styles.fingerHeader}>
-                                        <span className={styles.fingerTitle}>次のキー</span>
-                                        <span className={styles.fingerChar}>
+                                <div className={styles.keyboardGuide} aria-live="polite">
+                                    <div className={styles.keyboardHeader}>
+                                        <span className={styles.keyboardTitle}>次のキー</span>
+                                        <span className={styles.keyboardChar}>
                                             {displayChar || '-'}
                                         </span>
+                                    </div>
+                                    <div className={styles.keyboard}>
+                                        {[
+                                            ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '-', '@'],
+                                            ['Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P'],
+                                            ['A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L', ';'],
+                                            ['Z', 'X', 'C', 'V', 'B', 'N', 'M', ',', '.', '/'],
+                                        ].map((row, rowIndex) => (
+                                            <div key={rowIndex} className={styles.keyboardRow}>
+                                                {row.map((key) => (
+                                                    <div
+                                                        key={key}
+                                                        className={`${styles.key} ${activeKeyId === key ? styles.keyActive : ''}`}
+                                                    >
+                                                        {key}
+                                                    </div>
+                                                ))}
+                                            </div>
+                                        ))}
+                                        <div className={styles.keyboardRow}>
+                                            <div className={styles.spaceBar + (activeKeyId === 'space' ? ` ${styles.keyActive}` : '')}>
+                                                space
+                                            </div>
+                                        </div>
                                     </div>
                                     <div className={styles.fingerRow}>
                                         {fingerItems.map((finger) => (
@@ -446,7 +488,6 @@ export function PlayPage() {
                                                 className={`${styles.fingerItem} ${styles[finger.id]} ${activeFingerId === finger.id ? styles.activeFinger : ''}`}
                                             >
                                                 <span className={styles.fingerDot} />
-                                                <span className={styles.fingerLabel}>{finger.label}</span>
                                             </div>
                                         ))}
                                     </div>
