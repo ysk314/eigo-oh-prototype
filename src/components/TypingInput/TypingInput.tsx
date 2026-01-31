@@ -35,7 +35,6 @@ export function TypingInput({
     );
     const [lastError, setLastError] = useState(false);
     const [consecutiveMiss, setConsecutiveMiss] = useState(0);
-    const [showCorrect, setShowCorrect] = useState(false);
     const hasCompletedRef = useRef(false);
     const containerRef = useRef<HTMLDivElement>(null);
 
@@ -99,11 +98,6 @@ export function TypingInput({
         onKeyResult?.(!isError);
         setConsecutiveMiss(prev => (isError ? prev + 1 : 0));
 
-        if (!isError) {
-            setShowCorrect(true);
-            setTimeout(() => setShowCorrect(false), 180);
-        }
-
         if (isError) {
             // エラーアニメーション後にリセット
             setTimeout(() => setLastError(false), 300);
@@ -131,22 +125,23 @@ export function TypingInput({
     const remainingDisplay = isComplete
         ? ''
         : (showHint ? displayState.remainingText : '');
+    const isSpaceExpected = !isComplete && typingState.normalizedAnswer[typingState.currentIndex] === ' ';
 
     return (
         <div
             ref={containerRef}
-            className={`${styles.container} ${lastError ? styles.error : ''} ${disabled ? styles.disabled : ''} ${showCorrect ? styles.showCorrect : ''}`}
+            className={`${styles.container} ${lastError ? styles.error : ''} ${disabled ? styles.disabled : ''} ${isComplete ? styles.isComplete : ''}`}
             tabIndex={0}
             role="textbox"
             aria-label="タイピング入力"
         >
             <div className={styles.completeIndicator} aria-hidden="true">
-                !
+                ✓
             </div>
             {/* 入力表示エリア */}
             <div className={styles.display}>
                 <span className={styles.completed}>{displayState.completedText}</span>
-                <span className={`${styles.current} ${lastError ? styles.shake : ''}`}>
+                <span className={`${styles.current} ${lastError ? styles.shake : ''} ${isSpaceExpected ? styles.space : ''}`}>
                     {currentCharDisplay || ''}
                 </span>
                 <span className={styles.remaining}>

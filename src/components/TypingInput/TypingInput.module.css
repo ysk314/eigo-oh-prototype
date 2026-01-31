@@ -50,7 +50,7 @@
     align-items: center;
     justify-content: center;
     flex-wrap: nowrap;
-    white-space: nowrap;
+    white-space: pre;
     max-width: 100%;
     overflow-x: auto;
 }
@@ -65,6 +65,12 @@
     padding: 0 2px;
     border-radius: 4px;
     position: relative;
+}
+
+.space {
+    min-width: 18px;
+    display: inline-block;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.2);
 }
 
 .current::after {
@@ -151,11 +157,14 @@
     transition: opacity 0.2s ease, transform 0.2s ease;
 }
 
-.showCorrect .completeIndicator {
+.isComplete .completeIndicator {
     opacity: 1;
     transform: scale(1);
 }
 
+.isComplete {
+    box-shadow: var(--shadow-lg), 0 0 0 3px var(--color-success-light);
+}
 
 /* Hint */
 /* Responsive */
