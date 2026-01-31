@@ -3,7 +3,7 @@ import react from '@vitejs/plugin-react'
 import path from 'path'
 
 // https://vite.dev/config/
-const rawBase = process.env.VITE_BASE_URL ?? '/eigo-oh-2/'
+const rawBase = process.env.VITE_BASE_URL ?? '/eigo-oh-prototype/'
 const normalizedBase = rawBase.startsWith('/') ? rawBase : `/${rawBase}`
 const base = normalizedBase.endsWith('/') ? normalizedBase : `${normalizedBase}/`
 
