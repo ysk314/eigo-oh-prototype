@@ -28,6 +28,13 @@
     line-height: 1.2;
 }
 
+.englishSlot {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    justify-content: center;
+}
+
 .highlight {
     color: var(--color-accent-dark);
 }
@@ -65,5 +72,9 @@
 
     .englishArea {
         flex-direction: column;
+    }
+
+    .englishSlot {
+        width: 100%;
     }
 }

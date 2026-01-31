@@ -12,6 +12,7 @@ interface QuestionDisplayProps {
     mode: LearningMode;
     showEnglish?: boolean;
     autoPlayAudio?: boolean;
+    inputSlot?: React.ReactNode;
 }
 
 export function QuestionDisplay({
@@ -19,6 +20,7 @@ export function QuestionDisplay({
     mode,
     showEnglish = true,
     autoPlayAudio = false,
+    inputSlot,
 }: QuestionDisplayProps) {
     const isAudioEnabled = mode !== 3;
     const isSpellingVisible = mode === 1;
@@ -65,10 +67,16 @@ export function QuestionDisplay({
                     size="lg"
                 />
 
-                {/* 英語テキスト */}
-                <div className={styles.english}>
-                    {showEnglish && renderEnglishText()}
-                </div>
+                {/* 英語テキスト / 入力 */}
+                {inputSlot ? (
+                    <div className={styles.englishSlot}>
+                        {inputSlot}
+                    </div>
+                ) : (
+                    <div className={styles.english}>
+                        {showEnglish && renderEnglishText()}
+                    </div>
+                )}
             </div>
 
             {/* モード表示 */}

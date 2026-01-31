@@ -53,6 +53,7 @@ export function PlayPage() {
     const [timeLeft, setTimeLeft] = useState(0);
     const [timeUp, setTimeUp] = useState(false);
     const [scoreResult, setScoreResult] = useState<ScoreResult | null>(null);
+    const [currentChar, setCurrentChar] = useState<string | null>(null);
     const sessionResultsRef = useRef<UserProgress[]>([]);
     const isAdvancingRef = useRef(false);
     const timeUpRef = useRef(false);
@@ -254,6 +255,35 @@ export function PlayPage() {
         }
     };
 
+    const getFingerIdForChar = (char: string | null) => {
+        if (!char) return null;
+        const key = char.toLowerCase();
+        if (key === ' ') return 'thumb';
+        if ("`~1!qaz".includes(key)) return 'left-pinky';
+        if ("2@wsx".includes(key)) return 'left-ring';
+        if ("3#edc".includes(key)) return 'left-middle';
+        if ("4$5%rtfgvb".includes(key)) return 'left-index';
+        if ("6^7&yhnujm".includes(key)) return 'right-index';
+        if ("8*ik,<".includes(key)) return 'right-middle';
+        if ("9(ol.>".includes(key)) return 'right-ring';
+        if ("0)-p;:/?[]'\\\"".includes(key)) return 'right-pinky';
+        return 'right-pinky';
+    };
+
+    const activeFingerId = selectedMode === 1 ? getFingerIdForChar(currentChar) : null;
+    const displayChar = currentChar === ' ' ? 'SPACE' : currentChar;
+    const fingerItems = [
+        { id: 'left-pinky', label: '左小指' },
+        { id: 'left-ring', label: '左薬指' },
+        { id: 'left-middle', label: '左中指' },
+        { id: 'left-index', label: '左人差指' },
+        { id: 'right-index', label: '右人差指' },
+        { id: 'right-middle', label: '右中指' },
+        { id: 'right-ring', label: '右薬指' },
+        { id: 'right-pinky', label: '右小指' },
+        { id: 'thumb', label: '親指(スペース)' },
+    ];
+
     // 完了画面
     if (isFinished) {
         const totalMiss = sessionResults.reduce((acc, cur) => acc + cur.missCount, 0);
@@ -387,16 +417,41 @@ export function PlayPage() {
                             question={currentQuestion}
                             mode={selectedMode}
                             autoPlayAudio={state.autoPlayAudio && !isCountingDown}
+                            showEnglish={false}
+                            inputSlot={
+                                <TypingInput
+                                    answer={currentQuestion.answerEn}
+                                    onComplete={handleQuestionComplete}
+                                    onKeyResult={(isCorrect) => playSound(isCorrect ? 'type' : 'error')}
+                                    onCurrentCharChange={setCurrentChar}
+                                    disabled={isCountingDown || timeUp}
+                                    showHint={selectedMode === 1} // ヒントはモード1のみ表示
+                                />
+                            }
                         />
 
                         <div className={styles.inputArea}>
-                            <TypingInput
-                                answer={currentQuestion.answerEn}
-                                onComplete={handleQuestionComplete}
-                                onKeyResult={(isCorrect) => playSound(isCorrect ? 'type' : 'error')}
-                                disabled={isCountingDown || timeUp}
-                                showHint={selectedMode === 1} // ヒントはモード1のみ表示
-                            />
+                            {selectedMode === 1 && (
+                                <div className={styles.fingerGuide} aria-live="polite">
+                                    <div className={styles.fingerHeader}>
+                                        <span className={styles.fingerTitle}>次のキー</span>
+                                        <span className={styles.fingerChar}>
+                                            {displayChar || '-'}
+                                        </span>
+                                    </div>
+                                    <div className={styles.fingerRow}>
+                                        {fingerItems.map((finger) => (
+                                            <div
+                                                key={finger.id}
+                                                className={`${styles.fingerItem} ${styles[finger.id]} ${activeFingerId === finger.id ? styles.activeFinger : ''}`}
+                                            >
+                                                <span className={styles.fingerDot} />
+                                                <span className={styles.fingerLabel}>{finger.label}</span>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
+                            )}
                         </div>
                     </div>
                 ) : (

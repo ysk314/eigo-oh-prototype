@@ -16,6 +16,7 @@ interface TypingInputProps {
     onComplete: (result: { missCount: number; timeMs: number }) => void;
     onProgress?: (current: number, total: number) => void;
     onKeyResult?: (isCorrect: boolean) => void;
+    onCurrentCharChange?: (char: string | null) => void;
     disabled?: boolean;
     showHint?: boolean;
 }
@@ -25,6 +26,7 @@ export function TypingInput({
     onComplete,
     onProgress,
     onKeyResult,
+    onCurrentCharChange,
     disabled = false,
     showHint = true,
 }: TypingInputProps) {
@@ -50,6 +52,16 @@ export function TypingInput({
             onProgress(typingState.currentIndex, typingState.normalizedAnswer.length);
         }
     }, [typingState.currentIndex, typingState.normalizedAnswer.length, onProgress]);
+
+    useEffect(() => {
+        if (!onCurrentCharChange) return;
+        if (typingState.isComplete) {
+            onCurrentCharChange(null);
+            return;
+        }
+        const nextChar = typingState.normalizedAnswer[typingState.currentIndex] || null;
+        onCurrentCharChange(nextChar);
+    }, [typingState.currentIndex, typingState.normalizedAnswer, typingState.isComplete, onCurrentCharChange]);
 
     // 完了を通知
     useEffect(() => {

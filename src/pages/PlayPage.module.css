@@ -111,6 +111,83 @@
     margin: 0 auto;
 }
 
+.fingerGuide {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.85);
+    border-radius: var(--radius-lg);
+    padding: var(--space-lg);
+    box-shadow: var(--shadow-sm);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+}
+
+.fingerHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.fingerTitle {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+    font-weight: var(--font-weight-semibold);
+}
+
+.fingerChar {
+    font-size: var(--font-size-2xl);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-primary);
+    background: var(--color-primary-soft);
+    border-radius: var(--radius-full);
+    padding: var(--space-xs) var(--space-md);
+}
+
+.fingerRow {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: var(--space-sm);
+}
+
+.fingerItem {
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+    padding: var(--space-sm);
+    border-radius: var(--radius-md);
+    background: rgba(255, 255, 255, 0.7);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.fingerDot {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: currentColor;
+}
+
+.fingerLabel {
+    font-size: var(--font-size-xs);
+    color: var(--color-text-primary);
+}
+
+.activeFinger {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+    background: rgba(255, 255, 255, 0.95);
+}
+
+.left-pinky { color: #e57373; }
+.left-ring { color: #f06292; }
+.left-middle { color: #ba68c8; }
+.left-index { color: #64b5f6; }
+.right-index { color: #4dd0e1; }
+.right-middle { color: #81c784; }
+.right-ring { color: #ffd54f; }
+.right-pinky { color: #ffb74d; }
+.thumb { color: #90a4ae; }
+
 /* Result Screen */
 .resultMain {
     flex: 1;
@@ -249,5 +326,9 @@
     .playMain {
         padding: var(--space-md);
         gap: var(--space-lg);
+    }
+
+    .fingerRow {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 }
