@@ -2,7 +2,7 @@
 // Play Page
 // ================================
 
-import { useState, useEffect, useMemo, useCallback } from 'react';
+import { useState, useEffect, useMemo, useCallback, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useApp } from '@/context/AppContext';
 import { Header } from '@/components/Header';
@@ -53,6 +53,7 @@ export function PlayPage() {
     const [timeLeft, setTimeLeft] = useState(0);
     const [timeUp, setTimeUp] = useState(false);
     const [scoreResult, setScoreResult] = useState<ScoreResult | null>(null);
+    const sessionResultsRef = useRef<UserProgress[]>([]);
 
     const currentQuestion = questions[currentIndex];
     // 初期化チェック
@@ -73,33 +74,40 @@ export function PlayPage() {
         setIsFinished(false);
         setTimeUp(false);
         setSessionResults([]);
+        sessionResultsRef.current = [];
         setScoreResult(null);
         setTimeLimit(limit);
         setTimeLeft(limit);
         setCountdown(3);
         setIsCountingDown(true);
-    }, [questions, setQuestionIndex]);
+    }, [questions]);
 
     // カウントダウン処理
     useEffect(() => {
         if (!isCountingDown || countdown === null) return;
 
-        if (countdown > 0) {
-            playSound('countdown');
-            const timer = setTimeout(() => {
-                setCountdown(prev => (prev === null ? null : prev - 1));
-            }, 1000);
-            return () => clearTimeout(timer);
-        }
+        playSound('countdown');
+        const interval = setInterval(() => {
+            setCountdown((prev) => {
+                if (prev === null) return null;
+                if (prev <= 1) return 0;
+                playSound('countdown');
+                return prev - 1;
+            });
+        }, 1000);
 
-        if (countdown === 0) {
-            playSound('countdown');
-            const timer = setTimeout(() => {
-                setIsCountingDown(false);
-                setCountdown(null);
-            }, 300);
-            return () => clearTimeout(timer);
-        }
+        return () => clearInterval(interval);
+    }, [isCountingDown]);
+
+    useEffect(() => {
+        if (!isCountingDown || countdown !== 0) return;
+
+        const timer = setTimeout(() => {
+            setIsCountingDown(false);
+            setCountdown(null);
+        }, 300);
+
+        return () => clearTimeout(timer);
     }, [isCountingDown, countdown]);
 
     // タイマー処理
@@ -166,7 +174,9 @@ export function PlayPage() {
             missCount: result.missCount,
             clearedMode: selectedMode, // 仮
         };
-        setSessionResults(prev => [...prev, nextResult]);
+        const nextResults = [...sessionResultsRef.current, nextResult];
+        sessionResultsRef.current = nextResults;
+        setSessionResults(nextResults);
 
         if (isCorrect) {
             playSound('success');
@@ -178,15 +188,15 @@ export function PlayPage() {
                 setCurrentIndex(prev => prev + 1);
                 setQuestionIndex(currentIndex + 1);
             } else {
-                finishSession(false, [...sessionResults, nextResult]);
+                finishSession(false, nextResults);
             }
         }, 800);
-    }, [currentQuestion, currentIndex, questions.length, updateProgress, setQuestionIndex, selectedMode, isFinished, timeUp, sessionResults]);
+    }, [currentQuestion, currentIndex, questions.length, updateProgress, setQuestionIndex, selectedMode, isFinished, timeUp]);
 
     // セッション完了処理
     const finishSession = (timeUpFlag: boolean, resultsOverride?: UserProgress[]) => {
         setIsFinished(true);
-        const results = resultsOverride ?? sessionResults;
+        const results = resultsOverride ?? sessionResultsRef.current;
         const totalMiss = results.reduce((acc, cur) => acc + cur.missCount, 0);
         const score = buildScoreResult({
             missCount: totalMiss,

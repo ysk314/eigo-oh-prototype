@@ -4,7 +4,7 @@ import path from 'path'
 
 // https://vite.dev/config/
 export default defineConfig({
-    base: '/eigo-oh-prototype/',
+    base: '/eigo-oh-2/',
     plugins: [react()],
     resolve: {
         alias: {
