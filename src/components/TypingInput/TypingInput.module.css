@@ -7,7 +7,7 @@
     background: var(--color-bg-card);
     border-radius: var(--radius-xl);
     box-shadow: var(--shadow-md);
-    min-height: 160px;
+    min-height: 120px;
     outline: none;
     transition: all var(--transition-fast);
     position: relative;
@@ -123,13 +123,6 @@
 }
 
 /* Status Row (keeps height stable) */
-.statusRow {
-    min-height: 36px;
-    display: flex;
-    align-items: center;
-    gap: var(--space-sm);
-}
-
 /* Miss Count */
 .missCount {
     font-size: var(--font-size-sm);
@@ -158,14 +151,11 @@
     transition: opacity 0.2s ease, transform 0.2s ease;
 }
 
-.isComplete .completeIndicator {
+.showCorrect .completeIndicator {
     opacity: 1;
     transform: scale(1);
 }
 
-.isComplete {
-    box-shadow: var(--shadow-lg), 0 0 0 3px var(--color-success-light);
-}
 
 /* Hint */
 /* Responsive */

@@ -118,27 +118,6 @@
     margin: 0 auto;
 }
 
-.keyboardHeader {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.keyboardTitle {
-    font-size: var(--font-size-sm);
-    color: var(--color-text-secondary);
-    font-weight: var(--font-weight-semibold);
-}
-
-.keyboardChar {
-    font-size: var(--font-size-2xl);
-    font-weight: var(--font-weight-bold);
-    color: var(--color-text-primary);
-    background: var(--color-primary-soft);
-    border-radius: var(--radius-full);
-    padding: var(--space-xs) var(--space-md);
-}
-
 .keyboard {
     display: flex;
     flex-direction: column;

@@ -35,6 +35,7 @@ export function TypingInput({
     );
     const [lastError, setLastError] = useState(false);
     const [consecutiveMiss, setConsecutiveMiss] = useState(0);
+    const [showCorrect, setShowCorrect] = useState(false);
     const hasCompletedRef = useRef(false);
     const containerRef = useRef<HTMLDivElement>(null);
 
@@ -98,6 +99,11 @@ export function TypingInput({
         onKeyResult?.(!isError);
         setConsecutiveMiss(prev => (isError ? prev + 1 : 0));
 
+        if (!isError) {
+            setShowCorrect(true);
+            setTimeout(() => setShowCorrect(false), 180);
+        }
+
         if (isError) {
             // エラーアニメーション後にリセット
             setTimeout(() => setLastError(false), 300);
@@ -129,13 +135,13 @@ export function TypingInput({
     return (
         <div
             ref={containerRef}
-            className={`${styles.container} ${lastError ? styles.error : ''} ${disabled ? styles.disabled : ''} ${isComplete ? styles.isComplete : ''}`}
+            className={`${styles.container} ${lastError ? styles.error : ''} ${disabled ? styles.disabled : ''} ${showCorrect ? styles.showCorrect : ''}`}
             tabIndex={0}
             role="textbox"
             aria-label="タイピング入力"
         >
             <div className={styles.completeIndicator} aria-hidden="true">
-                ✓
+                !
             </div>
             {/* 入力表示エリア */}
             <div className={styles.display}>
@@ -151,13 +157,6 @@ export function TypingInput({
             {/* 入力位置カーソル */}
             <div className={styles.cursor} />
 
-            <div className={styles.statusRow} aria-live="polite">
-                {typingState.missCount > 0 && (
-                    <div className={styles.missCount}>
-                        ミス: {typingState.missCount}
-                    </div>
-                )}
-            </div>
         </div>
     );
 }

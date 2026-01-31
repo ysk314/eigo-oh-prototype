@@ -269,7 +269,6 @@ export function PlayPage() {
     };
 
     const activeFingerId = selectedMode === 1 ? getFingerIdForChar(currentChar) : null;
-    const displayChar = currentChar === ' ' ? 'SPACE' : currentChar;
     const getKeyIdForChar = (char: string | null) => {
         if (!char) return null;
         const key = char.toLowerCase();
@@ -463,12 +462,6 @@ export function PlayPage() {
                         <div className={styles.inputArea}>
                             {selectedMode === 1 && (
                                 <div className={styles.keyboardGuide} aria-live="polite">
-                                    <div className={styles.keyboardHeader}>
-                                        <span className={styles.keyboardTitle}>次のキー</span>
-                                        <span className={styles.keyboardChar}>
-                                            {displayChar || '-'}
-                                        </span>
-                                    </div>
                                     <div className={styles.keyboard}>
                                         {[
                                             ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '-', '@'],
