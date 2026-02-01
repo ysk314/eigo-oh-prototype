@@ -41,6 +41,7 @@ export function TypingInput({
     const [inputValue, setInputValue] = useState('');
     const isComposingRef = useRef(false);
     const isInputFocusedRef = useRef(false);
+    const prevDisabledRef = useRef(disabled);
 
     // 回答が変わったらリセット
     useEffect(() => {
@@ -122,8 +123,33 @@ export function TypingInput({
     }, []);
 
     const focusInput = () => {
-        inputRef.current?.focus();
+        const node = inputRef.current;
+        if (!node) return;
+        try {
+            node.focus({ preventScroll: true });
+        } catch {
+            node.focus();
+        }
     };
+
+    useEffect(() => {
+        if (disabled || typingState.isComplete) {
+            prevDisabledRef.current = disabled;
+            return;
+        }
+
+        const wasDisabled = prevDisabledRef.current;
+        prevDisabledRef.current = disabled;
+
+        if (wasDisabled || isInputFocusedRef.current) {
+            focusInput();
+        }
+    }, [disabled, typingState.isComplete]);
+
+    useEffect(() => {
+        if (disabled || typingState.isComplete || isInputFocusedRef.current) return;
+        focusInput();
+    }, [answer, disabled, typingState.isComplete]);
 
     const handleInputChange = (nextValue: string) => {
         if (disabled || typingState.isComplete) return;
@@ -198,6 +224,7 @@ export function TypingInput({
                 spellCheck={false}
                 inputMode="text"
                 enterKeyHint="done"
+                lang="en"
             />
             <div className={styles.completeIndicator} aria-hidden="true">
                 ✓
