@@ -24,6 +24,8 @@ export interface Question {
     sectionLabel: string;     // 日本語表示用 "小学校の単語"
     promptJp: string;         // "セブ" or "私は試合に勝ちたいです。"
     answerEn: string;         // "Cebu" or "I want to win the game."
+    pos: string[];         // parts of speech (e.g. ['noun', 'verb'])
+    category?: string[];   // e.g. ['idiom']
     highlightTokens?: string[]; // ["win"] - キーセンテンス用
     audioUrl?: string;        // 音声ファイルURL（オプション）
     orderIndex: number;

@@ -14,6 +14,7 @@ export const questions: Question[] = [
         sectionLabel: '1-10',
         promptJp: '[名]学校',
         answerEn: 'school',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -25,6 +26,7 @@ export const questions: Question[] = [
         sectionLabel: '1-10',
         promptJp: '[名]学生，生徒',
         answerEn: 'student',
+        pos: ['noun'],
         orderIndex: 2,
     },
     {
@@ -36,6 +38,7 @@ export const questions: Question[] = [
         sectionLabel: '1-10',
         promptJp: '[名]英語，[形]英語の',
         answerEn: 'English',
+        pos: ['noun', 'adj'],
         orderIndex: 3,
     },
     {
@@ -47,6 +50,7 @@ export const questions: Question[] = [
         sectionLabel: '1-10',
         promptJp: '[名]日本人，[名]日本語，[形]日本（人）の，[形]日本語の',
         answerEn: 'Japanese',
+        pos: ['noun', 'adj'],
         orderIndex: 4,
     },
     {
@@ -58,6 +62,7 @@ export const questions: Question[] = [
         sectionLabel: '1-10',
         promptJp: '[名]友だち，友人',
         answerEn: 'friend',
+        pos: ['noun'],
         orderIndex: 5,
     },
     {
@@ -69,6 +74,7 @@ export const questions: Question[] = [
         sectionLabel: '1-10',
         promptJp: '[名]食べ物，食料',
         answerEn: 'food',
+        pos: ['noun'],
         orderIndex: 6,
     },
     {
@@ -80,6 +86,7 @@ export const questions: Question[] = [
         sectionLabel: '1-10',
         promptJp: '[名]家族',
         answerEn: 'family',
+        pos: ['noun'],
         orderIndex: 7,
     },
     {
@@ -91,6 +98,7 @@ export const questions: Question[] = [
         sectionLabel: '1-10',
         promptJp: '[名]子ども',
         answerEn: 'child',
+        pos: ['noun'],
         orderIndex: 8,
     },
     {
@@ -102,6 +110,7 @@ export const questions: Question[] = [
         sectionLabel: '1-10',
         promptJp: '[名]チーム',
         answerEn: 'team',
+        pos: ['noun'],
         orderIndex: 9,
     },
     {
@@ -113,6 +122,7 @@ export const questions: Question[] = [
         sectionLabel: '1-10',
         promptJp: '[名]公園，[動]（車を）駐車する',
         answerEn: 'park',
+        pos: ['noun', 'verb'],
         orderIndex: 10,
     },
     {
@@ -124,6 +134,7 @@ export const questions: Question[] = [
         sectionLabel: '11-20',
         promptJp: '[名]駅，（役所の）署，（放送などの）局',
         answerEn: 'station',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -135,6 +146,7 @@ export const questions: Question[] = [
         sectionLabel: '11-20',
         promptJp: '[名]列車，電車，[動]～を訓練する',
         answerEn: 'train',
+        pos: ['noun', 'verb'],
         orderIndex: 2,
     },
     {
@@ -146,6 +158,7 @@ export const questions: Question[] = [
         sectionLabel: '11-20',
         promptJp: '[動]～を…と名づける，[名]名，名前',
         answerEn: 'name',
+        pos: ['verb', 'noun'],
         orderIndex: 3,
     },
     {
@@ -157,6 +170,7 @@ export const questions: Question[] = [
         sectionLabel: '11-20',
         promptJp: '[感]こんにちは，やあ，（電話で）もしもし',
         answerEn: 'hello',
+        pos: ['interj'],
         orderIndex: 4,
     },
     {
@@ -168,6 +182,7 @@ export const questions: Question[] = [
         sectionLabel: '11-20',
         promptJp: '[名]スポーツ，運動競技',
         answerEn: 'sport',
+        pos: ['noun'],
         orderIndex: 5,
     },
     {
@@ -179,6 +194,7 @@ export const questions: Question[] = [
         sectionLabel: '11-20',
         promptJp: '[助動]～することができる，～してよい',
         answerEn: 'can',
+        pos: ['aux'],
         orderIndex: 6,
     },
     {
@@ -190,6 +206,7 @@ export const questions: Question[] = [
         sectionLabel: '11-20',
         promptJp: '[名]人々',
         answerEn: 'people',
+        pos: ['noun'],
         orderIndex: 7,
     },
     {
@@ -201,6 +218,7 @@ export const questions: Question[] = [
         sectionLabel: '11-20',
         promptJp: '[動]行く',
         answerEn: 'go',
+        pos: ['verb'],
         orderIndex: 8,
     },
     {
@@ -212,6 +230,7 @@ export const questions: Question[] = [
         sectionLabel: '11-20',
         promptJp: '[動]（～と）思う，考える',
         answerEn: 'think',
+        pos: ['verb'],
         orderIndex: 9,
     },
     {
@@ -223,6 +242,7 @@ export const questions: Question[] = [
         sectionLabel: '11-20',
         promptJp: '[動]～がほしい，～を望む，～したい',
         answerEn: 'want',
+        pos: ['verb'],
         orderIndex: 10,
     },
     {
@@ -234,6 +254,7 @@ export const questions: Question[] = [
         sectionLabel: '21-30',
         promptJp: '[代]これ、[形]この，こちらの',
         answerEn: 'this',
+        pos: ['pron', 'adj'],
         orderIndex: 1,
     },
     {
@@ -245,6 +266,7 @@ export const questions: Question[] = [
         sectionLabel: '21-30',
         promptJp: '[動]～を作る，～を…にする',
         answerEn: 'make',
+        pos: ['verb'],
         orderIndex: 2,
     },
     {
@@ -256,6 +278,7 @@ export const questions: Question[] = [
         sectionLabel: '21-30',
         promptJp: '[代]何，[形]何の，[形]どんな',
         answerEn: 'what',
+        pos: ['pron', 'adj'],
         orderIndex: 3,
     },
     {
@@ -267,6 +290,7 @@ export const questions: Question[] = [
         sectionLabel: '21-30',
         promptJp: '[動]～が見える，（人）に会う，（～が）わかる',
         answerEn: 'see',
+        pos: ['verb'],
         orderIndex: 4,
     },
     {
@@ -278,6 +302,7 @@ export const questions: Question[] = [
         sectionLabel: '21-30',
         promptJp: '[前]～へ[に]，～まで',
         answerEn: 'to',
+        pos: ['prep'],
         orderIndex: 5,
     },
     {
@@ -289,6 +314,7 @@ export const questions: Question[] = [
         sectionLabel: '21-30',
         promptJp: '[前/副]～（の中）に[で，の]，～の間に，～のあとに，～で，～を使って，中に',
         answerEn: 'in',
+        pos: ['adv', 'prep'],
         orderIndex: 6,
     },
     {
@@ -300,6 +326,7 @@ export const questions: Question[] = [
         sectionLabel: '21-30',
         promptJp: '[接]～と…，そして，そうすれば',
         answerEn: 'and',
+        pos: ['conj'],
         orderIndex: 7,
     },
     {
@@ -311,6 +338,7 @@ export const questions: Question[] = [
         sectionLabel: '21-30',
         promptJp: '[代]彼らは[が]，彼女らは[が]，それらは[が]',
         answerEn: 'they',
+        pos: ['pron'],
         orderIndex: 8,
     },
     {
@@ -322,6 +350,7 @@ export const questions: Question[] = [
         sectionLabel: '21-30',
         promptJp: '[形]よい，楽しい，おいしい',
         answerEn: 'good',
+        pos: ['adj'],
         orderIndex: 9,
     },
     {
@@ -333,6 +362,7 @@ export const questions: Question[] = [
         sectionLabel: '21-30',
         promptJp: '[前/副]～と同じような[に]，[形]～に似た，[動]～が好きである，気に入っている',
         answerEn: 'like',
+        pos: ['adv', 'prep', 'adj', 'verb'],
         orderIndex: 10,
     },
     {
@@ -344,6 +374,7 @@ export const questions: Question[] = [
         sectionLabel: '31-40',
         promptJp: '[動]（～を）知っている，（～が）わかる',
         answerEn: 'know',
+        pos: ['verb'],
         orderIndex: 1,
     },
     {
@@ -355,6 +386,7 @@ export const questions: Question[] = [
         sectionLabel: '31-40',
         promptJp: '[名]物，こと',
         answerEn: 'thing',
+        pos: ['noun'],
         orderIndex: 2,
     },
     {
@@ -366,6 +398,7 @@ export const questions: Question[] = [
         sectionLabel: '31-40',
         promptJp: '[動]～を使う，利用する',
         answerEn: 'use',
+        pos: ['verb'],
         orderIndex: 3,
     },
     {
@@ -377,6 +410,7 @@ export const questions: Question[] = [
         sectionLabel: '31-40',
         promptJp: '[動]来る，（相手の方へ）行く',
         answerEn: 'come',
+        pos: ['verb'],
         orderIndex: 4,
     },
     {
@@ -388,6 +422,7 @@ export const questions: Question[] = [
         sectionLabel: '31-40',
         promptJp: '[感]はい，そうです',
         answerEn: 'yes',
+        pos: ['interj'],
         orderIndex: 5,
     },
     {
@@ -399,6 +434,7 @@ export const questions: Question[] = [
         sectionLabel: '31-40',
         promptJp: '[副]今（は），今すぐ，もう',
         answerEn: 'now',
+        pos: ['adv'],
         orderIndex: 6,
     },
     {
@@ -410,6 +446,7 @@ export const questions: Question[] = [
         sectionLabel: '31-40',
         promptJp: '[前]～の，～の中の，～の（行った）',
         answerEn: 'of',
+        pos: ['prep'],
         orderIndex: 7,
     },
     {
@@ -421,6 +458,7 @@ export const questions: Question[] = [
         sectionLabel: '31-40',
         promptJp: '[助動/動]（現在形の疑問文，答えの文，否定文をつくる），（～を）する',
         answerEn: 'do',
+        pos: ['verb', 'particle', 'aux'],
         orderIndex: 8,
     },
     {
@@ -432,6 +470,7 @@ export const questions: Question[] = [
         sectionLabel: '31-40',
         promptJp: '[形]あの，その，[代]あれ',
         answerEn: 'that',
+        pos: ['adj', 'pron'],
         orderIndex: 9,
     },
     {
@@ -443,6 +482,7 @@ export const questions: Question[] = [
         sectionLabel: '31-40',
         promptJp: '[動]～を持っている，～がある[いる]，～を飼っている，～を食べる',
         answerEn: 'have',
+        pos: ['verb'],
         orderIndex: 10,
     },
     {
@@ -454,6 +494,7 @@ export const questions: Question[] = [
         sectionLabel: '41-50',
         promptJp: '[前]～のために，～に適した，ふさわしい，～の間，～に対して，～にとって',
         answerEn: 'for',
+        pos: ['prep'],
         orderIndex: 1,
     },
     {
@@ -465,6 +506,7 @@ export const questions: Question[] = [
         sectionLabel: '41-50',
         promptJp: '[前/副]～について，～に関して，およそ，約，だいたい',
         answerEn: 'about',
+        pos: ['adv', 'prep'],
         orderIndex: 2,
     },
     {
@@ -476,6 +518,7 @@ export const questions: Question[] = [
         sectionLabel: '41-50',
         promptJp: '[名]彼のもの',
         answerEn: 'his',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -487,6 +530,7 @@ export const questions: Question[] = [
         sectionLabel: '41-50',
         promptJp: '[動]（人に）～を話す，伝える，教える',
         answerEn: 'tell',
+        pos: ['verb'],
         orderIndex: 4,
     },
     {
@@ -498,6 +542,7 @@ export const questions: Question[] = [
         sectionLabel: '41-50',
         promptJp: '[副]～ない，～でない',
         answerEn: 'not',
+        pos: ['adv'],
         orderIndex: 5,
     },
     {
@@ -509,6 +554,7 @@ export const questions: Question[] = [
         sectionLabel: '41-50',
         promptJp: '[副]上手に，[副]よく，[感]わかった，[感]ええと，[形]元気な，[形]健康な',
         answerEn: 'well',
+        pos: ['adv', 'interj', 'adj'],
         orderIndex: 6,
     },
     {
@@ -520,6 +566,7 @@ export const questions: Question[] = [
         sectionLabel: '41-50',
         promptJp: '[名]最初の人[物]，（月の）１日，[形]第１の，最初の，[副]第１に，最初に，初めて',
         answerEn: 'first',
+        pos: ['noun', 'adj', 'adv'],
         orderIndex: 7,
     },
     {
@@ -531,6 +578,7 @@ export const questions: Question[] = [
         sectionLabel: '41-50',
         promptJp: '[動]遊ぶ，（スポーツ・ゲームなど）をする，（楽器）を弾く，演奏する，[名]劇，芝居，戯曲',
         answerEn: 'play',
+        pos: ['verb', 'noun'],
         orderIndex: 8,
     },
     {
@@ -542,6 +590,7 @@ export const questions: Question[] = [
         sectionLabel: '41-50',
         promptJp: '[動]（～と）言う，～と書いてある',
         answerEn: 'say',
+        pos: ['verb'],
         orderIndex: 9,
     },
     {
@@ -553,6 +602,7 @@ export const questions: Question[] = [
         sectionLabel: '41-50',
         promptJp: '[前] ～と一緒に，～とともに，～を持って[持った]，～で',
         answerEn: 'with',
+        pos: ['prep'],
         orderIndex: 10,
     },
     {
@@ -564,6 +614,7 @@ export const questions: Question[] = [
         sectionLabel: '51-60',
         promptJp: '[前]～で，～に，～のときに',
         answerEn: 'at',
+        pos: ['prep'],
         orderIndex: 1,
     },
     {
@@ -575,6 +626,7 @@ export const questions: Question[] = [
         sectionLabel: '51-60',
         promptJp: '[接]しかし，だが，けれども',
         answerEn: 'but',
+        pos: ['conj'],
         orderIndex: 2,
     },
     {
@@ -586,6 +638,7 @@ export const questions: Question[] = [
         sectionLabel: '51-60',
         promptJp: '[副]いつ，いつ～するときに，いつ（～か），～する時，～のときに',
         answerEn: 'when',
+        pos: ['adv'],
         orderIndex: 3,
     },
     {
@@ -597,6 +650,7 @@ export const questions: Question[] = [
         sectionLabel: '51-60',
         promptJp: '[接]それで，[接]だから，[副]そう，[副]そのように，[副]とても，[副]非常に',
         answerEn: 'so',
+        pos: ['conj', 'adv'],
         orderIndex: 4,
     },
     {
@@ -608,6 +662,7 @@ export const questions: Question[] = [
         sectionLabel: '51-60',
         promptJp: '[名/形/副]多くの人[もの]，多数，多くの，たくさんの',
         answerEn: 'many',
+        pos: ['noun', 'adj', 'adv'],
         orderIndex: 5,
     },
     {
@@ -619,6 +674,7 @@ export const questions: Question[] = [
         sectionLabel: '51-60',
         promptJp: '[副]とても，[副]非常に，[副]たいへん',
         answerEn: 'very',
+        pos: ['adv'],
         orderIndex: 6,
     },
     {
@@ -630,6 +686,7 @@ export const questions: Question[] = [
         sectionLabel: '51-60',
         promptJp: '[副]そこで[に，へ]，[形]～がいる[ある]',
         answerEn: 'there',
+        pos: ['adv', 'adj'],
         orderIndex: 7,
     },
     {
@@ -641,6 +698,7 @@ export const questions: Question[] = [
         sectionLabel: '51-60',
         promptJp: '[前/副][継続を表して]続けて，～の上に[で]，～に，～で',
         answerEn: 'on',
+        pos: ['adv', 'prep'],
         orderIndex: 8,
     },
     {
@@ -652,6 +710,7 @@ export const questions: Question[] = [
         sectionLabel: '51-60',
         promptJp: '[前]～から（の），～の出身の，～から来た',
         answerEn: 'from',
+        pos: ['prep'],
         orderIndex: 9,
     },
     {
@@ -663,6 +722,7 @@ export const questions: Question[] = [
         sectionLabel: '51-60',
         promptJp: '[代]彼ら[彼女ら]を[に]，それらを[に]',
         answerEn: 'them',
+        pos: ['pron'],
         orderIndex: 10,
     },
     {
@@ -674,6 +734,7 @@ export const questions: Question[] = [
         sectionLabel: '61-70',
         promptJp: '[形]いくつかの，いくらかの，いく人かの，[代]いくつか，いくらか，いく人か',
         answerEn: 'some',
+        pos: ['adj', 'pron'],
         orderIndex: 1,
     },
     {
@@ -685,6 +746,7 @@ export const questions: Question[] = [
         sectionLabel: '61-70',
         promptJp: '[形]1つの，1人の，[名・代]1，1つ，[代]（前に出た）人[もの]',
         answerEn: 'one',
+        pos: ['adj', 'noun', 'pron'],
         orderIndex: 2,
     },
     {
@@ -696,6 +758,7 @@ export const questions: Question[] = [
         sectionLabel: '61-70',
         promptJp: '[名]日，１日，時代',
         answerEn: 'day',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -707,6 +770,7 @@ export const questions: Question[] = [
         sectionLabel: '61-70',
         promptJp: '[副]どうやって，どれくらい，どんなふうで，なんて～なのだろう',
         answerEn: 'how',
+        pos: ['adv'],
         orderIndex: 4,
     },
     {
@@ -718,6 +782,7 @@ export const questions: Question[] = [
         sectionLabel: '61-70',
         promptJp: '[形]彼ら[彼女ら]の，それらの',
         answerEn: 'their',
+        pos: ['adj'],
         orderIndex: 5,
     },
     {
@@ -729,6 +794,7 @@ export const questions: Question[] = [
         sectionLabel: '61-70',
         promptJp: '[動]話す，しゃべる，[名]話，話し合い，会談',
         answerEn: 'talk',
+        pos: ['verb', 'noun'],
         orderIndex: 6,
     },
     {
@@ -740,6 +806,7 @@ export const questions: Question[] = [
         sectionLabel: '61-70',
         promptJp: '[名]時間，時刻，～回',
         answerEn: 'time',
+        pos: ['noun'],
         orderIndex: 7,
     },
     {
@@ -751,6 +818,7 @@ export const questions: Question[] = [
         sectionLabel: '61-70',
         promptJp: '[名]見ること，一見，[動]見る，（～のように）見える',
         answerEn: 'look',
+        pos: ['noun', 'verb'],
         orderIndex: 8,
     },
     {
@@ -762,6 +830,7 @@ export const questions: Question[] = [
         sectionLabel: '61-70',
         promptJp: '[形]他の，別の，もう一方の，[代]他のもの[人]',
         answerEn: 'other',
+        pos: ['adj', 'pron'],
         orderIndex: 9,
     },
     {
@@ -773,6 +842,7 @@ export const questions: Question[] = [
         sectionLabel: '61-70',
         promptJp: '[動]（～を）習う，学ぶ，習得する',
         answerEn: 'learn',
+        pos: ['verb'],
         orderIndex: 10,
     },
     {
@@ -784,6 +854,7 @@ export const questions: Question[] = [
         sectionLabel: '71-80',
         promptJp: '[動]～を楽しむ，～して楽しむ',
         answerEn: 'enjoy',
+        pos: ['verb'],
         orderIndex: 1,
     },
     {
@@ -795,6 +866,7 @@ export const questions: Question[] = [
         sectionLabel: '71-80',
         promptJp: '[名]1年，年，～歳',
         answerEn: 'year',
+        pos: ['noun'],
         orderIndex: 2,
     },
     {
@@ -806,6 +878,7 @@ export const questions: Question[] = [
         sectionLabel: '71-80',
         promptJp: '[動]働く，勉強する，動く，機能する，[名]仕事，勉強，作品',
         answerEn: 'work',
+        pos: ['verb', 'noun'],
         orderIndex: 3,
     },
     {
@@ -817,6 +890,7 @@ export const questions: Question[] = [
         sectionLabel: '71-80',
         promptJp: '[動] ～を得る，買う，もらう，（～に）なる，（～に）着く',
         answerEn: 'get',
+        pos: ['verb'],
         orderIndex: 4,
     },
     {
@@ -828,6 +902,7 @@ export const questions: Question[] = [
         sectionLabel: '71-80',
         promptJp: '[前, 副]～したあとに[で]，あとで，その後，～のあとに[で]',
         answerEn: 'after',
+        pos: ['adv', 'prep'],
         orderIndex: 5,
     },
     {
@@ -839,6 +914,7 @@ export const questions: Question[] = [
         sectionLabel: '71-80',
         promptJp: '[副]～もまた，同様に',
         answerEn: 'also',
+        pos: ['adv'],
         orderIndex: 6,
     },
     {
@@ -850,6 +926,7 @@ export const questions: Question[] = [
         sectionLabel: '71-80',
         promptJp: '[前]～のそばに，～で，～までに',
         answerEn: 'by',
+        pos: ['prep'],
         orderIndex: 7,
     },
     {
@@ -861,6 +938,7 @@ export const questions: Question[] = [
         sectionLabel: '71-80',
         promptJp: '[副]その時，[副]それから，[副]それなら，[副]それでは',
         answerEn: 'then',
+        pos: ['adv'],
         orderIndex: 8,
     },
     {
@@ -872,6 +950,7 @@ export const questions: Question[] = [
         sectionLabel: '71-80',
         promptJp: '[動]～を取る，～を持っていく，連れていく',
         answerEn: 'take',
+        pos: ['verb'],
         orderIndex: 9,
     },
     {
@@ -883,6 +962,7 @@ export const questions: Question[] = [
         sectionLabel: '71-80',
         promptJp: '[動]～を助ける，手伝う，（人）が～するのを手伝う[手助けする]，[名]助け，手伝い',
         answerEn: 'help',
+        pos: ['verb', 'particle', 'noun'],
         orderIndex: 10,
     },
     {
@@ -894,6 +974,7 @@ export const questions: Question[] = [
         sectionLabel: '81-90',
         promptJp: '[動]～である，（～に）いる[ある]',
         answerEn: 'be',
+        pos: ['verb'],
         orderIndex: 1,
     },
     {
@@ -905,6 +986,7 @@ export const questions: Question[] = [
         sectionLabel: '81-90',
         promptJp: '[形]うれしい，楽しい，幸福な，幸せな',
         answerEn: 'happy',
+        pos: ['adj'],
         orderIndex: 2,
     },
     {
@@ -916,6 +998,7 @@ export const questions: Question[] = [
         sectionLabel: '81-90',
         promptJp: '[名]国，（theをつけて）田舎',
         answerEn: 'country',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -927,6 +1010,7 @@ export const questions: Question[] = [
         sectionLabel: '81-90',
         promptJp: '[動]（～を）試みる，試す',
         answerEn: 'try',
+        pos: ['verb'],
         orderIndex: 4,
     },
     {
@@ -938,6 +1022,7 @@ export const questions: Question[] = [
         sectionLabel: '81-90',
         promptJp: '[副]～もまた，同様に，あまりにも～すぎる',
         answerEn: 'too',
+        pos: ['adv'],
         orderIndex: 5,
     },
     {
@@ -949,6 +1034,7 @@ export const questions: Question[] = [
         sectionLabel: '81-90',
         promptJp: '[動]（人・場所）を訪れる，[動]訪問する，[名]訪問',
         answerEn: 'visit',
+        pos: ['verb', 'noun'],
         orderIndex: 6,
     },
     {
@@ -960,6 +1046,7 @@ export const questions: Question[] = [
         sectionLabel: '81-90',
         promptJp: '[副]次に，今度は，[形]次の，今度の',
         answerEn: 'next',
+        pos: ['adv', 'adj'],
         orderIndex: 7,
     },
     {
@@ -971,6 +1058,7 @@ export const questions: Question[] = [
         sectionLabel: '81-90',
         promptJp: '[動]（～を）勉強する，研究する，[名]勉強，研究',
         answerEn: 'study',
+        pos: ['verb', 'noun'],
         orderIndex: 8,
     },
     {
@@ -982,6 +1070,7 @@ export const questions: Question[] = [
         sectionLabel: '81-90',
         promptJp: '[動]～を[～に]尋ねる，問う，（～に）頼む',
         answerEn: 'ask',
+        pos: ['verb'],
         orderIndex: 9,
     },
     {
@@ -993,6 +1082,7 @@ export const questions: Question[] = [
         sectionLabel: '81-90',
         promptJp: '[名]考え，アイデア',
         answerEn: 'idea',
+        pos: ['noun'],
         orderIndex: 10,
     },
     {
@@ -1004,6 +1094,7 @@ export const questions: Question[] = [
         sectionLabel: '91-100',
         promptJp: '[動]（～を）読む，読書する，～を（人に）読み聞かせる',
         answerEn: 'read',
+        pos: ['verb'],
         orderIndex: 1,
     },
     {
@@ -1015,6 +1106,7 @@ export const questions: Question[] = [
         sectionLabel: '91-100',
         promptJp: '[形]新しい',
         answerEn: 'new',
+        pos: ['adj'],
         orderIndex: 2,
     },
     {
@@ -1026,6 +1118,7 @@ export const questions: Question[] = [
         sectionLabel: '91-100',
         promptJp: '[名]心，心臓',
         answerEn: 'heart',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -1037,6 +1130,7 @@ export const questions: Question[] = [
         sectionLabel: '91-100',
         promptJp: '[動]～を与える，あげる',
         answerEn: 'give',
+        pos: ['verb'],
         orderIndex: 4,
     },
     {
@@ -1048,6 +1142,7 @@ export const questions: Question[] = [
         sectionLabel: '91-100',
         promptJp: '[副]右（側）に[へ]，[名]右（側），権利，[形]右（側）の，正しい',
         answerEn: 'right',
+        pos: ['adv', 'noun', 'adj'],
         orderIndex: 5,
     },
     {
@@ -1059,6 +1154,7 @@ export const questions: Question[] = [
         sectionLabel: '91-100',
         promptJp: '[動]（～に）なる',
         answerEn: 'become',
+        pos: ['verb'],
         orderIndex: 6,
     },
     {
@@ -1070,6 +1166,7 @@ export const questions: Question[] = [
         sectionLabel: '91-100',
         promptJp: '[形]高い，高さが～の / [副]高く',
         answerEn: 'high',
+        pos: ['adj', 'adv'],
         orderIndex: 7,
     },
     {
@@ -1081,6 +1178,7 @@ export const questions: Question[] = [
         sectionLabel: '91-100',
         promptJp: '[副]本当に，実際に',
         answerEn: 'really',
+        pos: ['adv'],
         orderIndex: 8,
     },
     {
@@ -1092,6 +1190,7 @@ export const questions: Question[] = [
         sectionLabel: '91-100',
         promptJp: '[代]誰が[に，を]',
         answerEn: 'who',
+        pos: ['pron'],
         orderIndex: 9,
     },
     {
@@ -1103,6 +1202,7 @@ export const questions: Question[] = [
         sectionLabel: '91-100',
         promptJp: '[副]なぜ，どうして',
         answerEn: 'why',
+        pos: ['adv'],
         orderIndex: 10,
     },
     {
@@ -1114,6 +1214,7 @@ export const questions: Question[] = [
         sectionLabel: '101-110',
         promptJp: '[名・副]全部，すべて，みんな / [形]全部の，すべての',
         answerEn: 'all',
+        pos: ['noun', 'adv', 'adj'],
         orderIndex: 1,
     },
     {
@@ -1125,6 +1226,7 @@ export const questions: Question[] = [
         sectionLabel: '101-110',
         promptJp: '[動] ①～が聞こえる，～を聞く ②～を聞いて知る',
         answerEn: 'hear',
+        pos: ['verb'],
         orderIndex: 2,
     },
     {
@@ -1136,6 +1238,7 @@ export const questions: Question[] = [
         sectionLabel: '101-110',
         promptJp: '[名]～さん，～氏，～先生',
         answerEn: 'Mr.',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -1147,6 +1250,7 @@ export const questions: Question[] = [
         sectionLabel: '101-110',
         promptJp: '[名]ショー，番組 / [動]①（…に）～を見せる，示す ②（一緒に行って）～を案内する，教える',
         answerEn: 'show',
+        pos: ['noun', 'verb'],
         orderIndex: 4,
     },
     {
@@ -1158,6 +1262,7 @@ export const questions: Question[] = [
         sectionLabel: '101-110',
         promptJp: '[動]①始まる [動]②～を始める',
         answerEn: 'start',
+        pos: ['verb'],
         orderIndex: 5,
     },
     {
@@ -1169,6 +1274,7 @@ export const questions: Question[] = [
         sectionLabel: '101-110',
         promptJp: '[形]①固い，②難しい，厳しい / [副]一生懸命に，熱心に，激しく',
         answerEn: 'hard',
+        pos: ['adj', 'adv'],
         orderIndex: 6,
     },
     {
@@ -1180,6 +1286,7 @@ export const questions: Question[] = [
         sectionLabel: '101-110',
         promptJp: '[形]①どの～も，すべての，毎～ [副]②～ごとに',
         answerEn: 'every',
+        pos: ['adj', 'adv'],
         orderIndex: 7,
     },
     {
@@ -1191,6 +1298,7 @@ export const questions: Question[] = [
         sectionLabel: '101-110',
         promptJp: '[名]①絵 ②写真',
         answerEn: 'picture',
+        pos: ['noun'],
         orderIndex: 8,
     },
     {
@@ -1202,6 +1310,7 @@ export const questions: Question[] = [
         sectionLabel: '101-110',
         promptJp: '[名]①何か，何かあるもの[こと] ②何か～な[～する]もの',
         answerEn: 'something',
+        pos: ['noun'],
         orderIndex: 9,
     },
     {
@@ -1213,6 +1322,7 @@ export const questions: Question[] = [
         sectionLabel: '101-110',
         promptJp: '[副]最後に / [形]①最後の ②この前の',
         answerEn: 'last',
+        pos: ['adv', 'adj'],
         orderIndex: 10,
     },
     {
@@ -1224,6 +1334,7 @@ export const questions: Question[] = [
         sectionLabel: '111-120',
         promptJp: '[名]①道 ②方法，やり方 ③方向，方角',
         answerEn: 'way',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -1235,6 +1346,7 @@ export const questions: Question[] = [
         sectionLabel: '111-120',
         promptJp: '[名]多く（のこと） / [副]ずっと，はるかに / [形]多量の，たくさんの',
         answerEn: 'much',
+        pos: ['noun', 'adv', 'adj'],
         orderIndex: 2,
     },
     {
@@ -1246,6 +1358,7 @@ export const questions: Question[] = [
         sectionLabel: '111-120',
         promptJp: '[動]（～を）食べる，食事する',
         answerEn: 'eat',
+        pos: ['verb'],
         orderIndex: 3,
     },
     {
@@ -1257,6 +1370,7 @@ export const questions: Question[] = [
         sectionLabel: '111-120',
         promptJp: '[名]世界',
         answerEn: 'world',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -1268,6 +1382,7 @@ export const questions: Question[] = [
         sectionLabel: '111-120',
         promptJp: '[名]命，生命，生活，暮らし，人生，生涯，寿命',
         answerEn: 'life',
+        pos: ['noun'],
         orderIndex: 5,
     },
     {
@@ -1279,6 +1394,7 @@ export const questions: Question[] = [
         sectionLabel: '111-120',
         promptJp: '[形]古い，年をとった',
         answerEn: 'old',
+        pos: ['adj'],
         orderIndex: 6,
     },
     {
@@ -1290,6 +1406,7 @@ export const questions: Question[] = [
         sectionLabel: '111-120',
         promptJp: '[動]（～を）書く',
         answerEn: 'write',
+        pos: ['verb'],
         orderIndex: 7,
     },
     {
@@ -1301,6 +1418,7 @@ export const questions: Question[] = [
         sectionLabel: '111-120',
         promptJp: '[動]（～を）理解する，わかる',
         answerEn: 'understand',
+        pos: ['verb'],
         orderIndex: 8,
     },
     {
@@ -1312,6 +1430,7 @@ export const questions: Question[] = [
         sectionLabel: '111-120',
         promptJp: '[動]～を置く，[名]場所，家',
         answerEn: 'place',
+        pos: ['verb', 'noun'],
         orderIndex: 9,
     },
     {
@@ -1323,6 +1442,7 @@ export const questions: Question[] = [
         sectionLabel: '111-120',
         promptJp: '[名]種類，[形]親切な，[形]やさしい',
         answerEn: 'kind',
+        pos: ['noun', 'adj'],
         orderIndex: 10,
     },
     {
@@ -1334,6 +1454,7 @@ export const questions: Question[] = [
         sectionLabel: '121-130',
         promptJp: '[接]～かまたは，それとも，さもないと（命令文のあとで）',
         answerEn: 'or',
+        pos: ['conj'],
         orderIndex: 1,
     },
     {
@@ -1345,6 +1466,7 @@ export const questions: Question[] = [
         sectionLabel: '121-130',
         promptJp: '[名] 授業，クラス，学級',
         answerEn: 'class',
+        pos: ['noun'],
         orderIndex: 2,
     },
     {
@@ -1356,6 +1478,7 @@ export const questions: Question[] = [
         sectionLabel: '121-130',
         promptJp: '[名]未来，将来，[形]未来の，将来の',
         answerEn: 'future',
+        pos: ['noun', 'adj'],
         orderIndex: 3,
     },
     {
@@ -1367,6 +1490,7 @@ export const questions: Question[] = [
         sectionLabel: '121-130',
         promptJp: '[動]～を必要とする，[名]必要',
         answerEn: 'need',
+        pos: ['verb', 'noun'],
         orderIndex: 4,
     },
     {
@@ -1378,6 +1502,7 @@ export const questions: Question[] = [
         sectionLabel: '121-130',
         promptJp: '[名]語，単語，言葉',
         answerEn: 'word',
+        pos: ['noun'],
         orderIndex: 5,
     },
     {
@@ -1389,6 +1514,7 @@ export const questions: Question[] = [
         sectionLabel: '121-130',
         promptJp: '[名] 市，都市',
         answerEn: 'city',
+        pos: ['noun'],
         orderIndex: 6,
     },
     {
@@ -1400,6 +1526,7 @@ export const questions: Question[] = [
         sectionLabel: '121-130',
         promptJp: '[名]今日（は），[副]今日',
         answerEn: 'today',
+        pos: ['noun', 'adv'],
         orderIndex: 7,
     },
     {
@@ -1411,6 +1538,7 @@ export const questions: Question[] = [
         sectionLabel: '121-130',
         promptJp: '[名]試合，競技，ゲーム',
         answerEn: 'game',
+        pos: ['noun'],
         orderIndex: 8,
     },
     {
@@ -1422,6 +1550,7 @@ export const questions: Question[] = [
         sectionLabel: '121-130',
         promptJp: '[動] ～を感じる，（～の）感じがする，～と感じる，思う，～だと思う',
         answerEn: 'feel',
+        pos: ['verb'],
         orderIndex: 9,
     },
     {
@@ -1433,6 +1562,7 @@ export const questions: Question[] = [
         sectionLabel: '121-130',
         promptJp: '[形] 大きな，[形] すばらしい，[形] 偉大な',
         answerEn: 'great',
+        pos: ['adj'],
         orderIndex: 10,
     },
     {
@@ -1444,6 +1574,7 @@ export const questions: Question[] = [
         sectionLabel: '131-140',
         promptJp: '[感]どうぞ，お願いします',
         answerEn: 'please',
+        pos: ['interj'],
         orderIndex: 1,
     },
     {
@@ -1455,6 +1586,7 @@ export const questions: Question[] = [
         sectionLabel: '131-140',
         promptJp: '[形]異なった，違った',
         answerEn: 'different',
+        pos: ['adj'],
         orderIndex: 2,
     },
     {
@@ -1466,6 +1598,7 @@ export const questions: Question[] = [
         sectionLabel: '131-140',
         promptJp: '[副]ここに[で，へ]，[名]ここ',
         answerEn: 'here',
+        pos: ['adv', 'noun'],
         orderIndex: 3,
     },
     {
@@ -1477,6 +1610,7 @@ export const questions: Question[] = [
         sectionLabel: '131-140',
         promptJp: '[副]家に，[名]家，家庭，故郷，[形]家の，家庭の',
         answerEn: 'home',
+        pos: ['adv', 'noun', 'adj'],
         orderIndex: 4,
     },
     {
@@ -1488,6 +1622,7 @@ export const questions: Question[] = [
         sectionLabel: '131-140',
         promptJp: '[代]どちら，どれ，[形]どちらの，どの',
         answerEn: 'which',
+        pos: ['pron', 'adj'],
         orderIndex: 5,
     },
     {
@@ -1499,6 +1634,7 @@ export const questions: Question[] = [
         sectionLabel: '131-140',
         promptJp: '[形]興味をもった，関心をもった',
         answerEn: 'interested',
+        pos: ['adj'],
         orderIndex: 6,
     },
     {
@@ -1510,6 +1646,7 @@ export const questions: Question[] = [
         sectionLabel: '131-140',
         promptJp: '[形]興味深い，おもしろい',
         answerEn: 'interesting',
+        pos: ['adj'],
         orderIndex: 7,
     },
     {
@@ -1521,6 +1658,7 @@ export const questions: Question[] = [
         sectionLabel: '131-140',
         promptJp: '[間]いいえ，一つの～もない，まったく～がない',
         answerEn: 'no',
+        pos: ['noun'],
         orderIndex: 8,
     },
     {
@@ -1532,6 +1670,7 @@ export const questions: Question[] = [
         sectionLabel: '131-140',
         promptJp: '[前]～する前に，～の前に，[副]以前に，前に',
         answerEn: 'before',
+        pos: ['prep', 'adv'],
         orderIndex: 9,
     },
     {
@@ -1543,6 +1682,7 @@ export const questions: Question[] = [
         sectionLabel: '131-140',
         promptJp: '[形]各々の，それぞれの，[代]各々，それぞれ',
         answerEn: 'each',
+        pos: ['adj', 'pron'],
         orderIndex: 10,
     },
     {
@@ -1554,6 +1694,7 @@ export const questions: Question[] = [
         sectionLabel: '141-150',
         promptJp: '[副]一緒に，ともに',
         answerEn: 'together',
+        pos: ['adv'],
         orderIndex: 1,
     },
     {
@@ -1565,6 +1706,7 @@ export const questions: Question[] = [
         sectionLabel: '141-150',
         promptJp: '[形]美しい，[形]きれいな，[形]すばらしい',
         answerEn: 'beautiful',
+        pos: ['adj'],
         orderIndex: 2,
     },
     {
@@ -1576,6 +1718,7 @@ export const questions: Question[] = [
         sectionLabel: '141-150',
         promptJp: '[動]～に加わる，参加する',
         answerEn: 'join',
+        pos: ['verb'],
         orderIndex: 3,
     },
     {
@@ -1587,6 +1730,7 @@ export const questions: Question[] = [
         sectionLabel: '141-150',
         promptJp: '[動]（～を）練習する，[名]練習',
         answerEn: 'practice',
+        pos: ['verb', 'noun'],
         orderIndex: 4,
     },
     {
@@ -1598,6 +1742,7 @@ export const questions: Question[] = [
         sectionLabel: '141-150',
         promptJp: '[名]答え，返事 / [動]（～に）答える，返事をする',
         answerEn: 'answer',
+        pos: ['noun', 'verb'],
         orderIndex: 5,
     },
     {
@@ -1609,6 +1754,7 @@ export const questions: Question[] = [
         sectionLabel: '141-150',
         promptJp: '[副]ただ～だけ，ほんの / [形]唯一の，たった1つ[1人]の',
         answerEn: 'only',
+        pos: ['adv', 'adj'],
         orderIndex: 6,
     },
     {
@@ -1620,6 +1766,7 @@ export const questions: Question[] = [
         sectionLabel: '141-150',
         promptJp: '[名]例，実例，見本',
         answerEn: 'example',
+        pos: ['noun'],
         orderIndex: 7,
     },
     {
@@ -1631,6 +1778,7 @@ export const questions: Question[] = [
         sectionLabel: '141-150',
         promptJp: '[代]これら / [形]これらの',
         answerEn: 'these',
+        pos: ['pron', 'adj'],
         orderIndex: 8,
     },
     {
@@ -1642,6 +1790,7 @@ export const questions: Question[] = [
         sectionLabel: '141-150',
         promptJp: '[前]①～の周りに[を]②～ごろ / [副]周囲に，あちこち，ぐるっと',
         answerEn: 'around',
+        pos: ['prep', 'adv'],
         orderIndex: 9,
     },
     {
@@ -1653,6 +1802,7 @@ export const questions: Question[] = [
         sectionLabel: '141-150',
         promptJp: '[動]（～を）望む，～したいと思う / [名]希望，望み',
         answerEn: 'hope',
+        pos: ['verb', 'noun'],
         orderIndex: 10,
     },
     {
@@ -1664,6 +1814,7 @@ export const questions: Question[] = [
         sectionLabel: '151-160',
         promptJp: '[動]（～を）話す',
         answerEn: 'speak',
+        pos: ['verb'],
         orderIndex: 1,
     },
     {
@@ -1675,6 +1826,7 @@ export const questions: Question[] = [
         sectionLabel: '151-160',
         promptJp: '[名]（やっかいな）問題',
         answerEn: 'problem',
+        pos: ['noun'],
         orderIndex: 2,
     },
     {
@@ -1686,6 +1838,7 @@ export const questions: Question[] = [
         sectionLabel: '151-160',
         promptJp: '[感]いいよ，大丈夫で，わかった',
         answerEn: 'OK',
+        pos: ['interj'],
         orderIndex: 3,
     },
     {
@@ -1697,6 +1850,7 @@ export const questions: Question[] = [
         sectionLabel: '151-160',
         promptJp: '[名]祭り，祭典',
         answerEn: 'festival',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -1708,6 +1862,7 @@ export const questions: Question[] = [
         sectionLabel: '151-160',
         promptJp: '[名]週',
         answerEn: 'week',
+        pos: ['noun'],
         orderIndex: 5,
     },
     {
@@ -1719,6 +1874,7 @@ export const questions: Question[] = [
         sectionLabel: '151-160',
         promptJp: '[形]大きい，重要な',
         answerEn: 'big',
+        pos: ['adj'],
         orderIndex: 6,
     },
     {
@@ -1730,6 +1886,7 @@ export const questions: Question[] = [
         sectionLabel: '151-160',
         promptJp: '[助動]～することができた',
         answerEn: 'could',
+        pos: ['aux'],
         orderIndex: 7,
     },
     {
@@ -1741,6 +1898,7 @@ export const questions: Question[] = [
         sectionLabel: '151-160',
         promptJp: '[副]よく，しばしば',
         answerEn: 'often',
+        pos: ['adv'],
         orderIndex: 8,
     },
     {
@@ -1752,6 +1910,7 @@ export const questions: Question[] = [
         sectionLabel: '151-160',
         promptJp: '[名]味 / [動]（～な）味がする，～の味をみる',
         answerEn: 'taste',
+        pos: ['noun', 'verb'],
         orderIndex: 9,
     },
     {
@@ -1763,6 +1922,7 @@ export const questions: Question[] = [
         sectionLabel: '151-160',
         promptJp: '[形]きれいな，清潔な / [動]～を掃除する',
         answerEn: 'clean',
+        pos: ['adj', 'verb'],
         orderIndex: 10,
     },
     {
@@ -1774,6 +1934,7 @@ export const questions: Question[] = [
         sectionLabel: '161-170',
         promptJp: '[動]～を意味する，指し示す',
         answerEn: 'mean',
+        pos: ['verb'],
         orderIndex: 1,
     },
     {
@@ -1785,6 +1946,7 @@ export const questions: Question[] = [
         sectionLabel: '161-170',
         promptJp: '[副]いつも，常に',
         answerEn: 'always',
+        pos: ['adv'],
         orderIndex: 2,
     },
     {
@@ -1796,6 +1958,7 @@ export const questions: Question[] = [
         sectionLabel: '161-170',
         promptJp: '[形]難しい，困難な',
         answerEn: 'difficult',
+        pos: ['adj'],
         orderIndex: 3,
     },
     {
@@ -1807,6 +1970,7 @@ export const questions: Question[] = [
         sectionLabel: '161-170',
         promptJp: '[名]仕事，職業，任務',
         answerEn: 'job',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -1818,6 +1982,7 @@ export const questions: Question[] = [
         sectionLabel: '161-170',
         promptJp: '[形動]確信した，確かな，必ず～する / [間][受け答えで]はい，もちろん',
         answerEn: 'sure',
+        pos: ['verb', 'adj'],
         orderIndex: 5,
     },
     {
@@ -1829,6 +1994,7 @@ export const questions: Question[] = [
         sectionLabel: '161-170',
         promptJp: '[副]あとで，その後，あとになって',
         answerEn: 'later',
+        pos: ['adv'],
         orderIndex: 6,
     },
     {
@@ -1840,6 +2006,7 @@ export const questions: Question[] = [
         sectionLabel: '161-170',
         promptJp: '[名]（暦の）月',
         answerEn: 'month',
+        pos: ['noun'],
         orderIndex: 7,
     },
     {
@@ -1851,6 +2018,7 @@ export const questions: Question[] = [
         sectionLabel: '161-170',
         promptJp: '[動]～を買う',
         answerEn: 'buy',
+        pos: ['verb'],
         orderIndex: 8,
     },
     {
@@ -1862,6 +2030,7 @@ export const questions: Question[] = [
         sectionLabel: '161-170',
         promptJp: '[形]長い，長さが～の / [副]長く，長い間',
         answerEn: 'long',
+        pos: ['adj', 'adv'],
         orderIndex: 9,
     },
     {
@@ -1873,6 +2042,7 @@ export const questions: Question[] = [
         sectionLabel: '161-170',
         promptJp: '[名]～さん，～先生',
         answerEn: 'Ms.',
+        pos: ['noun'],
         orderIndex: 10,
     },
     {
@@ -1884,6 +2054,7 @@ export const questions: Question[] = [
         sectionLabel: '171-180',
         promptJp: '[動]（～を）見る / [名]腕時計',
         answerEn: 'watch',
+        pos: ['verb', 'noun'],
         orderIndex: 1,
     },
     {
@@ -1895,6 +2066,7 @@ export const questions: Question[] = [
         sectionLabel: '171-180',
         promptJp: '[感]やあ，こんにちは',
         answerEn: 'hi',
+        pos: ['interj'],
         orderIndex: 2,
     },
     {
@@ -1906,6 +2078,7 @@ export const questions: Question[] = [
         sectionLabel: '171-180',
         promptJp: '[動]（～に）会う，出会う，（～と）知り合う',
         answerEn: 'meet',
+        pos: ['verb'],
         orderIndex: 3,
     },
     {
@@ -1917,6 +2090,7 @@ export const questions: Question[] = [
         sectionLabel: '171-180',
         promptJp: '[名] ①みな，誰でも ②[notを伴って]誰でもが～ではない',
         answerEn: 'everyone',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -1928,6 +2102,7 @@ export const questions: Question[] = [
         sectionLabel: '171-180',
         promptJp: '[名]ほほえみ，笑顔 / [動]ほほえむ，にっこり笑う',
         answerEn: 'smile',
+        pos: ['noun', 'verb'],
         orderIndex: 5,
     },
     {
@@ -1939,6 +2114,7 @@ export const questions: Question[] = [
         sectionLabel: '171-180',
         promptJp: '[名]電話，通話 / [動]①（～に）電話をかける ②（～を）呼ぶ，（～に）呼びかける ③～を…と呼ぶ[名づける]',
         answerEn: 'call',
+        pos: ['noun', 'verb'],
         orderIndex: 6,
     },
     {
@@ -1950,6 +2126,7 @@ export const questions: Question[] = [
         sectionLabel: '171-180',
         promptJp: '[名・動] 滞在 / ①とどまる，滞在する ②～のままでいる',
         answerEn: 'stay',
+        pos: ['noun', 'verb'],
         orderIndex: 7,
     },
     {
@@ -1961,6 +2138,7 @@ export const questions: Question[] = [
         sectionLabel: '171-180',
         promptJp: '[動・名]歩く，（犬など）を歩かせる / 歩くこと，散歩',
         answerEn: 'walk',
+        pos: ['noun', 'verb'],
         orderIndex: 8,
     },
     {
@@ -1972,6 +2150,7 @@ export const questions: Question[] = [
         sectionLabel: '171-180',
         promptJp: '[名]クラブ，部',
         answerEn: 'club',
+        pos: ['noun'],
         orderIndex: 9,
     },
     {
@@ -1983,6 +2162,7 @@ export const questions: Question[] = [
         sectionLabel: '171-180',
         promptJp: '[前/副]～の上に[へ] / [副]上に[へ]',
         answerEn: 'up',
+        pos: ['adv', 'prep'],
         orderIndex: 10,
     },
     {
@@ -1994,6 +2174,7 @@ export const questions: Question[] = [
         sectionLabel: '181-190',
         promptJp: '[名]朝，午前',
         answerEn: 'morning',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -2005,6 +2186,7 @@ export const questions: Question[] = [
         sectionLabel: '181-190',
         promptJp: '[動]（～を）教える',
         answerEn: 'teach',
+        pos: ['verb'],
         orderIndex: 2,
     },
     {
@@ -2016,6 +2198,7 @@ export const questions: Question[] = [
         sectionLabel: '181-190',
         promptJp: '[形]人気のある',
         answerEn: 'popular',
+        pos: ['adj'],
         orderIndex: 3,
     },
     {
@@ -2027,6 +2210,7 @@ export const questions: Question[] = [
         sectionLabel: '181-190',
         promptJp: '[名]①質問，問い ②（解決されるべき）問題',
         answerEn: 'question',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -2038,6 +2222,7 @@ export const questions: Question[] = [
         sectionLabel: '181-190',
         promptJp: '[形]①[疑問文で]何か，いくつかの [形]②[否定文で]少しの～も，１つの～も [形/代]③[肯定文で]どんな～でも',
         answerEn: 'any',
+        pos: ['adj', 'pron'],
         orderIndex: 5,
     },
     {
@@ -2049,6 +2234,7 @@ export const questions: Question[] = [
         sectionLabel: '181-190',
         promptJp: '[形]小さい',
         answerEn: 'small',
+        pos: ['adj'],
         orderIndex: 6,
     },
     {
@@ -2060,6 +2246,7 @@ export const questions: Question[] = [
         sectionLabel: '181-190',
         promptJp: '[前]①～の間中（ずっと）②～の間（のある時点）に',
         answerEn: 'during',
+        pos: ['prep'],
         orderIndex: 7,
     },
     {
@@ -2071,6 +2258,7 @@ export const questions: Question[] = [
         sectionLabel: '181-190',
         promptJp: '[形]①すばらしい，すてきな ②親切な，優しい',
         answerEn: 'nice',
+        pos: ['adj'],
         orderIndex: 8,
     },
     {
@@ -2082,6 +2270,7 @@ export const questions: Question[] = [
         sectionLabel: '181-190',
         promptJp: '[副]近くに / [前]～の近くに[の] / [形]近い',
         answerEn: 'near',
+        pos: ['adv', 'prep', 'adj'],
         orderIndex: 9,
     },
     {
@@ -2093,6 +2282,7 @@ export const questions: Question[] = [
         sectionLabel: '181-190',
         promptJp: '[副]遅く，遅れて / [形]遅い，遅れた，遅刻した',
         answerEn: 'late',
+        pos: ['adv', 'adj'],
         orderIndex: 10,
     },
     {
@@ -2104,6 +2294,7 @@ export const questions: Question[] = [
         sectionLabel: '191-200',
         promptJp: '[動]①～を保つ，取っておく，飼う ②～のままである，もつ',
         answerEn: 'keep',
+        pos: ['verb'],
         orderIndex: 1,
     },
     {
@@ -2115,6 +2306,7 @@ export const questions: Question[] = [
         sectionLabel: '191-200',
         promptJp: '[形]同じ，同一の',
         answerEn: 'same',
+        pos: ['adj'],
         orderIndex: 2,
     },
     {
@@ -2126,6 +2318,7 @@ export const questions: Question[] = [
         sectionLabel: '191-200',
         promptJp: '[副]戻って，後ろへ / [形]後ろの，裏の / [名][主にtheをつけて]裏，後ろ，背中',
         answerEn: 'back',
+        pos: ['adv', 'adj', 'noun'],
         orderIndex: 3,
     },
     {
@@ -2137,6 +2330,7 @@ export const questions: Question[] = [
         sectionLabel: '191-200',
         promptJp: '[副]時々',
         answerEn: 'sometimes',
+        pos: ['adv'],
         orderIndex: 4,
     },
     {
@@ -2148,6 +2342,7 @@ export const questions: Question[] = [
         sectionLabel: '191-200',
         promptJp: '[動]～を愛する，愛好する，～が大好きである / [名]愛，愛情',
         answerEn: 'love',
+        pos: ['verb', 'noun'],
         orderIndex: 5,
     },
     {
@@ -2159,6 +2354,7 @@ export const questions: Question[] = [
         sectionLabel: '191-200',
         promptJp: '[名]出来事，行事，イベント',
         answerEn: 'event',
+        pos: ['noun'],
         orderIndex: 6,
     },
     {
@@ -2170,6 +2366,7 @@ export const questions: Question[] = [
         sectionLabel: '191-200',
         promptJp: '[動]①～を変える，（電車）を乗り換える ②変わる / [名]変化，変動',
         answerEn: 'change',
+        pos: ['verb', 'noun'],
         orderIndex: 7,
     },
     {
@@ -2181,6 +2378,7 @@ export const questions: Question[] = [
         sectionLabel: '191-200',
         promptJp: '[名]夜',
         answerEn: 'night',
+        pos: ['noun'],
         orderIndex: 8,
     },
     {
@@ -2192,6 +2390,7 @@ export const questions: Question[] = [
         sectionLabel: '191-200',
         promptJp: '[副]（今から）～前に',
         answerEn: 'ago',
+        pos: ['adv'],
         orderIndex: 9,
     },
     {
@@ -2203,6 +2402,7 @@ export const questions: Question[] = [
         sectionLabel: '191-200',
         promptJp: '[名]①進路，方向，（水泳・マラソンの）コース ②講座，課程',
         answerEn: 'course',
+        pos: ['noun'],
         orderIndex: 10,
     },
     {
@@ -2214,6 +2414,7 @@ export const questions: Question[] = [
         sectionLabel: '201-210',
         promptJp: '[名]昼食，ランチ',
         answerEn: 'lunch',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -2225,6 +2426,7 @@ export const questions: Question[] = [
         sectionLabel: '201-210',
         promptJp: '[名]① 2番目，2日 ② 秒 / [形]2番目の，第2の',
         answerEn: 'second',
+        pos: ['noun', 'adj'],
         orderIndex: 2,
     },
     {
@@ -2236,6 +2438,7 @@ export const questions: Question[] = [
         sectionLabel: '201-210',
         promptJp: '[動]① 走る ② ～を経営する，運営する',
         answerEn: 'run',
+        pos: ['verb'],
         orderIndex: 3,
     },
     {
@@ -2247,6 +2450,7 @@ export const questions: Question[] = [
         sectionLabel: '201-210',
         promptJp: '[動]（注意して）聞く',
         answerEn: 'listen',
+        pos: ['verb'],
         orderIndex: 4,
     },
     {
@@ -2258,6 +2462,7 @@ export const questions: Question[] = [
         sectionLabel: '201-210',
         promptJp: '[名]数，番号，ナンバー',
         answerEn: 'number',
+        pos: ['noun'],
         orderIndex: 5,
     },
     {
@@ -2269,6 +2474,7 @@ export const questions: Question[] = [
         sectionLabel: '201-210',
         promptJp: '[名]図書館，図書室',
         answerEn: 'library',
+        pos: ['noun'],
         orderIndex: 6,
     },
     {
@@ -2280,6 +2486,7 @@ export const questions: Question[] = [
         sectionLabel: '201-210',
         promptJp: '[名]志願者，ボランティア',
         answerEn: 'volunteer',
+        pos: ['noun'],
         orderIndex: 7,
     },
     {
@@ -2291,6 +2498,7 @@ export const questions: Question[] = [
         sectionLabel: '201-210',
         promptJp: '[形]簡単な，易しい，楽な',
         answerEn: 'easy',
+        pos: ['adj'],
         orderIndex: 8,
     },
     {
@@ -2302,6 +2510,7 @@ export const questions: Question[] = [
         sectionLabel: '201-210',
         promptJp: '[副]どこに[で，へ]',
         answerEn: 'where',
+        pos: ['adv'],
         orderIndex: 9,
     },
     {
@@ -2313,6 +2522,7 @@ export const questions: Question[] = [
         sectionLabel: '201-210',
         promptJp: '[形]① もう1つの ② 別の / [代]もう1つのもの',
         answerEn: 'another',
+        pos: ['adj', 'pron'],
         orderIndex: 10,
     },
     {
@@ -2324,6 +2534,7 @@ export const questions: Question[] = [
         sectionLabel: '211-220',
         promptJp: '[名]同級生，級友',
         answerEn: 'classmate',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -2335,6 +2546,7 @@ export const questions: Question[] = [
         sectionLabel: '211-220',
         promptJp: '[副]① ちょうど，まさしく ② たった今 ③ ただ～だけ',
         answerEn: 'just',
+        pos: ['adv'],
         orderIndex: 2,
     },
     {
@@ -2346,6 +2558,7 @@ export const questions: Question[] = [
         sectionLabel: '211-220',
         promptJp: '[名]（大人の）男性，男の人',
         answerEn: 'man',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -2357,6 +2570,7 @@ export const questions: Question[] = [
         sectionLabel: '211-220',
         promptJp: '[動]～を送る',
         answerEn: 'send',
+        pos: ['verb'],
         orderIndex: 4,
     },
     {
@@ -2368,6 +2582,7 @@ export const questions: Question[] = [
         sectionLabel: '211-220',
         promptJp: '[名]（大人の）女性，女の人',
         answerEn: 'woman',
+        pos: ['noun'],
         orderIndex: 5,
     },
     {
@@ -2379,6 +2594,7 @@ export const questions: Question[] = [
         sectionLabel: '211-220',
         promptJp: '[名]コック，料理をする人 / [動]（～を）料理する',
         answerEn: 'cook',
+        pos: ['noun', 'verb'],
         orderIndex: 6,
     },
     {
@@ -2390,6 +2606,7 @@ export const questions: Question[] = [
         sectionLabel: '211-220',
         promptJp: '[名]活動',
         answerEn: 'activity',
+        pos: ['noun'],
         orderIndex: 7,
     },
     {
@@ -2401,6 +2618,7 @@ export const questions: Question[] = [
         sectionLabel: '211-220',
         promptJp: '[名]インターネット',
         answerEn: 'Internet',
+        pos: ['noun'],
         orderIndex: 8,
     },
     {
@@ -2412,6 +2630,7 @@ export const questions: Question[] = [
         sectionLabel: '211-220',
         promptJp: '[動]住む，暮らす，生きる',
         answerEn: 'live',
+        pos: ['verb'],
         orderIndex: 9,
     },
     {
@@ -2423,6 +2642,7 @@ export const questions: Question[] = [
         sectionLabel: '211-220',
         promptJp: '[副]ほんの少し，ほとんど～ない / [形]① 小さい，幼い，小さくてかわいい ② 少しの，少量の [代]③ ほとんどない',
         answerEn: 'little',
+        pos: ['adv', 'adj', 'pron'],
         orderIndex: 10,
     },
     {
@@ -2434,6 +2654,7 @@ export const questions: Question[] = [
         sectionLabel: '221-230',
         promptJp: '[名]音 / [動]～に聞こえる，～と思える',
         answerEn: 'sound',
+        pos: ['noun', 'verb'],
         orderIndex: 1,
     },
     {
@@ -2445,6 +2666,7 @@ export const questions: Question[] = [
         sectionLabel: '221-230',
         promptJp: '[名]お茶，紅茶',
         answerEn: 'tea',
+        pos: ['noun'],
         orderIndex: 2,
     },
     {
@@ -2456,6 +2678,7 @@ export const questions: Question[] = [
         sectionLabel: '221-230',
         promptJp: '[形]特別な，特殊な',
         answerEn: 'special',
+        pos: ['adj'],
         orderIndex: 3,
     },
     {
@@ -2467,6 +2690,7 @@ export const questions: Question[] = [
         sectionLabel: '221-230',
         promptJp: '[動]①（～に）勝つ ② ～を勝ち取る，獲得する',
         answerEn: 'win',
+        pos: ['verb'],
         orderIndex: 4,
     },
     {
@@ -2478,6 +2702,7 @@ export const questions: Question[] = [
         sectionLabel: '221-230',
         promptJp: '[副]ふつう（は），たいてい（は）',
         answerEn: 'usually',
+        pos: ['adv'],
         orderIndex: 5,
     },
     {
@@ -2489,6 +2714,7 @@ export const questions: Question[] = [
         sectionLabel: '221-230',
         promptJp: '[動]（…に）～を持ってくる，連れてくる，（相手のところへ）持って[連れて]いく',
         answerEn: 'bring',
+        pos: ['verb'],
         orderIndex: 6,
     },
     {
@@ -2500,6 +2726,7 @@ export const questions: Question[] = [
         sectionLabel: '221-230',
         promptJp: '[形]役に立つ，有益な，有用な',
         answerEn: 'useful',
+        pos: ['adj'],
         orderIndex: 7,
     },
     {
@@ -2511,6 +2738,7 @@ export const questions: Question[] = [
         sectionLabel: '221-230',
         promptJp: '[名]情報',
         answerEn: 'information',
+        pos: ['noun'],
         orderIndex: 8,
     },
     {
@@ -2522,6 +2750,7 @@ export const questions: Question[] = [
         sectionLabel: '221-230',
         promptJp: '[副]すぐに，間もなく，早く',
         answerEn: 'soon',
+        pos: ['adv'],
         orderIndex: 9,
     },
     {
@@ -2533,6 +2762,7 @@ export const questions: Question[] = [
         sectionLabel: '221-230',
         promptJp: '[形]有名な',
         answerEn: 'famous',
+        pos: ['adj'],
         orderIndex: 10,
     },
     {
@@ -2544,6 +2774,7 @@ export const questions: Question[] = [
         sectionLabel: '231-240',
         promptJp: '[名]① 部分，一部，（本などの）部 ② 役割，役目',
         answerEn: 'part',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -2555,6 +2786,7 @@ export const questions: Question[] = [
         sectionLabel: '231-240',
         promptJp: '[名]① 選手，競技者 ② 演奏者，演技者',
         answerEn: 'player',
+        pos: ['noun'],
         orderIndex: 2,
     },
     {
@@ -2566,6 +2798,7 @@ export const questions: Question[] = [
         sectionLabel: '231-240',
         promptJp: '[名]旅行',
         answerEn: 'trip',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -2577,6 +2810,7 @@ export const questions: Question[] = [
         sectionLabel: '231-240',
         promptJp: '[代]それらは[を]，あれらは[を] / [形]それら[あれら]の',
         answerEn: 'those',
+        pos: ['pron', 'adj'],
         orderIndex: 4,
     },
     {
@@ -2588,6 +2822,7 @@ export const questions: Question[] = [
         sectionLabel: '231-240',
         promptJp: '[副]① まだ，今でも ② それでも（なお）',
         answerEn: 'still',
+        pos: ['adv'],
         orderIndex: 5,
     },
     {
@@ -2599,6 +2834,7 @@ export const questions: Question[] = [
         sectionLabel: '231-240',
         promptJp: '[形]悲しい',
         answerEn: 'sad',
+        pos: ['adj'],
         orderIndex: 6,
     },
     {
@@ -2610,6 +2846,7 @@ export const questions: Question[] = [
         sectionLabel: '231-240',
         promptJp: '[名]車，自動車',
         answerEn: 'car',
+        pos: ['noun'],
         orderIndex: 7,
     },
     {
@@ -2621,6 +2858,7 @@ export const questions: Question[] = [
         sectionLabel: '231-240',
         promptJp: '[名]動物',
         answerEn: 'animal',
+        pos: ['noun'],
         orderIndex: 8,
     },
     {
@@ -2632,6 +2870,7 @@ export const questions: Question[] = [
         sectionLabel: '231-240',
         promptJp: '[名]お気に入りのもの[人] / [形]一番お気に入りの，大好きな',
         answerEn: 'favorite',
+        pos: ['noun', 'adj'],
         orderIndex: 9,
     },
     {
@@ -2643,6 +2882,7 @@ export const questions: Question[] = [
         sectionLabel: '231-240',
         promptJp: '[動]～を置く',
         answerEn: 'put',
+        pos: ['verb'],
         orderIndex: 10,
     },
     {
@@ -2654,6 +2894,7 @@ export const questions: Question[] = [
         sectionLabel: '241-250',
         promptJp: '[動]気にする，気にかける / [名]世話，介護，注意',
         answerEn: 'care',
+        pos: ['verb', 'noun'],
         orderIndex: 1,
     },
     {
@@ -2665,6 +2906,7 @@ export const questions: Question[] = [
         sectionLabel: '241-250',
         promptJp: '[動]（～を）選ぶ，選択する',
         answerEn: 'choose',
+        pos: ['verb'],
         orderIndex: 2,
     },
     {
@@ -2676,6 +2918,7 @@ export const questions: Question[] = [
         sectionLabel: '241-250',
         promptJp: '[名]（時間の）分',
         answerEn: 'minute',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -2687,6 +2930,7 @@ export const questions: Question[] = [
         sectionLabel: '241-250',
         promptJp: '[動]心配する，悩む',
         answerEn: 'worry',
+        pos: ['verb'],
         orderIndex: 4,
     },
     {
@@ -2698,6 +2942,7 @@ export const questions: Question[] = [
         sectionLabel: '241-250',
         promptJp: '[感]わあ，すごい',
         answerEn: 'wow',
+        pos: ['interj'],
         orderIndex: 5,
     },
     {
@@ -2709,6 +2954,7 @@ export const questions: Question[] = [
         sectionLabel: '241-250',
         promptJp: '[形]① すまなく思って ② 残念で，気の毒で',
         answerEn: 'sorry',
+        pos: ['adj'],
         orderIndex: 6,
     },
     {
@@ -2720,6 +2966,7 @@ export const questions: Question[] = [
         sectionLabel: '241-250',
         promptJp: '[名]楽しいこと，おもしろいこと',
         answerEn: 'fun',
+        pos: ['noun'],
         orderIndex: 7,
     },
     {
@@ -2731,6 +2978,7 @@ export const questions: Question[] = [
         sectionLabel: '241-250',
         promptJp: '[名]言葉，言語',
         answerEn: 'language',
+        pos: ['noun'],
         orderIndex: 8,
     },
     {
@@ -2742,6 +2990,7 @@ export const questions: Question[] = [
         sectionLabel: '241-250',
         promptJp: '[動]眠る / [名]眠り，睡眠',
         answerEn: 'sleep',
+        pos: ['verb', 'noun'],
         orderIndex: 9,
     },
     {
@@ -2753,6 +3002,7 @@ export const questions: Question[] = [
         sectionLabel: '241-250',
         promptJp: '[形]① 明るい，（色が）淡い ② 軽い / [名]① 光 ② 明かり，電灯，照明',
         answerEn: 'light',
+        pos: ['adj', 'noun'],
         orderIndex: 10,
     },
     {
@@ -2764,6 +3014,7 @@ export const questions: Question[] = [
         sectionLabel: '251-260',
         promptJp: '[名]野菜',
         answerEn: 'vegetable',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -2775,6 +3026,7 @@ export const questions: Question[] = [
         sectionLabel: '251-260',
         promptJp: '[動]待つ，待ち',
         answerEn: 'wait',
+        pos: ['verb'],
         orderIndex: 2,
     },
     {
@@ -2786,6 +3038,7 @@ export const questions: Question[] = [
         sectionLabel: '251-260',
         promptJp: '[代]①[疑問文で]何か ②[否定文で]何も（～ない） ③[肯定文で]何でも',
         answerEn: 'anything',
+        pos: ['pron'],
         orderIndex: 3,
     },
     {
@@ -2797,6 +3050,7 @@ export const questions: Question[] = [
         sectionLabel: '251-260',
         promptJp: '[名]昨日（は），[副]昨日',
         answerEn: 'yesterday',
+        pos: ['noun', 'adv'],
         orderIndex: 4,
     },
     {
@@ -2808,6 +3062,7 @@ export const questions: Question[] = [
         sectionLabel: '251-260',
         promptJp: '[名]魚，[動]釣りをする',
         answerEn: 'fish',
+        pos: ['noun', 'verb'],
         orderIndex: 5,
     },
     {
@@ -2819,6 +3074,7 @@ export const questions: Question[] = [
         sectionLabel: '251-260',
         promptJp: '[名]前，正面 / [形]前の，正面の',
         answerEn: 'front',
+        pos: ['noun', 'adj'],
         orderIndex: 6,
     },
     {
@@ -2830,6 +3086,7 @@ export const questions: Question[] = [
         sectionLabel: '251-260',
         promptJp: '[動]～を飲む / [名]飲み物',
         answerEn: 'drink',
+        pos: ['verb', 'noun'],
         orderIndex: 7,
     },
     {
@@ -2841,6 +3098,7 @@ export const questions: Question[] = [
         sectionLabel: '251-260',
         promptJp: '[名]時間',
         answerEn: 'hour',
+        pos: ['noun'],
         orderIndex: 8,
     },
     {
@@ -2852,6 +3110,7 @@ export const questions: Question[] = [
         sectionLabel: '251-260',
         promptJp: '[動]旅行する / [名]旅行，旅',
         answerEn: 'travel',
+        pos: ['verb', 'noun'],
         orderIndex: 9,
     },
     {
@@ -2863,6 +3122,7 @@ export const questions: Question[] = [
         sectionLabel: '251-260',
         promptJp: '[動]（～を）歌う',
         answerEn: 'sing',
+        pos: ['verb'],
         orderIndex: 10,
     },
     {
@@ -2874,6 +3134,7 @@ export const questions: Question[] = [
         sectionLabel: '261-270',
         promptJp: '[名]映画',
         answerEn: 'movie',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -2885,6 +3146,7 @@ export const questions: Question[] = [
         sectionLabel: '261-270',
         promptJp: '[名]休暇，休み',
         answerEn: 'vacation',
+        pos: ['noun'],
         orderIndex: 2,
     },
     {
@@ -2896,6 +3158,7 @@ export const questions: Question[] = [
         sectionLabel: '261-270',
         promptJp: '[動]踊る / [名]踊り，舞踊',
         answerEn: 'dance',
+        pos: ['verb', 'noun'],
         orderIndex: 3,
     },
     {
@@ -2907,6 +3170,7 @@ export const questions: Question[] = [
         sectionLabel: '261-270',
         promptJp: '[名]夕食，ディナー',
         answerEn: 'dinner',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -2918,6 +3182,7 @@ export const questions: Question[] = [
         sectionLabel: '261-270',
         promptJp: '[名]ご飯，米，稲',
         answerEn: 'rice',
+        pos: ['noun'],
         orderIndex: 5,
     },
     {
@@ -2929,6 +3194,7 @@ export const questions: Question[] = [
         sectionLabel: '261-270',
         promptJp: '[副・形]外へ[に]，不在で',
         answerEn: 'out',
+        pos: ['adj', 'adv'],
         orderIndex: 6,
     },
     {
@@ -2940,6 +3206,7 @@ export const questions: Question[] = [
         sectionLabel: '261-270',
         promptJp: '[動]～を[～することを]計画する / [名]計画，予定',
         answerEn: 'plan',
+        pos: ['verb', 'noun'],
         orderIndex: 7,
     },
     {
@@ -2951,6 +3218,7 @@ export const questions: Question[] = [
         sectionLabel: '261-270',
         promptJp: '[名]手',
         answerEn: 'hand',
+        pos: ['noun'],
         orderIndex: 8,
     },
     {
@@ -2962,6 +3230,7 @@ export const questions: Question[] = [
         sectionLabel: '261-270',
         promptJp: '[名]歴史',
         answerEn: 'history',
+        pos: ['noun'],
         orderIndex: 9,
     },
     {
@@ -2973,6 +3242,7 @@ export const questions: Question[] = [
         sectionLabel: '261-270',
         promptJp: '[動]～を着ている，身に着けている',
         answerEn: 'wear',
+        pos: ['verb'],
         orderIndex: 10,
     },
     {
@@ -2984,6 +3254,7 @@ export const questions: Question[] = [
         sectionLabel: '271-280',
         promptJp: '[名]歌',
         answerEn: 'song',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -2995,6 +3266,7 @@ export const questions: Question[] = [
         sectionLabel: '271-280',
         promptJp: '[形]（人が）興奮した，わくわくした',
         answerEn: 'excited',
+        pos: ['adj'],
         orderIndex: 2,
     },
     {
@@ -3006,6 +3278,7 @@ export const questions: Question[] = [
         sectionLabel: '271-280',
         promptJp: '[名]① 紙 ② 新聞 ③ 書類，レポート',
         answerEn: 'paper',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -3017,6 +3290,7 @@ export const questions: Question[] = [
         sectionLabel: '271-280',
         promptJp: '[動]① ～を失う，なくす ②（～に）負ける',
         answerEn: 'lose',
+        pos: ['verb'],
         orderIndex: 4,
     },
     {
@@ -3028,6 +3302,7 @@ export const questions: Question[] = [
         sectionLabel: '271-280',
         promptJp: '[副]速く / [形]（速度が）速い',
         answerEn: 'fast',
+        pos: ['adv', 'adj'],
         orderIndex: 5,
     },
     {
@@ -3039,6 +3314,7 @@ export const questions: Question[] = [
         sectionLabel: '271-280',
         promptJp: '[動] ① ～を持つ，抱える ② ～を催す，開く',
         answerEn: 'hold',
+        pos: ['verb'],
         orderIndex: 6,
     },
     {
@@ -3050,6 +3326,7 @@ export const questions: Question[] = [
         sectionLabel: '271-280',
         promptJp: '[前]① ～の上を，～を覆って，～を越えて ② ～以上で / [副]① 越えて，向こう側に ② 終わって',
         answerEn: 'over',
+        pos: ['prep', 'adv'],
         orderIndex: 7,
     },
     {
@@ -3061,6 +3338,7 @@ export const questions: Question[] = [
         sectionLabel: '271-280',
         promptJp: '[名]週末',
         answerEn: 'weekend',
+        pos: ['noun'],
         orderIndex: 8,
     },
     {
@@ -3072,6 +3350,7 @@ export const questions: Question[] = [
         sectionLabel: '271-280',
         promptJp: '[名]宿題',
         answerEn: 'homework',
+        pos: ['noun'],
         orderIndex: 9,
     },
     {
@@ -3083,6 +3362,7 @@ export const questions: Question[] = [
         sectionLabel: '271-280',
         promptJp: '[名]午後',
         answerEn: 'afternoon',
+        pos: ['noun'],
         orderIndex: 10,
     },
     {
@@ -3094,6 +3374,7 @@ export const questions: Question[] = [
         sectionLabel: '281-290',
         promptJp: '[動/形]① ～を開ける ② 開く / 開いた，（店が）開店している',
         answerEn: 'open',
+        pos: ['verb', 'adj'],
         orderIndex: 1,
     },
     {
@@ -3105,6 +3386,7 @@ export const questions: Question[] = [
         sectionLabel: '281-290',
         promptJp: '[動]① ～を助ける，救助する [動]② ～を蓄える，取っておく [動]③ ～を節約する，省く',
         answerEn: 'save',
+        pos: ['verb'],
         orderIndex: 2,
     },
     {
@@ -3116,6 +3398,7 @@ export const questions: Question[] = [
         sectionLabel: '281-290',
         promptJp: '[副]外国に[で，へ]',
         answerEn: 'abroad',
+        pos: ['adv'],
         orderIndex: 3,
     },
     {
@@ -3127,6 +3410,7 @@ export const questions: Question[] = [
         sectionLabel: '281-290',
         promptJp: '[名]親',
         answerEn: 'parent',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -3138,6 +3422,7 @@ export const questions: Question[] = [
         sectionLabel: '281-290',
         promptJp: '[動]起こる，生じる',
         answerEn: 'happen',
+        pos: ['verb'],
         orderIndex: 5,
     },
     {
@@ -3149,6 +3434,7 @@ export const questions: Question[] = [
         sectionLabel: '281-290',
         promptJp: '[名]伝言，（伝えるべき）知らせ，メッセージ',
         answerEn: 'message',
+        pos: ['noun'],
         orderIndex: 6,
     },
     {
@@ -3160,6 +3446,7 @@ export const questions: Question[] = [
         sectionLabel: '281-290',
         promptJp: '[前]～の中へ[に]',
         answerEn: 'into',
+        pos: ['prep'],
         orderIndex: 7,
     },
     {
@@ -3171,6 +3458,7 @@ export const questions: Question[] = [
         sectionLabel: '281-290',
         promptJp: '[名]小学校',
         answerEn: 'elementary school',
+        pos: ['noun'],
         orderIndex: 8,
     },
     {
@@ -3182,6 +3470,7 @@ export const questions: Question[] = [
         sectionLabel: '281-290',
         promptJp: '[形]悪い，[動]悪くなった，[形]おいしくない',
         answerEn: 'bad',
+        pos: ['adj', 'verb'],
         orderIndex: 9,
     },
     {
@@ -3193,6 +3482,7 @@ export const questions: Question[] = [
         sectionLabel: '281-290',
         promptJp: '[名]明日（は），[副]明日',
         answerEn: 'tomorrow',
+        pos: ['noun', 'adv'],
         orderIndex: 10,
     },
     {
@@ -3204,6 +3494,7 @@ export const questions: Question[] = [
         sectionLabel: '291-300',
         promptJp: '[形]歓迎される，[感]ようこそ，[動]～を歓迎する',
         answerEn: 'welcome',
+        pos: ['adj', 'interj', 'verb'],
         orderIndex: 1,
     },
     {
@@ -3215,6 +3506,7 @@ export const questions: Question[] = [
         sectionLabel: '291-300',
         promptJp: '[名]衣類，服',
         answerEn: 'clothes',
+        pos: ['noun'],
         orderIndex: 2,
     },
     {
@@ -3226,6 +3518,7 @@ export const questions: Question[] = [
         sectionLabel: '291-300',
         promptJp: '[名]色',
         answerEn: 'color',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -3237,6 +3530,7 @@ export const questions: Question[] = [
         sectionLabel: '291-300',
         promptJp: '[動]～を温める，暖める / [形]① 暖かい，温かい ② （心の）温かい',
         answerEn: 'warm',
+        pos: ['verb', 'adj'],
         orderIndex: 4,
     },
     {
@@ -3248,6 +3542,7 @@ export const questions: Question[] = [
         sectionLabel: '291-300',
         promptJp: '[副]簡単に，楽に',
         answerEn: 'easily',
+        pos: ['adv'],
         orderIndex: 5,
     },
     {
@@ -3259,6 +3554,7 @@ export const questions: Question[] = [
         sectionLabel: '291-300',
         promptJp: '[動]～できない',
         answerEn: 'cannot',
+        pos: ['verb'],
         orderIndex: 6,
     },
     {
@@ -3270,6 +3566,7 @@ export const questions: Question[] = [
         sectionLabel: '291-300',
         promptJp: '[名]演技，演奏，（職務の）遂行',
         answerEn: 'performance',
+        pos: ['noun'],
         orderIndex: 7,
     },
     {
@@ -3281,6 +3578,7 @@ export const questions: Question[] = [
         sectionLabel: '291-300',
         promptJp: '[名]① 春 [名]② 泉',
         answerEn: 'spring',
+        pos: ['noun'],
         orderIndex: 8,
     },
     {
@@ -3292,6 +3590,7 @@ export const questions: Question[] = [
         sectionLabel: '291-300',
         promptJp: '[名]季節，シーズン',
         answerEn: 'season',
+        pos: ['noun'],
         orderIndex: 9,
     },
     {
@@ -3303,6 +3602,7 @@ export const questions: Question[] = [
         sectionLabel: '291-300',
         promptJp: '[名]風邪 / [形]① 冷たい ② 寒い',
         answerEn: 'cold',
+        pos: ['noun', 'adj'],
         orderIndex: 10,
     },
     {
@@ -3314,6 +3614,7 @@ export const questions: Question[] = [
         sectionLabel: '301-310',
         promptJp: '[副]ほとんど，もう少しで',
         answerEn: 'almost',
+        pos: ['adv'],
         orderIndex: 1,
     },
     {
@@ -3325,6 +3626,7 @@ export const questions: Question[] = [
         sectionLabel: '301-310',
         promptJp: '[名]午後',
         answerEn: 'p.m.',
+        pos: ['noun'],
         orderIndex: 2,
     },
     {
@@ -3336,6 +3638,7 @@ export const questions: Question[] = [
         sectionLabel: '301-310',
         promptJp: '[副]早く / [形]早い',
         answerEn: 'early',
+        pos: ['adv', 'adj'],
         orderIndex: 3,
     },
     {
@@ -3347,6 +3650,7 @@ export const questions: Question[] = [
         sectionLabel: '301-310',
         promptJp: '[動]①（～を）忘れる [動]② ～し忘れる',
         answerEn: 'forget',
+        pos: ['verb'],
         orderIndex: 4,
     },
     {
@@ -3358,6 +3662,7 @@ export const questions: Question[] = [
         sectionLabel: '301-310',
         promptJp: '[形]疲れた',
         answerEn: 'tired',
+        pos: ['adj'],
         orderIndex: 5,
     },
     {
@@ -3369,6 +3674,7 @@ export const questions: Question[] = [
         sectionLabel: '301-310',
         promptJp: '[形]（とても）おいしい',
         answerEn: 'delicious',
+        pos: ['adj'],
         orderIndex: 6,
     },
     {
@@ -3380,6 +3686,7 @@ export const questions: Question[] = [
         sectionLabel: '301-310',
         promptJp: '[前/副]～から離れて[外れて] / 離れて，去って，外れて',
         answerEn: 'off',
+        pos: ['adv', 'prep'],
         orderIndex: 7,
     },
     {
@@ -3391,6 +3698,7 @@ export const questions: Question[] = [
         sectionLabel: '301-310',
         promptJp: '[形]病気の，気分が悪い',
         answerEn: 'sick',
+        pos: ['adj'],
         orderIndex: 8,
     },
     {
@@ -3402,6 +3710,7 @@ export const questions: Question[] = [
         sectionLabel: '301-310',
         promptJp: '[形]① 自由な，暇な [形]② 無料の，ただの',
         answerEn: 'free',
+        pos: ['adj'],
         orderIndex: 9,
     },
     {
@@ -3413,6 +3722,7 @@ export const questions: Question[] = [
         sectionLabel: '301-310',
         promptJp: '[形]暑い，熱い',
         answerEn: 'hot',
+        pos: ['adj'],
         orderIndex: 10,
     },
     {
@@ -3424,6 +3734,7 @@ export const questions: Question[] = [
         sectionLabel: '311-320',
         promptJp: '[動]座る，腰かける',
         answerEn: 'sit',
+        pos: ['verb'],
         orderIndex: 1,
     },
     {
@@ -3435,6 +3746,7 @@ export const questions: Question[] = [
         sectionLabel: '311-320',
         promptJp: '[形]① 涼しい ② かっこいい',
         answerEn: 'cool',
+        pos: ['adj'],
         orderIndex: 2,
     },
     {
@@ -3446,6 +3758,7 @@ export const questions: Question[] = [
         sectionLabel: '311-320',
         promptJp: '[副]離れて，去って',
         answerEn: 'away',
+        pos: ['adv'],
         orderIndex: 3,
     },
     {
@@ -3457,6 +3770,7 @@ export const questions: Question[] = [
         sectionLabel: '311-320',
         promptJp: '[名]プレゼント，贈り物',
         answerEn: 'present',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -3468,6 +3782,7 @@ export const questions: Question[] = [
         sectionLabel: '311-320',
         promptJp: '[名]（確認用の）チェック印 / [動]～をチェックする，検査[照合]する',
         answerEn: 'check',
+        pos: ['noun', 'verb'],
         orderIndex: 5,
     },
     {
@@ -3479,6 +3794,7 @@ export const questions: Question[] = [
         sectionLabel: '311-320',
         promptJp: '[名]私のもの',
         answerEn: 'mine',
+        pos: ['noun'],
         orderIndex: 6,
     },
     {
@@ -3490,6 +3806,7 @@ export const questions: Question[] = [
         sectionLabel: '311-320',
         promptJp: '[名]おじ，おじさん',
         answerEn: 'uncle',
+        pos: ['noun'],
         orderIndex: 7,
     },
     {
@@ -3501,6 +3818,7 @@ export const questions: Question[] = [
         sectionLabel: '311-320',
         promptJp: '[動]①（規則・忠告など）に従う ②（～に）続く，ついて行く',
         answerEn: 'follow',
+        pos: ['verb'],
         orderIndex: 8,
     },
     {
@@ -3512,6 +3830,7 @@ export const questions: Question[] = [
         sectionLabel: '311-320',
         promptJp: '[形]100[百]の / [名]100，百',
         answerEn: 'hundred',
+        pos: ['adj', 'noun'],
         orderIndex: 9,
     },
     {
@@ -3523,6 +3842,7 @@ export const questions: Question[] = [
         sectionLabel: '311-320',
         promptJp: '[副]左へ[に]，左側に / [名]左，左側 / [形]左の，左側の',
         answerEn: 'left',
+        pos: ['adv', 'noun', 'adj'],
         orderIndex: 10,
     },
     {
@@ -3534,6 +3854,7 @@ export const questions: Question[] = [
         sectionLabel: '321-330',
         promptJp: '[名]中国人，[名]中国語 / [形]中国の，[形]中国人[語]の',
         answerEn: 'Chinese',
+        pos: ['noun', 'adj'],
         orderIndex: 1,
     },
     {
@@ -3545,6 +3866,7 @@ export const questions: Question[] = [
         sectionLabel: '321-330',
         promptJp: '[名]コンサート，演奏会',
         answerEn: 'concert',
+        pos: ['noun'],
         orderIndex: 2,
     },
     {
@@ -3556,6 +3878,7 @@ export const questions: Question[] = [
         sectionLabel: '321-330',
         promptJp: '[名]夕方，晩',
         answerEn: 'evening',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -3567,6 +3890,7 @@ export const questions: Question[] = [
         sectionLabel: '321-330',
         promptJp: '[名]雪 / [動]雪が降る',
         answerEn: 'snow',
+        pos: ['noun', 'verb'],
         orderIndex: 4,
     },
     {
@@ -3578,6 +3902,7 @@ export const questions: Question[] = [
         sectionLabel: '321-330',
         promptJp: '[名]ポスター',
         answerEn: 'poster',
+        pos: ['noun'],
         orderIndex: 5,
     },
     {
@@ -3589,6 +3914,7 @@ export const questions: Question[] = [
         sectionLabel: '321-330',
         promptJp: '[名]① 野原，畑 ② 分野 ③（陸上の）フィールド，（球技の）球場',
         answerEn: 'field',
+        pos: ['noun'],
         orderIndex: 6,
     },
     {
@@ -3600,6 +3926,7 @@ export const questions: Question[] = [
         sectionLabel: '321-330',
         promptJp: '[名]休み，休憩，中断 / [動]① ～を割る，折る，壊す ② 割れる，折れる，壊れる',
         answerEn: 'break',
+        pos: ['noun', 'verb'],
         orderIndex: 7,
     },
     {
@@ -3611,6 +3938,7 @@ export const questions: Question[] = [
         sectionLabel: '321-330',
         promptJp: '[名]秋 / [動]① 落ちる，転ぶ，倒れる ②（雨・雪が）降る',
         answerEn: 'fall',
+        pos: ['noun', 'verb'],
         orderIndex: 8,
     },
     {
@@ -3622,6 +3950,7 @@ export const questions: Question[] = [
         sectionLabel: '321-330',
         promptJp: '[形]短い，（背が）低い',
         answerEn: 'short',
+        pos: ['adj'],
         orderIndex: 9,
     },
     {
@@ -3633,6 +3962,7 @@ export const questions: Question[] = [
         sectionLabel: '321-330',
         promptJp: '[名]顔 / [動]（困難など）に直面する，～と対面する',
         answerEn: 'face',
+        pos: ['noun', 'verb'],
         orderIndex: 10,
     },
     {
@@ -3644,6 +3974,7 @@ export const questions: Question[] = [
         sectionLabel: '331-340',
         promptJp: '[動]スキーをする / [名]スキー（板）',
         answerEn: 'ski',
+        pos: ['verb', 'noun'],
         orderIndex: 1,
     },
     {
@@ -3655,6 +3986,7 @@ export const questions: Question[] = [
         sectionLabel: '331-340',
         promptJp: '[形]地元の，（その）地方の',
         answerEn: 'local',
+        pos: ['adj'],
         orderIndex: 2,
     },
     {
@@ -3666,6 +3998,7 @@ export const questions: Question[] = [
         sectionLabel: '331-340',
         promptJp: '[動] 雨が降る / [名] 雨',
         answerEn: 'rain',
+        pos: ['verb', 'noun'],
         orderIndex: 3,
     },
     {
@@ -3677,6 +4010,7 @@ export const questions: Question[] = [
         sectionLabel: '331-340',
         promptJp: '[名]お母さん，ママ',
         answerEn: 'mom',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -3688,6 +4022,7 @@ export const questions: Question[] = [
         sectionLabel: '331-340',
         promptJp: '[名]～山',
         answerEn: 'Mt.',
+        pos: ['noun'],
         orderIndex: 5,
     },
     {
@@ -3699,6 +4034,7 @@ export const questions: Question[] = [
         sectionLabel: '331-340',
         promptJp: '[名]事務所，会社，（会社の）部屋',
         answerEn: 'office',
+        pos: ['noun'],
         orderIndex: 6,
     },
     {
@@ -3710,6 +4046,7 @@ export const questions: Question[] = [
         sectionLabel: '331-340',
         promptJp: '[前/副]～の外で[に] / [副]外で[に，へ] / [名]外，外側 / [形]外の，外側の',
         answerEn: 'outside',
+        pos: ['adv', 'prep', 'noun', 'adj'],
         orderIndex: 7,
     },
     {
@@ -3721,6 +4058,7 @@ export const questions: Question[] = [
         sectionLabel: '331-340',
         promptJp: '[動]～をつかむ，捕まえる',
         answerEn: 'catch',
+        pos: ['verb'],
         orderIndex: 8,
     },
     {
@@ -3732,6 +4070,7 @@ export const questions: Question[] = [
         sectionLabel: '331-340',
         promptJp: '[名]おば',
         answerEn: 'aunt',
+        pos: ['noun'],
         orderIndex: 9,
     },
     {
@@ -3743,6 +4082,7 @@ export const questions: Question[] = [
         sectionLabel: '331-340',
         promptJp: '[名]① 戸，扉，ドア ② 玄関，出入口',
         answerEn: 'door',
+        pos: ['noun'],
         orderIndex: 10,
     },
     {
@@ -3754,6 +4094,7 @@ export const questions: Question[] = [
         sectionLabel: '341-350',
         promptJp: '[動] ① 曲がる，回る [動] ② ～を回す，回転させる',
         answerEn: 'turn',
+        pos: ['verb'],
         orderIndex: 1,
     },
     {
@@ -3765,6 +4106,7 @@ export const questions: Question[] = [
         sectionLabel: '341-350',
         promptJp: '[感]（驚き・困惑などを表して）おや，まあ / [形]親愛なる，いとしい',
         answerEn: 'dear',
+        pos: ['interj', 'adj'],
         orderIndex: 2,
     },
     {
@@ -3776,6 +4118,7 @@ export const questions: Question[] = [
         sectionLabel: '341-350',
         promptJp: '[名]① 教科，科目 ② 主題，話題，（メールの）件',
         answerEn: 'subject',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -3787,6 +4130,7 @@ export const questions: Question[] = [
         sectionLabel: '341-350',
         promptJp: '[名]天気，天候，陽気',
         answerEn: 'weather',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -3798,6 +4142,7 @@ export const questions: Question[] = [
         sectionLabel: '341-350',
         promptJp: '[名]靴',
         answerEn: 'shoe',
+        pos: ['noun'],
         orderIndex: 5,
     },
     {
@@ -3809,6 +4154,7 @@ export const questions: Question[] = [
         sectionLabel: '341-350',
         promptJp: '[名]① ファン ② 扇子，うちわ，扇風機',
         answerEn: 'fan',
+        pos: ['noun'],
         orderIndex: 6,
     },
     {
@@ -3820,6 +4166,7 @@ export const questions: Question[] = [
         sectionLabel: '341-350',
         promptJp: '[動]①（～を）通り過ぎる，通り越す，追い越す ②（試験に）通る，受かる ③（時）を過ごす，（時が）過ぎる ④ ～を渡す，回す',
         answerEn: 'pass',
+        pos: ['verb'],
         orderIndex: 7,
     },
     {
@@ -3831,6 +4178,7 @@ export const questions: Question[] = [
         sectionLabel: '341-350',
         promptJp: '[副]すばやく，すぐに',
         answerEn: 'quickly',
+        pos: ['adv'],
         orderIndex: 8,
     },
     {
@@ -3842,6 +4190,7 @@ export const questions: Question[] = [
         sectionLabel: '341-350',
         promptJp: '[前/副]～に沿って / 一緒に',
         answerEn: 'along',
+        pos: ['adv', 'prep'],
         orderIndex: 9,
     },
     {
@@ -3853,6 +4202,7 @@ export const questions: Question[] = [
         sectionLabel: '341-350',
         promptJp: '[形]① 貧しい，貧乏な ② かわいそうな，気の毒な',
         answerEn: 'poor',
+        pos: ['adj'],
         orderIndex: 10,
     },
     {
@@ -3864,6 +4214,7 @@ export const questions: Question[] = [
         sectionLabel: '351-360',
         promptJp: '[動]～を売る',
         answerEn: 'sell',
+        pos: ['verb'],
         orderIndex: 1,
     },
     {
@@ -3875,6 +4226,7 @@ export const questions: Question[] = [
         sectionLabel: '351-360',
         promptJp: '[名]中心，中央',
         answerEn: 'center',
+        pos: ['noun'],
         orderIndex: 2,
     },
     {
@@ -3886,6 +4238,7 @@ export const questions: Question[] = [
         sectionLabel: '351-360',
         promptJp: '[形]驚くべき，すばらしい',
         answerEn: 'amazing',
+        pos: ['adj'],
         orderIndex: 3,
     },
     {
@@ -3897,6 +4250,7 @@ export const questions: Question[] = [
         sectionLabel: '351-360',
         promptJp: '[名]切符，チケット',
         answerEn: 'ticket',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -3908,6 +4262,7 @@ export const questions: Question[] = [
         sectionLabel: '351-360',
         promptJp: '[名]午前',
         answerEn: 'a.m.',
+        pos: ['noun'],
         orderIndex: 5,
     },
     {
@@ -3919,6 +4274,7 @@ export const questions: Question[] = [
         sectionLabel: '351-360',
         promptJp: '[名]電話（機）',
         answerEn: 'phone',
+        pos: ['noun'],
         orderIndex: 6,
     },
     {
@@ -3930,6 +4286,7 @@ export const questions: Question[] = [
         sectionLabel: '351-360',
         promptJp: '[動]①（～を）演奏する，（役を）演じる ② ～を行う，果たす',
         answerEn: 'perform',
+        pos: ['verb'],
         orderIndex: 7,
     },
     {
@@ -3941,6 +4298,7 @@ export const questions: Question[] = [
         sectionLabel: '351-360',
         promptJp: '[名]朝食，朝ご飯',
         answerEn: 'breakfast',
+        pos: ['noun'],
         orderIndex: 8,
     },
     {
@@ -3952,6 +4310,7 @@ export const questions: Question[] = [
         sectionLabel: '351-360',
         promptJp: '[形]注意深い，注意した',
         answerEn: 'careful',
+        pos: ['adj'],
         orderIndex: 9,
     },
     {
@@ -3963,6 +4322,7 @@ export const questions: Question[] = [
         sectionLabel: '351-360',
         promptJp: '[名]年齢，年',
         answerEn: 'age',
+        pos: ['noun'],
         orderIndex: 10,
     },
     {
@@ -3974,6 +4334,7 @@ export const questions: Question[] = [
         sectionLabel: '361-370',
         promptJp: '[動]～を切る',
         answerEn: 'cut',
+        pos: ['verb'],
         orderIndex: 1,
     },
     {
@@ -3985,6 +4346,7 @@ export const questions: Question[] = [
         sectionLabel: '361-370',
         promptJp: '[副]（未来の）いつか，ある日，そのうち',
         answerEn: 'someday',
+        pos: ['adv'],
         orderIndex: 2,
     },
     {
@@ -3996,6 +4358,7 @@ export const questions: Question[] = [
         sectionLabel: '361-370',
         promptJp: '[動]くっつく / [名]棒，杖',
         answerEn: 'stick',
+        pos: ['verb', 'noun'],
         orderIndex: 3,
     },
     {
@@ -4007,6 +4370,7 @@ export const questions: Question[] = [
         sectionLabel: '361-370',
         promptJp: '[助動]① ～かもしれない ② ～していい',
         answerEn: 'may',
+        pos: ['aux'],
         orderIndex: 4,
     },
     {
@@ -4018,6 +4382,7 @@ export const questions: Question[] = [
         sectionLabel: '361-370',
         promptJp: '[名]制服',
         answerEn: 'uniform',
+        pos: ['noun'],
         orderIndex: 5,
     },
     {
@@ -4029,6 +4394,7 @@ export const questions: Question[] = [
         sectionLabel: '361-370',
         promptJp: '[動]～に[～を]登る',
         answerEn: 'climb',
+        pos: ['verb'],
         orderIndex: 6,
     },
     {
@@ -4040,6 +4406,7 @@ export const questions: Question[] = [
         sectionLabel: '361-370',
         promptJp: '[名]体育館，ジム',
         answerEn: 'gym',
+        pos: ['noun'],
         orderIndex: 7,
     },
     {
@@ -4051,6 +4418,7 @@ export const questions: Question[] = [
         sectionLabel: '361-370',
         promptJp: '[形]空腹の，おなかのすいた',
         answerEn: 'hungry',
+        pos: ['adj'],
         orderIndex: 8,
     },
     {
@@ -4062,6 +4430,7 @@ export const questions: Question[] = [
         sectionLabel: '361-370',
         promptJp: '[名]アメリカンフットボール，サッカー',
         answerEn: 'football',
+        pos: ['noun'],
         orderIndex: 9,
     },
     {
@@ -4073,6 +4442,7 @@ export const questions: Question[] = [
         sectionLabel: '361-370',
         promptJp: '[名]① 列，行列 ② 線，（電車の）路線，（スポーツの）ライン',
         answerEn: 'line',
+        pos: ['noun'],
         orderIndex: 10,
     },
     {
@@ -4084,6 +4454,7 @@ export const questions: Question[] = [
         sectionLabel: '371-380',
         promptJp: '[名]オレンジ，[名]オレンジ色 / [形]オレンジ色の',
         answerEn: 'orange',
+        pos: ['noun', 'adj'],
         orderIndex: 1,
     },
     {
@@ -4095,6 +4466,7 @@ export const questions: Question[] = [
         sectionLabel: '371-380',
         promptJp: '[形]1,000の，千の / [名]1,000，千',
         answerEn: 'thousand',
+        pos: ['adj', 'noun'],
         orderIndex: 2,
     },
     {
@@ -4106,6 +4478,7 @@ export const questions: Question[] = [
         sectionLabel: '371-380',
         promptJp: '[名]接触，感触，連絡 / [動]～に触る，触れる',
         answerEn: 'touch',
+        pos: ['noun', 'verb'],
         orderIndex: 3,
     },
     {
@@ -4117,6 +4490,7 @@ export const questions: Question[] = [
         sectionLabel: '371-380',
         promptJp: '[名]あなた（たち）のもの',
         answerEn: 'yours',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -4128,6 +4502,7 @@ export const questions: Question[] = [
         sectionLabel: '371-380',
         promptJp: '[名]～時',
         answerEn: "o'clock",
+        pos: ['noun'],
         orderIndex: 5,
     },
     {
@@ -4139,6 +4514,7 @@ export const questions: Question[] = [
         sectionLabel: '371-380',
         promptJp: '[動]くつろぐ，リラックスする',
         answerEn: 'relax',
+        pos: ['verb'],
         orderIndex: 6,
     },
     {
@@ -4150,6 +4526,7 @@ export const questions: Question[] = [
         sectionLabel: '371-380',
         promptJp: '[名]Tシャツ',
         answerEn: 'T-shirt',
+        pos: ['noun'],
         orderIndex: 7,
     },
     {
@@ -4161,6 +4538,7 @@ export const questions: Question[] = [
         sectionLabel: '371-380',
         promptJp: '[名]彼女のもの',
         answerEn: 'hers',
+        pos: ['noun'],
         orderIndex: 8,
     },
     {
@@ -4172,6 +4550,7 @@ export const questions: Question[] = [
         sectionLabel: '371-380',
         promptJp: '[前]～に反対して，～に対抗して，～を背景にして',
         answerEn: 'against',
+        pos: ['prep'],
         orderIndex: 9,
     },
     {
@@ -4183,6 +4562,7 @@ export const questions: Question[] = [
         sectionLabel: '371-380',
         promptJp: '[名]～さん，～夫人，～先生',
         answerEn: 'Mrs.',
+        pos: ['noun'],
         orderIndex: 10,
     },
     {
@@ -4194,6 +4574,7 @@ export const questions: Question[] = [
         sectionLabel: '381-390',
         promptJp: '[動]① ～を逃す，（電車など）に乗りそこなう ② ～がいなくてさみしい',
         answerEn: 'miss',
+        pos: ['verb'],
         orderIndex: 1,
     },
     {
@@ -4205,6 +4586,7 @@ export const questions: Question[] = [
         sectionLabel: '381-390',
         promptJp: '[名]お父さん，パパ',
         answerEn: 'dad',
+        pos: ['noun'],
         orderIndex: 2,
     },
     {
@@ -4216,6 +4598,7 @@ export const questions: Question[] = [
         sectionLabel: '381-390',
         promptJp: '[動]～を願う，祈る / [名]願い（ごと），望み',
         answerEn: 'wish',
+        pos: ['verb', 'noun'],
         orderIndex: 3,
     },
     {
@@ -4227,6 +4610,7 @@ export const questions: Question[] = [
         sectionLabel: '381-390',
         promptJp: '[前/副]後ろに，背後に，あとに（残して） / ～の後ろに，～の背後に',
         answerEn: 'behind',
+        pos: ['adv', 'prep'],
         orderIndex: 4,
     },
     {
@@ -4238,6 +4622,7 @@ export const questions: Question[] = [
         sectionLabel: '381-390',
         promptJp: '[名]しずく / [動]① ～を落とす ② 落ちる，（数値などが）下がる',
         answerEn: 'drop',
+        pos: ['noun', 'verb'],
         orderIndex: 5,
     },
     {
@@ -4249,6 +4634,7 @@ export const questions: Question[] = [
         sectionLabel: '381-390',
         promptJp: '[名]① 1組，セット ②（スポーツで）セット / [動]① ～を（きちんと）置く，配置する ② （太陽・月が）沈む',
         answerEn: 'set',
+        pos: ['noun', 'verb'],
         orderIndex: 6,
     },
     {
@@ -4260,6 +4646,7 @@ export const questions: Question[] = [
         sectionLabel: '381-390',
         promptJp: '[名]風呂，入浴',
         answerEn: 'bath',
+        pos: ['noun'],
         orderIndex: 7,
     },
     {
@@ -4271,6 +4658,7 @@ export const questions: Question[] = [
         sectionLabel: '381-390',
         promptJp: '[名]① 場合，事例，ケース [名]② 容器，入れ物',
         answerEn: 'case',
+        pos: ['noun'],
         orderIndex: 8,
     },
     {
@@ -4282,6 +4670,7 @@ export const questions: Question[] = [
         sectionLabel: '381-390',
         promptJp: '[名]タオル',
         answerEn: 'towel',
+        pos: ['noun'],
         orderIndex: 9,
     },
     {
@@ -4293,6 +4682,7 @@ export const questions: Question[] = [
         sectionLabel: '381-390',
         promptJp: '[名]トランペット',
         answerEn: 'trumpet',
+        pos: ['noun'],
         orderIndex: 10,
     },
     {
@@ -4304,6 +4694,7 @@ export const questions: Question[] = [
         sectionLabel: '391-400',
         promptJp: '[形]① いっぱいの，充満した ② 完全な，すべてを含んだ ③ 満ちた',
         answerEn: 'full',
+        pos: ['adj'],
         orderIndex: 1,
     },
     {
@@ -4315,6 +4706,7 @@ export const questions: Question[] = [
         sectionLabel: '391-400',
         promptJp: '[形]丸い',
         answerEn: 'round',
+        pos: ['adj'],
         orderIndex: 2,
     },
     {
@@ -4326,6 +4718,7 @@ export const questions: Question[] = [
         sectionLabel: '391-400',
         promptJp: '[代]①[形容詞的]誰の ②[名詞的]誰のもの',
         answerEn: 'whose',
+        pos: ['pron', 'adj', 'noun'],
         orderIndex: 3,
     },
     {
@@ -4337,6 +4730,7 @@ export const questions: Question[] = [
         sectionLabel: '391-400',
         promptJp: '[名]いとこ',
         answerEn: 'cousin',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -4348,6 +4742,7 @@ export const questions: Question[] = [
         sectionLabel: '391-400',
         promptJp: '[名]王，国王',
         answerEn: 'king',
+        pos: ['noun'],
         orderIndex: 5,
     },
     {
@@ -4359,6 +4754,7 @@ export const questions: Question[] = [
         sectionLabel: '391-400',
         promptJp: '[名]ドル',
         answerEn: 'dollar',
+        pos: ['noun'],
         orderIndex: 6,
     },
     {
@@ -4370,6 +4766,7 @@ export const questions: Question[] = [
         sectionLabel: '391-400',
         promptJp: '[副]①[疑問文で]どこかに[で] ②[否定文で]どこにも ③[肯定文で]どこ（に）でも',
         answerEn: 'anywhere',
+        pos: ['adv'],
         orderIndex: 7,
     },
     {
@@ -4381,6 +4778,7 @@ export const questions: Question[] = [
         sectionLabel: '391-400',
         promptJp: '[名]私たちのもの',
         answerEn: 'ours',
+        pos: ['noun'],
         orderIndex: 8,
     },
     {
@@ -4392,6 +4790,7 @@ export const questions: Question[] = [
         sectionLabel: '391-400',
         promptJp: '[名]彼ら[彼女ら]のもの，それらのもの',
         answerEn: 'theirs',
+        pos: ['noun'],
         orderIndex: 9,
     },
     {
@@ -4403,6 +4802,7 @@ export const questions: Question[] = [
         sectionLabel: '391-400',
         promptJp: '[間]ええ，はい',
         answerEn: 'yeah',
+        pos: ['noun'],
         orderIndex: 10,
     },
     {
@@ -4414,6 +4814,8 @@ export const questions: Question[] = [
         sectionLabel: 'C1-10',
         promptJp: '[熟]家に帰る，帰宅する',
         answerEn: 'go home',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 1,
     },
     {
@@ -4425,6 +4827,8 @@ export const questions: Question[] = [
         sectionLabel: 'C1-10',
         promptJp: '[熟]学校に行く，通学する',
         answerEn: 'go to school',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 2,
     },
     {
@@ -4436,6 +4840,8 @@ export const questions: Question[] = [
         sectionLabel: 'C1-10',
         promptJp: '[熟]寝る',
         answerEn: 'go to bed',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 3,
     },
     {
@@ -4447,6 +4853,8 @@ export const questions: Question[] = [
         sectionLabel: 'C1-10',
         promptJp: '[熟]外出する，出かける',
         answerEn: 'go out',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 4,
     },
     {
@@ -4458,6 +4866,8 @@ export const questions: Question[] = [
         sectionLabel: 'C1-10',
         promptJp: '[熟]入る，入ってくる',
         answerEn: 'come in',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 5,
     },
     {
@@ -4469,6 +4879,8 @@ export const questions: Question[] = [
         sectionLabel: 'C1-10',
         promptJp: '[熟]～へ帰ってくる，～へ戻ってくる',
         answerEn: 'come back to',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 6,
     },
     {
@@ -4480,6 +4892,8 @@ export const questions: Question[] = [
         sectionLabel: 'C1-10',
         promptJp: '[熟]行ったり来たりする，出入りする',
         answerEn: 'come and go',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 7,
     },
     {
@@ -4491,6 +4905,8 @@ export const questions: Question[] = [
         sectionLabel: 'C1-10',
         promptJp: '[熟]のぼる，上がる',
         answerEn: 'go up',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 8,
     },
     {
@@ -4502,6 +4918,8 @@ export const questions: Question[] = [
         sectionLabel: 'C1-10',
         promptJp: '[熟]最善をつくす，全力をつくす',
         answerEn: 'do my best',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 9,
     },
     {
@@ -4513,6 +4931,8 @@ export const questions: Question[] = [
         sectionLabel: 'C1-10',
         promptJp: '[熟]宿題をする',
         answerEn: 'do my homework',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 10,
     },
     {
@@ -4524,6 +4944,8 @@ export const questions: Question[] = [
         sectionLabel: 'C11-20',
         promptJp: '[熟]倒れる',
         answerEn: 'fall down',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 1,
     },
     {
@@ -4535,6 +4957,8 @@ export const questions: Question[] = [
         sectionLabel: 'C11-20',
         promptJp: '[熟]起きる',
         answerEn: 'get up',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 2,
     },
     {
@@ -4546,6 +4970,8 @@ export const questions: Question[] = [
         sectionLabel: 'C11-20',
         promptJp: '[熟]目を覚ます，～を起こす',
         answerEn: 'wake up',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 3,
     },
     {
@@ -4557,6 +4983,8 @@ export const questions: Question[] = [
         sectionLabel: 'C11-20',
         promptJp: '[熟]逃げる，走り去る',
         answerEn: 'run away',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 4,
     },
     {
@@ -4568,6 +4996,8 @@ export const questions: Question[] = [
         sectionLabel: 'C11-20',
         promptJp: '[熟]立ち上がる',
         answerEn: 'stand up',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 5,
     },
     {
@@ -4579,6 +5009,8 @@ export const questions: Question[] = [
         sectionLabel: 'C11-20',
         promptJp: '[熟]楽しい時間を過ごす',
         answerEn: 'have a good time',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 6,
     },
     {
@@ -4590,6 +5022,8 @@ export const questions: Question[] = [
         sectionLabel: 'C11-20',
         promptJp: '[熟]楽しむ',
         answerEn: 'have fun',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 7,
     },
     {
@@ -4601,6 +5035,8 @@ export const questions: Question[] = [
         sectionLabel: 'C11-20',
         promptJp: '[熟]～がわかる，～を知る，～を見つけ出す',
         answerEn: 'find out',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 8,
     },
     {
@@ -4612,6 +5048,8 @@ export const questions: Question[] = [
         sectionLabel: 'C11-20',
         promptJp: '[熟]入浴する，風呂に入る',
         answerEn: 'take a bath',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 9,
     },
     {
@@ -4623,6 +5061,8 @@ export const questions: Question[] = [
         sectionLabel: 'C11-20',
         promptJp: '[熟]～出身である，～に由来する',
         answerEn: 'come from',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 10,
     },
     {
@@ -4634,6 +5074,8 @@ export const questions: Question[] = [
         sectionLabel: 'C21-30',
         promptJp: '[熟]～を聞く',
         answerEn: 'listen to',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 1,
     },
     {
@@ -4645,6 +5087,8 @@ export const questions: Question[] = [
         sectionLabel: 'C21-30',
         promptJp: '[熟]～を待つ',
         answerEn: 'wait for',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 2,
     },
     {
@@ -4656,6 +5100,8 @@ export const questions: Question[] = [
         sectionLabel: 'C21-30',
         promptJp: '[熟]～に住む',
         answerEn: 'live in',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 3,
     },
     {
@@ -4667,6 +5113,8 @@ export const questions: Question[] = [
         sectionLabel: 'C21-30',
         promptJp: '[熟]～を見る',
         answerEn: 'look at',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 4,
     },
     {
@@ -4678,6 +5126,8 @@ export const questions: Question[] = [
         sectionLabel: 'C21-30',
         promptJp: '[熟]～をさがす',
         answerEn: 'look for',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 5,
     },
     {
@@ -4689,6 +5139,8 @@ export const questions: Question[] = [
         sectionLabel: 'C21-30',
         promptJp: '[熟]～のように見える',
         answerEn: 'look like',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 6,
     },
     {
@@ -4700,6 +5152,8 @@ export const questions: Question[] = [
         sectionLabel: 'C21-30',
         promptJp: '[熟]（人）のところに滞在する',
         answerEn: 'stay with',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 7,
     },
     {
@@ -4711,6 +5165,8 @@ export const questions: Question[] = [
         sectionLabel: 'C21-30',
         promptJp: '[熟]～について話す',
         answerEn: 'talk about',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 8,
     },
     {
@@ -4722,6 +5178,8 @@ export const questions: Question[] = [
         sectionLabel: 'C21-30',
         promptJp: '[熟]～について学ぶ［知る］',
         answerEn: 'learn about',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 9,
     },
     {
@@ -4733,6 +5191,8 @@ export const questions: Question[] = [
         sectionLabel: 'C21-30',
         promptJp: '[熟]～に賛成する',
         answerEn: 'agree with',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 10,
     },
     {
@@ -4744,6 +5204,8 @@ export const questions: Question[] = [
         sectionLabel: 'C31-40',
         promptJp: '[熟]Aを持ち［連れ］帰る，Aを（元の状態に）戻す，Aを思い出させる',
         answerEn: 'bring A back',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 1,
     },
     {
@@ -4755,6 +5217,8 @@ export const questions: Question[] = [
         sectionLabel: 'C31-40',
         promptJp: '[熟]Aをあとに置いていく，Aを置き忘れる',
         answerEn: 'leave A behind',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 2,
     },
     {
@@ -4766,6 +5230,8 @@ export const questions: Question[] = [
         sectionLabel: 'C31-40',
         promptJp: '[熟]Aを拾い上げる，Aを車で迎えに行く',
         answerEn: 'pick A up',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 3,
     },
     {
@@ -4777,6 +5243,8 @@ export const questions: Question[] = [
         sectionLabel: 'C31-40',
         promptJp: '[熟]Aを着る',
         answerEn: 'put A on',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 4,
     },
     {
@@ -4788,6 +5256,8 @@ export const questions: Question[] = [
         sectionLabel: 'C31-40',
         promptJp: '[熟]Aを脱ぐ，Aを取り外す',
         answerEn: 'take A off',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 5,
     },
     {
@@ -4799,6 +5269,8 @@ export const questions: Question[] = [
         sectionLabel: 'C31-40',
         promptJp: '[熟]Aを取り出す',
         answerEn: 'take A out',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 6,
     },
     {
@@ -4810,6 +5282,8 @@ export const questions: Question[] = [
         sectionLabel: 'C31-40',
         promptJp: '[熟]～の世話をする，～の面倒を見る',
         answerEn: 'take care of',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 7,
     },
     {
@@ -4821,6 +5295,8 @@ export const questions: Question[] = [
         sectionLabel: 'C31-40',
         promptJp: '[熟]～を楽しみに待つ',
         answerEn: 'look forward to',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 8,
     },
     {
@@ -4832,6 +5308,8 @@ export const questions: Question[] = [
         sectionLabel: 'C31-40',
         promptJp: '[熟]～出身である，～起源である',
         answerEn: 'be from',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 9,
     },
     {
@@ -4843,6 +5321,8 @@ export const questions: Question[] = [
         sectionLabel: 'C31-40',
         promptJp: '[熟]～が上手だ，～が得意だ',
         answerEn: 'be good at',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 10,
     },
     {
@@ -4854,6 +5334,8 @@ export const questions: Question[] = [
         sectionLabel: 'C41-50',
         promptJp: '[熟]～を恐れる',
         answerEn: 'be afraid of',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 1,
     },
     {
@@ -4865,6 +5347,8 @@ export const questions: Question[] = [
         sectionLabel: 'C41-50',
         promptJp: '[熟]～で有名だ',
         answerEn: 'be famous for',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 2,
     },
     {
@@ -4876,6 +5360,8 @@ export const questions: Question[] = [
         sectionLabel: 'C41-50',
         promptJp: '[熟]～でいっぱいである',
         answerEn: 'be full of',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 3,
     },
     {
@@ -4887,6 +5373,8 @@ export const questions: Question[] = [
         sectionLabel: 'C41-50',
         promptJp: '[熟]～に興味［関心］がある',
         answerEn: 'be interested in',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 4,
     },
     {
@@ -4898,6 +5386,8 @@ export const questions: Question[] = [
         sectionLabel: 'C41-50',
         promptJp: '[熟]～することができる',
         answerEn: 'be able to',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 5,
     },
     {
@@ -4909,6 +5399,8 @@ export const questions: Question[] = [
         sectionLabel: 'C41-50',
         promptJp: '[熟]困ったことになっている',
         answerEn: 'be in trouble',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 6,
     },
     {
@@ -4920,6 +5412,8 @@ export const questions: Question[] = [
         sectionLabel: 'C41-50',
         promptJp: '[熟]少数（の～），少し（の～），いくらか（の～）',
         answerEn: 'a few',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 7,
     },
     {
@@ -4931,6 +5425,8 @@ export const questions: Question[] = [
         sectionLabel: 'C41-50',
         promptJp: '[熟]少し（の～）',
         answerEn: 'a little',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 8,
     },
     {
@@ -4942,6 +5438,8 @@ export const questions: Question[] = [
         sectionLabel: 'C41-50',
         promptJp: '[熟]たくさんの～',
         answerEn: 'a lot of',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 9,
     },
     {
@@ -4953,6 +5451,8 @@ export const questions: Question[] = [
         sectionLabel: 'C41-50',
         promptJp: '[熟]（カップ）１杯の～',
         answerEn: 'a cup of',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 10,
     },
     {
@@ -4964,6 +5464,8 @@ export const questions: Question[] = [
         sectionLabel: 'C51-60',
         promptJp: '[熟]1枚の～',
         answerEn: 'a piece of',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 1,
     },
     {
@@ -4975,6 +5477,8 @@ export const questions: Question[] = [
         sectionLabel: 'C51-60',
         promptJp: '[熟]～の1つ［1人］',
         answerEn: 'one of',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 2,
     },
     {
@@ -4986,6 +5490,8 @@ export const questions: Question[] = [
         sectionLabel: 'C51-60',
         promptJp: '[熟]BのようなA',
         answerEn: 'A such as B',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 3,
     },
     {
@@ -4997,6 +5503,8 @@ export const questions: Question[] = [
         sectionLabel: 'C51-60',
         promptJp: '[熟]たくさん',
         answerEn: 'a lot',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 4,
     },
     {
@@ -5008,6 +5516,8 @@ export const questions: Question[] = [
         sectionLabel: 'C51-60',
         promptJp: '[熟]毎日',
         answerEn: 'every day',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 5,
     },
     {
@@ -5019,6 +5529,8 @@ export const questions: Question[] = [
         sectionLabel: 'C51-60',
         promptJp: '[熟]一日中',
         answerEn: 'all day',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 6,
     },
     {
@@ -5030,6 +5542,8 @@ export const questions: Question[] = [
         sectionLabel: 'C51-60',
         promptJp: '[熟]今朝',
         answerEn: 'this morning',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 7,
     },
     {
@@ -5041,6 +5555,8 @@ export const questions: Question[] = [
         sectionLabel: 'C51-60',
         promptJp: '[熟]夜に',
         answerEn: 'at night',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 8,
     },
     {
@@ -5052,6 +5568,8 @@ export const questions: Question[] = [
         sectionLabel: 'C51-60',
         promptJp: '[熟]放課後（に）',
         answerEn: 'after school',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 9,
     },
     {
@@ -5063,6 +5581,8 @@ export const questions: Question[] = [
         sectionLabel: 'C51-60',
         promptJp: '[熟]あたりを見回す',
         answerEn: 'look around',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 10,
     },
     {
@@ -5074,6 +5594,8 @@ export const questions: Question[] = [
         sectionLabel: 'C61-70',
         promptJp: '[熟]一年中',
         answerEn: 'all year round',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 1,
     },
     {
@@ -5085,6 +5607,8 @@ export const questions: Question[] = [
         sectionLabel: 'C61-70',
         promptJp: '[熟]いつも，ずっと',
         answerEn: 'all the time',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 2,
     },
     {
@@ -5096,6 +5620,8 @@ export const questions: Question[] = [
         sectionLabel: 'C61-70',
         promptJp: '[熟]今度は，今回は',
         answerEn: 'this time',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 3,
     },
     {
@@ -5107,6 +5633,8 @@ export const questions: Question[] = [
         sectionLabel: 'C61-70',
         promptJp: '[熟]近ごろ（は）',
         answerEn: 'these days',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 4,
     },
     {
@@ -5118,6 +5646,8 @@ export const questions: Question[] = [
         sectionLabel: 'C61-70',
         promptJp: '[熟]（過去または未来の）ある日',
         answerEn: 'one day',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 5,
     },
     {
@@ -5129,6 +5659,8 @@ export const questions: Question[] = [
         sectionLabel: 'C61-70',
         promptJp: '[熟]将来（において），今後',
         answerEn: 'in the future',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 6,
     },
     {
@@ -5140,6 +5672,8 @@ export const questions: Question[] = [
         sectionLabel: 'C61-70',
         promptJp: '[熟]世界中に［で］',
         answerEn: 'all over the world',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 7,
     },
     {
@@ -5151,6 +5685,8 @@ export const questions: Question[] = [
         sectionLabel: 'C61-70',
         promptJp: '[熟]世界中で',
         answerEn: 'around the world',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 8,
     },
     {
@@ -5162,6 +5698,8 @@ export const questions: Question[] = [
         sectionLabel: 'C61-70',
         promptJp: '[熟]家に［で］',
         answerEn: 'at home',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 9,
     },
     {
@@ -5173,6 +5711,8 @@ export const questions: Question[] = [
         sectionLabel: 'C61-70',
         promptJp: '[熟]学校で',
         answerEn: 'at school',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 10,
     },
     {
@@ -5184,6 +5724,8 @@ export const questions: Question[] = [
         sectionLabel: 'C71-80',
         promptJp: '[熟]あそこに，あちら［そちら］では，向こうでは',
         answerEn: 'over there',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 1,
     },
     {
@@ -5195,6 +5737,8 @@ export const questions: Question[] = [
         sectionLabel: 'C71-80',
         promptJp: '[熟]～のために',
         answerEn: 'because of',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 2,
     },
     {
@@ -5206,6 +5750,8 @@ export const questions: Question[] = [
         sectionLabel: 'C71-80',
         promptJp: '[熟]～のおかげで',
         answerEn: 'thanks to',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 3,
     },
     {
@@ -5217,6 +5763,8 @@ export const questions: Question[] = [
         sectionLabel: 'C71-80',
         promptJp: '[熟]例えば',
         answerEn: 'for example',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 4,
     },
     {
@@ -5228,6 +5776,8 @@ export const questions: Question[] = [
         sectionLabel: 'C71-80',
         promptJp: '[熟]初めて',
         answerEn: 'for the first time',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 5,
     },
     {
@@ -5239,6 +5789,8 @@ export const questions: Question[] = [
         sectionLabel: 'C71-80',
         promptJp: '[熟]実は',
         answerEn: 'in fact',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 6,
     },
     {
@@ -5250,6 +5802,8 @@ export const questions: Question[] = [
         sectionLabel: 'C71-80',
         promptJp: '[熟]最初は，初め（のうち）は',
         answerEn: 'at first',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 7,
     },
     {
@@ -5261,6 +5815,8 @@ export const questions: Question[] = [
         sectionLabel: 'C71-80',
         promptJp: '[熟]結局，とうとう，やはり',
         answerEn: 'after all',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 8,
     },
     {
@@ -5272,6 +5828,8 @@ export const questions: Question[] = [
         sectionLabel: 'C71-80',
         promptJp: '[熟]もちろん，当然',
         answerEn: 'of course',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 9,
     },
     {
@@ -5283,6 +5841,8 @@ export const questions: Question[] = [
         sectionLabel: 'C71-80',
         promptJp: '[熟]互い（に）',
         answerEn: 'each other',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 10,
     },
     {
@@ -5294,6 +5854,8 @@ export const questions: Question[] = [
         sectionLabel: 'C81-90',
         promptJp: '[熟]すぐに',
         answerEn: 'right away',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 1,
     },
     {
@@ -5305,6 +5867,8 @@ export const questions: Question[] = [
         sectionLabel: 'C81-90',
         promptJp: '[熟]他方では，これに対して',
         answerEn: 'on the other hand',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 2,
     },
     {
@@ -5316,6 +5880,8 @@ export const questions: Question[] = [
         sectionLabel: 'C81-90',
         promptJp: '[熟]～より多い［く］',
         answerEn: 'more than',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 3,
     },
     {
@@ -5327,6 +5893,8 @@ export const questions: Question[] = [
         sectionLabel: 'C81-90',
         promptJp: '[熟]少しもない',
         answerEn: 'not at all',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 4,
     },
     {
@@ -5338,6 +5906,8 @@ export const questions: Question[] = [
         sectionLabel: 'C81-90',
         promptJp: '[熟]とても',
         answerEn: 'very much',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 5,
     },
     {
@@ -5349,6 +5919,8 @@ export const questions: Question[] = [
         sectionLabel: 'C81-90',
         promptJp: '[熟]～歳',
         answerEn: 'years old',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 6,
     },
     {
@@ -5360,6 +5932,8 @@ export const questions: Question[] = [
         sectionLabel: 'C81-90',
         promptJp: '[熟]～の前で［に］',
         answerEn: 'in front of',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 7,
     },
     {
@@ -5371,6 +5945,8 @@ export const questions: Question[] = [
         sectionLabel: 'C81-90',
         promptJp: '[熟]～のとなりに［の］',
         answerEn: 'next to',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 8,
     },
     {
@@ -5382,6 +5958,8 @@ export const questions: Question[] = [
         sectionLabel: 'C81-90',
         promptJp: '[熟]～から（外へ）',
         answerEn: 'out of',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 9,
     },
     {
@@ -5393,6 +5971,8 @@ export const questions: Question[] = [
         sectionLabel: 'C81-90',
         promptJp: '[熟]～しようとする，～しようと努力する',
         answerEn: 'try to',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 10,
     },
     {
@@ -5404,6 +5984,8 @@ export const questions: Question[] = [
         sectionLabel: 'C91-100',
         promptJp: '[熟]～することが好きだ（後ろは ～ing /[to ～]）',
         answerEn: 'like',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 1,
     },
     {
@@ -5415,6 +5997,8 @@ export const questions: Question[] = [
         sectionLabel: 'C91-100',
         promptJp: '[熟]～しに行く（後ろは ～ing）',
         answerEn: 'go',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 2,
     },
     {
@@ -5426,6 +6010,8 @@ export const questions: Question[] = [
         sectionLabel: 'C91-100',
         promptJp: '[熟]AとBの間に',
         answerEn: 'between A and B',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 3,
     },
     {
@@ -5437,6 +6023,8 @@ export const questions: Question[] = [
         sectionLabel: 'C91-100',
         promptJp: '[熟]AとBのどちらも',
         answerEn: 'both A and B',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 4,
     },
     {
@@ -5448,6 +6036,8 @@ export const questions: Question[] = [
         sectionLabel: 'C91-100',
         promptJp: '[熟]AからBまで',
         answerEn: 'from A to B',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 5,
     },
     {
@@ -5459,6 +6049,8 @@ export const questions: Question[] = [
         sectionLabel: 'C91-100',
         promptJp: '[熟]AだけでなくB\u3000(alsoなし)',
         answerEn: 'not only A, but B',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 6,
     },
     {
@@ -5470,6 +6062,8 @@ export const questions: Question[] = [
         sectionLabel: 'C91-100',
         promptJp: '[熟]AだけでなくB',
         answerEn: 'not only A, but also B',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 7,
     },
     {
@@ -5481,6 +6075,8 @@ export const questions: Question[] = [
         sectionLabel: 'C91-100',
         promptJp: '[熟]～しなければならない（後ろは動詞の原形）',
         answerEn: 'have to',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 8,
     },
     {
@@ -5492,6 +6088,8 @@ export const questions: Question[] = [
         sectionLabel: 'C91-100',
         promptJp: '[熟]～する必要がない，～しなくてよい（後ろは動詞の原形）',
         answerEn: "don't have to",
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 9,
     },
     {
@@ -5503,6 +6101,8 @@ export const questions: Question[] = [
         sectionLabel: 'C91-100',
         promptJp: '[熟]だいじょうぶで，［受け答えで］いいですよ',
         answerEn: 'all right',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 10,
     },
     {
@@ -5514,6 +6114,8 @@ export const questions: Question[] = [
         sectionLabel: 'C91-100',
         promptJp: '[熟]ところで',
         answerEn: 'by the way',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 11,
     },
     {
@@ -5525,6 +6127,7 @@ export const questions: Question[] = [
         sectionLabel: '401-410',
         promptJp: '[助動]① ～だろう ② ～するつもりだ ③[後に「you ～?」を伴って]～してくれませんか',
         answerEn: 'will',
+        pos: ['aux'],
         orderIndex: 2,
     },
     {
@@ -5536,6 +6139,7 @@ export const questions: Question[] = [
         sectionLabel: '401-410',
         promptJp: '[名]① 火，たき火 ② 火事',
         answerEn: 'fire',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -5547,6 +6151,7 @@ export const questions: Question[] = [
         sectionLabel: '401-410',
         promptJp: '[接]～だから，～なので',
         answerEn: 'because',
+        pos: ['conj'],
         orderIndex: 4,
     },
     {
@@ -5558,6 +6163,7 @@ export const questions: Question[] = [
         sectionLabel: '401-410',
         promptJp: '[助動]～するべきである',
         answerEn: 'should',
+        pos: ['aux'],
         orderIndex: 5,
     },
     {
@@ -5569,6 +6175,7 @@ export const questions: Question[] = [
         sectionLabel: '401-410',
         promptJp: '[接]もし～ならば',
         answerEn: 'if',
+        pos: ['conj'],
         orderIndex: 6,
     },
     {
@@ -5580,6 +6187,7 @@ export const questions: Question[] = [
         sectionLabel: '401-410',
         promptJp: '[動]～を見つける，見つけ出す',
         answerEn: 'find',
+        pos: ['verb'],
         orderIndex: 7,
     },
     {
@@ -5591,6 +6199,7 @@ export const questions: Question[] = [
         sectionLabel: '401-410',
         promptJp: '[形]重要な，大切な',
         answerEn: 'important',
+        pos: ['adj'],
         orderIndex: 8,
     },
     {
@@ -5602,6 +6211,7 @@ export const questions: Question[] = [
         sectionLabel: '401-410',
         promptJp: '[名]町，（田舎に対して）都会',
         answerEn: 'town',
+        pos: ['noun'],
         orderIndex: 9,
     },
     {
@@ -5613,6 +6223,7 @@ export const questions: Question[] = [
         sectionLabel: '401-410',
         promptJp: '[形]主な，主要な',
         answerEn: 'main',
+        pos: ['adj'],
         orderIndex: 10,
     },
     {
@@ -5624,6 +6235,7 @@ export const questions: Question[] = [
         sectionLabel: '401-410',
         promptJp: '[名]結果',
         answerEn: 'result',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -5635,6 +6247,7 @@ export const questions: Question[] = [
         sectionLabel: '411-420',
         promptJp: '[名]経験，体験 / [動]～を経験する',
         answerEn: 'experience',
+        pos: ['noun', 'verb'],
         orderIndex: 2,
     },
     {
@@ -5646,6 +6259,7 @@ export const questions: Question[] = [
         sectionLabel: '411-420',
         promptJp: '[名]水',
         answerEn: 'water',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -5657,6 +6271,7 @@ export const questions: Question[] = [
         sectionLabel: '411-420',
         promptJp: '[名]店，小売店 / [動]買い物をする',
         answerEn: 'shop',
+        pos: ['noun', 'verb'],
         orderIndex: 4,
     },
     {
@@ -5668,6 +6283,7 @@ export const questions: Question[] = [
         sectionLabel: '411-420',
         promptJp: '[形]外国の',
         answerEn: 'foreign',
+        pos: ['adj'],
         orderIndex: 5,
     },
     {
@@ -5679,6 +6295,7 @@ export const questions: Question[] = [
         sectionLabel: '411-420',
         promptJp: '[副]再び，もう一度，また',
         answerEn: 'again',
+        pos: ['adv'],
         orderIndex: 6,
     },
     {
@@ -5690,6 +6307,7 @@ export const questions: Question[] = [
         sectionLabel: '411-420',
         promptJp: '[動]（～を）決める，決心する',
         answerEn: 'decide',
+        pos: ['verb'],
         orderIndex: 7,
     },
     {
@@ -5701,6 +6319,7 @@ export const questions: Question[] = [
         sectionLabel: '411-420',
         promptJp: '[名]アメリカ，米国',
         answerEn: 'America',
+        pos: ['noun'],
         orderIndex: 8,
     },
     {
@@ -5712,6 +6331,7 @@ export const questions: Question[] = [
         sectionLabel: '411-420',
         promptJp: '[名]夢 / [動]夢を見る',
         answerEn: 'dream',
+        pos: ['noun', 'verb'],
         orderIndex: 9,
     },
     {
@@ -5723,6 +6343,7 @@ export const questions: Question[] = [
         sectionLabel: '411-420',
         promptJp: '[名]一員，会員，メンバー',
         answerEn: 'member',
+        pos: ['noun'],
         orderIndex: 10,
     },
     {
@@ -5734,6 +6355,7 @@ export const questions: Question[] = [
         sectionLabel: '411-420',
         promptJp: '[名]スピーチ，演説',
         answerEn: 'speech',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -5745,6 +6367,7 @@ export const questions: Question[] = [
         sectionLabel: '421-430',
         promptJp: '[動]～を片づける，きれいにする / [形]① 澄んだ，晴れた ② 明白な，明らかな',
         answerEn: 'clear',
+        pos: ['verb', 'adj'],
         orderIndex: 2,
     },
     {
@@ -5756,6 +6379,7 @@ export const questions: Question[] = [
         sectionLabel: '421-430',
         promptJp: '[動]① ～を覚えている ② ～を思い出す',
         answerEn: 'remember',
+        pos: ['verb'],
         orderIndex: 3,
     },
     {
@@ -5767,6 +6391,7 @@ export const questions: Question[] = [
         sectionLabel: '421-430',
         promptJp: '[名]① 手紙 [名]② 文字',
         answerEn: 'letter',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -5778,6 +6403,7 @@ export const questions: Question[] = [
         sectionLabel: '421-430',
         promptJp: '[名]話，物語，記事',
         answerEn: 'story',
+        pos: ['noun'],
         orderIndex: 5,
     },
     {
@@ -5789,6 +6415,7 @@ export const questions: Question[] = [
         sectionLabel: '421-430',
         promptJp: '[動]① 始まる [動]② ～を始める',
         answerEn: 'begin',
+        pos: ['verb'],
         orderIndex: 6,
     },
     {
@@ -5800,6 +6427,7 @@ export const questions: Question[] = [
         sectionLabel: '421-430',
         promptJp: '[形]すばらしい，見事な',
         answerEn: 'wonderful',
+        pos: ['adj'],
         orderIndex: 7,
     },
     {
@@ -5811,6 +6439,7 @@ export const questions: Question[] = [
         sectionLabel: '421-430',
         promptJp: '[動]①（～を）去る，出発する ② ～を残す，置き忘れる',
         answerEn: 'leave',
+        pos: ['verb'],
         orderIndex: 8,
     },
     {
@@ -5822,6 +6451,7 @@ export const questions: Question[] = [
         sectionLabel: '421-430',
         promptJp: '[名]文化',
         answerEn: 'culture',
+        pos: ['noun'],
         orderIndex: 9,
     },
     {
@@ -5833,6 +6463,7 @@ export const questions: Question[] = [
         sectionLabel: '421-430',
         promptJp: '[形]若い',
         answerEn: 'young',
+        pos: ['adj'],
         orderIndex: 10,
     },
     {
@@ -5844,6 +6475,7 @@ export const questions: Question[] = [
         sectionLabel: '421-430',
         promptJp: '[動]① 成長する，育つ，（しだいに）～になる ② ～を栽培する，育てる',
         answerEn: 'grow',
+        pos: ['verb'],
         orderIndex: 1,
     },
     {
@@ -5855,6 +6487,7 @@ export const questions: Question[] = [
         sectionLabel: '431-440',
         promptJp: '[形]そのような',
         answerEn: 'such',
+        pos: ['adj'],
         orderIndex: 2,
     },
     {
@@ -5866,6 +6499,7 @@ export const questions: Question[] = [
         sectionLabel: '431-440',
         promptJp: '[名]停留所，駅 / [動]① 止まる，（雨などが）やむ ② ～を止める，やめる',
         answerEn: 'stop',
+        pos: ['noun', 'verb'],
         orderIndex: 3,
     },
     {
@@ -5877,6 +6511,7 @@ export const questions: Question[] = [
         sectionLabel: '431-440',
         promptJp: '[副]決して～しない，今までに（一度も）～したことがない',
         answerEn: 'never',
+        pos: ['adv'],
         orderIndex: 4,
     },
     {
@@ -5888,6 +6523,7 @@ export const questions: Question[] = [
         sectionLabel: '431-440',
         promptJp: '[名]部屋，～室',
         answerEn: 'room',
+        pos: ['noun'],
         orderIndex: 5,
     },
     {
@@ -5899,6 +6535,7 @@ export const questions: Question[] = [
         sectionLabel: '431-440',
         promptJp: '[形]うれしい，喜んで',
         answerEn: 'glad',
+        pos: ['adj'],
         orderIndex: 6,
     },
     {
@@ -5910,6 +6547,7 @@ export const questions: Question[] = [
         sectionLabel: '431-440',
         promptJp: '[形動]伝統的な',
         answerEn: 'traditional',
+        pos: ['verb', 'adj'],
         orderIndex: 7,
     },
     {
@@ -5921,6 +6559,7 @@ export const questions: Question[] = [
         sectionLabel: '431-440',
         promptJp: '[動]同意する，賛成する',
         answerEn: 'agree',
+        pos: ['verb'],
         orderIndex: 8,
     },
     {
@@ -5932,6 +6571,7 @@ export const questions: Question[] = [
         sectionLabel: '431-440',
         promptJp: '[前]① ～を通り抜けて ②[手段]～を通じて，～によって ③（場所）の至る所に，～の期間を通じて',
         answerEn: 'through',
+        pos: ['prep'],
         orderIndex: 9,
     },
     {
@@ -5943,6 +6583,7 @@ export const questions: Question[] = [
         sectionLabel: '431-440',
         promptJp: '[名]ロボット',
         answerEn: 'robot',
+        pos: ['noun'],
         orderIndex: 10,
     },
     {
@@ -5954,6 +6595,7 @@ export const questions: Question[] = [
         sectionLabel: '431-440',
         promptJp: '[名]集団，グループ',
         answerEn: 'group',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -5965,6 +6607,7 @@ export const questions: Question[] = [
         sectionLabel: '441-450',
         promptJp: '[名]少女，女の子',
         answerEn: 'girl',
+        pos: ['noun'],
         orderIndex: 2,
     },
     {
@@ -5976,6 +6619,7 @@ export const questions: Question[] = [
         sectionLabel: '441-450',
         promptJp: '[名]少年，男の子',
         answerEn: 'boy',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -5987,6 +6631,7 @@ export const questions: Question[] = [
         sectionLabel: '441-450',
         promptJp: '[形]自分（自身）の，独自の',
         answerEn: 'own',
+        pos: ['adj'],
         orderIndex: 4,
     },
     {
@@ -5998,6 +6643,7 @@ export const questions: Question[] = [
         sectionLabel: '441-450',
         promptJp: '[名]海',
         answerEn: 'sea',
+        pos: ['noun'],
         orderIndex: 5,
     },
     {
@@ -6009,6 +6655,7 @@ export const questions: Question[] = [
         sectionLabel: '441-450',
         promptJp: '[副]～でさえ，～でも',
         answerEn: 'even',
+        pos: ['adv'],
         orderIndex: 6,
     },
     {
@@ -6020,6 +6667,7 @@ export const questions: Question[] = [
         sectionLabel: '441-450',
         promptJp: '[動]①（～を）終える，終わる ②[後に～ingをつけて]～し終える',
         answerEn: 'finish',
+        pos: ['verb'],
         orderIndex: 7,
     },
     {
@@ -6031,6 +6679,7 @@ export const questions: Question[] = [
         sectionLabel: '441-450',
         promptJp: '[名]新聞',
         answerEn: 'newspaper',
+        pos: ['noun'],
         orderIndex: 8,
     },
     {
@@ -6042,6 +6691,7 @@ export const questions: Question[] = [
         sectionLabel: '441-450',
         promptJp: '[動]①（～を）信じる ② ～だと思う，信じる',
         answerEn: 'believe',
+        pos: ['verb'],
         orderIndex: 9,
     },
     {
@@ -6053,6 +6703,7 @@ export const questions: Question[] = [
         sectionLabel: '441-450',
         promptJp: '[動]① ～を動かす，移動させる ② 動く，移動する，引っ越す ③ ～を感動させる',
         answerEn: 'move',
+        pos: ['verb'],
         orderIndex: 10,
     },
     {
@@ -6064,6 +6715,7 @@ export const questions: Question[] = [
         sectionLabel: '441-450',
         promptJp: '[名]お金，貨幣',
         answerEn: 'money',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -6075,6 +6727,7 @@ export const questions: Question[] = [
         sectionLabel: '451-460',
         promptJp: '[名]① スペース，場所，空間 [名]② 宇宙',
         answerEn: 'space',
+        pos: ['noun'],
         orderIndex: 2,
     },
     {
@@ -6086,6 +6739,7 @@ export const questions: Question[] = [
         sectionLabel: '451-460',
         promptJp: '[前]～なしで[に]',
         answerEn: 'without',
+        pos: ['prep'],
         orderIndex: 3,
     },
     {
@@ -6097,6 +6751,7 @@ export const questions: Question[] = [
         sectionLabel: '451-460',
         promptJp: '[形]①[前にaをつけて]少数の～，2, 3の～ [代]②ほとんど～ない',
         answerEn: 'few',
+        pos: ['adj', 'prep', 'pron'],
         orderIndex: 4,
     },
     {
@@ -6108,6 +6763,7 @@ export const questions: Question[] = [
         sectionLabel: '451-460',
         promptJp: '[名]テーブル，食卓',
         answerEn: 'table',
+        pos: ['noun'],
         orderIndex: 5,
     },
     {
@@ -6119,6 +6775,7 @@ export const questions: Question[] = [
         sectionLabel: '451-460',
         promptJp: '[動]～できる',
         answerEn: 'able',
+        pos: ['verb'],
         orderIndex: 6,
     },
     {
@@ -6130,6 +6787,7 @@ export const questions: Question[] = [
         sectionLabel: '451-460',
         promptJp: '[動]（～を）さし示す，指摘する / [名]① 肝心な点，論点，要点 ② 得点，点数',
         answerEn: 'point',
+        pos: ['verb', 'noun'],
         orderIndex: 7,
     },
     {
@@ -6141,6 +6799,7 @@ export const questions: Question[] = [
         sectionLabel: '451-460',
         promptJp: '[接]しかしながら，けれども',
         answerEn: 'however',
+        pos: ['conj'],
         orderIndex: 8,
     },
     {
@@ -6152,6 +6811,7 @@ export const questions: Question[] = [
         sectionLabel: '451-460',
         promptJp: '[形]本当の，[形]真実の，[形]実際の',
         answerEn: 'true',
+        pos: ['adj'],
         orderIndex: 9,
     },
     {
@@ -6163,6 +6823,7 @@ export const questions: Question[] = [
         sectionLabel: '451-460',
         promptJp: '[名]コンテスト，競技会',
         answerEn: 'contest',
+        pos: ['noun'],
         orderIndex: 10,
     },
     {
@@ -6174,6 +6835,7 @@ export const questions: Question[] = [
         sectionLabel: '451-460',
         promptJp: '[動]（家）を建てる，（橋・道路など）を造る',
         answerEn: 'build',
+        pos: ['verb'],
         orderIndex: 1,
     },
     {
@@ -6185,6 +6847,7 @@ export const questions: Question[] = [
         sectionLabel: '461-470',
         promptJp: '[名]人，個人',
         answerEn: 'person',
+        pos: ['noun'],
         orderIndex: 2,
     },
     {
@@ -6196,6 +6859,7 @@ export const questions: Question[] = [
         sectionLabel: '461-470',
         promptJp: '[名]訪問者，観光客',
         answerEn: 'visitor',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -6207,6 +6871,7 @@ export const questions: Question[] = [
         sectionLabel: '461-470',
         promptJp: '[形]大きい，大きな',
         answerEn: 'large',
+        pos: ['adj'],
         orderIndex: 4,
     },
     {
@@ -6218,6 +6883,7 @@ export const questions: Question[] = [
         sectionLabel: '461-470',
         promptJp: '[名]パーティー',
         answerEn: 'party',
+        pos: ['noun'],
         orderIndex: 5,
     },
     {
@@ -6229,6 +6895,7 @@ export const questions: Question[] = [
         sectionLabel: '461-470',
         promptJp: '[助動]① ～しなければならない [助動]②[否定形で]～してはいけない [助動]③ ～に違いない',
         answerEn: 'must',
+        pos: ['aux', 'adj'],
         orderIndex: 6,
     },
     {
@@ -6240,6 +6907,7 @@ export const questions: Question[] = [
         sectionLabel: '461-470',
         promptJp: '[形]十分な，[代]十分な数，[副]十分に',
         answerEn: 'enough',
+        pos: ['adj', 'pron', 'adv'],
         orderIndex: 7,
     },
     {
@@ -6251,6 +6919,7 @@ export const questions: Question[] = [
         sectionLabel: '461-470',
         promptJp: '[動]～を共有する，分かち合う',
         answerEn: 'share',
+        pos: ['verb'],
         orderIndex: 8,
     },
     {
@@ -6262,6 +6931,7 @@ export const questions: Question[] = [
         sectionLabel: '461-470',
         promptJp: '[代]誰か，ある人',
         answerEn: 'someone',
+        pos: ['pron'],
         orderIndex: 9,
     },
     {
@@ -6273,6 +6943,7 @@ export const questions: Question[] = [
         sectionLabel: '461-470',
         promptJp: '[名]会社',
         answerEn: 'company',
+        pos: ['noun'],
         orderIndex: 10,
     },
     {
@@ -6284,6 +6955,7 @@ export const questions: Question[] = [
         sectionLabel: '461-470',
         promptJp: '[名・代]両方，2つ[2人]とも / [形]両方の',
         answerEn: 'both',
+        pos: ['noun', 'pron', 'adj'],
         orderIndex: 1,
     },
     {
@@ -6295,6 +6967,7 @@ export const questions: Question[] = [
         sectionLabel: '471-480',
         promptJp: '[前]（2つのもの）の間で[に]',
         answerEn: 'between',
+        pos: ['prep'],
         orderIndex: 2,
     },
     {
@@ -6306,6 +6979,7 @@ export const questions: Question[] = [
         sectionLabel: '471-480',
         promptJp: '[名]地球',
         answerEn: 'earth',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -6317,6 +6991,7 @@ export const questions: Question[] = [
         sectionLabel: '471-480',
         promptJp: '[形]アメリカ（人）の / [名]アメリカ人',
         answerEn: 'American',
+        pos: ['adj', 'noun'],
         orderIndex: 4,
     },
     {
@@ -6328,6 +7003,7 @@ export const questions: Question[] = [
         sectionLabel: '471-480',
         promptJp: '[形]① 強い ②（飲み物などが）濃い',
         answerEn: 'strong',
+        pos: ['adj'],
         orderIndex: 5,
     },
     {
@@ -6339,6 +7015,7 @@ export const questions: Question[] = [
         sectionLabel: '471-480',
         promptJp: '[副]最後に，ついに，やっと',
         answerEn: 'finally',
+        pos: ['adv'],
         orderIndex: 6,
     },
     {
@@ -6350,6 +7027,7 @@ export const questions: Question[] = [
         sectionLabel: '471-480',
         promptJp: '[形動]必要な',
         answerEn: 'necessary',
+        pos: ['verb', 'adj'],
         orderIndex: 7,
     },
     {
@@ -6361,6 +7039,7 @@ export const questions: Question[] = [
         sectionLabel: '471-480',
         promptJp: '[動]泳ぐ',
         answerEn: 'swim',
+        pos: ['verb'],
         orderIndex: 8,
     },
     {
@@ -6372,6 +7051,7 @@ export const questions: Question[] = [
         sectionLabel: '471-480',
         promptJp: '[動]（～に）乗る，～に乗って行く，[名]乗ること',
         answerEn: 'ride',
+        pos: ['verb', 'noun'],
         orderIndex: 9,
     },
     {
@@ -6383,6 +7063,7 @@ export const questions: Question[] = [
         sectionLabel: '471-480',
         promptJp: '[動]① ～を描く [動]② ～を引く，引きつける',
         answerEn: 'draw',
+        pos: ['verb'],
         orderIndex: 10,
     },
     {
@@ -6394,6 +7075,7 @@ export const questions: Question[] = [
         sectionLabel: '471-480',
         promptJp: '[名]通り，街路',
         answerEn: 'street',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -6405,6 +7087,7 @@ export const questions: Question[] = [
         sectionLabel: '481-490',
         promptJp: '[名]地図',
         answerEn: 'map',
+        pos: ['noun'],
         orderIndex: 2,
     },
     {
@@ -6416,6 +7099,7 @@ export const questions: Question[] = [
         sectionLabel: '481-490',
         promptJp: '[動]① ～を続ける，～し続ける [動]② 続く',
         answerEn: 'continue',
+        pos: ['verb'],
         orderIndex: 3,
     },
     {
@@ -6427,6 +7111,7 @@ export const questions: Question[] = [
         sectionLabel: '481-490',
         promptJp: '[名]牛，雌牛，乳牛',
         answerEn: 'cow',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -6438,6 +7123,7 @@ export const questions: Question[] = [
         sectionLabel: '481-490',
         promptJp: '[名]理由',
         answerEn: 'reason',
+        pos: ['noun'],
         orderIndex: 5,
     },
     {
@@ -6449,6 +7135,7 @@ export const questions: Question[] = [
         sectionLabel: '481-490',
         promptJp: '[名]村',
         answerEn: 'village',
+        pos: ['noun'],
         orderIndex: 6,
     },
     {
@@ -6460,6 +7147,7 @@ export const questions: Question[] = [
         sectionLabel: '481-490',
         promptJp: '[名]店',
         answerEn: 'store',
+        pos: ['noun'],
         orderIndex: 7,
     },
     {
@@ -6471,6 +7159,7 @@ export const questions: Question[] = [
         sectionLabel: '481-490',
         promptJp: '[動]キャンプをする / [名]キャンプ，キャンプ場',
         answerEn: 'camp',
+        pos: ['verb', 'noun'],
         orderIndex: 8,
     },
     {
@@ -6482,6 +7171,7 @@ export const questions: Question[] = [
         sectionLabel: '481-490',
         promptJp: '[動]① ～を運ぶ [動]② ～を持ち歩く',
         answerEn: 'carry',
+        pos: ['verb'],
         orderIndex: 9,
     },
     {
@@ -6493,6 +7183,7 @@ export const questions: Question[] = [
         sectionLabel: '481-490',
         promptJp: '[名]自然',
         answerEn: 'nature',
+        pos: ['noun'],
         orderIndex: 10,
     },
     {
@@ -6504,6 +7195,7 @@ export const questions: Question[] = [
         sectionLabel: '481-490',
         promptJp: '[動]署名する，～にサインする / [名]標識，看板，記号',
         answerEn: 'sign',
+        pos: ['verb', 'noun'],
         orderIndex: 1,
     },
     {
@@ -6515,6 +7207,7 @@ export const questions: Question[] = [
         sectionLabel: '491-500',
         promptJp: '[名]① 皿 [名]② 料理',
         answerEn: 'dish',
+        pos: ['noun'],
         orderIndex: 2,
     },
     {
@@ -6526,6 +7219,7 @@ export const questions: Question[] = [
         sectionLabel: '491-500',
         promptJp: '[名]① カード，はがき [名]② トランプ（札）',
         answerEn: 'card',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -6537,6 +7231,7 @@ export const questions: Question[] = [
         sectionLabel: '491-500',
         promptJp: '[動]～を支配する / [名]規則，決まり',
         answerEn: 'rule',
+        pos: ['verb', 'noun'],
         orderIndex: 4,
     },
     {
@@ -6548,6 +7243,7 @@ export const questions: Question[] = [
         sectionLabel: '491-500',
         promptJp: '[副]① 実際に ② 実際は，実は',
         answerEn: 'actually',
+        pos: ['adv'],
         orderIndex: 5,
     },
     {
@@ -6559,6 +7255,7 @@ export const questions: Question[] = [
         sectionLabel: '491-500',
         promptJp: '[前]（3つ以上のもの）の間で[に]',
         answerEn: 'among',
+        pos: ['prep'],
         orderIndex: 6,
     },
     {
@@ -6570,6 +7267,7 @@ export const questions: Question[] = [
         sectionLabel: '491-500',
         promptJp: '[動]～を設計する，デザインする / [名]設計，デザイン',
         answerEn: 'design',
+        pos: ['verb', 'noun'],
         orderIndex: 7,
     },
     {
@@ -6581,6 +7279,7 @@ export const questions: Question[] = [
         sectionLabel: '491-500',
         promptJp: '[前]～の下へ[に]，～を下って，～を通って / [副]下へ[に]，下がって',
         answerEn: 'down',
+        pos: ['prep', 'adv'],
         orderIndex: 8,
     },
     {
@@ -6592,6 +7291,7 @@ export const questions: Question[] = [
         sectionLabel: '491-500',
         promptJp: '[名]思い出，記憶',
         answerEn: 'memory',
+        pos: ['noun'],
         orderIndex: 9,
     },
     {
@@ -6603,6 +7303,7 @@ export const questions: Question[] = [
         sectionLabel: '491-500',
         promptJp: '[名]牛乳，ミルク',
         answerEn: 'milk',
+        pos: ['noun'],
         orderIndex: 10,
     },
     {
@@ -6614,6 +7315,7 @@ export const questions: Question[] = [
         sectionLabel: '491-500',
         promptJp: '[名]旅行者，観光客',
         answerEn: 'tourist',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -6625,6 +7327,7 @@ export const questions: Question[] = [
         sectionLabel: '501-510',
         promptJp: '[副]もう，すでに',
         answerEn: 'already',
+        pos: ['adv'],
         orderIndex: 2,
     },
     {
@@ -6636,6 +7339,7 @@ export const questions: Question[] = [
         sectionLabel: '501-510',
         promptJp: '[名]芸術，美術',
         answerEn: 'art',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -6647,6 +7351,7 @@ export const questions: Question[] = [
         sectionLabel: '501-510',
         promptJp: '[名]びん，ボトル',
         answerEn: 'bottle',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -6658,6 +7363,7 @@ export const questions: Question[] = [
         sectionLabel: '501-510',
         promptJp: '[代]私自身（を）',
         answerEn: 'myself',
+        pos: ['pron'],
         orderIndex: 5,
     },
     {
@@ -6669,6 +7375,7 @@ export const questions: Question[] = [
         sectionLabel: '501-510',
         promptJp: '[動]～を作り出す，生産する',
         answerEn: 'produce',
+        pos: ['verb'],
         orderIndex: 6,
     },
     {
@@ -6680,6 +7387,7 @@ export const questions: Question[] = [
         sectionLabel: '501-510',
         promptJp: '[形]怖がって，恐れて',
         answerEn: 'afraid',
+        pos: ['adj'],
         orderIndex: 7,
     },
     {
@@ -6691,6 +7399,7 @@ export const questions: Question[] = [
         sectionLabel: '501-510',
         promptJp: '[名]森，森林',
         answerEn: 'forest',
+        pos: ['noun'],
         orderIndex: 8,
     },
     {
@@ -6702,6 +7411,7 @@ export const questions: Question[] = [
         sectionLabel: '501-510',
         promptJp: '[名]健康',
         answerEn: 'health',
+        pos: ['noun'],
         orderIndex: 9,
     },
     {
@@ -6713,6 +7423,7 @@ export const questions: Question[] = [
         sectionLabel: '501-510',
         promptJp: '[形]プラスティック（製）の，ビニール（製）の',
         answerEn: 'plastic',
+        pos: ['adj'],
         orderIndex: 10,
     },
     {
@@ -6724,6 +7435,7 @@ export const questions: Question[] = [
         sectionLabel: '501-510',
         promptJp: '[動]着く，到着する',
         answerEn: 'arrive',
+        pos: ['verb'],
         orderIndex: 1,
     },
     {
@@ -6735,6 +7447,7 @@ export const questions: Question[] = [
         sectionLabel: '511-520',
         promptJp: '[名]最後，終わり / [動]① 終わる ② ～を終える',
         answerEn: 'end',
+        pos: ['noun', 'verb'],
         orderIndex: 2,
     },
     {
@@ -6746,6 +7459,7 @@ export const questions: Question[] = [
         sectionLabel: '511-520',
         promptJp: '[名]すべて（のもの[こと]），全部，何もかも',
         answerEn: 'everything',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -6757,6 +7471,7 @@ export const questions: Question[] = [
         sectionLabel: '511-520',
         promptJp: '[名]湖',
         answerEn: 'lake',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -6768,6 +7483,7 @@ export const questions: Question[] = [
         sectionLabel: '511-520',
         promptJp: '[前]～の下に[で，へ]',
         answerEn: 'under',
+        pos: ['prep'],
         orderIndex: 5,
     },
     {
@@ -6779,6 +7495,7 @@ export const questions: Question[] = [
         sectionLabel: '511-520',
         promptJp: '[名]1人（だけ）で，[副]1人（だけ）で / [形]独りの，孤独な，[副]独りで，単独で',
         answerEn: 'alone',
+        pos: ['noun', 'adv', 'adj'],
         orderIndex: 6,
     },
     {
@@ -6790,6 +7507,7 @@ export const questions: Question[] = [
         sectionLabel: '511-520',
         promptJp: '[動]～を借りる',
         answerEn: 'borrow',
+        pos: ['verb'],
         orderIndex: 7,
     },
     {
@@ -6801,6 +7519,7 @@ export const questions: Question[] = [
         sectionLabel: '511-520',
         promptJp: '[名]コーヒー',
         answerEn: 'coffee',
+        pos: ['noun'],
         orderIndex: 8,
     },
     {
@@ -6812,6 +7531,7 @@ export const questions: Question[] = [
         sectionLabel: '511-520',
         promptJp: '[動]①（お金など）を使う ②（時間など）を過ごす，使う',
         answerEn: 'spend',
+        pos: ['verb'],
         orderIndex: 9,
     },
     {
@@ -6823,6 +7543,7 @@ export const questions: Question[] = [
         sectionLabel: '511-520',
         promptJp: '[名]庭，庭園',
         answerEn: 'garden',
+        pos: ['noun'],
         orderIndex: 10,
     },
     {
@@ -6834,6 +7555,7 @@ export const questions: Question[] = [
         sectionLabel: '511-520',
         promptJp: '[名]① 地域，区域 [名]② 面積',
         answerEn: 'area',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -6845,6 +7567,7 @@ export const questions: Question[] = [
         sectionLabel: '521-530',
         promptJp: '[名]記事',
         answerEn: 'article',
+        pos: ['noun'],
         orderIndex: 2,
     },
     {
@@ -6856,6 +7579,7 @@ export const questions: Question[] = [
         sectionLabel: '521-530',
         promptJp: '[形]神経質な，不安な，いらいらした',
         answerEn: 'nervous',
+        pos: ['adj'],
         orderIndex: 3,
     },
     {
@@ -6867,6 +7591,7 @@ export const questions: Question[] = [
         sectionLabel: '521-530',
         promptJp: '[名]ホール，会館',
         answerEn: 'hall',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -6878,6 +7603,7 @@ export const questions: Question[] = [
         sectionLabel: '521-530',
         promptJp: '[副]たぶん，[副]おそらく，[副]もしかしたら',
         answerEn: 'maybe',
+        pos: ['adv'],
         orderIndex: 5,
     },
     {
@@ -6889,6 +7615,7 @@ export const questions: Question[] = [
         sectionLabel: '521-530',
         promptJp: '[名]ペット',
         answerEn: 'pet',
+        pos: ['noun'],
         orderIndex: 6,
     },
     {
@@ -6900,6 +7627,7 @@ export const questions: Question[] = [
         sectionLabel: '521-530',
         promptJp: '[名]叫び声，大声 / [動]① 泣く，（動物が）鳴く ② 叫ぶ',
         answerEn: 'cry',
+        pos: ['noun', 'verb'],
         orderIndex: 7,
     },
     {
@@ -6911,6 +7639,7 @@ export const questions: Question[] = [
         sectionLabel: '521-530',
         promptJp: '[形]興奮させる，わくわくする',
         answerEn: 'exciting',
+        pos: ['adj'],
         orderIndex: 8,
     },
     {
@@ -6922,6 +7651,7 @@ export const questions: Question[] = [
         sectionLabel: '521-530',
         promptJp: '[名]果物，フルーツ',
         answerEn: 'fruit',
+        pos: ['noun'],
         orderIndex: 9,
     },
     {
@@ -6933,6 +7663,7 @@ export const questions: Question[] = [
         sectionLabel: '521-530',
         promptJp: '[名]賞，賞品',
         answerEn: 'prize',
+        pos: ['noun'],
         orderIndex: 10,
     },
     {
@@ -6944,6 +7675,7 @@ export const questions: Question[] = [
         sectionLabel: '521-530',
         promptJp: '[名]声',
         answerEn: 'voice',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -6955,6 +7687,7 @@ export const questions: Question[] = [
         sectionLabel: '531-540',
         promptJp: '[動]～をはっきり理解する，～に気がつく，～がわかる',
         answerEn: 'realize',
+        pos: ['verb'],
         orderIndex: 2,
     },
     {
@@ -6966,6 +7699,7 @@ export const questions: Question[] = [
         sectionLabel: '531-540',
         promptJp: '[動]① 立つ，立っている ② ～を我慢する / [名]売店，屋台',
         answerEn: 'stand',
+        pos: ['verb', 'noun'],
         orderIndex: 3,
     },
     {
@@ -6977,6 +7711,7 @@ export const questions: Question[] = [
         sectionLabel: '531-540',
         promptJp: '[動]気にする / [名]心',
         answerEn: 'mind',
+        pos: ['verb', 'noun'],
         orderIndex: 4,
     },
     {
@@ -6988,6 +7723,7 @@ export const questions: Question[] = [
         sectionLabel: '531-540',
         promptJp: '[動]～に迷惑をかける，～を悩ませる / [名]困難，苦労，問題',
         answerEn: 'trouble',
+        pos: ['verb', 'noun'],
         orderIndex: 5,
     },
     {
@@ -6999,6 +7735,7 @@ export const questions: Question[] = [
         sectionLabel: '531-540',
         promptJp: '[形]忙しい',
         answerEn: 'busy',
+        pos: ['adj'],
         orderIndex: 6,
     },
     {
@@ -7010,6 +7747,7 @@ export const questions: Question[] = [
         sectionLabel: '531-540',
         promptJp: '[動]笑う',
         answerEn: 'laugh',
+        pos: ['verb'],
         orderIndex: 7,
     },
     {
@@ -7021,6 +7759,7 @@ export const questions: Question[] = [
         sectionLabel: '531-540',
         promptJp: '[名]製品，生産物',
         answerEn: 'product',
+        pos: ['noun'],
         orderIndex: 8,
     },
     {
@@ -7032,6 +7771,7 @@ export const questions: Question[] = [
         sectionLabel: '531-540',
         promptJp: '[形]安全な，安心な',
         answerEn: 'safe',
+        pos: ['adj'],
         orderIndex: 9,
     },
     {
@@ -7043,6 +7783,7 @@ export const questions: Question[] = [
         sectionLabel: '531-540',
         promptJp: '[名]感情，気持ち，感覚',
         answerEn: 'feeling',
+        pos: ['noun'],
         orderIndex: 10,
     },
     {
@@ -7054,6 +7795,7 @@ export const questions: Question[] = [
         sectionLabel: '531-540',
         promptJp: '[名]景色，眺め，見晴らし',
         answerEn: 'view',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -7065,6 +7807,7 @@ export const questions: Question[] = [
         sectionLabel: '541-550',
         promptJp: '[名]案内人，ガイド / [動]～を導く，案内する',
         answerEn: 'guide',
+        pos: ['noun', 'verb'],
         orderIndex: 2,
     },
     {
@@ -7076,6 +7819,7 @@ export const questions: Question[] = [
         sectionLabel: '541-550',
         promptJp: '[形]健康な，[形]健康によい',
         answerEn: 'healthy',
+        pos: ['adj'],
         orderIndex: 3,
     },
     {
@@ -7087,6 +7831,7 @@ export const questions: Question[] = [
         sectionLabel: '541-550',
         promptJp: '[名]競技場，スタジアム',
         answerEn: 'stadium',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -7098,6 +7843,7 @@ export const questions: Question[] = [
         sectionLabel: '541-550',
         promptJp: '[形]① 甘い ② 優しい，親切な / [名]甘いもの，[複数形で]甘い菓子',
         answerEn: 'sweet',
+        pos: ['adj', 'noun', 'num'],
         orderIndex: 5,
     },
     {
@@ -7109,6 +7855,7 @@ export const questions: Question[] = [
         sectionLabel: '541-550',
         promptJp: '[名]硬貨，コイン',
         answerEn: 'coin',
+        pos: ['noun'],
         orderIndex: 6,
     },
     {
@@ -7120,6 +7867,7 @@ export const questions: Question[] = [
         sectionLabel: '541-550',
         promptJp: '[動]（～の）準備をする',
         answerEn: 'prepare',
+        pos: ['verb'],
         orderIndex: 7,
     },
     {
@@ -7131,6 +7879,7 @@ export const questions: Question[] = [
         sectionLabel: '541-550',
         promptJp: '[名]ホテル',
         answerEn: 'hotel',
+        pos: ['noun'],
         orderIndex: 8,
     },
     {
@@ -7142,6 +7891,7 @@ export const questions: Question[] = [
         sectionLabel: '541-550',
         promptJp: '[動]～を植える / [名]① 植物 ② 工場',
         answerEn: 'plant',
+        pos: ['verb', 'noun'],
         orderIndex: 9,
     },
     {
@@ -7153,6 +7903,7 @@ export const questions: Question[] = [
         sectionLabel: '541-550',
         promptJp: '[形]① すばらしい，元気な，健康な ② 天気がよい',
         answerEn: 'fine',
+        pos: ['adj'],
         orderIndex: 10,
     },
     {
@@ -7164,6 +7915,7 @@ export const questions: Question[] = [
         sectionLabel: '541-550',
         promptJp: '[副]① １度，１回 ② 以前，かつて',
         answerEn: 'once',
+        pos: ['adv'],
         orderIndex: 1,
     },
     {
@@ -7175,6 +7927,7 @@ export const questions: Question[] = [
         sectionLabel: '551-560',
         promptJp: '[動]～を推測する，当てる，思う',
         answerEn: 'guess',
+        pos: ['verb'],
         orderIndex: 2,
     },
     {
@@ -7186,6 +7939,7 @@ export const questions: Question[] = [
         sectionLabel: '551-560',
         promptJp: '[動]① ～を紹介する ② ～を取り入れる，導入する',
         answerEn: 'introduce',
+        pos: ['verb'],
         orderIndex: 3,
     },
     {
@@ -7197,6 +7951,7 @@ export const questions: Question[] = [
         sectionLabel: '551-560',
         promptJp: '[名]場所，用地',
         answerEn: 'site',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -7208,6 +7963,7 @@ export const questions: Question[] = [
         sectionLabel: '551-560',
         promptJp: '[名]状況，情勢，立場',
         answerEn: 'situation',
+        pos: ['noun'],
         orderIndex: 5,
     },
     {
@@ -7219,6 +7975,7 @@ export const questions: Question[] = [
         sectionLabel: '551-560',
         promptJp: '[動]～を支払う',
         answerEn: 'pay',
+        pos: ['verb'],
         orderIndex: 6,
     },
     {
@@ -7230,6 +7987,7 @@ export const questions: Question[] = [
         sectionLabel: '551-560',
         promptJp: '[動]（～を）包む',
         answerEn: 'wrap',
+        pos: ['verb'],
         orderIndex: 7,
     },
     {
@@ -7241,6 +7999,7 @@ export const questions: Question[] = [
         sectionLabel: '551-560',
         promptJp: '[動]飛ぶ，飛行する',
         answerEn: 'fly',
+        pos: ['verb'],
         orderIndex: 8,
     },
     {
@@ -7252,6 +8011,7 @@ export const questions: Question[] = [
         sectionLabel: '551-560',
         promptJp: '[動]① よくなる，回復する [動]② ～を向上させる，改良する',
         answerEn: 'improve',
+        pos: ['verb'],
         orderIndex: 9,
     },
     {
@@ -7263,6 +8023,7 @@ export const questions: Question[] = [
         sectionLabel: '551-560',
         promptJp: '[名]赤ちゃん，赤ん坊',
         answerEn: 'baby',
+        pos: ['noun'],
         orderIndex: 10,
     },
     {
@@ -7274,6 +8035,7 @@ export const questions: Question[] = [
         sectionLabel: '551-560',
         promptJp: '[名]ビデオ（テープ），[形]ビデオの，ビデオ映像の',
         answerEn: 'video',
+        pos: ['noun', 'adj'],
         orderIndex: 1,
     },
     {
@@ -7285,6 +8047,7 @@ export const questions: Question[] = [
         sectionLabel: '561-570',
         promptJp: '[代]①[疑問文で]誰か ②[否定文で]誰も ③[肯定文で]誰でも',
         answerEn: 'anyone',
+        pos: ['pron'],
         orderIndex: 2,
     },
     {
@@ -7296,6 +8059,7 @@ export const questions: Question[] = [
         sectionLabel: '561-570',
         promptJp: '[名]① 注文，命令 ② 順序 / [動]① ～を注文する ② ～に命じる，言いつける',
         answerEn: 'order',
+        pos: ['noun', 'verb'],
         orderIndex: 3,
     },
     {
@@ -7307,6 +8071,7 @@ export const questions: Question[] = [
         sectionLabel: '561-570',
         promptJp: '[形]専門的な，プロの',
         answerEn: 'professional',
+        pos: ['adj'],
         orderIndex: 4,
     },
     {
@@ -7318,6 +8083,7 @@ export const questions: Question[] = [
         sectionLabel: '561-570',
         promptJp: '[名]事実',
         answerEn: 'fact',
+        pos: ['noun'],
         orderIndex: 5,
     },
     {
@@ -7329,6 +8095,7 @@ export const questions: Question[] = [
         sectionLabel: '561-570',
         promptJp: '[名]① 階 ② 床',
         answerEn: 'floor',
+        pos: ['noun'],
         orderIndex: 6,
     },
     {
@@ -7340,6 +8107,7 @@ export const questions: Question[] = [
         sectionLabel: '561-570',
         promptJp: '[形]国の，[形]国民の，[形]国民的な',
         answerEn: 'national',
+        pos: ['adj'],
         orderIndex: 7,
     },
     {
@@ -7351,6 +8119,7 @@ export const questions: Question[] = [
         sectionLabel: '561-570',
         promptJp: '[形]① 自然の[な] ② 当然な，もっともな',
         answerEn: 'natural',
+        pos: ['adj'],
         orderIndex: 8,
     },
     {
@@ -7362,6 +8131,7 @@ export const questions: Question[] = [
         sectionLabel: '561-570',
         promptJp: '[形]完全な，[形]完ぺきな',
         answerEn: 'perfect',
+        pos: ['adj'],
         orderIndex: 9,
     },
     {
@@ -7373,6 +8143,7 @@ export const questions: Question[] = [
         sectionLabel: '561-570',
         promptJp: '[形]準備ができている',
         answerEn: 'ready',
+        pos: ['adj'],
         orderIndex: 10,
     },
     {
@@ -7384,6 +8155,7 @@ export const questions: Question[] = [
         sectionLabel: '561-570',
         promptJp: '[副]突然，急に',
         answerEn: 'suddenly',
+        pos: ['adv'],
         orderIndex: 1,
     },
     {
@@ -7395,6 +8167,7 @@ export const questions: Question[] = [
         sectionLabel: '571-580',
         promptJp: '[副/形]その他の[に]，ほかの[に]',
         answerEn: 'else',
+        pos: ['adj', 'adv'],
         orderIndex: 2,
     },
     {
@@ -7406,6 +8179,7 @@ export const questions: Question[] = [
         sectionLabel: '571-580',
         promptJp: '[名]① 半分 [名]② 前[後]半 / [形]半分の',
         answerEn: 'half',
+        pos: ['noun', 'adj'],
         orderIndex: 3,
     },
     {
@@ -7417,6 +8191,7 @@ export const questions: Question[] = [
         sectionLabel: '571-580',
         promptJp: '[代]何も～ない',
         answerEn: 'nothing',
+        pos: ['pron'],
         orderIndex: 4,
     },
     {
@@ -7428,6 +8203,7 @@ export const questions: Question[] = [
         sectionLabel: '571-580',
         promptJp: '[動]（～を）描く，～にペンキを塗る',
         answerEn: 'paint',
+        pos: ['verb'],
         orderIndex: 5,
     },
     {
@@ -7439,6 +8215,7 @@ export const questions: Question[] = [
         sectionLabel: '571-580',
         promptJp: '[名]合唱，コーラス，合唱団',
         answerEn: 'chorus',
+        pos: ['noun'],
         orderIndex: 6,
     },
     {
@@ -7450,6 +8227,7 @@ export const questions: Question[] = [
         sectionLabel: '571-580',
         promptJp: '[動]死ぬ，[動]亡くなる，[動]枯れる',
         answerEn: 'die',
+        pos: ['verb'],
         orderIndex: 7,
     },
     {
@@ -7461,6 +8239,7 @@ export const questions: Question[] = [
         sectionLabel: '571-580',
         promptJp: '[名]１つ[１個，１枚，１片]',
         answerEn: 'piece',
+        pos: ['noun'],
         orderIndex: 8,
     },
     {
@@ -7472,6 +8251,7 @@ export const questions: Question[] = [
         sectionLabel: '571-580',
         promptJp: '[名]帰り，帰宅，帰国 / [動]① 戻る，帰る ② ～を戻す，返す',
         answerEn: 'return',
+        pos: ['noun', 'verb'],
         orderIndex: 9,
     },
     {
@@ -7483,6 +8263,7 @@ export const questions: Question[] = [
         sectionLabel: '571-580',
         promptJp: '[名]それ自身を[に]',
         answerEn: 'itself',
+        pos: ['noun'],
         orderIndex: 10,
     },
     {
@@ -7494,6 +8275,7 @@ export const questions: Question[] = [
         sectionLabel: '571-580',
         promptJp: '[副]① 遠くに，離れて ②[比較級を強めて]ずっと，はるかに',
         answerEn: 'far',
+        pos: ['adv'],
         orderIndex: 1,
     },
     {
@@ -7505,6 +8287,7 @@ export const questions: Question[] = [
         sectionLabel: '581-590',
         promptJp: '[動]～を招待する',
         answerEn: 'invite',
+        pos: ['verb'],
         orderIndex: 2,
     },
     {
@@ -7516,6 +8299,7 @@ export const questions: Question[] = [
         sectionLabel: '581-590',
         promptJp: '[形]奇妙な，不思議な',
         answerEn: 'strange',
+        pos: ['adj'],
         orderIndex: 3,
     },
     {
@@ -7527,6 +8311,7 @@ export const questions: Question[] = [
         sectionLabel: '581-590',
         promptJp: '[名]話題',
         answerEn: 'topic',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -7538,6 +8323,7 @@ export const questions: Question[] = [
         sectionLabel: '581-590',
         promptJp: '[名][theをつけて]アメリカ合衆国',
         answerEn: 'U.S.',
+        pos: ['noun'],
         orderIndex: 5,
     },
     {
@@ -7549,6 +8335,7 @@ export const questions: Question[] = [
         sectionLabel: '581-590',
         promptJp: '[代]彼ら自身（を），彼女ら自身（を），それら自身（を）',
         answerEn: 'themselves',
+        pos: ['pron'],
         orderIndex: 6,
     },
     {
@@ -7560,6 +8347,7 @@ export const questions: Question[] = [
         sectionLabel: '581-590',
         promptJp: '[形]高価な，費用のかかる',
         answerEn: 'expensive',
+        pos: ['adj'],
         orderIndex: 7,
     },
     {
@@ -7571,6 +8359,7 @@ export const questions: Question[] = [
         sectionLabel: '581-590',
         promptJp: '[名]① 期間，時期，時代 [名]②（授業の）時間，時限',
         answerEn: 'period',
+        pos: ['noun'],
         orderIndex: 8,
     },
     {
@@ -7582,6 +8371,7 @@ export const questions: Question[] = [
         sectionLabel: '581-590',
         promptJp: '[名]輪，指輪，リング / [動]① 鳴る ② ～を鳴らす',
         answerEn: 'ring',
+        pos: ['noun', 'verb'],
         orderIndex: 9,
     },
     {
@@ -7593,6 +8383,7 @@ export const questions: Question[] = [
         sectionLabel: '581-590',
         promptJp: '[動]① 広がる，広まる [動]② ～を広げる，広める',
         answerEn: 'spread',
+        pos: ['verb'],
         orderIndex: 10,
     },
     {
@@ -7604,6 +8395,7 @@ export const questions: Question[] = [
         sectionLabel: '581-590',
         promptJp: '[名]太陽，日の光',
         answerEn: 'sun',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -7615,6 +8407,7 @@ export const questions: Question[] = [
         sectionLabel: '591-600',
         promptJp: '[形]高い，背が高い',
         answerEn: 'tall',
+        pos: ['adj'],
         orderIndex: 2,
     },
     {
@@ -7626,6 +8419,7 @@ export const questions: Question[] = [
         sectionLabel: '591-600',
         promptJp: '[動]① 上がる ② 昇る',
         answerEn: 'rise',
+        pos: ['verb'],
         orderIndex: 3,
     },
     {
@@ -7637,6 +8431,7 @@ export const questions: Question[] = [
         sectionLabel: '591-600',
         promptJp: '[名]① 空気，大気 ② 空中',
         answerEn: 'air',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -7648,6 +8443,7 @@ export const questions: Question[] = [
         sectionLabel: '591-600',
         promptJp: '[形]新鮮な',
         answerEn: 'fresh',
+        pos: ['adj'],
         orderIndex: 5,
     },
     {
@@ -7659,6 +8455,7 @@ export const questions: Question[] = [
         sectionLabel: '591-600',
         promptJp: '[名]門，出入口',
         answerEn: 'gate',
+        pos: ['noun'],
         orderIndex: 6,
     },
     {
@@ -7670,6 +8467,7 @@ export const questions: Question[] = [
         sectionLabel: '591-600',
         promptJp: '[名]ヒット，当たり / [動]① ～に命中する，当たる，ぶつかる ② ～を打つ，襲う',
         answerEn: 'hit',
+        pos: ['noun', 'verb'],
         orderIndex: 7,
     },
     {
@@ -7681,6 +8479,7 @@ export const questions: Question[] = [
         sectionLabel: '591-600',
         promptJp: '[形]金持ちの，豊かな',
         answerEn: 'rich',
+        pos: ['adj'],
         orderIndex: 8,
     },
     {
@@ -7692,6 +8491,7 @@ export const questions: Question[] = [
         sectionLabel: '591-600',
         promptJp: '[名]作家，[名]著者，[名]ライター',
         answerEn: 'writer',
+        pos: ['noun'],
         orderIndex: 9,
     },
     {
@@ -7703,6 +8503,7 @@ export const questions: Question[] = [
         sectionLabel: '591-600',
         promptJp: '[名]温度，[名]気温，[名]体温',
         answerEn: 'temperature',
+        pos: ['noun'],
         orderIndex: 10,
     },
     {
@@ -7714,6 +8515,7 @@ export const questions: Question[] = [
         sectionLabel: '591-600',
         promptJp: '[動]～を洗う',
         answerEn: 'wash',
+        pos: ['verb'],
         orderIndex: 1,
     },
     {
@@ -7725,6 +8527,7 @@ export const questions: Question[] = [
         sectionLabel: '601-610',
         promptJp: '[形]① 分厚い，太い ② 濃い',
         answerEn: 'thick',
+        pos: ['adj'],
         orderIndex: 2,
     },
     {
@@ -7736,6 +8539,7 @@ export const questions: Question[] = [
         sectionLabel: '601-610',
         promptJp: '[名]ドラム，太鼓',
         answerEn: 'drum',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -7747,6 +8551,7 @@ export const questions: Question[] = [
         sectionLabel: '601-610',
         promptJp: '[形]友好的な，親しみやすい',
         answerEn: 'friendly',
+        pos: ['adj'],
         orderIndex: 4,
     },
     {
@@ -7758,6 +8563,7 @@ export const questions: Question[] = [
         sectionLabel: '601-610',
         promptJp: '[名] ① 地面，大地 ② グラウンド，運動場',
         answerEn: 'ground',
+        pos: ['noun'],
         orderIndex: 5,
     },
     {
@@ -7769,6 +8575,7 @@ export const questions: Question[] = [
         sectionLabel: '601-610',
         promptJp: '[形]恥ずかしがりやの，内気な',
         answerEn: 'shy',
+        pos: ['adj'],
         orderIndex: 6,
     },
     {
@@ -7780,6 +8587,7 @@ export const questions: Question[] = [
         sectionLabel: '601-610',
         promptJp: '[名]劇場，映画館',
         answerEn: 'theater',
+        pos: ['noun'],
         orderIndex: 7,
     },
     {
@@ -7791,6 +8599,7 @@ export const questions: Question[] = [
         sectionLabel: '601-610',
         promptJp: '[形]一番上の，トップの [名]頂上，てっぺん',
         answerEn: 'top',
+        pos: ['adj', 'noun'],
         orderIndex: 8,
     },
     {
@@ -7802,6 +8611,7 @@ export const questions: Question[] = [
         sectionLabel: '601-610',
         promptJp: '[副]① 確かに，きっと [感]②[返事で]いいですよ，もちろん',
         answerEn: 'certainly',
+        pos: ['adv', 'interj'],
         orderIndex: 9,
     },
     {
@@ -7813,6 +8623,7 @@ export const questions: Question[] = [
         sectionLabel: '601-610',
         promptJp: '[名]マンガ',
         answerEn: 'comic',
+        pos: ['noun'],
         orderIndex: 10,
     },
     {
@@ -7824,6 +8635,7 @@ export const questions: Question[] = [
         sectionLabel: '601-610',
         promptJp: '[名]おばあさん，祖母',
         answerEn: 'grandma',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -7835,6 +8647,7 @@ export const questions: Question[] = [
         sectionLabel: '611-620',
         promptJp: '[名]ジャガイモ，ポテト',
         answerEn: 'potato',
+        pos: ['noun'],
         orderIndex: 2,
     },
     {
@@ -7846,6 +8659,7 @@ export const questions: Question[] = [
         sectionLabel: '611-620',
         promptJp: '[名]教科書',
         answerEn: 'textbook',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -7857,6 +8671,7 @@ export const questions: Question[] = [
         sectionLabel: '611-620',
         promptJp: '[形]① 間違った ② 悪い',
         answerEn: 'wrong',
+        pos: ['adj'],
         orderIndex: 4,
     },
     {
@@ -7868,6 +8683,7 @@ export const questions: Question[] = [
         sectionLabel: '611-620',
         promptJp: '[代]あなた自身（を）',
         answerEn: 'yourself',
+        pos: ['pron'],
         orderIndex: 5,
     },
     {
@@ -7879,6 +8695,7 @@ export const questions: Question[] = [
         sectionLabel: '611-620',
         promptJp: '[名]市役所',
         answerEn: 'city hall',
+        pos: ['noun'],
         orderIndex: 6,
     },
     {
@@ -7890,6 +8707,7 @@ export const questions: Question[] = [
         sectionLabel: '611-620',
         promptJp: '[形]助けになる，役に立つ',
         answerEn: 'helpful',
+        pos: ['adj'],
         orderIndex: 7,
     },
     {
@@ -7901,6 +8719,7 @@ export const questions: Question[] = [
         sectionLabel: '611-620',
         promptJp: '[代]彼自身（を）',
         answerEn: 'himself',
+        pos: ['pron'],
         orderIndex: 8,
     },
     {
@@ -7912,6 +8731,7 @@ export const questions: Question[] = [
         sectionLabel: '611-620',
         promptJp: '[副]（～より）もっと [代]もっと多く（の数量），もっと多くのもの[こと，人] [形]もっと[より]多くの',
         answerEn: 'more',
+        pos: ['adv', 'pron', 'adj'],
         orderIndex: 9,
     },
     {
@@ -7923,6 +8743,7 @@ export const questions: Question[] = [
         sectionLabel: '611-620',
         promptJp: '[名]客',
         answerEn: 'guest',
+        pos: ['noun'],
         orderIndex: 10,
     },
     {
@@ -7934,6 +8755,7 @@ export const questions: Question[] = [
         sectionLabel: '611-620',
         promptJp: '[形]幸運な，運のいい，ついている',
         answerEn: 'lucky',
+        pos: ['adj'],
         orderIndex: 1,
     },
     {
@@ -7945,6 +8767,7 @@ export const questions: Question[] = [
         sectionLabel: '621-630',
         promptJp: '[形] よりよい，もっとよい [副] よりよく，もっと上手に',
         answerEn: 'better',
+        pos: ['adj', 'adv'],
         orderIndex: 2,
     },
     {
@@ -7956,6 +8779,7 @@ export const questions: Question[] = [
         sectionLabel: '621-630',
         promptJp: '[接/前]～よりも，～に比べて',
         answerEn: 'than',
+        pos: ['prep', 'conj'],
         orderIndex: 3,
     },
     {
@@ -7967,6 +8791,7 @@ export const questions: Question[] = [
         sectionLabel: '621-630',
         promptJp: '[形]晴れた，日が照っている',
         answerEn: 'sunny',
+        pos: ['adj'],
         orderIndex: 4,
     },
     {
@@ -7978,6 +8803,7 @@ export const questions: Question[] = [
         sectionLabel: '621-630',
         promptJp: '[形]いろいろな，さまざまな',
         answerEn: 'various',
+        pos: ['adj'],
         orderIndex: 5,
     },
     {
@@ -7989,6 +8815,7 @@ export const questions: Question[] = [
         sectionLabel: '621-630',
         promptJp: '[名]豆',
         answerEn: 'bean',
+        pos: ['noun'],
         orderIndex: 6,
     },
     {
@@ -8000,6 +8827,7 @@ export const questions: Question[] = [
         sectionLabel: '621-630',
         promptJp: '[名](接) ① ～と同じくらい ② ～のように ③ ～なので (前) ～として',
         answerEn: 'as',
+        pos: ['noun'],
         orderIndex: 7,
     },
     {
@@ -8011,6 +8839,7 @@ export const questions: Question[] = [
         sectionLabel: '621-630',
         promptJp: '[形]低い',
         answerEn: 'low',
+        pos: ['adj'],
         orderIndex: 8,
     },
     {
@@ -8022,6 +8851,7 @@ export const questions: Question[] = [
         sectionLabel: '621-630',
         promptJp: '[名]メニュー，献立表',
         answerEn: 'menu',
+        pos: ['noun'],
         orderIndex: 9,
     },
     {
@@ -8033,6 +8863,7 @@ export const questions: Question[] = [
         sectionLabel: '621-630',
         promptJp: '[名]職員，スタッフ',
         answerEn: 'staff',
+        pos: ['noun'],
         orderIndex: 10,
     },
     {
@@ -8044,6 +8875,7 @@ export const questions: Question[] = [
         sectionLabel: '621-630',
         promptJp: '[副]最もよく，一番よく，最高に [名]最高のもの[人] [形]最もよい，一番よい，最高の',
         answerEn: 'best',
+        pos: ['adv', 'noun', 'adj'],
         orderIndex: 1,
     },
     {
@@ -8055,6 +8887,7 @@ export const questions: Question[] = [
         sectionLabel: '631-640',
         promptJp: '[名]行動，動作',
         answerEn: 'action',
+        pos: ['noun'],
         orderIndex: 2,
     },
     {
@@ -8066,6 +8899,7 @@ export const questions: Question[] = [
         sectionLabel: '631-640',
         promptJp: '[名]世紀，百年間',
         answerEn: 'century',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -8077,6 +8911,7 @@ export const questions: Question[] = [
         sectionLabel: '631-640',
         promptJp: '[副] 最も，一番 [代] 最も多く（の数量），大部分のもの[こと，人] [形] たいていの，大部分の，一番（多く）の',
         answerEn: 'most',
+        pos: ['adv', 'pron', 'adj'],
         orderIndex: 4,
     },
     {
@@ -8088,6 +8923,7 @@ export const questions: Question[] = [
         sectionLabel: '631-640',
         promptJp: '[名]娘',
         answerEn: 'daughter',
+        pos: ['noun'],
         orderIndex: 5,
     },
     {
@@ -8099,6 +8935,7 @@ export const questions: Question[] = [
         sectionLabel: '631-640',
         promptJp: '[前]～の中[内側]に [副]中[内側]に',
         answerEn: 'inside',
+        pos: ['prep', 'adv'],
         orderIndex: 6,
     },
     {
@@ -8110,6 +8947,7 @@ export const questions: Question[] = [
         sectionLabel: '631-640',
         promptJp: '[名]価格，値段',
         answerEn: 'price',
+        pos: ['noun'],
         orderIndex: 7,
     },
     {
@@ -8121,6 +8959,7 @@ export const questions: Question[] = [
         sectionLabel: '631-640',
         promptJp: '[形]① 真剣な，まじめな ② 重大な，深刻な',
         answerEn: 'serious',
+        pos: ['adj'],
         orderIndex: 8,
     },
     {
@@ -8132,6 +8971,7 @@ export const questions: Question[] = [
         sectionLabel: '631-640',
         promptJp: '[形]いくつかの，いく人かの',
         answerEn: 'several',
+        pos: ['adj'],
         orderIndex: 9,
     },
     {
@@ -8143,6 +8983,7 @@ export const questions: Question[] = [
         sectionLabel: '631-640',
         promptJp: '[名]南，南部 [形]南の，南部の',
         answerEn: 'south',
+        pos: ['noun', 'adj'],
         orderIndex: 10,
     },
     {
@@ -8154,6 +8995,7 @@ export const questions: Question[] = [
         sectionLabel: '631-640',
         promptJp: '[形]混んだ，満員の',
         answerEn: 'crowded',
+        pos: ['adj'],
         orderIndex: 1,
     },
     {
@@ -8165,6 +9007,7 @@ export const questions: Question[] = [
         sectionLabel: '641-650',
         promptJp: '[形] 活動的な，積極的な',
         answerEn: 'active',
+        pos: ['adj'],
         orderIndex: 2,
     },
     {
@@ -8176,6 +9019,7 @@ export const questions: Question[] = [
         sectionLabel: '641-650',
         promptJp: '[動]～を元気づける，元気が出る',
         answerEn: 'cheer',
+        pos: ['verb'],
         orderIndex: 3,
     },
     {
@@ -8187,6 +9031,7 @@ export const questions: Question[] = [
         sectionLabel: '641-650',
         promptJp: '[形]おもしろい，[形]愉快な，[形]おかしい',
         answerEn: 'funny',
+        pos: ['adj'],
         orderIndex: 4,
     },
     {
@@ -8198,6 +9043,7 @@ export const questions: Question[] = [
         sectionLabel: '641-650',
         promptJp: '[名]祖父，祖母',
         answerEn: 'grandparent',
+        pos: ['noun'],
         orderIndex: 5,
     },
     {
@@ -8209,6 +9055,7 @@ export const questions: Question[] = [
         sectionLabel: '641-650',
         promptJp: '[名]穴',
         answerEn: 'hole',
+        pos: ['noun'],
         orderIndex: 6,
     },
     {
@@ -8220,6 +9067,7 @@ export const questions: Question[] = [
         sectionLabel: '641-650',
         promptJp: '[名]観光，見学',
         answerEn: 'sightseeing',
+        pos: ['noun'],
         orderIndex: 7,
     },
     {
@@ -8231,6 +9079,7 @@ export const questions: Question[] = [
         sectionLabel: '641-650',
         promptJp: '[形]似ている，似たような',
         answerEn: 'similar',
+        pos: ['adj'],
         orderIndex: 8,
     },
     {
@@ -8242,6 +9091,7 @@ export const questions: Question[] = [
         sectionLabel: '641-650',
         promptJp: '[名]息子',
         answerEn: 'son',
+        pos: ['noun'],
         orderIndex: 9,
     },
     {
@@ -8253,6 +9103,7 @@ export const questions: Question[] = [
         sectionLabel: '641-650',
         promptJp: '[名]タワー，塔',
         answerEn: 'tower',
+        pos: ['noun'],
         orderIndex: 10,
     },
     {
@@ -8264,6 +9115,7 @@ export const questions: Question[] = [
         sectionLabel: '641-650',
         promptJp: '[名]手品，芸，いたずら',
         answerEn: 'trick',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -8275,6 +9127,7 @@ export const questions: Question[] = [
         sectionLabel: '651-660',
         promptJp: '[名]空港',
         answerEn: 'airport',
+        pos: ['noun'],
         orderIndex: 2,
     },
     {
@@ -8286,6 +9139,7 @@ export const questions: Question[] = [
         sectionLabel: '651-660',
         promptJp: '[動]～を引きつける，魅了する',
         answerEn: 'attract',
+        pos: ['verb'],
         orderIndex: 3,
     },
     {
@@ -8297,6 +9151,7 @@ export const questions: Question[] = [
         sectionLabel: '651-660',
         promptJp: '[名]自転車',
         answerEn: 'bicycle',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -8308,6 +9163,7 @@ export const questions: Question[] = [
         sectionLabel: '651-660',
         promptJp: '[名]趣味',
         answerEn: 'hobby',
+        pos: ['noun'],
         orderIndex: 5,
     },
     {
@@ -8319,6 +9175,7 @@ export const questions: Question[] = [
         sectionLabel: '651-660',
         promptJp: '[名]休日，祝日，[しばしば複数形で]休暇',
         answerEn: 'holiday',
+        pos: ['noun', 'adj', 'num'],
         orderIndex: 6,
     },
     {
@@ -8330,6 +9187,7 @@ export const questions: Question[] = [
         sectionLabel: '651-660',
         promptJp: '[名]運，幸運',
         answerEn: 'luck',
+        pos: ['noun'],
         orderIndex: 7,
     },
     {
@@ -8341,6 +9199,7 @@ export const questions: Question[] = [
         sectionLabel: '651-660',
         promptJp: '[名]肉',
         answerEn: 'meat',
+        pos: ['noun'],
         orderIndex: 8,
     },
     {
@@ -8352,6 +9211,7 @@ export const questions: Question[] = [
         sectionLabel: '651-660',
         promptJp: '[副]２度，２倍',
         answerEn: 'twice',
+        pos: ['adv'],
         orderIndex: 9,
     },
     {
@@ -8363,6 +9223,7 @@ export const questions: Question[] = [
         sectionLabel: '651-660',
         promptJp: '[名]少し，ちょっと',
         answerEn: 'bit',
+        pos: ['noun'],
         orderIndex: 10,
     },
     {
@@ -8374,6 +9235,7 @@ export const questions: Question[] = [
         sectionLabel: '651-660',
         promptJp: '[名]なべ，[名]つぼ',
         answerEn: 'pot',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -8385,6 +9247,7 @@ export const questions: Question[] = [
         sectionLabel: '661-670',
         promptJp: '[動]～を覆う，[動]～にカバーをかける',
         answerEn: 'cover',
+        pos: ['verb'],
         orderIndex: 2,
     },
     {
@@ -8396,6 +9259,7 @@ export const questions: Question[] = [
         sectionLabel: '661-670',
         promptJp: '[名]カレー（料理）',
         answerEn: 'curry',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -8407,6 +9271,7 @@ export const questions: Question[] = [
         sectionLabel: '661-670',
         promptJp: '[名]ダンサー，踊る人',
         answerEn: 'dancer',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -8418,6 +9283,7 @@ export const questions: Question[] = [
         sectionLabel: '661-670',
         promptJp: '[形] ① 最初の，元の ② 独創的な，独自の [名] 原作，原型，オリジナル',
         answerEn: 'original',
+        pos: ['adj', 'noun'],
         orderIndex: 5,
     },
     {
@@ -8429,6 +9295,7 @@ export const questions: Question[] = [
         sectionLabel: '661-670',
         promptJp: '[名]平和，やすらぎ',
         answerEn: 'peace',
+        pos: ['noun'],
         orderIndex: 6,
     },
     {
@@ -8440,6 +9307,7 @@ export const questions: Question[] = [
         sectionLabel: '661-670',
         promptJp: '[形]雨の多い，雨降りの',
         answerEn: 'rainy',
+        pos: ['adj'],
         orderIndex: 7,
     },
     {
@@ -8451,6 +9319,7 @@ export const questions: Question[] = [
         sectionLabel: '661-670',
         promptJp: '[形]独特な，唯一の，ユニークな',
         answerEn: 'unique',
+        pos: ['adj'],
         orderIndex: 8,
     },
     {
@@ -8462,6 +9331,7 @@ export const questions: Question[] = [
         sectionLabel: '661-670',
         promptJp: '[名]驚き，不思議 [動]（～かと）思う',
         answerEn: 'wonder',
+        pos: ['noun', 'verb'],
         orderIndex: 9,
     },
     {
@@ -8473,6 +9343,7 @@ export const questions: Question[] = [
         sectionLabel: '661-670',
         promptJp: '[副]横切って，向こう側に [前]～を横切って',
         answerEn: 'across',
+        pos: ['adv', 'prep'],
         orderIndex: 10,
     },
     {
@@ -8484,6 +9355,7 @@ export const questions: Question[] = [
         sectionLabel: '661-670',
         promptJp: '[名]飛行，飛行機の便，空の旅',
         answerEn: 'flight',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -8495,6 +9367,7 @@ export const questions: Question[] = [
         sectionLabel: '671-680',
         promptJp: '[代]彼女自身（を）',
         answerEn: 'herself',
+        pos: ['pron'],
         orderIndex: 2,
     },
     {
@@ -8506,6 +9379,7 @@ export const questions: Question[] = [
         sectionLabel: '671-680',
         promptJp: '[名]島',
         answerEn: 'island',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -8517,6 +9391,7 @@ export const questions: Question[] = [
         sectionLabel: '671-680',
         promptJp: '[名]市場，マーケット',
         answerEn: 'market',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -8528,6 +9403,7 @@ export const questions: Question[] = [
         sectionLabel: '671-680',
         promptJp: '[名]メートル',
         answerEn: 'meter',
+        pos: ['noun'],
         orderIndex: 5,
     },
     {
@@ -8539,6 +9415,7 @@ export const questions: Question[] = [
         sectionLabel: '671-680',
         promptJp: '[名]カメラ',
         answerEn: 'camera',
+        pos: ['noun'],
         orderIndex: 6,
     },
     {
@@ -8550,6 +9427,7 @@ export const questions: Question[] = [
         sectionLabel: '671-680',
         promptJp: '[動]～を（寄せ）集める，（寄り）集まる',
         answerEn: 'gather',
+        pos: ['verb'],
         orderIndex: 7,
     },
     {
@@ -8561,6 +9439,7 @@ export const questions: Question[] = [
         sectionLabel: '671-680',
         promptJp: '[形]① 重い ② 激しい',
         answerEn: 'heavy',
+        pos: ['adj'],
         orderIndex: 8,
     },
     {
@@ -8572,6 +9451,7 @@ export const questions: Question[] = [
         sectionLabel: '671-680',
         promptJp: '[名]① 試合，勝負 [名]② マッチ（棒）',
         answerEn: 'match',
+        pos: ['noun'],
         orderIndex: 9,
     },
     {
@@ -8583,6 +9463,7 @@ export const questions: Question[] = [
         sectionLabel: '671-680',
         promptJp: '[形]過去の，以前の [前]～を過ぎて[通り越して]，～過ぎ [名][theを伴って]過去',
         answerEn: 'past',
+        pos: ['adj', 'prep', 'noun'],
         orderIndex: 10,
     },
     {
@@ -8594,6 +9475,7 @@ export const questions: Question[] = [
         sectionLabel: '671-680',
         promptJp: '[名]写真',
         answerEn: 'photo',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -8605,6 +9487,7 @@ export const questions: Question[] = [
         sectionLabel: '681-690',
         promptJp: '[名] 捜索，探索，検索 [動]（～を）探す，捜索する',
         answerEn: 'search',
+        pos: ['noun', 'verb'],
         orderIndex: 2,
     },
     {
@@ -8616,6 +9499,7 @@ export const questions: Question[] = [
         sectionLabel: '681-690',
         promptJp: '[名] シェフ，料理長',
         answerEn: 'chef',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -8627,6 +9511,7 @@ export const questions: Question[] = [
         sectionLabel: '681-690',
         promptJp: '[名]事務員，店員',
         answerEn: 'clerk',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -8638,6 +9523,7 @@ export const questions: Question[] = [
         sectionLabel: '681-690',
         promptJp: '[名]東，東側 [形]東の，東側の',
         answerEn: 'east',
+        pos: ['noun', 'adj'],
         orderIndex: 5,
     },
     {
@@ -8649,6 +9535,7 @@ export const questions: Question[] = [
         sectionLabel: '681-690',
         promptJp: '[名・形]100万（の）',
         answerEn: 'million',
+        pos: ['noun', 'adj'],
         orderIndex: 6,
     },
     {
@@ -8660,6 +9547,7 @@ export const questions: Question[] = [
         sectionLabel: '681-690',
         promptJp: '[名]サイズ，寸法',
         answerEn: 'size',
+        pos: ['noun'],
         orderIndex: 7,
     },
     {
@@ -8671,6 +9559,7 @@ export const questions: Question[] = [
         sectionLabel: '681-690',
         promptJp: '[名]壁，塀',
         answerEn: 'wall',
+        pos: ['noun'],
         orderIndex: 8,
     },
     {
@@ -8682,6 +9571,7 @@ export const questions: Question[] = [
         sectionLabel: '681-690',
         promptJp: '[名]西，西側 [形]西の，西側の',
         answerEn: 'west',
+        pos: ['noun', 'adj'],
         orderIndex: 9,
     },
     {
@@ -8693,6 +9583,7 @@ export const questions: Question[] = [
         sectionLabel: '681-690',
         promptJp: '[代]私たち自身（を）',
         answerEn: 'ourselves',
+        pos: ['pron'],
         orderIndex: 10,
     },
     {
@@ -8704,6 +9595,7 @@ export const questions: Question[] = [
         sectionLabel: '681-690',
         promptJp: '[名]髪，髪の毛',
         answerEn: 'hair',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -8715,6 +9607,7 @@ export const questions: Question[] = [
         sectionLabel: '691-700',
         promptJp: '[副]① とにかく，それはそうと ②[ふつう文末で]それでも（やはり）',
         answerEn: 'anyway',
+        pos: ['adv'],
         orderIndex: 2,
     },
     {
@@ -8726,6 +9619,7 @@ export const questions: Question[] = [
         sectionLabel: '691-700',
         promptJp: '[動]① 痛む [動]② ～を傷つける',
         answerEn: 'hurt',
+        pos: ['verb'],
         orderIndex: 3,
     },
     {
@@ -8737,6 +9631,7 @@ export const questions: Question[] = [
         sectionLabel: '691-700',
         promptJp: '[名]英雄，[名]ヒーロー，[名]主人公',
         answerEn: 'hero',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -8748,6 +9643,7 @@ export const questions: Question[] = [
         sectionLabel: '691-700',
         promptJp: '[名]社会，地域社会',
         answerEn: 'society',
+        pos: ['noun'],
         orderIndex: 5,
     },
     {
@@ -8759,6 +9655,7 @@ export const questions: Question[] = [
         sectionLabel: '691-700',
         promptJp: '[形]音楽の，音楽用の[名]ミュージカル',
         answerEn: 'musical',
+        pos: ['adj', 'noun'],
         orderIndex: 6,
     },
     {
@@ -8770,6 +9667,7 @@ export const questions: Question[] = [
         sectionLabel: '691-700',
         promptJp: '[形]眠い，眠そうな',
         answerEn: 'sleepy',
+        pos: ['adj'],
         orderIndex: 7,
     },
     {
@@ -8781,6 +9679,7 @@ export const questions: Question[] = [
         sectionLabel: '691-700',
         promptJp: '[名]覚え書き，メモ',
         answerEn: 'note',
+        pos: ['noun'],
         orderIndex: 8,
     },
     {
@@ -8792,6 +9691,7 @@ export const questions: Question[] = [
         sectionLabel: '691-700',
         promptJp: '[名]花火',
         answerEn: 'firework',
+        pos: ['noun'],
         orderIndex: 9,
     },
     {
@@ -8803,6 +9703,7 @@ export const questions: Question[] = [
         sectionLabel: '691-700',
         promptJp: '[名]俳優，男優',
         answerEn: 'actor',
+        pos: ['noun'],
         orderIndex: 10,
     },
     {
@@ -8814,6 +9715,7 @@ export const questions: Question[] = [
         sectionLabel: '691-700',
         promptJp: '[名]注意，注目',
         answerEn: 'attention',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -8825,6 +9727,7 @@ export const questions: Question[] = [
         sectionLabel: '701-710',
         promptJp: '[形]快活な，陽気な，元気のよい',
         answerEn: 'cheerful',
+        pos: ['adj'],
         orderIndex: 2,
     },
     {
@@ -8836,6 +9739,7 @@ export const questions: Question[] = [
         sectionLabel: '701-710',
         promptJp: '[名]意味',
         answerEn: 'meaning',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -8847,6 +9751,7 @@ export const questions: Question[] = [
         sectionLabel: '701-710',
         promptJp: '[動]～を飾る',
         answerEn: 'decorate',
+        pos: ['verb'],
         orderIndex: 4,
     },
     {
@@ -8858,6 +9763,7 @@ export const questions: Question[] = [
         sectionLabel: '701-710',
         promptJp: '[形]深い，奥の / （色が）濃い / [副]深く',
         answerEn: 'deep',
+        pos: ['adj', 'adv'],
         orderIndex: 5,
     },
     {
@@ -8869,6 +9775,7 @@ export const questions: Question[] = [
         sectionLabel: '701-710',
         promptJp: '[名]耳',
         answerEn: 'ear',
+        pos: ['noun'],
         orderIndex: 6,
     },
     {
@@ -8880,6 +9787,7 @@ export const questions: Question[] = [
         sectionLabel: '701-710',
         promptJp: '[名]演技者，演奏者',
         answerEn: 'performer',
+        pos: ['noun'],
         orderIndex: 7,
     },
     {
@@ -8891,6 +9799,7 @@ export const questions: Question[] = [
         sectionLabel: '701-710',
         promptJp: '[感]ちょっと，おい',
         answerEn: 'hey',
+        pos: ['interj'],
         orderIndex: 8,
     },
     {
@@ -8902,6 +9811,7 @@ export const questions: Question[] = [
         sectionLabel: '701-710',
         promptJp: '[名]まん中，中心部 / [形]中間の，まん中の',
         answerEn: 'middle',
+        pos: ['noun', 'adj'],
         orderIndex: 9,
     },
     {
@@ -8913,6 +9823,7 @@ export const questions: Question[] = [
         sectionLabel: '701-710',
         promptJp: '[名]歩み，（成功などへの）一歩 / [名]階段 / [動]歩いて行く',
         answerEn: 'step',
+        pos: ['noun', 'verb'],
         orderIndex: 10,
     },
     {
@@ -8924,6 +9835,7 @@ export const questions: Question[] = [
         sectionLabel: '701-710',
         promptJp: '[名]クリスマス',
         answerEn: 'Christmas',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -8935,6 +9847,7 @@ export const questions: Question[] = [
         sectionLabel: '711-720',
         promptJp: '[名]（階段の）段 / [複数形で]階段',
         answerEn: 'stair',
+        pos: ['noun', 'adj', 'num'],
         orderIndex: 2,
     },
     {
@@ -8946,6 +9859,7 @@ export const questions: Question[] = [
         sectionLabel: '711-720',
         promptJp: '[名]楽しみ',
         answerEn: 'pleasure',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -8957,6 +9871,7 @@ export const questions: Question[] = [
         sectionLabel: '711-720',
         promptJp: '[形]静かな，[形]無口な，[形]おとなしい',
         answerEn: 'quiet',
+        pos: ['adj'],
         orderIndex: 4,
     },
     {
@@ -8968,6 +9883,7 @@ export const questions: Question[] = [
         sectionLabel: '711-720',
         promptJp: '[動]見えなくなる，姿を消す',
         answerEn: 'disappear',
+        pos: ['verb'],
         orderIndex: 5,
     },
     {
@@ -8979,6 +9895,7 @@ export const questions: Question[] = [
         sectionLabel: '711-720',
         promptJp: '[名]戦い，けんか / [動]（～と）戦う',
         answerEn: 'fight',
+        pos: ['noun', 'verb'],
         orderIndex: 6,
     },
     {
@@ -8990,6 +9907,7 @@ export const questions: Question[] = [
         sectionLabel: '711-720',
         promptJp: '[形]ひどい，恐ろしい',
         answerEn: 'terrible',
+        pos: ['adj'],
         orderIndex: 7,
     },
     {
@@ -9001,6 +9919,7 @@ export const questions: Question[] = [
         sectionLabel: '711-720',
         promptJp: '[名]型，[名]種類，[名]タイプ',
         answerEn: 'type',
+        pos: ['noun'],
         orderIndex: 8,
     },
     {
@@ -9012,6 +9931,7 @@ export const questions: Question[] = [
         sectionLabel: '711-720',
         promptJp: '[名]ピンク（色） / [形]ピンクの',
         answerEn: 'pink',
+        pos: ['noun', 'adj'],
         orderIndex: 9,
     },
     {
@@ -9023,6 +9943,7 @@ export const questions: Question[] = [
         sectionLabel: '711-720',
         promptJp: '[名]虹',
         answerEn: 'rainbow',
+        pos: ['noun'],
         orderIndex: 10,
     },
     {
@@ -9034,6 +9955,7 @@ export const questions: Question[] = [
         sectionLabel: '711-720',
         promptJp: '[名]像',
         answerEn: 'statue',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -9045,6 +9967,7 @@ export const questions: Question[] = [
         sectionLabel: '721-730',
         promptJp: '[名] 足 / フィート',
         answerEn: 'foot',
+        pos: ['noun'],
         orderIndex: 2,
     },
     {
@@ -9056,6 +9979,7 @@ export const questions: Question[] = [
         sectionLabel: '721-730',
         promptJp: '[名]料理',
         answerEn: 'cooking',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -9067,6 +9991,7 @@ export const questions: Question[] = [
         sectionLabel: '721-730',
         promptJp: '[形]（声・音が）大きい，やかましい',
         answerEn: 'loud',
+        pos: ['adj'],
         orderIndex: 4,
     },
     {
@@ -9078,6 +10003,7 @@ export const questions: Question[] = [
         sectionLabel: '721-730',
         promptJp: '[名]北，北部 / [形]北の，北部の',
         answerEn: 'north',
+        pos: ['noun', 'adj'],
         orderIndex: 5,
     },
     {
@@ -9089,6 +10015,7 @@ export const questions: Question[] = [
         sectionLabel: '721-730',
         promptJp: '[形]退屈した，うんざりした',
         answerEn: 'bored',
+        pos: ['adj'],
         orderIndex: 6,
     },
     {
@@ -9100,6 +10027,7 @@ export const questions: Question[] = [
         sectionLabel: '721-730',
         promptJp: '[名]ウミガメ',
         answerEn: 'turtle',
+        pos: ['noun'],
         orderIndex: 7,
     },
     {
@@ -9111,6 +10039,7 @@ export const questions: Question[] = [
         sectionLabel: '721-730',
         promptJp: '[形]汚い，不潔な',
         answerEn: 'dirty',
+        pos: ['adj'],
         orderIndex: 8,
     },
     {
@@ -9122,6 +10051,7 @@ export const questions: Question[] = [
         sectionLabel: '721-730',
         promptJp: '[名]ごみ，くず',
         answerEn: 'trash',
+        pos: ['noun'],
         orderIndex: 9,
     },
     {
@@ -9133,6 +10063,7 @@ export const questions: Question[] = [
         sectionLabel: '721-730',
         promptJp: '[名]女王',
         answerEn: 'queen',
+        pos: ['noun'],
         orderIndex: 10,
     },
     {
@@ -9144,6 +10075,7 @@ export const questions: Question[] = [
         sectionLabel: '721-730',
         promptJp: '[名]フルート',
         answerEn: 'flute',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -9155,6 +10087,7 @@ export const questions: Question[] = [
         sectionLabel: '731-740',
         promptJp: '[名]（長編）小説',
         answerEn: 'novel',
+        pos: ['noun'],
         orderIndex: 2,
     },
     {
@@ -9166,6 +10099,7 @@ export const questions: Question[] = [
         sectionLabel: '731-740',
         promptJp: '[形]①きれいな，かわいい [副]②かなり，とても，相当',
         answerEn: 'pretty',
+        pos: ['adj', 'adv'],
         orderIndex: 3,
     },
     {
@@ -9177,6 +10111,7 @@ export const questions: Question[] = [
         sectionLabel: '731-740',
         promptJp: '[名]隣人，近所の人',
         answerEn: 'neighbor',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -9188,6 +10123,7 @@ export const questions: Question[] = [
         sectionLabel: '731-740',
         promptJp: '[名]おじいさん，[名]祖父',
         answerEn: 'grandpa',
+        pos: ['noun'],
         orderIndex: 5,
     },
     {
@@ -9199,6 +10135,7 @@ export const questions: Question[] = [
         sectionLabel: '731-740',
         promptJp: '[動]跳ぶ，ジャンプする，[名]ジャンプ',
         answerEn: 'jump',
+        pos: ['verb', 'noun'],
         orderIndex: 6,
     },
     {
@@ -9210,6 +10147,7 @@ export const questions: Question[] = [
         sectionLabel: '731-740',
         promptJp: '[動]燃える，焼ける，焦げる / ～を燃やす，焼く',
         answerEn: 'burn',
+        pos: ['verb'],
         orderIndex: 7,
     },
     {
@@ -9221,6 +10159,7 @@ export const questions: Question[] = [
         sectionLabel: '731-740',
         promptJp: '[動]～を焼く',
         answerEn: 'bake',
+        pos: ['verb'],
         orderIndex: 8,
     },
     {
@@ -9232,6 +10171,7 @@ export const questions: Question[] = [
         sectionLabel: '731-740',
         promptJp: '[名]棚',
         answerEn: 'shelf',
+        pos: ['noun'],
         orderIndex: 9,
     },
     {
@@ -9243,6 +10183,7 @@ export const questions: Question[] = [
         sectionLabel: '731-740',
         promptJp: '[名]ベル，鐘',
         answerEn: 'bell',
+        pos: ['noun'],
         orderIndex: 10,
     },
     {
@@ -9254,6 +10195,7 @@ export const questions: Question[] = [
         sectionLabel: '731-740',
         promptJp: '[形]曇った，曇りの',
         answerEn: 'cloudy',
+        pos: ['adj'],
         orderIndex: 1,
     },
     {
@@ -9265,6 +10207,7 @@ export const questions: Question[] = [
         sectionLabel: '741-750',
         promptJp: '[名]（温度・角などの）度，程度',
         answerEn: 'degree',
+        pos: ['noun'],
         orderIndex: 2,
     },
     {
@@ -9276,6 +10219,7 @@ export const questions: Question[] = [
         sectionLabel: '741-750',
         promptJp: '[名]麺，ヌードル',
         answerEn: 'noodle',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -9287,6 +10231,7 @@ export const questions: Question[] = [
         sectionLabel: '741-750',
         promptJp: '[名]カボチャ',
         answerEn: 'pumpkin',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -9298,6 +10243,7 @@ export const questions: Question[] = [
         sectionLabel: '741-750',
         promptJp: '[名]日の出',
         answerEn: 'sunrise',
+        pos: ['noun'],
         orderIndex: 5,
     },
     {
@@ -9309,6 +10255,7 @@ export const questions: Question[] = [
         sectionLabel: '741-750',
         promptJp: '[名]指',
         answerEn: 'finger',
+        pos: ['noun'],
         orderIndex: 6,
     },
     {
@@ -9320,6 +10267,7 @@ export const questions: Question[] = [
         sectionLabel: '741-750',
         promptJp: '[副]まさに，[副]正確に，[副]ちょうど',
         answerEn: 'exactly',
+        pos: ['adv'],
         orderIndex: 7,
     },
     {
@@ -9331,6 +10279,7 @@ export const questions: Question[] = [
         sectionLabel: '741-750',
         promptJp: '[動]～にブラシをかける / [名]ブラシ，はけ，筆',
         answerEn: 'brush',
+        pos: ['verb', 'noun'],
         orderIndex: 8,
     },
     {
@@ -9342,6 +10291,7 @@ export const questions: Question[] = [
         sectionLabel: '741-750',
         promptJp: '[名]鍵 / （解決の）鍵',
         answerEn: 'key',
+        pos: ['noun'],
         orderIndex: 9,
     },
     {
@@ -9353,6 +10303,7 @@ export const questions: Question[] = [
         sectionLabel: '741-750',
         promptJp: '[名]頭痛',
         answerEn: 'headache',
+        pos: ['noun'],
         orderIndex: 10,
     },
     {
@@ -9364,6 +10315,7 @@ export const questions: Question[] = [
         sectionLabel: '741-750',
         promptJp: '[名]ナイフ，包丁',
         answerEn: 'knife',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -9375,6 +10327,7 @@ export const questions: Question[] = [
         sectionLabel: '751-760',
         promptJp: '[名]雑誌',
         answerEn: 'magazine',
+        pos: ['noun'],
         orderIndex: 2,
     },
     {
@@ -9386,6 +10339,7 @@ export const questions: Question[] = [
         sectionLabel: '751-760',
         promptJp: '[名]牛肉',
         answerEn: 'beef',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -9397,6 +10351,7 @@ export const questions: Question[] = [
         sectionLabel: '751-760',
         promptJp: '[動]～を推薦する，勧める',
         answerEn: 'recommend',
+        pos: ['verb'],
         orderIndex: 4,
     },
     {
@@ -9408,6 +10363,7 @@ export const questions: Question[] = [
         sectionLabel: '751-760',
         promptJp: '[動]祈る',
         answerEn: 'pray',
+        pos: ['verb'],
         orderIndex: 5,
     },
     {
@@ -9419,6 +10375,7 @@ export const questions: Question[] = [
         sectionLabel: '751-760',
         promptJp: '[形] 苦い，苦味のある / つらい，苦々しい',
         answerEn: 'bitter',
+        pos: ['adj'],
         orderIndex: 6,
     },
     {
@@ -9430,6 +10387,7 @@ export const questions: Question[] = [
         sectionLabel: '751-760',
         promptJp: '[名]ブログ',
         answerEn: 'blog',
+        pos: ['noun'],
         orderIndex: 7,
     },
     {
@@ -9441,6 +10399,7 @@ export const questions: Question[] = [
         sectionLabel: '751-760',
         promptJp: '[名]軽食，スナック，おやつ',
         answerEn: 'snack',
+        pos: ['noun'],
         orderIndex: 8,
     },
     {
@@ -9452,6 +10411,7 @@ export const questions: Question[] = [
         sectionLabel: '751-760',
         promptJp: '[名]ゼロ，0',
         answerEn: 'zero',
+        pos: ['noun'],
         orderIndex: 9,
     },
     {
@@ -9463,6 +10423,7 @@ export const questions: Question[] = [
         sectionLabel: '751-760',
         promptJp: '[名]キャンディー',
         answerEn: 'candy',
+        pos: ['noun'],
         orderIndex: 10,
     },
     {
@@ -9474,6 +10435,7 @@ export const questions: Question[] = [
         sectionLabel: '751-760',
         promptJp: '[名]エプロン',
         answerEn: 'apron',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -9485,6 +10447,7 @@ export const questions: Question[] = [
         sectionLabel: '761-770',
         promptJp: '[名]誰でも，みんな',
         answerEn: 'everybody',
+        pos: ['noun'],
         orderIndex: 2,
     },
     {
@@ -9496,6 +10459,7 @@ export const questions: Question[] = [
         sectionLabel: '761-770',
         promptJp: '[形] 原子（力）の',
         answerEn: 'atomic',
+        pos: ['adj'],
         orderIndex: 3,
     },
     {
@@ -9507,6 +10471,7 @@ export const questions: Question[] = [
         sectionLabel: '761-770',
         promptJp: '[名]台所，キッチン',
         answerEn: 'kitchen',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -9518,6 +10483,7 @@ export const questions: Question[] = [
         sectionLabel: '761-770',
         promptJp: '[動]（続けざまに）～を打つ，たたく / （心臓が）鼓動する，（脈が）打つ / ～を打ち負かす',
         answerEn: 'beat',
+        pos: ['verb'],
         orderIndex: 5,
     },
     {
@@ -9529,6 +10495,7 @@ export const questions: Question[] = [
         sectionLabel: '761-770',
         promptJp: '[名]写真家，カメラマン',
         answerEn: 'photographer',
+        pos: ['noun'],
         orderIndex: 6,
     },
     {
@@ -9540,6 +10507,7 @@ export const questions: Question[] = [
         sectionLabel: '761-770',
         promptJp: '[名]地下鉄',
         answerEn: 'subway',
+        pos: ['noun'],
         orderIndex: 7,
     },
     {
@@ -9551,6 +10519,7 @@ export const questions: Question[] = [
         sectionLabel: '761-770',
         promptJp: '[名]（乗り物の）乗客',
         answerEn: 'passenger',
+        pos: ['noun'],
         orderIndex: 8,
     },
     {
@@ -9562,6 +10531,7 @@ export const questions: Question[] = [
         sectionLabel: '761-770',
         promptJp: '[形]のどがかわいた',
         answerEn: 'thirsty',
+        pos: ['adj'],
         orderIndex: 9,
     },
     {
@@ -9573,6 +10543,7 @@ export const questions: Question[] = [
         sectionLabel: '761-770',
         promptJp: '[形]怖がっている，おびえた',
         answerEn: 'scared',
+        pos: ['adj'],
         orderIndex: 10,
     },
     {
@@ -9584,6 +10555,7 @@ export const questions: Question[] = [
         sectionLabel: '761-770',
         promptJp: '[動]～を許す / [名]許すこと',
         answerEn: 'pardon',
+        pos: ['verb', 'noun'],
         orderIndex: 1,
     },
     {
@@ -9595,6 +10567,7 @@ export const questions: Question[] = [
         sectionLabel: '771-780',
         promptJp: '[名]短い時間，瞬間',
         answerEn: 'moment',
+        pos: ['noun'],
         orderIndex: 2,
     },
     {
@@ -9606,6 +10579,7 @@ export const questions: Question[] = [
         sectionLabel: '771-780',
         promptJp: '[名]クッキー',
         answerEn: 'cookie',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -9617,6 +10591,7 @@ export const questions: Question[] = [
         sectionLabel: '771-780',
         promptJp: '[名]（鳥の）ツル',
         answerEn: 'crane',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -9628,6 +10603,7 @@ export const questions: Question[] = [
         sectionLabel: '771-780',
         promptJp: '[名]インク',
         answerEn: 'ink',
+        pos: ['noun'],
         orderIndex: 5,
     },
     {
@@ -9639,6 +10615,7 @@ export const questions: Question[] = [
         sectionLabel: '771-780',
         promptJp: '[名]ジャケット，（背広の）上着',
         answerEn: 'jacket',
+        pos: ['noun'],
         orderIndex: 6,
     },
     {
@@ -9650,6 +10627,7 @@ export const questions: Question[] = [
         sectionLabel: '771-780',
         promptJp: '[形]孤独な，寂しい',
         answerEn: 'lonely',
+        pos: ['adj'],
         orderIndex: 7,
     },
     {
@@ -9661,6 +10639,7 @@ export const questions: Question[] = [
         sectionLabel: '771-780',
         promptJp: '[動]（～を）撃つ，射る，シュートする',
         answerEn: 'shoot',
+        pos: ['verb'],
         orderIndex: 8,
     },
     {
@@ -9672,6 +10651,7 @@ export const questions: Question[] = [
         sectionLabel: '771-780',
         promptJp: '[動]スケートをする',
         answerEn: 'skate',
+        pos: ['verb'],
         orderIndex: 9,
     },
     {
@@ -9683,6 +10663,7 @@ export const questions: Question[] = [
         sectionLabel: '771-780',
         promptJp: '[名]セーター',
         answerEn: 'sweater',
+        pos: ['noun'],
         orderIndex: 10,
     },
     {
@@ -9694,6 +10675,7 @@ export const questions: Question[] = [
         sectionLabel: '771-780',
         promptJp: '[名]レモン',
         answerEn: 'lemon',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -9705,6 +10687,7 @@ export const questions: Question[] = [
         sectionLabel: '781-790',
         promptJp: '[名]クイズ / 小テスト',
         answerEn: 'quiz',
+        pos: ['noun'],
         orderIndex: 2,
     },
     {
@@ -9716,6 +10699,7 @@ export const questions: Question[] = [
         sectionLabel: '781-790',
         promptJp: '[名]ピクニック',
         answerEn: 'picnic',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -9727,6 +10711,7 @@ export const questions: Question[] = [
         sectionLabel: '781-790',
         promptJp: '[名]（ハツカ）ネズミ / （コンピューターの）マウス',
         answerEn: 'mouse',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -9738,6 +10723,7 @@ export const questions: Question[] = [
         sectionLabel: '781-790',
         promptJp: '[前/副]～の上に[の]，～より上に[の]',
         answerEn: 'above',
+        pos: ['adv', 'prep'],
         orderIndex: 5,
     },
     {
@@ -9749,6 +10735,7 @@ export const questions: Question[] = [
         sectionLabel: '781-790',
         promptJp: '[動]行動する，ふるまう / [名]行為，行動',
         answerEn: 'act',
+        pos: ['verb', 'noun'],
         orderIndex: 6,
     },
     {
@@ -9760,6 +10747,7 @@ export const questions: Question[] = [
         sectionLabel: '781-790',
         promptJp: '[名]Eメール，（電子）メール / [動]～に（E）メールを送る',
         answerEn: 'e-mail',
+        pos: ['noun', 'verb'],
         orderIndex: 7,
     },
     {
@@ -9771,6 +10759,7 @@ export const questions: Question[] = [
         sectionLabel: '781-790',
         promptJp: '[名]浴室，[名]化粧室，[名]トイレ',
         answerEn: 'bathroom',
+        pos: ['noun'],
         orderIndex: 8,
     },
     {
@@ -9782,6 +10771,7 @@ export const questions: Question[] = [
         sectionLabel: '781-790',
         promptJp: '[名]熱',
         answerEn: 'fever',
+        pos: ['noun'],
         orderIndex: 9,
     },
     {
@@ -9793,6 +10783,7 @@ export const questions: Question[] = [
         sectionLabel: '781-790',
         promptJp: '[動]（～に）冗談を言う，～をからかう / [名]子ども',
         answerEn: 'kid',
+        pos: ['verb', 'noun'],
         orderIndex: 10,
     },
     {
@@ -9804,6 +10795,7 @@ export const questions: Question[] = [
         sectionLabel: '781-790',
         promptJp: '[動]（～を）数える',
         answerEn: 'count',
+        pos: ['verb'],
         orderIndex: 1,
     },
     {
@@ -9815,6 +10807,7 @@ export const questions: Question[] = [
         sectionLabel: '791-800',
         promptJp: '[形]海外の / [副]海外で',
         answerEn: 'overseas',
+        pos: ['adj', 'adv'],
         orderIndex: 2,
     },
     {
@@ -9826,6 +10819,7 @@ export const questions: Question[] = [
         sectionLabel: '791-800',
         promptJp: '[名]ベンチ，長いす',
         answerEn: 'bench',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -9837,6 +10831,7 @@ export const questions: Question[] = [
         sectionLabel: '791-800',
         promptJp: '[名]試験',
         answerEn: 'exam',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -9848,6 +10843,7 @@ export const questions: Question[] = [
         sectionLabel: '791-800',
         promptJp: '[動]～を掛ける，吊るす',
         answerEn: 'hang',
+        pos: ['verb'],
         orderIndex: 5,
     },
     {
@@ -9859,6 +10855,7 @@ export const questions: Question[] = [
         sectionLabel: '791-800',
         promptJp: '[名]オムレツ',
         answerEn: 'omelet',
+        pos: ['noun'],
         orderIndex: 6,
     },
     {
@@ -9870,6 +10867,7 @@ export const questions: Question[] = [
         sectionLabel: '791-800',
         promptJp: '[名]シーフード，魚介類',
         answerEn: 'seafood',
+        pos: ['noun'],
         orderIndex: 7,
     },
     {
@@ -9881,6 +10879,7 @@ export const questions: Question[] = [
         sectionLabel: '791-800',
         promptJp: '[名]思い出の品，土産物',
         answerEn: 'souvenir',
+        pos: ['noun'],
         orderIndex: 8,
     },
     {
@@ -9892,6 +10891,7 @@ export const questions: Question[] = [
         sectionLabel: '791-800',
         promptJp: '[代]あなたがた自身を[に]',
         answerEn: 'yourselves',
+        pos: ['pron'],
         orderIndex: 9,
     },
     {
@@ -9903,6 +10903,7 @@ export const questions: Question[] = [
         sectionLabel: '791-800',
         promptJp: '[名]キャベツ',
         answerEn: 'cabbage',
+        pos: ['noun'],
         orderIndex: 10,
     },
     {
@@ -9914,6 +10915,7 @@ export const questions: Question[] = [
         sectionLabel: '791-800',
         promptJp: '[名]キツネ',
         answerEn: 'fox',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -9925,6 +10927,8 @@ export const questions: Question[] = [
         sectionLabel: 'C101-110',
         promptJp: '[熟]～へ帰る，戻る',
         answerEn: 'go back to',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 1,
     },
     {
@@ -9936,6 +10940,8 @@ export const questions: Question[] = [
         sectionLabel: 'C101-110',
         promptJp: '[熟]実現する',
         answerEn: 'come true',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 2,
     },
     {
@@ -9947,6 +10953,8 @@ export const questions: Question[] = [
         sectionLabel: 'C101-110',
         promptJp: '[熟]～から逃げる',
         answerEn: 'get away from',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 3,
     },
     {
@@ -9958,6 +10966,8 @@ export const questions: Question[] = [
         sectionLabel: 'C101-110',
         promptJp: '[熟]帰宅する，家に着く',
         answerEn: 'get home',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 4,
     },
     {
@@ -9969,6 +10979,8 @@ export const questions: Question[] = [
         sectionLabel: 'C101-110',
         promptJp: '[熟]（電車・バス・馬などから）降りる',
         answerEn: 'get off',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 5,
     },
     {
@@ -9980,6 +10992,8 @@ export const questions: Question[] = [
         sectionLabel: 'C101-110',
         promptJp: '[熟]～に乗る',
         answerEn: 'get on',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 6,
     },
     {
@@ -9991,6 +11005,8 @@ export const questions: Question[] = [
         sectionLabel: 'C101-110',
         promptJp: '[熟]眠りに落ちる',
         answerEn: 'fall asleep',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 7,
     },
     {
@@ -10002,6 +11018,8 @@ export const questions: Question[] = [
         sectionLabel: 'C101-110',
         promptJp: '[熟]疲れる',
         answerEn: 'get tired',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 8,
     },
     {
@@ -10013,6 +11031,8 @@ export const questions: Question[] = [
         sectionLabel: 'C101-110',
         promptJp: '[熟]健康を回復する，よくなる',
         answerEn: 'get well',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 9,
     },
     {
@@ -10024,6 +11044,8 @@ export const questions: Question[] = [
         sectionLabel: 'C101-110',
         promptJp: '[熟]元気になる，元気を出す',
         answerEn: 'cheer up',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 10,
     },
     {
@@ -10035,6 +11057,8 @@ export const questions: Question[] = [
         sectionLabel: 'C111-120',
         promptJp: '[熟]成長する，大人になる',
         answerEn: 'grow up',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 1,
     },
     {
@@ -10046,6 +11070,8 @@ export const questions: Question[] = [
         sectionLabel: 'C111-120',
         promptJp: '[熟]急ぐ',
         answerEn: 'hurry up',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 2,
     },
     {
@@ -10057,6 +11083,8 @@ export const questions: Question[] = [
         sectionLabel: 'C111-120',
         promptJp: '[熟]手を取り合う，手をつなぐ',
         answerEn: 'hold hands',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 3,
     },
     {
@@ -10068,6 +11096,8 @@ export const questions: Question[] = [
         sectionLabel: 'C111-120',
         promptJp: '[熟]写真を撮る',
         answerEn: 'take a picture',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 4,
     },
     {
@@ -10079,6 +11109,8 @@ export const questions: Question[] = [
         sectionLabel: 'C111-120',
         promptJp: '[熟]シャワーを浴びる',
         answerEn: 'take a shower',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 5,
     },
     {
@@ -10090,6 +11122,8 @@ export const questions: Question[] = [
         sectionLabel: 'C111-120',
         promptJp: '[熟]散歩する',
         answerEn: 'take a walk',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 6,
     },
     {
@@ -10101,6 +11135,8 @@ export const questions: Question[] = [
         sectionLabel: 'C111-120',
         promptJp: '[熟]行動を起こす',
         answerEn: 'take action',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 7,
     },
     {
@@ -10112,6 +11148,8 @@ export const questions: Question[] = [
         sectionLabel: 'C111-120',
         promptJp: '[熟]旅行に行く',
         answerEn: 'go on a trip',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 8,
     },
     {
@@ -10123,6 +11161,8 @@ export const questions: Question[] = [
         sectionLabel: 'C111-120',
         promptJp: '[熟]気をつける',
         answerEn: 'take care',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 9,
     },
     {
@@ -10134,6 +11174,8 @@ export const questions: Question[] = [
         sectionLabel: 'C111-120',
         promptJp: '[熟]～を切る，～を切り離す',
         answerEn: 'cut off',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 10,
     },
     {
@@ -10145,6 +11187,8 @@ export const questions: Question[] = [
         sectionLabel: 'C121-130',
         promptJp: '[熟]（私を）感動させる',
         answerEn: 'touch my heart',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 1,
     },
     {
@@ -10156,6 +11200,8 @@ export const questions: Question[] = [
         sectionLabel: 'C121-130',
         promptJp: '[熟]～に着く，～に到着する',
         answerEn: 'get to',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 2,
     },
     {
@@ -10167,6 +11213,8 @@ export const questions: Question[] = [
         sectionLabel: 'C121-130',
         promptJp: '[熟]～に入る',
         answerEn: 'go into',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 3,
     },
     {
@@ -10178,6 +11226,8 @@ export const questions: Question[] = [
         sectionLabel: 'C121-130',
         promptJp: '[熟]…へ向けて（～を）出発する',
         answerEn: 'leave (～) for ...',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 4,
     },
     {
@@ -10189,6 +11239,8 @@ export const questions: Question[] = [
         sectionLabel: 'C121-130',
         promptJp: '[熟]～に着く，～に到着する',
         answerEn: 'arrive at',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 5,
     },
     {
@@ -10200,6 +11252,8 @@ export const questions: Question[] = [
         sectionLabel: 'C121-130',
         promptJp: '[熟]～へ歩いていく',
         answerEn: 'walk to',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 6,
     },
     {
@@ -10211,6 +11265,8 @@ export const questions: Question[] = [
         sectionLabel: 'C121-130',
         promptJp: '[熟]～にくっつく',
         answerEn: 'stick to',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 7,
     },
     {
@@ -10222,6 +11278,8 @@ export const questions: Question[] = [
         sectionLabel: 'C121-130',
         promptJp: '[熟]～に所属している',
         answerEn: 'belong to',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 8,
     },
     {
@@ -10233,6 +11291,8 @@ export const questions: Question[] = [
         sectionLabel: 'C121-130',
         promptJp: '[熟]～に頼る，～次第である',
         answerEn: 'depend on',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 9,
     },
     {
@@ -10244,6 +11304,8 @@ export const questions: Question[] = [
         sectionLabel: 'C121-130',
         promptJp: '[熟]～を求める',
         answerEn: 'ask for',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 10,
     },
     {
@@ -10255,6 +11317,8 @@ export const questions: Question[] = [
         sectionLabel: 'C131-140',
         promptJp: '[熟]～に備える',
         answerEn: 'prepare for',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 1,
     },
     {
@@ -10266,6 +11330,8 @@ export const questions: Question[] = [
         sectionLabel: 'C131-140',
         promptJp: '[熟]～を望む，～を願う',
         answerEn: 'hope for',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 2,
     },
     {
@@ -10277,6 +11343,8 @@ export const questions: Question[] = [
         sectionLabel: 'C131-140',
         promptJp: '[熟]～を祈る，（人）のために祈る',
         answerEn: 'pray for',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 3,
     },
     {
@@ -10288,6 +11356,8 @@ export const questions: Question[] = [
         sectionLabel: 'C131-140',
         promptJp: '[熟]～について聞く',
         answerEn: 'hear of',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 4,
     },
     {
@@ -10299,6 +11369,8 @@ export const questions: Question[] = [
         sectionLabel: 'C131-140',
         promptJp: '[熟]～について知っている',
         answerEn: 'know about',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 5,
     },
     {
@@ -10310,6 +11382,8 @@ export const questions: Question[] = [
         sectionLabel: 'C131-140',
         promptJp: '[熟]～のことを思う（前置詞はaboutの時もある）',
         answerEn: 'think of',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 6,
     },
     {
@@ -10321,6 +11395,8 @@ export const questions: Question[] = [
         sectionLabel: 'C131-140',
         promptJp: '[熟]～から始める［始まる］',
         answerEn: 'begin with',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 7,
     },
     {
@@ -10332,6 +11408,8 @@ export const questions: Question[] = [
         sectionLabel: 'C131-140',
         promptJp: '[熟]～と戦う',
         answerEn: 'fight against',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 8,
     },
     {
@@ -10343,6 +11421,8 @@ export const questions: Question[] = [
         sectionLabel: 'C131-140',
         promptJp: '[熟]AのBを手伝う',
         answerEn: 'help A with B',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 9,
     },
     {
@@ -10354,6 +11434,8 @@ export const questions: Question[] = [
         sectionLabel: 'C131-140',
         promptJp: '[熟]AにBを思い起こさせる',
         answerEn: 'remind A of B',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 10,
     },
     {
@@ -10365,6 +11447,8 @@ export const questions: Question[] = [
         sectionLabel: 'C141-150',
         promptJp: '[熟]AにBしてほしい',
         answerEn: 'want A to B',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 1,
     },
     {
@@ -10376,6 +11460,8 @@ export const questions: Question[] = [
         sectionLabel: 'C141-150',
         promptJp: '[熟]～（のスイッチ）を入れる，～をつける',
         answerEn: 'turn on',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 2,
     },
     {
@@ -10387,6 +11473,8 @@ export const questions: Question[] = [
         sectionLabel: 'C141-150',
         promptJp: '[熟]～を建てる，（テント）を張る，～を設立する',
         answerEn: 'set up',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 3,
     },
     {
@@ -10398,6 +11486,8 @@ export const questions: Question[] = [
         sectionLabel: 'C141-150',
         promptJp: '[熟]～に折り返し電話する',
         answerEn: 'call back',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 4,
     },
     {
@@ -10409,6 +11499,8 @@ export const questions: Question[] = [
         sectionLabel: 'C141-150',
         promptJp: '[熟]～を調査する，～を調べる',
         answerEn: 'check out',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 5,
     },
     {
@@ -10420,6 +11512,8 @@ export const questions: Question[] = [
         sectionLabel: 'C141-150',
         promptJp: '[熟]～に恋をする',
         answerEn: 'fall in love with',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 6,
     },
     {
@@ -10431,6 +11525,8 @@ export const questions: Question[] = [
         sectionLabel: 'C141-150',
         promptJp: '[熟]～と調和する',
         answerEn: 'go well with',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 7,
     },
     {
@@ -10442,6 +11538,8 @@ export const questions: Question[] = [
         sectionLabel: 'C141-150',
         promptJp: '[熟]～とは異なっている',
         answerEn: 'be different from',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 8,
     },
     {
@@ -10453,6 +11551,8 @@ export const questions: Question[] = [
         sectionLabel: 'C141-150',
         promptJp: '[熟]～で有名である，～で知られている',
         answerEn: 'be known for',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 9,
     },
     {
@@ -10464,6 +11564,8 @@ export const questions: Question[] = [
         sectionLabel: 'C141-150',
         promptJp: '[熟]～を誇りに思う',
         answerEn: 'be proud of',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 10,
     },
     {
@@ -10475,6 +11577,8 @@ export const questions: Question[] = [
         sectionLabel: 'C151-160',
         promptJp: '[熟]～におびえている，～を怖がっている',
         answerEn: 'be scared of',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 1,
     },
     {
@@ -10486,6 +11590,8 @@ export const questions: Question[] = [
         sectionLabel: 'C151-160',
         promptJp: '[熟]喜んで～する，～して喜ぶ（動詞はhappyの時も）',
         answerEn: 'be glad to',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 2,
     },
     {
@@ -10497,6 +11603,8 @@ export const questions: Question[] = [
         sectionLabel: 'C151-160',
         promptJp: '[熟]～する準備ができている',
         answerEn: 'be ready to',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 3,
     },
     {
@@ -10508,6 +11616,8 @@ export const questions: Question[] = [
         sectionLabel: 'C151-160',
         promptJp: '[熟]～を確信している，きっと～だと思う',
         answerEn: 'be sure',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 4,
     },
     {
@@ -10519,6 +11629,8 @@ export const questions: Question[] = [
         sectionLabel: 'C151-160',
         promptJp: '[熟]ひとそろいの～',
         answerEn: 'a set of',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 5,
     },
     {
@@ -10530,6 +11642,8 @@ export const questions: Question[] = [
         sectionLabel: 'C151-160',
         promptJp: '[熟]～の一員',
         answerEn: 'a member of',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 6,
     },
     {
@@ -10541,6 +11655,8 @@ export const questions: Question[] = [
         sectionLabel: 'C151-160',
         promptJp: '[熟]～の秘訣［手がかり，鍵］',
         answerEn: 'the key to',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 7,
     },
     {
@@ -10552,6 +11668,8 @@ export const questions: Question[] = [
         sectionLabel: 'C151-160',
         promptJp: '[熟]午前中，朝に',
         answerEn: 'in the morning',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 8,
     },
     {
@@ -10563,6 +11681,8 @@ export const questions: Question[] = [
         sectionLabel: 'C151-160',
         promptJp: '[熟]先週',
         answerEn: 'last week',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 9,
     },
     {
@@ -10574,6 +11694,8 @@ export const questions: Question[] = [
         sectionLabel: 'C151-160',
         promptJp: '[熟]そのとき，その当時（には）（theのときもある）',
         answerEn: 'at that time',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 10,
     },
     {
@@ -10585,6 +11707,8 @@ export const questions: Question[] = [
         sectionLabel: 'C161-170',
         promptJp: '[熟]同時に',
         answerEn: 'at the same time',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 1,
     },
     {
@@ -10596,6 +11720,8 @@ export const questions: Question[] = [
         sectionLabel: 'C161-170',
         promptJp: '[熟]この次は，今度は',
         answerEn: 'next time',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 2,
     },
     {
@@ -10607,6 +11733,8 @@ export const questions: Question[] = [
         sectionLabel: 'C161-170',
         promptJp: '[熟]何回も',
         answerEn: 'many times',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 3,
     },
     {
@@ -10618,6 +11746,8 @@ export const questions: Question[] = [
         sectionLabel: 'C161-170',
         promptJp: '[熟]先日',
         answerEn: 'the other day',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 4,
     },
     {
@@ -10629,6 +11759,8 @@ export const questions: Question[] = [
         sectionLabel: 'C161-170',
         promptJp: '[熟]（未来の）いつか，そのうち',
         answerEn: 'some day',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 5,
     },
     {
@@ -10640,6 +11772,8 @@ export const questions: Question[] = [
         sectionLabel: 'C161-170',
         promptJp: '[熟]～じゅうに［で］，～のいたるところに[で，の]',
         answerEn: 'all over',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 6,
     },
     {
@@ -10651,6 +11785,8 @@ export const questions: Question[] = [
         sectionLabel: 'C161-170',
         promptJp: '[熟]（～へ行く）途中で',
         answerEn: 'on my way to',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 7,
     },
     {
@@ -10662,6 +11798,8 @@ export const questions: Question[] = [
         sectionLabel: 'C161-170',
         promptJp: '[熟]外国から（の）',
         answerEn: 'from abroad',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 8,
     },
     {
@@ -10673,6 +11811,8 @@ export const questions: Question[] = [
         sectionLabel: 'C161-170',
         promptJp: '[熟]遠く離れて',
         answerEn: 'far away',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 9,
     },
     {
@@ -10684,6 +11824,8 @@ export const questions: Question[] = [
         sectionLabel: 'C161-170',
         promptJp: '[熟]1列に並んで',
         answerEn: 'in line',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 10,
     },
     {
@@ -10695,6 +11837,8 @@ export const questions: Question[] = [
         sectionLabel: 'C171-180',
         promptJp: '[熟]～など',
         answerEn: 'and so on',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 1,
     },
     {
@@ -10706,6 +11850,8 @@ export const questions: Question[] = [
         sectionLabel: 'C171-180',
         promptJp: '[熟]まず第一に，何よりもまず',
         answerEn: 'first of all',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 2,
     },
     {
@@ -10717,6 +11863,8 @@ export const questions: Question[] = [
         sectionLabel: 'C171-180',
         promptJp: '[熟]その結果（として）',
         answerEn: 'as a result',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 3,
     },
     {
@@ -10728,6 +11876,8 @@ export const questions: Question[] = [
         sectionLabel: 'C171-180',
         promptJp: '[熟]ともかく，いずれにせよ',
         answerEn: 'in any case',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 4,
     },
     {
@@ -10739,6 +11889,8 @@ export const questions: Question[] = [
         sectionLabel: 'C171-180',
         promptJp: '[熟]困っている，困窮している',
         answerEn: 'in need',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 5,
     },
     {
@@ -10750,6 +11902,8 @@ export const questions: Question[] = [
         sectionLabel: 'C171-180',
         promptJp: '[熟]平和に',
         answerEn: 'in peace',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 6,
     },
     {
@@ -10761,6 +11915,8 @@ export const questions: Question[] = [
         sectionLabel: 'C171-180',
         promptJp: '[熟]ますます（多くの）',
         answerEn: 'more and more',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 7,
     },
     {
@@ -10772,6 +11928,8 @@ export const questions: Question[] = [
         sectionLabel: 'C171-180',
         promptJp: '[熟]あまり～ない，それほど～ない',
         answerEn: 'not very',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 8,
     },
     {
@@ -10783,6 +11941,8 @@ export const questions: Question[] = [
         sectionLabel: 'C171-180',
         promptJp: '[熟]もういくらか，もう少し',
         answerEn: 'some more',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 9,
     },
     {
@@ -10794,6 +11954,8 @@ export const questions: Question[] = [
         sectionLabel: 'C171-180',
         promptJp: '[熟]～のうちいくつか［いく人か］',
         answerEn: 'some of',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 10,
     },
     {
@@ -10805,6 +11967,8 @@ export const questions: Question[] = [
         sectionLabel: 'C181-190',
         promptJp: '[熟]座る',
         answerEn: 'sit down',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 1,
     },
     {
@@ -10816,6 +11980,8 @@ export const questions: Question[] = [
         sectionLabel: 'C181-190',
         promptJp: '[熟]～のように聞こえる，～のように思える',
         answerEn: 'sound like',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 2,
     },
     {
@@ -10827,6 +11993,8 @@ export const questions: Question[] = [
         sectionLabel: 'C181-190',
         promptJp: '[熟]（上下）さかさまに，ひっくり返して',
         answerEn: 'upside down',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 3,
     },
     {
@@ -10838,6 +12006,8 @@ export const questions: Question[] = [
         sectionLabel: 'C181-190',
         promptJp: '[熟]～のまん中に［の］',
         answerEn: 'in the middle of',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 4,
     },
     {
@@ -10849,6 +12019,8 @@ export const questions: Question[] = [
         sectionLabel: 'C181-190',
         promptJp: '[熟]～の代わりに',
         answerEn: 'instead of',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 5,
     },
     {
@@ -10860,6 +12032,8 @@ export const questions: Question[] = [
         sectionLabel: 'C181-190',
         promptJp: '[熟]～することに決める，～しようと決心する',
         answerEn: 'decide to',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 6,
     },
     {
@@ -10871,6 +12045,8 @@ export const questions: Question[] = [
         sectionLabel: 'C181-190',
         promptJp: '[熟]～できるようになる',
         answerEn: 'learn to',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 7,
     },
     {
@@ -10882,6 +12058,8 @@ export const questions: Question[] = [
         sectionLabel: 'C181-190',
         promptJp: '[熟]～する必要がある',
         answerEn: 'need to',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 8,
     },
     {
@@ -10893,6 +12071,8 @@ export const questions: Question[] = [
         sectionLabel: 'C181-190',
         promptJp: '[熟]～し始める（後ろはto不定詞か-ing）',
         answerEn: 'start',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 9,
     },
     {
@@ -10904,6 +12084,8 @@ export const questions: Question[] = [
         sectionLabel: 'C181-190',
         promptJp: '[熟]～するのをやめる（この意味では後ろは-ing）',
         answerEn: 'stop',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 10,
     },
     {
@@ -10915,6 +12097,8 @@ export const questions: Question[] = [
         sectionLabel: 'C191-200',
         promptJp: '[熟]～し続ける（onがない場合も）',
         answerEn: 'keep on',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 1,
     },
     {
@@ -10926,6 +12110,8 @@ export const questions: Question[] = [
         sectionLabel: 'C191-200',
         promptJp: '[熟]～したほうがよい，～しなさい',
         answerEn: 'had better',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 2,
     },
     {
@@ -10937,6 +12123,8 @@ export const questions: Question[] = [
         sectionLabel: 'C191-200',
         promptJp: '[熟]できるだけ早く',
         answerEn: 'as soon as possible',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 3,
     },
     {
@@ -10948,6 +12136,8 @@ export const questions: Question[] = [
         sectionLabel: 'C191-200',
         promptJp: '[熟]AではなくてB',
         answerEn: 'not A but B',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 4,
     },
     {
@@ -10959,6 +12149,8 @@ export const questions: Question[] = [
         sectionLabel: 'C191-200',
         promptJp: '[熟]とてもAなのでB',
         answerEn: 'so A that B',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 5,
     },
     {
@@ -10970,6 +12162,8 @@ export const questions: Question[] = [
         sectionLabel: 'C191-200',
         promptJp: '[熟]Aもいれば［あれば］，Bもいる［ある］',
         answerEn: 'some A, others B',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 6,
     },
     {
@@ -10981,6 +12175,8 @@ export const questions: Question[] = [
         sectionLabel: 'C191-200',
         promptJp: '[熟]～するつもりだ',
         answerEn: 'be going to',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 7,
     },
     {
@@ -10992,6 +12188,8 @@ export const questions: Question[] = [
         sectionLabel: 'C191-200',
         promptJp: '[熟]AするにはBすぎる',
         answerEn: 'too B to A',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 8,
     },
     {
@@ -11003,6 +12201,8 @@ export const questions: Question[] = [
         sectionLabel: 'C191-200',
         promptJp: '[熟]～する方法，どう～するか',
         answerEn: 'how to',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 9,
     },
     {
@@ -11014,6 +12214,8 @@ export const questions: Question[] = [
         sectionLabel: 'C191-200',
         promptJp: '[熟]Bと同じほど［くらい］A',
         answerEn: 'as A as B',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 10,
     },
     {
@@ -11025,6 +12227,7 @@ export const questions: Question[] = [
         sectionLabel: '801-810',
         promptJp: '[形]年下の，年少の',
         answerEn: 'junior',
+        pos: ['adj'],
         orderIndex: 2,
     },
     {
@@ -11036,6 +12239,7 @@ export const questions: Question[] = [
         sectionLabel: '801-810',
         promptJp: '[名]プログラム，番組',
         answerEn: 'program',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -11047,6 +12251,7 @@ export const questions: Question[] = [
         sectionLabel: '801-810',
         promptJp: '[名]機会，チャンス，可能性',
         answerEn: 'chance',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -11058,6 +12263,7 @@ export const questions: Question[] = [
         sectionLabel: '801-810',
         promptJp: '[名]（客をもてなす）主人（役），ホスト / [動]～を主催する',
         answerEn: 'host',
+        pos: ['noun', 'verb'],
         orderIndex: 5,
     },
     {
@@ -11069,6 +12275,7 @@ export const questions: Question[] = [
         sectionLabel: '801-810',
         promptJp: '[名]目標，ゴール / 得点',
         answerEn: 'goal',
+        pos: ['noun'],
         orderIndex: 6,
     },
     {
@@ -11080,6 +12287,7 @@ export const questions: Question[] = [
         sectionLabel: '801-810',
         promptJp: '[名]機械',
         answerEn: 'machine',
+        pos: ['noun'],
         orderIndex: 7,
     },
     {
@@ -11091,6 +12299,7 @@ export const questions: Question[] = [
         sectionLabel: '801-810',
         promptJp: '[名]（少しの）間 / [接]～する間に，～の間中',
         answerEn: 'while',
+        pos: ['noun', 'conj'],
         orderIndex: 8,
     },
     {
@@ -11102,6 +12311,7 @@ export const questions: Question[] = [
         sectionLabel: '801-810',
         promptJp: '[副]これまで（に），一度でも',
         answerEn: 'ever',
+        pos: ['adv'],
         orderIndex: 9,
     },
     {
@@ -11113,6 +12323,7 @@ export const questions: Question[] = [
         sectionLabel: '801-810',
         promptJp: "[動][―'s（― usの短縮形）＋ 動詞の原形で]（一緒に）～しよう / [後に「人＋動詞の原形」を伴って]人に～させる",
         answerEn: 'let',
+        pos: ['verb', 'adj'],
         orderIndex: 10,
     },
     {
@@ -11124,6 +12335,7 @@ export const questions: Question[] = [
         sectionLabel: '801-810',
         promptJp: '[名]置き[掛け]時計',
         answerEn: 'clock',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -11135,6 +12347,7 @@ export const questions: Question[] = [
         sectionLabel: '811-820',
         promptJp: '[名]ニュース，知らせ',
         answerEn: 'news',
+        pos: ['noun'],
         orderIndex: 2,
     },
     {
@@ -11146,6 +12359,7 @@ export const questions: Question[] = [
         sectionLabel: '811-820',
         promptJp: '[名]大学，総合大学',
         answerEn: 'university',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -11157,6 +12371,7 @@ export const questions: Question[] = [
         sectionLabel: '811-820',
         promptJp: '[名]無駄（遣い），廃棄物 / [動]～を浪費する，無駄に使う',
         answerEn: 'waste',
+        pos: ['noun', 'verb'],
         orderIndex: 4,
     },
     {
@@ -11168,6 +12383,7 @@ export const questions: Question[] = [
         sectionLabel: '811-820',
         promptJp: '[名]間違い，ミス',
         answerEn: 'mistake',
+        pos: ['noun'],
         orderIndex: 5,
     },
     {
@@ -11179,6 +12395,7 @@ export const questions: Question[] = [
         sectionLabel: '811-820',
         promptJp: '[動]～を集める，収集する',
         answerEn: 'collect',
+        pos: ['verb'],
         orderIndex: 6,
     },
     {
@@ -11190,6 +12407,7 @@ export const questions: Question[] = [
         sectionLabel: '811-820',
         promptJp: '=AI("日本語は「"&F817&"」、対応する英語は「"&G817&"」。これらの単語の品詞を想定して、"&F817&"の先頭に\\[名\\]のようにつけて。")',
         answerEn: 'since',
+        pos: ['noun'],
         orderIndex: 7,
     },
     {
@@ -11201,6 +12419,7 @@ export const questions: Question[] = [
         sectionLabel: '811-820',
         promptJp: '[名]サービス，業務，公的事業',
         answerEn: 'service',
+        pos: ['noun'],
         orderIndex: 8,
     },
     {
@@ -11212,6 +12431,7 @@ export const questions: Question[] = [
         sectionLabel: '811-820',
         promptJp: '[名]環境',
         answerEn: 'environment',
+        pos: ['noun'],
         orderIndex: 9,
     },
     {
@@ -11223,6 +12443,7 @@ export const questions: Question[] = [
         sectionLabel: '811-820',
         promptJp: '[名]課，[名]授業，[名]レッスン',
         answerEn: 'lesson',
+        pos: ['noun'],
         orderIndex: 10,
     },
     {
@@ -11234,6 +12455,7 @@ export const questions: Question[] = [
         sectionLabel: '811-820',
         promptJp: '[名]死',
         answerEn: 'death',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -11245,6 +12467,7 @@ export const questions: Question[] = [
         sectionLabel: '821-830',
         promptJp: '[動]～を発達[発展]させる，開発する',
         answerEn: 'develop',
+        pos: ['verb'],
         orderIndex: 2,
     },
     {
@@ -11256,6 +12479,7 @@ export const questions: Question[] = [
         sectionLabel: '821-830',
         promptJp: '[名]支持，支援，支え / [動]～を支える，支持する，支援する',
         answerEn: 'support',
+        pos: ['noun', 'verb'],
         orderIndex: 3,
     },
     {
@@ -11267,6 +12491,7 @@ export const questions: Question[] = [
         sectionLabel: '821-830',
         promptJp: '[名]ウェブサイト，サイト',
         answerEn: 'website',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -11278,6 +12503,7 @@ export const questions: Question[] = [
         sectionLabel: '821-830',
         promptJp: '[名]円',
         answerEn: 'yen',
+        pos: ['noun'],
         orderIndex: 5,
     },
     {
@@ -11289,6 +12515,7 @@ export const questions: Question[] = [
         sectionLabel: '821-830',
         promptJp: '[副]近くに / [動]～を閉める，閉じる / [動]閉まる / [形]近い / [形]親しい，親密な',
         answerEn: 'close',
+        pos: ['adv', 'verb', 'adj'],
         orderIndex: 6,
     },
     {
@@ -11300,6 +12527,7 @@ export const questions: Question[] = [
         sectionLabel: '821-830',
         promptJp: '[副][否定文で]まだ（～ない） / [疑問文で]もう',
         answerEn: 'yet',
+        pos: ['adv'],
         orderIndex: 7,
     },
     {
@@ -11311,6 +12539,7 @@ export const questions: Question[] = [
         sectionLabel: '821-830',
         promptJp: '[名]会議，集会，ミーティング',
         answerEn: 'meeting',
+        pos: ['noun'],
         orderIndex: 8,
     },
     {
@@ -11322,6 +12551,7 @@ export const questions: Question[] = [
         sectionLabel: '821-830',
         promptJp: '[名]生ごみ，ごみ',
         answerEn: 'garbage',
+        pos: ['noun'],
         orderIndex: 9,
     },
     {
@@ -11333,6 +12563,7 @@ export const questions: Question[] = [
         sectionLabel: '821-830',
         promptJp: '[名]顧客，得意先',
         answerEn: 'customer',
+        pos: ['noun'],
         orderIndex: 10,
     },
     {
@@ -11344,6 +12575,7 @@ export const questions: Question[] = [
         sectionLabel: '821-830',
         promptJp: '[名]発表，プレゼンテーション',
         answerEn: 'presentation',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -11355,6 +12587,7 @@ export const questions: Question[] = [
         sectionLabel: '831-840',
         promptJp: '[名]労働者',
         answerEn: 'worker',
+        pos: ['noun'],
         orderIndex: 2,
     },
     {
@@ -11366,6 +12599,7 @@ export const questions: Question[] = [
         sectionLabel: '831-840',
         promptJp: '[名]空，大空',
         answerEn: 'sky',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -11377,6 +12611,7 @@ export const questions: Question[] = [
         sectionLabel: '831-840',
         promptJp: '[名]エネルギー',
         answerEn: 'energy',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -11388,6 +12623,7 @@ export const questions: Question[] = [
         sectionLabel: '831-840',
         promptJp: '[名]農場，農園',
         answerEn: 'farm',
+        pos: ['noun'],
         orderIndex: 5,
     },
     {
@@ -11399,6 +12635,7 @@ export const questions: Question[] = [
         sectionLabel: '831-840',
         promptJp: '[名]指導者，リーダー',
         answerEn: 'leader',
+        pos: ['noun'],
         orderIndex: 6,
     },
     {
@@ -11410,6 +12647,7 @@ export const questions: Question[] = [
         sectionLabel: '831-840',
         promptJp: '[副]特に，とりわけ',
         answerEn: 'especially',
+        pos: ['adv'],
         orderIndex: 7,
     },
     {
@@ -11421,6 +12659,7 @@ export const questions: Question[] = [
         sectionLabel: '831-840',
         promptJp: '[助動]～しましょうか，（一緒に）～しませんか',
         answerEn: 'shall',
+        pos: ['aux'],
         orderIndex: 8,
     },
     {
@@ -11432,6 +12671,7 @@ export const questions: Question[] = [
         sectionLabel: '831-840',
         promptJp: '[名]チームメイト',
         answerEn: 'teammate',
+        pos: ['noun'],
         orderIndex: 9,
     },
     {
@@ -11443,6 +12683,7 @@ export const questions: Question[] = [
         sectionLabel: '831-840',
         promptJp: '[名]意見，考え',
         answerEn: 'opinion',
+        pos: ['noun'],
         orderIndex: 10,
     },
     {
@@ -11454,6 +12695,7 @@ export const questions: Question[] = [
         sectionLabel: '831-840',
         promptJp: '[動]～を受け取る，もらう',
         answerEn: 'receive',
+        pos: ['verb'],
         orderIndex: 1,
     },
     {
@@ -11465,6 +12707,7 @@ export const questions: Question[] = [
         sectionLabel: '841-850',
         promptJp: '[名]塩',
         answerEn: 'salt',
+        pos: ['noun'],
         orderIndex: 2,
     },
     {
@@ -11476,6 +12719,7 @@ export const questions: Question[] = [
         sectionLabel: '841-850',
         promptJp: '[名]マラソン',
         answerEn: 'marathon',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -11487,6 +12731,7 @@ export const questions: Question[] = [
         sectionLabel: '841-850',
         promptJp: '[形]危ない，危険な',
         answerEn: 'dangerous',
+        pos: ['adj'],
         orderIndex: 4,
     },
     {
@@ -11498,6 +12743,7 @@ export const questions: Question[] = [
         sectionLabel: '841-850',
         promptJp: '[名]力，能力，権力 / [名]電力，動力 / [動]～を動力で動かす',
         answerEn: 'power',
+        pos: ['noun', 'verb'],
         orderIndex: 5,
     },
     {
@@ -11509,6 +12755,7 @@ export const questions: Question[] = [
         sectionLabel: '841-850',
         promptJp: '[名]旅行，見学，ツアー',
         answerEn: 'tour',
+        pos: ['noun'],
         orderIndex: 6,
     },
     {
@@ -11520,6 +12767,7 @@ export const questions: Question[] = [
         sectionLabel: '841-850',
         promptJp: '[名]ランナー，走者',
         answerEn: 'runner',
+        pos: ['noun'],
         orderIndex: 7,
     },
     {
@@ -11531,6 +12779,7 @@ export const questions: Question[] = [
         sectionLabel: '841-850',
         promptJp: '[名]トーナメント',
         answerEn: 'tournament',
+        pos: ['noun'],
         orderIndex: 8,
     },
     {
@@ -11542,6 +12791,7 @@ export const questions: Question[] = [
         sectionLabel: '841-850',
         promptJp: '[名]運動，練習 / 練習（問題） / [動]運動する',
         answerEn: 'exercise',
+        pos: ['noun', 'verb'],
         orderIndex: 9,
     },
     {
@@ -11553,6 +12803,7 @@ export const questions: Question[] = [
         sectionLabel: '841-850',
         promptJp: '[形]国際的な',
         answerEn: 'international',
+        pos: ['adj'],
         orderIndex: 10,
     },
     {
@@ -11564,6 +12815,7 @@ export const questions: Question[] = [
         sectionLabel: '841-850',
         promptJp: '[名]道，道路',
         answerEn: 'road',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -11575,6 +12827,7 @@ export const questions: Question[] = [
         sectionLabel: '851-860',
         promptJp: '[名]アフリカ',
         answerEn: 'Africa',
+        pos: ['noun'],
         orderIndex: 2,
     },
     {
@@ -11586,6 +12839,7 @@ export const questions: Question[] = [
         sectionLabel: '851-860',
         promptJp: '[形]誇りに思う',
         answerEn: 'proud',
+        pos: ['adj'],
         orderIndex: 3,
     },
     {
@@ -11597,6 +12851,7 @@ export const questions: Question[] = [
         sectionLabel: '851-860',
         promptJp: '[接/前]～するまで（ずっと） / ～まで（ずっと）',
         answerEn: 'until',
+        pos: ['prep', 'conj'],
         orderIndex: 4,
     },
     {
@@ -11608,6 +12863,7 @@ export const questions: Question[] = [
         sectionLabel: '851-860',
         promptJp: '[名]カップ，茶碗',
         answerEn: 'cup',
+        pos: ['noun'],
         orderIndex: 5,
     },
     {
@@ -11619,6 +12875,7 @@ export const questions: Question[] = [
         sectionLabel: '851-860',
         promptJp: '[名]違い，差，相違（点）',
         answerEn: 'difference',
+        pos: ['noun'],
         orderIndex: 6,
     },
     {
@@ -11630,6 +12887,7 @@ export const questions: Question[] = [
         sectionLabel: '851-860',
         promptJp: '[動]～を説明する',
         answerEn: 'explain',
+        pos: ['verb'],
         orderIndex: 7,
     },
     {
@@ -11641,6 +12899,7 @@ export const questions: Question[] = [
         sectionLabel: '851-860',
         promptJp: '[動]～を表現する',
         answerEn: 'express',
+        pos: ['verb'],
         orderIndex: 8,
     },
     {
@@ -11652,6 +12911,7 @@ export const questions: Question[] = [
         sectionLabel: '851-860',
         promptJp: '[名]贈り物，ギフト',
         answerEn: 'gift',
+        pos: ['noun'],
         orderIndex: 9,
     },
     {
@@ -11663,6 +12923,7 @@ export const questions: Question[] = [
         sectionLabel: '851-860',
         promptJp: '[名]制度，組織，体系',
         answerEn: 'system',
+        pos: ['noun'],
         orderIndex: 10,
     },
     {
@@ -11674,6 +12935,7 @@ export const questions: Question[] = [
         sectionLabel: '851-860',
         promptJp: '[形]人間の，人間的な / [名]人，人間',
         answerEn: 'human',
+        pos: ['adj', 'noun'],
         orderIndex: 1,
     },
     {
@@ -11685,6 +12947,7 @@ export const questions: Question[] = [
         sectionLabel: '861-870',
         promptJp: '[名]体，肉体',
         answerEn: 'body',
+        pos: ['noun'],
         orderIndex: 2,
     },
     {
@@ -11696,6 +12959,7 @@ export const questions: Question[] = [
         sectionLabel: '861-870',
         promptJp: '[名]建物，ビル',
         answerEn: 'building',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -11707,6 +12971,7 @@ export const questions: Question[] = [
         sectionLabel: '861-870',
         promptJp: '[動]～に入る / （～に）出場する / ～に入学する',
         answerEn: 'enter',
+        pos: ['verb'],
         orderIndex: 4,
     },
     {
@@ -11718,6 +12983,7 @@ export const questions: Question[] = [
         sectionLabel: '861-870',
         promptJp: '[動]～を守る，保護する',
         answerEn: 'protect',
+        pos: ['verb'],
         orderIndex: 5,
     },
     {
@@ -11729,6 +12995,7 @@ export const questions: Question[] = [
         sectionLabel: '861-870',
         promptJp: '[名]技能，熟練，技術',
         answerEn: 'skill',
+        pos: ['noun'],
         orderIndex: 6,
     },
     {
@@ -11740,6 +13007,7 @@ export const questions: Question[] = [
         sectionLabel: '861-870',
         promptJp: '[名]道具，手段',
         answerEn: 'tool',
+        pos: ['noun'],
         orderIndex: 7,
     },
     {
@@ -11751,6 +13019,7 @@ export const questions: Question[] = [
         sectionLabel: '861-870',
         promptJp: '[名]忠告，助言，アドバイス',
         answerEn: 'advice',
+        pos: ['noun'],
         orderIndex: 8,
     },
     {
@@ -11762,6 +13031,7 @@ export const questions: Question[] = [
         sectionLabel: '861-870',
         promptJp: '[名]（車を）運転する人，運転手',
         answerEn: 'driver',
+        pos: ['noun'],
         orderIndex: 9,
     },
     {
@@ -11773,6 +13043,7 @@ export const questions: Question[] = [
         sectionLabel: '861-870',
         promptJp: '[名]遺産',
         answerEn: 'heritage',
+        pos: ['noun'],
         orderIndex: 10,
     },
     {
@@ -11784,6 +13055,7 @@ export const questions: Question[] = [
         sectionLabel: '861-870',
         promptJp: '[名]①報告(書)，レポート，記事 [動]② ～を報告する',
         answerEn: 'report',
+        pos: ['noun', 'verb'],
         orderIndex: 1,
     },
     {
@@ -11795,6 +13067,7 @@ export const questions: Question[] = [
         sectionLabel: '871-880',
         promptJp: '[形]怒った，腹を立てた',
         answerEn: 'angry',
+        pos: ['adj'],
         orderIndex: 2,
     },
     {
@@ -11806,6 +13079,7 @@ export const questions: Question[] = [
         sectionLabel: '871-880',
         promptJp: '[名]ヨーロッパ',
         answerEn: 'Europe',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -11817,6 +13091,7 @@ export const questions: Question[] = [
         sectionLabel: '871-880',
         promptJp: '[名]県，[名]都，[名]道，[名]府',
         answerEn: 'prefecture',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -11828,6 +13103,7 @@ export const questions: Question[] = [
         sectionLabel: '871-880',
         promptJp: '[形]①暗い ②黒い，濃い',
         answerEn: 'dark',
+        pos: ['adj'],
         orderIndex: 5,
     },
     {
@@ -11839,6 +13115,7 @@ export const questions: Question[] = [
         sectionLabel: '871-880',
         promptJp: '[動]①～を交換する，やりとりする [名]②交換，交流，やりとり',
         answerEn: 'exchange',
+        pos: ['verb', 'noun'],
         orderIndex: 6,
     },
     {
@@ -11850,6 +13127,7 @@ export const questions: Question[] = [
         sectionLabel: '871-880',
         promptJp: '[名]①調査，研究 [動]②(～を)研究する',
         answerEn: 'research',
+        pos: ['noun', 'verb'],
         orderIndex: 7,
     },
     {
@@ -11861,6 +13139,7 @@ export const questions: Question[] = [
         sectionLabel: '871-880',
         promptJp: '[名]科学技術，テクノロジー',
         answerEn: 'technology',
+        pos: ['noun'],
         orderIndex: 8,
     },
     {
@@ -11872,6 +13151,7 @@ export const questions: Question[] = [
         sectionLabel: '871-880',
         promptJp: '[名]事故，偶然のできごと',
         answerEn: 'accident',
+        pos: ['noun'],
         orderIndex: 9,
     },
     {
@@ -11883,6 +13163,7 @@ export const questions: Question[] = [
         sectionLabel: '871-880',
         promptJp: '[名]交通（量）',
         answerEn: 'traffic',
+        pos: ['noun'],
         orderIndex: 10,
     },
     {
@@ -11894,6 +13175,7 @@ export const questions: Question[] = [
         sectionLabel: '871-880',
         promptJp: '[名]シャツ',
         answerEn: 'shirt',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -11905,6 +13187,7 @@ export const questions: Question[] = [
         sectionLabel: '881-890',
         promptJp: '[動]～を解く，解決する',
         answerEn: 'solve',
+        pos: ['verb'],
         orderIndex: 2,
     },
     {
@@ -11916,6 +13199,7 @@ export const questions: Question[] = [
         sectionLabel: '881-890',
         promptJp: '[名]象徴，シンボル / 記号',
         answerEn: 'symbol',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -11927,6 +13211,7 @@ export const questions: Question[] = [
         sectionLabel: '881-890',
         promptJp: '[名]量，[名]額，[名]合計',
         answerEn: 'amount',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -11938,6 +13223,7 @@ export const questions: Question[] = [
         sectionLabel: '881-890',
         promptJp: '[名]車いす',
         answerEn: 'wheelchair',
+        pos: ['noun'],
         orderIndex: 5,
     },
     {
@@ -11949,6 +13235,7 @@ export const questions: Question[] = [
         sectionLabel: '881-890',
         promptJp: '[動]（～を）想像する，思い描く',
         answerEn: 'imagine',
+        pos: ['verb'],
         orderIndex: 6,
     },
     {
@@ -11960,6 +13247,7 @@ export const questions: Question[] = [
         sectionLabel: '881-890',
         promptJp: '[名]スマートフォン',
         answerEn: 'smartphone',
+        pos: ['noun'],
         orderIndex: 7,
     },
     {
@@ -11971,6 +13259,7 @@ export const questions: Question[] = [
         sectionLabel: '881-890',
         promptJp: '[副]注意深く，慎重に',
         answerEn: 'carefully',
+        pos: ['adv'],
         orderIndex: 8,
     },
     {
@@ -11982,6 +13271,7 @@ export const questions: Question[] = [
         sectionLabel: '881-890',
         promptJp: '[動]～を勇気づける，励ます',
         answerEn: 'encourage',
+        pos: ['verb'],
         orderIndex: 9,
     },
     {
@@ -11993,6 +13283,7 @@ export const questions: Question[] = [
         sectionLabel: '881-890',
         promptJp: '[動]通信する，連絡する',
         answerEn: 'communicate',
+        pos: ['verb'],
         orderIndex: 10,
     },
     {
@@ -12004,6 +13295,7 @@ export const questions: Question[] = [
         sectionLabel: '881-890',
         promptJp: '[名]飛行機',
         answerEn: 'plane',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -12015,6 +13307,7 @@ export const questions: Question[] = [
         sectionLabel: '891-900',
         promptJp: '[名]①舞台 [名]②(発展などの)段階',
         answerEn: 'stage',
+        pos: ['noun'],
         orderIndex: 2,
     },
     {
@@ -12026,6 +13319,7 @@ export const questions: Question[] = [
         sectionLabel: '891-900',
         promptJp: '[形]①乾いた，雨の降らない [動]②乾く，～を乾かす',
         answerEn: 'dry',
+        pos: ['adj', 'verb'],
         orderIndex: 3,
     },
     {
@@ -12037,6 +13331,7 @@ export const questions: Question[] = [
         sectionLabel: '891-900',
         promptJp: '[感]さよなら，じゃあね',
         answerEn: 'bye',
+        pos: ['interj'],
         orderIndex: 4,
     },
     {
@@ -12048,6 +13343,7 @@ export const questions: Question[] = [
         sectionLabel: '891-900',
         promptJp: '[名]①尊敬，敬意 [動]②～を尊敬する，尊重する',
         answerEn: 'respect',
+        pos: ['noun', 'verb'],
         orderIndex: 5,
     },
     {
@@ -12059,6 +13355,7 @@ export const questions: Question[] = [
         sectionLabel: '891-900',
         promptJp: '[名]①面接，インタビュー [動]②～に面接(インタビュー)する',
         answerEn: 'interview',
+        pos: ['noun', 'verb'],
         orderIndex: 6,
     },
     {
@@ -12070,6 +13367,7 @@ export const questions: Question[] = [
         sectionLabel: '891-900',
         promptJp: '[名]エンジニア，技師',
         answerEn: 'engineer',
+        pos: ['noun'],
         orderIndex: 7,
     },
     {
@@ -12081,6 +13379,7 @@ export const questions: Question[] = [
         sectionLabel: '891-900',
         promptJp: '[名]材木，木，[名][複数形で]森',
         answerEn: 'wood',
+        pos: ['noun', 'adj', 'num'],
         orderIndex: 8,
     },
     {
@@ -12092,6 +13391,7 @@ export const questions: Question[] = [
         sectionLabel: '891-900',
         promptJp: '[名]食事',
         answerEn: 'meal',
+        pos: ['noun'],
         orderIndex: 9,
     },
     {
@@ -12103,6 +13403,7 @@ export const questions: Question[] = [
         sectionLabel: '891-900',
         promptJp: '[動]～を投げる',
         answerEn: 'throw',
+        pos: ['verb'],
         orderIndex: 10,
     },
     {
@@ -12114,6 +13415,7 @@ export const questions: Question[] = [
         sectionLabel: '891-900',
         promptJp: '[名]アルバム',
         answerEn: 'album',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -12125,6 +13427,7 @@ export const questions: Question[] = [
         sectionLabel: '901-910',
         promptJp: '[名]重要（性）',
         answerEn: 'importance',
+        pos: ['noun'],
         orderIndex: 2,
     },
     {
@@ -12136,6 +13439,7 @@ export const questions: Question[] = [
         sectionLabel: '901-910',
         promptJp: '[名]友好（関係），友情',
         answerEn: 'friendship',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -12147,6 +13451,7 @@ export const questions: Question[] = [
         sectionLabel: '901-910',
         promptJp: '[名]絵，絵画',
         answerEn: 'painting',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -12158,6 +13463,7 @@ export const questions: Question[] = [
         sectionLabel: '901-910',
         promptJp: '[名]① 性格，人格 [名]② 登場人物',
         answerEn: 'character',
+        pos: ['noun'],
         orderIndex: 5,
     },
     {
@@ -12169,6 +13475,7 @@ export const questions: Question[] = [
         sectionLabel: '901-910',
         promptJp: '[名]努力',
         answerEn: 'effort',
+        pos: ['noun'],
         orderIndex: 6,
     },
     {
@@ -12180,6 +13487,7 @@ export const questions: Question[] = [
         sectionLabel: '901-910',
         promptJp: '[名]（運動競技の）コーチ / [動]～のコーチをする，～に指導する',
         answerEn: 'coach',
+        pos: ['noun', 'verb'],
         orderIndex: 7,
     },
     {
@@ -12191,6 +13499,7 @@ export const questions: Question[] = [
         sectionLabel: '901-910',
         promptJp: '[名]試験，検査，テスト / [動]～をテスト[検査]する',
         answerEn: 'test',
+        pos: ['noun', 'verb'],
         orderIndex: 8,
     },
     {
@@ -12202,6 +13511,7 @@ export const questions: Question[] = [
         sectionLabel: '901-910',
         promptJp: '[名]日記',
         answerEn: 'diary',
+        pos: ['noun'],
         orderIndex: 9,
     },
     {
@@ -12213,6 +13523,7 @@ export const questions: Question[] = [
         sectionLabel: '901-910',
         promptJp: '[動]～をリサイクルする',
         answerEn: 'recycle',
+        pos: ['verb'],
         orderIndex: 10,
     },
     {
@@ -12224,6 +13535,7 @@ export const questions: Question[] = [
         sectionLabel: '901-910',
         promptJp: '[名]～博士，～先生',
         answerEn: 'Dr.',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -12235,6 +13547,7 @@ export const questions: Question[] = [
         sectionLabel: '911-920',
         promptJp: '[名]大学，単科大学',
         answerEn: 'college',
+        pos: ['noun'],
         orderIndex: 2,
     },
     {
@@ -12246,6 +13559,7 @@ export const questions: Question[] = [
         sectionLabel: '911-920',
         promptJp: '[名]（レース・競技などでの）先頭，首位 / [動]（～を）導く，先導する',
         answerEn: 'lead',
+        pos: ['noun', 'verb'],
         orderIndex: 3,
     },
     {
@@ -12257,6 +13571,7 @@ export const questions: Question[] = [
         sectionLabel: '911-920',
         promptJp: '[名]地震',
         answerEn: 'earthquake',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -12268,6 +13583,7 @@ export const questions: Question[] = [
         sectionLabel: '911-920',
         promptJp: '[副]ゆっくりと',
         answerEn: 'slowly',
+        pos: ['adv'],
         orderIndex: 5,
     },
     {
@@ -12279,6 +13595,7 @@ export const questions: Question[] = [
         sectionLabel: '911-920',
         promptJp: '[形]大人の，成人した / [名]成人，大人',
         answerEn: 'adult',
+        pos: ['adj', 'noun'],
         orderIndex: 6,
     },
     {
@@ -12290,6 +13607,7 @@ export const questions: Question[] = [
         sectionLabel: '911-920',
         promptJp: '[形]毎日の，日常の',
         answerEn: 'everyday',
+        pos: ['adj'],
         orderIndex: 7,
     },
     {
@@ -12301,6 +13619,7 @@ export const questions: Question[] = [
         sectionLabel: '911-920',
         promptJp: '[形]目の不自由な',
         answerEn: 'blind',
+        pos: ['adj'],
         orderIndex: 8,
     },
     {
@@ -12312,6 +13631,7 @@ export const questions: Question[] = [
         sectionLabel: '911-920',
         promptJp: '[名]訓練，[動]～を訓練する',
         answerEn: 'drill',
+        pos: ['noun', 'verb'],
         orderIndex: 9,
     },
     {
@@ -12323,6 +13643,7 @@ export const questions: Question[] = [
         sectionLabel: '911-920',
         promptJp: '[名]入り口，入場，入学',
         answerEn: 'entrance',
+        pos: ['noun'],
         orderIndex: 10,
     },
     {
@@ -12334,6 +13655,7 @@ export const questions: Question[] = [
         sectionLabel: '911-920',
         promptJp: '[名]汚染，公害',
         answerEn: 'pollution',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -12345,6 +13667,7 @@ export const questions: Question[] = [
         sectionLabel: '921-930',
         promptJp: '[名]故郷，ふるさと',
         answerEn: 'hometown',
+        pos: ['noun'],
         orderIndex: 2,
     },
     {
@@ -12356,6 +13679,7 @@ export const questions: Question[] = [
         sectionLabel: '921-930',
         promptJp: '[名]① 銀行 [名]② 土手，堤防',
         answerEn: 'bank',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -12367,6 +13691,7 @@ export const questions: Question[] = [
         sectionLabel: '921-930',
         promptJp: '[形]輝いている，明るい',
         answerEn: 'bright',
+        pos: ['adj'],
         orderIndex: 4,
     },
     {
@@ -12378,6 +13703,7 @@ export const questions: Question[] = [
         sectionLabel: '921-930',
         promptJp: '[名]① 学年 ② 等級 ③ 成績',
         answerEn: 'grade',
+        pos: ['noun'],
         orderIndex: 5,
     },
     {
@@ -12389,6 +13715,7 @@ export const questions: Question[] = [
         sectionLabel: '921-930',
         promptJp: '[名]影響，影響力 / [動]～に影響を与える',
         answerEn: 'influence',
+        pos: ['noun', 'verb'],
         orderIndex: 6,
     },
     {
@@ -12400,6 +13727,7 @@ export const questions: Question[] = [
         sectionLabel: '921-930',
         promptJp: '[動]～を記録する，録音する / [名]① 記録 ② レコード',
         answerEn: 'record',
+        pos: ['verb', 'noun'],
         orderIndex: 7,
     },
     {
@@ -12411,6 +13739,7 @@ export const questions: Question[] = [
         sectionLabel: '921-930',
         promptJp: '[名]形，姿',
         answerEn: 'shape',
+        pos: ['noun'],
         orderIndex: 8,
     },
     {
@@ -12422,6 +13751,7 @@ export const questions: Question[] = [
         sectionLabel: '921-930',
         promptJp: '[動]（～を）殺す',
         answerEn: 'kill',
+        pos: ['verb'],
         orderIndex: 9,
     },
     {
@@ -12433,6 +13763,7 @@ export const questions: Question[] = [
         sectionLabel: '921-930',
         promptJp: '[名]① 郵便（物） ② 地位，職，ポスト / [動]（インターネットで情報など）を掲示する',
         answerEn: 'post',
+        pos: ['noun', 'verb'],
         orderIndex: 10,
     },
     {
@@ -12444,6 +13775,7 @@ export const questions: Question[] = [
         sectionLabel: '921-930',
         promptJp: '[副/接]でも，けれども / [接]～であるけれども，～にもかかわらず',
         answerEn: 'though',
+        pos: ['adv', 'conj'],
         orderIndex: 1,
     },
     {
@@ -12455,6 +13787,7 @@ export const questions: Question[] = [
         sectionLabel: '931-940',
         promptJp: '[動]～を引き起こす，～の原因となる / [名]原因',
         answerEn: 'cause',
+        pos: ['verb', 'noun'],
         orderIndex: 2,
     },
     {
@@ -12466,6 +13799,7 @@ export const questions: Question[] = [
         sectionLabel: '931-940',
         promptJp: '[動]卒業する',
         answerEn: 'graduate',
+        pos: ['verb'],
         orderIndex: 3,
     },
     {
@@ -12477,6 +13811,7 @@ export const questions: Question[] = [
         sectionLabel: '931-940',
         promptJp: '[名]風',
         answerEn: 'wind',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -12488,6 +13823,7 @@ export const questions: Question[] = [
         sectionLabel: '931-940',
         promptJp: '[副]日々，毎日 / [形]日常の，毎日の',
         answerEn: 'daily',
+        pos: ['adv', 'adj'],
         orderIndex: 5,
     },
     {
@@ -12499,6 +13835,7 @@ export const questions: Question[] = [
         sectionLabel: '931-940',
         promptJp: '[名]野生（の状態），[形]野生の',
         answerEn: 'wild',
+        pos: ['noun', 'adj'],
         orderIndex: 6,
     },
     {
@@ -12510,6 +13847,7 @@ export const questions: Question[] = [
         sectionLabel: '931-940',
         promptJp: '[形]文化の，文化的な',
         answerEn: 'cultural',
+        pos: ['adj'],
         orderIndex: 7,
     },
     {
@@ -12521,6 +13859,7 @@ export const questions: Question[] = [
         sectionLabel: '931-940',
         promptJp: '[形]本当の，本物の，実際の',
         answerEn: 'real',
+        pos: ['adj'],
         orderIndex: 8,
     },
     {
@@ -12532,6 +13871,7 @@ export const questions: Question[] = [
         sectionLabel: '931-940',
         promptJp: '[名]（車を）運転する人，運転手',
         answerEn: 'driver',
+        pos: ['noun'],
         orderIndex: 9,
     },
     {
@@ -12543,6 +13883,7 @@ export const questions: Question[] = [
         sectionLabel: '931-940',
         promptJp: '[動]休む，休息する / [名]① 休息，休み ②[theをつけて]残り',
         answerEn: 'rest',
+        pos: ['verb', 'noun'],
         orderIndex: 10,
     },
     {
@@ -12554,6 +13895,7 @@ export const questions: Question[] = [
         sectionLabel: '931-940',
         promptJp: '[名]側面，[名]側，[名]面，[名]辺',
         answerEn: 'side',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -12565,6 +13907,7 @@ export const questions: Question[] = [
         sectionLabel: '941-950',
         promptJp: '[形]アジアの，[名]アジア人',
         answerEn: 'Asian',
+        pos: ['adj', 'noun'],
         orderIndex: 2,
     },
     {
@@ -12576,6 +13919,7 @@ export const questions: Question[] = [
         sectionLabel: '941-950',
         promptJp: '[名]ラジオ',
         answerEn: 'radio',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -12587,6 +13931,7 @@ export const questions: Question[] = [
         sectionLabel: '941-950',
         promptJp: '[名]おもちゃ，玩具',
         answerEn: 'toy',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -12598,6 +13943,7 @@ export const questions: Question[] = [
         sectionLabel: '941-950',
         promptJp: '[名]腕',
         answerEn: 'arm',
+        pos: ['noun'],
         orderIndex: 5,
     },
     {
@@ -12609,6 +13955,7 @@ export const questions: Question[] = [
         sectionLabel: '941-950',
         promptJp: '[名]指示，[名]指図，[名]命令',
         answerEn: 'instruction',
+        pos: ['noun'],
         orderIndex: 6,
     },
     {
@@ -12620,6 +13967,7 @@ export const questions: Question[] = [
         sectionLabel: '941-950',
         promptJp: '[名]デザイナー',
         answerEn: 'designer',
+        pos: ['noun'],
         orderIndex: 7,
     },
     {
@@ -12631,6 +13979,7 @@ export const questions: Question[] = [
         sectionLabel: '941-950',
         promptJp: '[名]その代わりに',
         answerEn: 'instead',
+        pos: ['noun'],
         orderIndex: 8,
     },
     {
@@ -12642,6 +13991,7 @@ export const questions: Question[] = [
         sectionLabel: '941-950',
         promptJp: '[名]話す人，演説者',
         answerEn: 'speaker',
+        pos: ['noun'],
         orderIndex: 9,
     },
     {
@@ -12653,6 +14003,7 @@ export const questions: Question[] = [
         sectionLabel: '941-950',
         promptJp: '[名]運動[スポーツ]選手',
         answerEn: 'athlete',
+        pos: ['noun'],
         orderIndex: 10,
     },
     {
@@ -12664,6 +14015,7 @@ export const questions: Question[] = [
         sectionLabel: '941-950',
         promptJp: '[名]費用 / [動]（費用が）かかる',
         answerEn: 'cost',
+        pos: ['noun', 'verb'],
         orderIndex: 1,
     },
     {
@@ -12675,6 +14027,7 @@ export const questions: Question[] = [
         sectionLabel: '951-960',
         promptJp: '[名]アジア',
         answerEn: 'Asia',
+        pos: ['noun'],
         orderIndex: 2,
     },
     {
@@ -12686,6 +14039,7 @@ export const questions: Question[] = [
         sectionLabel: '951-960',
         promptJp: '[名]挑戦，難問 / [動]～に挑戦する',
         answerEn: 'challenge',
+        pos: ['noun', 'verb'],
         orderIndex: 3,
     },
     {
@@ -12697,6 +14051,7 @@ export const questions: Question[] = [
         sectionLabel: '951-960',
         promptJp: '[名]損害，被害，ダメージ / [動]～に損害[ダメージ]を与える',
         answerEn: 'damage',
+        pos: ['noun', 'verb'],
         orderIndex: 4,
     },
     {
@@ -12708,6 +14063,7 @@ export const questions: Question[] = [
         sectionLabel: '951-960',
         promptJp: '[形]安い',
         answerEn: 'cheap',
+        pos: ['adj'],
         orderIndex: 5,
     },
     {
@@ -12719,6 +14075,7 @@ export const questions: Question[] = [
         sectionLabel: '951-960',
         promptJp: '[名]喜び',
         answerEn: 'joy',
+        pos: ['noun'],
         orderIndex: 6,
     },
     {
@@ -12730,6 +14087,7 @@ export const questions: Question[] = [
         sectionLabel: '951-960',
         promptJp: '[動]～を作り出す，創造する',
         answerEn: 'create',
+        pos: ['verb'],
         orderIndex: 7,
     },
     {
@@ -12741,6 +14099,7 @@ export const questions: Question[] = [
         sectionLabel: '951-960',
         promptJp: '[動]ゆっくり走る，ジョギングする',
         answerEn: 'jog',
+        pos: ['verb'],
         orderIndex: 8,
     },
     {
@@ -12752,6 +14111,7 @@ export const questions: Question[] = [
         sectionLabel: '951-960',
         promptJp: '[動]① ～を上げる ② ～を育てる',
         answerEn: 'raise',
+        pos: ['verb'],
         orderIndex: 9,
     },
     {
@@ -12763,6 +14123,7 @@ export const questions: Question[] = [
         sectionLabel: '951-960',
         promptJp: '[名]戦争',
         answerEn: 'war',
+        pos: ['noun'],
         orderIndex: 10,
     },
     {
@@ -12774,6 +14135,7 @@ export const questions: Question[] = [
         sectionLabel: '951-960',
         promptJp: '[名]土地，陸地 / [動]① 着陸する，上陸する ② ～を着陸させる，上陸させる',
         answerEn: 'land',
+        pos: ['noun', 'verb'],
         orderIndex: 1,
     },
     {
@@ -12785,6 +14147,7 @@ export const questions: Question[] = [
         sectionLabel: '961-970',
         promptJp: '[名]鳥かご，おり',
         answerEn: 'cage',
+        pos: ['noun'],
         orderIndex: 2,
     },
     {
@@ -12796,6 +14159,7 @@ export const questions: Question[] = [
         sectionLabel: '961-970',
         promptJp: '[名]（水泳用の）プール',
         answerEn: 'pool',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -12807,6 +14171,7 @@ export const questions: Question[] = [
         sectionLabel: '961-970',
         promptJp: '[動]～を印刷する / [名]印刷，版画',
         answerEn: 'print',
+        pos: ['verb', 'noun'],
         orderIndex: 4,
     },
     {
@@ -12818,6 +14183,7 @@ export const questions: Question[] = [
         sectionLabel: '961-970',
         promptJp: '[名]教会',
         answerEn: 'church',
+        pos: ['noun'],
         orderIndex: 5,
     },
     {
@@ -12829,6 +14195,7 @@ export const questions: Question[] = [
         sectionLabel: '961-970',
         promptJp: '[名]池',
         answerEn: 'pond',
+        pos: ['noun'],
         orderIndex: 6,
     },
     {
@@ -12840,6 +14207,7 @@ export const questions: Question[] = [
         sectionLabel: '961-970',
         promptJp: '[名]プリン',
         answerEn: 'pudding',
+        pos: ['noun'],
         orderIndex: 7,
     },
     {
@@ -12851,6 +14219,7 @@ export const questions: Question[] = [
         sectionLabel: '961-970',
         promptJp: '[名]リレー競走',
         answerEn: 'relay',
+        pos: ['noun'],
         orderIndex: 8,
     },
     {
@@ -12862,6 +14231,7 @@ export const questions: Question[] = [
         sectionLabel: '961-970',
         promptJp: '[名]ラグビー',
         answerEn: 'rugby',
+        pos: ['noun'],
         orderIndex: 9,
     },
     {
@@ -12873,6 +14243,7 @@ export const questions: Question[] = [
         sectionLabel: '961-970',
         promptJp: '[名]安全（性），安全（な場所）',
         answerEn: 'safety',
+        pos: ['noun'],
         orderIndex: 10,
     },
     {
@@ -12884,6 +14255,7 @@ export const questions: Question[] = [
         sectionLabel: '961-970',
         promptJp: '[名]水準，レベル',
         answerEn: 'level',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -12895,6 +14267,7 @@ export const questions: Question[] = [
         sectionLabel: '971-980',
         promptJp: '[名]今夜，今晩 / [副]今夜（は）',
         answerEn: 'tonight',
+        pos: ['noun', 'adv'],
         orderIndex: 2,
     },
     {
@@ -12906,6 +14279,7 @@ export const questions: Question[] = [
         sectionLabel: '971-980',
         promptJp: '[名]政治，政府',
         answerEn: 'government',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -12917,6 +14291,7 @@ export const questions: Question[] = [
         sectionLabel: '971-980',
         promptJp: '[名]患者 / [形]がまん強い，忍耐強い',
         answerEn: 'patient',
+        pos: ['noun', 'adj'],
         orderIndex: 4,
     },
     {
@@ -12928,6 +14303,7 @@ export const questions: Question[] = [
         sectionLabel: '971-980',
         promptJp: '[動]～を祝う',
         answerEn: 'celebrate',
+        pos: ['verb'],
         orderIndex: 5,
     },
     {
@@ -12939,6 +14315,7 @@ export const questions: Question[] = [
         sectionLabel: '971-980',
         promptJp: '[名]状態，状況，条件',
         answerEn: 'condition',
+        pos: ['noun'],
         orderIndex: 6,
     },
     {
@@ -12950,6 +14327,7 @@ export const questions: Question[] = [
         sectionLabel: '971-980',
         promptJp: '[名]警察',
         answerEn: 'police',
+        pos: ['noun'],
         orderIndex: 7,
     },
     {
@@ -12961,6 +14339,7 @@ export const questions: Question[] = [
         sectionLabel: '971-980',
         promptJp: '[名]冷蔵庫',
         answerEn: 'refrigerator',
+        pos: ['noun'],
         orderIndex: 8,
     },
     {
@@ -12972,6 +14351,7 @@ export const questions: Question[] = [
         sectionLabel: '971-980',
         promptJp: '[形]可能な，実行できる',
         answerEn: 'possible',
+        pos: ['adj'],
         orderIndex: 9,
     },
     {
@@ -12983,6 +14363,7 @@ export const questions: Question[] = [
         sectionLabel: '971-980',
         promptJp: '[名]伝統',
         answerEn: 'tradition',
+        pos: ['noun'],
         orderIndex: 10,
     },
     {
@@ -12994,6 +14375,7 @@ export const questions: Question[] = [
         sectionLabel: '971-980',
         promptJp: '[名]楽団，バンド',
         answerEn: 'band',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -13005,6 +14387,7 @@ export const questions: Question[] = [
         sectionLabel: '981-990',
         promptJp: '[名]美しさ，美',
         answerEn: 'beauty',
+        pos: ['noun'],
         orderIndex: 2,
     },
     {
@@ -13016,6 +14399,7 @@ export const questions: Question[] = [
         sectionLabel: '981-990',
         promptJp: '[形]便利な，好都合な',
         answerEn: 'convenient',
+        pos: ['adj'],
         orderIndex: 3,
     },
     {
@@ -13027,6 +14411,7 @@ export const questions: Question[] = [
         sectionLabel: '981-990',
         promptJp: '[名]10億',
         answerEn: 'billion',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -13038,6 +14423,7 @@ export const questions: Question[] = [
         sectionLabel: '981-990',
         promptJp: '[名]① ガラス，グラス，コップ ②[複数形で]眼鏡',
         answerEn: 'glass',
+        pos: ['noun', 'adj', 'num'],
         orderIndex: 5,
     },
     {
@@ -13049,6 +14435,7 @@ export const questions: Question[] = [
         sectionLabel: '981-990',
         promptJp: '[動]～を発明する，考え出す',
         answerEn: 'invent',
+        pos: ['verb'],
         orderIndex: 6,
     },
     {
@@ -13060,6 +14447,7 @@ export const questions: Question[] = [
         sectionLabel: '981-990',
         promptJp: '[名]図，数字 / [動]～と考える，～を見い出す',
         answerEn: 'figure',
+        pos: ['noun', 'verb'],
         orderIndex: 7,
     },
     {
@@ -13071,6 +14459,7 @@ export const questions: Question[] = [
         sectionLabel: '981-990',
         promptJp: '[名]（絵）はがき',
         answerEn: 'postcard',
+        pos: ['noun'],
         orderIndex: 8,
     },
     {
@@ -13082,6 +14471,7 @@ export const questions: Question[] = [
         sectionLabel: '981-990',
         promptJp: '[副]永久[永遠]に，いつまでも',
         answerEn: 'forever',
+        pos: ['adv'],
         orderIndex: 9,
     },
     {
@@ -13093,6 +14483,7 @@ export const questions: Question[] = [
         sectionLabel: '981-990',
         promptJp: '[動]～をリストにする[記入する] / [名]リスト，一覧表',
         answerEn: 'list',
+        pos: ['verb', 'noun'],
         orderIndex: 10,
     },
     {
@@ -13104,6 +14495,7 @@ export const questions: Question[] = [
         sectionLabel: '981-990',
         promptJp: '[名]海，[名]海洋，[名]大洋',
         answerEn: 'ocean',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -13115,6 +14507,7 @@ export const questions: Question[] = [
         sectionLabel: '991-1000',
         promptJp: '[名]涙',
         answerEn: 'tear',
+        pos: ['noun'],
         orderIndex: 2,
     },
     {
@@ -13126,6 +14519,7 @@ export const questions: Question[] = [
         sectionLabel: '991-1000',
         promptJp: '[名]勝利者，受賞者',
         answerEn: 'winner',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -13137,6 +14531,7 @@ export const questions: Question[] = [
         sectionLabel: '991-1000',
         promptJp: '[動]（…の表面を）ふく，ぬぐう',
         answerEn: 'wipe',
+        pos: ['verb'],
         orderIndex: 4,
     },
     {
@@ -13148,6 +14543,7 @@ export const questions: Question[] = [
         sectionLabel: '991-1000',
         promptJp: '[名]① （スポーツ競技の）コート ② 法廷，裁判（所）',
         answerEn: 'court',
+        pos: ['noun'],
         orderIndex: 5,
     },
     {
@@ -13159,6 +14555,7 @@ export const questions: Question[] = [
         sectionLabel: '991-1000',
         promptJp: '[名]脳，頭脳',
         answerEn: 'brain',
+        pos: ['noun'],
         orderIndex: 6,
     },
     {
@@ -13170,6 +14567,7 @@ export const questions: Question[] = [
         sectionLabel: '991-1000',
         promptJp: '[形]色彩豊かな，カラフルな',
         answerEn: 'colorful',
+        pos: ['adj'],
         orderIndex: 7,
     },
     {
@@ -13181,6 +14579,7 @@ export const questions: Question[] = [
         sectionLabel: '991-1000',
         promptJp: '[名]船',
         answerEn: 'ship',
+        pos: ['noun'],
         orderIndex: 8,
     },
     {
@@ -13192,6 +14591,7 @@ export const questions: Question[] = [
         sectionLabel: '991-1000',
         promptJp: '[名]キュウリ',
         answerEn: 'cucumber',
+        pos: ['noun'],
         orderIndex: 9,
     },
     {
@@ -13203,6 +14603,7 @@ export const questions: Question[] = [
         sectionLabel: '991-1000',
         promptJp: '[動]（～と）結婚する',
         answerEn: 'marry',
+        pos: ['verb'],
         orderIndex: 10,
     },
     {
@@ -13214,6 +14615,7 @@ export const questions: Question[] = [
         sectionLabel: '991-1000',
         promptJp: '[名]① 正方形 ② （四角い）広場 / [形]正方形の，平方の',
         answerEn: 'square',
+        pos: ['noun', 'adj'],
         orderIndex: 1,
     },
     {
@@ -13225,6 +14627,7 @@ export const questions: Question[] = [
         sectionLabel: '1001-1010',
         promptJp: '[名]問題，事柄，困ったこと / [動]重要である',
         answerEn: 'matter',
+        pos: ['noun', 'verb'],
         orderIndex: 2,
     },
     {
@@ -13236,6 +14639,7 @@ export const questions: Question[] = [
         sectionLabel: '1001-1010',
         promptJp: '[名]解決策',
         answerEn: 'solution',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -13247,6 +14651,7 @@ export const questions: Question[] = [
         sectionLabel: '1001-1010',
         promptJp: '[名]バラ',
         answerEn: 'rose',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -13258,6 +14663,7 @@ export const questions: Question[] = [
         sectionLabel: '1001-1010',
         promptJp: '[形]医学の，医療の',
         answerEn: 'medical',
+        pos: ['adj'],
         orderIndex: 5,
     },
     {
@@ -13269,6 +14675,7 @@ export const questions: Question[] = [
         sectionLabel: '1001-1010',
         promptJp: '[名]妻',
         answerEn: 'wife',
+        pos: ['noun'],
         orderIndex: 6,
     },
     {
@@ -13280,6 +14687,7 @@ export const questions: Question[] = [
         sectionLabel: '1001-1010',
         promptJp: '[名]① 薬 ② 医学',
         answerEn: 'medicine',
+        pos: ['noun'],
         orderIndex: 7,
     },
     {
@@ -13291,6 +14699,7 @@ export const questions: Question[] = [
         sectionLabel: '1001-1010',
         promptJp: '[名]① 謎，神秘（性） ② 推理小説，ミステリー',
         answerEn: 'mystery',
+        pos: ['noun'],
         orderIndex: 8,
     },
     {
@@ -13302,6 +14711,7 @@ export const questions: Question[] = [
         sectionLabel: '1001-1010',
         promptJp: '[動]（～と）叫ぶ，大声で言う',
         answerEn: 'shout',
+        pos: ['verb'],
         orderIndex: 9,
     },
     {
@@ -13313,6 +14723,7 @@ export const questions: Question[] = [
         sectionLabel: '1001-1010',
         promptJp: '[形]遅い，のろい / [動]～を遅らせる / [副]ゆっくりと',
         answerEn: 'slow',
+        pos: ['adj', 'verb', 'adv'],
         orderIndex: 10,
     },
     {
@@ -13324,6 +14735,7 @@ export const questions: Question[] = [
         sectionLabel: '1001-1010',
         promptJp: '[名]ティーンエージャー',
         answerEn: 'teenager',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -13335,6 +14747,7 @@ export const questions: Question[] = [
         sectionLabel: '1011-1020',
         promptJp: '[名]テレビゲーム',
         answerEn: 'video game',
+        pos: ['noun'],
         orderIndex: 2,
     },
     {
@@ -13346,6 +14759,7 @@ export const questions: Question[] = [
         sectionLabel: '1011-1020',
         promptJp: '[名]ボート，小舟，船',
         answerEn: 'boat',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -13357,6 +14771,7 @@ export const questions: Question[] = [
         sectionLabel: '1011-1020',
         promptJp: '[名]喜劇，コメディー',
         answerEn: 'comedy',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -13368,6 +14783,7 @@ export const questions: Question[] = [
         sectionLabel: '1011-1020',
         promptJp: '[動]～に影響を与える',
         answerEn: 'affect',
+        pos: ['verb'],
         orderIndex: 5,
     },
     {
@@ -13379,6 +14795,7 @@ export const questions: Question[] = [
         sectionLabel: '1011-1020',
         promptJp: '[形]古代の，古来の',
         answerEn: 'ancient',
+        pos: ['adj'],
         orderIndex: 6,
     },
     {
@@ -13390,6 +14807,7 @@ export const questions: Question[] = [
         sectionLabel: '1011-1020',
         promptJp: '[名]慣習，習慣',
         answerEn: 'custom',
+        pos: ['noun'],
         orderIndex: 7,
     },
     {
@@ -13401,6 +14819,7 @@ export const questions: Question[] = [
         sectionLabel: '1011-1020',
         promptJp: '[名]羽，翼',
         answerEn: 'wing',
+        pos: ['noun'],
         orderIndex: 8,
     },
     {
@@ -13412,6 +14831,7 @@ export const questions: Question[] = [
         sectionLabel: '1011-1020',
         promptJp: '[副]今ではもう（～でない），もはや（～ない）',
         answerEn: 'anymore',
+        pos: ['adv'],
         orderIndex: 9,
     },
     {
@@ -13423,6 +14843,7 @@ export const questions: Question[] = [
         sectionLabel: '1011-1020',
         promptJp: '[名]鏡',
         answerEn: 'mirror',
+        pos: ['noun'],
         orderIndex: 10,
     },
     {
@@ -13434,6 +14855,7 @@ export const questions: Question[] = [
         sectionLabel: '1011-1020',
         promptJp: '[動]（～の）においがする / [名]におい',
         answerEn: 'smell',
+        pos: ['verb', 'noun'],
         orderIndex: 1,
     },
     {
@@ -13445,6 +14867,7 @@ export const questions: Question[] = [
         sectionLabel: '1021-1030',
         promptJp: '[名]場所，地点',
         answerEn: 'spot',
+        pos: ['noun'],
         orderIndex: 2,
     },
     {
@@ -13456,6 +14879,7 @@ export const questions: Question[] = [
         sectionLabel: '1021-1030',
         promptJp: '[形]オンラインの，[副]オンラインで',
         answerEn: 'online',
+        pos: ['adj', 'adv'],
         orderIndex: 3,
     },
     {
@@ -13467,6 +14891,7 @@ export const questions: Question[] = [
         sectionLabel: '1021-1030',
         promptJp: '[動]現れる',
         answerEn: 'appear',
+        pos: ['verb'],
         orderIndex: 4,
     },
     {
@@ -13478,6 +14903,7 @@ export const questions: Question[] = [
         sectionLabel: '1021-1030',
         promptJp: '[形]沈黙した，静かな',
         answerEn: 'silent',
+        pos: ['adj'],
         orderIndex: 5,
     },
     {
@@ -13489,6 +14915,7 @@ export const questions: Question[] = [
         sectionLabel: '1021-1030',
         promptJp: '[形]① 共通の ② 一般的な，普通の',
         answerEn: 'common',
+        pos: ['adj'],
         orderIndex: 6,
     },
     {
@@ -13500,6 +14927,7 @@ export const questions: Question[] = [
         sectionLabel: '1021-1030',
         promptJp: '[名]経営者，支配人，（野球などの）監督',
         answerEn: 'manager',
+        pos: ['noun'],
         orderIndex: 7,
     },
     {
@@ -13511,6 +14939,7 @@ export const questions: Question[] = [
         sectionLabel: '1021-1030',
         promptJp: '[名]惑星',
         answerEn: 'planet',
+        pos: ['noun'],
         orderIndex: 8,
     },
     {
@@ -13522,6 +14951,7 @@ export const questions: Question[] = [
         sectionLabel: '1021-1030',
         promptJp: '[名]皿',
         answerEn: 'plate',
+        pos: ['noun'],
         orderIndex: 9,
     },
     {
@@ -13533,6 +14963,7 @@ export const questions: Question[] = [
         sectionLabel: '1021-1030',
         promptJp: '[動]（～を）約束する / [名]約束',
         answerEn: 'promise',
+        pos: ['verb', 'noun'],
         orderIndex: 10,
     },
     {
@@ -13544,6 +14975,7 @@ export const questions: Question[] = [
         sectionLabel: '1021-1030',
         promptJp: '[形]利口な，気のきいた',
         answerEn: 'smart',
+        pos: ['adj'],
         orderIndex: 1,
     },
     {
@@ -13555,6 +14987,7 @@ export const questions: Question[] = [
         sectionLabel: '1031-1040',
         promptJp: '[形]成功した，上出来な',
         answerEn: 'successful',
+        pos: ['adj'],
         orderIndex: 2,
     },
     {
@@ -13566,6 +14999,7 @@ export const questions: Question[] = [
         sectionLabel: '1031-1040',
         promptJp: '[動]（～を）翻訳する',
         answerEn: 'translate',
+        pos: ['verb'],
         orderIndex: 3,
     },
     {
@@ -13577,6 +15011,7 @@ export const questions: Question[] = [
         sectionLabel: '1031-1040',
         promptJp: '[形/代/接]（2つのうち）どちらの（～でも） / どちらでも / [後に「A or B」を伴って]AかB（のどちらか）',
         answerEn: 'either',
+        pos: ['adj', 'conj', 'pron'],
         orderIndex: 4,
     },
     {
@@ -13588,6 +15023,7 @@ export const questions: Question[] = [
         sectionLabel: '1031-1040',
         promptJp: '[動]～を受け取る，受け入れる',
         answerEn: 'accept',
+        pos: ['verb'],
         orderIndex: 5,
     },
     {
@@ -13599,6 +15035,7 @@ export const questions: Question[] = [
         sectionLabel: '1031-1040',
         promptJp: '[前/副]下の[に，へ，を] / ① ～の下に[へ] ② ～より下で',
         answerEn: 'below',
+        pos: ['adv', 'prep'],
         orderIndex: 6,
     },
     {
@@ -13610,6 +15047,7 @@ export const questions: Question[] = [
         sectionLabel: '1031-1040',
         promptJp: '[名]誰か，ある人',
         answerEn: 'somebody',
+        pos: ['noun'],
         orderIndex: 7,
     },
     {
@@ -13621,6 +15059,7 @@ export const questions: Question[] = [
         sectionLabel: '1031-1040',
         promptJp: '[名]曲がり角，角',
         answerEn: 'corner',
+        pos: ['noun'],
         orderIndex: 8,
     },
     {
@@ -13632,6 +15071,7 @@ export const questions: Question[] = [
         sectionLabel: '1031-1040',
         promptJp: '[形]退屈な，うんざりする',
         answerEn: 'boring',
+        pos: ['adj'],
         orderIndex: 9,
     },
     {
@@ -13643,6 +15083,7 @@ export const questions: Question[] = [
         sectionLabel: '1031-1040',
         promptJp: '[動]輝く，光る',
         answerEn: 'shine',
+        pos: ['verb'],
         orderIndex: 10,
     },
     {
@@ -13654,6 +15095,7 @@ export const questions: Question[] = [
         sectionLabel: '1031-1040',
         promptJp: '[形]柔らかい',
         answerEn: 'soft',
+        pos: ['adj'],
         orderIndex: 1,
     },
     {
@@ -13665,6 +15107,7 @@ export const questions: Question[] = [
         sectionLabel: '1041-1050',
         promptJp: '[名]道具，楽器',
         answerEn: 'instrument',
+        pos: ['noun'],
         orderIndex: 2,
     },
     {
@@ -13676,6 +15119,7 @@ export const questions: Question[] = [
         sectionLabel: '1041-1050',
         promptJp: '[名]家具',
         answerEn: 'furniture',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -13687,6 +15131,7 @@ export const questions: Question[] = [
         sectionLabel: '1041-1050',
         promptJp: '[副]① 至るところに[で] [接]②[節を伴って]どこで～しても',
         answerEn: 'everywhere',
+        pos: ['adv', 'conj'],
         orderIndex: 4,
     },
     {
@@ -13698,6 +15143,7 @@ export const questions: Question[] = [
         sectionLabel: '1041-1050',
         promptJp: '[形]巨大な / [名]巨人',
         answerEn: 'giant',
+        pos: ['adj', 'noun'],
         orderIndex: 5,
     },
     {
@@ -13709,6 +15155,7 @@ export const questions: Question[] = [
         sectionLabel: '1041-1050',
         promptJp: '[名]きのこ，マッシュルーム',
         answerEn: 'mushroom',
+        pos: ['noun'],
         orderIndex: 6,
     },
     {
@@ -13720,6 +15167,7 @@ export const questions: Question[] = [
         sectionLabel: '1041-1050',
         promptJp: '[名]① 販売，セール，特売 ②[複数形で]売り上げ',
         answerEn: 'sale',
+        pos: ['noun', 'adj', 'num'],
         orderIndex: 7,
     },
     {
@@ -13731,6 +15179,7 @@ export const questions: Question[] = [
         sectionLabel: '1041-1050',
         promptJp: '[動]～を貸す',
         answerEn: 'lend',
+        pos: ['verb'],
         orderIndex: 8,
     },
     {
@@ -13742,6 +15191,7 @@ export const questions: Question[] = [
         sectionLabel: '1041-1050',
         promptJp: '[名]台風',
         answerEn: 'typhoon',
+        pos: ['noun'],
         orderIndex: 9,
     },
     {
@@ -13753,6 +15203,7 @@ export const questions: Question[] = [
         sectionLabel: '1041-1050',
         promptJp: '[形]近くの / [副]近くに[で]',
         answerEn: 'nearby',
+        pos: ['adj', 'adv'],
         orderIndex: 10,
     },
     {
@@ -13764,6 +15215,7 @@ export const questions: Question[] = [
         sectionLabel: '1041-1050',
         promptJp: '[名]スペイン語 / [形]スペインの，スペイン人[語]の',
         answerEn: 'Spanish',
+        pos: ['noun', 'adj'],
         orderIndex: 1,
     },
     {
@@ -13775,6 +15227,7 @@ export const questions: Question[] = [
         sectionLabel: '1051-1060',
         promptJp: '[名]波 / [動]（～を）振る',
         answerEn: 'wave',
+        pos: ['noun', 'verb'],
         orderIndex: 2,
     },
     {
@@ -13786,6 +15239,7 @@ export const questions: Question[] = [
         sectionLabel: '1051-1060',
         promptJp: '[名]スピード，速度',
         answerEn: 'speed',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -13797,6 +15251,7 @@ export const questions: Question[] = [
         sectionLabel: '1051-1060',
         promptJp: '[名]発表，アナウンス',
         answerEn: 'announcement',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -13808,6 +15263,7 @@ export const questions: Question[] = [
         sectionLabel: '1051-1060',
         promptJp: '[名]攻撃 / [動]～を攻撃する，襲う',
         answerEn: 'attack',
+        pos: ['noun', 'verb'],
         orderIndex: 5,
     },
     {
@@ -13819,6 +15275,7 @@ export const questions: Question[] = [
         sectionLabel: '1051-1060',
         promptJp: '[形]魅力的な，人を引きつける',
         answerEn: 'attractive',
+        pos: ['adj'],
         orderIndex: 6,
     },
     {
@@ -13830,6 +15287,7 @@ export const questions: Question[] = [
         sectionLabel: '1051-1060',
         promptJp: '[動]① ～を隠す [動]② 隠れる',
         answerEn: 'hide',
+        pos: ['verb'],
         orderIndex: 7,
     },
     {
@@ -13841,6 +15299,7 @@ export const questions: Question[] = [
         sectionLabel: '1051-1060',
         promptJp: '[動]① 増加[増大]する ② ～を増加[増大]させる / [名]増加，増大',
         answerEn: 'increase',
+        pos: ['verb', 'noun'],
         orderIndex: 8,
     },
     {
@@ -13852,6 +15311,7 @@ export const questions: Question[] = [
         sectionLabel: '1051-1060',
         promptJp: '[動]～を蹴る / [名]蹴ること，キック',
         answerEn: 'kick',
+        pos: ['verb', 'noun'],
         orderIndex: 9,
     },
     {
@@ -13863,6 +15323,7 @@ export const questions: Question[] = [
         sectionLabel: '1051-1060',
         promptJp: '[形][前にbe動詞をつけて]生まれる',
         answerEn: 'born',
+        pos: ['adj', 'verb', 'prep'],
         orderIndex: 10,
     },
     {
@@ -13874,6 +15335,7 @@ export const questions: Question[] = [
         sectionLabel: '1051-1060',
         promptJp: '[名]支配，制御，統制 / [動]～を支配[制御]する，コントロールする',
         answerEn: 'control',
+        pos: ['noun', 'verb'],
         orderIndex: 1,
     },
     {
@@ -13885,6 +15347,7 @@ export const questions: Question[] = [
         sectionLabel: '1061-1070',
         promptJp: '[名]危険',
         answerEn: 'danger',
+        pos: ['noun'],
         orderIndex: 2,
     },
     {
@@ -13896,6 +15359,7 @@ export const questions: Question[] = [
         sectionLabel: '1061-1070',
         promptJp: '[名]カフェテリア，食堂',
         answerEn: 'cafeteria',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -13907,6 +15371,7 @@ export const questions: Question[] = [
         sectionLabel: '1061-1070',
         promptJp: '[動]～を狩る，[名]（～の）狩りをする',
         answerEn: 'hunt',
+        pos: ['verb', 'noun'],
         orderIndex: 4,
     },
     {
@@ -13918,6 +15383,7 @@ export const questions: Question[] = [
         sectionLabel: '1061-1070',
         promptJp: '[名]商品，品物',
         answerEn: 'goods',
+        pos: ['noun'],
         orderIndex: 5,
     },
     {
@@ -13929,6 +15395,7 @@ export const questions: Question[] = [
         sectionLabel: '1061-1070',
         promptJp: '[名]動き，（政治的・社会的）運動',
         answerEn: 'movement',
+        pos: ['noun'],
         orderIndex: 6,
     },
     {
@@ -13940,6 +15407,7 @@ export const questions: Question[] = [
         sectionLabel: '1061-1070',
         promptJp: '[副]最初は，元々は',
         answerEn: 'originally',
+        pos: ['adv'],
         orderIndex: 7,
     },
     {
@@ -13951,6 +15419,7 @@ export const questions: Question[] = [
         sectionLabel: '1061-1070',
         promptJp: '[動]（～を）繰り返す，繰り返して言う',
         answerEn: 'repeat',
+        pos: ['verb'],
         orderIndex: 8,
     },
     {
@@ -13962,6 +15431,7 @@ export const questions: Question[] = [
         sectionLabel: '1061-1070',
         promptJp: '[名]人口',
         answerEn: 'population',
+        pos: ['noun'],
         orderIndex: 9,
     },
     {
@@ -13973,6 +15443,7 @@ export const questions: Question[] = [
         sectionLabel: '1061-1070',
         promptJp: '[動]～を信頼[信用]する / [名]信頼，信用',
         answerEn: 'trust',
+        pos: ['verb', 'noun'],
         orderIndex: 10,
     },
     {
@@ -13984,6 +15455,7 @@ export const questions: Question[] = [
         sectionLabel: '1061-1070',
         promptJp: '[動]（～と）返事する，（～に）答える / [名]返事，答え',
         answerEn: 'reply',
+        pos: ['verb', 'noun'],
         orderIndex: 1,
     },
     {
@@ -13995,6 +15467,7 @@ export const questions: Question[] = [
         sectionLabel: '1071-1080',
         promptJp: '[形]弱い，かすかな',
         answerEn: 'weak',
+        pos: ['adj'],
         orderIndex: 2,
     },
     {
@@ -14006,6 +15479,7 @@ export const questions: Question[] = [
         sectionLabel: '1071-1080',
         promptJp: '[形]生きている / [名]生計，生活',
         answerEn: 'living',
+        pos: ['adj', 'noun'],
         orderIndex: 3,
     },
     {
@@ -14017,6 +15491,7 @@ export const questions: Question[] = [
         sectionLabel: '1071-1080',
         promptJp: '[名]首',
         answerEn: 'neck',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -14028,6 +15503,7 @@ export const questions: Question[] = [
         sectionLabel: '1071-1080',
         promptJp: '[名]恐怖',
         answerEn: 'horror',
+        pos: ['noun'],
         orderIndex: 5,
     },
     {
@@ -14039,6 +15515,7 @@ export const questions: Question[] = [
         sectionLabel: '1071-1080',
         promptJp: '[副]たぶん，十中八九',
         answerEn: 'probably',
+        pos: ['adv'],
         orderIndex: 6,
     },
     {
@@ -14050,6 +15527,7 @@ export const questions: Question[] = [
         sectionLabel: '1071-1080',
         promptJp: '[名]研究者',
         answerEn: 'researcher',
+        pos: ['noun'],
         orderIndex: 7,
     },
     {
@@ -14061,6 +15539,7 @@ export const questions: Question[] = [
         sectionLabel: '1071-1080',
         promptJp: '[名]① 感覚 ② 良識，分別',
         answerEn: 'sense',
+        pos: ['noun'],
         orderIndex: 8,
     },
     {
@@ -14072,6 +15551,7 @@ export const questions: Question[] = [
         sectionLabel: '1071-1080',
         promptJp: '[名]ロープ，綱，縄',
         answerEn: 'rope',
+        pos: ['noun'],
         orderIndex: 9,
     },
     {
@@ -14083,6 +15563,7 @@ export const questions: Question[] = [
         sectionLabel: '1071-1080',
         promptJp: '[名]ヒツジ',
         answerEn: 'sheep',
+        pos: ['noun'],
         orderIndex: 10,
     },
     {
@@ -14094,6 +15575,7 @@ export const questions: Question[] = [
         sectionLabel: '1071-1080',
         promptJp: '[名]（運動選手の）トレーナー，（動物の）調教師',
         answerEn: 'trainer',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -14105,6 +15587,7 @@ export const questions: Question[] = [
         sectionLabel: '1081-1090',
         promptJp: '[形]（幅が）広い，（幅が）～の',
         answerEn: 'wide',
+        pos: ['adj'],
         orderIndex: 2,
     },
     {
@@ -14116,6 +15599,7 @@ export const questions: Question[] = [
         sectionLabel: '1081-1090',
         promptJp: '[形]最後の，最終の / [名][しばしば複数形で]決勝戦',
         answerEn: 'final',
+        pos: ['adj', 'noun', 'num'],
         orderIndex: 3,
     },
     {
@@ -14127,6 +15611,7 @@ export const questions: Question[] = [
         sectionLabel: '1081-1090',
         promptJp: '[動]～を押す',
         answerEn: 'push',
+        pos: ['verb'],
         orderIndex: 4,
     },
     {
@@ -14138,6 +15623,7 @@ export const questions: Question[] = [
         sectionLabel: '1081-1090',
         promptJp: '[形]心地よい，快適な',
         answerEn: 'comfortable',
+        pos: ['adj'],
         orderIndex: 5,
     },
     {
@@ -14149,6 +15635,7 @@ export const questions: Question[] = [
         sectionLabel: '1081-1090',
         promptJp: '[動]① ～に届く，達する ② ～に着く，到達する',
         answerEn: 'reach',
+        pos: ['verb'],
         orderIndex: 6,
     },
     {
@@ -14160,6 +15647,7 @@ export const questions: Question[] = [
         sectionLabel: '1081-1090',
         promptJp: '[名]接触，連絡 / [動]～と接触する，連絡をとる',
         answerEn: 'contact',
+        pos: ['noun', 'verb'],
         orderIndex: 7,
     },
     {
@@ -14171,6 +15659,7 @@ export const questions: Question[] = [
         sectionLabel: '1081-1090',
         promptJp: 'エラーが発生しました。もう一度お試しください。',
         answerEn: 'president',
+        pos: ['noun'],
         orderIndex: 8,
     },
     {
@@ -14182,6 +15671,7 @@ export const questions: Question[] = [
         sectionLabel: '1081-1090',
         promptJp: '[名]デザート',
         answerEn: 'dessert',
+        pos: ['noun'],
         orderIndex: 9,
     },
     {
@@ -14193,6 +15683,7 @@ export const questions: Question[] = [
         sectionLabel: '1081-1090',
         promptJp: '[名]おなか，[名]胃，[名]腹',
         answerEn: 'stomach',
+        pos: ['noun'],
         orderIndex: 10,
     },
     {
@@ -14204,6 +15695,7 @@ export const questions: Question[] = [
         sectionLabel: '1081-1090',
         promptJp: '[形]創造的な，独創的な',
         answerEn: 'creative',
+        pos: ['adj'],
         orderIndex: 1,
     },
     {
@@ -14215,6 +15707,7 @@ export const questions: Question[] = [
         sectionLabel: '1091-1100',
         promptJp: '[形]驚くべき，意外な',
         answerEn: 'surprising',
+        pos: ['adj'],
         orderIndex: 2,
     },
     {
@@ -14226,6 +15719,7 @@ export const questions: Question[] = [
         sectionLabel: '1091-1100',
         promptJp: '[動]～を結ぶ / [名]ネクタイ',
         answerEn: 'tie',
+        pos: ['verb', 'noun'],
         orderIndex: 3,
     },
     {
@@ -14237,6 +15731,7 @@ export const questions: Question[] = [
         sectionLabel: '1091-1100',
         promptJp: '[形]効果的な，効きめがある',
         answerEn: 'effective',
+        pos: ['adj'],
         orderIndex: 4,
     },
     {
@@ -14248,6 +15743,7 @@ export const questions: Question[] = [
         sectionLabel: '1091-1100',
         promptJp: '[形]全体の，全部の，丸ごとの',
         answerEn: 'whole',
+        pos: ['adj'],
         orderIndex: 5,
     },
     {
@@ -14259,6 +15755,7 @@ export const questions: Question[] = [
         sectionLabel: '1091-1100',
         promptJp: '[名]辞書，辞典',
         answerEn: 'dictionary',
+        pos: ['noun'],
         orderIndex: 6,
     },
     {
@@ -14270,6 +15767,7 @@ export const questions: Question[] = [
         sectionLabel: '1091-1100',
         promptJp: '[名]小説，フィクション',
         answerEn: 'fiction',
+        pos: ['noun'],
         orderIndex: 7,
     },
     {
@@ -14281,6 +15779,7 @@ export const questions: Question[] = [
         sectionLabel: '1091-1100',
         promptJp: '[名]任務，使命，使節',
         answerEn: 'mission',
+        pos: ['noun'],
         orderIndex: 8,
     },
     {
@@ -14292,6 +15791,7 @@ export const questions: Question[] = [
         sectionLabel: '1091-1100',
         promptJp: '[形]礼儀正しい，ていねいな',
         answerEn: 'polite',
+        pos: ['adj'],
         orderIndex: 9,
     },
     {
@@ -14303,6 +15803,7 @@ export const questions: Question[] = [
         sectionLabel: '1091-1100',
         promptJp: '[名]光景，場面，場所',
         answerEn: 'scene',
+        pos: ['noun'],
         orderIndex: 10,
     },
     {
@@ -14314,6 +15815,7 @@ export const questions: Question[] = [
         sectionLabel: '1091-1100',
         promptJp: '[名]皮膚，肌，（動物などの）皮',
         answerEn: 'skin',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -14325,6 +15827,7 @@ export const questions: Question[] = [
         sectionLabel: '1101-1110',
         promptJp: '[形]心配した',
         answerEn: 'worried',
+        pos: ['adj'],
         orderIndex: 2,
     },
     {
@@ -14336,6 +15839,7 @@ export const questions: Question[] = [
         sectionLabel: '1101-1110',
         promptJp: '[動]サーフィン[波乗り]をする，（インターネットサイトを）あちこち見て回る',
         answerEn: 'surf',
+        pos: ['verb'],
         orderIndex: 3,
     },
     {
@@ -14347,6 +15851,7 @@ export const questions: Question[] = [
         sectionLabel: '1101-1110',
         promptJp: '[名]旅行者',
         answerEn: 'traveler',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -14358,6 +15863,7 @@ export const questions: Question[] = [
         sectionLabel: '1101-1110',
         promptJp: '[名]ジェット機',
         answerEn: 'jet',
+        pos: ['noun'],
         orderIndex: 5,
     },
     {
@@ -14369,6 +15875,7 @@ export const questions: Question[] = [
         sectionLabel: '1101-1110',
         promptJp: '[名]秋',
         answerEn: 'autumn',
+        pos: ['noun'],
         orderIndex: 6,
     },
     {
@@ -14380,6 +15887,7 @@ export const questions: Question[] = [
         sectionLabel: '1101-1110',
         promptJp: '[名]初め，最初',
         answerEn: 'beginning',
+        pos: ['noun'],
         orderIndex: 7,
     },
     {
@@ -14391,6 +15899,7 @@ export const questions: Question[] = [
         sectionLabel: '1101-1110',
         promptJp: '[名]夫',
         answerEn: 'husband',
+        pos: ['noun'],
         orderIndex: 8,
     },
     {
@@ -14402,6 +15911,7 @@ export const questions: Question[] = [
         sectionLabel: '1101-1110',
         promptJp: '[動]（～に）所属する，（～の）所有である',
         answerEn: 'belong',
+        pos: ['verb'],
         orderIndex: 9,
     },
     {
@@ -14413,6 +15923,7 @@ export const questions: Question[] = [
         sectionLabel: '1101-1110',
         promptJp: '[動]急ぐ，[名]急ぎ',
         answerEn: 'hurry',
+        pos: ['verb', 'noun'],
         orderIndex: 10,
     },
     {
@@ -14424,6 +15935,7 @@ export const questions: Question[] = [
         sectionLabel: '1101-1110',
         promptJp: '[名]寝室',
         answerEn: 'bedroom',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -14435,6 +15947,7 @@ export const questions: Question[] = [
         sectionLabel: '1111-1120',
         promptJp: '[動]飛び込む，潜る',
         answerEn: 'dive',
+        pos: ['verb'],
         orderIndex: 2,
     },
     {
@@ -14446,6 +15959,7 @@ export const questions: Question[] = [
         sectionLabel: '1111-1120',
         promptJp: '[名]施設，設備',
         answerEn: 'facility',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -14457,6 +15971,7 @@ export const questions: Question[] = [
         sectionLabel: '1111-1120',
         promptJp: '[形]恐ろしい，怖い',
         answerEn: 'scary',
+        pos: ['adj'],
         orderIndex: 4,
     },
     {
@@ -14468,6 +15983,7 @@ export const questions: Question[] = [
         sectionLabel: '1111-1120',
         promptJp: '[名]ベルト，帯',
         answerEn: 'belt',
+        pos: ['noun'],
         orderIndex: 5,
     },
     {
@@ -14479,6 +15995,7 @@ export const questions: Question[] = [
         sectionLabel: '1111-1120',
         promptJp: '[名]のど',
         answerEn: 'throat',
+        pos: ['noun'],
         orderIndex: 6,
     },
     {
@@ -14490,6 +16007,7 @@ export const questions: Question[] = [
         sectionLabel: '1111-1120',
         promptJp: '[名]卒業',
         answerEn: 'graduation',
+        pos: ['noun'],
         orderIndex: 7,
     },
     {
@@ -14501,6 +16019,7 @@ export const questions: Question[] = [
         sectionLabel: '1111-1120',
         promptJp: '[名]トースト',
         answerEn: 'toast',
+        pos: ['noun'],
         orderIndex: 8,
     },
     {
@@ -14512,6 +16031,7 @@ export const questions: Question[] = [
         sectionLabel: '1111-1120',
         promptJp: '[形]神聖な',
         answerEn: 'sacred',
+        pos: ['adj'],
         orderIndex: 9,
     },
     {
@@ -14523,6 +16043,7 @@ export const questions: Question[] = [
         sectionLabel: '1111-1120',
         promptJp: '[動]～を判断する / [名]審判員，判事',
         answerEn: 'judge',
+        pos: ['verb', 'noun'],
         orderIndex: 10,
     },
     {
@@ -14534,6 +16055,7 @@ export const questions: Question[] = [
         sectionLabel: '1111-1120',
         promptJp: '[名]歯',
         answerEn: 'tooth',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -14545,6 +16067,7 @@ export const questions: Question[] = [
         sectionLabel: '1121-1130',
         promptJp: '[名]泳ぎ手，水泳選手',
         answerEn: 'swimmer',
+        pos: ['noun'],
         orderIndex: 2,
     },
     {
@@ -14556,6 +16079,7 @@ export const questions: Question[] = [
         sectionLabel: '1121-1130',
         promptJp: '[名]① レース，競走，競争 ② 人種',
         answerEn: 'race',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -14567,6 +16091,7 @@ export const questions: Question[] = [
         sectionLabel: '1121-1130',
         promptJp: '[名]ネット，網，[前にtheをつけ大文字で始めて]インターネット',
         answerEn: 'net',
+        pos: ['noun', 'prep'],
         orderIndex: 4,
     },
     {
@@ -14578,6 +16103,7 @@ export const questions: Question[] = [
         sectionLabel: '1121-1130',
         promptJp: '[名]教授',
         answerEn: 'professor',
+        pos: ['noun'],
         orderIndex: 5,
     },
     {
@@ -14589,6 +16115,7 @@ export const questions: Question[] = [
         sectionLabel: '1121-1130',
         promptJp: '[形]痛い',
         answerEn: 'sore',
+        pos: ['adj'],
         orderIndex: 6,
     },
     {
@@ -14600,6 +16127,7 @@ export const questions: Question[] = [
         sectionLabel: '1121-1130',
         promptJp: '[動]（～を）生き延びる，～より長生きする',
         answerEn: 'survive',
+        pos: ['verb'],
         orderIndex: 7,
     },
     {
@@ -14611,6 +16139,7 @@ export const questions: Question[] = [
         sectionLabel: '1121-1130',
         promptJp: '[名]素質，才能（のある人）',
         answerEn: 'talent',
+        pos: ['noun'],
         orderIndex: 8,
     },
     {
@@ -14622,6 +16151,7 @@ export const questions: Question[] = [
         sectionLabel: '1121-1130',
         promptJp: '[名]真実，事実',
         answerEn: 'truth',
+        pos: ['noun'],
         orderIndex: 9,
     },
     {
@@ -14633,6 +16163,7 @@ export const questions: Question[] = [
         sectionLabel: '1121-1130',
         promptJp: '[名]ジャム',
         answerEn: 'jam',
+        pos: ['noun'],
         orderIndex: 10,
     },
     {
@@ -14644,6 +16175,7 @@ export const questions: Question[] = [
         sectionLabel: '1121-1130',
         promptJp: '[名]ドレス，服 / [動]服を着る，～に服を着せる',
         answerEn: 'dress',
+        pos: ['noun', 'verb'],
         orderIndex: 1,
     },
     {
@@ -14655,6 +16187,7 @@ export const questions: Question[] = [
         sectionLabel: '1131-1140',
         promptJp: '[名]空（から）の，空っぽの，[形]空（から）の，空っぽの',
         answerEn: 'empty',
+        pos: ['noun', 'adj'],
         orderIndex: 2,
     },
     {
@@ -14666,6 +16199,7 @@ export const questions: Question[] = [
         sectionLabel: '1131-1140',
         promptJp: '[名]胃痛，腹痛',
         answerEn: 'stomachache',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -14677,6 +16211,7 @@ export const questions: Question[] = [
         sectionLabel: '1131-1140',
         promptJp: '[名]冒険',
         answerEn: 'adventure',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -14688,6 +16223,7 @@ export const questions: Question[] = [
         sectionLabel: '1131-1140',
         promptJp: '[動]～を含む，含める',
         answerEn: 'include',
+        pos: ['verb'],
         orderIndex: 5,
     },
     {
@@ -14699,6 +16235,7 @@ export const questions: Question[] = [
         sectionLabel: '1131-1140',
         promptJp: '[動]（～を）横断する，渡る',
         answerEn: 'cross',
+        pos: ['verb'],
         orderIndex: 6,
     },
     {
@@ -14710,6 +16247,7 @@ export const questions: Question[] = [
         sectionLabel: '1131-1140',
         promptJp: '[名]困難，難しさ',
         answerEn: 'difficulty',
+        pos: ['noun'],
         orderIndex: 7,
     },
     {
@@ -14721,6 +16259,7 @@ export const questions: Question[] = [
         sectionLabel: '1131-1140',
         promptJp: '[名]塀，[名]囲い，[名]垣根',
         answerEn: 'fence',
+        pos: ['noun'],
         orderIndex: 8,
     },
     {
@@ -14732,6 +16271,7 @@ export const questions: Question[] = [
         sectionLabel: '1131-1140',
         promptJp: '[名]通訳（者）',
         answerEn: 'interpreter',
+        pos: ['noun'],
         orderIndex: 9,
     },
     {
@@ -14743,6 +16283,7 @@ export const questions: Question[] = [
         sectionLabel: '1131-1140',
         promptJp: '[名]魔法，手品 / [形]魔法の，手品の',
         answerEn: 'magic',
+        pos: ['noun', 'adj'],
         orderIndex: 10,
     },
     {
@@ -14754,6 +16295,7 @@ export const questions: Question[] = [
         sectionLabel: '1131-1140',
         promptJp: '[名]真夜中',
         answerEn: 'midnight',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -14765,6 +16307,7 @@ export const questions: Question[] = [
         sectionLabel: '1141-1150',
         promptJp: '[動]① 震える，揺れる [動]② ～を振る，揺する',
         answerEn: 'shake',
+        pos: ['verb'],
         orderIndex: 2,
     },
     {
@@ -14776,6 +16319,7 @@ export const questions: Question[] = [
         sectionLabel: '1141-1150',
         promptJp: '[形]屋外の，野外の',
         answerEn: 'outdoor',
+        pos: ['adj'],
         orderIndex: 3,
     },
     {
@@ -14787,6 +16331,7 @@ export const questions: Question[] = [
         sectionLabel: '1141-1150',
         promptJp: '[形]平和な，穏やかな',
         answerEn: 'peaceful',
+        pos: ['adj'],
         orderIndex: 4,
     },
     {
@@ -14798,6 +16343,7 @@ export const questions: Question[] = [
         sectionLabel: '1141-1150',
         promptJp: '[形]中古（品）の',
         answerEn: 'used',
+        pos: ['adj'],
         orderIndex: 5,
     },
     {
@@ -14809,6 +16355,7 @@ export const questions: Question[] = [
         sectionLabel: '1141-1150',
         promptJp: '[形]酸っぱい',
         answerEn: 'sour',
+        pos: ['adj'],
         orderIndex: 6,
     },
     {
@@ -14820,6 +16367,7 @@ export const questions: Question[] = [
         sectionLabel: '1141-1150',
         promptJp: '[名]列',
         answerEn: 'row',
+        pos: ['noun'],
         orderIndex: 7,
     },
     {
@@ -14831,6 +16379,7 @@ export const questions: Question[] = [
         sectionLabel: '1141-1150',
         promptJp: '[形]肯定的な，[形]前向きの，[形]積極的な',
         answerEn: 'positive',
+        pos: ['adj'],
         orderIndex: 8,
     },
     {
@@ -14842,6 +16391,7 @@ export const questions: Question[] = [
         sectionLabel: '1141-1150',
         promptJp: '[形]強力な，影響力の強い，力の強い',
         answerEn: 'powerful',
+        pos: ['adj'],
         orderIndex: 9,
     },
     {
@@ -14853,6 +16403,7 @@ export const questions: Question[] = [
         sectionLabel: '1141-1150',
         promptJp: '[形]雪の多い，雪の降っている',
         answerEn: 'snowy',
+        pos: ['adj'],
         orderIndex: 10,
     },
     {
@@ -14864,6 +16415,7 @@ export const questions: Question[] = [
         sectionLabel: '1141-1150',
         promptJp: '[名]傘',
         answerEn: 'umbrella',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -14875,6 +16427,7 @@ export const questions: Question[] = [
         sectionLabel: '1151-1160',
         promptJp: '[動]目が覚める，～の目を覚ます',
         answerEn: 'wake',
+        pos: ['verb'],
         orderIndex: 2,
     },
     {
@@ -14886,6 +16439,7 @@ export const questions: Question[] = [
         sectionLabel: '1151-1160',
         promptJp: '[名]犠牲者',
         answerEn: 'victim',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -14897,6 +16451,7 @@ export const questions: Question[] = [
         sectionLabel: '1151-1160',
         promptJp: '[名]トン',
         answerEn: 'ton',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -14908,6 +16463,7 @@ export const questions: Question[] = [
         sectionLabel: '1151-1160',
         promptJp: '[形]アニメの',
         answerEn: 'animated',
+        pos: ['adj'],
         orderIndex: 5,
     },
     {
@@ -14919,6 +16475,7 @@ export const questions: Question[] = [
         sectionLabel: '1151-1160',
         promptJp: '[名]電池，バッテリー',
         answerEn: 'battery',
+        pos: ['noun'],
         orderIndex: 6,
     },
     {
@@ -14930,6 +16487,7 @@ export const questions: Question[] = [
         sectionLabel: '1151-1160',
         promptJp: '[名]初心者',
         answerEn: 'beginner',
+        pos: ['noun'],
         orderIndex: 7,
     },
     {
@@ -14941,6 +16499,7 @@ export const questions: Question[] = [
         sectionLabel: '1151-1160',
         promptJp: '[名]歯痛',
         answerEn: 'toothache',
+        pos: ['noun'],
         orderIndex: 8,
     },
     {
@@ -14952,6 +16511,7 @@ export const questions: Question[] = [
         sectionLabel: '1151-1160',
         promptJp: '[名]ふるまい，行動',
         answerEn: 'behavior',
+        pos: ['noun'],
         orderIndex: 9,
     },
     {
@@ -14963,6 +16523,7 @@ export const questions: Question[] = [
         sectionLabel: '1151-1160',
         promptJp: '[名]爆弾',
         answerEn: 'bomb',
+        pos: ['noun'],
         orderIndex: 10,
     },
     {
@@ -14974,6 +16535,7 @@ export const questions: Question[] = [
         sectionLabel: '1151-1160',
         promptJp: '[形]勇敢な',
         answerEn: 'brave',
+        pos: ['adj'],
         orderIndex: 1,
     },
     {
@@ -14985,6 +16547,7 @@ export const questions: Question[] = [
         sectionLabel: '1161-1170',
         promptJp: '[名]がん',
         answerEn: 'cancer',
+        pos: ['noun'],
         orderIndex: 2,
     },
     {
@@ -14996,6 +16559,7 @@ export const questions: Question[] = [
         sectionLabel: '1161-1170',
         promptJp: '[前]～の向こうに[へ，で，の]',
         answerEn: 'beyond',
+        pos: ['prep'],
         orderIndex: 3,
     },
     {
@@ -15007,6 +16571,7 @@ export const questions: Question[] = [
         sectionLabel: '1161-1170',
         promptJp: '[名]受け持ち，責任，料金 / [動]～を充電する，請求する',
         answerEn: 'charge',
+        pos: ['noun', 'verb'],
         orderIndex: 4,
     },
     {
@@ -15018,6 +16583,7 @@ export const questions: Question[] = [
         sectionLabel: '1161-1170',
         promptJp: '[動]おしゃべりする，チャットする',
         answerEn: 'chat',
+        pos: ['verb'],
         orderIndex: 5,
     },
     {
@@ -15029,6 +16595,7 @@ export const questions: Question[] = [
         sectionLabel: '1161-1170',
         promptJp: '[名]チェス',
         answerEn: 'chess',
+        pos: ['noun'],
         orderIndex: 6,
     },
     {
@@ -15040,6 +16607,7 @@ export const questions: Question[] = [
         sectionLabel: '1161-1170',
         promptJp: '[名]コート，上着',
         answerEn: 'coat',
+        pos: ['noun'],
         orderIndex: 7,
     },
     {
@@ -15051,6 +16619,7 @@ export const questions: Question[] = [
         sectionLabel: '1161-1170',
         promptJp: '[形]死んだ，死んでいる',
         answerEn: 'dead',
+        pos: ['adj'],
         orderIndex: 8,
     },
     {
@@ -15062,6 +16631,7 @@ export const questions: Question[] = [
         sectionLabel: '1161-1170',
         promptJp: '[動]～を折る，折りたたむ，[名]折り目，折りたたみ',
         answerEn: 'fold',
+        pos: ['verb', 'noun'],
         orderIndex: 9,
     },
     {
@@ -15073,6 +16643,7 @@ export const questions: Question[] = [
         sectionLabel: '1161-1170',
         promptJp: '[名]草，芝生',
         answerEn: 'grass',
+        pos: ['noun'],
         orderIndex: 10,
     },
     {
@@ -15084,6 +16655,7 @@ export const questions: Question[] = [
         sectionLabel: '1161-1170',
         promptJp: '[名]弁護士',
         answerEn: 'lawyer',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -15095,6 +16667,7 @@ export const questions: Question[] = [
         sectionLabel: '1171-1180',
         promptJp: '[名]メダル',
         answerEn: 'medal',
+        pos: ['noun'],
         orderIndex: 2,
     },
     {
@@ -15106,6 +16679,7 @@ export const questions: Question[] = [
         sectionLabel: '1171-1180',
         promptJp: '[名]パンケーキ',
         answerEn: 'pancake',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -15117,6 +16691,7 @@ export const questions: Question[] = [
         sectionLabel: '1171-1180',
         promptJp: '[名]ピアニスト',
         answerEn: 'pianist',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -15128,6 +16703,7 @@ export const questions: Question[] = [
         sectionLabel: '1171-1180',
         promptJp: '[形]貴重な，大切な',
         answerEn: 'precious',
+        pos: ['adj'],
         orderIndex: 5,
     },
     {
@@ -15139,6 +16715,7 @@ export const questions: Question[] = [
         sectionLabel: '1171-1180',
         promptJp: '[名]（劇場・レストランなどの）トイレ，洗面所',
         answerEn: 'restroom',
+        pos: ['noun'],
         orderIndex: 6,
     },
     {
@@ -15150,6 +16727,7 @@ export const questions: Question[] = [
         sectionLabel: '1171-1180',
         promptJp: '[形]塩辛い，しょっぱい',
         answerEn: 'salty',
+        pos: ['adj'],
         orderIndex: 7,
     },
     {
@@ -15161,6 +16739,7 @@ export const questions: Question[] = [
         sectionLabel: '1171-1180',
         promptJp: '[名]スカーフ，えり巻き',
         answerEn: 'scarf',
+        pos: ['noun'],
         orderIndex: 8,
     },
     {
@@ -15172,6 +16751,7 @@ export const questions: Question[] = [
         sectionLabel: '1171-1180',
         promptJp: '[形]秘密の，隠れた / [名]秘密',
         answerEn: 'secret',
+        pos: ['adj', 'noun'],
         orderIndex: 9,
     },
     {
@@ -15183,6 +16763,7 @@ export const questions: Question[] = [
         sectionLabel: '1171-1180',
         promptJp: '[名]シャワー',
         answerEn: 'shower',
+        pos: ['noun'],
         orderIndex: 10,
     },
     {
@@ -15194,6 +16775,7 @@ export const questions: Question[] = [
         sectionLabel: '1171-1180',
         promptJp: '[副]心から',
         answerEn: 'sincerely',
+        pos: ['adv'],
         orderIndex: 1,
     },
     {
@@ -15205,6 +16787,7 @@ export const questions: Question[] = [
         sectionLabel: '1181-1190',
         promptJp: '[動]沈む / [名]（台所の）流し',
         answerEn: 'sink',
+        pos: ['verb', 'noun'],
         orderIndex: 2,
     },
     {
@@ -15216,6 +16799,7 @@ export const questions: Question[] = [
         sectionLabel: '1181-1190',
         promptJp: '[名]（木や草の）葉',
         answerEn: 'leaf',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -15227,6 +16811,7 @@ export const questions: Question[] = [
         sectionLabel: '1181-1190',
         promptJp: '[名]パーセント（％）',
         answerEn: 'percent',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -15238,6 +16823,7 @@ export const questions: Question[] = [
         sectionLabel: '1181-1190',
         promptJp: '[名]（やるべき）仕事，任務',
         answerEn: 'task',
+        pos: ['noun'],
         orderIndex: 5,
     },
     {
@@ -15249,6 +16835,7 @@ export const questions: Question[] = [
         sectionLabel: '1181-1190',
         promptJp: '[形]① 薄い [形]② やせた，細い',
         answerEn: 'thin',
+        pos: ['adj'],
         orderIndex: 6,
     },
     {
@@ -15260,6 +16847,7 @@ export const questions: Question[] = [
         sectionLabel: '1181-1190',
         promptJp: '[形]不公平な，不正な',
         answerEn: 'unfair',
+        pos: ['adj'],
         orderIndex: 7,
     },
     {
@@ -15271,6 +16859,7 @@ export const questions: Question[] = [
         sectionLabel: '1181-1190',
         promptJp: '[形]価値のある，貴重な',
         answerEn: 'valuable',
+        pos: ['adj'],
         orderIndex: 8,
     },
     {
@@ -15282,6 +16871,7 @@ export const questions: Question[] = [
         sectionLabel: '1181-1190',
         promptJp: '[名]パレード，行列',
         answerEn: 'parade',
+        pos: ['noun'],
         orderIndex: 9,
     },
     {
@@ -15293,6 +16883,7 @@ export const questions: Question[] = [
         sectionLabel: '1181-1190',
         promptJp: '[名]① 星，恒星 [名]② スター，有名人',
         answerEn: 'star',
+        pos: ['noun'],
         orderIndex: 10,
     },
     {
@@ -15304,6 +16895,7 @@ export const questions: Question[] = [
         sectionLabel: '1181-1190',
         promptJp: '[名]ポケット',
         answerEn: 'pocket',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -15315,6 +16907,7 @@ export const questions: Question[] = [
         sectionLabel: '1191-1200',
         promptJp: '[形]すごい',
         answerEn: 'awesome',
+        pos: ['adj'],
         orderIndex: 2,
     },
     {
@@ -15326,6 +16919,7 @@ export const questions: Question[] = [
         sectionLabel: '1191-1200',
         promptJp: '[名] ① 配達 ② 話しぶり，（演説の）仕方',
         answerEn: 'delivery',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -15337,6 +16931,7 @@ export const questions: Question[] = [
         sectionLabel: '1191-1200',
         promptJp: '[名]封筒',
         answerEn: 'envelope',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -15348,6 +16943,7 @@ export const questions: Question[] = [
         sectionLabel: '1191-1200',
         promptJp: '[名]生存者',
         answerEn: 'survivor',
+        pos: ['noun'],
         orderIndex: 5,
     },
     {
@@ -15359,6 +16955,7 @@ export const questions: Question[] = [
         sectionLabel: '1191-1200',
         promptJp: '[名]灰色 / [形]灰色の',
         answerEn: 'gray',
+        pos: ['noun', 'adj'],
         orderIndex: 6,
     },
     {
@@ -15370,6 +16967,7 @@ export const questions: Question[] = [
         sectionLabel: '1191-1200',
         promptJp: '[名]洗濯（物），洗濯屋',
         answerEn: 'laundry',
+        pos: ['noun'],
         orderIndex: 7,
     },
     {
@@ -15381,6 +16979,7 @@ export const questions: Question[] = [
         sectionLabel: '1191-1200',
         promptJp: '[名]1包み，1箱 / [動]（～を）荷造りする，～に詰める',
         answerEn: 'pack',
+        pos: ['noun', 'verb'],
         orderIndex: 8,
     },
     {
@@ -15392,6 +16991,7 @@ export const questions: Question[] = [
         sectionLabel: '1191-1200',
         promptJp: '[名]芸術家，画家',
         answerEn: 'artist',
+        pos: ['noun'],
         orderIndex: 9,
     },
     {
@@ -15403,6 +17003,7 @@ export const questions: Question[] = [
         sectionLabel: '1191-1200',
         promptJp: '[名]豚肉',
         answerEn: 'pork',
+        pos: ['noun'],
         orderIndex: 10,
     },
     {
@@ -15414,6 +17015,7 @@ export const questions: Question[] = [
         sectionLabel: '1191-1200',
         promptJp: '[形]とても小さい',
         answerEn: 'tiny',
+        pos: ['adj'],
         orderIndex: 1,
     },
     {
@@ -15425,6 +17027,8 @@ export const questions: Question[] = [
         sectionLabel: 'C201-210',
         promptJp: '[熟]行ってしまう，立ち去る',
         answerEn: 'go away',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 1,
     },
     {
@@ -15436,6 +17040,8 @@ export const questions: Question[] = [
         sectionLabel: 'C201-210',
         promptJp: '[熟]（時間が）過ぎる，通り過ぎる',
         answerEn: 'go by',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 2,
     },
     {
@@ -15447,6 +17053,8 @@ export const questions: Question[] = [
         sectionLabel: 'C201-210',
         promptJp: '[熟]歩き回る',
         answerEn: 'walk around',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 3,
     },
     {
@@ -15458,6 +17066,8 @@ export const questions: Question[] = [
         sectionLabel: 'C201-210',
         promptJp: '[熟]長い間',
         answerEn: 'for a long time',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 4,
     },
     {
@@ -15469,6 +17079,8 @@ export const questions: Question[] = [
         sectionLabel: 'C201-210',
         promptJp: '[熟]外食する',
         answerEn: 'eat out',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 5,
     },
     {
@@ -15480,6 +17092,8 @@ export const questions: Question[] = [
         sectionLabel: 'C201-210',
         promptJp: '[熟]日記をつける',
         answerEn: 'keep a diary',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 6,
     },
     {
@@ -15491,6 +17105,8 @@ export const questions: Question[] = [
         sectionLabel: 'C201-210',
         promptJp: '[熟]（～と）連絡を取り合う',
         answerEn: 'keep in touch with',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 7,
     },
     {
@@ -15502,6 +17118,8 @@ export const questions: Question[] = [
         sectionLabel: 'C201-210',
         promptJp: '[熟]講演をする（動詞はgiveのときも）',
         answerEn: 'make a speech',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 8,
     },
     {
@@ -15513,6 +17131,8 @@ export const questions: Question[] = [
         sectionLabel: 'C201-210',
         promptJp: '[熟]決断する，決定を下す',
         answerEn: 'make a decision',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 9,
     },
     {
@@ -15524,6 +17144,8 @@ export const questions: Question[] = [
         sectionLabel: 'C201-210',
         promptJp: '[熟]電車を乗り換える',
         answerEn: 'change trains',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 10,
     },
     {
@@ -15535,6 +17157,8 @@ export const questions: Question[] = [
         sectionLabel: 'C211-220',
         promptJp: '[熟]順調にやる，元気になる',
         answerEn: 'do well',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 1,
     },
     {
@@ -15546,6 +17170,8 @@ export const questions: Question[] = [
         sectionLabel: 'C211-220',
         promptJp: '[熟]気楽に［のんびり］やる',
         answerEn: 'take it easy',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 2,
     },
     {
@@ -15557,6 +17183,8 @@ export const questions: Question[] = [
         sectionLabel: 'C211-220',
         promptJp: '[熟]興奮する，わくわくする',
         answerEn: 'get excited',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 3,
     },
     {
@@ -15568,6 +17196,8 @@ export const questions: Question[] = [
         sectionLabel: 'C211-220',
         promptJp: '[熟]（～に）腹を立てる，（～に）怒る',
         answerEn: 'get angry at',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 4,
     },
     {
@@ -15579,6 +17209,8 @@ export const questions: Question[] = [
         sectionLabel: 'C211-220',
         promptJp: '[熟]（～の）用意［準備］をする',
         answerEn: 'get ready for',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 5,
     },
     {
@@ -15590,6 +17222,8 @@ export const questions: Question[] = [
         sectionLabel: 'C211-220',
         promptJp: '[熟]（～を）あきらめる（後ろは-ing）',
         answerEn: 'give up',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 6,
     },
     {
@@ -15601,6 +17235,8 @@ export const questions: Question[] = [
         sectionLabel: 'C211-220',
         promptJp: '[熟]風邪をひく',
         answerEn: 'catch a cold',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 7,
     },
     {
@@ -15612,6 +17248,8 @@ export const questions: Question[] = [
         sectionLabel: 'C211-220',
         promptJp: '[熟]風邪をひいている',
         answerEn: 'have a cold',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 8,
     },
     {
@@ -15623,6 +17261,8 @@ export const questions: Question[] = [
         sectionLabel: 'C211-220',
         promptJp: '[熟]（高）熱がある',
         answerEn: 'have a fever',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 9,
     },
     {
@@ -15634,6 +17274,8 @@ export const questions: Question[] = [
         sectionLabel: 'C211-220',
         promptJp: '[熟]のどが痛い',
         answerEn: 'have a sore throat',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 10,
     },
     {
@@ -15645,6 +17287,8 @@ export const questions: Question[] = [
         sectionLabel: 'C221-230',
         promptJp: '[熟]しがみつく，つかまる， [大文字で始め末尾にピリオドをつけて] （電話で）お待ちください',
         answerEn: 'hold on',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 1,
     },
     {
@@ -15656,6 +17300,8 @@ export const questions: Question[] = [
         sectionLabel: 'C221-230',
         promptJp: '[熟]（言葉などが）生き続ける',
         answerEn: 'live on',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 2,
     },
     {
@@ -15667,6 +17313,8 @@ export const questions: Question[] = [
         sectionLabel: 'C221-230',
         promptJp: '[熟]（寝ないで）起きている',
         answerEn: 'stay up',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 3,
     },
     {
@@ -15678,6 +17326,8 @@ export const questions: Question[] = [
         sectionLabel: 'C221-230',
         promptJp: '[熟]～になる，～に変わる',
         answerEn: 'turn into',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 4,
     },
     {
@@ -15689,6 +17339,8 @@ export const questions: Question[] = [
         sectionLabel: 'C221-230',
         promptJp: '[熟]～に着替える，～に変わる',
         answerEn: 'change into',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 5,
     },
     {
@@ -15700,6 +17352,8 @@ export const questions: Question[] = [
         sectionLabel: 'C221-230',
         promptJp: '[熟]～について（詳しく）聞く',
         answerEn: 'hear about',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 6,
     },
     {
@@ -15711,6 +17365,8 @@ export const questions: Question[] = [
         sectionLabel: 'C221-230',
         promptJp: '[熟]～と話す（前置詞はwithのときも）',
         answerEn: 'talk to',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 7,
     },
     {
@@ -15722,6 +17378,8 @@ export const questions: Question[] = [
         sectionLabel: 'C221-230',
         promptJp: '[熟]～の世話をする，～の面倒をみる',
         answerEn: 'look after',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 8,
     },
     {
@@ -15733,6 +17391,8 @@ export const questions: Question[] = [
         sectionLabel: 'C221-230',
         promptJp: '[熟]～を取り扱う，～に対処する',
         answerEn: 'deal with',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 9,
     },
     {
@@ -15744,6 +17404,8 @@ export const questions: Question[] = [
         sectionLabel: 'C221-230',
         promptJp: '[熟]～に焦点を当てる，～を重点的に取り扱う',
         answerEn: 'focus on',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 10,
     },
     {
@@ -15755,6 +17417,8 @@ export const questions: Question[] = [
         sectionLabel: 'C231-240',
         promptJp: '[熟]～に起こる',
         answerEn: 'happen to',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 1,
     },
     {
@@ -15766,6 +17430,8 @@ export const questions: Question[] = [
         sectionLabel: 'C231-240',
         promptJp: '[熟]～に苦しむ，～を患う',
         answerEn: 'suffer from',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 2,
     },
     {
@@ -15777,6 +17443,8 @@ export const questions: Question[] = [
         sectionLabel: 'C231-240',
         promptJp: '[熟]～を見守る',
         answerEn: 'watch over',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 3,
     },
     {
@@ -15788,6 +17456,8 @@ export const questions: Question[] = [
         sectionLabel: 'C231-240',
         promptJp: '[熟]BにAを伝える，BにAを渡す，BにAを譲る',
         answerEn: 'pass A on to B',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 4,
     },
     {
@@ -15799,6 +17469,8 @@ export const questions: Question[] = [
         sectionLabel: 'C231-240',
         promptJp: '[熟]AをBへ連れていく，持っていく',
         answerEn: 'take A to B',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 5,
     },
     {
@@ -15810,6 +17482,8 @@ export const questions: Question[] = [
         sectionLabel: 'C231-240',
         promptJp: '[熟]～を奪う，～を持ち去る',
         answerEn: 'take away',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 6,
     },
     {
@@ -15821,6 +17495,8 @@ export const questions: Question[] = [
         sectionLabel: 'C231-240',
         promptJp: '[熟]AにBするように言う',
         answerEn: 'tell A to B',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 7,
     },
     {
@@ -15832,6 +17508,8 @@ export const questions: Question[] = [
         sectionLabel: 'C231-240',
         promptJp: '[熟]～を提出する，～を届け出る',
         answerEn: 'turn in',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 8,
     },
     {
@@ -15843,6 +17521,8 @@ export const questions: Question[] = [
         sectionLabel: 'C231-240',
         promptJp: '[熟]AをBにちなんで名づける',
         answerEn: 'name A after B',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 9,
     },
     {
@@ -15854,6 +17534,8 @@ export const questions: Question[] = [
         sectionLabel: 'C231-240',
         promptJp: '[熟]～を解く，～を理解する',
         answerEn: 'figure out',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 10,
     },
     {
@@ -15865,6 +17547,8 @@ export const questions: Question[] = [
         sectionLabel: 'C241-250',
         promptJp: '[熟]～に参加する',
         answerEn: 'take part in',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 1,
     },
     {
@@ -15876,6 +17560,8 @@ export const questions: Question[] = [
         sectionLabel: 'C241-250',
         promptJp: '[熟]（～を）ちらりと見る，（～を）見てみる',
         answerEn: 'take a look at',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 2,
     },
     {
@@ -15887,6 +17573,8 @@ export const questions: Question[] = [
         sectionLabel: 'C241-250',
         promptJp: '[熟]（嫌なこと）にあう，～につかまえられる',
         answerEn: 'get caught in',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 3,
     },
     {
@@ -15898,6 +17586,8 @@ export const questions: Question[] = [
         sectionLabel: 'C241-250',
         promptJp: '[熟]～を使い果たす，～から流れ出る',
         answerEn: 'run out of',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 4,
     },
     {
@@ -15909,6 +17599,8 @@ export const questions: Question[] = [
         sectionLabel: 'C241-250',
         promptJp: '[熟]～に遅れる，～に遅刻する',
         answerEn: 'be late for',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 5,
     },
     {
@@ -15920,6 +17612,8 @@ export const questions: Question[] = [
         sectionLabel: 'C241-250',
         promptJp: '[熟]～の用意［準備］ができている',
         answerEn: 'be ready for',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 6,
     },
     {
@@ -15931,6 +17625,8 @@ export const questions: Question[] = [
         sectionLabel: 'C241-250',
         promptJp: '[熟]～を喜ぶ，～が気に入っている',
         answerEn: 'be pleased with',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 7,
     },
     {
@@ -15942,6 +17638,8 @@ export const questions: Question[] = [
         sectionLabel: 'C241-250',
         promptJp: '[熟]～に人気がある',
         answerEn: 'be popular with',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 8,
     },
     {
@@ -15953,6 +17651,8 @@ export const questions: Question[] = [
         sectionLabel: 'C241-250',
         promptJp: '[熟]～の間で人気がある',
         answerEn: 'be popular among',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 9,
     },
     {
@@ -15964,6 +17664,8 @@ export const questions: Question[] = [
         sectionLabel: 'C241-250',
         promptJp: '[熟]Aで混雑している',
         answerEn: 'be crowded with A',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 10,
     },
     {
@@ -15975,6 +17677,8 @@ export const questions: Question[] = [
         sectionLabel: 'C241-250',
         promptJp: '[熟]～に驚く',
         answerEn: 'be surprised at',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 11,
     },
     {
@@ -15986,6 +17690,8 @@ export const questions: Question[] = [
         sectionLabel: 'C251-260',
         promptJp: '[熟]～に飽きている，～にうんざりしている',
         answerEn: 'be tired of',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 1,
     },
     {
@@ -15997,6 +17703,8 @@ export const questions: Question[] = [
         sectionLabel: 'C251-260',
         promptJp: '[熟]～するのが怖い',
         answerEn: 'be afraid to',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 2,
     },
     {
@@ -16008,6 +17716,8 @@ export const questions: Question[] = [
         sectionLabel: 'C251-260',
         promptJp: '[熟]～にひきつけられる',
         answerEn: 'be attracted to',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 3,
     },
     {
@@ -16019,6 +17729,8 @@ export const questions: Question[] = [
         sectionLabel: 'C251-260',
         promptJp: '[熟]コップ1杯（の量）の～，グラス1杯の～',
         answerEn: 'a glass of',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 4,
     },
     {
@@ -16030,6 +17742,8 @@ export const questions: Question[] = [
         sectionLabel: 'C251-260',
         promptJp: '[熟]一種の～，～のようなもの',
         answerEn: 'a kind of',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 5,
     },
     {
@@ -16041,6 +17755,8 @@ export const questions: Question[] = [
         sectionLabel: 'C251-260',
         promptJp: '[熟]何百という～，多数の～',
         answerEn: 'hundreds of',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 6,
     },
     {
@@ -16052,6 +17768,8 @@ export const questions: Question[] = [
         sectionLabel: 'C251-260',
         promptJp: '[熟]～行きの',
         answerEn: 'bound for',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 7,
     },
     {
@@ -16063,6 +17781,8 @@ export const questions: Question[] = [
         sectionLabel: 'C251-260',
         promptJp: '[熟]～を受け持って，～の係で',
         answerEn: 'in charge of',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 8,
     },
     {
@@ -16074,6 +17794,8 @@ export const questions: Question[] = [
         sectionLabel: 'C251-260',
         promptJp: '[熟]ついに，ようやく，やっと',
         answerEn: 'at last',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 9,
     },
     {
@@ -16085,6 +17807,8 @@ export const questions: Question[] = [
         sectionLabel: 'C251-260',
         promptJp: '[熟]すぐに，同時に',
         answerEn: 'at once',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 10,
     },
     {
@@ -16096,6 +17820,8 @@ export const questions: Question[] = [
         sectionLabel: 'C261-270',
         promptJp: '[熟]当時，そのころ',
         answerEn: 'in those days',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 1,
     },
     {
@@ -16107,6 +17833,8 @@ export const questions: Question[] = [
         sectionLabel: 'C261-270',
         promptJp: '[熟]昔々',
         answerEn: 'once upon a time',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 2,
     },
     {
@@ -16118,6 +17846,8 @@ export const questions: Question[] = [
         sectionLabel: 'C261-270',
         promptJp: '[熟]それ以来',
         answerEn: 'since then',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 3,
     },
     {
@@ -16129,6 +17859,8 @@ export const questions: Question[] = [
         sectionLabel: 'C261-270',
         promptJp: '[熟]今まで（は），これまで（は）',
         answerEn: 'so far',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 4,
     },
     {
@@ -16140,6 +17872,8 @@ export const questions: Question[] = [
         sectionLabel: 'C261-270',
         promptJp: '[熟]［副詞的に用いて］少し，ちょっと',
         answerEn: 'a little bit',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 5,
     },
     {
@@ -16151,6 +17885,8 @@ export const questions: Question[] = [
         sectionLabel: 'C261-270',
         promptJp: '[熟]AだけでなくBも',
         answerEn: 'A as well as B',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 6,
     },
     {
@@ -16162,6 +17898,8 @@ export const questions: Question[] = [
         sectionLabel: 'C261-270',
         promptJp: '[熟]誤って，間違って',
         answerEn: 'by mistake',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 7,
     },
     {
@@ -16173,6 +17911,8 @@ export const questions: Question[] = [
         sectionLabel: 'C261-270',
         promptJp: '[熟]一人で，自力で',
         answerEn: 'by oneself',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 8,
     },
     {
@@ -16184,6 +17924,8 @@ export const questions: Question[] = [
         sectionLabel: 'C261-270',
         promptJp: '[熟]1人［1つ］ずつ',
         answerEn: 'one by one',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 9,
     },
     {
@@ -16195,6 +17937,8 @@ export const questions: Question[] = [
         sectionLabel: 'C261-270',
         promptJp: '[熟]共に，共存して',
         answerEn: 'side by side',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 10,
     },
     {
@@ -16206,6 +17950,8 @@ export const questions: Question[] = [
         sectionLabel: 'C271-280',
         promptJp: '[熟]少しずつ',
         answerEn: 'little by little',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 1,
     },
     {
@@ -16217,6 +17963,8 @@ export const questions: Question[] = [
         sectionLabel: 'C271-280',
         promptJp: '[熟]それほどでもない',
         answerEn: 'not really',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 2,
     },
     {
@@ -16228,6 +17976,8 @@ export const questions: Question[] = [
         sectionLabel: 'C271-280',
         promptJp: '[熟]楽しみで，おもしろ半分に',
         answerEn: 'for fun',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 3,
     },
     {
@@ -16239,6 +17989,8 @@ export const questions: Question[] = [
         sectionLabel: 'C271-280',
         promptJp: '[熟]確かに［な］',
         answerEn: 'for sure',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 4,
     },
     {
@@ -16250,6 +18002,8 @@ export const questions: Question[] = [
         sectionLabel: 'C271-280',
         promptJp: '[熟]共通して',
         answerEn: 'in common',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 5,
     },
     {
@@ -16261,6 +18015,8 @@ export const questions: Question[] = [
         sectionLabel: 'C271-280',
         promptJp: '[熟]全体で，総計で',
         answerEn: 'in total',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 6,
     },
     {
@@ -16272,6 +18028,8 @@ export const questions: Question[] = [
         sectionLabel: 'C271-280',
         promptJp: '[熟]このようにして（最初にinがつく場合もある）',
         answerEn: 'this way',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 7,
     },
     {
@@ -16283,6 +18041,8 @@ export const questions: Question[] = [
         sectionLabel: 'C271-280',
         promptJp: '[熟]涙を流して，泣いて',
         answerEn: 'in tears',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 8,
     },
     {
@@ -16294,6 +18054,8 @@ export const questions: Question[] = [
         sectionLabel: 'C271-280',
         promptJp: '[熟]燃えて',
         answerEn: 'on fire',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 9,
     },
     {
@@ -16305,6 +18067,8 @@ export const questions: Question[] = [
         sectionLabel: 'C271-280',
         promptJp: '[熟]徒歩で',
         answerEn: 'on foot',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 10,
     },
     {
@@ -16316,6 +18080,8 @@ export const questions: Question[] = [
         sectionLabel: 'C281-290',
         promptJp: '[熟]インターネットで',
         answerEn: 'on the Internet',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 1,
     },
     {
@@ -16327,6 +18093,8 @@ export const questions: Question[] = [
         sectionLabel: 'C281-290',
         promptJp: '[熟]テレビで',
         answerEn: 'on TV',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 2,
     },
     {
@@ -16338,6 +18106,8 @@ export const questions: Question[] = [
         sectionLabel: 'C281-290',
         promptJp: '[熟]～のために，～のせいで',
         answerEn: 'due to',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 3,
     },
     {
@@ -16349,6 +18119,8 @@ export const questions: Question[] = [
         sectionLabel: 'C281-290',
         promptJp: '[熟]～するほど十分に［な］',
         answerEn: 'enough to',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 4,
     },
     {
@@ -16360,6 +18132,8 @@ export const questions: Question[] = [
         sectionLabel: 'C281-290',
         promptJp: '[熟]たとえ～だとしても',
         answerEn: 'even if',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 5,
     },
     {
@@ -16371,6 +18145,8 @@ export const questions: Question[] = [
         sectionLabel: 'C281-290',
         promptJp: '[熟]AにBするように頼む',
         answerEn: 'ask A to B',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 6,
     },
     {
@@ -16382,6 +18158,8 @@ export const questions: Question[] = [
         sectionLabel: 'C281-290',
         promptJp: '[熟]～し忘れる',
         answerEn: 'forget to',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 7,
     },
     {
@@ -16393,6 +18171,8 @@ export const questions: Question[] = [
         sectionLabel: 'C281-290',
         promptJp: '[熟]～するために',
         answerEn: 'in order to',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 8,
     },
     {
@@ -16404,6 +18184,8 @@ export const questions: Question[] = [
         sectionLabel: 'C281-290',
         promptJp: '[熟]～したい（のですが）',
         answerEn: 'would like to',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 9,
     },
     {
@@ -16415,6 +18197,8 @@ export const questions: Question[] = [
         sectionLabel: 'C281-290',
         promptJp: '[熟]～する方法',
         answerEn: 'way to',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 10,
     },
     {
@@ -16426,6 +18210,8 @@ export const questions: Question[] = [
         sectionLabel: 'C291-300',
         promptJp: '[熟]何を～すべきか',
         answerEn: 'what to',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 1,
     },
     {
@@ -16437,6 +18223,8 @@ export const questions: Question[] = [
         sectionLabel: 'C291-300',
         promptJp: '[熟]試しに～してみる（後ろは -ing）',
         answerEn: 'try',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 2,
     },
     {
@@ -16448,6 +18236,8 @@ export const questions: Question[] = [
         sectionLabel: 'C291-300',
         promptJp: '[熟]～したい気がする（後ろは -ing）',
         answerEn: 'feel like',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 3,
     },
     {
@@ -16459,6 +18249,8 @@ export const questions: Question[] = [
         sectionLabel: 'C291-300',
         promptJp: '[熟]～もない（notを伴う。否定のtoo）',
         answerEn: 'either',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 4,
     },
     {
@@ -16470,6 +18262,8 @@ export const questions: Question[] = [
         sectionLabel: 'C291-300',
         promptJp: '[熟]一方はAで，もう一方は［他方は］B',
         answerEn: 'one A, the other B',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 5,
     },
     {
@@ -16481,6 +18275,8 @@ export const questions: Question[] = [
         sectionLabel: 'C291-300',
         promptJp: '[熟]BほどAない',
         answerEn: 'not as A as B',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 6,
     },
     {
@@ -16492,6 +18288,8 @@ export const questions: Question[] = [
         sectionLabel: 'C291-300',
         promptJp: '[熟]～してはいけない',
         answerEn: 'must not',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 7,
     },
     {
@@ -16503,6 +18301,8 @@ export const questions: Question[] = [
         sectionLabel: 'C291-300',
         promptJp: '[熟]～に行ったことがある',
         answerEn: 'have been to',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 8,
     },
     {
@@ -16514,6 +18314,8 @@ export const questions: Question[] = [
         sectionLabel: 'C291-300',
         promptJp: '[熟]ご存じのように',
         answerEn: 'as you know',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 9,
     },
     {
@@ -16525,6 +18327,8 @@ export const questions: Question[] = [
         sectionLabel: 'C291-300',
         promptJp: '[熟]ねえ，～でしょう，ご存じのとおり',
         answerEn: 'you know',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 10,
     },
     {
@@ -16536,6 +18340,7 @@ export const questions: Question[] = [
         sectionLabel: '1201-1210',
         promptJp: '[名]図式，グラフ',
         answerEn: 'graph',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -16547,6 +18352,7 @@ export const questions: Question[] = [
         sectionLabel: '1201-1210',
         promptJp: '[名]コミュニケーション，[名]情報伝達',
         answerEn: 'communication',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -16558,6 +18364,7 @@ export const questions: Question[] = [
         sectionLabel: '1201-1210',
         promptJp: '[形]年配の',
         answerEn: 'elderly',
+        pos: ['adj'],
         orderIndex: 5,
     },
     {
@@ -16569,6 +18376,7 @@ export const questions: Question[] = [
         sectionLabel: '1201-1210',
         promptJp: '[名]オリンピック（大会） / [形]オリンピック競技の',
         answerEn: 'Olympic',
+        pos: ['noun', 'adj'],
         orderIndex: 6,
     },
     {
@@ -16580,6 +18388,7 @@ export const questions: Question[] = [
         sectionLabel: '1201-1210',
         promptJp: '[名]電気',
         answerEn: 'electricity',
+        pos: ['noun'],
         orderIndex: 7,
     },
     {
@@ -16591,6 +18400,7 @@ export const questions: Question[] = [
         sectionLabel: '1201-1210',
         promptJp: '[名]（果樹の）花',
         answerEn: 'blossom',
+        pos: ['noun'],
         orderIndex: 8,
     },
     {
@@ -16602,6 +18412,7 @@ export const questions: Question[] = [
         sectionLabel: '1201-1210',
         promptJp: '[名]外国人',
         answerEn: 'foreigner',
+        pos: ['noun'],
         orderIndex: 9,
     },
     {
@@ -16613,6 +18424,7 @@ export const questions: Question[] = [
         sectionLabel: '1201-1210',
         promptJp: '[形]① 簡単な，単純な ② 質素な',
         answerEn: 'simple',
+        pos: ['adj'],
         orderIndex: 10,
     },
     {
@@ -16624,6 +18436,7 @@ export const questions: Question[] = [
         sectionLabel: '1201-1210',
         promptJp: '[動]投票する / [名]投票，票',
         answerEn: 'vote',
+        pos: ['verb', 'noun'],
         orderIndex: 1,
     },
     {
@@ -16635,6 +18448,7 @@ export const questions: Question[] = [
         sectionLabel: '1201-1210',
         promptJp: '[名]明かり，ランプ',
         answerEn: 'lamp',
+        pos: ['noun'],
         orderIndex: 2,
     },
     {
@@ -16646,6 +18460,7 @@ export const questions: Question[] = [
         sectionLabel: '1211-1220',
         promptJp: '[名]教育',
         answerEn: 'education',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -16657,6 +18472,7 @@ export const questions: Question[] = [
         sectionLabel: '1211-1220',
         promptJp: '[名]緊急[非常]事態',
         answerEn: 'emergency',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -16668,6 +18484,7 @@ export const questions: Question[] = [
         sectionLabel: '1211-1220',
         promptJp: '[動]～を修理する',
         answerEn: 'repair',
+        pos: ['verb'],
         orderIndex: 5,
     },
     {
@@ -16679,6 +18496,7 @@ export const questions: Question[] = [
         sectionLabel: '1211-1220',
         promptJp: '[形]平均の / [名]平均（値）',
         answerEn: 'average',
+        pos: ['adj', 'noun'],
         orderIndex: 6,
     },
     {
@@ -16690,6 +18508,7 @@ export const questions: Question[] = [
         sectionLabel: '1211-1220',
         promptJp: '[名]工場',
         answerEn: 'factory',
+        pos: ['noun'],
         orderIndex: 7,
     },
     {
@@ -16701,6 +18520,7 @@ export const questions: Question[] = [
         sectionLabel: '1211-1220',
         promptJp: '[名]さよなら（の言葉），[感]さようなら',
         answerEn: 'goodbye',
+        pos: ['noun', 'interj'],
         orderIndex: 8,
     },
     {
@@ -16712,6 +18532,7 @@ export const questions: Question[] = [
         sectionLabel: '1211-1220',
         promptJp: '[名]昆虫',
         answerEn: 'insect',
+        pos: ['noun'],
         orderIndex: 9,
     },
     {
@@ -16723,6 +18544,7 @@ export const questions: Question[] = [
         sectionLabel: '1211-1220',
         promptJp: '[動]逃げる',
         answerEn: 'escape',
+        pos: ['verb'],
         orderIndex: 10,
     },
     {
@@ -16734,6 +18556,7 @@ export const questions: Question[] = [
         sectionLabel: '1211-1220',
         promptJp: '[名]実験，試み',
         answerEn: 'experiment',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -16745,6 +18568,7 @@ export const questions: Question[] = [
         sectionLabel: '1211-1220',
         promptJp: '[前/副]～の上に[へ]',
         answerEn: 'onto',
+        pos: ['adv', 'prep'],
         orderIndex: 2,
     },
     {
@@ -16756,6 +18580,7 @@ export const questions: Question[] = [
         sectionLabel: '1221-1230',
         promptJp: '[名]マイル',
         answerEn: 'mile',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -16767,6 +18592,7 @@ export const questions: Question[] = [
         sectionLabel: '1221-1230',
         promptJp: '[名]ページ',
         answerEn: 'page',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -16778,6 +18604,7 @@ export const questions: Question[] = [
         sectionLabel: '1221-1230',
         promptJp: '[動]（～を）恐れる，こわがる，心配する / [名]恐怖，不安，恐れ',
         answerEn: 'fear',
+        pos: ['verb', 'noun'],
         orderIndex: 5,
     },
     {
@@ -16789,6 +18616,7 @@ export const questions: Question[] = [
         sectionLabel: '1221-1230',
         promptJp: '[形]閉じ（られ）た，閉店した',
         answerEn: 'closed',
+        pos: ['adj'],
         orderIndex: 6,
     },
     {
@@ -16800,6 +18628,7 @@ export const questions: Question[] = [
         sectionLabel: '1221-1230',
         promptJp: '[名]調査，[動]調査する',
         answerEn: 'survey',
+        pos: ['noun', 'verb'],
         orderIndex: 7,
     },
     {
@@ -16811,6 +18640,7 @@ export const questions: Question[] = [
         sectionLabel: '1221-1230',
         promptJp: '[動]～を加える，足す',
         answerEn: 'add',
+        pos: ['verb'],
         orderIndex: 8,
     },
     {
@@ -16822,6 +18652,7 @@ export const questions: Question[] = [
         sectionLabel: '1221-1230',
         promptJp: '[名]切手',
         answerEn: 'stamp',
+        pos: ['noun'],
         orderIndex: 9,
     },
     {
@@ -16833,6 +18664,7 @@ export const questions: Question[] = [
         sectionLabel: '1221-1230',
         promptJp: '[名]① モデル [名]② 模型，模範，型 / [動]～を形作る',
         answerEn: 'model',
+        pos: ['noun', 'verb'],
         orderIndex: 10,
     },
     {
@@ -16844,6 +18676,7 @@ export const questions: Question[] = [
         sectionLabel: '1221-1230',
         promptJp: '[形]最も悪い[下手な，ひどい]',
         answerEn: 'worst',
+        pos: ['adj'],
         orderIndex: 1,
     },
     {
@@ -16855,6 +18688,7 @@ export const questions: Question[] = [
         sectionLabel: '1221-1230',
         promptJp: '[動]～を比較する，比べる',
         answerEn: 'compare',
+        pos: ['verb'],
         orderIndex: 2,
     },
     {
@@ -16866,6 +18700,7 @@ export const questions: Question[] = [
         sectionLabel: '1231-1240',
         promptJp: '[名]昼寝，うたた寝',
         answerEn: 'nap',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -16877,6 +18712,7 @@ export const questions: Question[] = [
         sectionLabel: '1231-1240',
         promptJp: '[前]～の範囲内に，～以内に[で]',
         answerEn: 'within',
+        pos: ['prep'],
         orderIndex: 4,
     },
     {
@@ -16888,6 +18724,7 @@ export const questions: Question[] = [
         sectionLabel: '1231-1240',
         promptJp: '[動]～を議論[検討]する，～について話し合う',
         answerEn: 'discuss',
+        pos: ['verb'],
         orderIndex: 5,
     },
     {
@@ -16899,6 +18736,7 @@ export const questions: Question[] = [
         sectionLabel: '1231-1240',
         promptJp: '[名]過程 / [動]～を処理する，整理する',
         answerEn: 'process',
+        pos: ['noun', 'verb'],
         orderIndex: 6,
     },
     {
@@ -16910,6 +18748,7 @@ export const questions: Question[] = [
         sectionLabel: '1231-1240',
         promptJp: '[動]～を直す，修理する',
         answerEn: 'fix',
+        pos: ['verb'],
         orderIndex: 7,
     },
     {
@@ -16921,6 +18760,7 @@ export const questions: Question[] = [
         sectionLabel: '1231-1240',
         promptJp: '[名]近所，近隣',
         answerEn: 'neighborhood',
+        pos: ['noun'],
         orderIndex: 8,
     },
     {
@@ -16932,6 +18772,7 @@ export const questions: Question[] = [
         sectionLabel: '1231-1240',
         promptJp: '[名]王女',
         answerEn: 'princess',
+        pos: ['noun'],
         orderIndex: 9,
     },
     {
@@ -16943,6 +18784,7 @@ export const questions: Question[] = [
         sectionLabel: '1231-1240',
         promptJp: '[動]～を禁止する',
         answerEn: 'ban',
+        pos: ['verb'],
         orderIndex: 10,
     },
     {
@@ -16954,6 +18796,7 @@ export const questions: Question[] = [
         sectionLabel: '1231-1240',
         promptJp: '[動]～を発見する',
         answerEn: 'discover',
+        pos: ['verb'],
         orderIndex: 1,
     },
     {
@@ -16965,6 +18808,7 @@ export const questions: Question[] = [
         sectionLabel: '1231-1240',
         promptJp: '[名]表現，表情',
         answerEn: 'expression',
+        pos: ['noun'],
         orderIndex: 2,
     },
     {
@@ -16976,6 +18820,7 @@ export const questions: Question[] = [
         sectionLabel: '1241-1250',
         promptJp: '[名]キロメートル',
         answerEn: 'kilometer',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -16987,6 +18832,7 @@ export const questions: Question[] = [
         sectionLabel: '1241-1250',
         promptJp: '[名]衝撃，ショック / [動]～に衝撃[ショック]を与える',
         answerEn: 'shock',
+        pos: ['noun', 'verb'],
         orderIndex: 4,
     },
     {
@@ -16998,6 +18844,7 @@ export const questions: Question[] = [
         sectionLabel: '1241-1250',
         promptJp: '[名]使用者，利用者',
         answerEn: 'user',
+        pos: ['noun'],
         orderIndex: 5,
     },
     {
@@ -17009,6 +18856,7 @@ export const questions: Question[] = [
         sectionLabel: '1241-1250',
         promptJp: '[名]住所，アドレス',
         answerEn: 'address',
+        pos: ['noun'],
         orderIndex: 6,
     },
     {
@@ -17020,6 +18868,7 @@ export const questions: Question[] = [
         sectionLabel: '1241-1250',
         promptJp: '[動]不平[不満]を言う，苦情を言う',
         answerEn: 'complain',
+        pos: ['verb'],
         orderIndex: 7,
     },
     {
@@ -17031,6 +18880,7 @@ export const questions: Question[] = [
         sectionLabel: '1241-1250',
         promptJp: '[名]敵，敵対者',
         answerEn: 'enemy',
+        pos: ['noun'],
         orderIndex: 8,
     },
     {
@@ -17042,6 +18892,7 @@ export const questions: Question[] = [
         sectionLabel: '1241-1250',
         promptJp: '[形]ヨーロッパの / [名]ヨーロッパの人',
         answerEn: 'European',
+        pos: ['adj', 'noun'],
         orderIndex: 9,
     },
     {
@@ -17053,6 +18904,7 @@ export const questions: Question[] = [
         sectionLabel: '1241-1250',
         promptJp: '[名]ジェスチャー，身ぶり',
         answerEn: 'gesture',
+        pos: ['noun'],
         orderIndex: 10,
     },
     {
@@ -17064,6 +18916,7 @@ export const questions: Question[] = [
         sectionLabel: '1241-1250',
         promptJp: '[形]韓国の，朝鮮の / [名]韓国人[語]，朝鮮人[語]',
         answerEn: 'Korean',
+        pos: ['adj', 'noun'],
         orderIndex: 1,
     },
     {
@@ -17075,6 +18928,7 @@ export const questions: Question[] = [
         sectionLabel: '1241-1250',
         promptJp: '[名]避難所，シェルター',
         answerEn: 'shelter',
+        pos: ['noun'],
         orderIndex: 2,
     },
     {
@@ -17086,6 +18940,7 @@ export const questions: Question[] = [
         sectionLabel: '1251-1260',
         promptJp: '[名]映画',
         answerEn: 'film',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -17097,6 +18952,7 @@ export const questions: Question[] = [
         sectionLabel: '1251-1260',
         promptJp: '[名]行儀，作法',
         answerEn: 'manner',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -17108,6 +18964,7 @@ export const questions: Question[] = [
         sectionLabel: '1251-1260',
         promptJp: '[名]法律',
         answerEn: 'law',
+        pos: ['noun'],
         orderIndex: 5,
     },
     {
@@ -17119,6 +18976,7 @@ export const questions: Question[] = [
         sectionLabel: '1251-1260',
         promptJp: '[動]～を（…と）関係づける，（…と）関係する',
         answerEn: 'relate',
+        pos: ['verb'],
         orderIndex: 6,
     },
     {
@@ -17130,6 +18988,7 @@ export const questions: Question[] = [
         sectionLabel: '1251-1260',
         promptJp: '[名]接客係，ウエイター',
         answerEn: 'waiter',
+        pos: ['noun'],
         orderIndex: 7,
     },
     {
@@ -17141,6 +19000,7 @@ export const questions: Question[] = [
         sectionLabel: '1251-1260',
         promptJp: '[動]① 沸く，煮える [動]② ～を沸かす，ゆでる，煮る',
         answerEn: 'boil',
+        pos: ['verb'],
         orderIndex: 8,
     },
     {
@@ -17152,6 +19012,7 @@ export const questions: Question[] = [
         sectionLabel: '1251-1260',
         promptJp: '[動]～を丸で囲む，円を描いて回る / [名]円，輪',
         answerEn: 'circle',
+        pos: ['verb', 'noun'],
         orderIndex: 9,
     },
     {
@@ -17163,6 +19024,7 @@ export const questions: Question[] = [
         sectionLabel: '1251-1260',
         promptJp: '[名]（天体の）月',
         answerEn: 'moon',
+        pos: ['noun'],
         orderIndex: 10,
     },
     {
@@ -17174,6 +19036,7 @@ export const questions: Question[] = [
         sectionLabel: '1251-1260',
         promptJp: '[名]タブレット（PC），[名]錠剤，[名]銘板',
         answerEn: 'tablet',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -17185,6 +19048,7 @@ export const questions: Question[] = [
         sectionLabel: '1251-1260',
         promptJp: '[形]平等な，等しい',
         answerEn: 'equal',
+        pos: ['adj'],
         orderIndex: 2,
     },
     {
@@ -17196,6 +19060,7 @@ export const questions: Question[] = [
         sectionLabel: '1261-1270',
         promptJp: '[名]討論，ディベート / [動]（賛成派・反対派に分かれて）（～を）討論する',
         answerEn: 'debate',
+        pos: ['noun', 'verb'],
         orderIndex: 3,
     },
     {
@@ -17207,6 +19072,7 @@ export const questions: Question[] = [
         sectionLabel: '1261-1270',
         promptJp: '[名]バケツ',
         answerEn: 'bucket',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -17218,6 +19084,7 @@ export const questions: Question[] = [
         sectionLabel: '1261-1270',
         promptJp: '[名]① 商売，仕事，ビジネス ② 会社，企業',
         answerEn: 'business',
+        pos: ['noun'],
         orderIndex: 5,
     },
     {
@@ -17229,6 +19096,7 @@ export const questions: Question[] = [
         sectionLabel: '1261-1270',
         promptJp: '[動]～を表示する，陳列する / [名]表示，展示',
         answerEn: 'display',
+        pos: ['verb', 'noun'],
         orderIndex: 6,
     },
     {
@@ -17240,6 +19108,7 @@ export const questions: Question[] = [
         sectionLabel: '1261-1270',
         promptJp: '[名]妖精',
         answerEn: 'fairy',
+        pos: ['noun'],
         orderIndex: 7,
     },
     {
@@ -17251,6 +19120,7 @@ export const questions: Question[] = [
         sectionLabel: '1261-1270',
         promptJp: '[動]～に気がつく，注目する / [名]通知，掲示',
         answerEn: 'notice',
+        pos: ['verb', 'noun'],
         orderIndex: 8,
     },
     {
@@ -17262,6 +19132,7 @@ export const questions: Question[] = [
         sectionLabel: '1261-1270',
         promptJp: '[名]石',
         answerEn: 'stone',
+        pos: ['noun'],
         orderIndex: 9,
     },
     {
@@ -17273,6 +19144,7 @@ export const questions: Question[] = [
         sectionLabel: '1261-1270',
         promptJp: '[名]衣装，コスチューム',
         answerEn: 'costume',
+        pos: ['noun'],
         orderIndex: 10,
     },
     {
@@ -17284,6 +19156,7 @@ export const questions: Question[] = [
         sectionLabel: '1261-1270',
         promptJp: '[動]（～を）専攻する / [形]（より）重要な，（より）大きな',
         answerEn: 'major',
+        pos: ['verb', 'adj'],
         orderIndex: 1,
     },
     {
@@ -17295,6 +19168,7 @@ export const questions: Question[] = [
         sectionLabel: '1261-1270',
         promptJp: '[動]（～を）引く，引っ張る',
         answerEn: 'pull',
+        pos: ['verb'],
         orderIndex: 2,
     },
     {
@@ -17306,6 +19180,7 @@ export const questions: Question[] = [
         sectionLabel: '1271-1280',
         promptJp: '[名]① 一区画 ② かたまり，ブロック',
         answerEn: 'block',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -17317,6 +19192,7 @@ export const questions: Question[] = [
         sectionLabel: '1271-1280',
         promptJp: '[名]聴衆，観客',
         answerEn: 'audience',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -17328,6 +19204,7 @@ export const questions: Question[] = [
         sectionLabel: '1271-1280',
         promptJp: '[形]現代の，現代的な',
         answerEn: 'modern',
+        pos: ['adj'],
         orderIndex: 5,
     },
     {
@@ -17339,6 +19216,7 @@ export const questions: Question[] = [
         sectionLabel: '1271-1280',
         promptJp: '[名]病気',
         answerEn: 'disease',
+        pos: ['noun'],
         orderIndex: 6,
     },
     {
@@ -17350,6 +19228,7 @@ export const questions: Question[] = [
         sectionLabel: '1271-1280',
         promptJp: '[動]（物）を取り除く，除去する',
         answerEn: 'remove',
+        pos: ['verb'],
         orderIndex: 7,
     },
     {
@@ -17361,6 +19240,7 @@ export const questions: Question[] = [
         sectionLabel: '1271-1280',
         promptJp: '[動]意見が合わない，反対する',
         answerEn: 'disagree',
+        pos: ['verb'],
         orderIndex: 8,
     },
     {
@@ -17372,6 +19252,7 @@ export const questions: Question[] = [
         sectionLabel: '1271-1280',
         promptJp: '[形]公の，公式の / [名]役人，公務員',
         answerEn: 'official',
+        pos: ['adj', 'noun'],
         orderIndex: 9,
     },
     {
@@ -17383,6 +19264,7 @@ export const questions: Question[] = [
         sectionLabel: '1271-1280',
         promptJp: '[名]ノック（の音） / [動]ノックする，～を打つ',
         answerEn: 'knock',
+        pos: ['noun', 'verb'],
         orderIndex: 10,
     },
     {
@@ -17394,6 +19276,7 @@ export const questions: Question[] = [
         sectionLabel: '1271-1280',
         promptJp: '[動]（～を）かむ，かじる，かみつく，[名]かむこと，かみつき，一口',
         answerEn: 'bite',
+        pos: ['verb', 'noun'],
         orderIndex: 1,
     },
     {
@@ -17405,6 +19288,7 @@ export const questions: Question[] = [
         sectionLabel: '1271-1280',
         promptJp: '[代]誰も～ない',
         answerEn: 'nobody',
+        pos: ['pron'],
         orderIndex: 2,
     },
     {
@@ -17416,6 +19300,7 @@ export const questions: Question[] = [
         sectionLabel: '1281-1290',
         promptJp: '[名]慈善，チャリティー',
         answerEn: 'charity',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -17427,6 +19312,7 @@ export const questions: Question[] = [
         sectionLabel: '1281-1290',
         promptJp: '[名]① 方向，方角 ②[複数形で]指示',
         answerEn: 'direction',
+        pos: ['noun', 'adj', 'num'],
         orderIndex: 4,
     },
     {
@@ -17438,6 +19324,7 @@ export const questions: Question[] = [
         sectionLabel: '1281-1290',
         promptJp: '[名]ディレクター，監督',
         answerEn: 'director',
+        pos: ['noun'],
         orderIndex: 5,
     },
     {
@@ -17449,6 +19336,7 @@ export const questions: Question[] = [
         sectionLabel: '1281-1290',
         promptJp: '[形]環境の',
         answerEn: 'environmental',
+        pos: ['adj'],
         orderIndex: 6,
     },
     {
@@ -17460,6 +19348,7 @@ export const questions: Question[] = [
         sectionLabel: '1281-1290',
         promptJp: '[動]～を温める / [名]熱，熱さ，暑さ',
         answerEn: 'heat',
+        pos: ['verb', 'noun'],
         orderIndex: 7,
     },
     {
@@ -17471,6 +19360,7 @@ export const questions: Question[] = [
         sectionLabel: '1281-1290',
         promptJp: '[名]瞬間 / [形]すぐの，即時の',
         answerEn: 'instant',
+        pos: ['noun', 'adj'],
         orderIndex: 8,
     },
     {
@@ -17482,6 +19372,7 @@ export const questions: Question[] = [
         sectionLabel: '1281-1290',
         promptJp: '[名]手術',
         answerEn: 'operation',
+        pos: ['noun'],
         orderIndex: 9,
     },
     {
@@ -17493,6 +19384,7 @@ export const questions: Question[] = [
         sectionLabel: '1281-1290',
         promptJp: '[名]能力，才能',
         answerEn: 'ability',
+        pos: ['noun'],
         orderIndex: 10,
     },
     {
@@ -17504,6 +19396,7 @@ export const questions: Question[] = [
         sectionLabel: '1281-1290',
         promptJp: '[名]黒板',
         answerEn: 'blackboard',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -17515,6 +19408,7 @@ export const questions: Question[] = [
         sectionLabel: '1281-1290',
         promptJp: '[名]気候',
         answerEn: 'climate',
+        pos: ['noun'],
         orderIndex: 2,
     },
     {
@@ -17526,6 +19420,7 @@ export const questions: Question[] = [
         sectionLabel: '1291-1300',
         promptJp: '[動]～を許可する，許す',
         answerEn: 'allow',
+        pos: ['verb'],
         orderIndex: 3,
     },
     {
@@ -17537,6 +19432,7 @@ export const questions: Question[] = [
         sectionLabel: '1291-1300',
         promptJp: '[動]～を提案する',
         answerEn: 'suggest',
+        pos: ['verb'],
         orderIndex: 4,
     },
     {
@@ -17548,6 +19444,7 @@ export const questions: Question[] = [
         sectionLabel: '1291-1300',
         promptJp: '[名]発見',
         answerEn: 'discovery',
+        pos: ['noun'],
         orderIndex: 5,
     },
     {
@@ -17559,6 +19456,7 @@ export const questions: Question[] = [
         sectionLabel: '1291-1300',
         promptJp: '[動]～のように思われる[見える]',
         answerEn: 'seem',
+        pos: ['verb'],
         orderIndex: 6,
     },
     {
@@ -17570,6 +19468,7 @@ export const questions: Question[] = [
         sectionLabel: '1291-1300',
         promptJp: '[名]ソファー',
         answerEn: 'sofa',
+        pos: ['noun'],
         orderIndex: 7,
     },
     {
@@ -17581,6 +19480,7 @@ export const questions: Question[] = [
         sectionLabel: '1291-1300',
         promptJp: '[名]蒸気，湯気 / [動]湯気を立てる',
         answerEn: 'steam',
+        pos: ['noun', 'verb'],
         orderIndex: 8,
     },
     {
@@ -17592,6 +19492,7 @@ export const questions: Question[] = [
         sectionLabel: '1291-1300',
         promptJp: '[名]誕生',
         answerEn: 'birth',
+        pos: ['noun'],
         orderIndex: 9,
     },
     {
@@ -17603,6 +19504,7 @@ export const questions: Question[] = [
         sectionLabel: '1291-1300',
         promptJp: '[名]雨水',
         answerEn: 'rainwater',
+        pos: ['noun'],
         orderIndex: 10,
     },
     {
@@ -17614,6 +19516,7 @@ export const questions: Question[] = [
         sectionLabel: '1291-1300',
         promptJp: '[名]決定，決断，決心',
         answerEn: 'decision',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -17625,6 +19528,7 @@ export const questions: Question[] = [
         sectionLabel: '1291-1300',
         promptJp: '[形]電子の，電子工学の',
         answerEn: 'electronic',
+        pos: ['adj'],
         orderIndex: 2,
     },
     {
@@ -17636,6 +19540,7 @@ export const questions: Question[] = [
         sectionLabel: '1301-1310',
         promptJp: '[動]回復する',
         answerEn: 'recover',
+        pos: ['verb'],
         orderIndex: 3,
     },
     {
@@ -17647,6 +19552,7 @@ export const questions: Question[] = [
         sectionLabel: '1301-1310',
         promptJp: '[動]（注意などを）集中する / [名]焦点，中心',
         answerEn: 'focus',
+        pos: ['verb', 'noun'],
         orderIndex: 4,
     },
     {
@@ -17658,6 +19564,7 @@ export const questions: Question[] = [
         sectionLabel: '1301-1310',
         promptJp: '[副]自由に',
         answerEn: 'freely',
+        pos: ['adv'],
         orderIndex: 5,
     },
     {
@@ -17669,6 +19576,7 @@ export const questions: Question[] = [
         sectionLabel: '1301-1310',
         promptJp: '[動]～に思い出させる，気づかせる',
         answerEn: 'remind',
+        pos: ['verb'],
         orderIndex: 6,
     },
     {
@@ -17680,6 +19588,7 @@ export const questions: Question[] = [
         sectionLabel: '1301-1310',
         promptJp: '[名]親切',
         answerEn: 'kindness',
+        pos: ['noun'],
         orderIndex: 7,
     },
     {
@@ -17691,6 +19600,7 @@ export const questions: Question[] = [
         sectionLabel: '1301-1310',
         promptJp: '[形]否定的な，[形]消極的な，[形]よくない',
         answerEn: 'negative',
+        pos: ['adj'],
         orderIndex: 8,
     },
     {
@@ -17702,6 +19612,7 @@ export const questions: Question[] = [
         sectionLabel: '1301-1310',
         promptJp: '[副]全く，かなり',
         answerEn: 'quite',
+        pos: ['adv'],
         orderIndex: 9,
     },
     {
@@ -17713,6 +19624,7 @@ export const questions: Question[] = [
         sectionLabel: '1301-1310',
         promptJp: '[名]レシピ，調理法',
         answerEn: 'recipe',
+        pos: ['noun'],
         orderIndex: 10,
     },
     {
@@ -17724,6 +19636,7 @@ export const questions: Question[] = [
         sectionLabel: '1301-1310',
         promptJp: '[名]（生物の）種',
         answerEn: 'species',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -17735,6 +19648,7 @@ export const questions: Question[] = [
         sectionLabel: '1301-1310',
         promptJp: '[形]（幅が）狭い / [動]～を狭くする，狭くなる',
         answerEn: 'narrow',
+        pos: ['adj', 'verb'],
         orderIndex: 2,
     },
     {
@@ -17746,6 +19660,7 @@ export const questions: Question[] = [
         sectionLabel: '1311-1320',
         promptJp: '[名]掃除人，[名]掃除機，[名]クリーナー',
         answerEn: 'cleaner',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -17757,6 +19672,7 @@ export const questions: Question[] = [
         sectionLabel: '1311-1320',
         promptJp: '[副]大いに，非常に',
         answerEn: 'greatly',
+        pos: ['adv'],
         orderIndex: 4,
     },
     {
@@ -17768,6 +19684,7 @@ export const questions: Question[] = [
         sectionLabel: '1311-1320',
         promptJp: '[名]～を提供する',
         answerEn: 'provide',
+        pos: ['noun'],
         orderIndex: 5,
     },
     {
@@ -17779,6 +19696,7 @@ export const questions: Question[] = [
         sectionLabel: '1311-1320',
         promptJp: '[形]環境にやさしい',
         answerEn: 'eco-friendly',
+        pos: ['adj'],
         orderIndex: 6,
     },
     {
@@ -17790,6 +19708,7 @@ export const questions: Question[] = [
         sectionLabel: '1311-1320',
         promptJp: '[形]すばらしい，優秀な',
         answerEn: 'excellent',
+        pos: ['adj'],
         orderIndex: 7,
     },
     {
@@ -17801,6 +19720,7 @@ export const questions: Question[] = [
         sectionLabel: '1311-1320',
         promptJp: '[名]現実，実状',
         answerEn: 'reality',
+        pos: ['noun'],
         orderIndex: 8,
     },
     {
@@ -17812,6 +19732,7 @@ export const questions: Question[] = [
         sectionLabel: '1311-1320',
         promptJp: '[名]特色，特徴',
         answerEn: 'feature',
+        pos: ['noun'],
         orderIndex: 9,
     },
     {
@@ -17823,6 +19744,7 @@ export const questions: Question[] = [
         sectionLabel: '1311-1320',
         promptJp: '[名]金 / [形]金の',
         answerEn: 'gold',
+        pos: ['noun', 'adj'],
         orderIndex: 10,
     },
     {
@@ -17834,6 +19756,7 @@ export const questions: Question[] = [
         sectionLabel: '1311-1320',
         promptJp: '[動]～を憎む，ひどく嫌う / [名]憎しみ',
         answerEn: 'hate',
+        pos: ['verb', 'noun'],
         orderIndex: 1,
     },
     {
@@ -17845,6 +19768,7 @@ export const questions: Question[] = [
         sectionLabel: '1311-1320',
         promptJp: '[名]発明家',
         answerEn: 'inventor',
+        pos: ['noun'],
         orderIndex: 2,
     },
     {
@@ -17856,6 +19780,7 @@ export const questions: Question[] = [
         sectionLabel: '1321-1330',
         promptJp: '[形]北（方）の',
         answerEn: 'northern',
+        pos: ['adj'],
         orderIndex: 3,
     },
     {
@@ -17867,6 +19792,7 @@ export const questions: Question[] = [
         sectionLabel: '1321-1330',
         promptJp: '[名]ポップス / [形]大衆向きの，ポップ[ポピュラー]（音楽）の',
         answerEn: 'pop',
+        pos: ['noun', 'adj'],
         orderIndex: 4,
     },
     {
@@ -17878,6 +19804,7 @@ export const questions: Question[] = [
         sectionLabel: '1321-1330',
         promptJp: '[副]とても，すごく / [形]実にすばらしい，最高級の',
         answerEn: 'super',
+        pos: ['adv', 'adj'],
         orderIndex: 5,
     },
     {
@@ -17889,6 +19816,7 @@ export const questions: Question[] = [
         sectionLabel: '1321-1330',
         promptJp: '[名]① 庭 [名]② ヤード',
         answerEn: 'yard',
+        pos: ['noun'],
         orderIndex: 6,
     },
     {
@@ -17900,6 +19828,7 @@ export const questions: Question[] = [
         sectionLabel: '1321-1330',
         promptJp: '[形]とてもすばらしい，空想的な',
         answerEn: 'fantastic',
+        pos: ['adj'],
         orderIndex: 7,
     },
     {
@@ -17911,6 +19840,7 @@ export const questions: Question[] = [
         sectionLabel: '1321-1330',
         promptJp: '[名]問題，争点',
         answerEn: 'issue',
+        pos: ['noun'],
         orderIndex: 8,
     },
     {
@@ -17922,6 +19852,7 @@ export const questions: Question[] = [
         sectionLabel: '1321-1330',
         promptJp: '[名]ジェットコースター',
         answerEn: 'roller coaster',
+        pos: ['noun'],
         orderIndex: 9,
     },
     {
@@ -17933,6 +19864,7 @@ export const questions: Question[] = [
         sectionLabel: '1321-1330',
         promptJp: '[動]～を配達する，届ける',
         answerEn: 'deliver',
+        pos: ['verb'],
         orderIndex: 10,
     },
     {
@@ -17944,6 +19876,7 @@ export const questions: Question[] = [
         sectionLabel: '1321-1330',
         promptJp: '[動]（～を）ほのめかす / [名]ヒント，手がかり',
         answerEn: 'hint',
+        pos: ['verb', 'noun'],
         orderIndex: 1,
     },
     {
@@ -17955,6 +19888,7 @@ export const questions: Question[] = [
         sectionLabel: '1321-1330',
         promptJp: '[動]～を選ぶ，選択する',
         answerEn: 'select',
+        pos: ['verb'],
         orderIndex: 2,
     },
     {
@@ -17966,6 +19900,7 @@ export const questions: Question[] = [
         sectionLabel: '1331-1340',
         promptJp: '[名]自由',
         answerEn: 'freedom',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -17977,6 +19912,7 @@ export const questions: Question[] = [
         sectionLabel: '1331-1340',
         promptJp: '[副]驚いたことには',
         answerEn: 'surprisingly',
+        pos: ['adv'],
         orderIndex: 4,
     },
     {
@@ -17988,6 +19924,7 @@ export const questions: Question[] = [
         sectionLabel: '1331-1340',
         promptJp: '[名][前にa，後にof ～をつけて]さまざまな～',
         answerEn: 'variety',
+        pos: ['noun', 'prep'],
         orderIndex: 5,
     },
     {
@@ -17999,6 +19936,7 @@ export const questions: Question[] = [
         sectionLabel: '1331-1340',
         promptJp: '[名]羽',
         answerEn: 'feather',
+        pos: ['noun'],
         orderIndex: 6,
     },
     {
@@ -18010,6 +19948,7 @@ export const questions: Question[] = [
         sectionLabel: '1331-1340',
         promptJp: '[動]～に出席する，参加する',
         answerEn: 'attend',
+        pos: ['verb'],
         orderIndex: 7,
     },
     {
@@ -18021,6 +19960,7 @@ export const questions: Question[] = [
         sectionLabel: '1331-1340',
         promptJp: '[名]バックパック，リュックサック',
         answerEn: 'backpack',
+        pos: ['noun'],
         orderIndex: 8,
     },
     {
@@ -18032,6 +19972,7 @@ export const questions: Question[] = [
         sectionLabel: '1331-1340',
         promptJp: '[名]ズボン',
         answerEn: 'pants',
+        pos: ['noun'],
         orderIndex: 9,
     },
     {
@@ -18043,6 +19984,7 @@ export const questions: Question[] = [
         sectionLabel: '1331-1340',
         promptJp: '[副]何とかして，どうにかして',
         answerEn: 'somehow',
+        pos: ['adv'],
         orderIndex: 10,
     },
     {
@@ -18054,6 +19996,7 @@ export const questions: Question[] = [
         sectionLabel: '1331-1340',
         promptJp: '[形]① つらい，きつい ② たくましい，丈夫な，タフな',
         answerEn: 'tough',
+        pos: ['adj'],
         orderIndex: 1,
     },
     {
@@ -18065,6 +20008,7 @@ export const questions: Question[] = [
         sectionLabel: '1331-1340',
         promptJp: '[名]ソファー，長いす',
         answerEn: 'couch',
+        pos: ['noun'],
         orderIndex: 2,
     },
     {
@@ -18076,6 +20020,7 @@ export const questions: Question[] = [
         sectionLabel: '1341-1350',
         promptJp: '[名]屋根，屋上',
         answerEn: 'roof',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -18087,6 +20032,7 @@ export const questions: Question[] = [
         sectionLabel: '1341-1350',
         promptJp: '[名]音，物音，騒音',
         answerEn: 'noise',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -18098,6 +20044,7 @@ export const questions: Question[] = [
         sectionLabel: '1341-1350',
         promptJp: '[名]賞，賞品',
         answerEn: 'award',
+        pos: ['noun'],
         orderIndex: 5,
     },
     {
@@ -18109,6 +20056,7 @@ export const questions: Question[] = [
         sectionLabel: '1341-1350',
         promptJp: '[動]～を取り消す，中止する',
         answerEn: 'cancel',
+        pos: ['verb'],
         orderIndex: 6,
     },
     {
@@ -18120,6 +20068,7 @@ export const questions: Question[] = [
         sectionLabel: '1341-1350',
         promptJp: '[代][後にA nor Bを伴って]AもBもどちらも（～ない） / [形]（2つのうちの）どちらの～も（…ない） / [副]どちらも（～ない）',
         answerEn: 'neither',
+        pos: ['pron', 'adj', 'adv'],
         orderIndex: 7,
     },
     {
@@ -18131,6 +20080,7 @@ export const questions: Question[] = [
         sectionLabel: '1341-1350',
         promptJp: '[名]包み，小包',
         answerEn: 'package',
+        pos: ['noun'],
         orderIndex: 8,
     },
     {
@@ -18142,6 +20092,7 @@ export const questions: Question[] = [
         sectionLabel: '1341-1350',
         promptJp: '[副]すぐに，ただちに',
         answerEn: 'immediately',
+        pos: ['adv'],
         orderIndex: 9,
     },
     {
@@ -18153,6 +20104,7 @@ export const questions: Question[] = [
         sectionLabel: '1341-1350',
         promptJp: '[名]～を含めて',
         answerEn: 'including',
+        pos: ['noun'],
         orderIndex: 10,
     },
     {
@@ -18164,6 +20116,7 @@ export const questions: Question[] = [
         sectionLabel: '1341-1350',
         promptJp: '[形]眠っている',
         answerEn: 'asleep',
+        pos: ['adj'],
         orderIndex: 1,
     },
     {
@@ -18175,6 +20128,7 @@ export const questions: Question[] = [
         sectionLabel: '1341-1350',
         promptJp: '[動]ほえる / [名]動物のうなり声',
         answerEn: 'roar',
+        pos: ['verb', 'noun'],
         orderIndex: 2,
     },
     {
@@ -18186,6 +20140,7 @@ export const questions: Question[] = [
         sectionLabel: '1351-1360',
         promptJp: '[名]スーツケース',
         answerEn: 'suitcase',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -18197,6 +20152,7 @@ export const questions: Question[] = [
         sectionLabel: '1351-1360',
         promptJp: '[名]手首',
         answerEn: 'wrist',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -18208,6 +20164,7 @@ export const questions: Question[] = [
         sectionLabel: '1351-1360',
         promptJp: '[名]笑い（声）',
         answerEn: 'laughter',
+        pos: ['noun'],
         orderIndex: 5,
     },
     {
@@ -18219,6 +20176,7 @@ export const questions: Question[] = [
         sectionLabel: '1351-1360',
         promptJp: '[形]ローストした，焼いた / [動]（肉などを）焼く，あぶる',
         answerEn: 'roast',
+        pos: ['adj', 'verb'],
         orderIndex: 6,
     },
     {
@@ -18230,6 +20188,7 @@ export const questions: Question[] = [
         sectionLabel: '1351-1360',
         promptJp: '[名]取引，契約',
         answerEn: 'deal',
+        pos: ['noun'],
         orderIndex: 7,
     },
     {
@@ -18241,6 +20200,7 @@ export const questions: Question[] = [
         sectionLabel: '1351-1360',
         promptJp: '[名]マーカー，マジックペン',
         answerEn: 'marker',
+        pos: ['noun'],
         orderIndex: 8,
     },
     {
@@ -18252,6 +20212,7 @@ export const questions: Question[] = [
         sectionLabel: '1351-1360',
         promptJp: '[動]流れる / [名]小川',
         answerEn: 'stream',
+        pos: ['verb', 'noun'],
         orderIndex: 9,
     },
     {
@@ -18263,6 +20224,7 @@ export const questions: Question[] = [
         sectionLabel: '1351-1360',
         promptJp: '[名]コメント，論評',
         answerEn: 'comment',
+        pos: ['noun'],
         orderIndex: 10,
     },
     {
@@ -18274,6 +20236,7 @@ export const questions: Question[] = [
         sectionLabel: '1351-1360',
         promptJp: '[名]刑務所',
         answerEn: 'jail',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -18285,6 +20248,7 @@ export const questions: Question[] = [
         sectionLabel: '1351-1360',
         promptJp: '[動]うなずく，[名]うなずき',
         answerEn: 'nod',
+        pos: ['verb', 'noun'],
         orderIndex: 2,
     },
     {
@@ -18296,6 +20260,7 @@ export const questions: Question[] = [
         sectionLabel: '1361-1370',
         promptJp: '[動]～を盗む',
         answerEn: 'steal',
+        pos: ['verb'],
         orderIndex: 3,
     },
     {
@@ -18307,6 +20272,7 @@ export const questions: Question[] = [
         sectionLabel: '1361-1370',
         promptJp: '[名]正午，真昼',
         answerEn: 'noon',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -18318,6 +20284,7 @@ export const questions: Question[] = [
         sectionLabel: '1361-1370',
         promptJp: '[名]登山者',
         answerEn: 'climber',
+        pos: ['noun'],
         orderIndex: 5,
     },
     {
@@ -18329,6 +20296,7 @@ export const questions: Question[] = [
         sectionLabel: '1361-1370',
         promptJp: '[名]組織，団体',
         answerEn: 'organization',
+        pos: ['noun'],
         orderIndex: 6,
     },
     {
@@ -18340,6 +20308,7 @@ export const questions: Question[] = [
         sectionLabel: '1361-1370',
         promptJp: '[名]細部，詳細',
         answerEn: 'detail',
+        pos: ['noun'],
         orderIndex: 7,
     },
     {
@@ -18351,6 +20320,7 @@ export const questions: Question[] = [
         sectionLabel: '1361-1370',
         promptJp: '[名]キャンプ（すること）',
         answerEn: 'camping',
+        pos: ['noun'],
         orderIndex: 8,
     },
     {
@@ -18362,6 +20332,7 @@ export const questions: Question[] = [
         sectionLabel: '1361-1370',
         promptJp: '[名]クッション',
         answerEn: 'cushion',
+        pos: ['noun'],
         orderIndex: 9,
     },
     {
@@ -18373,6 +20344,7 @@ export const questions: Question[] = [
         sectionLabel: '1361-1370',
         promptJp: '[動]① ～を混ぜる ②（人と）交わる，つき合う',
         answerEn: 'mix',
+        pos: ['verb'],
         orderIndex: 10,
     },
     {
@@ -18384,6 +20356,7 @@ export const questions: Question[] = [
         sectionLabel: '1361-1370',
         promptJp: '[名]役目，役割',
         answerEn: 'role',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -18395,6 +20368,7 @@ export const questions: Question[] = [
         sectionLabel: '1361-1370',
         promptJp: '[動]（人）を驚かす / [名]驚くべきこと，意外なこと',
         answerEn: 'surprise',
+        pos: ['verb', 'noun'],
         orderIndex: 2,
     },
     {
@@ -18406,6 +20380,7 @@ export const questions: Question[] = [
         sectionLabel: '1371-1380',
         promptJp: '[名]平日',
         answerEn: 'weekday',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -18417,6 +20392,7 @@ export const questions: Question[] = [
         sectionLabel: '1371-1380',
         promptJp: '[名]クジラ',
         answerEn: 'whale',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -18428,6 +20404,7 @@ export const questions: Question[] = [
         sectionLabel: '1371-1380',
         promptJp: '[形]（程度が）中くらいの，（大きさが）中間の / [名]中間',
         answerEn: 'medium',
+        pos: ['adj', 'noun'],
         orderIndex: 5,
     },
     {
@@ -18439,6 +20416,7 @@ export const questions: Question[] = [
         sectionLabel: '1371-1380',
         promptJp: '[動]① 回転する，転がる [動]② ～を転がす，巻く',
         answerEn: 'roll',
+        pos: ['verb'],
         orderIndex: 6,
     },
     {
@@ -18450,6 +20428,7 @@ export const questions: Question[] = [
         sectionLabel: '1371-1380',
         promptJp: '[名]小麦粉',
         answerEn: 'flour',
+        pos: ['noun'],
         orderIndex: 7,
     },
     {
@@ -18461,6 +20440,7 @@ export const questions: Question[] = [
         sectionLabel: '1371-1380',
         promptJp: '[名]ソース',
         answerEn: 'sauce',
+        pos: ['noun'],
         orderIndex: 8,
     },
     {
@@ -18472,6 +20452,7 @@ export const questions: Question[] = [
         sectionLabel: '1371-1380',
         promptJp: '[名]便利，好都合',
         answerEn: 'convenience',
+        pos: ['noun'],
         orderIndex: 9,
     },
     {
@@ -18483,6 +20464,7 @@ export const questions: Question[] = [
         sectionLabel: '1371-1380',
         promptJp: '[動]～を付ける，（ファイル）をEメールに添付する',
         answerEn: 'attach',
+        pos: ['verb'],
         orderIndex: 10,
     },
     {
@@ -18494,6 +20476,7 @@ export const questions: Question[] = [
         sectionLabel: '1371-1380',
         promptJp: '[名][theをつけて，複数扱い]イギリス人，英国人 / [形]イギリス（人）の，英国（人）の',
         answerEn: 'British',
+        pos: ['noun', 'num', 'adj'],
         orderIndex: 1,
     },
     {
@@ -18505,6 +20488,7 @@ export const questions: Question[] = [
         sectionLabel: '1371-1380',
         promptJp: '[名]一対，男女の一組',
         answerEn: 'couple',
+        pos: ['noun'],
         orderIndex: 2,
     },
     {
@@ -18516,6 +20500,7 @@ export const questions: Question[] = [
         sectionLabel: '1381-1390',
         promptJp: '[副]はっきりと，明らかに',
         answerEn: 'clearly',
+        pos: ['adv'],
         orderIndex: 3,
     },
     {
@@ -18527,6 +20512,7 @@ export const questions: Question[] = [
         sectionLabel: '1381-1390',
         promptJp: '[名]中身，内容',
         answerEn: 'content',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -18538,6 +20524,7 @@ export const questions: Question[] = [
         sectionLabel: '1381-1390',
         promptJp: '[名]恐竜',
         answerEn: 'dinosaur',
+        pos: ['noun'],
         orderIndex: 5,
     },
     {
@@ -18549,6 +20536,7 @@ export const questions: Question[] = [
         sectionLabel: '1381-1390',
         promptJp: '[名]発明，発明品',
         answerEn: 'invention',
+        pos: ['noun'],
         orderIndex: 6,
     },
     {
@@ -18560,6 +20548,7 @@ export const questions: Question[] = [
         sectionLabel: '1381-1390',
         promptJp: '[名]海草',
         answerEn: 'seaweed',
+        pos: ['noun'],
         orderIndex: 7,
     },
     {
@@ -18571,6 +20560,7 @@ export const questions: Question[] = [
         sectionLabel: '1381-1390',
         promptJp: '[名]選ぶこと，選択',
         answerEn: 'selection',
+        pos: ['noun'],
         orderIndex: 8,
     },
     {
@@ -18582,6 +20572,7 @@ export const questions: Question[] = [
         sectionLabel: '1381-1390',
         promptJp: '[形]特定の，具体的な',
         answerEn: 'specific',
+        pos: ['adj'],
         orderIndex: 9,
     },
     {
@@ -18593,6 +20584,7 @@ export const questions: Question[] = [
         sectionLabel: '1381-1390',
         promptJp: '[副]世界中に[で] / [形]世界的な',
         answerEn: 'worldwide',
+        pos: ['adv', 'adj'],
         orderIndex: 10,
     },
     {
@@ -18604,6 +20596,7 @@ export const questions: Question[] = [
         sectionLabel: '1381-1390',
         promptJp: '[名]壁，障壁',
         answerEn: 'barrier',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -18615,6 +20608,7 @@ export const questions: Question[] = [
         sectionLabel: '1381-1390',
         promptJp: '[前]～のそばに，～のわきに',
         answerEn: 'beside',
+        pos: ['prep'],
         orderIndex: 2,
     },
     {
@@ -18626,6 +20620,7 @@ export const questions: Question[] = [
         sectionLabel: '1391-1400',
         promptJp: '[名]子ども時代',
         answerEn: 'childhood',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -18637,6 +20632,7 @@ export const questions: Question[] = [
         sectionLabel: '1391-1400',
         promptJp: '[名]歯科医，歯医者',
         answerEn: 'dentist',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -18648,6 +20644,7 @@ export const questions: Question[] = [
         sectionLabel: '1391-1400',
         promptJp: '[副]直接に，じかに',
         answerEn: 'directly',
+        pos: ['adv'],
         orderIndex: 5,
     },
     {
@@ -18659,6 +20656,7 @@ export const questions: Question[] = [
         sectionLabel: '1391-1400',
         promptJp: '[名]ホームステイ，（留学生の）家庭滞在',
         answerEn: 'homestay',
+        pos: ['noun'],
         orderIndex: 6,
     },
     {
@@ -18670,6 +20668,7 @@ export const questions: Question[] = [
         sectionLabel: '1391-1400',
         promptJp: '[名]インスピレーション，すばらしい思いつき',
         answerEn: 'inspiration',
+        pos: ['noun'],
         orderIndex: 7,
     },
     {
@@ -18681,6 +20680,7 @@ export const questions: Question[] = [
         sectionLabel: '1391-1400',
         promptJp: '[名]知識，学識',
         answerEn: 'knowledge',
+        pos: ['noun'],
         orderIndex: 8,
     },
     {
@@ -18692,6 +20692,7 @@ export const questions: Question[] = [
         sectionLabel: '1391-1400',
         promptJp: '[動]～を誤解する',
         answerEn: 'misunderstand',
+        pos: ['verb'],
         orderIndex: 9,
     },
     {
@@ -18703,6 +20704,7 @@ export const questions: Question[] = [
         sectionLabel: '1391-1400',
         promptJp: '[名]前進，進歩，向上',
         answerEn: 'progress',
+        pos: ['noun'],
         orderIndex: 10,
     },
     {
@@ -18714,6 +20716,7 @@ export const questions: Question[] = [
         sectionLabel: '1391-1400',
         promptJp: '[名]関係',
         answerEn: 'relationship',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -18725,6 +20728,7 @@ export const questions: Question[] = [
         sectionLabel: '1391-1400',
         promptJp: '[名]翻訳',
         answerEn: 'translation',
+        pos: ['noun'],
         orderIndex: 2,
     },
     {
@@ -18736,6 +20740,7 @@ export const questions: Question[] = [
         sectionLabel: '1401-1410',
         promptJp: '[名]重さ，体重',
         answerEn: 'weight',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -18747,6 +20752,7 @@ export const questions: Question[] = [
         sectionLabel: '1401-1410',
         promptJp: '[名]国境，境界',
         answerEn: 'border',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -18758,6 +20764,7 @@ export const questions: Question[] = [
         sectionLabel: '1401-1410',
         promptJp: '[名]布，布巾',
         answerEn: 'cloth',
+        pos: ['noun'],
         orderIndex: 5,
     },
     {
@@ -18769,6 +20776,7 @@ export const questions: Question[] = [
         sectionLabel: '1401-1410',
         promptJp: '[名]ダム',
         answerEn: 'dam',
+        pos: ['noun'],
         orderIndex: 6,
     },
     {
@@ -18780,6 +20788,7 @@ export const questions: Question[] = [
         sectionLabel: '1401-1410',
         promptJp: '[名]結末',
         answerEn: 'ending',
+        pos: ['noun'],
         orderIndex: 7,
     },
     {
@@ -18791,6 +20800,7 @@ export const questions: Question[] = [
         sectionLabel: '1401-1410',
         promptJp: '[形]内部の，内側の',
         answerEn: 'inner',
+        pos: ['adj'],
         orderIndex: 8,
     },
     {
@@ -18802,6 +20812,7 @@ export const questions: Question[] = [
         sectionLabel: '1401-1410',
         promptJp: '[動] ～を満足させる，満たす',
         answerEn: 'satisfy',
+        pos: ['verb'],
         orderIndex: 9,
     },
     {
@@ -18813,6 +20824,7 @@ export const questions: Question[] = [
         sectionLabel: '1401-1410',
         promptJp: '[形動]芸術的な，芸術家的な',
         answerEn: 'artistic',
+        pos: ['verb', 'adj'],
         orderIndex: 10,
     },
     {
@@ -18824,6 +20836,7 @@ export const questions: Question[] = [
         sectionLabel: '1401-1410',
         promptJp: '[名]イメージ，像，姿',
         answerEn: 'image',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -18835,6 +20848,7 @@ export const questions: Question[] = [
         sectionLabel: '1401-1410',
         promptJp: '[名]興味，関心',
         answerEn: 'interest',
+        pos: ['noun'],
         orderIndex: 2,
     },
     {
@@ -18846,6 +20860,7 @@ export const questions: Question[] = [
         sectionLabel: '1411-1420',
         promptJp: '[名]リットル',
         answerEn: 'liter',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -18857,6 +20872,7 @@ export const questions: Question[] = [
         sectionLabel: '1411-1420',
         promptJp: '[名]パン職人',
         answerEn: 'baker',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -18868,6 +20884,7 @@ export const questions: Question[] = [
         sectionLabel: '1411-1420',
         promptJp: '[名]田舎',
         answerEn: 'countryside',
+        pos: ['noun'],
         orderIndex: 5,
     },
     {
@@ -18879,6 +20896,7 @@ export const questions: Question[] = [
         sectionLabel: '1411-1420',
         promptJp: '[名]避難',
         answerEn: 'evacuation',
+        pos: ['noun'],
         orderIndex: 6,
     },
     {
@@ -18890,6 +20908,7 @@ export const questions: Question[] = [
         sectionLabel: '1411-1420',
         promptJp: '[動]～を傷つける，～にけがをさせる',
         answerEn: 'injure',
+        pos: ['verb'],
         orderIndex: 7,
     },
     {
@@ -18901,6 +20920,7 @@ export const questions: Question[] = [
         sectionLabel: '1411-1420',
         promptJp: '[形]最新の，最近の',
         answerEn: 'latest',
+        pos: ['adj'],
         orderIndex: 8,
     },
     {
@@ -18912,6 +20932,7 @@ export const questions: Question[] = [
         sectionLabel: '1411-1420',
         promptJp: '[形]限られた，限度のある',
         answerEn: 'limited',
+        pos: ['adj'],
         orderIndex: 9,
     },
     {
@@ -18923,6 +20944,7 @@ export const questions: Question[] = [
         sectionLabel: '1411-1420',
         promptJp: '[副]静かに，黙って',
         answerEn: 'quietly',
+        pos: ['adv'],
         orderIndex: 10,
     },
     {
@@ -18934,6 +20956,7 @@ export const questions: Question[] = [
         sectionLabel: '1411-1420',
         promptJp: '[形]厳しい，厳格な',
         answerEn: 'strict',
+        pos: ['adj'],
         orderIndex: 1,
     },
     {
@@ -18945,6 +20968,7 @@ export const questions: Question[] = [
         sectionLabel: '1411-1420',
         promptJp: '[名]本文，テキスト / [動]（携帯電話で）（～に）メールする',
         answerEn: 'text',
+        pos: ['noun', 'verb'],
         orderIndex: 2,
     },
     {
@@ -18956,6 +20980,7 @@ export const questions: Question[] = [
         sectionLabel: '1421-1430',
         promptJp: '[名]探偵，刑事',
         answerEn: 'detective',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -18967,6 +20992,7 @@ export const questions: Question[] = [
         sectionLabel: '1421-1430',
         promptJp: '[動]（～を）やめる',
         answerEn: 'quit',
+        pos: ['verb'],
         orderIndex: 4,
     },
     {
@@ -18978,6 +21004,7 @@ export const questions: Question[] = [
         sectionLabel: '1421-1430',
         promptJp: '[名]セント',
         answerEn: 'cent',
+        pos: ['noun'],
         orderIndex: 5,
     },
     {
@@ -18989,6 +21016,7 @@ export const questions: Question[] = [
         sectionLabel: '1421-1430',
         promptJp: '[名]やかん',
         answerEn: 'kettle',
+        pos: ['noun'],
         orderIndex: 6,
     },
     {
@@ -19000,6 +21028,7 @@ export const questions: Question[] = [
         sectionLabel: '1421-1430',
         promptJp: '[名]クローゼット，押入れ',
         answerEn: 'closet',
+        pos: ['noun'],
         orderIndex: 7,
     },
     {
@@ -19011,6 +21040,7 @@ export const questions: Question[] = [
         sectionLabel: '1421-1430',
         promptJp: '[名]エレベーター',
         answerEn: 'elevator',
+        pos: ['noun'],
         orderIndex: 8,
     },
     {
@@ -19022,6 +21052,7 @@ export const questions: Question[] = [
         sectionLabel: '1421-1430',
         promptJp: '[名]消防士',
         answerEn: 'firefighter',
+        pos: ['noun'],
         orderIndex: 9,
     },
     {
@@ -19033,6 +21064,7 @@ export const questions: Question[] = [
         sectionLabel: '1421-1430',
         promptJp: '[名]丘',
         answerEn: 'hill',
+        pos: ['noun'],
         orderIndex: 10,
     },
     {
@@ -19044,6 +21076,7 @@ export const questions: Question[] = [
         sectionLabel: '1421-1430',
         promptJp: '[名]くちびる',
         answerEn: 'lip',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -19055,6 +21088,7 @@ export const questions: Question[] = [
         sectionLabel: '1421-1430',
         promptJp: '[名]ピン，まち針',
         answerEn: 'pin',
+        pos: ['noun'],
         orderIndex: 2,
     },
     {
@@ -19066,6 +21100,7 @@ export const questions: Question[] = [
         sectionLabel: '1431-1440',
         promptJp: '[形]おいしい',
         answerEn: 'tasty',
+        pos: ['adj'],
         orderIndex: 3,
     },
     {
@@ -19077,6 +21112,7 @@ export const questions: Question[] = [
         sectionLabel: '1431-1440',
         promptJp: '[動]失敗する，（試験に）落ちる',
         answerEn: 'fail',
+        pos: ['verb'],
         orderIndex: 4,
     },
     {
@@ -19088,6 +21124,7 @@ export const questions: Question[] = [
         sectionLabel: '1431-1440',
         promptJp: '[名]バン',
         answerEn: 'van',
+        pos: ['noun'],
         orderIndex: 5,
     },
     {
@@ -19099,6 +21136,7 @@ export const questions: Question[] = [
         sectionLabel: '1431-1440',
         promptJp: '[名]ヒップホップ',
         answerEn: 'hip-hop',
+        pos: ['noun'],
         orderIndex: 6,
     },
     {
@@ -19110,6 +21148,7 @@ export const questions: Question[] = [
         sectionLabel: '1431-1440',
         promptJp: '[名]聞き手',
         answerEn: 'listener',
+        pos: ['noun'],
         orderIndex: 7,
     },
     {
@@ -19121,6 +21160,7 @@ export const questions: Question[] = [
         sectionLabel: '1431-1440',
         promptJp: '[動]～に鍵をかける / [名]錠，（ドア）ロック',
         answerEn: 'lock',
+        pos: ['verb', 'noun'],
         orderIndex: 8,
     },
     {
@@ -19132,6 +21172,7 @@ export const questions: Question[] = [
         sectionLabel: '1431-1440',
         promptJp: '[名]乗船，搭乗',
         answerEn: 'boarding',
+        pos: ['noun'],
         orderIndex: 9,
     },
     {
@@ -19143,6 +21184,7 @@ export const questions: Question[] = [
         sectionLabel: '1431-1440',
         promptJp: '[名]センチメートル',
         answerEn: 'centimeter',
+        pos: ['noun'],
         orderIndex: 10,
     },
     {
@@ -19154,6 +21196,7 @@ export const questions: Question[] = [
         sectionLabel: '1431-1440',
         promptJp: '[動]～に従う',
         answerEn: 'obey',
+        pos: ['verb'],
         orderIndex: 1,
     },
     {
@@ -19165,6 +21208,7 @@ export const questions: Question[] = [
         sectionLabel: '1431-1440',
         promptJp: '[名]画家，絵を描く人',
         answerEn: 'painter',
+        pos: ['noun'],
         orderIndex: 2,
     },
     {
@@ -19176,6 +21220,7 @@ export const questions: Question[] = [
         sectionLabel: '1441-1450',
         promptJp: '[名]許し，許可',
         answerEn: 'permission',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -19187,6 +21232,7 @@ export const questions: Question[] = [
         sectionLabel: '1441-1450',
         promptJp: '[動]～に適する，合う，似合う / [名]スーツ',
         answerEn: 'suit',
+        pos: ['verb', 'noun'],
         orderIndex: 4,
     },
     {
@@ -19198,6 +21244,7 @@ export const questions: Question[] = [
         sectionLabel: '1441-1450',
         promptJp: '[名]トンネル',
         answerEn: 'tunnel',
+        pos: ['noun'],
         orderIndex: 5,
     },
     {
@@ -19209,6 +21256,7 @@ export const questions: Question[] = [
         sectionLabel: '1441-1450',
         promptJp: '[名]切りくず，[名]チップ，[名]ポテトチップ',
         answerEn: 'chip',
+        pos: ['noun'],
         orderIndex: 6,
     },
     {
@@ -19220,6 +21268,7 @@ export const questions: Question[] = [
         sectionLabel: '1441-1450',
         promptJp: '[形]予定されて，当然支払われるべき',
         answerEn: 'due',
+        pos: ['adj'],
         orderIndex: 7,
     },
     {
@@ -19231,6 +21280,7 @@ export const questions: Question[] = [
         sectionLabel: '1441-1450',
         promptJp: '[名]失敗',
         answerEn: 'failure',
+        pos: ['noun'],
         orderIndex: 8,
     },
     {
@@ -19242,6 +21292,7 @@ export const questions: Question[] = [
         sectionLabel: '1441-1450',
         promptJp: '[名]噴水',
         answerEn: 'fountain',
+        pos: ['noun'],
         orderIndex: 9,
     },
     {
@@ -19253,6 +21304,7 @@ export const questions: Question[] = [
         sectionLabel: '1441-1450',
         promptJp: '[動]（得点・点数を）取る，得点する / [名]得点，点数',
         answerEn: 'score',
+        pos: ['verb', 'noun'],
         orderIndex: 10,
     },
     {
@@ -19264,6 +21316,7 @@ export const questions: Question[] = [
         sectionLabel: '1441-1450',
         promptJp: '[副]本当に',
         answerEn: 'truly',
+        pos: ['adv'],
         orderIndex: 1,
     },
     {
@@ -19275,6 +21328,7 @@ export const questions: Question[] = [
         sectionLabel: '1441-1450',
         promptJp: '[動]～を埋める',
         answerEn: 'bury',
+        pos: ['verb'],
         orderIndex: 2,
     },
     {
@@ -19286,6 +21340,7 @@ export const questions: Question[] = [
         sectionLabel: '1451-1460',
         promptJp: '[名]大工',
         answerEn: 'carpenter',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -19297,6 +21352,7 @@ export const questions: Question[] = [
         sectionLabel: '1451-1460',
         promptJp: '[名]海岸，沿岸',
         answerEn: 'coast',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -19308,6 +21364,7 @@ export const questions: Question[] = [
         sectionLabel: '1451-1460',
         promptJp: '[名]綿，木綿',
         answerEn: 'cotton',
+        pos: ['noun'],
         orderIndex: 5,
     },
     {
@@ -19319,6 +21376,7 @@ export const questions: Question[] = [
         sectionLabel: '1451-1460',
         promptJp: '[名]生物，生き物',
         answerEn: 'creature',
+        pos: ['noun'],
         orderIndex: 6,
     },
     {
@@ -19330,6 +21388,7 @@ export const questions: Question[] = [
         sectionLabel: '1451-1460',
         promptJp: '[形]東（方）の',
         answerEn: 'eastern',
+        pos: ['adj'],
         orderIndex: 7,
     },
     {
@@ -19341,6 +21400,7 @@ export const questions: Question[] = [
         sectionLabel: '1451-1460',
         promptJp: '[名]（両側に部屋のある）廊下',
         answerEn: 'hallway',
+        pos: ['noun'],
         orderIndex: 8,
     },
     {
@@ -19352,6 +21412,7 @@ export const questions: Question[] = [
         sectionLabel: '1451-1460',
         promptJp: '[名]ハーモニー，調和',
         answerEn: 'harmony',
+        pos: ['noun'],
         orderIndex: 9,
     },
     {
@@ -19363,6 +21424,7 @@ export const questions: Question[] = [
         sectionLabel: '1451-1460',
         promptJp: '[名]限界，限度 / [動]～を制限する，限る',
         answerEn: 'limit',
+        pos: ['noun', 'verb'],
         orderIndex: 10,
     },
     {
@@ -19374,6 +21436,7 @@ export const questions: Question[] = [
         sectionLabel: '1451-1460',
         promptJp: '[名]記念碑',
         answerEn: 'monument',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -19385,6 +21448,7 @@ export const questions: Question[] = [
         sectionLabel: '1451-1460',
         promptJp: '[名]爪',
         answerEn: 'nail',
+        pos: ['noun'],
         orderIndex: 2,
     },
     {
@@ -19396,6 +21460,7 @@ export const questions: Question[] = [
         sectionLabel: '1461-1470',
         promptJp: '[名]プログラマー',
         answerEn: 'programmer',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -19407,6 +21472,7 @@ export const questions: Question[] = [
         sectionLabel: '1461-1470',
         promptJp: '[名]レポーター，報道記者',
         answerEn: 'reporter',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -19418,6 +21484,7 @@ export const questions: Question[] = [
         sectionLabel: '1461-1470',
         promptJp: '[名]救助，救済 / [動]～を救助する',
         answerEn: 'rescue',
+        pos: ['noun', 'verb'],
         orderIndex: 5,
     },
     {
@@ -19429,6 +21496,7 @@ export const questions: Question[] = [
         sectionLabel: '1461-1470',
         promptJp: '[名]煙，[動]（たばこなど）を吸う，煙を出す',
         answerEn: 'smoke',
+        pos: ['noun', 'verb'],
         orderIndex: 6,
     },
     {
@@ -19440,6 +21508,7 @@ export const questions: Question[] = [
         sectionLabel: '1461-1470',
         promptJp: '[名]スタイリスト',
         answerEn: 'stylist',
+        pos: ['noun'],
         orderIndex: 7,
     },
     {
@@ -19451,6 +21520,7 @@ export const questions: Question[] = [
         sectionLabel: '1461-1470',
         promptJp: '[形]風の吹く，風が強い',
         answerEn: 'windy',
+        pos: ['adj'],
         orderIndex: 8,
     },
     {
@@ -19462,6 +21532,7 @@ export const questions: Question[] = [
         sectionLabel: '1461-1470',
         promptJp: '[名]体操',
         answerEn: 'gymnastics',
+        pos: ['noun'],
         orderIndex: 9,
     },
     {
@@ -19473,6 +21544,7 @@ export const questions: Question[] = [
         sectionLabel: '1461-1470',
         promptJp: '[名]竹',
         answerEn: 'bamboo',
+        pos: ['noun'],
         orderIndex: 10,
     },
     {
@@ -19484,6 +21556,7 @@ export const questions: Question[] = [
         sectionLabel: '1461-1470',
         promptJp: '[名]選択',
         answerEn: 'choice',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -19495,6 +21568,7 @@ export const questions: Question[] = [
         sectionLabel: '1461-1470',
         promptJp: '[形]頭がいい，利口な',
         answerEn: 'clever',
+        pos: ['adj'],
         orderIndex: 2,
     },
     {
@@ -19506,6 +21580,7 @@ export const questions: Question[] = [
         sectionLabel: '1471-1480',
         promptJp: '[副]深く',
         answerEn: 'deeply',
+        pos: ['adv'],
         orderIndex: 3,
     },
     {
@@ -19517,6 +21592,7 @@ export const questions: Question[] = [
         sectionLabel: '1471-1480',
         promptJp: '[名]専門家，名人，エキスパート',
         answerEn: 'expert',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -19528,6 +21604,7 @@ export const questions: Question[] = [
         sectionLabel: '1471-1480',
         promptJp: '[動]～を欠く，～がない / [名]不足，欠乏',
         answerEn: 'lack',
+        pos: ['verb', 'noun'],
         orderIndex: 5,
     },
     {
@@ -19539,6 +21616,7 @@ export const questions: Question[] = [
         sectionLabel: '1471-1480',
         promptJp: '[代]あなた，[名]お客様',
         answerEn: 'sir',
+        pos: ['pron', 'noun'],
         orderIndex: 6,
     },
     {
@@ -19550,6 +21628,7 @@ export const questions: Question[] = [
         sectionLabel: '1471-1480',
         promptJp: '[形]もっと悪い[下手な，ひどい]',
         answerEn: 'worse',
+        pos: ['adj'],
         orderIndex: 7,
     },
     {
@@ -19561,6 +21640,7 @@ export const questions: Question[] = [
         sectionLabel: '1471-1480',
         promptJp: '[名]放送',
         answerEn: 'broadcasting',
+        pos: ['noun'],
         orderIndex: 8,
     },
     {
@@ -19572,6 +21652,7 @@ export const questions: Question[] = [
         sectionLabel: '1471-1480',
         promptJp: '[名]胸',
         answerEn: 'chest',
+        pos: ['noun'],
         orderIndex: 9,
     },
     {
@@ -19583,6 +21664,7 @@ export const questions: Question[] = [
         sectionLabel: '1471-1480',
         promptJp: '[名]あご（の先端）',
         answerEn: 'chin',
+        pos: ['noun'],
         orderIndex: 10,
     },
     {
@@ -19594,6 +21676,7 @@ export const questions: Question[] = [
         sectionLabel: '1471-1480',
         promptJp: '[形]顔の',
         answerEn: 'facial',
+        pos: ['adj'],
         orderIndex: 1,
     },
     {
@@ -19605,6 +21688,7 @@ export const questions: Question[] = [
         sectionLabel: '1471-1480',
         promptJp: '[形]① 公正な，公平な ② かなりの，まあまあの / [名]博覧会，展示会，説明会',
         answerEn: 'fair',
+        pos: ['adj', 'noun'],
         orderIndex: 2,
     },
     {
@@ -19616,6 +21700,7 @@ export const questions: Question[] = [
         sectionLabel: '1481-1490',
         promptJp: '[名]流行，ファッション',
         answerEn: 'fashion',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -19627,6 +21712,7 @@ export const questions: Question[] = [
         sectionLabel: '1481-1490',
         promptJp: '[名]額',
         answerEn: 'forehead',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -19638,6 +21724,7 @@ export const questions: Question[] = [
         sectionLabel: '1481-1490',
         promptJp: '[名][複数形で]ジーンズ',
         answerEn: 'jean',
+        pos: ['noun', 'adj', 'num'],
         orderIndex: 5,
     },
     {
@@ -19649,6 +21736,7 @@ export const questions: Question[] = [
         sectionLabel: '1481-1490',
         promptJp: '[名]ジャーナリスト',
         answerEn: 'journalist',
+        pos: ['noun'],
         orderIndex: 6,
     },
     {
@@ -19660,6 +21748,7 @@ export const questions: Question[] = [
         sectionLabel: '1481-1490',
         promptJp: '[名]プロ，玄人，熟練者',
         answerEn: 'pro',
+        pos: ['noun'],
         orderIndex: 7,
     },
     {
@@ -19671,6 +21760,7 @@ export const questions: Question[] = [
         sectionLabel: '1481-1490',
         promptJp: '[名]足首，くるぶし',
         answerEn: 'ankle',
+        pos: ['noun'],
         orderIndex: 8,
     },
     {
@@ -19682,6 +21772,7 @@ export const questions: Question[] = [
         sectionLabel: '1481-1490',
         promptJp: '[動]～を決定する，決心する',
         answerEn: 'determine',
+        pos: ['verb'],
         orderIndex: 9,
     },
     {
@@ -19693,6 +21784,7 @@ export const questions: Question[] = [
         sectionLabel: '1481-1490',
         promptJp: '[名]スカート',
         answerEn: 'skirt',
+        pos: ['noun'],
         orderIndex: 10,
     },
     {
@@ -19704,6 +21796,7 @@ export const questions: Question[] = [
         sectionLabel: '1481-1490',
         promptJp: '[名]① タンク，水槽 ② 戦車',
         answerEn: 'tank',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -19715,6 +21808,7 @@ export const questions: Question[] = [
         sectionLabel: '1481-1490',
         promptJp: '[名]学期',
         answerEn: 'term',
+        pos: ['noun'],
         orderIndex: 2,
     },
     {
@@ -19726,6 +21820,7 @@ export const questions: Question[] = [
         sectionLabel: '1491-1500',
         promptJp: '[名]舌',
         answerEn: 'tongue',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -19737,6 +21832,7 @@ export const questions: Question[] = [
         sectionLabel: '1491-1500',
         promptJp: '[名]（蓋のある大きな）ごみ箱，くず入れ',
         answerEn: 'trash can',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -19748,6 +21844,7 @@ export const questions: Question[] = [
         sectionLabel: '1491-1500',
         promptJp: '[形]信じられない',
         answerEn: 'unbelievable',
+        pos: ['adj'],
         orderIndex: 5,
     },
     {
@@ -19759,6 +21856,7 @@ export const questions: Question[] = [
         sectionLabel: '1491-1500',
         promptJp: '[名]花びん',
         answerEn: 'vase',
+        pos: ['noun'],
         orderIndex: 6,
     },
     {
@@ -19770,6 +21868,7 @@ export const questions: Question[] = [
         sectionLabel: '1491-1500',
         promptJp: '[形]オーストラリアの，[名]オーストラリア人',
         answerEn: 'Australian',
+        pos: ['adj', 'noun'],
         orderIndex: 7,
     },
     {
@@ -19781,6 +21880,7 @@ export const questions: Question[] = [
         sectionLabel: '1491-1500',
         promptJp: '[名]（野球の）バット',
         answerEn: 'bat',
+        pos: ['noun'],
         orderIndex: 8,
     },
     {
@@ -19792,6 +21892,7 @@ export const questions: Question[] = [
         sectionLabel: '1491-1500',
         promptJp: '[形]静かな，穏やかな，落ち着いた',
         answerEn: 'calm',
+        pos: ['adj'],
         orderIndex: 9,
     },
     {
@@ -19803,6 +21904,7 @@ export const questions: Question[] = [
         sectionLabel: '1491-1500',
         promptJp: '[名]儀式，式典',
         answerEn: 'ceremony',
+        pos: ['noun'],
         orderIndex: 10,
     },
     {
@@ -19814,6 +21916,7 @@ export const questions: Question[] = [
         sectionLabel: '1491-1500',
         promptJp: '[名]① チェーン（店） ② くさり',
         answerEn: 'chain',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -19825,6 +21928,7 @@ export const questions: Question[] = [
         sectionLabel: '1491-1500',
         promptJp: '[名]お守り',
         answerEn: 'charm',
+        pos: ['noun'],
         orderIndex: 2,
     },
     {
@@ -19836,6 +21940,7 @@ export const questions: Question[] = [
         sectionLabel: '1501-1510',
         promptJp: '[名]① 世代 ② 発生',
         answerEn: 'generation',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -19847,6 +21952,7 @@ export const questions: Question[] = [
         sectionLabel: '1501-1510',
         promptJp: '[形]かわいらしい，美しい',
         answerEn: 'lovely',
+        pos: ['adj'],
         orderIndex: 4,
     },
     {
@@ -19858,6 +21964,7 @@ export const questions: Question[] = [
         sectionLabel: '1501-1510',
         promptJp: '[名]係官，役人，警官',
         answerEn: 'officer',
+        pos: ['noun'],
         orderIndex: 5,
     },
     {
@@ -19869,6 +21976,7 @@ export const questions: Question[] = [
         sectionLabel: '1501-1510',
         promptJp: '[名]予定表，スケジュール',
         answerEn: 'schedule',
+        pos: ['noun'],
         orderIndex: 6,
     },
     {
@@ -19880,6 +21988,7 @@ export const questions: Question[] = [
         sectionLabel: '1501-1510',
         promptJp: '[形]社会の，社会的な',
         answerEn: 'social',
+        pos: ['adj'],
         orderIndex: 7,
     },
     {
@@ -19891,6 +22000,7 @@ export const questions: Question[] = [
         sectionLabel: '1501-1510',
         promptJp: '[形]ねばねばする，べとべとする',
         answerEn: 'sticky',
+        pos: ['adj'],
         orderIndex: 8,
     },
     {
@@ -19902,6 +22012,7 @@ export const questions: Question[] = [
         sectionLabel: '1501-1510',
         promptJp: '[名]（飲み物用の）ストロー',
         answerEn: 'straw',
+        pos: ['noun'],
         orderIndex: 9,
     },
     {
@@ -19913,6 +22024,7 @@ export const questions: Question[] = [
         sectionLabel: '1501-1510',
         promptJp: '[名]宝物，財宝',
         answerEn: 'treasure',
+        pos: ['noun'],
         orderIndex: 10,
     },
     {
@@ -19924,6 +22036,7 @@ export const questions: Question[] = [
         sectionLabel: '1501-1510',
         promptJp: '[形]双子の / [名]双子の片方，[複数形で]双子',
         answerEn: 'twin',
+        pos: ['adj', 'noun', 'num'],
         orderIndex: 1,
     },
     {
@@ -19935,6 +22048,7 @@ export const questions: Question[] = [
         sectionLabel: '1501-1510',
         promptJp: '[名]札入れ，財布',
         answerEn: 'wallet',
+        pos: ['noun'],
         orderIndex: 2,
     },
     {
@@ -19946,6 +22060,7 @@ export const questions: Question[] = [
         sectionLabel: '1511-1520',
         promptJp: '[名]（男の）魔法使い',
         answerEn: 'wizard',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -19957,6 +22072,7 @@ export const questions: Question[] = [
         sectionLabel: '1511-1520',
         promptJp: '[動]～を分ける，分割する',
         answerEn: 'divide',
+        pos: ['verb'],
         orderIndex: 4,
     },
     {
@@ -19968,6 +22084,7 @@ export const questions: Question[] = [
         sectionLabel: '1511-1520',
         promptJp: '[名]（衣服の）ボタン，押しボタン',
         answerEn: 'button',
+        pos: ['noun'],
         orderIndex: 5,
     },
     {
@@ -19979,6 +22096,7 @@ export const questions: Question[] = [
         sectionLabel: '1511-1520',
         promptJp: '[名]図表，チャート',
         answerEn: 'chart',
+        pos: ['noun'],
         orderIndex: 6,
     },
     {
@@ -19990,6 +22108,7 @@ export const questions: Question[] = [
         sectionLabel: '1511-1520',
         promptJp: '[名]雲',
         answerEn: 'cloud',
+        pos: ['noun'],
         orderIndex: 7,
     },
     {
@@ -20001,6 +22120,7 @@ export const questions: Question[] = [
         sectionLabel: '1511-1520',
         promptJp: '[名]地域社会，共同体，コミュニティ',
         answerEn: 'community',
+        pos: ['noun'],
         orderIndex: 8,
     },
     {
@@ -20012,6 +22132,7 @@ export const questions: Question[] = [
         sectionLabel: '1511-1520',
         promptJp: '[動]～をよく考える，熟慮する',
         answerEn: 'consider',
+        pos: ['verb'],
         orderIndex: 9,
     },
     {
@@ -20023,6 +22144,7 @@ export const questions: Question[] = [
         sectionLabel: '1511-1520',
         promptJp: '[名]会話',
         answerEn: 'conversation',
+        pos: ['noun'],
         orderIndex: 10,
     },
     {
@@ -20034,6 +22156,7 @@ export const questions: Question[] = [
         sectionLabel: '1511-1520',
         promptJp: '[動]描写する，記述する，～の特徴を述べる',
         answerEn: 'describe',
+        pos: ['verb'],
         orderIndex: 1,
     },
     {
@@ -20045,6 +22168,7 @@ export const questions: Question[] = [
         sectionLabel: '1511-1520',
         promptJp: '[名]随筆，（学生の）レポート，作文',
         answerEn: 'essay',
+        pos: ['noun'],
         orderIndex: 2,
     },
     {
@@ -20056,6 +22180,7 @@ export const questions: Question[] = [
         sectionLabel: '1521-1530',
         promptJp: '[動]（～を）探検する',
         answerEn: 'explore',
+        pos: ['verb'],
         orderIndex: 3,
     },
     {
@@ -20067,6 +22192,7 @@ export const questions: Question[] = [
         sectionLabel: '1521-1530',
         promptJp: '[名]ファイル，（コンピューター）ファイル',
         answerEn: 'file',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -20078,6 +22204,7 @@ export const questions: Question[] = [
         sectionLabel: '1521-1530',
         promptJp: '[形]いらいらしている，ストレスのたまった',
         answerEn: 'frustrated',
+        pos: ['adj'],
         orderIndex: 5,
     },
     {
@@ -20089,6 +22216,7 @@ export const questions: Question[] = [
         sectionLabel: '1521-1530',
         promptJp: '[名]～年生，～学年の生徒',
         answerEn: 'grader',
+        pos: ['noun'],
         orderIndex: 6,
     },
     {
@@ -20100,6 +22228,7 @@ export const questions: Question[] = [
         sectionLabel: '1521-1530',
         promptJp: '[動]～にあいさつする，～を迎える',
         answerEn: 'greet',
+        pos: ['verb'],
         orderIndex: 7,
     },
     {
@@ -20111,6 +22240,7 @@ export const questions: Question[] = [
         sectionLabel: '1521-1530',
         promptJp: '[名]（教室などで配る）プリント，配布資料，チラシ',
         answerEn: 'handout',
+        pos: ['noun'],
         orderIndex: 8,
     },
     {
@@ -20122,6 +22252,7 @@ export const questions: Question[] = [
         sectionLabel: '1521-1530',
         promptJp: '[名]幸福，幸せ',
         answerEn: 'happiness',
+        pos: ['noun'],
         orderIndex: 9,
     },
     {
@@ -20133,6 +22264,7 @@ export const questions: Question[] = [
         sectionLabel: '1521-1530',
         promptJp: '[形]申し分のない，理想的な',
         answerEn: 'ideal',
+        pos: ['adj'],
         orderIndex: 10,
     },
     {
@@ -20144,6 +22276,7 @@ export const questions: Question[] = [
         sectionLabel: '1521-1530',
         promptJp: '[名]冗談，ジョーク / [動]冗談を言う',
         answerEn: 'joke',
+        pos: ['noun', 'verb'],
         orderIndex: 1,
     },
     {
@@ -20155,6 +22288,7 @@ export const questions: Question[] = [
         sectionLabel: '1521-1530',
         promptJp: '[名]ジャングル',
         answerEn: 'jungle',
+        pos: ['noun'],
         orderIndex: 2,
     },
     {
@@ -20166,6 +22300,7 @@ export const questions: Question[] = [
         sectionLabel: '1531-1540',
         promptJp: '[動]（～を）編む',
         answerEn: 'knit',
+        pos: ['verb'],
         orderIndex: 3,
     },
     {
@@ -20177,6 +22312,7 @@ export const questions: Question[] = [
         sectionLabel: '1531-1540',
         promptJp: '[名]材料，原料，資料',
         answerEn: 'material',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -20188,6 +22324,7 @@ export const questions: Question[] = [
         sectionLabel: '1531-1540',
         promptJp: '[名]機会，好機，チャンス',
         answerEn: 'opportunity',
+        pos: ['noun'],
         orderIndex: 5,
     },
     {
@@ -20199,6 +22336,7 @@ export const questions: Question[] = [
         sectionLabel: '1531-1540',
         promptJp: '[名]質，品質',
         answerEn: 'quality',
+        pos: ['noun'],
         orderIndex: 6,
     },
     {
@@ -20210,6 +22348,7 @@ export const questions: Question[] = [
         sectionLabel: '1531-1540',
         promptJp: '[形]すばやい',
         answerEn: 'quick',
+        pos: ['adj'],
         orderIndex: 7,
     },
     {
@@ -20221,6 +22360,7 @@ export const questions: Question[] = [
         sectionLabel: '1531-1540',
         promptJp: '[動]（～を）閉める，閉じる',
         answerEn: 'shut',
+        pos: ['verb'],
         orderIndex: 8,
     },
     {
@@ -20232,6 +22372,7 @@ export const questions: Question[] = [
         sectionLabel: '1531-1540',
         promptJp: '[形]たった一つの，単独の，1人用の',
         answerEn: 'single',
+        pos: ['adj'],
         orderIndex: 9,
     },
     {
@@ -20243,6 +22384,7 @@ export const questions: Question[] = [
         sectionLabel: '1531-1540',
         promptJp: '[名]日没，夕焼け',
         answerEn: 'sunset',
+        pos: ['noun'],
         orderIndex: 10,
     },
     {
@@ -20254,6 +22396,7 @@ export const questions: Question[] = [
         sectionLabel: '1531-1540',
         promptJp: '[名]合計，総額 / [形]全体の，総計の',
         answerEn: 'total',
+        pos: ['noun', 'adj'],
         orderIndex: 1,
     },
     {
@@ -20265,6 +22408,7 @@ export const questions: Question[] = [
         sectionLabel: '1531-1540',
         promptJp: '[前/副]～の上に',
         answerEn: 'upon',
+        pos: ['adv', 'prep'],
         orderIndex: 2,
     },
     {
@@ -20276,6 +22420,7 @@ export const questions: Question[] = [
         sectionLabel: '1541-1550',
         promptJp: '[名]谷（間），渓谷',
         answerEn: 'valley',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -20287,6 +22432,7 @@ export const questions: Question[] = [
         sectionLabel: '1541-1550',
         promptJp: '[動]あくびをする，[名]あくび',
         answerEn: 'yawn',
+        pos: ['verb', 'noun'],
         orderIndex: 4,
     },
     {
@@ -20298,6 +22444,7 @@ export const questions: Question[] = [
         sectionLabel: '1541-1550',
         promptJp: '[名]バルコニー，（2階以上にある）ベランダ',
         answerEn: 'balcony',
+        pos: ['noun'],
         orderIndex: 5,
     },
     {
@@ -20309,6 +22456,7 @@ export const questions: Question[] = [
         sectionLabel: '1541-1550',
         promptJp: '[形]中心の，中央の',
         answerEn: 'central',
+        pos: ['adj'],
         orderIndex: 6,
     },
     {
@@ -20320,6 +22468,7 @@ export const questions: Question[] = [
         sectionLabel: '1541-1550',
         promptJp: '[名]衣類，衣料品',
         answerEn: 'clothing',
+        pos: ['noun'],
         orderIndex: 7,
     },
     {
@@ -20331,6 +22480,7 @@ export const questions: Question[] = [
         sectionLabel: '1541-1550',
         promptJp: '[名]サイクリング',
         answerEn: 'cycling',
+        pos: ['noun'],
         orderIndex: 8,
     },
     {
@@ -20342,6 +22492,7 @@ export const questions: Question[] = [
         sectionLabel: '1541-1550',
         promptJp: '[動]～を奮い立たせる，～する気にさせる',
         answerEn: 'inspire',
+        pos: ['verb'],
         orderIndex: 9,
     },
     {
@@ -20353,6 +22504,7 @@ export const questions: Question[] = [
         sectionLabel: '1541-1550',
         promptJp: '[動][前にbe動詞をつけ，～edの形にして]位置する',
         answerEn: 'locate',
+        pos: ['verb', 'adj', 'prep'],
         orderIndex: 10,
     },
     {
@@ -20364,6 +22516,7 @@ export const questions: Question[] = [
         sectionLabel: '1541-1550',
         promptJp: '[名]駐車（すること）',
         answerEn: 'parking',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -20375,6 +22528,7 @@ export const questions: Question[] = [
         sectionLabel: '1541-1550',
         promptJp: '[名]港，港町',
         answerEn: 'port',
+        pos: ['noun'],
         orderIndex: 2,
     },
     {
@@ -20386,6 +22540,7 @@ export const questions: Question[] = [
         sectionLabel: '1551-1560',
         promptJp: '[名]反応，（～に対する）答え',
         answerEn: 'response',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -20397,6 +22552,7 @@ export const questions: Question[] = [
         sectionLabel: '1551-1560',
         promptJp: '[名]理解',
         answerEn: 'understanding',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -20408,6 +22564,7 @@ export const questions: Question[] = [
         sectionLabel: '1551-1560',
         promptJp: '[副]不運にも，残念なことに',
         answerEn: 'unfortunately',
+        pos: ['adv'],
         orderIndex: 5,
     },
     {
@@ -20419,6 +22576,7 @@ export const questions: Question[] = [
         sectionLabel: '1551-1560',
         promptJp: '[名]（女の）魔法使い，魔女',
         answerEn: 'witch',
+        pos: ['noun'],
         orderIndex: 6,
     },
     {
@@ -20430,6 +22588,7 @@ export const questions: Question[] = [
         sectionLabel: '1551-1560',
         promptJp: '[形]南（方）の',
         answerEn: 'southern',
+        pos: ['adj'],
         orderIndex: 7,
     },
     {
@@ -20441,6 +22600,7 @@ export const questions: Question[] = [
         sectionLabel: '1551-1560',
         promptJp: '[名]群衆，群集',
         answerEn: 'crowd',
+        pos: ['noun'],
         orderIndex: 8,
     },
     {
@@ -20452,6 +22612,7 @@ export const questions: Question[] = [
         sectionLabel: '1551-1560',
         promptJp: 'エラーが発生しました。もう一度お試しください。',
         answerEn: 'ethnic',
+        pos: ['noun'],
         orderIndex: 9,
     },
     {
@@ -20463,6 +22624,7 @@ export const questions: Question[] = [
         sectionLabel: '1551-1560',
         promptJp: '[形] 忘れっぽい',
         answerEn: 'forgetful',
+        pos: ['adj'],
         orderIndex: 10,
     },
     {
@@ -20474,6 +22636,7 @@ export const questions: Question[] = [
         sectionLabel: '1551-1560',
         promptJp: '[名] よさ，善良さ',
         answerEn: 'goodness',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -20485,6 +22648,7 @@ export const questions: Question[] = [
         sectionLabel: '1551-1560',
         promptJp: '[形]主要な，[動]先導する',
         answerEn: 'leading',
+        pos: ['adj', 'verb'],
         orderIndex: 2,
     },
     {
@@ -20496,6 +22660,7 @@ export const questions: Question[] = [
         sectionLabel: '1561-1570',
         promptJp: '[名]（外科）手術',
         answerEn: 'surgery',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -20507,6 +22672,7 @@ export const questions: Question[] = [
         sectionLabel: '1561-1570',
         promptJp: '[名]ベリー',
         answerEn: 'berry',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -20518,6 +22684,7 @@ export const questions: Question[] = [
         sectionLabel: '1561-1570',
         promptJp: '[名]混合物，ブレンド / [動]～を混ぜる，ブレンドする',
         answerEn: 'blend',
+        pos: ['noun', 'verb'],
         orderIndex: 5,
     },
     {
@@ -20529,6 +22696,7 @@ export const questions: Question[] = [
         sectionLabel: '1561-1570',
         promptJp: '[名]喫茶店，カフェ',
         answerEn: 'cafe',
+        pos: ['noun'],
         orderIndex: 6,
     },
     {
@@ -20540,6 +22708,7 @@ export const questions: Question[] = [
         sectionLabel: '1561-1570',
         promptJp: '[名]角度，角',
         answerEn: 'angle',
+        pos: ['noun'],
         orderIndex: 7,
     },
     {
@@ -20551,6 +22720,7 @@ export const questions: Question[] = [
         sectionLabel: '1561-1570',
         promptJp: '[形]（体の）不自由な',
         answerEn: 'disabled',
+        pos: ['adj'],
         orderIndex: 8,
     },
     {
@@ -20562,6 +22732,7 @@ export const questions: Question[] = [
         sectionLabel: '1561-1570',
         promptJp: '[動]（金）を稼ぐ，（生計）を立てる',
         answerEn: 'earn',
+        pos: ['verb'],
         orderIndex: 9,
     },
     {
@@ -20573,6 +22744,7 @@ export const questions: Question[] = [
         sectionLabel: '1561-1570',
         promptJp: '[名]好意，親切な行為',
         answerEn: 'favor',
+        pos: ['noun'],
         orderIndex: 10,
     },
     {
@@ -20584,6 +22756,7 @@ export const questions: Question[] = [
         sectionLabel: '1561-1570',
         promptJp: '[名]文',
         answerEn: 'sentence',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -20595,6 +22768,7 @@ export const questions: Question[] = [
         sectionLabel: '1561-1570',
         promptJp: '[動]謝る，わびる',
         answerEn: 'apologize',
+        pos: ['verb'],
         orderIndex: 2,
     },
     {
@@ -20606,6 +22780,7 @@ export const questions: Question[] = [
         sectionLabel: '1571-1580',
         promptJp: '[形]全世界の，万人に共通の，普遍的な',
         answerEn: 'universal',
+        pos: ['adj'],
         orderIndex: 3,
     },
     {
@@ -20617,6 +22792,7 @@ export const questions: Question[] = [
         sectionLabel: '1571-1580',
         promptJp: '[動]① ～の重さがある ② ～の重さを量る',
         answerEn: 'weigh',
+        pos: ['verb'],
         orderIndex: 4,
     },
     {
@@ -20628,6 +22804,7 @@ export const questions: Question[] = [
         sectionLabel: '1571-1580',
         promptJp: '[動]① 凍る，凍える ② ～を凍らせる，冷凍する',
         answerEn: 'freeze',
+        pos: ['verb'],
         orderIndex: 5,
     },
     {
@@ -20639,6 +22816,7 @@ export const questions: Question[] = [
         sectionLabel: '1571-1580',
         promptJp: '[副]欠席して',
         answerEn: 'absent',
+        pos: ['adv'],
         orderIndex: 6,
     },
     {
@@ -20650,6 +22828,7 @@ export const questions: Question[] = [
         sectionLabel: '1571-1580',
         promptJp: '[名]アイドル，偶像',
         answerEn: 'idol',
+        pos: ['noun'],
         orderIndex: 7,
     },
     {
@@ -20661,6 +22840,7 @@ export const questions: Question[] = [
         sectionLabel: '1571-1580',
         promptJp: '[副]今日では，近ごろ',
         answerEn: 'nowadays',
+        pos: ['adv'],
         orderIndex: 8,
     },
     {
@@ -20672,6 +22852,7 @@ export const questions: Question[] = [
         sectionLabel: '1571-1580',
         promptJp: '[名]王子',
         answerEn: 'prince',
+        pos: ['noun'],
         orderIndex: 9,
     },
     {
@@ -20683,6 +22864,7 @@ export const questions: Question[] = [
         sectionLabel: '1571-1580',
         promptJp: '[形]ロマンチックな',
         answerEn: 'romantic',
+        pos: ['adj'],
         orderIndex: 10,
     },
     {
@@ -20694,6 +22876,7 @@ export const questions: Question[] = [
         sectionLabel: '1571-1580',
         promptJp: '[名]尾，しっぽ',
         answerEn: 'tail',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -20705,6 +22888,7 @@ export const questions: Question[] = [
         sectionLabel: '1571-1580',
         promptJp: '[接]もし～でなければ',
         answerEn: 'unless',
+        pos: ['conj'],
         orderIndex: 2,
     },
     {
@@ -20716,6 +22900,7 @@ export const questions: Question[] = [
         sectionLabel: '1581-1590',
         promptJp: '[名]態度',
         answerEn: 'attitude',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -20727,6 +22912,7 @@ export const questions: Question[] = [
         sectionLabel: '1581-1590',
         promptJp: '[名]メロディー，旋律',
         answerEn: 'melody',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -20738,6 +22924,7 @@ export const questions: Question[] = [
         sectionLabel: '1581-1590',
         promptJp: '[形]穏やかな，（味が）まろやかな',
         answerEn: 'mild',
+        pos: ['adj'],
         orderIndex: 5,
     },
     {
@@ -20749,6 +22936,7 @@ export const questions: Question[] = [
         sectionLabel: '1581-1590',
         promptJp: '[形]道徳的な，道徳の',
         answerEn: 'moral',
+        pos: ['adj'],
         orderIndex: 6,
     },
     {
@@ -20760,6 +22948,7 @@ export const questions: Question[] = [
         sectionLabel: '1581-1590',
         promptJp: '[形]まれな，珍しい',
         answerEn: 'rare',
+        pos: ['adj'],
         orderIndex: 7,
     },
     {
@@ -20771,6 +22960,7 @@ export const questions: Question[] = [
         sectionLabel: '1581-1590',
         promptJp: '[形]取り乱した，腹を立てた',
         answerEn: 'upset',
+        pos: ['adj'],
         orderIndex: 8,
     },
     {
@@ -20782,6 +22972,7 @@ export const questions: Question[] = [
         sectionLabel: '1581-1590',
         promptJp: '[形]西（方）の，[大文字ではじめて]西洋の',
         answerEn: 'western',
+        pos: ['adj'],
         orderIndex: 9,
     },
     {
@@ -20793,6 +22984,7 @@ export const questions: Question[] = [
         sectionLabel: '1581-1590',
         promptJp: '[名]天文学',
         answerEn: 'astronomy',
+        pos: ['noun'],
         orderIndex: 10,
     },
     {
@@ -20804,6 +22996,7 @@ export const questions: Question[] = [
         sectionLabel: '1581-1590',
         promptJp: '[名]① 大気 [名]② 雰囲気',
         answerEn: 'atmosphere',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -20815,6 +23008,7 @@ export const questions: Question[] = [
         sectionLabel: '1581-1590',
         promptJp: '[名]飾りつけ，装飾',
         answerEn: 'decoration',
+        pos: ['noun'],
         orderIndex: 2,
     },
     {
@@ -20826,6 +23020,7 @@ export const questions: Question[] = [
         sectionLabel: '1591-1600',
         promptJp: '[名]すき間，へだたり',
         answerEn: 'gap',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -20837,6 +23032,7 @@ export const questions: Question[] = [
         sectionLabel: '1591-1600',
         promptJp: '[名]（ショッピング）モール',
         answerEn: 'mall',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -20848,6 +23044,7 @@ export const questions: Question[] = [
         sectionLabel: '1591-1600',
         promptJp: '[動]花が咲く / [名](バラなどの観賞用の）花',
         answerEn: 'bloom',
+        pos: ['verb', 'noun'],
         orderIndex: 5,
     },
     {
@@ -20859,6 +23056,7 @@ export const questions: Question[] = [
         sectionLabel: '1591-1600',
         promptJp: '[名]貝がら，から',
         answerEn: 'shell',
+        pos: ['noun'],
         orderIndex: 6,
     },
     {
@@ -20870,6 +23068,7 @@ export const questions: Question[] = [
         sectionLabel: '1591-1600',
         promptJp: '[動]（床・地面など）を掃く',
         answerEn: 'sweep',
+        pos: ['verb'],
         orderIndex: 7,
     },
     {
@@ -20881,6 +23080,7 @@ export const questions: Question[] = [
         sectionLabel: '1591-1600',
         promptJp: '[名]極',
         answerEn: 'pole',
+        pos: ['noun'],
         orderIndex: 8,
     },
     {
@@ -20892,6 +23092,7 @@ export const questions: Question[] = [
         sectionLabel: '1591-1600',
         promptJp: '[形]不運な，ついていない，不吉な',
         answerEn: 'unlucky',
+        pos: ['adj'],
         orderIndex: 9,
     },
     {
@@ -20903,6 +23104,7 @@ export const questions: Question[] = [
         sectionLabel: '1591-1600',
         promptJp: '[動]スノーボードをする',
         answerEn: 'snowboard',
+        pos: ['verb'],
         orderIndex: 10,
     },
     {
@@ -20914,6 +23116,7 @@ export const questions: Question[] = [
         sectionLabel: '1591-1600',
         promptJp: '[名]ユーモア',
         answerEn: 'humor',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -20925,6 +23128,7 @@ export const questions: Question[] = [
         sectionLabel: '1591-1600',
         promptJp: '[名]ベスト，チョッキ',
         answerEn: 'vest',
+        pos: ['noun'],
         orderIndex: 2,
     },
     {
@@ -20936,6 +23140,8 @@ export const questions: Question[] = [
         sectionLabel: 'C301-310',
         promptJp: '[熟]きれいに掃除する',
         answerEn: 'clean up',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 1,
     },
     {
@@ -20947,6 +23153,8 @@ export const questions: Question[] = [
         sectionLabel: 'C301-310',
         promptJp: '[熟]家に帰る',
         answerEn: 'come home',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 2,
     },
     {
@@ -20958,6 +23166,8 @@ export const questions: Question[] = [
         sectionLabel: 'C301-310',
         promptJp: '[熟]出てくる，現れる',
         answerEn: 'come out',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 3,
     },
     {
@@ -20969,6 +23179,8 @@ export const questions: Question[] = [
         sectionLabel: 'C301-310',
         promptJp: '[熟]（通り・道）を進む',
         answerEn: 'go along',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 4,
     },
     {
@@ -20980,6 +23192,8 @@ export const questions: Question[] = [
         sectionLabel: 'C301-310',
         promptJp: '[熟]続く，（時間が）過ぎ去る',
         answerEn: 'go on',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 5,
     },
     {
@@ -20991,6 +23205,8 @@ export const questions: Question[] = [
         sectionLabel: 'C301-310',
         promptJp: '[熟]速度を落とす',
         answerEn: 'slow down',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 6,
     },
     {
@@ -21002,6 +23218,8 @@ export const questions: Question[] = [
         sectionLabel: 'C301-310',
         promptJp: '[熟]秒読みする',
         answerEn: 'count down',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 7,
     },
     {
@@ -21013,6 +23231,8 @@ export const questions: Question[] = [
         sectionLabel: 'C301-310',
         promptJp: '[熟]悪くなる',
         answerEn: 'get worse',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 8,
     },
     {
@@ -21024,6 +23244,8 @@ export const questions: Question[] = [
         sectionLabel: 'C301-310',
         promptJp: '[熟]ぶらぶらして時を過ごす',
         answerEn: 'hang out',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 9,
     },
     {
@@ -21035,6 +23257,8 @@ export const questions: Question[] = [
         sectionLabel: 'C301-310',
         promptJp: '[熟]率直に意見を述べる',
         answerEn: 'speak out',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 10,
     },
     {
@@ -21046,6 +23270,8 @@ export const questions: Question[] = [
         sectionLabel: 'C311-320',
         promptJp: '[熟]叫ぶ，大声を出す',
         answerEn: 'cry out',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 1,
     },
     {
@@ -21057,6 +23283,8 @@ export const questions: Question[] = [
         sectionLabel: 'C311-320',
         promptJp: '[熟]ひとりごとを言う',
         answerEn: 'say to oneself',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 2,
     },
     {
@@ -21068,6 +23296,8 @@ export const questions: Question[] = [
         sectionLabel: 'C311-320',
         promptJp: '[熟]楽しむ，楽しく過ごす',
         answerEn: 'enjoy oneself',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 3,
     },
     {
@@ -21079,6 +23309,8 @@ export const questions: Question[] = [
         sectionLabel: 'C311-320',
         promptJp: '[熟]～を自分で取って食べる［飲む］',
         answerEn: 'help oneself to',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 4,
     },
     {
@@ -21090,6 +23322,8 @@ export const questions: Question[] = [
         sectionLabel: 'C311-320',
         promptJp: '[熟]効果を上げる，差をつける',
         answerEn: 'make a difference',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 5,
     },
     {
@@ -21101,6 +23335,8 @@ export const questions: Question[] = [
         sectionLabel: 'C311-320',
         promptJp: '[熟]間違える',
         answerEn: 'make a mistake',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 6,
     },
     {
@@ -21112,6 +23348,8 @@ export const questions: Question[] = [
         sectionLabel: 'C311-320',
         promptJp: '[熟]～と偶然出会う，～を偶然見つける',
         answerEn: 'come across',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 7,
     },
     {
@@ -21123,6 +23361,8 @@ export const questions: Question[] = [
         sectionLabel: 'C311-320',
         promptJp: '[熟]～に引っ越す',
         answerEn: 'move to',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 8,
     },
     {
@@ -21134,6 +23374,8 @@ export const questions: Question[] = [
         sectionLabel: 'C311-320',
         promptJp: '[熟]～に手紙を書く',
         answerEn: 'write to',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 9,
     },
     {
@@ -21145,6 +23387,8 @@ export const questions: Question[] = [
         sectionLabel: 'C311-320',
         promptJp: '[熟]～に勤めている',
         answerEn: 'work for',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 10,
     },
     {
@@ -21156,6 +23400,8 @@ export const questions: Question[] = [
         sectionLabel: 'C321-330',
         promptJp: '[熟]～の代金を払う',
         answerEn: 'pay for',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 1,
     },
     {
@@ -21167,6 +23413,8 @@ export const questions: Question[] = [
         sectionLabel: 'C321-330',
         promptJp: '[熟]～をさがす',
         answerEn: 'search for',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 2,
     },
     {
@@ -21178,6 +23426,8 @@ export const questions: Question[] = [
         sectionLabel: 'C321-330',
         promptJp: '[熟]～を願う',
         answerEn: 'wish for',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 3,
     },
     {
@@ -21189,6 +23439,8 @@ export const questions: Question[] = [
         sectionLabel: 'C321-330',
         promptJp: '[熟]急に～し始める',
         answerEn: 'burst into',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 4,
     },
     {
@@ -21200,6 +23452,8 @@ export const questions: Question[] = [
         sectionLabel: 'C321-330',
         promptJp: '[熟]（人）を信頼する',
         answerEn: 'believe in',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 5,
     },
     {
@@ -21211,6 +23465,8 @@ export const questions: Question[] = [
         sectionLabel: 'C321-330',
         promptJp: '[熟]～を育てる',
         answerEn: 'bring up',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 6,
     },
     {
@@ -21222,6 +23478,8 @@ export const questions: Question[] = [
         sectionLabel: 'C321-330',
         promptJp: '[熟]～の世話をする，～が好きだ，～がほしい',
         answerEn: 'care for',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 7,
     },
     {
@@ -21233,6 +23491,8 @@ export const questions: Question[] = [
         sectionLabel: 'C321-330',
         promptJp: '[熟]～から話を聞く，～から便り［連絡］をもらう',
         answerEn: 'hear from',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 8,
     },
     {
@@ -21244,6 +23504,8 @@ export const questions: Question[] = [
         sectionLabel: 'C321-330',
         promptJp: '[熟]～で死ぬ（前置詞はofの場合もあり）',
         answerEn: 'die from',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 9,
     },
     {
@@ -21255,6 +23517,8 @@ export const questions: Question[] = [
         sectionLabel: 'C321-330',
         promptJp: '[熟]～を切り倒す',
         answerEn: 'cut down',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 10,
     },
     {
@@ -21266,6 +23530,8 @@ export const questions: Question[] = [
         sectionLabel: 'C331-340',
         promptJp: '[熟]～を提出する',
         answerEn: 'hand in',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 1,
     },
     {
@@ -21277,6 +23543,8 @@ export const questions: Question[] = [
         sectionLabel: 'C331-340',
         promptJp: '[熟]～を配る',
         answerEn: 'hand out',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 2,
     },
     {
@@ -21288,6 +23556,8 @@ export const questions: Question[] = [
         sectionLabel: 'C331-340',
         promptJp: '[熟]BとAを交換する，BとAを取り替える',
         answerEn: 'exchange A for B',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 3,
     },
     {
@@ -21299,6 +23569,8 @@ export const questions: Question[] = [
         sectionLabel: 'C331-340',
         promptJp: '[熟]（お金・時間）をBに使う［費やす］',
         answerEn: 'spend A on B',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 4,
     },
     {
@@ -21310,6 +23582,8 @@ export const questions: Question[] = [
         sectionLabel: 'C331-340',
         promptJp: '[熟]お願いする',
         answerEn: 'ask a favor',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 5,
     },
     {
@@ -21321,6 +23595,8 @@ export const questions: Question[] = [
         sectionLabel: 'C331-340',
         promptJp: '[熟]～を延期する',
         answerEn: 'put off',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 6,
     },
     {
@@ -21332,6 +23608,8 @@ export const questions: Question[] = [
         sectionLabel: 'C331-340',
         promptJp: '[熟]Aを案内する',
         answerEn: 'show A around',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 7,
     },
     {
@@ -21343,6 +23621,8 @@ export const questions: Question[] = [
         sectionLabel: 'C331-340',
         promptJp: '[熟]～を捨てる',
         answerEn: 'throw away',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 8,
     },
     {
@@ -21354,6 +23634,8 @@ export const questions: Question[] = [
         sectionLabel: 'C331-340',
         promptJp: '[熟]～を試着する',
         answerEn: 'try on',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 9,
     },
     {
@@ -21365,6 +23647,8 @@ export const questions: Question[] = [
         sectionLabel: 'C331-340',
         promptJp: '[熟]AをBに紹介する',
         answerEn: 'introduce A to B',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 10,
     },
     {
@@ -21376,6 +23660,8 @@ export const questions: Question[] = [
         sectionLabel: 'C341-350',
         promptJp: '[熟]AをBに翻訳する',
         answerEn: 'translate A into B',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 1,
     },
     {
@@ -21387,6 +23673,8 @@ export const questions: Question[] = [
         sectionLabel: 'C341-350',
         promptJp: '[熟]遠慮なく～する',
         answerEn: 'feel free to',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 2,
     },
     {
@@ -21398,6 +23686,8 @@ export const questions: Question[] = [
         sectionLabel: 'C341-350',
         promptJp: '[熟]～から出る',
         answerEn: 'get out of',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 3,
     },
     {
@@ -21409,6 +23699,8 @@ export const questions: Question[] = [
         sectionLabel: 'C341-350',
         promptJp: '[熟]～に近づく',
         answerEn: 'come up to',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 4,
     },
     {
@@ -21420,6 +23712,8 @@ export const questions: Question[] = [
         sectionLabel: 'C341-350',
         promptJp: '[熟]～を思いつく，～を見つける',
         answerEn: 'come up with',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 5,
     },
     {
@@ -21431,6 +23725,8 @@ export const questions: Question[] = [
         sectionLabel: 'C341-350',
         promptJp: '[熟]～と手をつなぐ',
         answerEn: 'join hands with',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 6,
     },
     {
@@ -21442,6 +23738,8 @@ export const questions: Question[] = [
         sectionLabel: 'C341-350',
         promptJp: '[熟]～から離れている，～に近づかないでいる',
         answerEn: 'keep away from',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 7,
     },
     {
@@ -21453,6 +23751,8 @@ export const questions: Question[] = [
         sectionLabel: 'C341-350',
         promptJp: '[熟]～を注意して扱う',
         answerEn: 'be careful with',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 8,
     },
     {
@@ -21464,6 +23764,8 @@ export const questions: Question[] = [
         sectionLabel: 'C341-350',
         promptJp: '[熟]～で覆われている',
         answerEn: 'be covered with',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 9,
     },
     {
@@ -21475,6 +23777,8 @@ export const questions: Question[] = [
         sectionLabel: 'C341-350',
         promptJp: '[熟]～でいっぱいである',
         answerEn: 'be filled with',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 10,
     },
     {
@@ -21486,6 +23790,8 @@ export const questions: Question[] = [
         sectionLabel: 'C351-360',
         promptJp: '[熟]～をよく知っている，～に詳しい',
         answerEn: 'be familiar with',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 1,
     },
     {
@@ -21497,6 +23803,8 @@ export const questions: Question[] = [
         sectionLabel: 'C351-360',
         promptJp: '[熟]～に親切だ',
         answerEn: 'be kind to',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 2,
     },
     {
@@ -21508,6 +23816,8 @@ export const questions: Question[] = [
         sectionLabel: 'C351-360',
         promptJp: '[熟]～に驚かされる',
         answerEn: 'be amazed at',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 3,
     },
     {
@@ -21519,6 +23829,8 @@ export const questions: Question[] = [
         sectionLabel: 'C351-360',
         promptJp: '[熟]～をすまないと思う',
         answerEn: 'be sorry for',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 4,
     },
     {
@@ -21530,6 +23842,8 @@ export const questions: Question[] = [
         sectionLabel: 'C351-360',
         promptJp: '[熟]～でできている',
         answerEn: 'be made of',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 5,
     },
     {
@@ -21541,6 +23855,8 @@ export const questions: Question[] = [
         sectionLabel: 'C351-360',
         promptJp: '[熟]～から作られている',
         answerEn: 'be made from',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 6,
     },
     {
@@ -21552,6 +23868,8 @@ export const questions: Question[] = [
         sectionLabel: 'C351-360',
         promptJp: '[熟]～に満足する',
         answerEn: 'be satisfied with',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 7,
     },
     {
@@ -21563,6 +23881,8 @@ export const questions: Question[] = [
         sectionLabel: 'C351-360',
         promptJp: '[熟]～の具合が悪い',
         answerEn: 'be wrong with',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 8,
     },
     {
@@ -21574,6 +23894,8 @@ export const questions: Question[] = [
         sectionLabel: 'C351-360',
         promptJp: '[熟]急いでいる',
         answerEn: 'be in a hurry',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 9,
     },
     {
@@ -21585,6 +23907,8 @@ export const questions: Question[] = [
         sectionLabel: 'C351-360',
         promptJp: '[熟]今にも～しようとしている',
         answerEn: 'be about to',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 10,
     },
     {
@@ -21596,6 +23920,8 @@ export const questions: Question[] = [
         sectionLabel: 'C361-370',
         promptJp: '[熟]～するのをいとわない，～してもかまわない',
         answerEn: 'be willing to',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 1,
     },
     {
@@ -21607,6 +23933,8 @@ export const questions: Question[] = [
         sectionLabel: 'C361-370',
         promptJp: '[熟]2, 3の～',
         answerEn: 'a couple of',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 2,
     },
     {
@@ -21618,6 +23946,8 @@ export const questions: Question[] = [
         sectionLabel: 'C361-370',
         promptJp: '[熟]1組の～，1足の～',
         answerEn: 'a pair of',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 3,
     },
     {
@@ -21629,6 +23959,8 @@ export const questions: Question[] = [
         sectionLabel: 'C361-370',
         promptJp: '[熟]たくさんの～（4語で）',
         answerEn: 'a large amount of',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 4,
     },
     {
@@ -21640,6 +23972,8 @@ export const questions: Question[] = [
         sectionLabel: 'C361-370',
         promptJp: '[熟]とてもたくさんの\u3000（形容詞はlargeもあり）',
         answerEn: 'a great number of',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 5,
     },
     {
@@ -21651,6 +23985,8 @@ export const questions: Question[] = [
         sectionLabel: 'C361-370',
         promptJp: '[熟]何百万もの～，非常にたくさんの～',
         answerEn: 'millions of',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 6,
     },
     {
@@ -21662,6 +23998,8 @@ export const questions: Question[] = [
         sectionLabel: 'C361-370',
         promptJp: '[熟]（乗り物に）乗って，搭乗［乗船］して',
         answerEn: 'on board',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 7,
     },
     {
@@ -21673,6 +24011,8 @@ export const questions: Question[] = [
         sectionLabel: 'C361-370',
         promptJp: '[熟]仕事で，出張で',
         answerEn: 'on business',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 8,
     },
     {
@@ -21684,6 +24024,8 @@ export const questions: Question[] = [
         sectionLabel: 'C361-370',
         promptJp: '[熟]電話で',
         answerEn: 'on the phone',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 9,
     },
     {
@@ -21695,6 +24037,8 @@ export const questions: Question[] = [
         sectionLabel: 'C361-370',
         promptJp: '[熟]週末（ごと）に',
         answerEn: 'on weekends',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 10,
     },
     {
@@ -21706,6 +24050,8 @@ export const questions: Question[] = [
         sectionLabel: 'C371-380',
         promptJp: '[熟]あさって，明後日',
         answerEn: 'the day after tomorrow',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 1,
     },
     {
@@ -21717,6 +24063,8 @@ export const questions: Question[] = [
         sectionLabel: 'C371-380',
         promptJp: '[熟]おととい，一昨日',
         answerEn: 'the day before yesterday',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 2,
     },
     {
@@ -21728,6 +24076,8 @@ export const questions: Question[] = [
         sectionLabel: 'C371-380',
         promptJp: '[熟]もう一度［一回］，再び',
         answerEn: 'once more',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 3,
     },
     {
@@ -21739,6 +24089,8 @@ export const questions: Question[] = [
         sectionLabel: 'C371-380',
         promptJp: '[熟]しばらくして',
         answerEn: 'after a while',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 4,
     },
     {
@@ -21750,6 +24102,8 @@ export const questions: Question[] = [
         sectionLabel: 'C371-380',
         promptJp: '[熟]やがて，間に合って',
         answerEn: 'in time',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 5,
     },
     {
@@ -21761,6 +24115,8 @@ export const questions: Question[] = [
         sectionLabel: 'C371-380',
         promptJp: '[熟]日々，日ごとに',
         answerEn: 'day by day',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 6,
     },
     {
@@ -21772,6 +24128,8 @@ export const questions: Question[] = [
         sectionLabel: 'C371-380',
         promptJp: '[熟]次から次へと',
         answerEn: 'one after another',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 7,
     },
     {
@@ -21783,6 +24141,8 @@ export const questions: Question[] = [
         sectionLabel: 'C371-380',
         promptJp: '[熟]これまでより',
         answerEn: 'than ever before',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 8,
     },
     {
@@ -21794,6 +24154,8 @@ export const questions: Question[] = [
         sectionLabel: 'C371-380',
         promptJp: '[熟]～歳のときに',
         answerEn: 'at the age of',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 9,
     },
     {
@@ -21805,6 +24167,8 @@ export const questions: Question[] = [
         sectionLabel: 'C371-380',
         promptJp: '[熟]～の最後に',
         answerEn: 'at the end of',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 10,
     },
     {
@@ -21816,6 +24180,8 @@ export const questions: Question[] = [
         sectionLabel: 'C381-390',
         promptJp: '[熟]今すぐ',
         answerEn: 'right now',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 1,
     },
     {
@@ -21827,6 +24193,8 @@ export const questions: Question[] = [
         sectionLabel: 'C381-390',
         promptJp: '[熟]～するとすぐ',
         answerEn: 'as soon as',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 2,
     },
     {
@@ -21838,6 +24206,8 @@ export const questions: Question[] = [
         sectionLabel: 'C381-390',
         promptJp: '[熟]～によれば',
         answerEn: 'according to',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 3,
     },
     {
@@ -21849,6 +24219,8 @@ export const questions: Question[] = [
         sectionLabel: 'C381-390',
         promptJp: '[熟]～について言えば',
         answerEn: 'as for',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 4,
     },
     {
@@ -21860,6 +24232,8 @@ export const questions: Question[] = [
         sectionLabel: 'C381-390',
         promptJp: '[熟]～と言えば',
         answerEn: 'speaking of',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 5,
     },
     {
@@ -21871,6 +24245,8 @@ export const questions: Question[] = [
         sectionLabel: 'C381-390',
         promptJp: '[熟]～の場合には',
         answerEn: 'in case of',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 6,
     },
     {
@@ -21882,6 +24258,8 @@ export const questions: Question[] = [
         sectionLabel: 'C381-390',
         promptJp: '[熟]何よりも',
         answerEn: 'above all',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 7,
     },
     {
@@ -21893,6 +24271,8 @@ export const questions: Question[] = [
         sectionLabel: 'C381-390',
         promptJp: '[熟]少なくとも',
         answerEn: 'at least',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 8,
     },
     {
@@ -21904,6 +24284,8 @@ export const questions: Question[] = [
         sectionLabel: 'C381-390',
         promptJp: '[熟]～と同じ，～と同様な',
         answerEn: 'the same as',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 9,
     },
     {
@@ -21915,6 +24297,8 @@ export const questions: Question[] = [
         sectionLabel: 'C381-390',
         promptJp: '[熟]（最高）～まで',
         answerEn: 'up to',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 10,
     },
     {
@@ -21926,6 +24310,8 @@ export const questions: Question[] = [
         sectionLabel: 'C391-400',
         promptJp: '[熟]さらに，その上',
         answerEn: 'in addition',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 1,
     },
     {
@@ -21937,6 +24323,8 @@ export const questions: Question[] = [
         sectionLabel: 'C391-400',
         promptJp: '[熟]私の意見では',
         answerEn: 'in my opinion',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 2,
     },
     {
@@ -21948,6 +24336,8 @@ export const questions: Question[] = [
         sectionLabel: 'C391-400',
         promptJp: '[熟]もう～ない，これ以上～ない',
         answerEn: 'no more',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 3,
     },
     {
@@ -21959,6 +24349,8 @@ export const questions: Question[] = [
         sectionLabel: 'C391-400',
         promptJp: '[熟]誰も［1人も］～ない',
         answerEn: 'no one',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 4,
     },
     {
@@ -21970,6 +24362,8 @@ export const questions: Question[] = [
         sectionLabel: 'C391-400',
         promptJp: '[熟]いつも［必ずしも］～とは限らない',
         answerEn: 'not always',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 5,
     },
     {
@@ -21981,6 +24375,8 @@ export const questions: Question[] = [
         sectionLabel: 'C391-400',
         promptJp: '[熟]～しないで（後ろは-ing）',
         answerEn: 'without',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 6,
     },
     {
@@ -21992,6 +24388,8 @@ export const questions: Question[] = [
         sectionLabel: 'C391-400',
         promptJp: '[熟]危険な状態の［で］，危機に陥って',
         answerEn: 'in danger',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 7,
     },
     {
@@ -22003,6 +24401,8 @@ export const questions: Question[] = [
         sectionLabel: 'C391-400',
         promptJp: '[熟]～し始める（後ろはto不定詞か-ing）',
         answerEn: 'begin',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 8,
     },
     {
@@ -22014,6 +24414,8 @@ export const questions: Question[] = [
         sectionLabel: 'C391-400',
         promptJp: '[熟]Bするのに必要なだけのA',
         answerEn: 'enough A to B',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 9,
     },
     {
@@ -22025,6 +24427,8 @@ export const questions: Question[] = [
         sectionLabel: 'C391-400',
         promptJp: '[熟]～すべき時である',
         answerEn: 'it is time to',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 10,
     },
     {
@@ -22036,6 +24440,7 @@ export const questions: Question[] = [
         sectionLabel: '1601-1610',
         promptJp: '[名]郵便，郵便物，Eメール',
         answerEn: 'mail',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -22047,6 +24452,7 @@ export const questions: Question[] = [
         sectionLabel: '1601-1610',
         promptJp: '[名]① 国家，州 [名]② 状態',
         answerEn: 'state',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -22058,6 +24464,7 @@ export const questions: Question[] = [
         sectionLabel: '1601-1610',
         promptJp: '[形]鋭い，急な',
         answerEn: 'sharp',
+        pos: ['adj'],
         orderIndex: 5,
     },
     {
@@ -22069,6 +24476,7 @@ export const questions: Question[] = [
         sectionLabel: '1601-1610',
         promptJp: '[動]～を減らす',
         answerEn: 'reduce',
+        pos: ['verb'],
         orderIndex: 6,
     },
     {
@@ -22080,6 +24488,7 @@ export const questions: Question[] = [
         sectionLabel: '1601-1610',
         promptJp: '[名]うそ / [動]① 位置する ② 横になる ③ うそをつく',
         answerEn: 'lie',
+        pos: ['noun', 'verb'],
         orderIndex: 7,
     },
     {
@@ -22091,6 +24500,7 @@ export const questions: Question[] = [
         sectionLabel: '1601-1610',
         promptJp: '[名]所有者，オーナー，飼い主',
         answerEn: 'owner',
+        pos: ['noun'],
         orderIndex: 8,
     },
     {
@@ -22102,6 +24512,7 @@ export const questions: Question[] = [
         sectionLabel: '1601-1610',
         promptJp: '[助動]～かもしれない',
         answerEn: 'might',
+        pos: ['aux'],
         orderIndex: 9,
     },
     {
@@ -22113,6 +24524,7 @@ export const questions: Question[] = [
         sectionLabel: '1601-1610',
         promptJp: '[副]たぶん，おそらく',
         answerEn: 'perhaps',
+        pos: ['adv'],
         orderIndex: 10,
     },
     {
@@ -22124,6 +24536,7 @@ export const questions: Question[] = [
         sectionLabel: '1601-1610',
         promptJp: '[名]紙幣，請求書',
         answerEn: 'bill',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -22135,6 +24548,7 @@ export const questions: Question[] = [
         sectionLabel: '1601-1610',
         promptJp: '[名]サンゴ',
         answerEn: 'coral',
+        pos: ['noun'],
         orderIndex: 2,
     },
     {
@@ -22146,6 +24560,7 @@ export const questions: Question[] = [
         sectionLabel: '1611-1620',
         promptJp: '[名]知恵',
         answerEn: 'wisdom',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -22157,6 +24572,7 @@ export const questions: Question[] = [
         sectionLabel: '1611-1620',
         promptJp: '[名]距離',
         answerEn: 'distance',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -22168,6 +24584,7 @@ export const questions: Question[] = [
         sectionLabel: '1611-1620',
         promptJp: '[形]年上の，上級の',
         answerEn: 'senior',
+        pos: ['adj'],
         orderIndex: 5,
     },
     {
@@ -22179,6 +24596,7 @@ export const questions: Question[] = [
         sectionLabel: '1611-1620',
         promptJp: '[名]席，座席',
         answerEn: 'seat',
+        pos: ['noun'],
         orderIndex: 6,
     },
     {
@@ -22190,6 +24608,7 @@ export const questions: Question[] = [
         sectionLabel: '1611-1620',
         promptJp: '[名]浜，[名]浜辺，[名]ビーチ',
         answerEn: 'beach',
+        pos: ['noun'],
         orderIndex: 7,
     },
     {
@@ -22201,6 +24620,7 @@ export const questions: Question[] = [
         sectionLabel: '1611-1620',
         promptJp: '[接]～だけれども',
         answerEn: 'although',
+        pos: ['conj'],
         orderIndex: 8,
     },
     {
@@ -22212,6 +24632,7 @@ export const questions: Question[] = [
         sectionLabel: '1611-1620',
         promptJp: '[形]① 確かな，間違いない [形]② 特定の，ある～',
         answerEn: 'certain',
+        pos: ['adj'],
         orderIndex: 9,
     },
     {
@@ -22223,6 +24644,7 @@ export const questions: Question[] = [
         sectionLabel: '1611-1620',
         promptJp: '[名]自己，（自分）自身',
         answerEn: 'self',
+        pos: ['noun'],
         orderIndex: 10,
     },
     {
@@ -22234,6 +24656,7 @@ export const questions: Question[] = [
         sectionLabel: '1611-1620',
         promptJp: '[名]市民，国民',
         answerEn: 'citizen',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -22245,6 +24668,7 @@ export const questions: Question[] = [
         sectionLabel: '1611-1620',
         promptJp: '[名]協議会，会議',
         answerEn: 'council',
+        pos: ['noun'],
         orderIndex: 2,
     },
     {
@@ -22256,6 +24680,7 @@ export const questions: Question[] = [
         sectionLabel: '1621-1630',
         promptJp: '[名]兵士，軍人',
         answerEn: 'soldier',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -22267,6 +24692,7 @@ export const questions: Question[] = [
         sectionLabel: '1621-1630',
         promptJp: '[前]～の方へ[に]，～に向かって',
         answerEn: 'toward',
+        pos: ['prep'],
         orderIndex: 4,
     },
     {
@@ -22278,6 +24704,7 @@ export const questions: Question[] = [
         sectionLabel: '1621-1630',
         promptJp: '[名]天災，[名]災難，[名]大失敗',
         answerEn: 'disaster',
+        pos: ['noun'],
         orderIndex: 5,
     },
     {
@@ -22289,6 +24716,7 @@ export const questions: Question[] = [
         sectionLabel: '1621-1630',
         promptJp: '[名]チラシ，小冊子，パンフレット',
         answerEn: 'leaflet',
+        pos: ['noun'],
         orderIndex: 6,
     },
     {
@@ -22300,6 +24728,7 @@ export const questions: Question[] = [
         sectionLabel: '1621-1630',
         promptJp: '[形]感心した，感動した',
         answerEn: 'impressed',
+        pos: ['adj'],
         orderIndex: 7,
     },
     {
@@ -22311,6 +24740,7 @@ export const questions: Question[] = [
         sectionLabel: '1621-1630',
         promptJp: '[名]神',
         answerEn: 'god',
+        pos: ['noun'],
         orderIndex: 8,
     },
     {
@@ -22322,6 +24752,7 @@ export const questions: Question[] = [
         sectionLabel: '1621-1630',
         promptJp: '[形/副]最も小さい[少ない] / 最も少なく',
         answerEn: 'least',
+        pos: ['adj', 'adv'],
         orderIndex: 9,
     },
     {
@@ -22333,6 +24764,7 @@ export const questions: Question[] = [
         sectionLabel: '1621-1630',
         promptJp: '[名]細胞',
         answerEn: 'cell',
+        pos: ['noun'],
         orderIndex: 10,
     },
     {
@@ -22344,6 +24776,7 @@ export const questions: Question[] = [
         sectionLabel: '1621-1630',
         promptJp: '[名]① 岩，石 [名]② ロック（ミュージック）',
         answerEn: 'rock',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -22355,6 +24788,7 @@ export const questions: Question[] = [
         sectionLabel: '1621-1630',
         promptJp: '[名]結婚式',
         answerEn: 'wedding',
+        pos: ['noun'],
         orderIndex: 2,
     },
     {
@@ -22366,6 +24800,7 @@ export const questions: Question[] = [
         sectionLabel: '1631-1640',
         promptJp: '[形]人工の',
         answerEn: 'artificial',
+        pos: ['adj'],
         orderIndex: 3,
     },
     {
@@ -22377,6 +24812,7 @@ export const questions: Question[] = [
         sectionLabel: '1631-1640',
         promptJp: '[名]風船，気球',
         answerEn: 'balloon',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -22388,6 +24824,7 @@ export const questions: Question[] = [
         sectionLabel: '1631-1640',
         promptJp: '[名]痛み，苦痛',
         answerEn: 'pain',
+        pos: ['noun'],
         orderIndex: 5,
     },
     {
@@ -22399,6 +24836,7 @@ export const questions: Question[] = [
         sectionLabel: '1631-1640',
         promptJp: '[動]留まる，残る，～のままである / [名][複数形で]遺跡，遺物',
         answerEn: 'remain',
+        pos: ['verb', 'noun', 'adj', 'num'],
         orderIndex: 6,
     },
     {
@@ -22410,6 +24848,7 @@ export const questions: Question[] = [
         sectionLabel: '1631-1640',
         promptJp: '[名]皇帝，（日本の）天皇',
         answerEn: 'emperor',
+        pos: ['noun'],
         orderIndex: 7,
     },
     {
@@ -22421,6 +24860,7 @@ export const questions: Question[] = [
         sectionLabel: '1631-1640',
         promptJp: '[動]行進する / [名]行進，マーチ',
         answerEn: 'march',
+        pos: ['verb', 'noun'],
         orderIndex: 8,
     },
     {
@@ -22432,6 +24872,7 @@ export const questions: Question[] = [
         sectionLabel: '1631-1640',
         promptJp: '[名]申し出，提供 / [動]～を提供する，申し出る',
         answerEn: 'offer',
+        pos: ['noun', 'verb'],
         orderIndex: 9,
     },
     {
@@ -22443,6 +24884,7 @@ export const questions: Question[] = [
         sectionLabel: '1631-1640',
         promptJp: '[動]～を（高く）評価する / [名]価値，価格',
         answerEn: 'value',
+        pos: ['verb', 'noun'],
         orderIndex: 10,
     },
     {
@@ -22454,6 +24896,7 @@ export const questions: Question[] = [
         sectionLabel: '1631-1640',
         promptJp: '[形動]太陽の',
         answerEn: 'solar',
+        pos: ['verb', 'adj'],
         orderIndex: 1,
     },
     {
@@ -22465,6 +24908,7 @@ export const questions: Question[] = [
         sectionLabel: '1631-1640',
         promptJp: '[名]カレンダー，暦',
         answerEn: 'calendar',
+        pos: ['noun'],
         orderIndex: 2,
     },
     {
@@ -22476,6 +24920,7 @@ export const questions: Question[] = [
         sectionLabel: '1641-1650',
         promptJp: '[名]① 効果 ② 結果',
         answerEn: 'effect',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -22487,6 +24932,7 @@ export const questions: Question[] = [
         sectionLabel: '1641-1650',
         promptJp: '[名]クモ',
         answerEn: 'spider',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -22498,6 +24944,7 @@ export const questions: Question[] = [
         sectionLabel: '1641-1650',
         promptJp: '[名]ウイルス',
         answerEn: 'virus',
+        pos: ['noun'],
         orderIndex: 5,
     },
     {
@@ -22509,6 +24956,7 @@ export const questions: Question[] = [
         sectionLabel: '1641-1650',
         promptJp: '[名]洞窟，ほら穴',
         answerEn: 'cave',
+        pos: ['noun'],
         orderIndex: 6,
     },
     {
@@ -22520,6 +24968,7 @@ export const questions: Question[] = [
         sectionLabel: '1641-1650',
         promptJp: '[動]～に食事を与える',
         answerEn: 'feed',
+        pos: ['verb'],
         orderIndex: 7,
     },
     {
@@ -22531,6 +24980,7 @@ export const questions: Question[] = [
         sectionLabel: '1641-1650',
         promptJp: '[名]博物館，美術館',
         answerEn: 'museum',
+        pos: ['noun'],
         orderIndex: 8,
     },
     {
@@ -22542,6 +24992,7 @@ export const questions: Question[] = [
         sectionLabel: '1641-1650',
         promptJp: '[形]金（色）の',
         answerEn: 'golden',
+        pos: ['adj'],
         orderIndex: 9,
     },
     {
@@ -22553,6 +25004,7 @@ export const questions: Question[] = [
         sectionLabel: '1641-1650',
         promptJp: '[名]病気',
         answerEn: 'illness',
+        pos: ['noun'],
         orderIndex: 10,
     },
     {
@@ -22564,6 +25016,7 @@ export const questions: Question[] = [
         sectionLabel: '1641-1650',
         promptJp: '[名]子羊，子羊の肉',
         answerEn: 'lamb',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -22575,6 +25028,7 @@ export const questions: Question[] = [
         sectionLabel: '1641-1650',
         promptJp: '[名]熱帯雨林',
         answerEn: 'rainforest',
+        pos: ['noun'],
         orderIndex: 2,
     },
     {
@@ -22586,6 +25040,7 @@ export const questions: Question[] = [
         sectionLabel: '1651-1660',
         promptJp: '[名]富，財産',
         answerEn: 'wealth',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -22597,6 +25052,7 @@ export const questions: Question[] = [
         sectionLabel: '1651-1660',
         promptJp: '[名]力，強さ / [動]～を強制する，[～に…するよう]強いる',
         answerEn: 'force',
+        pos: ['noun', 'verb'],
         orderIndex: 4,
     },
     {
@@ -22608,6 +25064,7 @@ export const questions: Question[] = [
         sectionLabel: '1651-1660',
         promptJp: '[形]病気の，具合が悪い',
         answerEn: 'ill',
+        pos: ['adj'],
         orderIndex: 5,
     },
     {
@@ -22619,6 +25076,7 @@ export const questions: Question[] = [
         sectionLabel: '1651-1660',
         promptJp: '[形]公の，公衆の / [名]一般市民，公衆',
         answerEn: 'public',
+        pos: ['adj', 'noun'],
         orderIndex: 6,
     },
     {
@@ -22630,6 +25088,7 @@ export const questions: Question[] = [
         sectionLabel: '1651-1660',
         promptJp: '[名]運河，水路',
         answerEn: 'canal',
+        pos: ['noun'],
         orderIndex: 7,
     },
     {
@@ -22641,6 +25100,7 @@ export const questions: Question[] = [
         sectionLabel: '1651-1660',
         promptJp: '[名]生態系',
         answerEn: 'ecosystem',
+        pos: ['noun'],
         orderIndex: 8,
     },
     {
@@ -22652,6 +25112,7 @@ export const questions: Question[] = [
         sectionLabel: '1651-1660',
         promptJp: '[動]～を期待する，予想する',
         answerEn: 'expect',
+        pos: ['verb'],
         orderIndex: 9,
     },
     {
@@ -22663,6 +25124,7 @@ export const questions: Question[] = [
         sectionLabel: '1651-1660',
         promptJp: '[名]絵文字',
         answerEn: 'pictogram',
+        pos: ['noun'],
         orderIndex: 10,
     },
     {
@@ -22674,6 +25136,7 @@ export const questions: Question[] = [
         sectionLabel: '1651-1660',
         promptJp: '[名]成功',
         answerEn: 'success',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -22685,6 +25148,7 @@ export const questions: Question[] = [
         sectionLabel: '1651-1660',
         promptJp: '[形]普段の，いつもの',
         answerEn: 'usual',
+        pos: ['adj'],
         orderIndex: 2,
     },
     {
@@ -22696,6 +25160,7 @@ export const questions: Question[] = [
         sectionLabel: '1661-1670',
         promptJp: '[名]アパート[共同住宅]（の１部屋）',
         answerEn: 'apartment',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -22707,6 +25172,7 @@ export const questions: Question[] = [
         sectionLabel: '1661-1670',
         promptJp: '[動]～を破壊する',
         answerEn: 'destroy',
+        pos: ['verb'],
         orderIndex: 4,
     },
     {
@@ -22718,6 +25184,7 @@ export const questions: Question[] = [
         sectionLabel: '1661-1670',
         promptJp: '[名]漁師',
         answerEn: 'fisherman',
+        pos: ['noun'],
         orderIndex: 5,
     },
     {
@@ -22729,6 +25196,7 @@ export const questions: Question[] = [
         sectionLabel: '1661-1670',
         promptJp: '[名]女性，婦人',
         answerEn: 'lady',
+        pos: ['noun'],
         orderIndex: 6,
     },
     {
@@ -22740,6 +25208,7 @@ export const questions: Question[] = [
         sectionLabel: '1661-1670',
         promptJp: '[名]目的',
         answerEn: 'purpose',
+        pos: ['noun'],
         orderIndex: 7,
     },
     {
@@ -22751,6 +25220,7 @@ export const questions: Question[] = [
         sectionLabel: '1661-1670',
         promptJp: '[名]形，形式，書き込み用紙 / [動]形ができる，～を形づくる',
         answerEn: 'form',
+        pos: ['noun', 'verb'],
         orderIndex: 8,
     },
     {
@@ -22762,6 +25232,7 @@ export const questions: Question[] = [
         sectionLabel: '1661-1670',
         promptJp: '[動]つながる，～を接続する',
         answerEn: 'connect',
+        pos: ['verb'],
         orderIndex: 9,
     },
     {
@@ -22773,6 +25244,7 @@ export const questions: Question[] = [
         sectionLabel: '1661-1670',
         promptJp: '[動]～次第である，（～に）頼る',
         answerEn: 'depend',
+        pos: ['verb'],
         orderIndex: 10,
     },
     {
@@ -22784,6 +25256,7 @@ export const questions: Question[] = [
         sectionLabel: '1661-1670',
         promptJp: '[形]全世界の，地球規模の',
         answerEn: 'global',
+        pos: ['adj'],
         orderIndex: 1,
     },
     {
@@ -22795,6 +25268,7 @@ export const questions: Question[] = [
         sectionLabel: '1661-1670',
         promptJp: '[名]イングランド，[名]英国',
         answerEn: 'England',
+        pos: ['noun'],
         orderIndex: 2,
     },
     {
@@ -22806,6 +25280,7 @@ export const questions: Question[] = [
         sectionLabel: '1671-1680',
         promptJp: '[名]奴隷',
         answerEn: 'slave',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -22817,6 +25292,7 @@ export const questions: Question[] = [
         sectionLabel: '1671-1680',
         promptJp: '[名]① 枝 [名]② 支店，支流',
         answerEn: 'branch',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -22828,6 +25304,7 @@ export const questions: Question[] = [
         sectionLabel: '1671-1680',
         promptJp: '[名]鉄道',
         answerEn: 'railway',
+        pos: ['noun'],
         orderIndex: 5,
     },
     {
@@ -22839,6 +25316,7 @@ export const questions: Question[] = [
         sectionLabel: '1671-1680',
         promptJp: '[名]血，血液',
         answerEn: 'blood',
+        pos: ['noun'],
         orderIndex: 6,
     },
     {
@@ -22850,6 +25328,7 @@ export const questions: Question[] = [
         sectionLabel: '1671-1680',
         promptJp: '[動]①（食事を）出す，（～に）給仕する ②（～に）仕える，奉仕する',
         answerEn: 'serve',
+        pos: ['verb'],
         orderIndex: 7,
     },
     {
@@ -22861,6 +25340,7 @@ export const questions: Question[] = [
         sectionLabel: '1671-1680',
         promptJp: '[副]ほとんど，[副]ほぼ，[副]もう少しで',
         answerEn: 'nearly',
+        pos: ['adv'],
         orderIndex: 8,
     },
     {
@@ -22872,6 +25352,7 @@ export const questions: Question[] = [
         sectionLabel: '1671-1680',
         promptJp: '[動]～を保護する，保つ',
         answerEn: 'preserve',
+        pos: ['verb'],
         orderIndex: 9,
     },
     {
@@ -22883,6 +25364,7 @@ export const questions: Question[] = [
         sectionLabel: '1671-1680',
         promptJp: '[名]ストレス，緊張',
         answerEn: 'stress',
+        pos: ['noun'],
         orderIndex: 10,
     },
     {
@@ -22894,6 +25376,7 @@ export const questions: Question[] = [
         sectionLabel: '1671-1680',
         promptJp: '[名]軍団，部隊',
         answerEn: 'corps',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -22905,6 +25388,7 @@ export const questions: Question[] = [
         sectionLabel: '1671-1680',
         promptJp: '[名]4分の1，[名]15分',
         answerEn: 'quarter',
+        pos: ['noun'],
         orderIndex: 2,
     },
     {
@@ -22916,6 +25400,7 @@ export const questions: Question[] = [
         sectionLabel: '1681-1690',
         promptJp: '[動]～に害を与える / [名]損害',
         answerEn: 'harm',
+        pos: ['verb', 'noun'],
         orderIndex: 3,
     },
     {
@@ -22927,6 +25412,7 @@ export const questions: Question[] = [
         sectionLabel: '1681-1690',
         promptJp: '[動]～を（…に）合わせる，（…向きに）変える',
         answerEn: 'adapt',
+        pos: ['verb'],
         orderIndex: 4,
     },
     {
@@ -22938,6 +25424,7 @@ export const questions: Question[] = [
         sectionLabel: '1681-1690',
         promptJp: '[名]怒り',
         answerEn: 'anger',
+        pos: ['noun'],
         orderIndex: 5,
     },
     {
@@ -22949,6 +25436,7 @@ export const questions: Question[] = [
         sectionLabel: '1681-1690',
         promptJp: '[形]賢い',
         answerEn: 'wise',
+        pos: ['adj'],
         orderIndex: 6,
     },
     {
@@ -22960,6 +25448,7 @@ export const questions: Question[] = [
         sectionLabel: '1681-1690',
         promptJp: '[名]エンジン',
         answerEn: 'engine',
+        pos: ['noun'],
         orderIndex: 7,
     },
     {
@@ -22971,6 +25460,7 @@ export const questions: Question[] = [
         sectionLabel: '1681-1690',
         promptJp: '[名]クーポン，引換券',
         answerEn: 'coupon',
+        pos: ['noun'],
         orderIndex: 8,
     },
     {
@@ -22982,6 +25472,7 @@ export const questions: Question[] = [
         sectionLabel: '1681-1690',
         promptJp: '[名]経済',
         answerEn: 'economy',
+        pos: ['noun'],
         orderIndex: 9,
     },
     {
@@ -22993,6 +25484,7 @@ export const questions: Question[] = [
         sectionLabel: '1681-1690',
         promptJp: '[形]女性の，雌の / [名]女性',
         answerEn: 'female',
+        pos: ['adj', 'noun'],
         orderIndex: 10,
     },
     {
@@ -23004,6 +25496,7 @@ export const questions: Question[] = [
         sectionLabel: '1681-1690',
         promptJp: '[名]正常，通常 / [形]標準の，ふつうの，通常の',
         answerEn: 'normal',
+        pos: ['noun', 'adj'],
         orderIndex: 1,
     },
     {
@@ -23015,6 +25508,7 @@ export const questions: Question[] = [
         sectionLabel: '1681-1690',
         promptJp: '[名]ソフト（ウェア）',
         answerEn: 'software',
+        pos: ['noun'],
         orderIndex: 2,
     },
     {
@@ -23026,6 +25520,7 @@ export const questions: Question[] = [
         sectionLabel: '1691-1700',
         promptJp: '[形]化学の / [名]化学製品[薬品]',
         answerEn: 'chemical',
+        pos: ['adj', 'noun'],
         orderIndex: 3,
     },
     {
@@ -23037,6 +25532,7 @@ export const questions: Question[] = [
         sectionLabel: '1691-1700',
         promptJp: '[副]最近，近ごろ',
         answerEn: 'recently',
+        pos: ['adv'],
         orderIndex: 4,
     },
     {
@@ -23048,6 +25544,7 @@ export const questions: Question[] = [
         sectionLabel: '1691-1700',
         promptJp: '[名]① 視力 [名]② 名所',
         answerEn: 'sight',
+        pos: ['noun'],
         orderIndex: 5,
     },
     {
@@ -23059,6 +25556,7 @@ export const questions: Question[] = [
         sectionLabel: '1691-1700',
         promptJp: '[名]バレエ',
         answerEn: 'ballet',
+        pos: ['noun'],
         orderIndex: 6,
     },
     {
@@ -23070,6 +25568,7 @@ export const questions: Question[] = [
         sectionLabel: '1691-1700',
         promptJp: '[名]関係，つながり',
         answerEn: 'connection',
+        pos: ['noun'],
         orderIndex: 7,
     },
     {
@@ -23081,6 +25580,7 @@ export const questions: Question[] = [
         sectionLabel: '1691-1700',
         promptJp: '[形]ぬれた，雨の（多い）',
         answerEn: 'wet',
+        pos: ['adj'],
         orderIndex: 8,
     },
     {
@@ -23092,6 +25592,7 @@ export const questions: Question[] = [
         sectionLabel: '1691-1700',
         promptJp: '[名]フランス人[語]/ [形]フランスの，フランス人[語]の',
         answerEn: 'French',
+        pos: ['noun', 'adj'],
         orderIndex: 9,
     },
     {
@@ -23103,6 +25604,7 @@ export const questions: Question[] = [
         sectionLabel: '1691-1700',
         promptJp: '[形]極地の',
         answerEn: 'polar',
+        pos: ['adj'],
         orderIndex: 10,
     },
     {
@@ -23114,6 +25616,7 @@ export const questions: Question[] = [
         sectionLabel: '1691-1700',
         promptJp: '[形]まっすぐな，直線の / [副]まっすぐに',
         answerEn: 'straight',
+        pos: ['adj', 'adv'],
         orderIndex: 1,
     },
     {
@@ -23125,6 +25628,7 @@ export const questions: Question[] = [
         sectionLabel: '1691-1700',
         promptJp: '[名]トイレ，[名]便所，[名]便器',
         answerEn: 'toilet',
+        pos: ['noun'],
         orderIndex: 2,
     },
     {
@@ -23136,6 +25640,7 @@ export const questions: Question[] = [
         sectionLabel: '1701-1710',
         promptJp: '[名]訓練',
         answerEn: 'training',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -23147,6 +25652,7 @@ export const questions: Question[] = [
         sectionLabel: '1701-1710',
         promptJp: '[形]私的な',
         answerEn: 'private',
+        pos: ['adj'],
         orderIndex: 4,
     },
     {
@@ -23158,6 +25664,7 @@ export const questions: Question[] = [
         sectionLabel: '1701-1710',
         promptJp: '[名]底，最下部',
         answerEn: 'bottom',
+        pos: ['noun'],
         orderIndex: 5,
     },
     {
@@ -23169,6 +25676,7 @@ export const questions: Question[] = [
         sectionLabel: '1701-1710',
         promptJp: '[名]個人，[形]個々の，個人の',
         answerEn: 'individual',
+        pos: ['noun', 'adj'],
         orderIndex: 6,
     },
     {
@@ -23180,6 +25688,7 @@ export const questions: Question[] = [
         sectionLabel: '1701-1710',
         promptJp: '[名]アルミ（ニウム）',
         answerEn: 'aluminum',
+        pos: ['noun'],
         orderIndex: 7,
     },
     {
@@ -23191,6 +25700,7 @@ export const questions: Question[] = [
         sectionLabel: '1701-1710',
         promptJp: '[名]恩恵，利益',
         answerEn: 'benefit',
+        pos: ['noun'],
         orderIndex: 8,
     },
     {
@@ -23202,6 +25712,7 @@ export const questions: Question[] = [
         sectionLabel: '1701-1710',
         promptJp: '[動]～を計算する',
         answerEn: 'calculate',
+        pos: ['verb'],
         orderIndex: 9,
     },
     {
@@ -23213,6 +25724,7 @@ export const questions: Question[] = [
         sectionLabel: '1701-1710',
         promptJp: '[名]技術，技巧，手工芸（品）',
         answerEn: 'craft',
+        pos: ['noun'],
         orderIndex: 10,
     },
     {
@@ -23224,6 +25736,7 @@ export const questions: Question[] = [
         sectionLabel: '1701-1710',
         promptJp: '[名]部門，売り場',
         answerEn: 'department',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -23235,6 +25748,7 @@ export const questions: Question[] = [
         sectionLabel: '1701-1710',
         promptJp: '[名]（牛・羊などの）角，角笛，ホルン',
         answerEn: 'horn',
+        pos: ['noun'],
         orderIndex: 2,
     },
     {
@@ -23246,6 +25760,7 @@ export const questions: Question[] = [
         sectionLabel: '1711-1720',
         promptJp: '[名]砂',
         answerEn: 'sand',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -23257,6 +25772,7 @@ export const questions: Question[] = [
         sectionLabel: '1711-1720',
         promptJp: '[名]家事',
         answerEn: 'housework',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -23268,6 +25784,7 @@ export const questions: Question[] = [
         sectionLabel: '1711-1720',
         promptJp: '[副]いくぶん，やや，かなり',
         answerEn: 'rather',
+        pos: ['adv'],
         orderIndex: 5,
     },
     {
@@ -23279,6 +25796,7 @@ export const questions: Question[] = [
         sectionLabel: '1711-1720',
         promptJp: '[名]失業，失業率',
         answerEn: 'unemployment',
+        pos: ['noun'],
         orderIndex: 6,
     },
     {
@@ -23290,6 +25808,7 @@ export const questions: Question[] = [
         sectionLabel: '1711-1720',
         promptJp: '[名]国，[名]国民',
         answerEn: 'nation',
+        pos: ['noun'],
         orderIndex: 7,
     },
     {
@@ -23301,6 +25820,7 @@ export const questions: Question[] = [
         sectionLabel: '1711-1720',
         promptJp: '[名/形動]個人的な',
         answerEn: 'personal',
+        pos: ['noun', 'verb', 'adj'],
         orderIndex: 8,
     },
     {
@@ -23312,6 +25832,7 @@ export const questions: Question[] = [
         sectionLabel: '1711-1720',
         promptJp: '[名]写真',
         answerEn: 'photograph',
+        pos: ['noun'],
         orderIndex: 9,
     },
     {
@@ -23323,6 +25844,7 @@ export const questions: Question[] = [
         sectionLabel: '1711-1720',
         promptJp: '[形]①飾りのない，質素な，地味な ②明白な，明らかな',
         answerEn: 'plain',
+        pos: ['adj'],
         orderIndex: 10,
     },
     {
@@ -23334,6 +25856,7 @@ export const questions: Question[] = [
         sectionLabel: '1711-1720',
         promptJp: '[名]携帯電話',
         answerEn: 'cellphone',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -23345,6 +25868,7 @@ export const questions: Question[] = [
         sectionLabel: '1711-1720',
         promptJp: '[名]①位置，場所 ②立場，身分',
         answerEn: 'position',
+        pos: ['noun'],
         orderIndex: 2,
     },
     {
@@ -23356,6 +25880,7 @@ export const questions: Question[] = [
         sectionLabel: '1721-1730',
         promptJp: '[名]規約，（一連の）記号，暗号',
         answerEn: 'code',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -23367,6 +25892,7 @@ export const questions: Question[] = [
         sectionLabel: '1721-1730',
         promptJp: '[副]完全に，すっかり',
         answerEn: 'completely',
+        pos: ['adv'],
         orderIndex: 4,
     },
     {
@@ -23378,6 +25904,7 @@ export const questions: Question[] = [
         sectionLabel: '1721-1730',
         promptJp: '[名]人形',
         answerEn: 'doll',
+        pos: ['noun'],
         orderIndex: 5,
     },
     {
@@ -23389,6 +25916,7 @@ export const questions: Question[] = [
         sectionLabel: '1721-1730',
         promptJp: '[名]点，（コンピューターで）ドット',
         answerEn: 'dot',
+        pos: ['noun'],
         orderIndex: 6,
     },
     {
@@ -23400,6 +25928,7 @@ export const questions: Question[] = [
         sectionLabel: '1721-1730',
         promptJp: '[名]ドラマ，劇',
         answerEn: 'drama',
+        pos: ['noun'],
         orderIndex: 7,
     },
     {
@@ -23411,6 +25940,7 @@ export const questions: Question[] = [
         sectionLabel: '1721-1730',
         promptJp: '[名]パーセンテージ（百分率），割合',
         answerEn: 'percentage',
+        pos: ['noun'],
         orderIndex: 8,
     },
     {
@@ -23422,6 +25952,7 @@ export const questions: Question[] = [
         sectionLabel: '1721-1730',
         promptJp: '[名]道（筋），方法',
         answerEn: 'route',
+        pos: ['noun'],
         orderIndex: 9,
     },
     {
@@ -23433,6 +25964,7 @@ export const questions: Question[] = [
         sectionLabel: '1721-1730',
         promptJp: '[動]～を注ぐ',
         answerEn: 'pour',
+        pos: ['verb'],
         orderIndex: 10,
     },
     {
@@ -23444,6 +25976,7 @@ export const questions: Question[] = [
         sectionLabel: '1721-1730',
         promptJp: '[名]ポンプ',
         answerEn: 'pump',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -23455,6 +25988,7 @@ export const questions: Question[] = [
         sectionLabel: '1721-1730',
         promptJp: '[名]タイル',
         answerEn: 'tile',
+        pos: ['noun'],
         orderIndex: 2,
     },
     {
@@ -23466,6 +26000,7 @@ export const questions: Question[] = [
         sectionLabel: '1731-1740',
         promptJp: '[名]竜巻',
         answerEn: 'tornado',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -23477,6 +26012,7 @@ export const questions: Question[] = [
         sectionLabel: '1731-1740',
         promptJp: '[名]宇宙',
         answerEn: 'universe',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -23488,6 +26024,7 @@ export const questions: Question[] = [
         sectionLabel: '1731-1740',
         promptJp: '[名]骨',
         answerEn: 'bone',
+        pos: ['noun'],
         orderIndex: 5,
     },
     {
@@ -23499,6 +26036,7 @@ export const questions: Question[] = [
         sectionLabel: '1731-1740',
         promptJp: '[形]とても大きい，巨大な',
         answerEn: 'huge',
+        pos: ['adj'],
         orderIndex: 6,
     },
     {
@@ -23510,6 +26048,7 @@ export const questions: Question[] = [
         sectionLabel: '1731-1740',
         promptJp: '[名]失うこと，損失，負け',
         answerEn: 'loss',
+        pos: ['noun'],
         orderIndex: 7,
     },
     {
@@ -23521,6 +26060,7 @@ export const questions: Question[] = [
         sectionLabel: '1731-1740',
         promptJp: '[名]沈黙，静けさ',
         answerEn: 'silence',
+        pos: ['noun'],
         orderIndex: 8,
     },
     {
@@ -23532,6 +26072,7 @@ export const questions: Question[] = [
         sectionLabel: '1731-1740',
         promptJp: '[名]資源',
         answerEn: 'resource',
+        pos: ['noun'],
         orderIndex: 9,
     },
     {
@@ -23543,6 +26084,7 @@ export const questions: Question[] = [
         sectionLabel: '1731-1740',
         promptJp: '[動]～をコピーする，まねる / [名]①写し，コピー ②（本・雑誌などの）１部',
         answerEn: 'copy',
+        pos: ['verb', 'noun'],
         orderIndex: 10,
     },
     {
@@ -23554,6 +26096,7 @@ export const questions: Question[] = [
         sectionLabel: '1731-1740',
         promptJp: '[形]通常の，ふつうの',
         answerEn: 'ordinary',
+        pos: ['adj'],
         orderIndex: 1,
     },
     {
@@ -23565,6 +26108,7 @@ export const questions: Question[] = [
         sectionLabel: '1731-1740',
         promptJp: '[名]１組，１対',
         answerEn: 'pair',
+        pos: ['noun'],
         orderIndex: 2,
     },
     {
@@ -23576,6 +26120,7 @@ export const questions: Question[] = [
         sectionLabel: '1741-1750',
         promptJp: '[名]チェックアウト, [動]チェックアウトする',
         answerEn: 'checkout',
+        pos: ['noun', 'verb'],
         orderIndex: 3,
     },
     {
@@ -23587,6 +26132,7 @@ export const questions: Question[] = [
         sectionLabel: '1741-1750',
         promptJp: '[名]収集，コレクション',
         answerEn: 'collection',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -23598,6 +26144,7 @@ export const questions: Question[] = [
         sectionLabel: '1741-1750',
         promptJp: '[名]（鉛筆などで描いた）絵，線画，デッサン',
         answerEn: 'drawing',
+        pos: ['noun'],
         orderIndex: 5,
     },
     {
@@ -23609,6 +26156,7 @@ export const questions: Question[] = [
         sectionLabel: '1741-1750',
         promptJp: '[名]幽霊',
         answerEn: 'ghost',
+        pos: ['noun'],
         orderIndex: 6,
     },
     {
@@ -23620,6 +26168,7 @@ export const questions: Question[] = [
         sectionLabel: '1741-1750',
         promptJp: '[名]（朝の）ホームルーム',
         answerEn: 'homeroom',
+        pos: ['noun'],
         orderIndex: 7,
     },
     {
@@ -23631,6 +26180,7 @@ export const questions: Question[] = [
         sectionLabel: '1741-1750',
         promptJp: '[名]手品師，魔術師',
         answerEn: 'magician',
+        pos: ['noun'],
         orderIndex: 8,
     },
     {
@@ -23642,6 +26192,7 @@ export const questions: Question[] = [
         sectionLabel: '1741-1750',
         promptJp: '[名]ネットワーク，放送局網，～網',
         answerEn: 'network',
+        pos: ['noun'],
         orderIndex: 9,
     },
     {
@@ -23653,6 +26204,7 @@ export const questions: Question[] = [
         sectionLabel: '1741-1750',
         promptJp: '[形]うるさい，やかましい',
         answerEn: 'noisy',
+        pos: ['adj'],
         orderIndex: 10,
     },
     {
@@ -23664,6 +26216,7 @@ export const questions: Question[] = [
         sectionLabel: '1741-1750',
         promptJp: '[名]エンドウ豆',
         answerEn: 'pea',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -23675,6 +26228,7 @@ export const questions: Question[] = [
         sectionLabel: '1741-1750',
         promptJp: '[形]岩の多い',
         answerEn: 'rocky',
+        pos: ['adj'],
         orderIndex: 2,
     },
     {
@@ -23686,6 +26240,7 @@ export const questions: Question[] = [
         sectionLabel: '1751-1760',
         promptJp: '[名]脚本，台本',
         answerEn: 'script',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -23697,6 +26252,7 @@ export const questions: Question[] = [
         sectionLabel: '1751-1760',
         promptJp: '[名]車，自動車',
         answerEn: 'vehicle',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -23708,6 +26264,7 @@ export const questions: Question[] = [
         sectionLabel: '1751-1760',
         promptJp: '[名]ステッカー，のり付ラベル',
         answerEn: 'sticker',
+        pos: ['noun'],
         orderIndex: 5,
     },
     {
@@ -23719,6 +26276,7 @@ export const questions: Question[] = [
         sectionLabel: '1751-1760',
         promptJp: '[動]～する傾向がある',
         answerEn: 'tend',
+        pos: ['verb'],
         orderIndex: 6,
     },
     {
@@ -23730,6 +26288,7 @@ export const questions: Question[] = [
         sectionLabel: '1751-1760',
         promptJp: '[名]主題，テーマ',
         answerEn: 'theme',
+        pos: ['noun'],
         orderIndex: 7,
     },
     {
@@ -23741,6 +26300,7 @@ export const questions: Question[] = [
         sectionLabel: '1751-1760',
         promptJp: '[名]潮（の干満）',
         answerEn: 'tide',
+        pos: ['noun'],
         orderIndex: 8,
     },
     {
@@ -23752,6 +26312,7 @@ export const questions: Question[] = [
         sectionLabel: '1751-1760',
         promptJp: '[名]弱さ，弱点',
         answerEn: 'weakness',
+        pos: ['noun'],
         orderIndex: 9,
     },
     {
@@ -23763,6 +26324,7 @@ export const questions: Question[] = [
         sectionLabel: '1751-1760',
         promptJp: '[形]木でできた，木製の',
         answerEn: 'wooden',
+        pos: ['adj'],
         orderIndex: 10,
     },
     {
@@ -23774,6 +26336,7 @@ export const questions: Question[] = [
         sectionLabel: '1751-1760',
         promptJp: '[名]飛行機',
         answerEn: 'airplane',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -23785,6 +26348,7 @@ export const questions: Question[] = [
         sectionLabel: '1751-1760',
         promptJp: '[動]①当てはまる，～を当てはめる ②応募する',
         answerEn: 'apply',
+        pos: ['verb'],
         orderIndex: 2,
     },
     {
@@ -23796,6 +26360,7 @@ export const questions: Question[] = [
         sectionLabel: '1761-1770',
         promptJp: '[名]釣り合い，バランス / [動]バランスをとる[保つ]',
         answerEn: 'balance',
+        pos: ['noun', 'verb'],
         orderIndex: 3,
     },
     {
@@ -23807,6 +26372,7 @@ export const questions: Question[] = [
         sectionLabel: '1761-1770',
         promptJp: '[形]不可能な',
         answerEn: 'impossible',
+        pos: ['adj'],
         orderIndex: 4,
     },
     {
@@ -23818,6 +26384,7 @@ export const questions: Question[] = [
         sectionLabel: '1761-1770',
         promptJp: '[副]運よく',
         answerEn: 'luckily',
+        pos: ['adv'],
         orderIndex: 5,
     },
     {
@@ -23829,6 +26396,7 @@ export const questions: Question[] = [
         sectionLabel: '1761-1770',
         promptJp: '[副]本当に，確かに',
         answerEn: 'indeed',
+        pos: ['adv'],
         orderIndex: 6,
     },
     {
@@ -23840,6 +26408,7 @@ export const questions: Question[] = [
         sectionLabel: '1761-1770',
         promptJp: '[名]感情',
         answerEn: 'emotion',
+        pos: ['noun'],
         orderIndex: 7,
     },
     {
@@ -23851,6 +26420,7 @@ export const questions: Question[] = [
         sectionLabel: '1761-1770',
         promptJp: '[名]基本，土台 / [動]～を（…に）基づかせる',
         answerEn: 'base',
+        pos: ['noun', 'verb'],
         orderIndex: 8,
     },
     {
@@ -23862,6 +26432,7 @@ export const questions: Question[] = [
         sectionLabel: '1761-1770',
         promptJp: '[副]単純に，ただ単に',
         answerEn: 'simply',
+        pos: ['adv'],
         orderIndex: 9,
     },
     {
@@ -23873,6 +26444,7 @@ export const questions: Question[] = [
         sectionLabel: '1761-1770',
         promptJp: '[名]療法，治療',
         answerEn: 'therapy',
+        pos: ['noun'],
         orderIndex: 10,
     },
     {
@@ -23884,6 +26456,7 @@ export const questions: Question[] = [
         sectionLabel: '1761-1770',
         promptJp: '[名]競争，競技会',
         answerEn: 'competition',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -23895,6 +26468,7 @@ export const questions: Question[] = [
         sectionLabel: '1761-1770',
         promptJp: '[動]～を置く，横たえる',
         answerEn: 'lay',
+        pos: ['verb'],
         orderIndex: 2,
     },
     {
@@ -23906,6 +26480,7 @@ export const questions: Question[] = [
         sectionLabel: '1771-1780',
         promptJp: '[名]百科事典',
         answerEn: 'encyclopedia',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -23917,6 +26492,7 @@ export const questions: Question[] = [
         sectionLabel: '1771-1780',
         promptJp: '[形]太った / [名]脂肪',
         answerEn: 'fat',
+        pos: ['adj', 'noun'],
         orderIndex: 4,
     },
     {
@@ -23928,6 +26504,7 @@ export const questions: Question[] = [
         sectionLabel: '1771-1780',
         promptJp: '[名]遺伝子',
         answerEn: 'gene',
+        pos: ['noun'],
         orderIndex: 5,
     },
     {
@@ -23939,6 +26516,7 @@ export const questions: Question[] = [
         sectionLabel: '1771-1780',
         promptJp: '[名]操り人形，指人形',
         answerEn: 'puppet',
+        pos: ['noun'],
         orderIndex: 6,
     },
     {
@@ -23950,6 +26528,7 @@ export const questions: Question[] = [
         sectionLabel: '1771-1780',
         promptJp: '[名]割合，[名]ペース，[名]速度',
         answerEn: 'rate',
+        pos: ['noun'],
         orderIndex: 7,
     },
     {
@@ -23961,6 +26540,7 @@ export const questions: Question[] = [
         sectionLabel: '1771-1780',
         promptJp: '[名]①（1枚の）紙，１枚 ②[ふつう複数形で]シーツ',
         answerEn: 'sheet',
+        pos: ['noun', 'adj', 'num'],
         orderIndex: 8,
     },
     {
@@ -23972,6 +26552,7 @@ export const questions: Question[] = [
         sectionLabel: '1771-1780',
         promptJp: '[名]（陸・淡水の）カメ',
         answerEn: 'tortoise',
+        pos: ['noun'],
         orderIndex: 9,
     },
     {
@@ -23983,6 +26564,7 @@ export const questions: Question[] = [
         sectionLabel: '1771-1780',
         promptJp: '[名]盆',
         answerEn: 'tray',
+        pos: ['noun'],
         orderIndex: 10,
     },
     {
@@ -23994,6 +26576,7 @@ export const questions: Question[] = [
         sectionLabel: '1771-1780',
         promptJp: '[名]①（金属・プラスチック・ゴムの）管 [名]②（ロンドンの）地下鉄',
         answerEn: 'tube',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -24005,6 +26588,7 @@ export const questions: Question[] = [
         sectionLabel: '1771-1780',
         promptJp: '[動]（風などが）吹く，～を吹く',
         answerEn: 'blow',
+        pos: ['verb'],
         orderIndex: 2,
     },
     {
@@ -24016,6 +26600,7 @@ export const questions: Question[] = [
         sectionLabel: '1781-1790',
         promptJp: '[形]電気の',
         answerEn: 'electric',
+        pos: ['adj'],
         orderIndex: 3,
     },
     {
@@ -24027,6 +26612,7 @@ export const questions: Question[] = [
         sectionLabel: '1781-1790',
         promptJp: '[副]幸福に，楽しく',
         answerEn: 'happily',
+        pos: ['adv'],
         orderIndex: 4,
     },
     {
@@ -24038,6 +26624,7 @@ export const questions: Question[] = [
         sectionLabel: '1781-1790',
         promptJp: '[名]でこぼこ，こぶ',
         answerEn: 'bump',
+        pos: ['noun'],
         orderIndex: 5,
     },
     {
@@ -24049,6 +26636,7 @@ export const questions: Question[] = [
         sectionLabel: '1781-1790',
         promptJp: '[名]物，物体',
         answerEn: 'object',
+        pos: ['noun'],
         orderIndex: 6,
     },
     {
@@ -24060,6 +26648,7 @@ export const questions: Question[] = [
         sectionLabel: '1781-1790',
         promptJp: '[名]粘土',
         answerEn: 'clay',
+        pos: ['noun'],
         orderIndex: 7,
     },
     {
@@ -24071,6 +26660,7 @@ export const questions: Question[] = [
         sectionLabel: '1781-1790',
         promptJp: '[動]浮かぶ，浮く',
         answerEn: 'float',
+        pos: ['verb'],
         orderIndex: 8,
     },
     {
@@ -24082,6 +26672,7 @@ export const questions: Question[] = [
         sectionLabel: '1781-1790',
         promptJp: '[名]フォーク',
         answerEn: 'fork',
+        pos: ['noun'],
         orderIndex: 9,
     },
     {
@@ -24093,6 +26684,7 @@ export const questions: Question[] = [
         sectionLabel: '1781-1790',
         promptJp: '[動]苦しむ，悩む，痛手[損害]を受ける',
         answerEn: 'suffer',
+        pos: ['verb'],
         orderIndex: 10,
     },
     {
@@ -24104,6 +26696,7 @@ export const questions: Question[] = [
         sectionLabel: '1781-1790',
         promptJp: '[形]適切な，ふさわしい',
         answerEn: 'proper',
+        pos: ['adj'],
         orderIndex: 1,
     },
     {
@@ -24115,6 +26708,7 @@ export const questions: Question[] = [
         sectionLabel: '1781-1790',
         promptJp: '[形]生来の，母国の，その地で生まれた',
         answerEn: 'native',
+        pos: ['adj'],
         orderIndex: 2,
     },
     {
@@ -24126,6 +26720,7 @@ export const questions: Question[] = [
         sectionLabel: '1791-1800',
         promptJp: '[名]導管，管，パイプ',
         answerEn: 'pipe',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -24137,6 +26732,7 @@ export const questions: Question[] = [
         sectionLabel: '1791-1800',
         promptJp: '[名]生徒',
         answerEn: 'pupil',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -24148,6 +26744,7 @@ export const questions: Question[] = [
         sectionLabel: '1791-1800',
         promptJp: '[名] 魂，霊魂',
         answerEn: 'soul',
+        pos: ['noun'],
         orderIndex: 5,
     },
     {
@@ -24159,6 +26756,7 @@ export const questions: Question[] = [
         sectionLabel: '1791-1800',
         promptJp: '[動]（人・銀行）から（金品を）奪う，強奪する',
         answerEn: 'rob',
+        pos: ['verb'],
         orderIndex: 6,
     },
     {
@@ -24170,6 +26768,7 @@ export const questions: Question[] = [
         sectionLabel: '1791-1800',
         promptJp: '[名]ワイン，ブドウ酒',
         answerEn: 'wine',
+        pos: ['noun'],
         orderIndex: 7,
     },
     {
@@ -24181,6 +26780,7 @@ export const questions: Question[] = [
         sectionLabel: '1791-1800',
         promptJp: '[名]輸送（手段），乗り物',
         answerEn: 'transportation',
+        pos: ['noun'],
         orderIndex: 8,
     },
     {
@@ -24192,6 +26792,7 @@ export const questions: Question[] = [
         sectionLabel: '1791-1800',
         promptJp: '[形]ふつうでない，めずらしい',
         answerEn: 'unusual',
+        pos: ['adj'],
         orderIndex: 9,
     },
     {
@@ -24203,6 +26804,7 @@ export const questions: Question[] = [
         sectionLabel: '1791-1800',
         promptJp: '[動]（～を）ささやく，[名]ささやき',
         answerEn: 'whisper',
+        pos: ['verb', 'noun'],
         orderIndex: 10,
     },
     {
@@ -24214,6 +26816,7 @@ export const questions: Question[] = [
         sectionLabel: '1791-1800',
         promptJp: '[名]ろうそく',
         answerEn: 'candle',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -24225,6 +26828,7 @@ export const questions: Question[] = [
         sectionLabel: '1791-1800',
         promptJp: '[名]長，かしら / [形]最高位の，最も重要な，主な',
         answerEn: 'chief',
+        pos: ['noun', 'adj'],
         orderIndex: 2,
     },
     {
@@ -24236,6 +26840,7 @@ export const questions: Question[] = [
         sectionLabel: '1801-1810',
         promptJp: '[動詞・形容詞]～を完了する，終える／完全な',
         answerEn: 'complete',
+        pos: ['verb', 'adj'],
         orderIndex: 3,
     },
     {
@@ -24247,6 +26852,7 @@ export const questions: Question[] = [
         sectionLabel: '1801-1810',
         promptJp: '[名]クリーム',
         answerEn: 'cream',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -24258,6 +26864,7 @@ export const questions: Question[] = [
         sectionLabel: '1801-1810',
         promptJp: '[名]サーカス',
         answerEn: 'circus',
+        pos: ['noun'],
         orderIndex: 5,
     },
     {
@@ -24269,6 +26876,7 @@ export const questions: Question[] = [
         sectionLabel: '1801-1810',
         promptJp: '[動]流れる',
         answerEn: 'flow',
+        pos: ['verb'],
         orderIndex: 6,
     },
     {
@@ -24280,6 +26888,7 @@ export const questions: Question[] = [
         sectionLabel: '1801-1810',
         promptJp: '[名]リスク',
         answerEn: 'risk',
+        pos: ['noun'],
         orderIndex: 7,
     },
     {
@@ -24291,6 +26900,7 @@ export const questions: Question[] = [
         sectionLabel: '1801-1810',
         promptJp: '[動]～を炒める，揚げる',
         answerEn: 'fry',
+        pos: ['verb'],
         orderIndex: 8,
     },
     {
@@ -24302,6 +26912,7 @@ export const questions: Question[] = [
         sectionLabel: '1801-1810',
         promptJp: '[形]耳が聞こえない',
         answerEn: 'deaf',
+        pos: ['adj'],
         orderIndex: 9,
     },
     {
@@ -24313,6 +26924,7 @@ export const questions: Question[] = [
         sectionLabel: '1801-1810',
         promptJp: '[動]（～を）断る，拒絶する',
         answerEn: 'refuse',
+        pos: ['verb'],
         orderIndex: 10,
     },
     {
@@ -24324,6 +26936,7 @@ export const questions: Question[] = [
         sectionLabel: '1801-1810',
         promptJp: '[名]銀河，[theをつけ大文字で始めて]銀河系',
         answerEn: 'galaxy',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -24335,6 +26948,7 @@ export const questions: Question[] = [
         sectionLabel: '1801-1810',
         promptJp: '[名]優美さ，上品さ',
         answerEn: 'grace',
+        pos: ['noun'],
         orderIndex: 2,
     },
     {
@@ -24346,6 +26960,7 @@ export const questions: Question[] = [
         sectionLabel: '1811-1820',
         promptJp: '[名]ガム，ゴム',
         answerEn: 'gum',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -24357,6 +26972,7 @@ export const questions: Question[] = [
         sectionLabel: '1811-1820',
         promptJp: '[名]領主，[大文字で]神，主',
         answerEn: 'lord',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -24368,6 +26984,7 @@ export const questions: Question[] = [
         sectionLabel: '1811-1820',
         promptJp: '[名]主人，親方，達人／[動]～を習得する',
         answerEn: 'master',
+        pos: ['noun', 'verb'],
         orderIndex: 5,
     },
     {
@@ -24379,6 +26996,7 @@ export const questions: Question[] = [
         sectionLabel: '1811-1820',
         promptJp: '[名]巣',
         answerEn: 'nest',
+        pos: ['noun'],
         orderIndex: 6,
     },
     {
@@ -24390,6 +27008,7 @@ export const questions: Question[] = [
         sectionLabel: '1811-1820',
         promptJp: '[形]① 反対[向こう]側の② 正反対の，逆の',
         answerEn: 'opposite',
+        pos: ['adj'],
         orderIndex: 7,
     },
     {
@@ -24401,6 +27020,7 @@ export const questions: Question[] = [
         sectionLabel: '1811-1820',
         promptJp: '[動]～を打つ，襲う，～にぶつかる',
         answerEn: 'strike',
+        pos: ['verb'],
         orderIndex: 8,
     },
     {
@@ -24412,6 +27032,7 @@ export const questions: Question[] = [
         sectionLabel: '1811-1820',
         promptJp: '[名]根，[複数形で]ルーツ',
         answerEn: 'root',
+        pos: ['noun', 'adj', 'num'],
         orderIndex: 9,
     },
     {
@@ -24423,6 +27044,7 @@ export const questions: Question[] = [
         sectionLabel: '1811-1820',
         promptJp: '[名]スープ',
         answerEn: 'soup',
+        pos: ['noun'],
         orderIndex: 10,
     },
     {
@@ -24434,6 +27056,7 @@ export const questions: Question[] = [
         sectionLabel: '1811-1820',
         promptJp: '[名]大豆',
         answerEn: 'soybean',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -24445,6 +27068,7 @@ export const questions: Question[] = [
         sectionLabel: '1811-1820',
         promptJp: '[動]じっと見る，見つめる',
         answerEn: 'stare',
+        pos: ['verb'],
         orderIndex: 2,
     },
     {
@@ -24456,6 +27080,7 @@ export const questions: Question[] = [
         sectionLabel: '1821-1830',
         promptJp: '[名]語調，[名]口調，[名]話し方',
         answerEn: 'tone',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -24467,6 +27092,7 @@ export const questions: Question[] = [
         sectionLabel: '1821-1830',
         promptJp: '[前]～とは違って，～らしくない',
         answerEn: 'unlike',
+        pos: ['prep'],
         orderIndex: 4,
     },
     {
@@ -24478,6 +27104,7 @@ export const questions: Question[] = [
         sectionLabel: '1821-1830',
         promptJp: '[接]① ～かどうか②[後に ～ or ...を続けて]～か…かどちらか[どちらでも]',
         answerEn: 'whether',
+        pos: ['conj'],
         orderIndex: 5,
     },
     {
@@ -24489,6 +27116,7 @@ export const questions: Question[] = [
         sectionLabel: '1821-1830',
         promptJp: '[名]（練り）歯磨き',
         answerEn: 'toothpaste',
+        pos: ['noun'],
         orderIndex: 6,
     },
     {
@@ -24500,6 +27128,7 @@ export const questions: Question[] = [
         sectionLabel: '1821-1830',
         promptJp: '[名]軍隊，陸軍',
         answerEn: 'army',
+        pos: ['noun'],
         orderIndex: 7,
     },
     {
@@ -24511,6 +27140,7 @@ export const questions: Question[] = [
         sectionLabel: '1821-1830',
         promptJp: '[名]息，呼吸',
         answerEn: 'breath',
+        pos: ['noun'],
         orderIndex: 8,
     },
     {
@@ -24522,6 +27152,7 @@ export const questions: Question[] = [
         sectionLabel: '1821-1830',
         promptJp: '[名]需要，要求／[動]～を要求する，強く尋ねる',
         answerEn: 'demand',
+        pos: ['noun', 'verb'],
         orderIndex: 9,
     },
     {
@@ -24533,6 +27164,7 @@ export const questions: Question[] = [
         sectionLabel: '1821-1830',
         promptJp: '[名]（政治・社会的）活動，キャンペーン',
         answerEn: 'campaign',
+        pos: ['noun'],
         orderIndex: 10,
     },
     {
@@ -24544,6 +27176,7 @@ export const questions: Question[] = [
         sectionLabel: '1821-1830',
         promptJp: '[名]植民地',
         answerEn: 'colony',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -24555,6 +27188,7 @@ export const questions: Question[] = [
         sectionLabel: '1821-1830',
         promptJp: '[名]大陸',
         answerEn: 'continent',
+        pos: ['noun'],
         orderIndex: 2,
     },
     {
@@ -24566,6 +27200,7 @@ export const questions: Question[] = [
         sectionLabel: '1831-1840',
         promptJp: '[名]勇気',
         answerEn: 'courage',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -24577,6 +27212,7 @@ export const questions: Question[] = [
         sectionLabel: '1831-1840',
         promptJp: '[名]資料，データ',
         answerEn: 'data',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -24588,6 +27224,7 @@ export const questions: Question[] = [
         sectionLabel: '1831-1840',
         promptJp: '[形]がっかりした，失望した',
         answerEn: 'disappointed',
+        pos: ['adj'],
         orderIndex: 5,
     },
     {
@@ -24599,6 +27236,7 @@ export const questions: Question[] = [
         sectionLabel: '1831-1840',
         promptJp: '[形]① 定期の，通常の，規則的な② 正規の，定まった',
         answerEn: 'regular',
+        pos: ['adj'],
         orderIndex: 6,
     },
     {
@@ -24610,6 +27248,7 @@ export const questions: Question[] = [
         sectionLabel: '1831-1840',
         promptJp: '[形]適した，健康な／[動]（～に）合う，適する',
         answerEn: 'fit',
+        pos: ['adj', 'verb'],
         orderIndex: 7,
     },
     {
@@ -24621,6 +27260,7 @@ export const questions: Question[] = [
         sectionLabel: '1831-1840',
         promptJp: '[名]結婚',
         answerEn: 'marriage',
+        pos: ['noun'],
         orderIndex: 8,
     },
     {
@@ -24632,6 +27272,7 @@ export const questions: Question[] = [
         sectionLabel: '1831-1840',
         promptJp: '[名]銃，鉄砲',
         answerEn: 'gun',
+        pos: ['noun'],
         orderIndex: 9,
     },
     {
@@ -24643,6 +27284,7 @@ export const questions: Question[] = [
         sectionLabel: '1831-1840',
         promptJp: '[動]～を無視する',
         answerEn: 'ignore',
+        pos: ['verb'],
         orderIndex: 10,
     },
     {
@@ -24654,6 +27296,7 @@ export const questions: Question[] = [
         sectionLabel: '1831-1840',
         promptJp: '[動]～を積み込む，[名]積み荷',
         answerEn: 'load',
+        pos: ['verb', 'noun'],
         orderIndex: 1,
     },
     {
@@ -24665,6 +27308,7 @@ export const questions: Question[] = [
         sectionLabel: '1831-1840',
         promptJp: '[形]男性の，雄の／[名]男性，雄',
         answerEn: 'male',
+        pos: ['adj', 'noun'],
         orderIndex: 2,
     },
     {
@@ -24676,6 +27320,7 @@ export const questions: Question[] = [
         sectionLabel: '1841-1850',
         promptJp: '[動]～を覚える，暗記する',
         answerEn: 'memorize',
+        pos: ['verb'],
         orderIndex: 3,
     },
     {
@@ -24687,6 +27332,7 @@ export const questions: Question[] = [
         sectionLabel: '1841-1850',
         promptJp: '[形]絶滅の危機にある',
         answerEn: 'endangered',
+        pos: ['adj'],
         orderIndex: 4,
     },
     {
@@ -24698,6 +27344,7 @@ export const questions: Question[] = [
         sectionLabel: '1841-1850',
         promptJp: '[動]～を供給する／[名]供給，[複数形で]必需品',
         answerEn: 'supply',
+        pos: ['verb', 'noun', 'adj', 'num'],
         orderIndex: 5,
     },
     {
@@ -24709,6 +27356,7 @@ export const questions: Question[] = [
         sectionLabel: '1841-1850',
         promptJp: '[動]～を囲む',
         answerEn: 'surround',
+        pos: ['verb'],
         orderIndex: 6,
     },
     {
@@ -24720,6 +27368,7 @@ export const questions: Question[] = [
         sectionLabel: '1841-1850',
         promptJp: '[形]不幸な，不幸せな',
         answerEn: 'unhappy',
+        pos: ['adj'],
         orderIndex: 7,
     },
     {
@@ -24731,6 +27380,7 @@ export const questions: Question[] = [
         sectionLabel: '1841-1850',
         promptJp: '[動]～のほうが好きである，～をより好む',
         answerEn: 'prefer',
+        pos: ['verb'],
         orderIndex: 8,
     },
     {
@@ -24742,6 +27392,7 @@ export const questions: Question[] = [
         sectionLabel: '1841-1850',
         promptJp: '[形]比較的な，相対的な／[名]親せき',
         answerEn: 'relative',
+        pos: ['adj', 'noun'],
         orderIndex: 9,
     },
     {
@@ -24753,6 +27404,7 @@ export const questions: Question[] = [
         sectionLabel: '1841-1850',
         promptJp: '[副]悲しそうに',
         answerEn: 'sadly',
+        pos: ['adv'],
         orderIndex: 10,
     },
     {
@@ -24764,6 +27416,7 @@ export const questions: Question[] = [
         sectionLabel: '1841-1850',
         promptJp: '[名]種／[動]～に種をまく，（スポーツで）～をシードする',
         answerEn: 'seed',
+        pos: ['noun', 'verb'],
         orderIndex: 1,
     },
     {
@@ -24775,6 +27428,7 @@ export const questions: Question[] = [
         sectionLabel: '1841-1850',
         promptJp: '[名]歩道',
         answerEn: 'sidewalk',
+        pos: ['noun'],
         orderIndex: 2,
     },
     {
@@ -24786,6 +27440,7 @@ export const questions: Question[] = [
         sectionLabel: '1851-1860',
         promptJp: '[名]迷信',
         answerEn: 'superstition',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -24797,6 +27452,7 @@ export const questions: Question[] = [
         sectionLabel: '1851-1860',
         promptJp: '[名]電話',
         answerEn: 'telephone',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -24808,6 +27464,7 @@ export const questions: Question[] = [
         sectionLabel: '1851-1860',
         promptJp: '[名]申し込み，応用',
         answerEn: 'application',
+        pos: ['noun'],
         orderIndex: 5,
     },
     {
@@ -24819,6 +27476,7 @@ export const questions: Question[] = [
         sectionLabel: '1851-1860',
         promptJp: '[名]消費者',
         answerEn: 'consumer',
+        pos: ['noun'],
         orderIndex: 6,
     },
     {
@@ -24830,6 +27488,7 @@ export const questions: Question[] = [
         sectionLabel: '1851-1860',
         promptJp: '[動]～を賞賛する',
         answerEn: 'admire',
+        pos: ['verb'],
         orderIndex: 7,
     },
     {
@@ -24841,6 +27500,7 @@ export const questions: Question[] = [
         sectionLabel: '1851-1860',
         promptJp: '[名]取り組み（方法），接近／[動]（～に）近づく',
         answerEn: 'approach',
+        pos: ['noun', 'verb'],
         orderIndex: 8,
     },
     {
@@ -24852,6 +27512,7 @@ export const questions: Question[] = [
         sectionLabel: '1851-1860',
         promptJp: '[名]①アラブ人 [形]②アラブ人の',
         answerEn: 'Arab',
+        pos: ['noun', 'adj'],
         orderIndex: 9,
     },
     {
@@ -24863,6 +27524,7 @@ export const questions: Question[] = [
         sectionLabel: '1851-1860',
         promptJp: '[名]アーチ（門）',
         answerEn: 'arch',
+        pos: ['noun'],
         orderIndex: 10,
     },
     {
@@ -24874,6 +27536,7 @@ export const questions: Question[] = [
         sectionLabel: '1851-1860',
         promptJp: '[名]権威，権限，当局',
         answerEn: 'authority',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -24885,6 +27548,7 @@ export const questions: Question[] = [
         sectionLabel: '1851-1860',
         promptJp: '[形]（～に…のことで）感謝して，ありがたく思って',
         answerEn: 'grateful',
+        pos: ['adj'],
         orderIndex: 2,
     },
     {
@@ -24896,6 +27560,7 @@ export const questions: Question[] = [
         sectionLabel: '1861-1870',
         promptJp: '[動]応答する，反応する',
         answerEn: 'respond',
+        pos: ['verb'],
         orderIndex: 3,
     },
     {
@@ -24907,6 +27572,7 @@ export const questions: Question[] = [
         sectionLabel: '1861-1870',
         promptJp: '[名]① ガソリン[名]② 気体，ガス',
         answerEn: 'gas',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -24918,6 +27584,7 @@ export const questions: Question[] = [
         sectionLabel: '1861-1870',
         promptJp: '[副]安全に，無事に',
         answerEn: 'safely',
+        pos: ['adv'],
         orderIndex: 5,
     },
     {
@@ -24929,6 +27596,7 @@ export const questions: Question[] = [
         sectionLabel: '1861-1870',
         promptJp: '[動]（体を）曲げる，曲がる',
         answerEn: 'bend',
+        pos: ['verb'],
         orderIndex: 6,
     },
     {
@@ -24940,6 +27608,7 @@ export const questions: Question[] = [
         sectionLabel: '1861-1870',
         promptJp: '[名]① おじぎ [名/動]② （リボンなどの）ちょう結び／おじぎをする，（頭）を下げる',
         answerEn: 'bow',
+        pos: ['noun', 'verb'],
         orderIndex: 7,
     },
     {
@@ -24951,6 +27620,7 @@ export const questions: Question[] = [
         sectionLabel: '1861-1870',
         promptJp: '[動]～を検査[試験]する，調べる',
         answerEn: 'examine',
+        pos: ['verb'],
         orderIndex: 8,
     },
     {
@@ -24962,6 +27632,7 @@ export const questions: Question[] = [
         sectionLabel: '1861-1870',
         promptJp: '[名]低木，茂み',
         answerEn: 'bush',
+        pos: ['noun'],
         orderIndex: 9,
     },
     {
@@ -24973,6 +27644,7 @@ export const questions: Question[] = [
         sectionLabel: '1861-1870',
         promptJp: '[形]デジタル（式）の',
         answerEn: 'digital',
+        pos: ['adj'],
         orderIndex: 10,
     },
     {
@@ -24984,6 +27656,7 @@ export const questions: Question[] = [
         sectionLabel: '1861-1870',
         promptJp: '[名]首都，[形]大文字の',
         answerEn: 'capital',
+        pos: ['noun', 'adj'],
         orderIndex: 1,
     },
     {
@@ -24995,6 +27668,7 @@ export const questions: Question[] = [
         sectionLabel: '1861-1870',
         promptJp: '[名]方言',
         answerEn: 'dialect',
+        pos: ['noun'],
         orderIndex: 2,
     },
     {
@@ -25006,6 +27680,7 @@ export const questions: Question[] = [
         sectionLabel: '1871-1880',
         promptJp: '[名]基金，資金',
         answerEn: 'fund',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -25017,6 +27692,7 @@ export const questions: Question[] = [
         sectionLabel: '1871-1880',
         promptJp: '[名]護衛，守衛，警戒',
         answerEn: 'guard',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -25028,6 +27704,7 @@ export const questions: Question[] = [
         sectionLabel: '1871-1880',
         promptJp: '[名]男，やつ',
         answerEn: 'guy',
+        pos: ['noun'],
         orderIndex: 5,
     },
     {
@@ -25039,6 +27716,7 @@ export const questions: Question[] = [
         sectionLabel: '1871-1880',
         promptJp: '[形]知能の高い，知性をもった',
         answerEn: 'intelligent',
+        pos: ['adj'],
         orderIndex: 6,
     },
     {
@@ -25050,6 +27728,7 @@ export const questions: Question[] = [
         sectionLabel: '1871-1880',
         promptJp: '[名]びん，つぼ',
         answerEn: 'jar',
+        pos: ['noun'],
         orderIndex: 7,
     },
     {
@@ -25061,6 +27740,7 @@ export const questions: Question[] = [
         sectionLabel: '1871-1880',
         promptJp: '[形]分かれた，離れた／[動]（～を）分ける，引き離す',
         answerEn: 'separate',
+        pos: ['adj', 'verb'],
         orderIndex: 8,
     },
     {
@@ -25072,6 +27752,7 @@ export const questions: Question[] = [
         sectionLabel: '1871-1880',
         promptJp: '[名]陰，[名]日陰，[名]ブラインド',
         answerEn: 'shade',
+        pos: ['noun'],
         orderIndex: 9,
     },
     {
@@ -25083,6 +27764,7 @@ export const questions: Question[] = [
         sectionLabel: '1871-1880',
         promptJp: '[名]飼育係，管理者，ゴールキーパー',
         answerEn: 'keeper',
+        pos: ['noun'],
         orderIndex: 10,
     },
     {
@@ -25094,6 +27776,7 @@ export const questions: Question[] = [
         sectionLabel: '1871-1880',
         promptJp: '[名]王国',
         answerEn: 'kingdom',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -25105,6 +27788,7 @@ export const questions: Question[] = [
         sectionLabel: '1871-1880',
         promptJp: '[動]～を証明する，立証する',
         answerEn: 'prove',
+        pos: ['verb'],
         orderIndex: 2,
     },
     {
@@ -25116,6 +27800,7 @@ export const questions: Question[] = [
         sectionLabel: '1881-1890',
         promptJp: '[副]より少なく，より小さく／[形]より少ない，より小さい',
         answerEn: 'less',
+        pos: ['adv', 'adj'],
         orderIndex: 3,
     },
     {
@@ -25127,6 +27812,7 @@ export const questions: Question[] = [
         sectionLabel: '1881-1890',
         promptJp: '[名]文学，文献',
         answerEn: 'literature',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -25138,6 +27824,7 @@ export const questions: Question[] = [
         sectionLabel: '1881-1890',
         promptJp: '[名]表面，水面',
         answerEn: 'surface',
+        pos: ['noun'],
         orderIndex: 5,
     },
     {
@@ -25149,6 +27836,7 @@ export const questions: Question[] = [
         sectionLabel: '1881-1890',
         promptJp: '[名]金属',
         answerEn: 'metal',
+        pos: ['noun'],
         orderIndex: 6,
     },
     {
@@ -25160,6 +27848,7 @@ export const questions: Question[] = [
         sectionLabel: '1881-1890',
         promptJp: '[動]（見たり聞いたりして）～とわかる，～を認める',
         answerEn: 'recognize',
+        pos: ['verb'],
         orderIndex: 7,
     },
     {
@@ -25171,6 +27860,7 @@ export const questions: Question[] = [
         sectionLabel: '1881-1890',
         promptJp: '[名]（専門家などによる）委員会',
         answerEn: 'panel',
+        pos: ['noun'],
         orderIndex: 8,
     },
     {
@@ -25182,6 +27872,7 @@ export const questions: Question[] = [
         sectionLabel: '1881-1890',
         promptJp: '[名]相棒，パートナー',
         answerEn: 'partner',
+        pos: ['noun'],
         orderIndex: 9,
     },
     {
@@ -25193,6 +27884,7 @@ export const questions: Question[] = [
         sectionLabel: '1881-1890',
         promptJp: '[名]道，小道',
         answerEn: 'path',
+        pos: ['noun'],
         orderIndex: 10,
     },
     {
@@ -25204,6 +27896,7 @@ export const questions: Question[] = [
         sectionLabel: '1881-1890',
         promptJp: '[名]模様，型',
         answerEn: 'pattern',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -25215,6 +27908,7 @@ export const questions: Question[] = [
         sectionLabel: '1881-1890',
         promptJp: '[名]パイロット，操縦士',
         answerEn: 'pilot',
+        pos: ['noun'],
         orderIndex: 2,
     },
     {
@@ -25226,6 +27920,7 @@ export const questions: Question[] = [
         sectionLabel: '1891-1900',
         promptJp: '[名]聖職者，司祭',
         answerEn: 'priest',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -25237,6 +27932,7 @@ export const questions: Question[] = [
         sectionLabel: '1891-1900',
         promptJp: '[名]証拠，証明',
         answerEn: 'proof',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -25248,6 +27944,7 @@ export const questions: Question[] = [
         sectionLabel: '1891-1900',
         promptJp: '[名]子犬',
         answerEn: 'puppy',
+        pos: ['noun'],
         orderIndex: 5,
     },
     {
@@ -25259,6 +27956,7 @@ export const questions: Question[] = [
         sectionLabel: '1891-1900',
         promptJp: '[名]反応',
         answerEn: 'reaction',
+        pos: ['noun'],
         orderIndex: 6,
     },
     {
@@ -25270,6 +27968,7 @@ export const questions: Question[] = [
         sectionLabel: '1891-1900',
         promptJp: '[名]画面，スクリーン',
         answerEn: 'screen',
+        pos: ['noun'],
         orderIndex: 7,
     },
     {
@@ -25281,6 +27980,7 @@ export const questions: Question[] = [
         sectionLabel: '1891-1900',
         promptJp: '[名]絹',
         answerEn: 'silk',
+        pos: ['noun'],
         orderIndex: 8,
     },
     {
@@ -25292,6 +27992,7 @@ export const questions: Question[] = [
         sectionLabel: '1891-1900',
         promptJp: '[名]せっけん',
         answerEn: 'soap',
+        pos: ['noun'],
         orderIndex: 9,
     },
     {
@@ -25303,6 +28004,7 @@ export const questions: Question[] = [
         sectionLabel: '1891-1900',
         promptJp: '[形]正直な',
         answerEn: 'honest',
+        pos: ['adj'],
         orderIndex: 10,
     },
     {
@@ -25314,6 +28016,7 @@ export const questions: Question[] = [
         sectionLabel: '1891-1900',
         promptJp: '[動]（植物）を植え替える，（臓器）を移植する，[名]移植、移植片',
         answerEn: 'transplant',
+        pos: ['verb', 'noun'],
         orderIndex: 1,
     },
     {
@@ -25325,6 +28028,7 @@ export const questions: Question[] = [
         sectionLabel: '1891-1900',
         promptJp: '[動]（～を）測る，量る',
         answerEn: 'measure',
+        pos: ['verb'],
         orderIndex: 2,
     },
     {
@@ -25336,6 +28040,7 @@ export const questions: Question[] = [
         sectionLabel: '1901-1910',
         promptJp: '[名]付加，付け加わったもの',
         answerEn: 'addition',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -25347,6 +28052,7 @@ export const questions: Question[] = [
         sectionLabel: '1901-1910',
         promptJp: '[形]生きている',
         answerEn: 'alive',
+        pos: ['adj'],
         orderIndex: 4,
     },
     {
@@ -25358,6 +28064,7 @@ export const questions: Question[] = [
         sectionLabel: '1901-1910',
         promptJp: '[動]～を発表する',
         answerEn: 'announce',
+        pos: ['verb'],
         orderIndex: 5,
     },
     {
@@ -25369,6 +28076,7 @@ export const questions: Question[] = [
         sectionLabel: '1901-1910',
         promptJp: '[名]援助，支援',
         answerEn: 'assistance',
+        pos: ['noun'],
         orderIndex: 6,
     },
     {
@@ -25380,6 +28088,7 @@ export const questions: Question[] = [
         sectionLabel: '1901-1910',
         promptJp: '[形]科学の，科学的な',
         answerEn: 'scientific',
+        pos: ['adj'],
         orderIndex: 7,
     },
     {
@@ -25391,6 +28100,7 @@ export const questions: Question[] = [
         sectionLabel: '1901-1910',
         promptJp: '[動]～を避ける',
         answerEn: 'avoid',
+        pos: ['verb'],
         orderIndex: 8,
     },
     {
@@ -25402,6 +28112,7 @@ export const questions: Question[] = [
         sectionLabel: '1901-1910',
         promptJp: '[形]基礎の，基本の',
         answerEn: 'basic',
+        pos: ['adj'],
         orderIndex: 9,
     },
     {
@@ -25413,6 +28124,7 @@ export const questions: Question[] = [
         sectionLabel: '1901-1910',
         promptJp: '[名]習慣，くせ',
         answerEn: 'habit',
+        pos: ['noun'],
         orderIndex: 10,
     },
     {
@@ -25424,6 +28136,7 @@ export const questions: Question[] = [
         sectionLabel: '1901-1910',
         promptJp: '[名]職業，経歴',
         answerEn: 'career',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -25435,6 +28148,7 @@ export const questions: Question[] = [
         sectionLabel: '1901-1910',
         promptJp: '[形]最近の',
         answerEn: 'recent',
+        pos: ['adj'],
         orderIndex: 2,
     },
     {
@@ -25446,6 +28160,7 @@ export const questions: Question[] = [
         sectionLabel: '1911-1920',
         promptJp: '[名]責任',
         answerEn: 'responsibility',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -25457,6 +28172,7 @@ export const questions: Question[] = [
         sectionLabel: '1911-1920',
         promptJp: '[動]勢いよく走る，（～へ）急行する',
         answerEn: 'rush',
+        pos: ['verb'],
         orderIndex: 4,
     },
     {
@@ -25468,6 +28184,7 @@ export const questions: Question[] = [
         sectionLabel: '1911-1920',
         promptJp: '[名]城',
         answerEn: 'castle',
+        pos: ['noun'],
         orderIndex: 5,
     },
     {
@@ -25479,6 +28196,7 @@ export const questions: Question[] = [
         sectionLabel: '1911-1920',
         promptJp: '[名]建設',
         answerEn: 'construction',
+        pos: ['noun'],
         orderIndex: 6,
     },
     {
@@ -25490,6 +28208,7 @@ export const questions: Question[] = [
         sectionLabel: '1911-1920',
         promptJp: '[名]話し合い，議論',
         answerEn: 'discussion',
+        pos: ['noun'],
         orderIndex: 7,
     },
     {
@@ -25501,6 +28220,7 @@ export const questions: Question[] = [
         sectionLabel: '1911-1920',
         promptJp: '[名]それゆえ，したがって',
         answerEn: 'therefore',
+        pos: ['noun'],
         orderIndex: 8,
     },
     {
@@ -25512,6 +28232,7 @@ export const questions: Question[] = [
         sectionLabel: '1911-1920',
         promptJp: '[名]ミネラル',
         answerEn: 'mineral',
+        pos: ['noun'],
         orderIndex: 9,
     },
     {
@@ -25523,6 +28244,7 @@ export const questions: Question[] = [
         sectionLabel: '1911-1920',
         promptJp: '[前/副]①～の至るところに，～の間中ずっと ②くまなく，ずっと',
         answerEn: 'throughout',
+        pos: ['adv', 'prep'],
         orderIndex: 10,
     },
     {
@@ -25534,6 +28256,7 @@ export const questions: Question[] = [
         sectionLabel: '1911-1920',
         promptJp: '[前]～を除いて，～以外は',
         answerEn: 'except',
+        pos: ['prep'],
         orderIndex: 1,
     },
     {
@@ -25545,6 +28268,7 @@ export const questions: Question[] = [
         sectionLabel: '1911-1920',
         promptJp: '[名]展示（会），展覧会',
         answerEn: 'exhibition',
+        pos: ['noun'],
         orderIndex: 2,
     },
     {
@@ -25556,6 +28280,7 @@ export const questions: Question[] = [
         sectionLabel: '1921-1930',
         promptJp: '[名]要素，要因',
         answerEn: 'factor',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -25567,6 +28292,7 @@ export const questions: Question[] = [
         sectionLabel: '1921-1930',
         promptJp: '[名]料金',
         answerEn: 'fee',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -25578,6 +28304,7 @@ export const questions: Question[] = [
         sectionLabel: '1921-1930',
         promptJp: '[名]財産，運',
         answerEn: 'fortune',
+        pos: ['noun'],
         orderIndex: 5,
     },
     {
@@ -25589,6 +28316,7 @@ export const questions: Question[] = [
         sectionLabel: '1921-1930',
         promptJp: '[名]紳士，男の人',
         answerEn: 'gentleman',
+        pos: ['noun'],
         orderIndex: 6,
     },
     {
@@ -25600,6 +28328,7 @@ export const questions: Question[] = [
         sectionLabel: '1921-1930',
         promptJp: '[副]優しく，穏やかに',
         answerEn: 'gently',
+        pos: ['adv'],
         orderIndex: 7,
     },
     {
@@ -25611,6 +28340,7 @@ export const questions: Question[] = [
         sectionLabel: '1921-1930',
         promptJp: '[名]油，石油',
         answerEn: 'oil',
+        pos: ['noun'],
         orderIndex: 8,
     },
     {
@@ -25622,6 +28352,7 @@ export const questions: Question[] = [
         sectionLabel: '1921-1930',
         promptJp: '[名]バトン，指揮棒',
         answerEn: 'baton',
+        pos: ['noun'],
         orderIndex: 9,
     },
     {
@@ -25633,6 +28364,7 @@ export const questions: Question[] = [
         sectionLabel: '1921-1930',
         promptJp: '[名]（穀）粒，穀物',
         answerEn: 'grain',
+        pos: ['noun'],
         orderIndex: 10,
     },
     {
@@ -25644,6 +28376,7 @@ export const questions: Question[] = [
         sectionLabel: '1921-1930',
         promptJp: '[名]グラム',
         answerEn: 'gram',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -25655,6 +28388,7 @@ export const questions: Question[] = [
         sectionLabel: '1921-1930',
         promptJp: '[名]もてなし，歓待',
         answerEn: 'hospitality',
+        pos: ['noun'],
         orderIndex: 2,
     },
     {
@@ -25666,6 +28400,7 @@ export const questions: Question[] = [
         sectionLabel: '1931-1940',
         promptJp: '[名]①紹介 [名]②導入，入門（書）',
         answerEn: 'introduction',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -25677,6 +28412,7 @@ export const questions: Question[] = [
         sectionLabel: '1931-1940',
         promptJp: '[形]なめらかな，順調な',
         answerEn: 'smooth',
+        pos: ['adj'],
         orderIndex: 4,
     },
     {
@@ -25688,6 +28424,7 @@ export const questions: Question[] = [
         sectionLabel: '1931-1940',
         promptJp: '[名]一生，生涯',
         answerEn: 'lifetime',
+        pos: ['noun'],
         orderIndex: 5,
     },
     {
@@ -25699,6 +28436,7 @@ export const questions: Question[] = [
         sectionLabel: '1931-1940',
         promptJp: '[名]（マス）メディア，媒体',
         answerEn: 'media',
+        pos: ['noun'],
         orderIndex: 6,
     },
     {
@@ -25710,6 +28448,7 @@ export const questions: Question[] = [
         sectionLabel: '1931-1940',
         promptJp: '[形]気のふれた，頭のおかしい',
         answerEn: 'crazy',
+        pos: ['adj'],
         orderIndex: 7,
     },
     {
@@ -25721,6 +28460,7 @@ export const questions: Question[] = [
         sectionLabel: '1931-1940',
         promptJp: '[名]犯罪',
         answerEn: 'crime',
+        pos: ['noun'],
         orderIndex: 8,
     },
     {
@@ -25732,6 +28472,7 @@ export const questions: Question[] = [
         sectionLabel: '1931-1940',
         promptJp: '[名]①減少 [動]②減る，減少する',
         answerEn: 'decrease',
+        pos: ['noun', 'verb'],
         orderIndex: 9,
     },
     {
@@ -25743,6 +28484,7 @@ export const questions: Question[] = [
         sectionLabel: '1931-1940',
         promptJp: '[形]精神の，知能の',
         answerEn: 'mental',
+        pos: ['adj'],
         orderIndex: 10,
     },
     {
@@ -25754,6 +28496,7 @@ export const questions: Question[] = [
         sectionLabel: '1931-1940',
         promptJp: '[名]商人',
         answerEn: 'merchant',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -25765,6 +28508,7 @@ export const questions: Question[] = [
         sectionLabel: '1931-1940',
         promptJp: '[名]毒',
         answerEn: 'poison',
+        pos: ['noun'],
         orderIndex: 2,
     },
     {
@@ -25776,6 +28520,7 @@ export const questions: Question[] = [
         sectionLabel: '1941-1950',
         promptJp: '[動]～をほめる，[名]ほめ言葉',
         answerEn: 'praise',
+        pos: ['verb', 'noun'],
         orderIndex: 3,
     },
     {
@@ -25787,6 +28532,7 @@ export const questions: Question[] = [
         sectionLabel: '1941-1950',
         promptJp: '[名]市長，町長，村長',
         answerEn: 'mayor',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -25798,6 +28544,7 @@ export const questions: Question[] = [
         sectionLabel: '1941-1950',
         promptJp: '[動]反応する',
         answerEn: 'react',
+        pos: ['verb'],
         orderIndex: 5,
     },
     {
@@ -25809,6 +28556,7 @@ export const questions: Question[] = [
         sectionLabel: '1941-1950',
         promptJp: '[副]どこかに[で，へ]',
         answerEn: 'somewhere',
+        pos: ['adv'],
         orderIndex: 6,
     },
     {
@@ -25820,6 +28568,7 @@ export const questions: Question[] = [
         sectionLabel: '1941-1950',
         promptJp: '[名]チームワーク',
         answerEn: 'teamwork',
+        pos: ['noun'],
         orderIndex: 7,
     },
     {
@@ -25831,6 +28580,7 @@ export const questions: Question[] = [
         sectionLabel: '1941-1950',
         promptJp: '[形]失業した',
         answerEn: 'unemployed',
+        pos: ['adj'],
         orderIndex: 8,
     },
     {
@@ -25842,6 +28592,7 @@ export const questions: Question[] = [
         sectionLabel: '1941-1950',
         promptJp: '[前]～につき',
         answerEn: 'per',
+        pos: ['prep'],
         orderIndex: 9,
     },
     {
@@ -25853,6 +28604,7 @@ export const questions: Question[] = [
         sectionLabel: '1941-1950',
         promptJp: '[動]（～に）集中する，専念する',
         answerEn: 'concentrate',
+        pos: ['verb'],
         orderIndex: 10,
     },
     {
@@ -25864,6 +28616,7 @@ export const questions: Question[] = [
         sectionLabel: '1941-1950',
         promptJp: '[名]進歩，前進',
         answerEn: 'advance',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -25875,6 +28628,7 @@ export const questions: Question[] = [
         sectionLabel: '1941-1950',
         promptJp: '[副]怒って',
         answerEn: 'angrily',
+        pos: ['adv'],
         orderIndex: 2,
     },
     {
@@ -25886,6 +28640,7 @@ export const questions: Question[] = [
         sectionLabel: '1951-1960',
         promptJp: '[名]外見，出現，出演',
         answerEn: 'appearance',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -25897,6 +28652,7 @@ export const questions: Question[] = [
         sectionLabel: '1951-1960',
         promptJp: '[名]ブランド，[名]銘柄，[名]品種',
         answerEn: 'brand',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -25908,6 +28664,7 @@ export const questions: Question[] = [
         sectionLabel: '1951-1960',
         promptJp: '[名]税，税金',
         answerEn: 'tax',
+        pos: ['noun'],
         orderIndex: 5,
     },
     {
@@ -25919,6 +28676,7 @@ export const questions: Question[] = [
         sectionLabel: '1951-1960',
         promptJp: '[動]呼吸する',
         answerEn: 'breathe',
+        pos: ['verb'],
         orderIndex: 6,
     },
     {
@@ -25930,6 +28688,7 @@ export const questions: Question[] = [
         sectionLabel: '1951-1960',
         promptJp: '[名]見知らぬ人，初めて来た人，不案内の人',
         answerEn: 'stranger',
+        pos: ['noun'],
         orderIndex: 7,
     },
     {
@@ -25941,6 +28700,7 @@ export const questions: Question[] = [
         sectionLabel: '1951-1960',
         promptJp: '[名] 強さ，[名] 力，[名] 長所',
         answerEn: 'strength',
+        pos: ['noun'],
         orderIndex: 8,
     },
     {
@@ -25952,6 +28712,7 @@ export const questions: Question[] = [
         sectionLabel: '1951-1960',
         promptJp: '[副]密接に，綿密に',
         answerEn: 'closely',
+        pos: ['adv'],
         orderIndex: 9,
     },
     {
@@ -25963,6 +28724,7 @@ export const questions: Question[] = [
         sectionLabel: '1951-1960',
         promptJp: '[名]計画，企画，プロジェクト',
         answerEn: 'project',
+        pos: ['noun'],
         orderIndex: 10,
     },
     {
@@ -25974,6 +28736,7 @@ export const questions: Question[] = [
         sectionLabel: '1951-1960',
         promptJp: '[名]飢え',
         answerEn: 'hunger',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -25985,6 +28748,7 @@ export const questions: Question[] = [
         sectionLabel: '1951-1960',
         promptJp: '[名]印象，感じ',
         answerEn: 'impression',
+        pos: ['noun'],
         orderIndex: 2,
     },
     {
@@ -25996,6 +28760,7 @@ export const questions: Question[] = [
         sectionLabel: '1961-1970',
         promptJp: '[動]～を含む',
         answerEn: 'contain',
+        pos: ['verb'],
         orderIndex: 3,
     },
     {
@@ -26007,6 +28772,7 @@ export const questions: Question[] = [
         sectionLabel: '1961-1970',
         promptJp: '[形]正しい',
         answerEn: 'correct',
+        pos: ['adj'],
         orderIndex: 4,
     },
     {
@@ -26018,6 +28784,7 @@ export const questions: Question[] = [
         sectionLabel: '1961-1970',
         promptJp: '[名]源，出所，出典',
         answerEn: 'source',
+        pos: ['noun'],
         orderIndex: 5,
     },
     {
@@ -26029,6 +28796,7 @@ export const questions: Question[] = [
         sectionLabel: '1961-1970',
         promptJp: '[名]型，[名]やり方，[名]スタイル',
         answerEn: 'style',
+        pos: ['noun'],
         orderIndex: 6,
     },
     {
@@ -26040,6 +28808,7 @@ export const questions: Question[] = [
         sectionLabel: '1961-1970',
         promptJp: '[名]太陽の光，日光',
         answerEn: 'sunlight',
+        pos: ['noun'],
         orderIndex: 7,
     },
     {
@@ -26051,6 +28820,7 @@ export const questions: Question[] = [
         sectionLabel: '1961-1970',
         promptJp: '[名]選挙',
         answerEn: 'election',
+        pos: ['noun'],
         orderIndex: 8,
     },
     {
@@ -26062,6 +28832,7 @@ export const questions: Question[] = [
         sectionLabel: '1961-1970',
         promptJp: '[名]説明',
         answerEn: 'explanation',
+        pos: ['noun'],
         orderIndex: 9,
     },
     {
@@ -26073,6 +28844,7 @@ export const questions: Question[] = [
         sectionLabel: '1961-1970',
         promptJp: '[名]方法，方式',
         answerEn: 'method',
+        pos: ['noun'],
         orderIndex: 10,
     },
     {
@@ -26084,6 +28856,7 @@ export const questions: Question[] = [
         sectionLabel: '1961-1970',
         promptJp: '[副]主として，たいてい，大部分は',
         answerEn: 'mostly',
+        pos: ['adv'],
         orderIndex: 1,
     },
     {
@@ -26095,6 +28868,7 @@ export const questions: Question[] = [
         sectionLabel: '1961-1970',
         promptJp: '[名]温室',
         answerEn: 'greenhouse',
+        pos: ['noun'],
         orderIndex: 2,
     },
     {
@@ -26106,6 +28880,7 @@ export const questions: Question[] = [
         sectionLabel: '1971-1980',
         promptJp: '[副]確かに',
         answerEn: 'surely',
+        pos: ['adv'],
         orderIndex: 3,
     },
     {
@@ -26117,6 +28892,7 @@ export const questions: Question[] = [
         sectionLabel: '1971-1980',
         promptJp: '[名]土壌，土',
         answerEn: 'soil',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -26128,6 +28904,7 @@ export const questions: Question[] = [
         sectionLabel: '1971-1980',
         promptJp: '[名]化石',
         answerEn: 'fossil',
+        pos: ['noun'],
         orderIndex: 5,
     },
     {
@@ -26139,6 +28916,7 @@ export const questions: Question[] = [
         sectionLabel: '1971-1980',
         promptJp: '[名]（広い）地域，地方',
         answerEn: 'region',
+        pos: ['noun'],
         orderIndex: 6,
     },
     {
@@ -26150,6 +28928,7 @@ export const questions: Question[] = [
         sectionLabel: '1971-1980',
         promptJp: '[名]（柔らかい）毛，毛皮',
         answerEn: 'fur',
+        pos: ['noun'],
         orderIndex: 7,
     },
     {
@@ -26161,6 +28940,7 @@ export const questions: Question[] = [
         sectionLabel: '1971-1980',
         promptJp: '[名]ハーブ，香草，薬草',
         answerEn: 'herb',
+        pos: ['noun'],
         orderIndex: 8,
     },
     {
@@ -26172,6 +28952,7 @@ export const questions: Question[] = [
         sectionLabel: '1971-1980',
         promptJp: '[動]①～を抱きしめる，抱き合う [名]②抱擁，ハグ',
         answerEn: 'hug',
+        pos: ['verb', 'noun'],
         orderIndex: 9,
     },
     {
@@ -26183,6 +28964,7 @@ export const questions: Question[] = [
         sectionLabel: '1971-1980',
         promptJp: '[名]石炭',
         answerEn: 'coal',
+        pos: ['noun'],
         orderIndex: 10,
     },
     {
@@ -26194,6 +28976,7 @@ export const questions: Question[] = [
         sectionLabel: '1971-1980',
         promptJp: '[名]（男の）消防士',
         answerEn: 'fireman',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -26205,6 +28988,7 @@ export const questions: Question[] = [
         sectionLabel: '1971-1980',
         promptJp: '[名]（プール・海水浴場の）救助員，監視員',
         answerEn: 'lifeguard',
+        pos: ['noun'],
         orderIndex: 2,
     },
     {
@@ -26216,6 +29000,7 @@ export const questions: Question[] = [
         sectionLabel: '1981-1990',
         promptJp: '[動]①（～を）持ち上げる [名]②エレベーター',
         answerEn: 'lift',
+        pos: ['verb', 'noun'],
         orderIndex: 3,
     },
     {
@@ -26227,6 +29012,7 @@ export const questions: Question[] = [
         sectionLabel: '1981-1990',
         promptJp: '[名]位置，場所',
         answerEn: 'location',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -26238,6 +29024,7 @@ export const questions: Question[] = [
         sectionLabel: '1981-1990',
         promptJp: '[名]邸宅，屋敷',
         answerEn: 'mansion',
+        pos: ['noun'],
         orderIndex: 5,
     },
     {
@@ -26249,6 +29036,7 @@ export const questions: Question[] = [
         sectionLabel: '1981-1990',
         promptJp: '[名]宮殿，公邸',
         answerEn: 'palace',
+        pos: ['noun'],
         orderIndex: 6,
     },
     {
@@ -26260,6 +29048,7 @@ export const questions: Question[] = [
         sectionLabel: '1981-1990',
         promptJp: '[名]パンフレット',
         answerEn: 'pamphlet',
+        pos: ['noun'],
         orderIndex: 7,
     },
     {
@@ -26271,6 +29060,7 @@ export const questions: Question[] = [
         sectionLabel: '1981-1990',
         promptJp: '[名]たくさん，[名]多数，[名]多量',
         answerEn: 'plenty',
+        pos: ['noun'],
         orderIndex: 8,
     },
     {
@@ -26282,6 +29072,7 @@ export const questions: Question[] = [
         sectionLabel: '1981-1990',
         promptJp: '[形]生の',
         answerEn: 'raw',
+        pos: ['adj'],
         orderIndex: 9,
     },
     {
@@ -26293,6 +29084,7 @@ export const questions: Question[] = [
         sectionLabel: '1981-1990',
         promptJp: '[動]～を取り換える，置き換える',
         answerEn: 'replace',
+        pos: ['verb'],
         orderIndex: 10,
     },
     {
@@ -26304,6 +29096,7 @@ export const questions: Question[] = [
         sectionLabel: '1981-1990',
         promptJp: '[名]（問題の）解決，決着，入植',
         answerEn: 'settlement',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -26315,6 +29108,7 @@ export const questions: Question[] = [
         sectionLabel: '1981-1990',
         promptJp: '[名]①銀 [形]②銀の',
         answerEn: 'silver',
+        pos: ['noun', 'adj'],
         orderIndex: 2,
     },
     {
@@ -26326,6 +29120,7 @@ export const questions: Question[] = [
         sectionLabel: '1991-2000',
         promptJp: 'エラーが発生しました。もう一度お試しください。',
         answerEn: 'slavery',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -26337,6 +29132,7 @@ export const questions: Question[] = [
         sectionLabel: '1991-2000',
         promptJp: '[名]靴下（の一方）',
         answerEn: 'sock',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -26348,6 +29144,7 @@ export const questions: Question[] = [
         sectionLabel: '1991-2000',
         promptJp: '[副]優しく，[副]穏やかに，[副]静かに',
         answerEn: 'softly',
+        pos: ['adv'],
         orderIndex: 5,
     },
     {
@@ -26359,6 +29156,7 @@ export const questions: Question[] = [
         sectionLabel: '1991-2000',
         promptJp: '[名]（粘着）テープ，（磁気）テープ',
         answerEn: 'tape',
+        pos: ['noun'],
         orderIndex: 6,
     },
     {
@@ -26370,6 +29168,7 @@ export const questions: Question[] = [
         sectionLabel: '1991-2000',
         promptJp: '[名]有利（な点），強み',
         answerEn: 'advantage',
+        pos: ['noun'],
         orderIndex: 7,
     },
     {
@@ -26381,6 +29180,7 @@ export const questions: Question[] = [
         sectionLabel: '1991-2000',
         promptJp: '[代][疑問文で]誰か，[否定文で]誰も，[肯定文で]誰でも',
         answerEn: 'anybody',
+        pos: ['pron'],
         orderIndex: 8,
     },
     {
@@ -26392,6 +29192,7 @@ export const questions: Question[] = [
         sectionLabel: '1991-2000',
         promptJp: '[名]議論，論拠，口論',
         answerEn: 'argument',
+        pos: ['noun'],
         orderIndex: 9,
     },
     {
@@ -26403,6 +29204,7 @@ export const questions: Question[] = [
         sectionLabel: '1991-2000',
         promptJp: '[副]まずく，ひどく',
         answerEn: 'badly',
+        pos: ['adv'],
         orderIndex: 10,
     },
     {
@@ -26414,6 +29216,7 @@ export const questions: Question[] = [
         sectionLabel: '1991-2000',
         promptJp: '[形]混乱した，困惑した',
         answerEn: 'confused',
+        pos: ['adj'],
         orderIndex: 1,
     },
     {
@@ -26425,6 +29228,7 @@ export const questions: Question[] = [
         sectionLabel: '1991-2000',
         promptJp: '[名]信じること，信念',
         answerEn: 'belief',
+        pos: ['noun'],
         orderIndex: 2,
     },
     {
@@ -26436,6 +29240,7 @@ export const questions: Question[] = [
         sectionLabel: '2001-2010',
         promptJp: '[名]（農）作物，収穫',
         answerEn: 'crop',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -26447,6 +29252,7 @@ export const questions: Question[] = [
         sectionLabel: '2001-2010',
         promptJp: '[名]ほお',
         answerEn: 'cheek',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -26458,6 +29264,7 @@ export const questions: Question[] = [
         sectionLabel: '2001-2010',
         promptJp: '[名]棒，[名]（四角い）かたまり，[名]バー',
         answerEn: 'bar',
+        pos: ['noun'],
         orderIndex: 5,
     },
     {
@@ -26469,6 +29276,7 @@ export const questions: Question[] = [
         sectionLabel: '2001-2010',
         promptJp: '[動]（地面などを）掘る',
         answerEn: 'dig',
+        pos: ['verb'],
         orderIndex: 6,
     },
     {
@@ -26480,6 +29288,7 @@ export const questions: Question[] = [
         sectionLabel: '2001-2010',
         promptJp: '[動]ほえる',
         answerEn: 'bark',
+        pos: ['verb'],
         orderIndex: 7,
     },
     {
@@ -26491,6 +29300,7 @@ export const questions: Question[] = [
         sectionLabel: '2001-2010',
         promptJp: '[名]映画',
         answerEn: 'cinema',
+        pos: ['noun'],
         orderIndex: 8,
     },
     {
@@ -26502,6 +29312,7 @@ export const questions: Question[] = [
         sectionLabel: '2001-2010',
         promptJp: '[名]湾，入り江',
         answerEn: 'bay',
+        pos: ['noun'],
         orderIndex: 9,
     },
     {
@@ -26513,6 +29324,7 @@ export const questions: Question[] = [
         sectionLabel: '2001-2010',
         promptJp: '[名]道化師',
         answerEn: 'clown',
+        pos: ['noun'],
         orderIndex: 10,
     },
     {
@@ -26524,6 +29336,7 @@ export const questions: Question[] = [
         sectionLabel: '2001-2010',
         promptJp: '[動]（部屋・席など）を予約する',
         answerEn: 'reserve',
+        pos: ['verb'],
         orderIndex: 1,
     },
     {
@@ -26535,6 +29348,7 @@ export const questions: Question[] = [
         sectionLabel: '2001-2010',
         promptJp: '[形]一般的な，総合的な，全般的な',
         answerEn: 'general',
+        pos: ['adj'],
         orderIndex: 2,
     },
     {
@@ -26546,6 +29360,7 @@ export const questions: Question[] = [
         sectionLabel: '2011-2020',
         promptJp: '[名]予約',
         answerEn: 'reservation',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -26557,6 +29372,7 @@ export const questions: Question[] = [
         sectionLabel: '2011-2020',
         promptJp: '[動]～を妨げる',
         answerEn: 'prevent',
+        pos: ['verb'],
         orderIndex: 4,
     },
     {
@@ -26568,6 +29384,7 @@ export const questions: Question[] = [
         sectionLabel: '2011-2020',
         promptJp: '[形]壮大な，雄大な',
         answerEn: 'grand',
+        pos: ['adj'],
         orderIndex: 5,
     },
     {
@@ -26579,6 +29396,7 @@ export const questions: Question[] = [
         sectionLabel: '2011-2020',
         promptJp: '[名]手荷物，（旅行）かばん',
         answerEn: 'luggage',
+        pos: ['noun'],
         orderIndex: 6,
     },
     {
@@ -26590,6 +29408,7 @@ export const questions: Question[] = [
         sectionLabel: '2011-2020',
         promptJp: '[名]霧',
         answerEn: 'mist',
+        pos: ['noun'],
         orderIndex: 7,
     },
     {
@@ -26601,6 +29420,7 @@ export const questions: Question[] = [
         sectionLabel: '2011-2020',
         promptJp: '[名]粉',
         answerEn: 'powder',
+        pos: ['noun'],
         orderIndex: 8,
     },
     {
@@ -26612,6 +29432,7 @@ export const questions: Question[] = [
         sectionLabel: '2011-2020',
         promptJp: '[名]影',
         answerEn: 'shadow',
+        pos: ['noun'],
         orderIndex: 9,
     },
     {
@@ -26623,6 +29444,7 @@ export const questions: Question[] = [
         sectionLabel: '2011-2020',
         promptJp: '[名]基準，標準',
         answerEn: 'standard',
+        pos: ['noun'],
         orderIndex: 10,
     },
     {
@@ -26634,6 +29456,7 @@ export const questions: Question[] = [
         sectionLabel: '2011-2020',
         promptJp: '[形]責任がある',
         answerEn: 'responsible',
+        pos: ['adj'],
         orderIndex: 1,
     },
     {
@@ -26645,6 +29468,7 @@ export const questions: Question[] = [
         sectionLabel: '2011-2020',
         promptJp: '[副]絶対的に，完全に',
         answerEn: 'absolutely',
+        pos: ['adv'],
         orderIndex: 2,
     },
     {
@@ -26656,6 +29480,7 @@ export const questions: Question[] = [
         sectionLabel: '2021-2030',
         promptJp: '[動]～を扱う，待遇する，治療する',
         answerEn: 'treat',
+        pos: ['verb'],
         orderIndex: 3,
     },
     {
@@ -26667,6 +29492,7 @@ export const questions: Question[] = [
         sectionLabel: '2021-2030',
         promptJp: '[名]救急車',
         answerEn: 'ambulance',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -26678,6 +29504,7 @@ export const questions: Question[] = [
         sectionLabel: '2021-2030',
         promptJp: '[形]実用的な，実際的な',
         answerEn: 'practical',
+        pos: ['adj'],
         orderIndex: 5,
     },
     {
@@ -26689,6 +29516,7 @@ export const questions: Question[] = [
         sectionLabel: '2021-2030',
         promptJp: '[動]～をとがめる，責める，非難する',
         answerEn: 'blame',
+        pos: ['verb'],
         orderIndex: 6,
     },
     {
@@ -26700,6 +29528,7 @@ export const questions: Question[] = [
         sectionLabel: '2021-2030',
         promptJp: '[名]農業',
         answerEn: 'agriculture',
+        pos: ['noun'],
         orderIndex: 7,
     },
     {
@@ -26711,6 +29540,7 @@ export const questions: Question[] = [
         sectionLabel: '2021-2030',
         promptJp: '[形]以前の，前の，かつての',
         answerEn: 'former',
+        pos: ['adj'],
         orderIndex: 8,
     },
     {
@@ -26722,6 +29552,7 @@ export const questions: Question[] = [
         sectionLabel: '2021-2030',
         promptJp: '[形]産業の，工業の',
         answerEn: 'industrial',
+        pos: ['adj'],
         orderIndex: 9,
     },
     {
@@ -26733,6 +29564,7 @@ export const questions: Question[] = [
         sectionLabel: '2021-2030',
         promptJp: '[名]① 規模，大きさ ・ ② 目盛り，はかり',
         answerEn: 'scale',
+        pos: ['noun'],
         orderIndex: 10,
     },
     {
@@ -26744,6 +29576,7 @@ export const questions: Question[] = [
         sectionLabel: '2021-2030',
         promptJp: '[名]①汗 [動]②汗をかく',
         answerEn: 'sweat',
+        pos: ['noun', 'verb'],
         orderIndex: 1,
     },
     {
@@ -26755,6 +29588,7 @@ export const questions: Question[] = [
         sectionLabel: '2021-2030',
         promptJp: '[動]（地位・名声など）を手に入れる，（目的・目標）を達成する',
         answerEn: 'achieve',
+        pos: ['verb'],
         orderIndex: 2,
     },
     {
@@ -26766,6 +29600,7 @@ export const questions: Question[] = [
         sectionLabel: '2031-2040',
         promptJp: '[名]①疑い，疑念 [動]②～を疑う',
         answerEn: 'doubt',
+        pos: ['noun', 'verb'],
         orderIndex: 3,
     },
     {
@@ -26777,6 +29612,7 @@ export const questions: Question[] = [
         sectionLabel: '2031-2040',
         promptJp: '[名]著者，作者，作家',
         answerEn: 'author',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -26788,6 +29624,7 @@ export const questions: Question[] = [
         sectionLabel: '2031-2040',
         promptJp: '[形]（野菜や果物などが）有機栽培の',
         answerEn: 'organic',
+        pos: ['adj'],
         orderIndex: 5,
     },
     {
@@ -26799,6 +29636,7 @@ export const questions: Question[] = [
         sectionLabel: '2031-2040',
         promptJp: '[動]～を取り決める，～の手はずを整える',
         answerEn: 'arrange',
+        pos: ['verb'],
         orderIndex: 6,
     },
     {
@@ -26810,6 +29648,7 @@ export const questions: Question[] = [
         sectionLabel: '2031-2040',
         promptJp: '[形]①商業の，コマーシャルの [名]②コマーシャル',
         answerEn: 'commercial',
+        pos: ['adj', 'noun'],
         orderIndex: 7,
     },
     {
@@ -26821,6 +29660,7 @@ export const questions: Question[] = [
         sectionLabel: '2031-2040',
         promptJp: '[名]地区，地方，地域',
         answerEn: 'district',
+        pos: ['noun'],
         orderIndex: 8,
     },
     {
@@ -26832,6 +29672,7 @@ export const questions: Question[] = [
         sectionLabel: '2031-2040',
         promptJp: '[形]2倍の，二重の',
         answerEn: 'double',
+        pos: ['adj'],
         orderIndex: 9,
     },
     {
@@ -26843,6 +29684,7 @@ export const questions: Question[] = [
         sectionLabel: '2031-2040',
         promptJp: '[名]風景，景色',
         answerEn: 'landscape',
+        pos: ['noun'],
         orderIndex: 10,
     },
     {
@@ -26854,6 +29696,7 @@ export const questions: Question[] = [
         sectionLabel: '2031-2040',
         promptJp: '[名]霧，もや',
         answerEn: 'fog',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -26865,6 +29708,7 @@ export const questions: Question[] = [
         sectionLabel: '2031-2040',
         promptJp: '[動]～を調査する',
         answerEn: 'investigate',
+        pos: ['verb'],
         orderIndex: 2,
     },
     {
@@ -26876,6 +29720,7 @@ export const questions: Question[] = [
         sectionLabel: '2041-2050',
         promptJp: '[名]ジャズ',
         answerEn: 'jazz',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -26887,6 +29732,7 @@ export const questions: Question[] = [
         sectionLabel: '2041-2050',
         promptJp: '[動]（～を）押す',
         answerEn: 'press',
+        pos: ['verb'],
         orderIndex: 4,
     },
     {
@@ -26898,6 +29744,7 @@ export const questions: Question[] = [
         sectionLabel: '2041-2050',
         promptJp: '[名]量，音量',
         answerEn: 'volume',
+        pos: ['noun'],
         orderIndex: 5,
     },
     {
@@ -26909,6 +29756,7 @@ export const questions: Question[] = [
         sectionLabel: '2041-2050',
         promptJp: '[名]建築家',
         answerEn: 'architect',
+        pos: ['noun'],
         orderIndex: 6,
     },
     {
@@ -26920,6 +29768,7 @@ export const questions: Question[] = [
         sectionLabel: '2041-2050',
         promptJp: '[前]～の下に',
         answerEn: 'beneath',
+        pos: ['prep'],
         orderIndex: 7,
     },
     {
@@ -26931,6 +29780,7 @@ export const questions: Question[] = [
         sectionLabel: '2041-2050',
         promptJp: '[形]無礼な，失礼な',
         answerEn: 'rude',
+        pos: ['adj'],
         orderIndex: 8,
     },
     {
@@ -26942,6 +29792,7 @@ export const questions: Question[] = [
         sectionLabel: '2041-2050',
         promptJp: '[名]（人・体が）痛む，うずく，[動]（人・体が）痛む，うずく',
         answerEn: 'ache',
+        pos: ['noun', 'verb'],
         orderIndex: 9,
     },
     {
@@ -26953,6 +29804,7 @@ export const questions: Question[] = [
         sectionLabel: '2041-2050',
         promptJp: '[動]成功する，うまくいく',
         answerEn: 'succeed',
+        pos: ['verb'],
         orderIndex: 10,
     },
     {
@@ -26964,6 +29816,7 @@ export const questions: Question[] = [
         sectionLabel: '2041-2050',
         promptJp: '[名]長さ',
         answerEn: 'length',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -26975,6 +29828,7 @@ export const questions: Question[] = [
         sectionLabel: '2041-2050',
         promptJp: '[名]頂上',
         answerEn: 'summit',
+        pos: ['noun'],
         orderIndex: 2,
     },
     {
@@ -26986,6 +29840,7 @@ export const questions: Question[] = [
         sectionLabel: '2051-2060',
         promptJp: '[名]自由',
         answerEn: 'liberty',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -26997,6 +29852,7 @@ export const questions: Question[] = [
         sectionLabel: '2051-2060',
         promptJp: '[動]（手を）たたく，拍手する',
         answerEn: 'clap',
+        pos: ['verb'],
         orderIndex: 4,
     },
     {
@@ -27008,6 +29864,7 @@ export const questions: Question[] = [
         sectionLabel: '2051-2060',
         promptJp: '[名]貧困',
         answerEn: 'poverty',
+        pos: ['noun'],
         orderIndex: 5,
     },
     {
@@ -27019,6 +29876,7 @@ export const questions: Question[] = [
         sectionLabel: '2051-2060',
         promptJp: '[名]診療所',
         answerEn: 'clinic',
+        pos: ['noun'],
         orderIndex: 6,
     },
     {
@@ -27030,6 +29888,7 @@ export const questions: Question[] = [
         sectionLabel: '2051-2060',
         promptJp: '[形]確信している，自信のある',
         answerEn: 'confident',
+        pos: ['adj'],
         orderIndex: 7,
     },
     {
@@ -27041,6 +29900,7 @@ export const questions: Question[] = [
         sectionLabel: '2051-2060',
         promptJp: '[名]哺乳動物[類]',
         answerEn: 'mammal',
+        pos: ['noun'],
         orderIndex: 8,
     },
     {
@@ -27052,6 +29912,7 @@ export const questions: Question[] = [
         sectionLabel: '2051-2060',
         promptJp: '[名]量',
         answerEn: 'quantity',
+        pos: ['noun'],
         orderIndex: 9,
     },
     {
@@ -27063,6 +29924,7 @@ export const questions: Question[] = [
         sectionLabel: '2051-2060',
         promptJp: '[動]～を（有料で）借りる，賃借[貸]する',
         answerEn: 'rent',
+        pos: ['verb'],
         orderIndex: 10,
     },
     {
@@ -27074,6 +29936,7 @@ export const questions: Question[] = [
         sectionLabel: '2051-2060',
         promptJp: '[形]利己的な，わがままな，自分本位の',
         answerEn: 'selfish',
+        pos: ['adj'],
         orderIndex: 1,
     },
     {
@@ -27085,6 +29948,7 @@ export const questions: Question[] = [
         sectionLabel: '2051-2060',
         promptJp: '[形]衝撃的な，ぞっとする',
         answerEn: 'shocking',
+        pos: ['adj'],
         orderIndex: 2,
     },
     {
@@ -27096,6 +29960,7 @@ export const questions: Question[] = [
         sectionLabel: '2061-2070',
         promptJp: '[形]知られていない，無名の',
         answerEn: 'unknown',
+        pos: ['adj'],
         orderIndex: 3,
     },
     {
@@ -27107,6 +29972,7 @@ export const questions: Question[] = [
         sectionLabel: '2061-2070',
         promptJp: '[形]目に見える，明らかな',
         answerEn: 'visible',
+        pos: ['adj'],
         orderIndex: 4,
     },
     {
@@ -27118,6 +29984,7 @@ export const questions: Question[] = [
         sectionLabel: '2061-2070',
         promptJp: '[動]①～を悩ます，～に面倒をかける [名]②面倒',
         answerEn: 'bother',
+        pos: ['verb', 'noun'],
         orderIndex: 5,
     },
     {
@@ -27129,6 +29996,7 @@ export const questions: Question[] = [
         sectionLabel: '2061-2070',
         promptJp: '[形]国内の，家庭内の',
         answerEn: 'domestic',
+        pos: ['adj'],
         orderIndex: 6,
     },
     {
@@ -27140,6 +30008,7 @@ export const questions: Question[] = [
         sectionLabel: '2061-2070',
         promptJp: '[名]増加，成長',
         answerEn: 'growth',
+        pos: ['noun'],
         orderIndex: 7,
     },
     {
@@ -27151,6 +30020,7 @@ export const questions: Question[] = [
         sectionLabel: '2061-2070',
         promptJp: '[動]～を設立する',
         answerEn: 'establish',
+        pos: ['verb'],
         orderIndex: 8,
     },
     {
@@ -27162,6 +30032,7 @@ export const questions: Question[] = [
         sectionLabel: '2061-2070',
         promptJp: '[副]幸運にも',
         answerEn: 'fortunately',
+        pos: ['adv'],
         orderIndex: 9,
     },
     {
@@ -27173,6 +30044,7 @@ export const questions: Question[] = [
         sectionLabel: '2061-2070',
         promptJp: '[名]存続，生き残ること',
         answerEn: 'survival',
+        pos: ['noun'],
         orderIndex: 10,
     },
     {
@@ -27184,6 +30056,7 @@ export const questions: Question[] = [
         sectionLabel: '2061-2070',
         promptJp: '[形]持続可能な',
         answerEn: 'sustainable',
+        pos: ['adj'],
         orderIndex: 1,
     },
     {
@@ -27195,6 +30068,7 @@ export const questions: Question[] = [
         sectionLabel: '2061-2070',
         promptJp: '[名]武器，兵器',
         answerEn: 'weapon',
+        pos: ['noun'],
         orderIndex: 2,
     },
     {
@@ -27206,6 +30080,7 @@ export const questions: Question[] = [
         sectionLabel: '2071-2080',
         promptJp: '[名]地平線，水平線',
         answerEn: 'horizon',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -27217,6 +30092,7 @@ export const questions: Question[] = [
         sectionLabel: '2071-2080',
         promptJp: '[名]独立',
         answerEn: 'independence',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -27228,6 +30104,7 @@ export const questions: Question[] = [
         sectionLabel: '2071-2080',
         promptJp: '[名]遺産',
         answerEn: 'legacy',
+        pos: ['noun'],
         orderIndex: 5,
     },
     {
@@ -27239,6 +30116,7 @@ export const questions: Question[] = [
         sectionLabel: '2071-2080',
         promptJp: '[名][複数形で]関係',
         answerEn: 'relation',
+        pos: ['noun', 'adj', 'num'],
         orderIndex: 6,
     },
     {
@@ -27250,6 +30128,7 @@ export const questions: Question[] = [
         sectionLabel: '2071-2080',
         promptJp: '[名]シミュレーション',
         answerEn: 'simulation',
+        pos: ['noun'],
         orderIndex: 7,
     },
     {
@@ -27261,6 +30140,7 @@ export const questions: Question[] = [
         sectionLabel: '2071-2080',
         promptJp: '[動]～を輸送する，運ぶ',
         answerEn: 'transport',
+        pos: ['verb'],
         orderIndex: 8,
     },
     {
@@ -27272,6 +30152,7 @@ export const questions: Question[] = [
         sectionLabel: '2071-2080',
         promptJp: '[名]暴力',
         answerEn: 'violence',
+        pos: ['noun'],
         orderIndex: 9,
     },
     {
@@ -27283,6 +30164,7 @@ export const questions: Question[] = [
         sectionLabel: '2071-2080',
         promptJp: '[名]従業員，使用人',
         answerEn: 'employee',
+        pos: ['noun'],
         orderIndex: 10,
     },
     {
@@ -27294,6 +30176,7 @@ export const questions: Question[] = [
         sectionLabel: '2071-2080',
         promptJp: '[動]～を捕まえる',
         answerEn: 'capture',
+        pos: ['verb'],
         orderIndex: 1,
     },
     {
@@ -27305,6 +30188,7 @@ export const questions: Question[] = [
         sectionLabel: '2071-2080',
         promptJp: '[形]利用できる，手に入れられる',
         answerEn: 'available',
+        pos: ['adj'],
         orderIndex: 2,
     },
     {
@@ -27316,6 +30200,7 @@ export const questions: Question[] = [
         sectionLabel: '2081-2090',
         promptJp: '[動]飛び込む，破裂する',
         answerEn: 'burst',
+        pos: ['verb'],
         orderIndex: 3,
     },
     {
@@ -27327,6 +30212,7 @@ export const questions: Question[] = [
         sectionLabel: '2081-2090',
         promptJp: '[形]冷える，（寒くて）身ぶるいするような',
         answerEn: 'chilly',
+        pos: ['adj'],
         orderIndex: 4,
     },
     {
@@ -27338,6 +30224,7 @@ export const questions: Question[] = [
         sectionLabel: '2081-2090',
         promptJp: '[名]①中断，小休止 [動]②中止[休止]する，ちょっと止まる',
         answerEn: 'pause',
+        pos: ['noun', 'verb'],
         orderIndex: 5,
     },
     {
@@ -27349,6 +30236,7 @@ export const questions: Question[] = [
         sectionLabel: '2081-2090',
         promptJp: '[形]ユーモアのある，おかしい',
         answerEn: 'humorous',
+        pos: ['adj'],
         orderIndex: 6,
     },
     {
@@ -27360,6 +30248,7 @@ export const questions: Question[] = [
         sectionLabel: '2081-2090',
         promptJp: '[形]①きつい，ぴったりした [副]②しっかりと，ぐっすりと',
         answerEn: 'tight',
+        pos: ['adj', 'adv'],
         orderIndex: 7,
     },
     {
@@ -27371,6 +30260,7 @@ export const questions: Question[] = [
         sectionLabel: '2081-2090',
         promptJp: '[副]①前方に[へ] [副]②先に[へ]',
         answerEn: 'ahead',
+        pos: ['adv'],
         orderIndex: 8,
     },
     {
@@ -27382,6 +30272,7 @@ export const questions: Question[] = [
         sectionLabel: '2081-2090',
         promptJp: '[形]憂うつで，意気消沈して',
         answerEn: 'depressed',
+        pos: ['adj'],
         orderIndex: 9,
     },
     {
@@ -27393,6 +30284,7 @@ export const questions: Question[] = [
         sectionLabel: '2081-2090',
         promptJp: '[名]委員会，委員',
         answerEn: 'committee',
+        pos: ['noun'],
         orderIndex: 10,
     },
     {
@@ -27404,6 +30296,7 @@ export const questions: Question[] = [
         sectionLabel: '2081-2090',
         promptJp: '[名]1枚，1切れ',
         answerEn: 'slice',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -27415,6 +30308,7 @@ export const questions: Question[] = [
         sectionLabel: '2081-2090',
         promptJp: '[名]多様性',
         answerEn: 'diversity',
+        pos: ['noun'],
         orderIndex: 2,
     },
     {
@@ -27426,6 +30320,7 @@ export const questions: Question[] = [
         sectionLabel: '2091-2100',
         promptJp: '[名]接近方法，（面会・利用などの）権利，機会',
         answerEn: 'access',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -27437,6 +30332,7 @@ export const questions: Question[] = [
         sectionLabel: '2091-2100',
         promptJp: '[名]青春時代，若々しさ，[集合的に]若者',
         answerEn: 'youth',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -27448,6 +30344,7 @@ export const questions: Question[] = [
         sectionLabel: '2091-2100',
         promptJp: '[名]強い願望，野望，野心',
         answerEn: 'ambition',
+        pos: ['noun'],
         orderIndex: 5,
     },
     {
@@ -27459,6 +30356,7 @@ export const questions: Question[] = [
         sectionLabel: '2091-2100',
         promptJp: '[形]① 心配して，不安な ② 切望して',
         answerEn: 'anxious',
+        pos: ['adj'],
         orderIndex: 6,
     },
     {
@@ -27470,6 +30368,7 @@ export const questions: Question[] = [
         sectionLabel: '2091-2100',
         promptJp: '[名]砂漠',
         answerEn: 'desert',
+        pos: ['noun'],
         orderIndex: 7,
     },
     {
@@ -27481,6 +30380,7 @@ export const questions: Question[] = [
         sectionLabel: '2091-2100',
         promptJp: '[名]おい',
         answerEn: 'nephew',
+        pos: ['noun'],
         orderIndex: 8,
     },
     {
@@ -27492,6 +30392,7 @@ export const questions: Question[] = [
         sectionLabel: '2091-2100',
         promptJp: '[名]めい',
         answerEn: 'niece',
+        pos: ['noun'],
         orderIndex: 9,
     },
     {
@@ -27503,6 +30404,7 @@ export const questions: Question[] = [
         sectionLabel: '2091-2100',
         promptJp: '[副]声を出して',
         answerEn: 'aloud',
+        pos: ['adv'],
         orderIndex: 10,
     },
     {
@@ -27514,6 +30416,7 @@ export const questions: Question[] = [
         sectionLabel: '2091-2100',
         promptJp: '[動]（手足[体]を）伸ばす',
         answerEn: 'stretch',
+        pos: ['verb'],
         orderIndex: 1,
     },
     {
@@ -27525,6 +30428,7 @@ export const questions: Question[] = [
         sectionLabel: '2091-2100',
         promptJp: '[名] 手のひら',
         answerEn: 'palm',
+        pos: ['noun'],
         orderIndex: 2,
     },
     {
@@ -27536,6 +30440,8 @@ export const questions: Question[] = [
         sectionLabel: 'C401-410',
         promptJp: '[熟]通り過ぎる',
         answerEn: 'pass by',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 1,
     },
     {
@@ -27547,6 +30453,8 @@ export const questions: Question[] = [
         sectionLabel: 'C401-410',
         promptJp: '[熟]家を出る',
         answerEn: 'leave home',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 2,
     },
     {
@@ -27558,6 +30466,8 @@ export const questions: Question[] = [
         sectionLabel: 'C401-410',
         promptJp: '[熟]留学する',
         answerEn: 'study abroad',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 3,
     },
     {
@@ -27569,6 +30479,8 @@ export const questions: Question[] = [
         sectionLabel: 'C401-410',
         promptJp: '[熟]～を中退する',
         answerEn: 'drop out of',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 4,
     },
     {
@@ -27580,6 +30492,8 @@ export const questions: Question[] = [
         sectionLabel: 'C401-410',
         promptJp: '[熟]振り向く',
         answerEn: 'turn around',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 5,
     },
     {
@@ -27591,6 +30505,8 @@ export const questions: Question[] = [
         sectionLabel: 'C401-410',
         promptJp: '[熟]～だとわかる',
         answerEn: 'turn out',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 6,
     },
     {
@@ -27602,6 +30518,8 @@ export const questions: Question[] = [
         sectionLabel: 'C401-410',
         promptJp: '[熟]（物事が）起きる，行われる',
         answerEn: 'take place',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 7,
     },
     {
@@ -27613,6 +30531,8 @@ export const questions: Question[] = [
         sectionLabel: 'C401-410',
         promptJp: '[熟]横たわる',
         answerEn: 'lie down',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 8,
     },
     {
@@ -27624,6 +30544,8 @@ export const questions: Question[] = [
         sectionLabel: 'C401-410',
         promptJp: '[熟]～を見上げる',
         answerEn: 'look up at',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 9,
     },
     {
@@ -27635,6 +30557,8 @@ export const questions: Question[] = [
         sectionLabel: 'C401-410',
         promptJp: '[熟]運動をする，体を鍛える',
         answerEn: 'work out',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 10,
     },
     {
@@ -27646,6 +30570,8 @@ export const questions: Question[] = [
         sectionLabel: 'C411-420',
         promptJp: '[熟]休憩する',
         answerEn: 'have a break',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 1,
     },
     {
@@ -27657,6 +30583,8 @@ export const questions: Question[] = [
         sectionLabel: 'C411-420',
         promptJp: '[熟]くつろぐ，気楽にする',
         answerEn: 'make oneself at home',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 2,
     },
     {
@@ -27668,6 +30596,8 @@ export const questions: Question[] = [
         sectionLabel: 'C411-420',
         promptJp: '[熟]（機械が）故障する，（化学的に）分解される',
         answerEn: 'break down',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 3,
     },
     {
@@ -27679,6 +30609,8 @@ export const questions: Question[] = [
         sectionLabel: 'C411-420',
         promptJp: '[熟]（戦争・火事などが）突然起こる，急に発生する',
         answerEn: 'break out',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 4,
     },
     {
@@ -27690,6 +30622,8 @@ export const questions: Question[] = [
         sectionLabel: 'C411-420',
         promptJp: '[熟]亡くなる',
         answerEn: 'pass away',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 5,
     },
     {
@@ -27701,6 +30635,8 @@ export const questions: Question[] = [
         sectionLabel: 'C411-420',
         promptJp: '[熟]絶滅する',
         answerEn: 'die out',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 6,
     },
     {
@@ -27712,6 +30648,8 @@ export const questions: Question[] = [
         sectionLabel: 'C411-420',
         promptJp: '[熟]不足する',
         answerEn: 'run short',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 7,
     },
     {
@@ -27723,6 +30661,8 @@ export const questions: Question[] = [
         sectionLabel: 'C411-420',
         promptJp: '[熟]着飾る，正装［盛装］する',
         answerEn: 'dress up',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 8,
     },
     {
@@ -27734,6 +30674,8 @@ export const questions: Question[] = [
         sectionLabel: 'C411-420',
         promptJp: '[熟]～とうまくやっていく',
         answerEn: 'get along with',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 9,
     },
     {
@@ -27745,6 +30687,8 @@ export const questions: Question[] = [
         sectionLabel: 'C411-420',
         promptJp: '[熟]（つらいこと）を経験する，（人生・生活）を送る',
         answerEn: 'go through',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 10,
     },
     {
@@ -27756,6 +30700,8 @@ export const questions: Question[] = [
         sectionLabel: 'C421-430',
         promptJp: '[熟]（次の話題などへ）移る，進む',
         answerEn: 'move on',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 1,
     },
     {
@@ -27767,6 +30713,8 @@ export const questions: Question[] = [
         sectionLabel: 'C421-430',
         promptJp: '[熟]メッセージを残す',
         answerEn: 'leave a message',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 2,
     },
     {
@@ -27778,6 +30726,8 @@ export const questions: Question[] = [
         sectionLabel: 'C421-430',
         promptJp: '[熟]自己紹介をする',
         answerEn: 'introduce oneself',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 3,
     },
     {
@@ -27789,6 +30739,8 @@ export const questions: Question[] = [
         sectionLabel: 'C421-430',
         promptJp: '[熟]約束を守る',
         answerEn: 'keep my promise',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 4,
     },
     {
@@ -27800,6 +30752,8 @@ export const questions: Question[] = [
         sectionLabel: 'C421-430',
         promptJp: '[熟]決心する',
         answerEn: 'make up my mind',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 5,
     },
     {
@@ -27811,6 +30765,8 @@ export const questions: Question[] = [
         sectionLabel: 'C421-430',
         promptJp: '[熟]（人）を（ちょっと）訪問する',
         answerEn: 'call on',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 6,
     },
     {
@@ -27822,6 +30778,8 @@ export const questions: Question[] = [
         sectionLabel: 'C421-430',
         promptJp: '[熟]～を買いに行く，～を取りに行く',
         answerEn: 'go for',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 7,
     },
     {
@@ -27833,6 +30791,8 @@ export const questions: Question[] = [
         sectionLabel: 'C421-430',
         promptJp: '[熟]～を乗り越える',
         answerEn: 'get over',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 8,
     },
     {
@@ -27844,6 +30804,8 @@ export const questions: Question[] = [
         sectionLabel: 'C421-430',
         promptJp: '[熟]～に至る',
         answerEn: 'lead to',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 9,
     },
     {
@@ -27855,6 +30817,8 @@ export const questions: Question[] = [
         sectionLabel: 'C421-430',
         promptJp: '[熟]～という結果になる',
         answerEn: 'result in',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 10,
     },
     {
@@ -27866,6 +30830,8 @@ export const questions: Question[] = [
         sectionLabel: 'C431-440',
         promptJp: '[熟]～に反対である，～と意見が合わない',
         answerEn: 'disagree with',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 1,
     },
     {
@@ -27877,6 +30843,8 @@ export const questions: Question[] = [
         sectionLabel: 'C431-440',
         promptJp: '[熟]～に取り組む，～に従事する',
         answerEn: 'work on',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 2,
     },
     {
@@ -27888,6 +30856,8 @@ export const questions: Question[] = [
         sectionLabel: 'C431-440',
         promptJp: '[熟]～のことを心配する',
         answerEn: 'worry about',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 3,
     },
     {
@@ -27899,6 +30869,8 @@ export const questions: Question[] = [
         sectionLabel: 'C431-440',
         promptJp: '[熟]～を書き留める',
         answerEn: 'write down',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 4,
     },
     {
@@ -27910,6 +30882,8 @@ export const questions: Question[] = [
         sectionLabel: 'C431-440',
         promptJp: '[熟]～を実行する',
         answerEn: 'carry out',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 5,
     },
     {
@@ -27921,6 +30895,8 @@ export const questions: Question[] = [
         sectionLabel: 'C431-440',
         promptJp: '[熟]～を伝える',
         answerEn: 'pass down',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 6,
     },
     {
@@ -27932,6 +30908,8 @@ export const questions: Question[] = [
         sectionLabel: 'C431-440',
         promptJp: '[熟]～を大きくする',
         answerEn: 'turn up',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 7,
     },
     {
@@ -27943,6 +30921,8 @@ export const questions: Question[] = [
         sectionLabel: 'C431-440',
         promptJp: '[熟]AをBと取り替える',
         answerEn: 'replace A with B',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 8,
     },
     {
@@ -27954,6 +30934,8 @@ export const questions: Question[] = [
         sectionLabel: 'C431-440',
         promptJp: '[熟]AにBするよう励ます［促す］',
         answerEn: 'encourage A to B',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 9,
     },
     {
@@ -27965,6 +30947,8 @@ export const questions: Question[] = [
         sectionLabel: 'C431-440',
         promptJp: '[熟]～を見つける，～を見かける',
         answerEn: 'catch sight of',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 10,
     },
     {
@@ -27976,6 +30960,8 @@ export const questions: Question[] = [
         sectionLabel: 'C441-450',
         promptJp: '[熟]～に追いつく',
         answerEn: 'catch up with',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 1,
     },
     {
@@ -27987,6 +30973,8 @@ export const questions: Question[] = [
         sectionLabel: 'C441-450',
         promptJp: '[熟]～に遅れずについていく',
         answerEn: 'keep up with',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 2,
     },
     {
@@ -27998,6 +30986,8 @@ export const questions: Question[] = [
         sectionLabel: 'C441-450',
         promptJp: '[熟]～と友だちになる，～と仲よくなる',
         answerEn: 'make friends with',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 3,
     },
     {
@@ -28009,6 +30999,8 @@ export const questions: Question[] = [
         sectionLabel: 'C441-450',
         promptJp: '[熟]～と仲直りをする',
         answerEn: 'make up with',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 4,
     },
     {
@@ -28020,6 +31012,8 @@ export const questions: Question[] = [
         sectionLabel: 'C441-450',
         promptJp: '[熟]～をからかう',
         answerEn: 'make fun of',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 5,
     },
     {
@@ -28031,6 +31025,8 @@ export const questions: Question[] = [
         sectionLabel: 'C441-450',
         promptJp: '[熟]～にいたずらをする',
         answerEn: 'play a trick on',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 6,
     },
     {
@@ -28042,6 +31038,8 @@ export const questions: Question[] = [
         sectionLabel: 'C441-450',
         promptJp: '[熟]～に注意を払う',
         answerEn: 'pay attention to',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 7,
     },
     {
@@ -28053,6 +31051,8 @@ export const questions: Question[] = [
         sectionLabel: 'C441-450',
         promptJp: '[熟]～によろしくと言う',
         answerEn: 'say hello to',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 8,
     },
     {
@@ -28064,6 +31064,8 @@ export const questions: Question[] = [
         sectionLabel: 'C441-450',
         promptJp: '[熟]～と握手する',
         answerEn: 'shake hands with',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 9,
     },
     {
@@ -28075,6 +31077,8 @@ export const questions: Question[] = [
         sectionLabel: 'C441-450',
         promptJp: '[熟]Aが～するのを妨げる，Aに～させない（後ろは -ing）',
         answerEn: 'keep A from',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 10,
     },
     {
@@ -28086,6 +31090,8 @@ export const questions: Question[] = [
         sectionLabel: 'C451-460',
         promptJp: '[熟]（人）を見送る',
         answerEn: 'see off',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 1,
     },
     {
@@ -28097,6 +31103,8 @@ export const questions: Question[] = [
         sectionLabel: 'C451-460',
         promptJp: '[熟]～を欠席する，～を休む',
         answerEn: 'be absent from',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 2,
     },
     {
@@ -28108,6 +31116,8 @@ export const questions: Question[] = [
         sectionLabel: 'C451-460',
         promptJp: '[熟]～に位置する',
         answerEn: 'be located in',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 3,
     },
     {
@@ -28119,6 +31129,8 @@ export const questions: Question[] = [
         sectionLabel: 'C451-460',
         promptJp: '[熟]～をもとにしている',
         answerEn: 'be based on',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 4,
     },
     {
@@ -28130,6 +31142,8 @@ export const questions: Question[] = [
         sectionLabel: 'C451-460',
         promptJp: '[熟]～に感銘を受ける，～に感動する（前置詞はbyもある）',
         answerEn: 'be impressed with',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 5,
     },
     {
@@ -28141,6 +31155,8 @@ export const questions: Question[] = [
         sectionLabel: 'C451-460',
         promptJp: '[熟]～に感動する',
         answerEn: 'be moved by',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 6,
     },
     {
@@ -28152,6 +31168,8 @@ export const questions: Question[] = [
         sectionLabel: 'C451-460',
         promptJp: '[熟]故障している，具合が悪い',
         answerEn: 'be out of order',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 7,
     },
     {
@@ -28163,6 +31181,8 @@ export const questions: Question[] = [
         sectionLabel: 'C451-460',
         promptJp: '[熟]～するだけの価値がある（後ろは-ing）',
         answerEn: 'be worth',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 8,
     },
     {
@@ -28174,6 +31194,8 @@ export const questions: Question[] = [
         sectionLabel: 'C451-460',
         promptJp: '[熟]たくさんの～',
         answerEn: 'plenty of',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 9,
     },
     {
@@ -28185,6 +31207,8 @@ export const questions: Question[] = [
         sectionLabel: 'C451-460',
         promptJp: '[熟]少し，ちょっと',
         answerEn: 'a bit',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 10,
     },
     {
@@ -28196,6 +31220,8 @@ export const questions: Question[] = [
         sectionLabel: 'C461-470',
         promptJp: '[熟]（数量が）～より少なく，～未満の',
         answerEn: 'less than',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 1,
     },
     {
@@ -28207,6 +31233,8 @@ export const questions: Question[] = [
         sectionLabel: 'C461-470',
         promptJp: '[熟]時間どおりに',
         answerEn: 'on time',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 2,
     },
     {
@@ -28218,6 +31246,8 @@ export const questions: Question[] = [
         sectionLabel: 'C461-470',
         promptJp: '[熟]一度に',
         answerEn: 'at a time',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 3,
     },
     {
@@ -28229,6 +31259,8 @@ export const questions: Question[] = [
         sectionLabel: 'C461-470',
         promptJp: '[熟]何度も何度も',
         answerEn: 'over and over again',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 4,
     },
     {
@@ -28240,6 +31272,8 @@ export const questions: Question[] = [
         sectionLabel: 'C461-470',
         promptJp: '[熟]まもなく',
         answerEn: 'before long',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 5,
     },
     {
@@ -28251,6 +31285,8 @@ export const questions: Question[] = [
         sectionLabel: 'C461-470',
         promptJp: '[熟]それ以来ずっと',
         answerEn: 'ever since',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 6,
     },
     {
@@ -28262,6 +31298,8 @@ export const questions: Question[] = [
         sectionLabel: 'C461-470',
         promptJp: '[熟]［問いかけに対して］まだです',
         answerEn: 'not yet',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 7,
     },
     {
@@ -28273,6 +31311,8 @@ export const questions: Question[] = [
         sectionLabel: 'C461-470',
         promptJp: '[熟]（途中）ずっと，（～から）はるばる',
         answerEn: 'all the way',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 8,
     },
     {
@@ -28284,6 +31324,8 @@ export const questions: Question[] = [
         sectionLabel: 'C461-470',
         promptJp: '[熟]ずっと前に',
         answerEn: 'long ago',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 9,
     },
     {
@@ -28295,6 +31337,8 @@ export const questions: Question[] = [
         sectionLabel: 'C461-470',
         promptJp: '[熟]今のところは',
         answerEn: 'for now',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 10,
     },
     {
@@ -28306,6 +31350,8 @@ export const questions: Question[] = [
         sectionLabel: 'C471-480',
         promptJp: '[熟]いつものように',
         answerEn: 'as usual',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 1,
     },
     {
@@ -28317,6 +31363,8 @@ export const questions: Question[] = [
         sectionLabel: 'C471-480',
         promptJp: '[熟]しばらくの間',
         answerEn: 'for a while',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 2,
     },
     {
@@ -28328,6 +31376,8 @@ export const questions: Question[] = [
         sectionLabel: 'C471-480',
         promptJp: '[熟]これからは',
         answerEn: 'from now on',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 3,
     },
     {
@@ -28339,6 +31389,8 @@ export const questions: Question[] = [
         sectionLabel: 'C471-480',
         promptJp: '[熟]つまり，言い換えれば',
         answerEn: 'in other words',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 4,
     },
     {
@@ -28350,6 +31402,8 @@ export const questions: Question[] = [
         sectionLabel: 'C471-480',
         promptJp: '[熟]特に',
         answerEn: 'in particular',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 5,
     },
     {
@@ -28361,6 +31415,8 @@ export const questions: Question[] = [
         sectionLabel: 'C471-480',
         promptJp: '[熟]要約すると，要するに',
         answerEn: 'in short',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 6,
     },
     {
@@ -28372,6 +31428,8 @@ export const questions: Question[] = [
         sectionLabel: 'C471-480',
         promptJp: '[熟]ついに，結局',
         answerEn: 'in the end',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 7,
     },
     {
@@ -28383,6 +31441,8 @@ export const questions: Question[] = [
         sectionLabel: 'C471-480',
         promptJp: '[熟]～にもかかわらず',
         answerEn: 'in spite of',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 8,
     },
     {
@@ -28394,6 +31454,8 @@ export const questions: Question[] = [
         sectionLabel: 'C471-480',
         promptJp: '[熟]～を除いては',
         answerEn: 'except for',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 9,
     },
     {
@@ -28405,6 +31467,8 @@ export const questions: Question[] = [
         sectionLabel: 'C471-480',
         promptJp: '[熟]一つには',
         answerEn: 'for one thing',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 10,
     },
     {
@@ -28416,6 +31480,8 @@ export const questions: Question[] = [
         sectionLabel: 'C481-490',
         promptJp: '[熟]～にはほど遠い，とても～ではない',
         answerEn: 'far from',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 1,
     },
     {
@@ -28427,6 +31493,8 @@ export const questions: Question[] = [
         sectionLabel: 'C481-490',
         promptJp: '[熟]～だけは決してない，～の他は何でも',
         answerEn: 'anything but',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 2,
     },
     {
@@ -28438,6 +31506,8 @@ export const questions: Question[] = [
         sectionLabel: 'C481-490',
         promptJp: '[熟]もはや～しない[ではない]',
         answerEn: 'no longer',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 3,
     },
     {
@@ -28449,6 +31519,8 @@ export const questions: Question[] = [
         sectionLabel: 'C481-490',
         promptJp: '[熟]もはや～ない（notをともなって）',
         answerEn: 'any more',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 4,
     },
     {
@@ -28460,6 +31532,8 @@ export const questions: Question[] = [
         sectionLabel: 'C481-490',
         promptJp: '[熟]以前よりもA',
         answerEn: 'A than before',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 5,
     },
     {
@@ -28471,6 +31545,8 @@ export const questions: Question[] = [
         sectionLabel: 'C481-490',
         promptJp: '[熟]～よりも（むしろ），～ではなくて',
         answerEn: 'rather than',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 6,
     },
     {
@@ -28482,6 +31558,8 @@ export const questions: Question[] = [
         sectionLabel: 'C481-490',
         promptJp: '[熟]隣の部屋［家］の［に］',
         answerEn: 'next door',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 7,
     },
     {
@@ -28493,6 +31571,8 @@ export const questions: Question[] = [
         sectionLabel: 'C481-490',
         promptJp: '[熟]（ベッドで）寝ている',
         answerEn: 'in bed',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 8,
     },
     {
@@ -28504,6 +31584,8 @@ export const questions: Question[] = [
         sectionLabel: 'C481-490',
         promptJp: '[熟]屋外で',
         answerEn: 'in the open air',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 9,
     },
     {
@@ -28515,6 +31597,8 @@ export const questions: Question[] = [
         sectionLabel: 'C481-490',
         promptJp: '[熟]間近に，近づいて',
         answerEn: 'just around the corner',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 10,
     },
     {
@@ -28526,6 +31610,8 @@ export const questions: Question[] = [
         sectionLabel: 'C491-500',
         promptJp: '[熟]無料で',
         answerEn: 'for free',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 1,
     },
     {
@@ -28537,6 +31623,8 @@ export const questions: Question[] = [
         sectionLabel: 'C491-500',
         promptJp: '[熟]売り物の',
         answerEn: 'for sale',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 2,
     },
     {
@@ -28548,6 +31636,8 @@ export const questions: Question[] = [
         sectionLabel: 'C491-500',
         promptJp: '[熟]にっこり笑って',
         answerEn: 'with a smile',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 3,
     },
     {
@@ -28559,6 +31649,8 @@ export const questions: Question[] = [
         sectionLabel: 'C491-500',
         promptJp: '[熟]戦争中で',
         answerEn: 'at war',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 4,
     },
     {
@@ -28570,6 +31662,8 @@ export const questions: Question[] = [
         sectionLabel: 'C491-500',
         promptJp: '[熟]以前は～だった，以前はよく～した',
         answerEn: 'used to',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 5,
     },
     {
@@ -28581,6 +31675,8 @@ export const questions: Question[] = [
         sectionLabel: 'C491-500',
         promptJp: '[熟]～することに慣れる（後ろは-ing）',
         answerEn: 'get used to',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 6,
     },
     {
@@ -28592,6 +31688,8 @@ export const questions: Question[] = [
         sectionLabel: 'C491-500',
         promptJp: '[熟]～することに慣れている（後ろは-ing）',
         answerEn: 'be used to',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 7,
     },
     {
@@ -28603,6 +31701,8 @@ export const questions: Question[] = [
         sectionLabel: 'C491-500',
         promptJp: '[熟]～がほしい（のですが）',
         answerEn: 'would like',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 8,
     },
     {
@@ -28614,6 +31714,8 @@ export const questions: Question[] = [
         sectionLabel: 'C491-500',
         promptJp: '[熟]～するほうがよい，（まあ）～してもよい',
         answerEn: 'might as well',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 9,
     },
     {
@@ -28625,6 +31727,8 @@ export const questions: Question[] = [
         sectionLabel: 'C491-500',
         promptJp: '[熟]まるで～であるかのように',
         answerEn: 'as if',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 10,
     },
     {
@@ -28636,6 +31740,8 @@ export const questions: Question[] = [
         sectionLabel: 'C491-500',
         promptJp: '[熟]本当は，実をいえば',
         answerEn: 'to tell the truth',
+        pos: ['noun'],
+        category: ['idiom'],
         orderIndex: 11,
     },
 ];

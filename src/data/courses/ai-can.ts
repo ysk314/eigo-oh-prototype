@@ -14,6 +14,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 くだもの①',
         promptJp: 'りんご',
         answerEn: 'apple',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -25,6 +26,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 くだもの①',
         promptJp: 'ぶどう',
         answerEn: 'grapes',
+        pos: ['noun'],
         orderIndex: 2,
     },
     {
@@ -36,6 +38,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 くだもの①',
         promptJp: 'いちご',
         answerEn: 'strawberry',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -47,6 +50,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 くだもの①',
         promptJp: 'オレンジ',
         answerEn: 'orange',
+        pos: ['noun', 'adj'],
         orderIndex: 4,
     },
     {
@@ -58,6 +62,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 くだもの①',
         promptJp: 'バナナ',
         answerEn: 'banana',
+        pos: ['noun'],
         orderIndex: 5,
     },
     {
@@ -69,6 +74,7 @@ export const questions: Question[] = [
         sectionLabel: '第2回 くだもの②',
         promptJp: 'もも',
         answerEn: 'peach',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -80,6 +86,7 @@ export const questions: Question[] = [
         sectionLabel: '第2回 くだもの②',
         promptJp: 'メロン',
         answerEn: 'melon',
+        pos: ['noun'],
         orderIndex: 2,
     },
     {
@@ -91,6 +98,7 @@ export const questions: Question[] = [
         sectionLabel: '第2回 くだもの②',
         promptJp: 'マンゴー',
         answerEn: 'mango',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -102,6 +110,7 @@ export const questions: Question[] = [
         sectionLabel: '第2回 くだもの②',
         promptJp: 'すいか',
         answerEn: 'watermelon',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -113,6 +122,7 @@ export const questions: Question[] = [
         sectionLabel: '第2回 くだもの②',
         promptJp: 'レモン',
         answerEn: 'lemon',
+        pos: ['noun'],
         orderIndex: 5,
     },
     {
@@ -124,6 +134,7 @@ export const questions: Question[] = [
         sectionLabel: '第3回 やさい①',
         promptJp: 'トマト',
         answerEn: 'tomato',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -135,6 +146,7 @@ export const questions: Question[] = [
         sectionLabel: '第3回 やさい①',
         promptJp: 'キャベツ',
         answerEn: 'cabbage',
+        pos: ['noun'],
         orderIndex: 2,
     },
     {
@@ -146,6 +158,7 @@ export const questions: Question[] = [
         sectionLabel: '第3回 やさい①',
         promptJp: 'じゃがいも',
         answerEn: 'potato',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -157,6 +170,7 @@ export const questions: Question[] = [
         sectionLabel: '第3回 やさい①',
         promptJp: 'にんじん',
         answerEn: 'carrot',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -168,6 +182,7 @@ export const questions: Question[] = [
         sectionLabel: '第3回 やさい①',
         promptJp: 'たまねぎ',
         answerEn: 'onion',
+        pos: ['noun'],
         orderIndex: 5,
     },
     {
@@ -179,6 +194,7 @@ export const questions: Question[] = [
         sectionLabel: '第4回 やさい②',
         promptJp: 'レタス',
         answerEn: 'lettuce',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -190,6 +206,7 @@ export const questions: Question[] = [
         sectionLabel: '第4回 やさい②',
         promptJp: 'かぼちゃ',
         answerEn: 'pumpkin',
+        pos: ['noun'],
         orderIndex: 2,
     },
     {
@@ -201,6 +218,7 @@ export const questions: Question[] = [
         sectionLabel: '第4回 やさい②',
         promptJp: 'きゅうり',
         answerEn: 'cucumber',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -212,6 +230,7 @@ export const questions: Question[] = [
         sectionLabel: '第4回 やさい②',
         promptJp: 'エンドウ(まめ)',
         answerEn: 'peas',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -223,6 +242,7 @@ export const questions: Question[] = [
         sectionLabel: '第4回 やさい②',
         promptJp: 'ホウレンソウ',
         answerEn: 'spinach',
+        pos: ['noun'],
         orderIndex: 5,
     },
     {
@@ -234,6 +254,7 @@ export const questions: Question[] = [
         sectionLabel: '第5回 たべもの①',
         promptJp: 'シチュー',
         answerEn: 'stew',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -245,6 +266,7 @@ export const questions: Question[] = [
         sectionLabel: '第5回 たべもの①',
         promptJp: 'スパゲッティ',
         answerEn: 'spaghetti',
+        pos: ['noun'],
         orderIndex: 2,
     },
     {
@@ -256,6 +278,7 @@ export const questions: Question[] = [
         sectionLabel: '第5回 たべもの①',
         promptJp: 'ピザ',
         answerEn: 'pizza',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -267,6 +290,7 @@ export const questions: Question[] = [
         sectionLabel: '第5回 たべもの①',
         promptJp: 'カレーライス',
         answerEn: 'curry and rice',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -278,6 +302,7 @@ export const questions: Question[] = [
         sectionLabel: '第5回 たべもの①',
         promptJp: 'ハンバーガー',
         answerEn: 'hamburger',
+        pos: ['noun'],
         orderIndex: 5,
     },
     {
@@ -289,6 +314,7 @@ export const questions: Question[] = [
         sectionLabel: '第6回 たべもの②',
         promptJp: 'ごはん',
         answerEn: 'rice',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -300,6 +326,7 @@ export const questions: Question[] = [
         sectionLabel: '第6回 たべもの②',
         promptJp: 'パン',
         answerEn: 'bread',
+        pos: ['noun'],
         orderIndex: 2,
     },
     {
@@ -311,6 +338,7 @@ export const questions: Question[] = [
         sectionLabel: '第6回 たべもの②',
         promptJp: 'フルーツ',
         answerEn: 'fruit',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -322,6 +350,7 @@ export const questions: Question[] = [
         sectionLabel: '第6回 たべもの②',
         promptJp: 'やさい',
         answerEn: 'vegetables',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -333,6 +362,7 @@ export const questions: Question[] = [
         sectionLabel: '第6回 たべもの②',
         promptJp: 'さかな',
         answerEn: 'fish',
+        pos: ['noun'],
         orderIndex: 5,
     },
     {
@@ -344,6 +374,7 @@ export const questions: Question[] = [
         sectionLabel: '第6回 たべもの②',
         promptJp: 'にく',
         answerEn: 'meat',
+        pos: ['noun'],
         orderIndex: 6,
     },
     {
@@ -355,6 +386,7 @@ export const questions: Question[] = [
         sectionLabel: '第7回 のみもの①',
         promptJp: 'ぎゅうにゅう',
         answerEn: 'milk',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -366,6 +398,7 @@ export const questions: Question[] = [
         sectionLabel: '第7回 のみもの①',
         promptJp: 'コーラ',
         answerEn: 'cola',
+        pos: ['noun'],
         orderIndex: 2,
     },
     {
@@ -377,6 +410,7 @@ export const questions: Question[] = [
         sectionLabel: '第7回 のみもの①',
         promptJp: 'コーヒー',
         answerEn: 'coffee',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -388,6 +422,7 @@ export const questions: Question[] = [
         sectionLabel: '第7回 のみもの①',
         promptJp: 'こうちゃ',
         answerEn: 'tea',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -399,6 +434,7 @@ export const questions: Question[] = [
         sectionLabel: '第7回 のみもの①',
         promptJp: 'ジュース',
         answerEn: 'juice',
+        pos: ['noun'],
         orderIndex: 5,
     },
     {
@@ -410,6 +446,7 @@ export const questions: Question[] = [
         sectionLabel: '第8回 のみもの②',
         promptJp: 'ココア',
         answerEn: 'cocoa',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -421,6 +458,7 @@ export const questions: Question[] = [
         sectionLabel: '第8回 のみもの②',
         promptJp: 'ウーロンちゃ',
         answerEn: 'oolong tea',
+        pos: ['noun'],
         orderIndex: 2,
     },
     {
@@ -432,6 +470,7 @@ export const questions: Question[] = [
         sectionLabel: '第8回 のみもの②',
         promptJp: 'スープ',
         answerEn: 'soup',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -443,6 +482,7 @@ export const questions: Question[] = [
         sectionLabel: '第8回 のみもの②',
         promptJp: 'みず',
         answerEn: 'water',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -454,6 +494,7 @@ export const questions: Question[] = [
         sectionLabel: '第8回 のみもの②',
         promptJp: 'ソーダ',
         answerEn: 'soda',
+        pos: ['noun'],
         orderIndex: 5,
     },
     {
@@ -465,6 +506,7 @@ export const questions: Question[] = [
         sectionLabel: '第9回 のりもの①',
         promptJp: 'バス',
         answerEn: 'bus',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -476,6 +518,7 @@ export const questions: Question[] = [
         sectionLabel: '第9回 のりもの①',
         promptJp: 'じてんしゃ',
         answerEn: 'bike',
+        pos: ['noun'],
         orderIndex: 2,
     },
     {
@@ -487,6 +530,7 @@ export const questions: Question[] = [
         sectionLabel: '第9回 のりもの①',
         promptJp: 'くるま',
         answerEn: 'car',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -498,6 +542,7 @@ export const questions: Question[] = [
         sectionLabel: '第9回 のりもの①',
         promptJp: 'ひこうき',
         answerEn: 'plane',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -509,6 +554,7 @@ export const questions: Question[] = [
         sectionLabel: '第9回 のりもの①',
         promptJp: 'でんしゃ',
         answerEn: 'train',
+        pos: ['noun'],
         orderIndex: 5,
     },
     {
@@ -520,6 +566,7 @@ export const questions: Question[] = [
         sectionLabel: '第10回 のりもの②',
         promptJp: 'ちかてつ',
         answerEn: 'subway',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -531,6 +578,7 @@ export const questions: Question[] = [
         sectionLabel: '第10回 のりもの②',
         promptJp: 'タクシー',
         answerEn: 'taxi',
+        pos: ['noun'],
         orderIndex: 2,
     },
     {
@@ -542,6 +590,7 @@ export const questions: Question[] = [
         sectionLabel: '第10回 のりもの②',
         promptJp: 'ボート',
         answerEn: 'boat',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -553,6 +602,7 @@ export const questions: Question[] = [
         sectionLabel: '第10回 のりもの②',
         promptJp: 'ふね',
         answerEn: 'ship',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -564,6 +614,7 @@ export const questions: Question[] = [
         sectionLabel: '第10回 のりもの②',
         promptJp: 'ヘリコプター',
         answerEn: 'helicopter',
+        pos: ['noun'],
         orderIndex: 5,
     },
     {
@@ -575,6 +626,7 @@ export const questions: Question[] = [
         sectionLabel: '第11回 どうぶつ①',
         promptJp: 'いぬ',
         answerEn: 'dog',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -586,6 +638,7 @@ export const questions: Question[] = [
         sectionLabel: '第11回 どうぶつ①',
         promptJp: 'ねこ',
         answerEn: 'cat',
+        pos: ['noun'],
         orderIndex: 2,
     },
     {
@@ -597,6 +650,7 @@ export const questions: Question[] = [
         sectionLabel: '第11回 どうぶつ①',
         promptJp: 'ハムスター',
         answerEn: 'hamster',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -608,6 +662,7 @@ export const questions: Question[] = [
         sectionLabel: '第11回 どうぶつ①',
         promptJp: 'うさぎ',
         answerEn: 'rabbit',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -619,6 +674,7 @@ export const questions: Question[] = [
         sectionLabel: '第11回 どうぶつ①',
         promptJp: 'とり',
         answerEn: 'bird',
+        pos: ['noun'],
         orderIndex: 5,
     },
     {
@@ -630,6 +686,7 @@ export const questions: Question[] = [
         sectionLabel: '第12回 どうぶつ②',
         promptJp: 'パンダ',
         answerEn: 'panda',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -641,6 +698,7 @@ export const questions: Question[] = [
         sectionLabel: '第12回 どうぶつ②',
         promptJp: 'トラ',
         answerEn: 'tiger',
+        pos: ['noun'],
         orderIndex: 2,
     },
     {
@@ -652,6 +710,7 @@ export const questions: Question[] = [
         sectionLabel: '第12回 どうぶつ②',
         promptJp: 'シマウマ',
         answerEn: 'zebra',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -663,6 +722,7 @@ export const questions: Question[] = [
         sectionLabel: '第12回 どうぶつ②',
         promptJp: 'コアラ',
         answerEn: 'koala',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -674,6 +734,7 @@ export const questions: Question[] = [
         sectionLabel: '第12回 どうぶつ②',
         promptJp: 'サル',
         answerEn: 'monkey',
+        pos: ['noun'],
         orderIndex: 5,
     },
     {
@@ -685,6 +746,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 すうじを覚えよう',
         promptJp: 'いち',
         answerEn: 'one',
+        pos: ['num'],
         orderIndex: 1,
     },
     {
@@ -696,6 +758,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 すうじを覚えよう',
         promptJp: 'に',
         answerEn: 'two',
+        pos: ['num'],
         orderIndex: 2,
     },
     {
@@ -707,6 +770,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 すうじを覚えよう',
         promptJp: 'さん',
         answerEn: 'three',
+        pos: ['num'],
         orderIndex: 3,
     },
     {
@@ -718,6 +782,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 すうじを覚えよう',
         promptJp: 'よん',
         answerEn: 'four',
+        pos: ['num'],
         orderIndex: 4,
     },
     {
@@ -729,6 +794,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 すうじを覚えよう',
         promptJp: 'ご',
         answerEn: 'five',
+        pos: ['num'],
         orderIndex: 5,
     },
     {
@@ -740,6 +806,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 すうじを覚えよう',
         promptJp: 'ろく',
         answerEn: 'six',
+        pos: ['num'],
         orderIndex: 6,
     },
     {
@@ -751,6 +818,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 すうじを覚えよう',
         promptJp: 'なな',
         answerEn: 'seven',
+        pos: ['num'],
         orderIndex: 7,
     },
     {
@@ -762,6 +830,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 すうじを覚えよう',
         promptJp: 'はち',
         answerEn: 'eight',
+        pos: ['num'],
         orderIndex: 8,
     },
     {
@@ -773,6 +842,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 すうじを覚えよう',
         promptJp: 'きゅう',
         answerEn: 'nine',
+        pos: ['num'],
         orderIndex: 9,
     },
     {
@@ -784,6 +854,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 すうじを覚えよう',
         promptJp: 'じゅう',
         answerEn: 'ten',
+        pos: ['num'],
         orderIndex: 10,
     },
     {
@@ -795,6 +866,7 @@ export const questions: Question[] = [
         sectionLabel: '第2回 いえでつかうもの',
         promptJp: 'ベッド',
         answerEn: 'bed',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -806,6 +878,7 @@ export const questions: Question[] = [
         sectionLabel: '第2回 いえでつかうもの',
         promptJp: 'ボール',
         answerEn: 'ball',
+        pos: ['noun'],
         orderIndex: 2,
     },
     {
@@ -817,6 +890,7 @@ export const questions: Question[] = [
         sectionLabel: '第2回 いえでつかうもの',
         promptJp: 'コンピュータ',
         answerEn: 'computer',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -828,6 +902,7 @@ export const questions: Question[] = [
         sectionLabel: '第2回 いえでつかうもの',
         promptJp: 'しゃしん',
         answerEn: 'picture',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -839,6 +914,7 @@ export const questions: Question[] = [
         sectionLabel: '第2回 いえでつかうもの',
         promptJp: 'はこ',
         answerEn: 'box',
+        pos: ['noun'],
         orderIndex: 5,
     },
     {
@@ -850,6 +926,7 @@ export const questions: Question[] = [
         sectionLabel: '第3回 みにつけるもの',
         promptJp: 'ティーシャツ',
         answerEn: 'T-shirt',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -861,6 +938,7 @@ export const questions: Question[] = [
         sectionLabel: '第3回 みにつけるもの',
         promptJp: 'ぼうし',
         answerEn: 'cap',
+        pos: ['noun'],
         orderIndex: 2,
     },
     {
@@ -872,6 +950,7 @@ export const questions: Question[] = [
         sectionLabel: '第3回 みにつけるもの',
         promptJp: 'スカート',
         answerEn: 'skirt',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -883,6 +962,7 @@ export const questions: Question[] = [
         sectionLabel: '第3回 みにつけるもの',
         promptJp: 'くつ',
         answerEn: 'shoes',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -894,6 +974,7 @@ export const questions: Question[] = [
         sectionLabel: '第3回 みにつけるもの',
         promptJp: 'かばん',
         answerEn: 'bag',
+        pos: ['noun'],
         orderIndex: 5,
     },
     {
@@ -905,6 +986,7 @@ export const questions: Question[] = [
         sectionLabel: '第4回 からだのぶぶん①',
         promptJp: 'かお',
         answerEn: 'face',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -916,6 +998,7 @@ export const questions: Question[] = [
         sectionLabel: '第4回 からだのぶぶん①',
         promptJp: 'みみ',
         answerEn: 'ear',
+        pos: ['noun'],
         orderIndex: 2,
     },
     {
@@ -927,6 +1010,7 @@ export const questions: Question[] = [
         sectionLabel: '第4回 からだのぶぶん①',
         promptJp: 'め',
         answerEn: 'eye',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -938,6 +1022,7 @@ export const questions: Question[] = [
         sectionLabel: '第4回 からだのぶぶん①',
         promptJp: 'はな',
         answerEn: 'nose',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -949,6 +1034,7 @@ export const questions: Question[] = [
         sectionLabel: '第4回 からだのぶぶん①',
         promptJp: 'くち',
         answerEn: 'mouth',
+        pos: ['noun'],
         orderIndex: 5,
     },
     {
@@ -960,6 +1046,7 @@ export const questions: Question[] = [
         sectionLabel: '第5回 からだのぶぶん②',
         promptJp: 'あたま',
         answerEn: 'head',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -971,6 +1058,7 @@ export const questions: Question[] = [
         sectionLabel: '第5回 からだのぶぶん②',
         promptJp: 'くび',
         answerEn: 'neck',
+        pos: ['noun'],
         orderIndex: 2,
     },
     {
@@ -982,6 +1070,7 @@ export const questions: Question[] = [
         sectionLabel: '第5回 からだのぶぶん②',
         promptJp: 'あし',
         answerEn: 'foot',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -993,6 +1082,7 @@ export const questions: Question[] = [
         sectionLabel: '第5回 からだのぶぶん②',
         promptJp: 'うで',
         answerEn: 'arm',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -1004,6 +1094,7 @@ export const questions: Question[] = [
         sectionLabel: '第5回 からだのぶぶん②',
         promptJp: 'て',
         answerEn: 'hand',
+        pos: ['noun'],
         orderIndex: 5,
     },
     {
@@ -1015,6 +1106,7 @@ export const questions: Question[] = [
         sectionLabel: '第6回 すうじ②',
         promptJp: 'ばんごう',
         answerEn: 'number',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -1026,6 +1118,7 @@ export const questions: Question[] = [
         sectionLabel: '第6回 すうじ②',
         promptJp: 'じゅういち',
         answerEn: 'eleven',
+        pos: ['noun'],
         orderIndex: 2,
     },
     {
@@ -1037,6 +1130,7 @@ export const questions: Question[] = [
         sectionLabel: '第6回 すうじ②',
         promptJp: 'じゅうに',
         answerEn: 'twelve',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -1048,6 +1142,7 @@ export const questions: Question[] = [
         sectionLabel: '第6回 すうじ②',
         promptJp: 'じゅうさん',
         answerEn: 'thirteen',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -1059,6 +1154,7 @@ export const questions: Question[] = [
         sectionLabel: '第6回 すうじ②',
         promptJp: 'じゅうよん',
         answerEn: 'fourteen',
+        pos: ['noun'],
         orderIndex: 5,
     },
     {
@@ -1070,6 +1166,7 @@ export const questions: Question[] = [
         sectionLabel: '第6回 すうじ②',
         promptJp: 'じゅうご',
         answerEn: 'fifteen',
+        pos: ['noun'],
         orderIndex: 6,
     },
     {
@@ -1081,6 +1178,7 @@ export const questions: Question[] = [
         sectionLabel: '第7回 いろ①',
         promptJp: 'あお',
         answerEn: 'blue',
+        pos: ['noun', 'adj'],
         orderIndex: 1,
     },
     {
@@ -1092,6 +1190,7 @@ export const questions: Question[] = [
         sectionLabel: '第7回 いろ①',
         promptJp: 'あか',
         answerEn: 'red',
+        pos: ['noun', 'adj'],
         orderIndex: 2,
     },
     {
@@ -1103,6 +1202,7 @@ export const questions: Question[] = [
         sectionLabel: '第7回 いろ①',
         promptJp: 'きいろ',
         answerEn: 'yellow',
+        pos: ['noun', 'adj'],
         orderIndex: 3,
     },
     {
@@ -1114,6 +1214,7 @@ export const questions: Question[] = [
         sectionLabel: '第7回 いろ①',
         promptJp: 'しろ',
         answerEn: 'white',
+        pos: ['noun', 'adj'],
         orderIndex: 4,
     },
     {
@@ -1125,6 +1226,7 @@ export const questions: Question[] = [
         sectionLabel: '第7回 いろ①',
         promptJp: 'くろ',
         answerEn: 'black',
+        pos: ['noun', 'adj'],
         orderIndex: 5,
     },
     {
@@ -1136,6 +1238,7 @@ export const questions: Question[] = [
         sectionLabel: '第8回 いろ②',
         promptJp: 'ちゃいろ',
         answerEn: 'brown',
+        pos: ['noun', 'adj'],
         orderIndex: 1,
     },
     {
@@ -1147,6 +1250,7 @@ export const questions: Question[] = [
         sectionLabel: '第8回 いろ②',
         promptJp: 'みどり',
         answerEn: 'green',
+        pos: ['noun', 'adj'],
         orderIndex: 2,
     },
     {
@@ -1158,6 +1262,7 @@ export const questions: Question[] = [
         sectionLabel: '第8回 いろ②',
         promptJp: 'むらさき',
         answerEn: 'purple',
+        pos: ['noun', 'adj'],
         orderIndex: 3,
     },
     {
@@ -1169,6 +1274,7 @@ export const questions: Question[] = [
         sectionLabel: '第8回 いろ②',
         promptJp: 'ピンク',
         answerEn: 'pink',
+        pos: ['noun', 'adj'],
         orderIndex: 4,
     },
     {
@@ -1180,6 +1286,7 @@ export const questions: Question[] = [
         sectionLabel: '第8回 いろ②',
         promptJp: 'オレンジ',
         answerEn: 'orange',
+        pos: ['noun', 'adj'],
         orderIndex: 5,
     },
     {
@@ -1191,6 +1298,7 @@ export const questions: Question[] = [
         sectionLabel: '第9回 すうじ③',
         promptJp: 'じゅうろく',
         answerEn: 'sixteen',
+        pos: ['num'],
         orderIndex: 1,
     },
     {
@@ -1202,6 +1310,7 @@ export const questions: Question[] = [
         sectionLabel: '第9回 すうじ③',
         promptJp: 'じゅうなな',
         answerEn: 'seventeen',
+        pos: ['num'],
         orderIndex: 2,
     },
     {
@@ -1213,6 +1322,7 @@ export const questions: Question[] = [
         sectionLabel: '第9回 すうじ③',
         promptJp: 'じゅうはち',
         answerEn: 'eighteen',
+        pos: ['num'],
         orderIndex: 3,
     },
     {
@@ -1224,6 +1334,7 @@ export const questions: Question[] = [
         sectionLabel: '第9回 すうじ③',
         promptJp: 'じゅうきゅう',
         answerEn: 'nineteen',
+        pos: ['num'],
         orderIndex: 4,
     },
     {
@@ -1235,6 +1346,7 @@ export const questions: Question[] = [
         sectionLabel: '第9・10回 すうじ③',
         promptJp: 'にじゅう',
         answerEn: 'twenty',
+        pos: ['num'],
         orderIndex: 1,
     },
     {
@@ -1246,6 +1358,7 @@ export const questions: Question[] = [
         sectionLabel: '第9・10回 すうじ③',
         promptJp: 'にじゅうご',
         answerEn: 'twenty-five',
+        pos: ['num'],
         orderIndex: 2,
     },
     {
@@ -1257,6 +1370,7 @@ export const questions: Question[] = [
         sectionLabel: '第9・10回 すうじ③',
         promptJp: 'さんじゅう',
         answerEn: 'thirty',
+        pos: ['num'],
         orderIndex: 3,
     },
     {
@@ -1268,6 +1382,7 @@ export const questions: Question[] = [
         sectionLabel: '第9・10回 すうじ③',
         promptJp: 'よんじゅう',
         answerEn: 'forty',
+        pos: ['num'],
         orderIndex: 4,
     },
     {
@@ -1279,6 +1394,7 @@ export const questions: Question[] = [
         sectionLabel: '第10回 すうじ④',
         promptJp: 'よんじゅうご',
         answerEn: 'forty-five',
+        pos: ['num'],
         orderIndex: 1,
     },
     {
@@ -1290,6 +1406,7 @@ export const questions: Question[] = [
         sectionLabel: '第10回 すうじ④',
         promptJp: 'ごじゅう',
         answerEn: 'fifty',
+        pos: ['num'],
         orderIndex: 2,
     },
     {
@@ -1301,6 +1418,7 @@ export const questions: Question[] = [
         sectionLabel: '第10回 すうじ④',
         promptJp: 'ひゃく',
         answerEn: 'one hundred',
+        pos: ['num'],
         orderIndex: 3,
     },
     {
@@ -1312,6 +1430,7 @@ export const questions: Question[] = [
         sectionLabel: '第10回 すうじ④',
         promptJp: 'にひゃく',
         answerEn: 'two hundred',
+        pos: ['num'],
         orderIndex: 4,
     },
     {
@@ -1323,6 +1442,7 @@ export const questions: Question[] = [
         sectionLabel: '第11回 状態の表現',
         promptJp: 'あつい',
         answerEn: 'hot',
+        pos: ['adj'],
         orderIndex: 1,
     },
     {
@@ -1334,6 +1454,7 @@ export const questions: Question[] = [
         sectionLabel: '第11回 状態の表現',
         promptJp: 'あたたかい',
         answerEn: 'warm',
+        pos: ['adj'],
         orderIndex: 2,
     },
     {
@@ -1345,6 +1466,7 @@ export const questions: Question[] = [
         sectionLabel: '第11回 状態の表現',
         promptJp: 'さむい',
         answerEn: 'cold',
+        pos: ['adj'],
         orderIndex: 3,
     },
     {
@@ -1356,6 +1478,7 @@ export const questions: Question[] = [
         sectionLabel: '第11回 状態の表現',
         promptJp: 'すずしい',
         answerEn: 'cool',
+        pos: ['adj'],
         orderIndex: 4,
     },
     {
@@ -1367,6 +1490,7 @@ export const questions: Question[] = [
         sectionLabel: '第12回 てんき',
         promptJp: 'はれた',
         answerEn: 'fine',
+        pos: ['adj'],
         orderIndex: 1,
     },
     {
@@ -1378,6 +1502,7 @@ export const questions: Question[] = [
         sectionLabel: '第12回 てんき',
         promptJp: 'くもった',
         answerEn: 'cloudy',
+        pos: ['adj'],
         orderIndex: 2,
     },
     {
@@ -1389,6 +1514,7 @@ export const questions: Question[] = [
         sectionLabel: '第12回 てんき',
         promptJp: 'あめの',
         answerEn: 'rainy',
+        pos: ['adj'],
         orderIndex: 3,
     },
     {
@@ -1400,6 +1526,7 @@ export const questions: Question[] = [
         sectionLabel: '第12回 てんき',
         promptJp: 'ゆきの',
         answerEn: 'snowy',
+        pos: ['adj'],
         orderIndex: 4,
     },
     {
@@ -1411,6 +1538,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 アルファベット①',
         promptJp: 'りんご',
         answerEn: 'apple',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -1422,6 +1550,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 アルファベット①',
         promptJp: 'かばん',
         answerEn: 'bag',
+        pos: ['noun'],
         orderIndex: 2,
     },
     {
@@ -1433,6 +1562,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 アルファベット①',
         promptJp: '車',
         answerEn: 'car',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -1444,6 +1574,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 アルファベット①',
         promptJp: '犬',
         answerEn: 'dog',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -1455,6 +1586,7 @@ export const questions: Question[] = [
         sectionLabel: '第2回 アルファベット②',
         promptJp: '8',
         answerEn: 'eight',
+        pos: ['num'],
         orderIndex: 1,
     },
     {
@@ -1466,6 +1598,7 @@ export const questions: Question[] = [
         sectionLabel: '第2回 アルファベット②',
         promptJp: '魚',
         answerEn: 'fish',
+        pos: ['noun'],
         orderIndex: 2,
     },
     {
@@ -1477,6 +1610,7 @@ export const questions: Question[] = [
         sectionLabel: '第2回 アルファベット②',
         promptJp: 'ぶた',
         answerEn: 'pig',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -1488,6 +1622,7 @@ export const questions: Question[] = [
         sectionLabel: '第2回 アルファベット②',
         promptJp: '手',
         answerEn: 'hand',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -1499,6 +1634,7 @@ export const questions: Question[] = [
         sectionLabel: '第3回 アルファベット③',
         promptJp: '氷',
         answerEn: 'ice',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -1510,6 +1646,7 @@ export const questions: Question[] = [
         sectionLabel: '第3回 アルファベット③',
         promptJp: 'ジュース',
         answerEn: 'juice',
+        pos: ['noun'],
         orderIndex: 2,
     },
     {
@@ -1521,6 +1658,7 @@ export const questions: Question[] = [
         sectionLabel: '第3回 アルファベット③',
         promptJp: '本',
         answerEn: 'book',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -1532,6 +1670,7 @@ export const questions: Question[] = [
         sectionLabel: '第3回 アルファベット③',
         promptJp: 'レタス',
         answerEn: 'lettuce',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -1543,6 +1682,7 @@ export const questions: Question[] = [
         sectionLabel: '第4回 アルファベット④',
         promptJp: '牛乳',
         answerEn: 'milk',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -1554,6 +1694,7 @@ export const questions: Question[] = [
         sectionLabel: '第4回 アルファベット④',
         promptJp: 'ペン',
         answerEn: 'pen',
+        pos: ['noun'],
         orderIndex: 2,
     },
     {
@@ -1565,6 +1706,7 @@ export const questions: Question[] = [
         sectionLabel: '第4回 アルファベット④',
         promptJp: '玉ねぎ',
         answerEn: 'onion',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -1576,6 +1718,7 @@ export const questions: Question[] = [
         sectionLabel: '第4回 アルファベット④',
         promptJp: 'コップ',
         answerEn: 'cup',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -1587,6 +1730,7 @@ export const questions: Question[] = [
         sectionLabel: '第4回 アルファベット④',
         promptJp: '質問',
         answerEn: 'question',
+        pos: ['noun'],
         orderIndex: 5,
     },
     {
@@ -1598,6 +1742,7 @@ export const questions: Question[] = [
         sectionLabel: '第5回 アルファベット⑤',
         promptJp: '雨',
         answerEn: 'rain',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -1609,6 +1754,7 @@ export const questions: Question[] = [
         sectionLabel: '第5回 アルファベット⑤',
         promptJp: '雪',
         answerEn: 'snow',
+        pos: ['noun'],
         orderIndex: 2,
     },
     {
@@ -1620,6 +1766,7 @@ export const questions: Question[] = [
         sectionLabel: '第5回 アルファベット⑤',
         promptJp: 'バット',
         answerEn: 'bat',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -1631,6 +1778,7 @@ export const questions: Question[] = [
         sectionLabel: '第5回 アルファベット⑤',
         promptJp: '傘',
         answerEn: 'umbrella',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -1642,6 +1790,7 @@ export const questions: Question[] = [
         sectionLabel: '第5回 アルファベット⑤',
         promptJp: '野菜',
         answerEn: 'vegetables',
+        pos: ['noun'],
         orderIndex: 5,
     },
     {
@@ -1653,6 +1802,7 @@ export const questions: Question[] = [
         sectionLabel: '第6回 アルファベット⑥',
         promptJp: '黄色',
         answerEn: 'yellow',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -1664,6 +1814,7 @@ export const questions: Question[] = [
         sectionLabel: '第6回 アルファベット⑥',
         promptJp: '箱',
         answerEn: 'box',
+        pos: ['noun'],
         orderIndex: 2,
     },
     {
@@ -1675,6 +1826,7 @@ export const questions: Question[] = [
         sectionLabel: '第6回 アルファベット⑥',
         promptJp: '男の子',
         answerEn: 'boy',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -1686,6 +1838,7 @@ export const questions: Question[] = [
         sectionLabel: '第6回 アルファベット⑥',
         promptJp: 'シマウマ',
         answerEn: 'zebra',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -1697,6 +1850,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 国の名前を覚えよう',
         promptJp: '日本',
         answerEn: 'Japan',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -1708,6 +1862,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 国の名前を覚えよう',
         promptJp: 'オーストラリア',
         answerEn: 'Australia',
+        pos: ['noun'],
         orderIndex: 2,
     },
     {
@@ -1719,6 +1874,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 国の名前を覚えよう',
         promptJp: 'アメリカ',
         answerEn: 'America',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -1730,6 +1886,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 国の名前を覚えよう',
         promptJp: 'カナダ',
         answerEn: 'Canada',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -1741,6 +1898,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 国の名前を覚えよう',
         promptJp: '日本語',
         answerEn: 'Japanese',
+        pos: ['noun'],
         orderIndex: 5,
     },
     {
@@ -1752,6 +1910,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 国の名前を覚えよう',
         promptJp: '英語',
         answerEn: 'English',
+        pos: ['noun'],
         orderIndex: 6,
     },
     {
@@ -1763,6 +1922,7 @@ export const questions: Question[] = [
         sectionLabel: '第2・3回 自己紹介',
         promptJp: '私はアンナです。',
         answerEn: 'I am Anna.',
+        pos: ['sentence'],
         orderIndex: 1,
     },
     {
@@ -1774,6 +1934,7 @@ export const questions: Question[] = [
         sectionLabel: '第2・3回 自己紹介',
         promptJp: 'あなたはトムです。',
         answerEn: 'You are Tom.',
+        pos: ['sentence'],
         orderIndex: 2,
     },
     {
@@ -1785,6 +1946,7 @@ export const questions: Question[] = [
         sectionLabel: '第4回 職業を覚えよう①',
         promptJp: '先生',
         answerEn: 'teacher',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -1796,6 +1958,7 @@ export const questions: Question[] = [
         sectionLabel: '第4回 職業を覚えよう①',
         promptJp: '医者',
         answerEn: 'doctor',
+        pos: ['noun'],
         orderIndex: 2,
     },
     {
@@ -1807,6 +1970,7 @@ export const questions: Question[] = [
         sectionLabel: '第4回 職業を覚えよう①',
         promptJp: 'パイロット',
         answerEn: 'pilot',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -1818,6 +1982,7 @@ export const questions: Question[] = [
         sectionLabel: '第4回 職業を覚えよう①',
         promptJp: '看護師',
         answerEn: 'nurse',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -1829,6 +1994,7 @@ export const questions: Question[] = [
         sectionLabel: '第4回 職業を覚えよう①',
         promptJp: 'サッカー選手',
         answerEn: 'soccer player',
+        pos: ['noun'],
         orderIndex: 5,
     },
     {
@@ -1840,6 +2006,7 @@ export const questions: Question[] = [
         sectionLabel: '第5・6回 年齢と職業',
         promptJp: '私は8才です。',
         answerEn: 'I am eight.',
+        pos: ['sentence'],
         orderIndex: 1,
     },
     {
@@ -1851,6 +2018,7 @@ export const questions: Question[] = [
         sectionLabel: '第5・6回 年齢と職業',
         promptJp: '私は先生です。',
         answerEn: 'I am a teacher.',
+        pos: ['sentence'],
         orderIndex: 2,
     },
     {
@@ -1862,6 +2030,7 @@ export const questions: Question[] = [
         sectionLabel: '第5・6回 年齢と職業',
         promptJp: 'あなたは9才です。',
         answerEn: 'You are nine.',
+        pos: ['sentence'],
         orderIndex: 3,
     },
     {
@@ -1873,6 +2042,7 @@ export const questions: Question[] = [
         sectionLabel: '第7回 感情の言い方',
         promptJp: 'おなかがすいた',
         answerEn: 'hungry',
+        pos: ['adj'],
         orderIndex: 1,
     },
     {
@@ -1884,6 +2054,7 @@ export const questions: Question[] = [
         sectionLabel: '第7回 感情の言い方',
         promptJp: 'うれしい',
         answerEn: 'happy',
+        pos: ['adj'],
         orderIndex: 2,
     },
     {
@@ -1895,6 +2066,7 @@ export const questions: Question[] = [
         sectionLabel: '第7回 感情の言い方',
         promptJp: 'つかれた',
         answerEn: 'tired',
+        pos: ['adj'],
         orderIndex: 3,
     },
     {
@@ -1906,6 +2078,7 @@ export const questions: Question[] = [
         sectionLabel: '第7回 感情の言い方',
         promptJp: 'ねむい',
         answerEn: 'sleepy',
+        pos: ['adj'],
         orderIndex: 4,
     },
     {
@@ -1917,6 +2090,7 @@ export const questions: Question[] = [
         sectionLabel: '第7回 感情の言い方',
         promptJp: 'わくわくした',
         answerEn: 'excited',
+        pos: ['adj'],
         orderIndex: 5,
     },
     {
@@ -1928,6 +2102,7 @@ export const questions: Question[] = [
         sectionLabel: '第7回 感情の言い方',
         promptJp: '悲しい',
         answerEn: 'sad',
+        pos: ['adj'],
         orderIndex: 6,
     },
     {
@@ -1939,6 +2114,7 @@ export const questions: Question[] = [
         sectionLabel: '第8・9回 感情の状態',
         promptJp: '私はおなかがすいています。',
         answerEn: 'I am hungry.',
+        pos: ['sentence'],
         orderIndex: 1,
     },
     {
@@ -1950,6 +2126,7 @@ export const questions: Question[] = [
         sectionLabel: '第8・9回 感情の状態',
         promptJp: '私はつかれていません。',
         answerEn: 'I am not tired.',
+        pos: ['sentence'],
         orderIndex: 2,
     },
     {
@@ -1961,6 +2138,7 @@ export const questions: Question[] = [
         sectionLabel: '第10回 職業を覚えよう②',
         promptJp: '科学者',
         answerEn: 'scientist',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -1972,6 +2150,7 @@ export const questions: Question[] = [
         sectionLabel: '第10回 職業を覚えよう②',
         promptJp: '宇宙飛行士',
         answerEn: 'astronaut',
+        pos: ['noun'],
         orderIndex: 2,
     },
     {
@@ -1983,6 +2162,7 @@ export const questions: Question[] = [
         sectionLabel: '第10回 職業を覚えよう②',
         promptJp: 'ミュージシャン',
         answerEn: 'musician',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -1994,6 +2174,7 @@ export const questions: Question[] = [
         sectionLabel: '第10回 職業を覚えよう②',
         promptJp: 'エンジニア',
         answerEn: 'engineer',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -2005,6 +2186,7 @@ export const questions: Question[] = [
         sectionLabel: '第10回 職業を覚えよう②',
         promptJp: '会社員',
         answerEn: 'businessman',
+        pos: ['noun'],
         orderIndex: 5,
     },
     {
@@ -2016,6 +2198,7 @@ export const questions: Question[] = [
         sectionLabel: '第11回 職業の疑問文',
         promptJp: 'あなたはミュージシャンですか。',
         answerEn: 'Are you a musician?',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -2027,6 +2210,7 @@ export const questions: Question[] = [
         sectionLabel: '第11回 職業の疑問文',
         promptJp: 'はい、そうです。',
         answerEn: 'Yes, I am.',
+        pos: ['sentence'],
         orderIndex: 2,
     },
     {
@@ -2038,6 +2222,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 生き物を覚えよう',
         promptJp: 'あり',
         answerEn: 'ant',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -2049,6 +2234,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 生き物を覚えよう',
         promptJp: 'ぶた',
         answerEn: 'pig',
+        pos: ['noun'],
         orderIndex: 2,
     },
     {
@@ -2060,6 +2246,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 生き物を覚えよう',
         promptJp: 'かめ',
         answerEn: 'turtle',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -2071,6 +2258,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 生き物を覚えよう',
         promptJp: 'きつね',
         answerEn: 'fox',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -2082,6 +2270,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 生き物を覚えよう',
         promptJp: 'かえる',
         answerEn: 'frog',
+        pos: ['noun'],
         orderIndex: 5,
     },
     {
@@ -2093,6 +2282,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 生き物を覚えよう',
         promptJp: '馬',
         answerEn: 'horse',
+        pos: ['noun'],
         orderIndex: 6,
     },
     {
@@ -2104,6 +2294,7 @@ export const questions: Question[] = [
         sectionLabel: '第2・3回 これは何ですか',
         promptJp: 'これは何ですか。',
         answerEn: 'What is this?',
+        pos: ['sentence'],
         orderIndex: 1,
     },
     {
@@ -2115,6 +2306,7 @@ export const questions: Question[] = [
         sectionLabel: '第2・3回 これは何ですか',
         promptJp: 'かえるです。',
         answerEn: 'It is a frog.',
+        pos: ['sentence'],
         orderIndex: 2,
     },
     {
@@ -2126,6 +2318,7 @@ export const questions: Question[] = [
         sectionLabel: '第2・3回 これは何ですか',
         promptJp: 'それはありです。',
         answerEn: 'It\'s an ant.',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -2137,6 +2330,7 @@ export const questions: Question[] = [
         sectionLabel: '第4回 学校で使う物を覚えよう',
         promptJp: 'いす',
         answerEn: 'chair',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -2148,6 +2342,7 @@ export const questions: Question[] = [
         sectionLabel: '第4回 学校で使う物を覚えよう',
         promptJp: '机',
         answerEn: 'desk',
+        pos: ['noun'],
         orderIndex: 2,
     },
     {
@@ -2159,6 +2354,7 @@ export const questions: Question[] = [
         sectionLabel: '第4回 学校で使う物を覚えよう',
         promptJp: 'ペン',
         answerEn: 'pen',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -2170,6 +2366,7 @@ export const questions: Question[] = [
         sectionLabel: '第4回 学校で使う物を覚えよう',
         promptJp: 'えんぴつ',
         answerEn: 'pencil',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -2181,6 +2378,7 @@ export const questions: Question[] = [
         sectionLabel: '第4回 学校で使う物を覚えよう',
         promptJp: '本',
         answerEn: 'book',
+        pos: ['noun'],
         orderIndex: 5,
     },
     {
@@ -2192,6 +2390,7 @@ export const questions: Question[] = [
         sectionLabel: '第4回 学校で使う物を覚えよう',
         promptJp: 'ノート',
         answerEn: 'notebook',
+        pos: ['noun'],
         orderIndex: 6,
     },
     {
@@ -2203,6 +2402,7 @@ export const questions: Question[] = [
         sectionLabel: '第5・6回 所持品',
         promptJp: 'いくつですか。',
         answerEn: 'How many?',
+        pos: ['sentence'],
         orderIndex: 1,
     },
     {
@@ -2214,6 +2414,7 @@ export const questions: Question[] = [
         sectionLabel: '第5・6回 所持品',
         promptJp: '私はノートを持っています。',
         answerEn: 'I have a notebook.',
+        pos: ['sentence'],
         orderIndex: 2,
     },
     {
@@ -2225,6 +2426,7 @@ export const questions: Question[] = [
         sectionLabel: '第8回 楽器・スポーツ・教科',
         promptJp: 'ギター',
         answerEn: 'guitar',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -2236,6 +2438,7 @@ export const questions: Question[] = [
         sectionLabel: '第8回 楽器・スポーツ・教科',
         promptJp: 'ピアノ',
         answerEn: 'piano',
+        pos: ['noun'],
         orderIndex: 2,
     },
     {
@@ -2247,6 +2450,7 @@ export const questions: Question[] = [
         sectionLabel: '第8回 楽器・スポーツ・教科',
         promptJp: 'サッカー',
         answerEn: 'soccer',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -2258,6 +2462,7 @@ export const questions: Question[] = [
         sectionLabel: '第8回 楽器・スポーツ・教科',
         promptJp: 'テニス',
         answerEn: 'tennis',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -2269,6 +2474,7 @@ export const questions: Question[] = [
         sectionLabel: '第8回 楽器・スポーツ・教科',
         promptJp: '英語',
         answerEn: 'English',
+        pos: ['noun'],
         orderIndex: 5,
     },
     {
@@ -2280,6 +2486,7 @@ export const questions: Question[] = [
         sectionLabel: '第8回 楽器・スポーツ・教科',
         promptJp: '理科',
         answerEn: 'science',
+        pos: ['noun'],
         orderIndex: 6,
     },
     {
@@ -2291,6 +2498,7 @@ export const questions: Question[] = [
         sectionLabel: '第9・10回 学習とスポーツ',
         promptJp: '私はサッカーをします。',
         answerEn: 'I play soccer.',
+        pos: ['sentence'],
         orderIndex: 1,
     },
     {
@@ -2302,6 +2510,7 @@ export const questions: Question[] = [
         sectionLabel: '第9・10回 学習とスポーツ',
         promptJp: '私は英語を勉強します。',
         answerEn: 'I study English.',
+        pos: ['sentence'],
         orderIndex: 2,
     },
     {
@@ -2313,6 +2522,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 建物・場所を覚えよう',
         promptJp: '家',
         answerEn: 'house',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -2324,6 +2534,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 建物・場所を覚えよう',
         promptJp: '図書館',
         answerEn: 'library',
+        pos: ['noun'],
         orderIndex: 2,
     },
     {
@@ -2335,6 +2546,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 建物・場所を覚えよう',
         promptJp: '駅',
         answerEn: 'station',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -2346,6 +2558,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 建物・場所を覚えよう',
         promptJp: '病院',
         answerEn: 'hospital',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -2357,6 +2570,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 建物・場所を覚えよう',
         promptJp: 'スーパーマーケット',
         answerEn: 'supermarket',
+        pos: ['noun'],
         orderIndex: 5,
     },
     {
@@ -2368,6 +2582,7 @@ export const questions: Question[] = [
         sectionLabel: '第2・3回 住んでいる場所',
         promptJp: '私は7時に散歩します。',
         answerEn: 'I walk at seven.',
+        pos: ['sentence'],
         orderIndex: 1,
     },
     {
@@ -2379,6 +2594,7 @@ export const questions: Question[] = [
         sectionLabel: '第2・3回 住んでいる場所',
         promptJp: 'あなたは日曜日に勉強します。',
         answerEn: 'You study on Sunday.',
+        pos: ['sentence'],
         orderIndex: 2,
     },
     {
@@ -2390,6 +2606,7 @@ export const questions: Question[] = [
         sectionLabel: '第2・3回 住んでいる場所',
         promptJp: '私は日本に住んでいます。',
         answerEn: 'I live in Japan.',
+        pos: ['sentence'],
         orderIndex: 3,
     },
     {
@@ -2401,6 +2618,7 @@ export const questions: Question[] = [
         sectionLabel: '第4回 乗り物を覚えよう',
         promptJp: '車',
         answerEn: 'car',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -2412,6 +2630,7 @@ export const questions: Question[] = [
         sectionLabel: '第4回 乗り物を覚えよう',
         promptJp: 'バス',
         answerEn: 'bus',
+        pos: ['noun'],
         orderIndex: 2,
     },
     {
@@ -2423,6 +2642,7 @@ export const questions: Question[] = [
         sectionLabel: '第4回 乗り物を覚えよう',
         promptJp: '電車',
         answerEn: 'train',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -2434,6 +2654,7 @@ export const questions: Question[] = [
         sectionLabel: '第4回 乗り物を覚えよう',
         promptJp: '公園',
         answerEn: 'park',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -2445,6 +2666,7 @@ export const questions: Question[] = [
         sectionLabel: '第4回 乗り物を覚えよう',
         promptJp: '学校',
         answerEn: 'school',
+        pos: ['noun'],
         orderIndex: 5,
     },
     {
@@ -2456,6 +2678,7 @@ export const questions: Question[] = [
         sectionLabel: '第4回 乗り物を覚えよう',
         promptJp: '美術館',
         answerEn: 'museum',
+        pos: ['noun'],
         orderIndex: 6,
     },
     {
@@ -2467,6 +2690,7 @@ export const questions: Question[] = [
         sectionLabel: '第5・6回 日常の動作',
         promptJp: '私は毎日走ります。',
         answerEn: 'I run every day.',
+        pos: ['sentence'],
         orderIndex: 1,
     },
     {
@@ -2478,6 +2702,7 @@ export const questions: Question[] = [
         sectionLabel: '第5・6回 日常の動作',
         promptJp: '私は車で行きます。',
         answerEn: 'I go by car.',
+        pos: ['sentence'],
         orderIndex: 2,
     },
     {
@@ -2489,6 +2714,7 @@ export const questions: Question[] = [
         sectionLabel: '第7回 身の回りの物を覚えよう',
         promptJp: 'CD',
         answerEn: 'CD',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -2500,6 +2726,7 @@ export const questions: Question[] = [
         sectionLabel: '第7回 身の回りの物を覚えよう',
         promptJp: '切手',
         answerEn: 'stamp',
+        pos: ['noun'],
         orderIndex: 2,
     },
     {
@@ -2511,6 +2738,7 @@ export const questions: Question[] = [
         sectionLabel: '第7回 身の回りの物を覚えよう',
         promptJp: '手紙',
         answerEn: 'letter',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -2522,6 +2750,7 @@ export const questions: Question[] = [
         sectionLabel: '第7回 身の回りの物を覚えよう',
         promptJp: 'カメラ',
         answerEn: 'camera',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -2533,6 +2762,7 @@ export const questions: Question[] = [
         sectionLabel: '第7回 身の回りの物を覚えよう',
         promptJp: '誕生日',
         answerEn: 'birthday',
+        pos: ['noun'],
         orderIndex: 5,
     },
     {
@@ -2544,6 +2774,7 @@ export const questions: Question[] = [
         sectionLabel: '第7回 身の回りの物を覚えよう',
         promptJp: 'けいたい電話',
         answerEn: 'cell phone',
+        pos: ['noun'],
         orderIndex: 6,
     },
     {
@@ -2555,6 +2786,7 @@ export const questions: Question[] = [
         sectionLabel: '第8・9回 否定の文',
         promptJp: '私は行きません。',
         answerEn: 'I don\'t go.',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -2566,6 +2798,7 @@ export const questions: Question[] = [
         sectionLabel: '第8・9回 否定の文',
         promptJp: 'あなたは走りません。',
         answerEn: 'You don\'t run.',
+        pos: ['noun'],
         orderIndex: 2,
     },
     {
@@ -2577,6 +2810,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 季節を覚えよう',
         promptJp: '春',
         answerEn: 'spring',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -2588,6 +2822,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 季節を覚えよう',
         promptJp: '夏',
         answerEn: 'summer',
+        pos: ['noun'],
         orderIndex: 2,
     },
     {
@@ -2599,6 +2834,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 季節を覚えよう',
         promptJp: '秋',
         answerEn: 'fall',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -2610,6 +2846,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 季節を覚えよう',
         promptJp: '冬',
         answerEn: 'winter',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -2621,6 +2858,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 季節を覚えよう',
         promptJp: '季節',
         answerEn: 'season',
+        pos: ['noun'],
         orderIndex: 5,
     },
     {
@@ -2632,6 +2870,7 @@ export const questions: Question[] = [
         sectionLabel: '第2・3回 一般動詞の疑問文',
         promptJp: 'あなたは走りますか。',
         answerEn: 'Do you run?',
+        pos: ['sentence'],
         orderIndex: 1,
     },
     {
@@ -2643,6 +2882,7 @@ export const questions: Question[] = [
         sectionLabel: '第2・3回 一般動詞の疑問文',
         promptJp: 'はい、走ります。',
         answerEn: 'Yes, I do.',
+        pos: ['sentence'],
         orderIndex: 2,
     },
     {
@@ -2654,6 +2894,7 @@ export const questions: Question[] = [
         sectionLabel: '第2・3回 一般動詞の疑問文',
         promptJp: 'あなたは泳ぎますか。',
         answerEn: 'Do you swim?',
+        pos: ['sentence'],
         orderIndex: 3,
     },
     {
@@ -2665,6 +2906,7 @@ export const questions: Question[] = [
         sectionLabel: '第2・3回 一般動詞の疑問文',
         promptJp: 'いいえ、泳ぎません。',
         answerEn: 'No, I don\'t.',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -2676,6 +2918,7 @@ export const questions: Question[] = [
         sectionLabel: '第2・3回 一般動詞の疑問文',
         promptJp: 'あなたは勉強しますか。',
         answerEn: 'Do you study?',
+        pos: ['sentence'],
         orderIndex: 5,
     },
     {
@@ -2687,6 +2930,7 @@ export const questions: Question[] = [
         sectionLabel: '第2・3回 一般動詞の疑問文',
         promptJp: 'あなたは犬を飼っていますか。',
         answerEn: 'Do you have a dog?',
+        pos: ['sentence'],
         orderIndex: 6,
     },
     {
@@ -2698,6 +2942,7 @@ export const questions: Question[] = [
         sectionLabel: '第4回 おやつを覚えよう',
         promptJp: 'コーヒー',
         answerEn: 'coffee',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -2709,6 +2954,7 @@ export const questions: Question[] = [
         sectionLabel: '第4回 おやつを覚えよう',
         promptJp: 'コーラ',
         answerEn: 'cola',
+        pos: ['noun'],
         orderIndex: 2,
     },
     {
@@ -2720,6 +2966,7 @@ export const questions: Question[] = [
         sectionLabel: '第4回 おやつを覚えよう',
         promptJp: 'クッキー',
         answerEn: 'cookie',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -2731,6 +2978,7 @@ export const questions: Question[] = [
         sectionLabel: '第4回 おやつを覚えよう',
         promptJp: 'ドーナツ',
         answerEn: 'donut',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -2742,6 +2990,7 @@ export const questions: Question[] = [
         sectionLabel: '第4回 おやつを覚えよう',
         promptJp: 'ケーキ',
         answerEn: 'cake',
+        pos: ['noun'],
         orderIndex: 5,
     },
     {
@@ -2753,6 +3002,7 @@ export const questions: Question[] = [
         sectionLabel: '第5・6回 疑問詞What',
         promptJp: 'あなたは何が欲しいですか。',
         answerEn: 'What do you want?',
+        pos: ['sentence'],
         orderIndex: 1,
     },
     {
@@ -2764,6 +3014,7 @@ export const questions: Question[] = [
         sectionLabel: '第5・6回 疑問詞What',
         promptJp: '私はドーナツが欲しいです。',
         answerEn: 'I want donuts.',
+        pos: ['sentence'],
         orderIndex: 2,
     },
     {
@@ -2775,6 +3026,7 @@ export const questions: Question[] = [
         sectionLabel: '第5・6回 疑問詞What',
         promptJp: 'あなたは何を持っていますか。',
         answerEn: 'What do you have?',
+        pos: ['sentence'],
         orderIndex: 3,
     },
     {
@@ -2786,6 +3038,7 @@ export const questions: Question[] = [
         sectionLabel: '第5・6回 疑問詞What',
         promptJp: '私は1枚の写真を持っています。',
         answerEn: 'I have a picture.',
+        pos: ['sentence'],
         orderIndex: 4,
     },
     {
@@ -2797,6 +3050,7 @@ export const questions: Question[] = [
         sectionLabel: '第7回 種類を覚えよう',
         promptJp: '教科',
         answerEn: 'subject',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -2808,6 +3062,7 @@ export const questions: Question[] = [
         sectionLabel: '第7回 種類を覚えよう',
         promptJp: '食べ物',
         answerEn: 'food',
+        pos: ['noun'],
         orderIndex: 2,
     },
     {
@@ -2819,6 +3074,7 @@ export const questions: Question[] = [
         sectionLabel: '第7回 種類を覚えよう',
         promptJp: '動物',
         answerEn: 'animal',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -2830,6 +3086,7 @@ export const questions: Question[] = [
         sectionLabel: '第7回 種類を覚えよう',
         promptJp: 'スポーツ',
         answerEn: 'sport',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -2841,6 +3098,7 @@ export const questions: Question[] = [
         sectionLabel: '第7回 種類を覚えよう',
         promptJp: '色',
         answerEn: 'color',
+        pos: ['noun'],
         orderIndex: 5,
     },
     {
@@ -2852,6 +3110,7 @@ export const questions: Question[] = [
         sectionLabel: '第7回 種類を覚えよう',
         promptJp: '果物',
         answerEn: 'fruit',
+        pos: ['noun'],
         orderIndex: 6,
     },
     {
@@ -2863,6 +3122,7 @@ export const questions: Question[] = [
         sectionLabel: '第8回 好みをたずねる',
         promptJp: 'あなたは何の食べ物が好きですか。',
         answerEn: 'What food do you like?',
+        pos: ['sentence'],
         orderIndex: 1,
     },
     {
@@ -2874,6 +3134,7 @@ export const questions: Question[] = [
         sectionLabel: '第8回 好みをたずねる',
         promptJp: '私はりんごが好きです。',
         answerEn: 'I like apples.',
+        pos: ['sentence'],
         orderIndex: 2,
     },
     {
@@ -2885,6 +3146,7 @@ export const questions: Question[] = [
         sectionLabel: '第10回 地名を覚えよう',
         promptJp: '愛知',
         answerEn: 'Aichi',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -2896,6 +3158,7 @@ export const questions: Question[] = [
         sectionLabel: '第10回 地名を覚えよう',
         promptJp: '北海道',
         answerEn: 'Hokkaido',
+        pos: ['noun'],
         orderIndex: 2,
     },
     {
@@ -2907,6 +3170,7 @@ export const questions: Question[] = [
         sectionLabel: '第10回 地名を覚えよう',
         promptJp: '東京',
         answerEn: 'Tokyo',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -2918,6 +3182,7 @@ export const questions: Question[] = [
         sectionLabel: '第10回 自己紹介',
         promptJp: 'あなたの名前は何ですか。',
         answerEn: 'What\'s your name?',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -2929,6 +3194,7 @@ export const questions: Question[] = [
         sectionLabel: '第10回 自己紹介',
         promptJp: '私の名前はリカです。',
         answerEn: 'My name is Rika.',
+        pos: ['sentence'],
         orderIndex: 2,
     },
     {
@@ -2940,6 +3206,7 @@ export const questions: Question[] = [
         sectionLabel: '第10回 自己紹介',
         promptJp: 'あなたは何才ですか。',
         answerEn: 'How old are you?',
+        pos: ['sentence'],
         orderIndex: 3,
     },
     {
@@ -2951,6 +3218,7 @@ export const questions: Question[] = [
         sectionLabel: '第10回 自己紹介',
         promptJp: '私は10才です。',
         answerEn: 'I\'m ten.',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -2962,6 +3230,7 @@ export const questions: Question[] = [
         sectionLabel: '第10回 自己紹介',
         promptJp: 'あなたはどこの出身ですか。',
         answerEn: 'Where are you from?',
+        pos: ['sentence'],
         orderIndex: 5,
     },
     {
@@ -2973,6 +3242,7 @@ export const questions: Question[] = [
         sectionLabel: '第10回 自己紹介',
         promptJp: '私は日本出身です。',
         answerEn: 'I\'m from Japan.',
+        pos: ['noun'],
         orderIndex: 6,
     },
     {
@@ -2984,6 +3254,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 身につける物を覚えよう',
         promptJp: 'ズボン',
         answerEn: 'pants',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -2995,6 +3266,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 身につける物を覚えよう',
         promptJp: 'スカート',
         answerEn: 'skirt',
+        pos: ['noun'],
         orderIndex: 2,
     },
     {
@@ -3006,6 +3278,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 身につける物を覚えよう',
         promptJp: 'くつ',
         answerEn: 'shoes',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -3017,6 +3290,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 身につける物を覚えよう',
         promptJp: 'ジャケット',
         answerEn: 'jacket',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -3028,6 +3302,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 身につける物を覚えよう',
         promptJp: 'セーター',
         answerEn: 'sweater',
+        pos: ['noun'],
         orderIndex: 5,
     },
     {
@@ -3039,6 +3314,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 身につける物を覚えよう',
         promptJp: 'ティーシャツ',
         answerEn: 'T-shirt',
+        pos: ['noun'],
         orderIndex: 6,
     },
     {
@@ -3050,6 +3326,7 @@ export const questions: Question[] = [
         sectionLabel: '第2・3回 紹介の文',
         promptJp: 'これはジャケットです。',
         answerEn: 'This is a jacket.',
+        pos: ['sentence'],
         orderIndex: 1,
     },
     {
@@ -3061,6 +3338,7 @@ export const questions: Question[] = [
         sectionLabel: '第2・3回 紹介の文',
         promptJp: 'これは車です。',
         answerEn: 'This is a car.',
+        pos: ['sentence'],
         orderIndex: 2,
     },
     {
@@ -3072,6 +3350,7 @@ export const questions: Question[] = [
         sectionLabel: '第2・3回 紹介の文',
         promptJp: 'あれはスカートです。',
         answerEn: 'That is a skirt.',
+        pos: ['sentence'],
         orderIndex: 3,
     },
     {
@@ -3083,6 +3362,7 @@ export const questions: Question[] = [
         sectionLabel: '第4回 生き物を覚えよう',
         promptJp: 'こうもり',
         answerEn: 'bat',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -3094,6 +3374,7 @@ export const questions: Question[] = [
         sectionLabel: '第4回 生き物を覚えよう',
         promptJp: 'ねこ',
         answerEn: 'cat',
+        pos: ['noun'],
         orderIndex: 2,
     },
     {
@@ -3105,6 +3386,7 @@ export const questions: Question[] = [
         sectionLabel: '第4回 生き物を覚えよう',
         promptJp: 'かに',
         answerEn: 'crab',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -3116,6 +3398,7 @@ export const questions: Question[] = [
         sectionLabel: '第4回 生き物を覚えよう',
         promptJp: 'らくだ',
         answerEn: 'camel',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -3127,6 +3410,7 @@ export const questions: Question[] = [
         sectionLabel: '第4回 生き物を覚えよう',
         promptJp: 'とら',
         answerEn: 'tiger',
+        pos: ['noun'],
         orderIndex: 5,
     },
     {
@@ -3138,6 +3422,7 @@ export const questions: Question[] = [
         sectionLabel: '第4回 生き物を覚えよう',
         promptJp: 'ハムスター',
         answerEn: 'hamster',
+        pos: ['noun'],
         orderIndex: 6,
     },
     {
@@ -3149,6 +3434,7 @@ export const questions: Question[] = [
         sectionLabel: '第5・6回 否定の文',
         promptJp: 'これはらくだではありません。',
         answerEn: 'This is not a camel.',
+        pos: ['sentence'],
         orderIndex: 1,
     },
     {
@@ -3160,6 +3446,7 @@ export const questions: Question[] = [
         sectionLabel: '第5・6回 否定の文',
         promptJp: 'あれはかにではありません。',
         answerEn: 'That is not a crab.',
+        pos: ['sentence'],
         orderIndex: 2,
     },
     {
@@ -3171,6 +3458,7 @@ export const questions: Question[] = [
         sectionLabel: '第5・6回 否定の文',
         promptJp: 'あれはギターではありません。',
         answerEn: 'That is not a guitar.',
+        pos: ['sentence'],
         orderIndex: 3,
     },
     {
@@ -3182,6 +3470,7 @@ export const questions: Question[] = [
         sectionLabel: '第7回 状態を覚えよう',
         promptJp: '新しい',
         answerEn: 'new',
+        pos: ['adj'],
         orderIndex: 1,
     },
     {
@@ -3193,6 +3482,7 @@ export const questions: Question[] = [
         sectionLabel: '第7回 状態を覚えよう',
         promptJp: '古い',
         answerEn: 'old',
+        pos: ['adj'],
         orderIndex: 2,
     },
     {
@@ -3204,6 +3494,7 @@ export const questions: Question[] = [
         sectionLabel: '第7回 状態を覚えよう',
         promptJp: 'よい',
         answerEn: 'good',
+        pos: ['adj'],
         orderIndex: 3,
     },
     {
@@ -3215,6 +3506,7 @@ export const questions: Question[] = [
         sectionLabel: '第7回 状態を覚えよう',
         promptJp: '悪い',
         answerEn: 'bad',
+        pos: ['adj'],
         orderIndex: 4,
     },
     {
@@ -3226,6 +3518,7 @@ export const questions: Question[] = [
         sectionLabel: '第7回 状態を覚えよう',
         promptJp: 'かんたんな',
         answerEn: 'easy',
+        pos: ['adj'],
         orderIndex: 5,
     },
     {
@@ -3237,6 +3530,7 @@ export const questions: Question[] = [
         sectionLabel: '第7回 状態を覚えよう',
         promptJp: 'むずかしい',
         answerEn: 'difficult',
+        pos: ['adj'],
         orderIndex: 6,
     },
     {
@@ -3248,6 +3542,7 @@ export const questions: Question[] = [
         sectionLabel: '第8回 疑問の文',
         promptJp: 'これはとらですか。',
         answerEn: 'Is this a tiger?',
+        pos: ['sentence'],
         orderIndex: 1,
     },
     {
@@ -3259,6 +3554,7 @@ export const questions: Question[] = [
         sectionLabel: '第8回 疑問の文',
         promptJp: 'はい、そうです。',
         answerEn: 'Yes, it is.',
+        pos: ['sentence'],
         orderIndex: 2,
     },
     {
@@ -3270,6 +3566,7 @@ export const questions: Question[] = [
         sectionLabel: '第9・10回 疑問と状態',
         promptJp: 'あれは病院ですか。',
         answerEn: 'Is that a hospital?',
+        pos: ['sentence'],
         orderIndex: 1,
     },
     {
@@ -3281,6 +3578,7 @@ export const questions: Question[] = [
         sectionLabel: '第9・10回 疑問と状態',
         promptJp: 'いいえ、ちがいます。',
         answerEn: 'No, it isn\'t.',
+        pos: ['noun'],
         orderIndex: 2,
     },
     {
@@ -3292,6 +3590,7 @@ export const questions: Question[] = [
         sectionLabel: '第9・10回 疑問と状態',
         promptJp: 'この本はかんたんです。',
         answerEn: 'This book is easy.',
+        pos: ['sentence'],
         orderIndex: 3,
     },
     {
@@ -3303,6 +3602,7 @@ export const questions: Question[] = [
         sectionLabel: '第9・10回 疑問と状態',
         promptJp: 'あの本は新しいです。',
         answerEn: 'That book is new.',
+        pos: ['sentence'],
         orderIndex: 4,
     },
     {
@@ -3314,6 +3614,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 食事の言い方を覚えよう！',
         promptJp: '遅く',
         answerEn: 'slowly',
+        pos: ['adv'],
         orderIndex: 1,
     },
     {
@@ -3325,6 +3626,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 食事の言い方を覚えよう！',
         promptJp: '速く',
         answerEn: 'fast',
+        pos: ['adj', 'adv'],
         orderIndex: 2,
     },
     {
@@ -3336,6 +3638,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 食事の言い方を覚えよう！',
         promptJp: '朝食(朝ごはん)',
         answerEn: 'breakfast',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -3347,6 +3650,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 食事の言い方を覚えよう！',
         promptJp: '昼食(昼ごはん)',
         answerEn: 'lunch',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -3358,6 +3662,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 食事の言い方を覚えよう！',
         promptJp: '夕食(晩ごはん)',
         answerEn: 'dinner',
+        pos: ['noun'],
         orderIndex: 5,
     },
     {
@@ -3369,6 +3674,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 食事の言い方を覚えよう！',
         promptJp: '給食',
         answerEn: 'school lunch',
+        pos: ['noun'],
         orderIndex: 6,
     },
     {
@@ -3380,6 +3686,7 @@ export const questions: Question[] = [
         sectionLabel: '第2・3回 日常生活の文',
         promptJp: '私は昼食をつくります。',
         answerEn: 'I make lunch.',
+        pos: ['sentence'],
         orderIndex: 1,
     },
     {
@@ -3391,6 +3698,7 @@ export const questions: Question[] = [
         sectionLabel: '第2・3回 日常生活の文',
         promptJp: '私は日本語を話します。',
         answerEn: 'I speak Japanese.',
+        pos: ['sentence'],
         orderIndex: 2,
     },
     {
@@ -3402,6 +3710,7 @@ export const questions: Question[] = [
         sectionLabel: '第2・3回 日常生活の文',
         promptJp: '私は自転車を使います。',
         answerEn: 'I use a bike.',
+        pos: ['sentence'],
         orderIndex: 3,
     },
     {
@@ -3413,6 +3722,7 @@ export const questions: Question[] = [
         sectionLabel: '第4回 一日の生活を覚えよう',
         promptJp: '起きる',
         answerEn: 'get up',
+        pos: ['verb'],
         orderIndex: 1,
     },
     {
@@ -3424,6 +3734,7 @@ export const questions: Question[] = [
         sectionLabel: '第4回 一日の生活を覚えよう',
         promptJp: '家を出る',
         answerEn: 'leave home',
+        pos: ['verb'],
         orderIndex: 2,
     },
     {
@@ -3435,6 +3746,7 @@ export const questions: Question[] = [
         sectionLabel: '第4回 一日の生活を覚えよう',
         promptJp: '学校に歩いて行く',
         answerEn: 'walk to school',
+        pos: ['verb'],
         orderIndex: 3,
     },
     {
@@ -3446,6 +3758,7 @@ export const questions: Question[] = [
         sectionLabel: '第4回 一日の生活を覚えよう',
         promptJp: '学校に着く',
         answerEn: 'get to school',
+        pos: ['verb'],
         orderIndex: 4,
     },
     {
@@ -3457,6 +3770,7 @@ export const questions: Question[] = [
         sectionLabel: '第4回 一日の生活を覚えよう',
         promptJp: '家に着く',
         answerEn: 'come home',
+        pos: ['verb'],
         orderIndex: 5,
     },
     {
@@ -3468,6 +3782,7 @@ export const questions: Question[] = [
         sectionLabel: '第4回 一日の生活を覚えよう',
         promptJp: 'お風呂に入る',
         answerEn: 'take a bath',
+        pos: ['verb'],
         orderIndex: 6,
     },
     {
@@ -3479,6 +3794,7 @@ export const questions: Question[] = [
         sectionLabel: '第4回 一日の生活を覚えよう',
         promptJp: '夕食を食べる',
         answerEn: 'have dinner',
+        pos: ['verb'],
         orderIndex: 7,
     },
     {
@@ -3490,6 +3806,7 @@ export const questions: Question[] = [
         sectionLabel: '第4回 一日の生活を覚えよう',
         promptJp: '寝る',
         answerEn: 'go to bed',
+        pos: ['verb'],
         orderIndex: 8,
     },
     {
@@ -3501,6 +3818,7 @@ export const questions: Question[] = [
         sectionLabel: '第5・6回 時間と行動',
         promptJp: '私は7時に起きます。',
         answerEn: 'I get up at seven.',
+        pos: ['sentence'],
         orderIndex: 1,
     },
     {
@@ -3512,6 +3830,7 @@ export const questions: Question[] = [
         sectionLabel: '第5・6回 時間と行動',
         promptJp: '私は7時30分に家を出ます。',
         answerEn: 'I leave home at seven thirty.',
+        pos: ['sentence'],
         orderIndex: 2,
     },
     {
@@ -3523,6 +3842,7 @@ export const questions: Question[] = [
         sectionLabel: '第5・6回 時間と行動',
         promptJp: '私は学校に歩いて行きます。',
         answerEn: 'I walk to school.',
+        pos: ['sentence'],
         orderIndex: 3,
     },
     {
@@ -3534,6 +3854,7 @@ export const questions: Question[] = [
         sectionLabel: '第5・6回 時間と行動',
         promptJp: '私は8時に学校に着きます。',
         answerEn: 'I get to school at eight.',
+        pos: ['sentence'],
         orderIndex: 4,
     },
     {
@@ -3545,6 +3866,7 @@ export const questions: Question[] = [
         sectionLabel: '第5・6回 時間と行動',
         promptJp: '私は4時に家に帰ります。',
         answerEn: 'I come home at four.',
+        pos: ['sentence'],
         orderIndex: 5,
     },
     {
@@ -3556,6 +3878,7 @@ export const questions: Question[] = [
         sectionLabel: '第5・6回 時間と行動',
         promptJp: '私は5時にお風呂に入ります。',
         answerEn: 'I take a bath at five.',
+        pos: ['sentence'],
         orderIndex: 6,
     },
     {
@@ -3567,6 +3890,7 @@ export const questions: Question[] = [
         sectionLabel: '第5・6回 時間と行動',
         promptJp: '私は6時に夕食を食べます。',
         answerEn: 'I have dinner at six.',
+        pos: ['sentence'],
         orderIndex: 7,
     },
     {
@@ -3578,6 +3902,7 @@ export const questions: Question[] = [
         sectionLabel: '第5・6回 時間と行動',
         promptJp: '私は9時に寝ます。',
         answerEn: 'I go to bed at nine.',
+        pos: ['sentence'],
         orderIndex: 8,
     },
     {
@@ -3589,6 +3914,7 @@ export const questions: Question[] = [
         sectionLabel: '第7回 勉強に使うものを覚えよう',
         promptJp: '消しゴム',
         answerEn: 'eraser',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -3600,6 +3926,7 @@ export const questions: Question[] = [
         sectionLabel: '第7回 勉強に使うものを覚えよう',
         promptJp: 'ペン',
         answerEn: 'pen',
+        pos: ['noun'],
         orderIndex: 2,
     },
     {
@@ -3611,6 +3938,7 @@ export const questions: Question[] = [
         sectionLabel: '第7回 勉強に使うものを覚えよう',
         promptJp: 'ノート',
         answerEn: 'notebook',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -3622,6 +3950,7 @@ export const questions: Question[] = [
         sectionLabel: '第7回 勉強に使うものを覚えよう',
         promptJp: '定規',
         answerEn: 'ruler',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -3633,6 +3962,7 @@ export const questions: Question[] = [
         sectionLabel: '第7回 勉強に使うものを覚えよう',
         promptJp: 'はさみ',
         answerEn: 'scissors',
+        pos: ['noun'],
         orderIndex: 5,
     },
     {
@@ -3644,6 +3974,7 @@ export const questions: Question[] = [
         sectionLabel: '第7回 勉強に使うものを覚えよう',
         promptJp: '試験',
         answerEn: 'test',
+        pos: ['noun'],
         orderIndex: 6,
     },
     {
@@ -3655,6 +3986,7 @@ export const questions: Question[] = [
         sectionLabel: '第8〜10回 動作と希望',
         promptJp: '私は速く走りません。',
         answerEn: 'I don\'t run fast.',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -3666,6 +3998,7 @@ export const questions: Question[] = [
         sectionLabel: '第8〜10回 動作と希望',
         promptJp: '私はゆっくり走りません。',
         answerEn: 'I don\'t run slowly.',
+        pos: ['noun'],
         orderIndex: 2,
     },
     {
@@ -3677,6 +4010,7 @@ export const questions: Question[] = [
         sectionLabel: '第8〜10回 動作と希望',
         promptJp: 'あなたは自転車がほしいですか。',
         answerEn: 'Do you want a bike?',
+        pos: ['sentence'],
         orderIndex: 3,
     },
     {
@@ -3688,6 +4022,7 @@ export const questions: Question[] = [
         sectionLabel: '第8〜10回 動作と希望',
         promptJp: 'はい、ほしいです。',
         answerEn: 'Yes, I do.',
+        pos: ['sentence'],
         orderIndex: 4,
     },
     {
@@ -3699,6 +4034,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 動詞を覚えよう',
         promptJp: '話す',
         answerEn: 'speak',
+        pos: ['verb'],
         orderIndex: 1,
     },
     {
@@ -3710,6 +4046,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 動詞を覚えよう',
         promptJp: '読む',
         answerEn: 'read',
+        pos: ['verb'],
         orderIndex: 2,
     },
     {
@@ -3721,6 +4058,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 動詞を覚えよう',
         promptJp: '答える',
         answerEn: 'answer',
+        pos: ['verb'],
         orderIndex: 3,
     },
     {
@@ -3732,6 +4070,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 動詞を覚えよう',
         promptJp: '手伝う',
         answerEn: 'help',
+        pos: ['verb'],
         orderIndex: 4,
     },
     {
@@ -3743,6 +4082,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 動詞を覚えよう',
         promptJp: '開ける',
         answerEn: 'open',
+        pos: ['verb'],
         orderIndex: 5,
     },
     {
@@ -3754,6 +4094,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 動詞を覚えよう',
         promptJp: '閉める',
         answerEn: 'close',
+        pos: ['verb'],
         orderIndex: 6,
     },
     {
@@ -3765,6 +4106,7 @@ export const questions: Question[] = [
         sectionLabel: '第2・3回 命令文・勧誘文',
         promptJp: '英語を話しなさい。',
         answerEn: 'Speak English.',
+        pos: ['sentence'],
         orderIndex: 1,
     },
     {
@@ -3776,6 +4118,7 @@ export const questions: Question[] = [
         sectionLabel: '第2・3回 命令文・勧誘文',
         promptJp: '本を読みましょう。',
         answerEn: 'Let\'s read books.',
+        pos: ['noun'],
         orderIndex: 2,
     },
     {
@@ -3787,6 +4130,7 @@ export const questions: Question[] = [
         sectionLabel: '第2・3回 命令文・勧誘文',
         promptJp: '質問に答えてください。',
         answerEn: 'Please answer the question.',
+        pos: ['sentence'],
         orderIndex: 3,
     },
     {
@@ -3798,6 +4142,7 @@ export const questions: Question[] = [
         sectionLabel: '第2・3回 命令文・勧誘文',
         promptJp: '窓を閉めてはいけません。',
         answerEn: 'Don\'t close the window.',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -3809,6 +4154,7 @@ export const questions: Question[] = [
         sectionLabel: '第4回 建物・場所を覚えよう①',
         promptJp: '図書館',
         answerEn: 'library',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -3820,6 +4166,7 @@ export const questions: Question[] = [
         sectionLabel: '第4回 建物・場所を覚えよう①',
         promptJp: '公園',
         answerEn: 'park',
+        pos: ['noun'],
         orderIndex: 2,
     },
     {
@@ -3831,6 +4178,7 @@ export const questions: Question[] = [
         sectionLabel: '第4回 建物・場所を覚えよう①',
         promptJp: 'ホテル',
         answerEn: 'hotel',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -3842,6 +4190,7 @@ export const questions: Question[] = [
         sectionLabel: '第4回 建物・場所を覚えよう①',
         promptJp: '薬局',
         answerEn: 'drugstore',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -3853,6 +4202,7 @@ export const questions: Question[] = [
         sectionLabel: '第4回 建物・場所を覚えよう①',
         promptJp: '花屋',
         answerEn: 'flower shop',
+        pos: ['noun'],
         orderIndex: 5,
     },
     {
@@ -3864,6 +4214,7 @@ export const questions: Question[] = [
         sectionLabel: '第4回 建物・場所を覚えよう①',
         promptJp: '本屋',
         answerEn: 'bookstore',
+        pos: ['noun'],
         orderIndex: 6,
     },
     {
@@ -3875,6 +4226,7 @@ export const questions: Question[] = [
         sectionLabel: '第4回 建物・場所を覚えよう①',
         promptJp: 'デパート',
         answerEn: 'department store',
+        pos: ['noun'],
         orderIndex: 7,
     },
     {
@@ -3886,6 +4238,7 @@ export const questions: Question[] = [
         sectionLabel: '第5回 あなたはどこに住んでいますか。',
         promptJp: 'あなたはどこに住んでいますか。',
         answerEn: 'Where do you live?',
+        pos: ['sentence'],
         orderIndex: 1,
     },
     {
@@ -3897,6 +4250,7 @@ export const questions: Question[] = [
         sectionLabel: '第5回 あなたはどこに住んでいますか。',
         promptJp: '私は東京に住んでいます。',
         answerEn: 'I live in Tokyo.',
+        pos: ['sentence'],
         orderIndex: 2,
     },
     {
@@ -3908,6 +4262,7 @@ export const questions: Question[] = [
         sectionLabel: '第6回 あなたはどこに行きますか。',
         promptJp: 'あなたはどこに行きますか。',
         answerEn: 'Where do you go?',
+        pos: ['sentence'],
         orderIndex: 1,
     },
     {
@@ -3919,6 +4274,7 @@ export const questions: Question[] = [
         sectionLabel: '第6回 あなたはどこに行きますか。',
         promptJp: '私は図書館に行きます。',
         answerEn: 'I go to the library.',
+        pos: ['sentence'],
         orderIndex: 2,
     },
     {
@@ -3930,6 +4286,7 @@ export const questions: Question[] = [
         sectionLabel: '第7回 建物・場所を覚えよう②',
         promptJp: '動物園',
         answerEn: 'zoo',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -3941,6 +4298,7 @@ export const questions: Question[] = [
         sectionLabel: '第7回 建物・場所を覚えよう②',
         promptJp: 'お寺',
         answerEn: 'temple',
+        pos: ['noun'],
         orderIndex: 2,
     },
     {
@@ -3952,6 +4310,7 @@ export const questions: Question[] = [
         sectionLabel: '第7回 建物・場所を覚えよう②',
         promptJp: '銀行',
         answerEn: 'bank',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -3963,6 +4322,7 @@ export const questions: Question[] = [
         sectionLabel: '第7回 建物・場所を覚えよう②',
         promptJp: '駅',
         answerEn: 'station',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -3974,6 +4334,7 @@ export const questions: Question[] = [
         sectionLabel: '第7回 建物・場所を覚えよう②',
         promptJp: '病院',
         answerEn: 'hospital',
+        pos: ['noun'],
         orderIndex: 5,
     },
     {
@@ -3985,6 +4346,7 @@ export const questions: Question[] = [
         sectionLabel: '第8〜10回 生活の言い方を覚えよう',
         promptJp: 'あなたはいつおふろに入りますか。',
         answerEn: 'When do you take a bath?',
+        pos: ['sentence'],
         orderIndex: 1,
     },
     {
@@ -3996,6 +4358,7 @@ export const questions: Question[] = [
         sectionLabel: '第8〜10回 生活の言い方を覚えよう',
         promptJp: '私は夕食前におふろに入ります。',
         answerEn: 'I take a bath before dinner.',
+        pos: ['sentence'],
         orderIndex: 2,
     },
     {
@@ -4007,6 +4370,7 @@ export const questions: Question[] = [
         sectionLabel: '第8〜10回 生活の言い方を覚えよう',
         promptJp: 'あなたはいつ公園に行きますか。',
         answerEn: 'When do you go to the park?',
+        pos: ['sentence'],
         orderIndex: 3,
     },
     {
@@ -4018,6 +4382,7 @@ export const questions: Question[] = [
         sectionLabel: '第8〜10回 生活の言い方を覚えよう',
         promptJp: '私は昼食前に公園に行きます。',
         answerEn: 'I go to the park before lunch.',
+        pos: ['sentence'],
         orderIndex: 4,
     },
     {
@@ -4029,6 +4394,7 @@ export const questions: Question[] = [
         sectionLabel: '第8〜10回 生活の言い方を覚えよう',
         promptJp: 'あなたはいつ英語を勉強しますか。',
         answerEn: 'When do you study English?',
+        pos: ['sentence'],
         orderIndex: 5,
     },
     {
@@ -4040,6 +4406,7 @@ export const questions: Question[] = [
         sectionLabel: '第8〜10回 生活の言い方を覚えよう',
         promptJp: '私は夕食後に英語を勉強します。',
         answerEn: 'I study English after dinner.',
+        pos: ['sentence'],
         orderIndex: 6,
     },
     {
@@ -4051,6 +4418,7 @@ export const questions: Question[] = [
         sectionLabel: '第8〜10回 生活の言い方を覚えよう',
         promptJp: 'あなたはどうやってホテルに行きますか。',
         answerEn: 'How do you go to the hotel?',
+        pos: ['sentence'],
         orderIndex: 7,
     },
     {
@@ -4062,6 +4430,7 @@ export const questions: Question[] = [
         sectionLabel: '第8〜10回 生活の言い方を覚えよう',
         promptJp: '私はタクシーで行きます。',
         answerEn: 'I go by taxi.',
+        pos: ['sentence'],
         orderIndex: 8,
     },
     {
@@ -4073,6 +4442,7 @@ export const questions: Question[] = [
         sectionLabel: '第8〜10回 生活の言い方を覚えよう',
         promptJp: 'あなたはどんな気分ですか。',
         answerEn: 'How do you feel?',
+        pos: ['sentence'],
         orderIndex: 9,
     },
     {
@@ -4084,6 +4454,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 おもちゃの名前を覚えよう',
         promptJp: '風船',
         answerEn: 'balloon',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -4095,6 +4466,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 おもちゃの名前を覚えよう',
         promptJp: 'ロボット',
         answerEn: 'robot',
+        pos: ['noun'],
         orderIndex: 2,
     },
     {
@@ -4106,6 +4478,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 おもちゃの名前を覚えよう',
         promptJp: '人形',
         answerEn: 'doll',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -4117,6 +4490,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 おもちゃの名前を覚えよう',
         promptJp: 'ラケット',
         answerEn: 'racket',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -4128,6 +4502,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 おもちゃの名前を覚えよう',
         promptJp: 'ボール',
         answerEn: 'ball',
+        pos: ['noun'],
         orderIndex: 5,
     },
     {
@@ -4139,6 +4514,7 @@ export const questions: Question[] = [
         sectionLabel: '第2・3回 数量・枚数のたずね方',
         promptJp: 'あなたはいくつの風船を持っていますか。',
         answerEn: 'How many balloons do you have?',
+        pos: ['sentence'],
         orderIndex: 1,
     },
     {
@@ -4150,6 +4526,7 @@ export const questions: Question[] = [
         sectionLabel: '第2・3回 数量・枚数のたずね方',
         promptJp: '私は5つの風船を持っています。',
         answerEn: 'I have five balloons.',
+        pos: ['sentence'],
         orderIndex: 2,
     },
     {
@@ -4161,6 +4538,7 @@ export const questions: Question[] = [
         sectionLabel: '第2・3回 数量・枚数のたずね方',
         promptJp: 'あなたは何枚の切手が欲しいですか。',
         answerEn: 'How many stamps do you want?',
+        pos: ['sentence'],
         orderIndex: 3,
     },
     {
@@ -4172,6 +4550,7 @@ export const questions: Question[] = [
         sectionLabel: '第2・3回 数量・枚数のたずね方',
         promptJp: '私は4枚の切手が欲しいです。',
         answerEn: 'I want four stamps.',
+        pos: ['sentence'],
         orderIndex: 4,
     },
     {
@@ -4183,6 +4562,7 @@ export const questions: Question[] = [
         sectionLabel: '第4回 身のまわりの物を覚えよう',
         promptJp: '窓',
         answerEn: 'window',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -4194,6 +4574,7 @@ export const questions: Question[] = [
         sectionLabel: '第4回 身のまわりの物を覚えよう',
         promptJp: '冷蔵庫',
         answerEn: 'fridge',
+        pos: ['noun'],
         orderIndex: 2,
     },
     {
@@ -4205,6 +4586,7 @@ export const questions: Question[] = [
         sectionLabel: '第4回 身のまわりの物を覚えよう',
         promptJp: '時計',
         answerEn: 'clock',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -4216,6 +4598,7 @@ export const questions: Question[] = [
         sectionLabel: '第4回 身のまわりの物を覚えよう',
         promptJp: 'テレビ',
         answerEn: 'TV',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -4227,6 +4610,7 @@ export const questions: Question[] = [
         sectionLabel: '第4回 身のまわりの物を覚えよう',
         promptJp: 'コンピュータ',
         answerEn: 'computer',
+        pos: ['noun'],
         orderIndex: 5,
     },
     {
@@ -4238,6 +4622,7 @@ export const questions: Question[] = [
         sectionLabel: '第5・6回 時間のたずね方',
         promptJp: 'あなたは何時に起きますか。',
         answerEn: 'What time do you get up?',
+        pos: ['sentence'],
         orderIndex: 1,
     },
     {
@@ -4249,6 +4634,7 @@ export const questions: Question[] = [
         sectionLabel: '第5・6回 時間のたずね方',
         promptJp: '私は7時10分に起きます。',
         answerEn: 'I get up at seven ten.',
+        pos: ['sentence'],
         orderIndex: 2,
     },
     {
@@ -4260,6 +4646,7 @@ export const questions: Question[] = [
         sectionLabel: '第5・6回 時間のたずね方',
         promptJp: '今、何時ですか。',
         answerEn: 'What time is it now?',
+        pos: ['sentence'],
         orderIndex: 3,
     },
     {
@@ -4271,6 +4658,7 @@ export const questions: Question[] = [
         sectionLabel: '第5・6回 時間のたずね方',
         promptJp: '7時です。',
         answerEn: 'It is seven o\'clock.',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -4282,6 +4670,7 @@ export const questions: Question[] = [
         sectionLabel: '第7回 曜日の言い方を覚えよう',
         promptJp: '月曜日',
         answerEn: 'Monday',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -4293,6 +4682,7 @@ export const questions: Question[] = [
         sectionLabel: '第7回 曜日の言い方を覚えよう',
         promptJp: '火曜日',
         answerEn: 'Tuesday',
+        pos: ['noun'],
         orderIndex: 2,
     },
     {
@@ -4304,6 +4694,7 @@ export const questions: Question[] = [
         sectionLabel: '第7回 曜日の言い方を覚えよう',
         promptJp: '水曜日',
         answerEn: 'Wednesday',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -4315,6 +4706,7 @@ export const questions: Question[] = [
         sectionLabel: '第7回 曜日の言い方を覚えよう',
         promptJp: '木曜日',
         answerEn: 'Thursday',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -4326,6 +4718,7 @@ export const questions: Question[] = [
         sectionLabel: '第7回 曜日の言い方を覚えよう',
         promptJp: '金曜日',
         answerEn: 'Friday',
+        pos: ['noun'],
         orderIndex: 5,
     },
     {
@@ -4337,6 +4730,7 @@ export const questions: Question[] = [
         sectionLabel: '第7回 曜日の言い方を覚えよう',
         promptJp: '土曜日',
         answerEn: 'Saturday',
+        pos: ['noun'],
         orderIndex: 6,
     },
     {
@@ -4348,6 +4742,7 @@ export const questions: Question[] = [
         sectionLabel: '第7回 曜日の言い方を覚えよう',
         promptJp: '日曜日',
         answerEn: 'Sunday',
+        pos: ['noun'],
         orderIndex: 7,
     },
     {
@@ -4359,6 +4754,7 @@ export const questions: Question[] = [
         sectionLabel: '第8回 曜日のたずね方',
         promptJp: '今日は何曜日ですか。',
         answerEn: 'What day is it today?',
+        pos: ['sentence'],
         orderIndex: 1,
     },
     {
@@ -4370,6 +4766,7 @@ export const questions: Question[] = [
         sectionLabel: '第8回 曜日のたずね方',
         promptJp: '月曜日です。',
         answerEn: 'It is Monday.',
+        pos: ['sentence'],
         orderIndex: 2,
     },
     {
@@ -4381,6 +4778,7 @@ export const questions: Question[] = [
         sectionLabel: '第9回 月の言い方を覚えよう',
         promptJp: '1月',
         answerEn: 'January',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -4392,6 +4790,7 @@ export const questions: Question[] = [
         sectionLabel: '第9回 月の言い方を覚えよう',
         promptJp: '2月',
         answerEn: 'February',
+        pos: ['noun'],
         orderIndex: 2,
     },
     {
@@ -4403,6 +4802,7 @@ export const questions: Question[] = [
         sectionLabel: '第9回 月の言い方を覚えよう',
         promptJp: '3月',
         answerEn: 'March',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -4414,6 +4814,7 @@ export const questions: Question[] = [
         sectionLabel: '第9回 月の言い方を覚えよう',
         promptJp: '10月',
         answerEn: 'October',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -4425,6 +4826,7 @@ export const questions: Question[] = [
         sectionLabel: '第9回 月の言い方を覚えよう',
         promptJp: '12月',
         answerEn: 'December',
+        pos: ['noun'],
         orderIndex: 5,
     },
     {
@@ -4436,6 +4838,7 @@ export const questions: Question[] = [
         sectionLabel: '第10回 日付のたずね方',
         promptJp: '今日は何月何日ですか。',
         answerEn: 'What is the date today?',
+        pos: ['sentence'],
         orderIndex: 1,
     },
     {
@@ -4447,6 +4850,7 @@ export const questions: Question[] = [
         sectionLabel: '第10回 日付のたずね方',
         promptJp: '6月30日です。',
         answerEn: 'It is June 30.',
+        pos: ['sentence'],
         orderIndex: 2,
     },
     {
@@ -4458,6 +4862,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 食べ物・飲み物を覚えよう',
         promptJp: 'ソーセージ',
         answerEn: 'sausage',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -4469,6 +4874,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 食べ物・飲み物を覚えよう',
         promptJp: 'スパゲッティ',
         answerEn: 'spaghetti',
+        pos: ['noun'],
         orderIndex: 2,
     },
     {
@@ -4480,6 +4886,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 食べ物・飲み物を覚えよう',
         promptJp: 'スープ',
         answerEn: 'soup',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -4491,6 +4898,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 食べ物・飲み物を覚えよう',
         promptJp: 'ハンバーガー',
         answerEn: 'hamburger',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -4502,6 +4910,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 食べ物・飲み物を覚えよう',
         promptJp: 'サラダ',
         answerEn: 'salad',
+        pos: ['noun'],
         orderIndex: 5,
     },
     {
@@ -4513,6 +4922,7 @@ export const questions: Question[] = [
         sectionLabel: '第2・3回 選択疑問文の答え方',
         promptJp: 'あなたはイヌとネコのどちらが好きですか。',
         answerEn: 'Which do you like, dogs or cats?',
+        pos: ['sentence'],
         orderIndex: 1,
     },
     {
@@ -4524,6 +4934,7 @@ export const questions: Question[] = [
         sectionLabel: '第2・3回 選択疑問文の答え方',
         promptJp: '私はイヌが好きです。',
         answerEn: 'I like dogs.',
+        pos: ['sentence'],
         orderIndex: 2,
     },
     {
@@ -4535,6 +4946,7 @@ export const questions: Question[] = [
         sectionLabel: '第2・3回 選択疑問文の答え方',
         promptJp: 'あなたは英語と数学のどちらを勉強しますか。',
         answerEn: 'Which do you study, English or math?',
+        pos: ['sentence'],
         orderIndex: 3,
     },
     {
@@ -4546,6 +4958,7 @@ export const questions: Question[] = [
         sectionLabel: '第2・3回 選択疑問文の答え方',
         promptJp: '私は英語を勉強します。',
         answerEn: 'I study English.',
+        pos: ['sentence'],
         orderIndex: 4,
     },
     {
@@ -4557,6 +4970,7 @@ export const questions: Question[] = [
         sectionLabel: '第4回 スポーツの名前を覚えよう',
         promptJp: '野球',
         answerEn: 'baseball',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -4568,6 +4982,7 @@ export const questions: Question[] = [
         sectionLabel: '第4回 スポーツの名前を覚えよう',
         promptJp: 'バスケットボール',
         answerEn: 'basketball',
+        pos: ['noun'],
         orderIndex: 2,
     },
     {
@@ -4579,6 +4994,7 @@ export const questions: Question[] = [
         sectionLabel: '第4回 スポーツの名前を覚えよう',
         promptJp: 'バレーボール',
         answerEn: 'volleyball',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -4590,6 +5006,7 @@ export const questions: Question[] = [
         sectionLabel: '第4回 スポーツの名前を覚えよう',
         promptJp: 'サッカー',
         answerEn: 'soccer',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -4601,6 +5018,7 @@ export const questions: Question[] = [
         sectionLabel: '第4回 スポーツの名前を覚えよう',
         promptJp: 'たっきゅう',
         answerEn: 'table tennis',
+        pos: ['noun'],
         orderIndex: 5,
     },
     {
@@ -4612,6 +5030,7 @@ export const questions: Question[] = [
         sectionLabel: '第5・6回 疑問詞Which・What',
         promptJp: 'あなたはどの季節が好きですか。',
         answerEn: 'Which season do you like?',
+        pos: ['sentence'],
         orderIndex: 1,
     },
     {
@@ -4623,6 +5042,7 @@ export const questions: Question[] = [
         sectionLabel: '第5・6回 疑問詞Which・What',
         promptJp: '私は春が好きです。',
         answerEn: 'I like spring.',
+        pos: ['sentence'],
         orderIndex: 2,
     },
     {
@@ -4634,6 +5054,7 @@ export const questions: Question[] = [
         sectionLabel: '第5・6回 疑問詞Which・What',
         promptJp: 'あなたは何のスポーツをしますか。',
         answerEn: 'What sport do you play?',
+        pos: ['sentence'],
         orderIndex: 3,
     },
     {
@@ -4645,6 +5066,7 @@ export const questions: Question[] = [
         sectionLabel: '第5・6回 疑問詞Which・What',
         promptJp: '私はバレーボールをします。',
         answerEn: 'I play volleyball.',
+        pos: ['sentence'],
         orderIndex: 4,
     },
     {
@@ -4656,6 +5078,7 @@ export const questions: Question[] = [
         sectionLabel: '第7回 建物・場所を覚えよう',
         promptJp: '店',
         answerEn: 'shop',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -4667,6 +5090,7 @@ export const questions: Question[] = [
         sectionLabel: '第7回 建物・場所を覚えよう',
         promptJp: '図書館',
         answerEn: 'library',
+        pos: ['noun'],
         orderIndex: 2,
     },
     {
@@ -4678,6 +5102,7 @@ export const questions: Question[] = [
         sectionLabel: '第7回 建物・場所を覚えよう',
         promptJp: '銀行',
         answerEn: 'bank',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -4689,6 +5114,7 @@ export const questions: Question[] = [
         sectionLabel: '第7回 建物・場所を覚えよう',
         promptJp: 'トイレ',
         answerEn: 'toilet',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -4700,6 +5126,7 @@ export const questions: Question[] = [
         sectionLabel: '第7回 建物・場所を覚えよう',
         promptJp: '交番',
         answerEn: 'police box',
+        pos: ['noun'],
         orderIndex: 5,
     },
     {
@@ -4711,6 +5138,7 @@ export const questions: Question[] = [
         sectionLabel: '第8回 誕生日のたずね方',
         promptJp: 'あなたの誕生日はいつですか。',
         answerEn: 'When is your birthday?',
+        pos: ['sentence'],
         orderIndex: 1,
     },
     {
@@ -4722,6 +5150,7 @@ export const questions: Question[] = [
         sectionLabel: '第8回 誕生日のたずね方',
         promptJp: '4月3日です。',
         answerEn: 'It is April 3.',
+        pos: ['sentence'],
         orderIndex: 2,
     },
     {
@@ -4733,6 +5162,7 @@ export const questions: Question[] = [
         sectionLabel: '第8回 誕生日のたずね方',
         promptJp: '私のテストはいつですか。',
         answerEn: 'When is my test?',
+        pos: ['sentence'],
         orderIndex: 3,
     },
     {
@@ -4744,6 +5174,7 @@ export const questions: Question[] = [
         sectionLabel: '第8回 誕生日のたずね方',
         promptJp: '7月11日にあります。',
         answerEn: 'It is on July 11.',
+        pos: ['sentence'],
         orderIndex: 4,
     },
     {
@@ -4755,6 +5186,7 @@ export const questions: Question[] = [
         sectionLabel: '第9・10回 所在のたずね方',
         promptJp: '図書館はどこですか。',
         answerEn: 'Where is the library?',
+        pos: ['sentence'],
         orderIndex: 1,
     },
     {
@@ -4766,6 +5198,7 @@ export const questions: Question[] = [
         sectionLabel: '第9・10回 所在のたずね方',
         promptJp: '駅の近くです。',
         answerEn: 'It is near the station.',
+        pos: ['sentence'],
         orderIndex: 2,
     },
     {
@@ -4777,6 +5210,7 @@ export const questions: Question[] = [
         sectionLabel: '第9・10回 所在のたずね方',
         promptJp: 'お店の前です。',
         answerEn: 'It is in front of the shop.',
+        pos: ['sentence'],
         orderIndex: 3,
     },
     {
@@ -4788,6 +5222,7 @@ export const questions: Question[] = [
         sectionLabel: '第9・10回 所在のたずね方',
         promptJp: 'あなたのかばんの中にあります。',
         answerEn: 'It is in your bag.',
+        pos: ['sentence'],
         orderIndex: 4,
     },
     {
@@ -4799,6 +5234,7 @@ export const questions: Question[] = [
         sectionLabel: '第9・10回 所在のたずね方',
         promptJp: 'いすの下にいます。',
         answerEn: 'It is under the chair.',
+        pos: ['sentence'],
         orderIndex: 5,
     },
     {
@@ -4810,6 +5246,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 家族の言い方を覚えよう',
         promptJp: '姉,妹,姉妹',
         answerEn: 'sister',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -4821,6 +5258,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 家族の言い方を覚えよう',
         promptJp: '父',
         answerEn: 'father',
+        pos: ['noun'],
         orderIndex: 2,
     },
     {
@@ -4832,6 +5270,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 家族の言い方を覚えよう',
         promptJp: '兄,弟,兄弟',
         answerEn: 'brother',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -4843,6 +5282,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 家族の言い方を覚えよう',
         promptJp: '母',
         answerEn: 'mother',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -4854,6 +5294,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 家族の言い方を覚えよう',
         promptJp: '祖父',
         answerEn: 'grandfather',
+        pos: ['noun'],
         orderIndex: 5,
     },
     {
@@ -4865,6 +5306,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 家族の言い方を覚えよう',
         promptJp: '家族',
         answerEn: 'family',
+        pos: ['noun'],
         orderIndex: 6,
     },
     {
@@ -4876,6 +5318,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 家族の言い方を覚えよう',
         promptJp: '祖母',
         answerEn: 'grandmother',
+        pos: ['noun'],
         orderIndex: 7,
     },
     {
@@ -4887,6 +5330,7 @@ export const questions: Question[] = [
         sectionLabel: '第2回 家族の紹介',
         promptJp: 'あちらはボブです。',
         answerEn: 'That is Bob.',
+        pos: ['sentence'],
         orderIndex: 1,
     },
     {
@@ -4898,6 +5342,7 @@ export const questions: Question[] = [
         sectionLabel: '第2回 家族の紹介',
         promptJp: 'かれは私の父です。',
         answerEn: 'He is my father.',
+        pos: ['sentence'],
         orderIndex: 2,
     },
     {
@@ -4909,6 +5354,7 @@ export const questions: Question[] = [
         sectionLabel: '第2回 家族の紹介',
         promptJp: 'あちらはトムです。',
         answerEn: 'That is Tom.',
+        pos: ['sentence'],
         orderIndex: 3,
     },
     {
@@ -4920,6 +5366,7 @@ export const questions: Question[] = [
         sectionLabel: '第2回 家族の紹介',
         promptJp: 'かれは私の弟です。',
         answerEn: 'He is my brother.',
+        pos: ['sentence'],
         orderIndex: 4,
     },
     {
@@ -4931,6 +5378,7 @@ export const questions: Question[] = [
         sectionLabel: '第3〜5回 肯定と否定の紹介',
         promptJp: 'あちらはリンダです。',
         answerEn: 'That is Linda.',
+        pos: ['sentence'],
         orderIndex: 1,
     },
     {
@@ -4942,6 +5390,7 @@ export const questions: Question[] = [
         sectionLabel: '第3〜5回 肯定と否定の紹介',
         promptJp: 'かのじょは私の母です。',
         answerEn: 'She is my mother.',
+        pos: ['sentence'],
         orderIndex: 2,
     },
     {
@@ -4953,6 +5402,7 @@ export const questions: Question[] = [
         sectionLabel: '第3〜5回 肯定と否定の紹介',
         promptJp: 'かのじょは私の母ではありません。',
         answerEn: 'She is not my mother.',
+        pos: ['sentence'],
         orderIndex: 3,
     },
     {
@@ -4964,6 +5414,7 @@ export const questions: Question[] = [
         sectionLabel: '第3〜5回 肯定と否定の紹介',
         promptJp: 'かれは私の祖父ではありません。',
         answerEn: 'He is not my grandfather.',
+        pos: ['sentence'],
         orderIndex: 4,
     },
     {
@@ -4975,6 +5426,7 @@ export const questions: Question[] = [
         sectionLabel: '第6回 人を表す言い方①',
         promptJp: 'おじ',
         answerEn: 'uncle',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -4986,6 +5438,7 @@ export const questions: Question[] = [
         sectionLabel: '第6回 人を表す言い方①',
         promptJp: 'おば',
         answerEn: 'aunt',
+        pos: ['noun'],
         orderIndex: 2,
     },
     {
@@ -4997,6 +5450,7 @@ export const questions: Question[] = [
         sectionLabel: '第6回 人を表す言い方①',
         promptJp: 'むすこ',
         answerEn: 'son',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -5008,6 +5462,7 @@ export const questions: Question[] = [
         sectionLabel: '第6回 人を表す言い方①',
         promptJp: 'むすめ',
         answerEn: 'daughter',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -5019,6 +5474,7 @@ export const questions: Question[] = [
         sectionLabel: '第6回 人を表す言い方①',
         promptJp: '男の子',
         answerEn: 'boy',
+        pos: ['noun'],
         orderIndex: 5,
     },
     {
@@ -5030,6 +5486,7 @@ export const questions: Question[] = [
         sectionLabel: '第6回 人を表す言い方①',
         promptJp: '女の子',
         answerEn: 'girl',
+        pos: ['noun'],
         orderIndex: 6,
     },
     {
@@ -5041,6 +5498,7 @@ export const questions: Question[] = [
         sectionLabel: '第6回 人を表す言い方①',
         promptJp: '男性',
         answerEn: 'man',
+        pos: ['noun'],
         orderIndex: 7,
     },
     {
@@ -5052,6 +5510,7 @@ export const questions: Question[] = [
         sectionLabel: '第6回 人を表す言い方①',
         promptJp: '女性',
         answerEn: 'woman',
+        pos: ['noun'],
         orderIndex: 8,
     },
     {
@@ -5063,6 +5522,7 @@ export const questions: Question[] = [
         sectionLabel: '第7回 三人称単数の疑問文',
         promptJp: 'かれはあなたのお父さんですか。',
         answerEn: 'Is he your father?',
+        pos: ['sentence'],
         orderIndex: 1,
     },
     {
@@ -5074,6 +5534,7 @@ export const questions: Question[] = [
         sectionLabel: '第7回 三人称単数の疑問文',
         promptJp: 'はい、そうです。',
         answerEn: 'Yes, he is.',
+        pos: ['sentence'],
         orderIndex: 2,
     },
     {
@@ -5085,6 +5546,7 @@ export const questions: Question[] = [
         sectionLabel: '第8〜10回 家族と友達の文',
         promptJp: 'かのじょはあなたのお母さんですか。',
         answerEn: 'Is she your mother?',
+        pos: ['sentence'],
         orderIndex: 1,
     },
     {
@@ -5096,6 +5558,7 @@ export const questions: Question[] = [
         sectionLabel: '第8〜10回 家族と友達の文',
         promptJp: 'あの男性はだれですか。',
         answerEn: 'Who is that man?',
+        pos: ['sentence'],
         orderIndex: 2,
     },
     {
@@ -5107,6 +5570,7 @@ export const questions: Question[] = [
         sectionLabel: '第8〜10回 家族と友達の文',
         promptJp: '私達は良い友達です。',
         answerEn: 'We are good friends.',
+        pos: ['sentence'],
         orderIndex: 3,
     },
     {
@@ -5118,6 +5582,7 @@ export const questions: Question[] = [
         sectionLabel: '第8〜10回 家族と友達の文',
         promptJp: 'かれらは私の兄弟です。',
         answerEn: 'They are my brothers.',
+        pos: ['sentence'],
         orderIndex: 4,
     },
     {
@@ -5129,6 +5594,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 動詞を覚えよう',
         promptJp: '知っている',
         answerEn: 'know',
+        pos: ['verb'],
         orderIndex: 1,
     },
     {
@@ -5140,6 +5606,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 動詞を覚えよう',
         promptJp: '必要とする',
         answerEn: 'need',
+        pos: ['verb'],
         orderIndex: 2,
     },
     {
@@ -5151,6 +5618,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 動詞を覚えよう',
         promptJp: '捕る',
         answerEn: 'catch',
+        pos: ['verb'],
         orderIndex: 3,
     },
     {
@@ -5162,6 +5630,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 動詞を覚えよう',
         promptJp: 'おとずれる',
         answerEn: 'visit',
+        pos: ['verb'],
         orderIndex: 4,
     },
     {
@@ -5173,6 +5642,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 動詞を覚えよう',
         promptJp: '見る',
         answerEn: 'watch',
+        pos: ['verb'],
         orderIndex: 5,
     },
     {
@@ -5184,6 +5654,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 動詞を覚えよう',
         promptJp: '教える',
         answerEn: 'teach',
+        pos: ['verb'],
         orderIndex: 6,
     },
     {
@@ -5195,6 +5666,7 @@ export const questions: Question[] = [
         sectionLabel: '第2回 目的地をおとずれる',
         promptJp: 'あなたは京都をおとずれます。',
         answerEn: 'You visit Kyoto.',
+        pos: ['sentence'],
         orderIndex: 1,
     },
     {
@@ -5206,6 +5678,7 @@ export const questions: Question[] = [
         sectionLabel: '第2回 目的地をおとずれる',
         promptJp: '私達は東京をおとずれます。',
         answerEn: 'We visit Tokyo.',
+        pos: ['sentence'],
         orderIndex: 2,
     },
     {
@@ -5217,6 +5690,7 @@ export const questions: Question[] = [
         sectionLabel: '第2回 目的地をおとずれる',
         promptJp: 'かれらは北海道をおとずれます。',
         answerEn: 'They visit Hokkaido.',
+        pos: ['sentence'],
         orderIndex: 3,
     },
     {
@@ -5228,6 +5702,7 @@ export const questions: Question[] = [
         sectionLabel: '第3〜5回 複数・三人称単数の主語',
         promptJp: 'あなたとカナにはペンが必要です。',
         answerEn: 'You and Kana need pens.',
+        pos: ['sentence'],
         orderIndex: 1,
     },
     {
@@ -5239,6 +5714,7 @@ export const questions: Question[] = [
         sectionLabel: '第3〜5回 複数・三人称単数の主語',
         promptJp: 'カナと私は良いペンを持っています。',
         answerEn: 'Kana and I have good pens.',
+        pos: ['sentence'],
         orderIndex: 2,
     },
     {
@@ -5250,6 +5726,7 @@ export const questions: Question[] = [
         sectionLabel: '第3〜5回 複数・三人称単数の主語',
         promptJp: 'トムとリカは青が好きです。',
         answerEn: 'Tom and Rika like blue.',
+        pos: ['sentence'],
         orderIndex: 3,
     },
     {
@@ -5261,6 +5738,7 @@ export const questions: Question[] = [
         sectionLabel: '第3〜5回 複数・三人称単数の主語',
         promptJp: 'ジュンはバスケットボールをします。',
         answerEn: 'Jun plays basketball.',
+        pos: ['sentence'],
         orderIndex: 4,
     },
     {
@@ -5272,6 +5750,7 @@ export const questions: Question[] = [
         sectionLabel: '第3〜5回 複数・三人称単数の主語',
         promptJp: 'アンディはサッカーが好きです。',
         answerEn: 'Andy likes soccer.',
+        pos: ['sentence'],
         orderIndex: 5,
     },
     {
@@ -5283,6 +5762,7 @@ export const questions: Question[] = [
         sectionLabel: '第3〜5回 複数・三人称単数の主語',
         promptJp: 'サキは新しいコンピュータを持っています。',
         answerEn: 'Saki has a new computer.',
+        pos: ['sentence'],
         orderIndex: 6,
     },
     {
@@ -5294,6 +5774,7 @@ export const questions: Question[] = [
         sectionLabel: '第3〜5回 複数・三人称単数の主語',
         promptJp: 'アンナは理科を勉強します。',
         answerEn: 'Anna studies science.',
+        pos: ['sentence'],
         orderIndex: 7,
     },
     {
@@ -5305,6 +5786,7 @@ export const questions: Question[] = [
         sectionLabel: '第6回 家族・人を表す言い方②',
         promptJp: '同級生',
         answerEn: 'classmate',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -5316,6 +5798,7 @@ export const questions: Question[] = [
         sectionLabel: '第6回 家族・人を表す言い方②',
         promptJp: '友達',
         answerEn: 'friend',
+        pos: ['noun'],
         orderIndex: 2,
     },
     {
@@ -5327,6 +5810,7 @@ export const questions: Question[] = [
         sectionLabel: '第6回 家族・人を表す言い方②',
         promptJp: '父',
         answerEn: 'father',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -5338,6 +5822,7 @@ export const questions: Question[] = [
         sectionLabel: '第6回 家族・人を表す言い方②',
         promptJp: '母',
         answerEn: 'mother',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -5349,6 +5834,7 @@ export const questions: Question[] = [
         sectionLabel: '第6回 家族・人を表す言い方②',
         promptJp: '姉,妹,姉妹',
         answerEn: 'sister',
+        pos: ['noun'],
         orderIndex: 5,
     },
     {
@@ -5360,6 +5846,7 @@ export const questions: Question[] = [
         sectionLabel: '第6回 家族・人を表す言い方②',
         promptJp: '兄,弟,兄弟',
         answerEn: 'brother',
+        pos: ['noun'],
         orderIndex: 6,
     },
     {
@@ -5371,6 +5858,7 @@ export const questions: Question[] = [
         sectionLabel: '第7回 三人称単数主語の肯定文',
         promptJp: '私の姉は新しいペンが欲しいです。',
         answerEn: 'My sister wants a new pen.',
+        pos: ['sentence'],
         orderIndex: 1,
     },
     {
@@ -5382,6 +5870,7 @@ export const questions: Question[] = [
         sectionLabel: '第7回 三人称単数主語の肯定文',
         promptJp: '私の弟はケンを手伝います。',
         answerEn: 'My brother helps Ken.',
+        pos: ['sentence'],
         orderIndex: 2,
     },
     {
@@ -5393,6 +5882,7 @@ export const questions: Question[] = [
         sectionLabel: '第8〜10回 三人称単数の日常動作',
         promptJp: 'かれは本を読みます。',
         answerEn: 'He reads a book.',
+        pos: ['sentence'],
         orderIndex: 1,
     },
     {
@@ -5404,6 +5894,7 @@ export const questions: Question[] = [
         sectionLabel: '第8〜10回 三人称単数の日常動作',
         promptJp: 'かのじょはテレビを見ます。',
         answerEn: 'She watches TV.',
+        pos: ['sentence'],
         orderIndex: 2,
     },
     {
@@ -5415,6 +5906,7 @@ export const questions: Question[] = [
         sectionLabel: '第8〜10回 三人称単数の日常動作',
         promptJp: 'かのじょは名古屋に住んでいます。',
         answerEn: 'She lives in Nagoya.',
+        pos: ['sentence'],
         orderIndex: 3,
     },
     {
@@ -5426,6 +5918,7 @@ export const questions: Question[] = [
         sectionLabel: '第8〜10回 三人称単数の日常動作',
         promptJp: 'かれは神戸に行きます。',
         answerEn: 'He goes to Kobe.',
+        pos: ['sentence'],
         orderIndex: 4,
     },
     {
@@ -5437,6 +5930,7 @@ export const questions: Question[] = [
         sectionLabel: '第8〜10回 三人称単数の日常動作',
         promptJp: '私のイヌは公園で走ります。',
         answerEn: 'My dog runs in the park.',
+        pos: ['sentence'],
         orderIndex: 5,
     },
     {
@@ -5448,6 +5942,7 @@ export const questions: Question[] = [
         sectionLabel: '第8〜10回 三人称単数の日常動作',
         promptJp: 'あなたのイヌはボールを捕ります。',
         answerEn: 'Your dog catches a ball.',
+        pos: ['sentence'],
         orderIndex: 6,
     },
     {
@@ -5459,6 +5954,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 動詞を覚えよう',
         promptJp: '飲む',
         answerEn: 'drink',
+        pos: ['verb'],
         orderIndex: 1,
     },
     {
@@ -5470,6 +5966,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 動詞を覚えよう',
         promptJp: '必要とする',
         answerEn: 'need',
+        pos: ['verb'],
         orderIndex: 2,
     },
     {
@@ -5481,6 +5978,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 動詞を覚えよう',
         promptJp: '知っている',
         answerEn: 'know',
+        pos: ['verb'],
         orderIndex: 3,
     },
     {
@@ -5492,6 +5990,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 動詞を覚えよう',
         promptJp: '買う',
         answerEn: 'buy',
+        pos: ['verb'],
         orderIndex: 4,
     },
     {
@@ -5503,6 +6002,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 動詞を覚えよう',
         promptJp: '作る',
         answerEn: 'make',
+        pos: ['verb'],
         orderIndex: 5,
     },
     {
@@ -5514,6 +6014,7 @@ export const questions: Question[] = [
         sectionLabel: '第2・3回 否定文を覚えよう',
         promptJp: '私は牛乳を飲みません。',
         answerEn: 'I don\'t drink milk.',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -5525,6 +6026,7 @@ export const questions: Question[] = [
         sectionLabel: '第2・3回 否定文を覚えよう',
         promptJp: 'あなたは走りません。',
         answerEn: 'You don\'t run.',
+        pos: ['noun'],
         orderIndex: 2,
     },
     {
@@ -5536,6 +6038,7 @@ export const questions: Question[] = [
         sectionLabel: '第2・3回 否定文を覚えよう',
         promptJp: '私はクッキーを買いません。',
         answerEn: 'I don\'t buy cookies.',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -5547,6 +6050,7 @@ export const questions: Question[] = [
         sectionLabel: '第2・3回 否定文を覚えよう',
         promptJp: 'あなたは私の父を知りません。',
         answerEn: 'You don\'t know my father.',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -5558,6 +6062,7 @@ export const questions: Question[] = [
         sectionLabel: '第4・5回 三人称単数の否定文',
         promptJp: 'かれはサッカーをしません。',
         answerEn: 'He doesn\'t play soccer.',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -5569,6 +6074,7 @@ export const questions: Question[] = [
         sectionLabel: '第4・5回 三人称単数の否定文',
         promptJp: 'かのじょはピアノをひきません。',
         answerEn: 'She doesn\'t play the piano.',
+        pos: ['noun'],
         orderIndex: 2,
     },
     {
@@ -5580,6 +6086,7 @@ export const questions: Question[] = [
         sectionLabel: '第4・5回 三人称単数の否定文',
         promptJp: 'かのじょは理科を勉強しません。',
         answerEn: 'She doesn\'t study science.',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -5591,6 +6098,7 @@ export const questions: Question[] = [
         sectionLabel: '第4・5回 三人称単数の否定文',
         promptJp: 'かれはイヌを飼っていません。',
         answerEn: 'He doesn\'t have a dog.',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -5602,6 +6110,7 @@ export const questions: Question[] = [
         sectionLabel: '第6回 自然の名前を覚えよう',
         promptJp: '川',
         answerEn: 'river',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -5613,6 +6122,7 @@ export const questions: Question[] = [
         sectionLabel: '第6回 自然の名前を覚えよう',
         promptJp: '湖',
         answerEn: 'lake',
+        pos: ['noun'],
         orderIndex: 2,
     },
     {
@@ -5624,6 +6134,7 @@ export const questions: Question[] = [
         sectionLabel: '第6回 自然の名前を覚えよう',
         promptJp: '山',
         answerEn: 'mountain',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -5635,6 +6146,7 @@ export const questions: Question[] = [
         sectionLabel: '第6回 自然の名前を覚えよう',
         promptJp: '石',
         answerEn: 'stone',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -5646,6 +6158,7 @@ export const questions: Question[] = [
         sectionLabel: '第6回 自然の名前を覚えよう',
         promptJp: '花',
         answerEn: 'flower',
+        pos: ['noun'],
         orderIndex: 5,
     },
     {
@@ -5657,6 +6170,7 @@ export const questions: Question[] = [
         sectionLabel: '第6回 自然の名前を覚えよう',
         promptJp: '月',
         answerEn: 'moon',
+        pos: ['noun'],
         orderIndex: 6,
     },
     {
@@ -5668,6 +6182,7 @@ export const questions: Question[] = [
         sectionLabel: '第7・8回 複数主語の疑問文',
         promptJp: 'かのじょたちはツルを作りますか。',
         answerEn: 'Do they make cranes?',
+        pos: ['sentence'],
         orderIndex: 1,
     },
     {
@@ -5679,6 +6194,7 @@ export const questions: Question[] = [
         sectionLabel: '第7・8回 複数主語の疑問文',
         promptJp: 'はい、作ります。',
         answerEn: 'Yes, they do.',
+        pos: ['sentence'],
         orderIndex: 2,
     },
     {
@@ -5690,6 +6206,7 @@ export const questions: Question[] = [
         sectionLabel: '第7・8回 複数主語の疑問文',
         promptJp: 'ミクとティムは川で泳ぎますか。',
         answerEn: 'Do Miku and Tim swim in the river?',
+        pos: ['sentence'],
         orderIndex: 3,
     },
     {
@@ -5701,6 +6218,7 @@ export const questions: Question[] = [
         sectionLabel: '第7・8回 複数主語の疑問文',
         promptJp: 'いいえ、泳ぎません。',
         answerEn: 'No, they don\'t.',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -5712,6 +6230,7 @@ export const questions: Question[] = [
         sectionLabel: '第7・8回 複数主語の疑問文',
         promptJp: 'あなた達は卵を買いますか。',
         answerEn: 'Do you buy eggs?',
+        pos: ['sentence'],
         orderIndex: 5,
     },
     {
@@ -5723,6 +6242,7 @@ export const questions: Question[] = [
         sectionLabel: '第7・8回 複数主語の疑問文',
         promptJp: 'はい、買います。',
         answerEn: 'Yes, we do.',
+        pos: ['sentence'],
         orderIndex: 6,
     },
     {
@@ -5734,6 +6254,7 @@ export const questions: Question[] = [
         sectionLabel: '第7・8回 複数主語の疑問文',
         promptJp: 'あなたとサラはテニスをしますか。',
         answerEn: 'Do you and Sara play tennis?',
+        pos: ['sentence'],
         orderIndex: 7,
     },
     {
@@ -5745,6 +6266,7 @@ export const questions: Question[] = [
         sectionLabel: '第7・8回 複数主語の疑問文',
         promptJp: 'いいえ、しません。',
         answerEn: 'No, we don\'t.',
+        pos: ['noun'],
         orderIndex: 8,
     },
     {
@@ -5756,6 +6278,7 @@ export const questions: Question[] = [
         sectionLabel: '第9・10回 三人称単数主語の疑問文',
         promptJp: 'コウタは英語を教えますか。',
         answerEn: 'Does Kota teach English?',
+        pos: ['sentence'],
         orderIndex: 1,
     },
     {
@@ -5767,6 +6290,7 @@ export const questions: Question[] = [
         sectionLabel: '第9・10回 三人称単数主語の疑問文',
         promptJp: 'はい、教えます。',
         answerEn: 'Yes, he does.',
+        pos: ['sentence'],
         orderIndex: 2,
     },
     {
@@ -5778,6 +6302,7 @@ export const questions: Question[] = [
         sectionLabel: '第9・10回 三人称単数主語の疑問文',
         promptJp: 'ジュディはなっとうが好きですか。',
         answerEn: 'Does Judy like natto?',
+        pos: ['sentence'],
         orderIndex: 3,
     },
     {
@@ -5789,6 +6314,7 @@ export const questions: Question[] = [
         sectionLabel: '第9・10回 三人称単数主語の疑問文',
         promptJp: 'いいえ、好きではありません。',
         answerEn: 'No, she doesn\'t.',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -5800,6 +6326,7 @@ export const questions: Question[] = [
         sectionLabel: '第9・10回 三人称単数主語の疑問文',
         promptJp: 'かのじょにははさみが必要ですか。',
         answerEn: 'Does she need scissors?',
+        pos: ['sentence'],
         orderIndex: 5,
     },
     {
@@ -5811,6 +6338,7 @@ export const questions: Question[] = [
         sectionLabel: '第9・10回 三人称単数主語の疑問文',
         promptJp: 'はい、必要です。',
         answerEn: 'Yes, she does.',
+        pos: ['sentence'],
         orderIndex: 6,
     },
     {
@@ -5822,6 +6350,7 @@ export const questions: Question[] = [
         sectionLabel: '第9・10回 三人称単数主語の疑問文',
         promptJp: 'かれはけいたい電話を買いますか。',
         answerEn: 'Does he buy a cell phone?',
+        pos: ['sentence'],
         orderIndex: 7,
     },
     {
@@ -5833,6 +6362,7 @@ export const questions: Question[] = [
         sectionLabel: '第9・10回 三人称単数主語の疑問文',
         promptJp: 'いいえ、買いません。',
         answerEn: 'No, he doesn\'t.',
+        pos: ['noun'],
         orderIndex: 8,
     },
     {
@@ -5844,6 +6374,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 動詞を覚えよう',
         promptJp: '買う',
         answerEn: 'buy',
+        pos: ['verb'],
         orderIndex: 1,
     },
     {
@@ -5855,6 +6386,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 動詞を覚えよう',
         promptJp: '練習する',
         answerEn: 'practice',
+        pos: ['verb'],
         orderIndex: 2,
     },
     {
@@ -5866,6 +6398,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 動詞を覚えよう',
         promptJp: '歌う',
         answerEn: 'sing',
+        pos: ['verb'],
         orderIndex: 3,
     },
     {
@@ -5877,6 +6410,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 動詞を覚えよう',
         promptJp: '働く',
         answerEn: 'work',
+        pos: ['verb'],
         orderIndex: 4,
     },
     {
@@ -5888,6 +6422,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 動詞を覚えよう',
         promptJp: '飲む',
         answerEn: 'drink',
+        pos: ['verb'],
         orderIndex: 5,
     },
     {
@@ -5899,6 +6434,7 @@ export const questions: Question[] = [
         sectionLabel: '第2回 疑問詞 What の文',
         promptJp: 'ルーシーは何を買いますか。',
         answerEn: 'What does Lucy buy?',
+        pos: ['sentence'],
         orderIndex: 1,
     },
     {
@@ -5910,6 +6446,7 @@ export const questions: Question[] = [
         sectionLabel: '第2回 疑問詞 What の文',
         promptJp: 'かのじょは玉ねぎを買います。',
         answerEn: 'She buys onions.',
+        pos: ['sentence'],
         orderIndex: 2,
     },
     {
@@ -5921,6 +6458,7 @@ export const questions: Question[] = [
         sectionLabel: '第2回 疑問詞 What の文',
         promptJp: 'コウジは何を練習しますか。',
         answerEn: 'What does Koji practice?',
+        pos: ['sentence'],
         orderIndex: 3,
     },
     {
@@ -5932,6 +6470,7 @@ export const questions: Question[] = [
         sectionLabel: '第2回 疑問詞 What の文',
         promptJp: 'かれはバスケットボールを練習します。',
         answerEn: 'He practices basketball.',
+        pos: ['sentence'],
         orderIndex: 4,
     },
     {
@@ -5943,6 +6482,7 @@ export const questions: Question[] = [
         sectionLabel: '第3〜5回 疑問文を覚えよう',
         promptJp: 'アキは何の動物が好きですか。',
         answerEn: 'What animal does Aki like?',
+        pos: ['sentence'],
         orderIndex: 1,
     },
     {
@@ -5954,6 +6494,7 @@ export const questions: Question[] = [
         sectionLabel: '第3〜5回 疑問文を覚えよう',
         promptJp: 'かのじょはねこが好きです。',
         answerEn: 'She likes cats.',
+        pos: ['sentence'],
         orderIndex: 2,
     },
     {
@@ -5965,6 +6506,7 @@ export const questions: Question[] = [
         sectionLabel: '第3〜5回 疑問文を覚えよう',
         promptJp: 'あなたのおじさんはどこに住んでいますか。',
         answerEn: 'Where does your uncle live?',
+        pos: ['sentence'],
         orderIndex: 3,
     },
     {
@@ -5976,6 +6518,7 @@ export const questions: Question[] = [
         sectionLabel: '第3〜5回 疑問文を覚えよう',
         promptJp: 'かれは東京に住んでいます。',
         answerEn: 'He lives in Tokyo.',
+        pos: ['sentence'],
         orderIndex: 4,
     },
     {
@@ -5987,6 +6530,7 @@ export const questions: Question[] = [
         sectionLabel: '第3〜5回 疑問文を覚えよう',
         promptJp: 'ヒロはいつギターを練習しますか。',
         answerEn: 'When does Hiro practice the guitar?',
+        pos: ['sentence'],
         orderIndex: 5,
     },
     {
@@ -5998,6 +6542,7 @@ export const questions: Question[] = [
         sectionLabel: '第3〜5回 疑問文を覚えよう',
         promptJp: 'かれは放課後にギターを練習します。',
         answerEn: 'He practices the guitar after school.',
+        pos: ['sentence'],
         orderIndex: 6,
     },
     {
@@ -6009,6 +6554,7 @@ export const questions: Question[] = [
         sectionLabel: '第6回 食べ物・飲み物を覚えよう',
         promptJp: '牛乳',
         answerEn: 'milk',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -6020,6 +6566,7 @@ export const questions: Question[] = [
         sectionLabel: '第6回 食べ物・飲み物を覚えよう',
         promptJp: 'チーズ',
         answerEn: 'cheese',
+        pos: ['noun'],
         orderIndex: 2,
     },
     {
@@ -6031,6 +6578,7 @@ export const questions: Question[] = [
         sectionLabel: '第6回 食べ物・飲み物を覚えよう',
         promptJp: 'バター',
         answerEn: 'butter',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -6042,6 +6590,7 @@ export const questions: Question[] = [
         sectionLabel: '第6回 食べ物・飲み物を覚えよう',
         promptJp: 'ヨーグルト',
         answerEn: 'yogurt',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -6053,6 +6602,7 @@ export const questions: Question[] = [
         sectionLabel: '第6回 食べ物・飲み物を覚えよう',
         promptJp: 'アイスクリーム',
         answerEn: 'ice cream',
+        pos: ['noun'],
         orderIndex: 5,
     },
     {
@@ -6064,6 +6614,7 @@ export const questions: Question[] = [
         sectionLabel: '第7回 選択疑問文',
         promptJp: 'ユカはドーナツとクッキーのどちらが好きですか。',
         answerEn: 'Which does Yuka like, donuts or cookies?',
+        pos: ['sentence'],
         orderIndex: 1,
     },
     {
@@ -6075,6 +6626,7 @@ export const questions: Question[] = [
         sectionLabel: '第7回 選択疑問文',
         promptJp: 'かのじょはクッキーが好きです。',
         answerEn: 'She likes cookies.',
+        pos: ['sentence'],
         orderIndex: 2,
     },
     {
@@ -6086,6 +6638,7 @@ export const questions: Question[] = [
         sectionLabel: '第8〜10回 疑問文の応用',
         promptJp: 'ハルコは何色が好きですか。',
         answerEn: 'What color does Haruko like?',
+        pos: ['sentence'],
         orderIndex: 1,
     },
     {
@@ -6097,6 +6650,7 @@ export const questions: Question[] = [
         sectionLabel: '第8〜10回 疑問文の応用',
         promptJp: 'かのじょはピンクが好きです。',
         answerEn: 'She likes pink.',
+        pos: ['sentence'],
         orderIndex: 2,
     },
     {
@@ -6108,6 +6662,7 @@ export const questions: Question[] = [
         sectionLabel: '第8〜10回 疑問文の応用',
         promptJp: 'エイタは何の食べ物が欲しいですか。',
         answerEn: 'What food does Eita want?',
+        pos: ['sentence'],
         orderIndex: 3,
     },
     {
@@ -6119,6 +6674,7 @@ export const questions: Question[] = [
         sectionLabel: '第8〜10回 疑問文の応用',
         promptJp: 'かれはハンバーガーが欲しいです。',
         answerEn: 'He wants a hamburger.',
+        pos: ['sentence'],
         orderIndex: 4,
     },
     {
@@ -6130,6 +6686,7 @@ export const questions: Question[] = [
         sectionLabel: '第8〜10回 疑問文の応用',
         promptJp: 'だれが湖で泳ぎますか。',
         answerEn: 'Who swims in the lake?',
+        pos: ['sentence'],
         orderIndex: 5,
     },
     {
@@ -6141,6 +6698,7 @@ export const questions: Question[] = [
         sectionLabel: '第8〜10回 疑問文の応用',
         promptJp: 'アンディです。',
         answerEn: 'Andy does.',
+        pos: ['sentence'],
         orderIndex: 6,
     },
     {
@@ -6152,6 +6710,7 @@ export const questions: Question[] = [
         sectionLabel: '第8〜10回 疑問文の応用',
         promptJp: 'だれが歌を歌いますか。',
         answerEn: 'Who sings a song?',
+        pos: ['sentence'],
         orderIndex: 7,
     },
     {
@@ -6163,6 +6722,7 @@ export const questions: Question[] = [
         sectionLabel: '第8〜10回 疑問文の応用',
         promptJp: '私の母です。',
         answerEn: 'My mother does.',
+        pos: ['sentence'],
         orderIndex: 8,
     },
     {
@@ -6174,6 +6734,7 @@ export const questions: Question[] = [
         sectionLabel: '第8〜10回 疑問文の応用',
         promptJp: 'ケイタはどうやって学校に来ますか。',
         answerEn: 'How does Keita come to school?',
+        pos: ['sentence'],
         orderIndex: 9,
     },
     {
@@ -6185,6 +6746,7 @@ export const questions: Question[] = [
         sectionLabel: '第8〜10回 疑問文の応用',
         promptJp: 'かれは歩いて学校に来ます。',
         answerEn: 'He walks to school.',
+        pos: ['sentence'],
         orderIndex: 10,
     },
     {
@@ -6196,6 +6758,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 単語の学習—名詞①',
         promptJp: '空港',
         answerEn: 'airport',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -6207,6 +6770,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 単語の学習—名詞①',
         promptJp: 'アルバム',
         answerEn: 'album',
+        pos: ['noun'],
         orderIndex: 2,
     },
     {
@@ -6218,6 +6782,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 単語の学習—名詞①',
         promptJp: '辞書',
         answerEn: 'dictionary',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -6229,6 +6794,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 単語の学習—名詞①',
         promptJp: 'ドア',
         answerEn: 'door',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -6240,6 +6806,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 単語の学習—名詞①',
         promptJp: '脚',
         answerEn: 'leg',
+        pos: ['noun'],
         orderIndex: 5,
     },
     {
@@ -6251,6 +6818,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 単語の学習—名詞①',
         promptJp: 'ライオン',
         answerEn: 'lion',
+        pos: ['noun'],
         orderIndex: 6,
     },
     {
@@ -6262,6 +6830,7 @@ export const questions: Question[] = [
         sectionLabel: '第3回 be 動詞の使い方①',
         promptJp: '私はユカです。',
         answerEn: 'I am Yuka.',
+        pos: ['sentence'],
         orderIndex: 1,
     },
     {
@@ -6273,6 +6842,7 @@ export const questions: Question[] = [
         sectionLabel: '第3回 be 動詞の使い方①',
         promptJp: 'あなたは親切です。',
         answerEn: 'You are kind.',
+        pos: ['sentence'],
         orderIndex: 2,
     },
     {
@@ -6284,6 +6854,7 @@ export const questions: Question[] = [
         sectionLabel: '第3回 be 動詞の使い方①',
         promptJp: '彼はケンです。',
         answerEn: 'He is Ken.',
+        pos: ['sentence'],
         orderIndex: 3,
     },
     {
@@ -6295,6 +6866,7 @@ export const questions: Question[] = [
         sectionLabel: '第3回 be 動詞の使い方①',
         promptJp: 'これはイスです。',
         answerEn: 'This is a chair.',
+        pos: ['sentence'],
         orderIndex: 4,
     },
     {
@@ -6306,6 +6878,7 @@ export const questions: Question[] = [
         sectionLabel: '第5回 単語の学習—名詞②',
         promptJp: '地図',
         answerEn: 'map',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -6317,6 +6890,7 @@ export const questions: Question[] = [
         sectionLabel: '第5回 単語の学習—名詞②',
         promptJp: '薬',
         answerEn: 'medicine',
+        pos: ['noun'],
         orderIndex: 2,
     },
     {
@@ -6328,6 +6902,7 @@ export const questions: Question[] = [
         sectionLabel: '第5回 単語の学習—名詞②',
         promptJp: '映画',
         answerEn: 'movie',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -6339,6 +6914,7 @@ export const questions: Question[] = [
         sectionLabel: '第5回 単語の学習—名詞②',
         promptJp: 'お金',
         answerEn: 'money',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -6350,6 +6926,7 @@ export const questions: Question[] = [
         sectionLabel: '第5回 単語の学習—名詞②',
         promptJp: '髮',
         answerEn: 'hair',
+        pos: ['noun'],
         orderIndex: 5,
     },
     {
@@ -6361,6 +6938,7 @@ export const questions: Question[] = [
         sectionLabel: '第5回 単語の学習—名詞②',
         promptJp: 'ふちのある帽子',
         answerEn: 'hat',
+        pos: ['noun'],
         orderIndex: 6,
     },
     {
@@ -6372,6 +6950,7 @@ export const questions: Question[] = [
         sectionLabel: '第7回 be 動詞の使い方②',
         promptJp: '私はパイロットです。',
         answerEn: 'I am a pilot.',
+        pos: ['sentence'],
         orderIndex: 1,
     },
     {
@@ -6383,6 +6962,7 @@ export const questions: Question[] = [
         sectionLabel: '第7回 be 動詞の使い方②',
         promptJp: '私はパイロットではありません。',
         answerEn: 'I am not a pilot.',
+        pos: ['sentence'],
         orderIndex: 2,
     },
     {
@@ -6394,6 +6974,7 @@ export const questions: Question[] = [
         sectionLabel: '第7回 be 動詞の使い方②',
         promptJp: 'あなたは医者です。',
         answerEn: 'You are a doctor.',
+        pos: ['sentence'],
         orderIndex: 3,
     },
     {
@@ -6405,6 +6986,7 @@ export const questions: Question[] = [
         sectionLabel: '第7回 be 動詞の使い方②',
         promptJp: 'あなたは医者ですか。',
         answerEn: 'Are you a doctor?',
+        pos: ['sentence'],
         orderIndex: 4,
     },
     {
@@ -6416,6 +6998,7 @@ export const questions: Question[] = [
         sectionLabel: '第7回 be 動詞の使い方②',
         promptJp: 'はい、そうです。',
         answerEn: 'Yes, I am.',
+        pos: ['sentence'],
         orderIndex: 5,
     },
     {
@@ -6427,6 +7010,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 単語の学習—形容詞①',
         promptJp: '短い',
         answerEn: 'short',
+        pos: ['adj'],
         orderIndex: 1,
     },
     {
@@ -6438,6 +7022,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 単語の学習—形容詞①',
         promptJp: '高い',
         answerEn: 'tall',
+        pos: ['adj'],
         orderIndex: 2,
     },
     {
@@ -6449,6 +7034,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 単語の学習—形容詞①',
         promptJp: '大きい',
         answerEn: 'big',
+        pos: ['adj'],
         orderIndex: 3,
     },
     {
@@ -6460,6 +7046,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 単語の学習—形容詞①',
         promptJp: '小さい',
         answerEn: 'small',
+        pos: ['adj'],
         orderIndex: 4,
     },
     {
@@ -6471,6 +7058,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 単語の学習—形容詞①',
         promptJp: '暑い',
         answerEn: 'hot',
+        pos: ['adj'],
         orderIndex: 5,
     },
     {
@@ -6482,6 +7070,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 単語の学習—形容詞①',
         promptJp: '寒い',
         answerEn: 'cold',
+        pos: ['adj'],
         orderIndex: 6,
     },
     {
@@ -6493,6 +7082,7 @@ export const questions: Question[] = [
         sectionLabel: '第3回 一般動詞の使い方①',
         promptJp: '私は毎朝野球をします。',
         answerEn: 'I play baseball every morning.',
+        pos: ['sentence'],
         orderIndex: 1,
     },
     {
@@ -6504,6 +7094,7 @@ export const questions: Question[] = [
         sectionLabel: '第3回 一般動詞の使い方①',
         promptJp: '彼は毎週日曜日にサッカーをします。',
         answerEn: 'He plays soccer every Sunday.',
+        pos: ['sentence'],
         orderIndex: 2,
     },
     {
@@ -6515,6 +7106,7 @@ export const questions: Question[] = [
         sectionLabel: '第3回 一般動詞の使い方①',
         promptJp: 'あなたは英語が好きです。',
         answerEn: 'You like English.',
+        pos: ['sentence'],
         orderIndex: 3,
     },
     {
@@ -6526,6 +7118,7 @@ export const questions: Question[] = [
         sectionLabel: '第3回 一般動詞の使い方①',
         promptJp: '彼女は理科が好きです。',
         answerEn: 'She likes science.',
+        pos: ['sentence'],
         orderIndex: 4,
     },
     {
@@ -6537,6 +7130,7 @@ export const questions: Question[] = [
         sectionLabel: '第5回 単語の学習—形容詞②',
         promptJp: '明るい',
         answerEn: 'light',
+        pos: ['adj'],
         orderIndex: 1,
     },
     {
@@ -6548,6 +7142,7 @@ export const questions: Question[] = [
         sectionLabel: '第5回 単語の学習—形容詞②',
         promptJp: '暗い',
         answerEn: 'dark',
+        pos: ['adj'],
         orderIndex: 2,
     },
     {
@@ -6559,6 +7154,7 @@ export const questions: Question[] = [
         sectionLabel: '第5回 単語の学習—形容詞②',
         promptJp: '古い',
         answerEn: 'old',
+        pos: ['adj'],
         orderIndex: 3,
     },
     {
@@ -6570,6 +7166,7 @@ export const questions: Question[] = [
         sectionLabel: '第5回 単語の学習—形容詞②',
         promptJp: '新しい',
         answerEn: 'new',
+        pos: ['adj'],
         orderIndex: 4,
     },
     {
@@ -6581,6 +7178,7 @@ export const questions: Question[] = [
         sectionLabel: '第5回 単語の学習—形容詞②',
         promptJp: 'やわらかい',
         answerEn: 'soft',
+        pos: ['adj'],
         orderIndex: 5,
     },
     {
@@ -6592,6 +7190,7 @@ export const questions: Question[] = [
         sectionLabel: '第5回 単語の学習—形容詞②',
         promptJp: 'かたい',
         answerEn: 'hard',
+        pos: ['adj', 'adv'],
         orderIndex: 6,
     },
     {
@@ -6603,6 +7202,7 @@ export const questions: Question[] = [
         sectionLabel: '第7回 一般動詞の使い方②',
         promptJp: '私はサッカーをしません。',
         answerEn: 'I don\'t play soccer.',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -6614,6 +7214,7 @@ export const questions: Question[] = [
         sectionLabel: '第7回 一般動詞の使い方②',
         promptJp: '彼はテニスをしません。',
         answerEn: 'He doesn\'t play tennis.',
+        pos: ['noun'],
         orderIndex: 2,
     },
     {
@@ -6625,6 +7226,7 @@ export const questions: Question[] = [
         sectionLabel: '第7回 一般動詞の使い方②',
         promptJp: 'あなたは音楽が好きですか。',
         answerEn: 'Do you like music?',
+        pos: ['sentence'],
         orderIndex: 3,
     },
     {
@@ -6636,6 +7238,7 @@ export const questions: Question[] = [
         sectionLabel: '第7回 一般動詞の使い方②',
         promptJp: 'はい、好きです。',
         answerEn: 'Yes, I do.',
+        pos: ['sentence'],
         orderIndex: 4,
     },
     {
@@ -6647,6 +7250,7 @@ export const questions: Question[] = [
         sectionLabel: '第7回 一般動詞の使い方②',
         promptJp: '彼女は英語が好きですか。',
         answerEn: 'Does she like English?',
+        pos: ['sentence'],
         orderIndex: 5,
     },
     {
@@ -6658,6 +7262,7 @@ export const questions: Question[] = [
         sectionLabel: '第7回 一般動詞の使い方②',
         promptJp: 'いいえ、好きではありません。',
         answerEn: 'No, she doesn\'t.',
+        pos: ['noun'],
         orderIndex: 6,
     },
     {
@@ -6669,6 +7274,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 単語の学習—名詞①',
         promptJp: 'セーター',
         answerEn: 'sweater',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -6680,6 +7286,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 単語の学習—名詞①',
         promptJp: 'ジャケット',
         answerEn: 'jacket',
+        pos: ['noun'],
         orderIndex: 2,
     },
     {
@@ -6691,6 +7298,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 単語の学習—名詞①',
         promptJp: '都市',
         answerEn: 'city',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -6702,6 +7310,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 単語の学習—名詞①',
         promptJp: '町',
         answerEn: 'town',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -6713,6 +7322,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 単語の学習—名詞①',
         promptJp: 'ノート',
         answerEn: 'notebook',
+        pos: ['noun'],
         orderIndex: 5,
     },
     {
@@ -6724,6 +7334,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 単語の学習—名詞①',
         promptJp: '教科書',
         answerEn: 'textbook',
+        pos: ['noun'],
         orderIndex: 6,
     },
     {
@@ -6735,6 +7346,7 @@ export const questions: Question[] = [
         sectionLabel: '第3回 疑問詞 What の使い方',
         promptJp: 'これは何ですか。',
         answerEn: 'What is this?',
+        pos: ['sentence'],
         orderIndex: 1,
     },
     {
@@ -6746,6 +7358,7 @@ export const questions: Question[] = [
         sectionLabel: '第3回 疑問詞 What の使い方',
         promptJp: 'それはテーブルです。',
         answerEn: 'It is a table.',
+        pos: ['sentence'],
         orderIndex: 2,
     },
     {
@@ -6757,6 +7370,7 @@ export const questions: Question[] = [
         sectionLabel: '第3回 疑問詞 What の使い方',
         promptJp: 'あなたは何を食べますか。',
         answerEn: 'What do you eat?',
+        pos: ['sentence'],
         orderIndex: 3,
     },
     {
@@ -6768,6 +7382,7 @@ export const questions: Question[] = [
         sectionLabel: '第3回 疑問詞 What の使い方',
         promptJp: '私はすしを食べます。',
         answerEn: 'I eat sushi.',
+        pos: ['sentence'],
         orderIndex: 4,
     },
     {
@@ -6779,6 +7394,7 @@ export const questions: Question[] = [
         sectionLabel: '第5回 単語の学習—名詞②',
         promptJp: '右',
         answerEn: 'right',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -6790,6 +7406,7 @@ export const questions: Question[] = [
         sectionLabel: '第5回 単語の学習—名詞②',
         promptJp: '左',
         answerEn: 'left',
+        pos: ['noun'],
         orderIndex: 2,
     },
     {
@@ -6801,6 +7418,7 @@ export const questions: Question[] = [
         sectionLabel: '第5回 単語の学習—名詞②',
         promptJp: '火',
         answerEn: 'fire',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -6812,6 +7430,7 @@ export const questions: Question[] = [
         sectionLabel: '第5回 単語の学習—名詞②',
         promptJp: '水',
         answerEn: 'water',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -6823,6 +7442,7 @@ export const questions: Question[] = [
         sectionLabel: '第5回 単語の学習—名詞②',
         promptJp: '朝',
         answerEn: 'morning',
+        pos: ['noun'],
         orderIndex: 5,
     },
     {
@@ -6834,6 +7454,7 @@ export const questions: Question[] = [
         sectionLabel: '第5回 単語の学習—名詞②',
         promptJp: '夜',
         answerEn: 'night',
+        pos: ['noun'],
         orderIndex: 6,
     },
     {
@@ -6845,6 +7466,7 @@ export const questions: Question[] = [
         sectionLabel: '第7回 疑問詞 Who の使い方',
         promptJp: 'あの男性はだれですか。',
         answerEn: 'Who is that man?',
+        pos: ['sentence'],
         orderIndex: 1,
     },
     {
@@ -6856,6 +7478,7 @@ export const questions: Question[] = [
         sectionLabel: '第7回 疑問詞 Who の使い方',
         promptJp: '彼は医者です。',
         answerEn: 'He is a doctor.',
+        pos: ['sentence'],
         orderIndex: 2,
     },
     {
@@ -6867,6 +7490,7 @@ export const questions: Question[] = [
         sectionLabel: '第7回 疑問詞 Who の使い方',
         promptJp: 'この少女はだれですか。',
         answerEn: 'Who is this girl?',
+        pos: ['sentence'],
         orderIndex: 3,
     },
     {
@@ -6878,6 +7502,7 @@ export const questions: Question[] = [
         sectionLabel: '第7回 疑問詞 Who の使い方',
         promptJp: '彼女はミカです。',
         answerEn: 'She is Mika.',
+        pos: ['sentence'],
         orderIndex: 4,
     },
     {
@@ -6889,6 +7514,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 単語の学習—名詞①',
         promptJp: '海',
         answerEn: 'sea',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -6900,6 +7526,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 単語の学習—名詞①',
         promptJp: '浜辺',
         answerEn: 'beach',
+        pos: ['noun'],
         orderIndex: 2,
     },
     {
@@ -6911,6 +7538,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 単語の学習—名詞①',
         promptJp: '川',
         answerEn: 'river',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -6922,6 +7550,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 単語の学習—名詞①',
         promptJp: '山',
         answerEn: 'mountain',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -6933,6 +7562,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 単語の学習—名詞①',
         promptJp: '岩',
         answerEn: 'rock',
+        pos: ['noun'],
         orderIndex: 5,
     },
     {
@@ -6944,6 +7574,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 単語の学習—名詞①',
         promptJp: '木',
         answerEn: 'tree',
+        pos: ['noun'],
         orderIndex: 6,
     },
     {
@@ -6955,6 +7586,7 @@ export const questions: Question[] = [
         sectionLabel: '第3回 命令文の使い方①',
         promptJp: 'あなたは一生懸命勉強します。',
         answerEn: 'You study hard.',
+        pos: ['sentence'],
         orderIndex: 1,
     },
     {
@@ -6966,6 +7598,7 @@ export const questions: Question[] = [
         sectionLabel: '第3回 命令文の使い方①',
         promptJp: '一生懸命勉強しなさい。',
         answerEn: 'Study hard.',
+        pos: ['sentence'],
         orderIndex: 2,
     },
     {
@@ -6977,6 +7610,7 @@ export const questions: Question[] = [
         sectionLabel: '第3回 命令文の使い方①',
         promptJp: 'あなたはここで走りません。',
         answerEn: 'You don\'t run here.',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -6988,6 +7622,7 @@ export const questions: Question[] = [
         sectionLabel: '第3回 命令文の使い方①',
         promptJp: 'ここで走ってはいけません。',
         answerEn: 'Don\'t run here.',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -6999,6 +7634,7 @@ export const questions: Question[] = [
         sectionLabel: '第5回 単語の学習—名詞②',
         promptJp: '空',
         answerEn: 'sky',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -7010,6 +7646,7 @@ export const questions: Question[] = [
         sectionLabel: '第5回 単語の学習—名詞②',
         promptJp: '星',
         answerEn: 'star',
+        pos: ['noun'],
         orderIndex: 2,
     },
     {
@@ -7021,6 +7658,7 @@ export const questions: Question[] = [
         sectionLabel: '第5回 単語の学習—名詞②',
         promptJp: '太陽',
         answerEn: 'sun',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -7032,6 +7670,7 @@ export const questions: Question[] = [
         sectionLabel: '第5回 単語の学習—名詞②',
         promptJp: '雲',
         answerEn: 'cloud',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -7043,6 +7682,7 @@ export const questions: Question[] = [
         sectionLabel: '第5回 単語の学習—名詞②',
         promptJp: '虹',
         answerEn: 'rainbow',
+        pos: ['noun'],
         orderIndex: 5,
     },
     {
@@ -7054,6 +7694,7 @@ export const questions: Question[] = [
         sectionLabel: '第5回 単語の学習—名詞②',
         promptJp: '雨',
         answerEn: 'rain',
+        pos: ['noun'],
         orderIndex: 6,
     },
     {
@@ -7065,6 +7706,7 @@ export const questions: Question[] = [
         sectionLabel: '第7回 命令文の使い方②',
         promptJp: 'あなたは座ります。',
         answerEn: 'You sit down.',
+        pos: ['sentence'],
         orderIndex: 1,
     },
     {
@@ -7076,6 +7718,7 @@ export const questions: Question[] = [
         sectionLabel: '第7回 命令文の使い方②',
         promptJp: '座ってください。',
         answerEn: 'Please sit down.',
+        pos: ['sentence'],
         orderIndex: 2,
     },
     {
@@ -7087,6 +7730,7 @@ export const questions: Question[] = [
         sectionLabel: '第7回 命令文の使い方②',
         promptJp: '私たちは野球をします。',
         answerEn: 'We play baseball.',
+        pos: ['sentence'],
         orderIndex: 3,
     },
     {
@@ -7098,6 +7742,7 @@ export const questions: Question[] = [
         sectionLabel: '第7回 命令文の使い方②',
         promptJp: '野球をしましょう。',
         answerEn: 'Let\'s play baseball.',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -7109,6 +7754,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 単語の学習—名詞',
         promptJp: '寺',
         answerEn: 'temple',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -7120,6 +7766,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 単語の学習—名詞',
         promptJp: '神社',
         answerEn: 'shrine',
+        pos: ['noun'],
         orderIndex: 2,
     },
     {
@@ -7131,6 +7778,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 単語の学習—名詞',
         promptJp: '塔',
         answerEn: 'tower',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -7142,6 +7790,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 単語の学習—名詞',
         promptJp: '城',
         answerEn: 'castle',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -7153,6 +7802,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 単語の学習—名詞',
         promptJp: '博物館',
         answerEn: 'museum',
+        pos: ['noun'],
         orderIndex: 5,
     },
     {
@@ -7164,6 +7814,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 単語の学習—名詞',
         promptJp: '競技場',
         answerEn: 'stadium',
+        pos: ['noun'],
         orderIndex: 6,
     },
     {
@@ -7175,6 +7826,7 @@ export const questions: Question[] = [
         sectionLabel: '第3回 名詞の複数形の使い方',
         promptJp: '私は1台のコンピュータを使います。',
         answerEn: 'I use a computer.',
+        pos: ['sentence'],
         orderIndex: 1,
     },
     {
@@ -7186,6 +7838,7 @@ export const questions: Question[] = [
         sectionLabel: '第3回 名詞の複数形の使い方',
         promptJp: '私は2台のコンピュータを使います。',
         answerEn: 'I use two computers.',
+        pos: ['sentence'],
         orderIndex: 2,
     },
     {
@@ -7197,6 +7850,7 @@ export const questions: Question[] = [
         sectionLabel: '第3回 名詞の複数形の使い方',
         promptJp: 'あなたはいくつの箱を使いますか。',
         answerEn: 'How many boxes do you use?',
+        pos: ['sentence'],
         orderIndex: 3,
     },
     {
@@ -7208,6 +7862,7 @@ export const questions: Question[] = [
         sectionLabel: '第3回 名詞の複数形の使い方',
         promptJp: '私は3つの箱を使います。',
         answerEn: 'I use three boxes.',
+        pos: ['sentence'],
         orderIndex: 4,
     },
     {
@@ -7219,6 +7874,7 @@ export const questions: Question[] = [
         sectionLabel: '第5回 単語の学習—動詞',
         promptJp: '泳ぐ',
         answerEn: 'swim',
+        pos: ['verb'],
         orderIndex: 1,
     },
     {
@@ -7230,6 +7886,7 @@ export const questions: Question[] = [
         sectionLabel: '第5回 単語の学習—動詞',
         promptJp: '(空を)飛ぶ',
         answerEn: 'fly',
+        pos: ['verb'],
         orderIndex: 2,
     },
     {
@@ -7241,6 +7898,7 @@ export const questions: Question[] = [
         sectionLabel: '第5回 単語の学習—動詞',
         promptJp: '歩く',
         answerEn: 'walk',
+        pos: ['verb'],
         orderIndex: 3,
     },
     {
@@ -7252,6 +7910,7 @@ export const questions: Question[] = [
         sectionLabel: '第5回 単語の学習—動詞',
         promptJp: '走る',
         answerEn: 'run',
+        pos: ['verb'],
         orderIndex: 4,
     },
     {
@@ -7263,6 +7922,7 @@ export const questions: Question[] = [
         sectionLabel: '第5回 単語の学習—動詞',
         promptJp: '勉強する',
         answerEn: 'study',
+        pos: ['verb'],
         orderIndex: 5,
     },
     {
@@ -7274,6 +7934,7 @@ export const questions: Question[] = [
         sectionLabel: '第5回 単語の学習—動詞',
         promptJp: '(スポーツ)をする、遊ぶ',
         answerEn: 'play',
+        pos: ['verb'],
         orderIndex: 6,
     },
     {
@@ -7285,6 +7946,7 @@ export const questions: Question[] = [
         sectionLabel: '第7回 代名詞の複数形の使い方',
         promptJp: '私たちは同級生です。',
         answerEn: 'We are classmates.',
+        pos: ['sentence'],
         orderIndex: 1,
     },
     {
@@ -7296,6 +7958,7 @@ export const questions: Question[] = [
         sectionLabel: '第7回 代名詞の複数形の使い方',
         promptJp: 'あなたたちは親切です。',
         answerEn: 'You are kind.',
+        pos: ['sentence'],
         orderIndex: 2,
     },
     {
@@ -7307,6 +7970,7 @@ export const questions: Question[] = [
         sectionLabel: '第7回 代名詞の複数形の使い方',
         promptJp: '彼らはリンゴが好きです。',
         answerEn: 'They like apples.',
+        pos: ['sentence'],
         orderIndex: 3,
     },
     {
@@ -7318,6 +7982,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 単語の学習—名詞①',
         promptJp: '環境',
         answerEn: 'environment',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -7329,6 +7994,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 単語の学習—名詞①',
         promptJp: '再生利用',
         answerEn: 'recycling',
+        pos: ['noun'],
         orderIndex: 2,
     },
     {
@@ -7340,6 +8006,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 単語の学習—名詞①',
         promptJp: '自然',
         answerEn: 'nature',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -7351,6 +8018,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 単語の学習—名詞①',
         promptJp: 'ビン',
         answerEn: 'bottle',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -7362,6 +8030,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 単語の学習—名詞①',
         promptJp: 'ごみ',
         answerEn: 'trash',
+        pos: ['noun'],
         orderIndex: 5,
     },
     {
@@ -7373,6 +8042,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 単語の学習—名詞①',
         promptJp: '紙',
         answerEn: 'paper',
+        pos: ['noun'],
         orderIndex: 6,
     },
     {
@@ -7384,6 +8054,7 @@ export const questions: Question[] = [
         sectionLabel: '第3回 時刻の表し方',
         promptJp: '今何時ですか。',
         answerEn: 'What time is it now?',
+        pos: ['sentence'],
         orderIndex: 1,
     },
     {
@@ -7395,6 +8066,7 @@ export const questions: Question[] = [
         sectionLabel: '第3回 時刻の表し方',
         promptJp: '10時20分です。',
         answerEn: 'It is ten twenty.',
+        pos: ['sentence'],
         orderIndex: 2,
     },
     {
@@ -7406,6 +8078,7 @@ export const questions: Question[] = [
         sectionLabel: '第3回 時刻の表し方',
         promptJp: 'あなたは何時に起きますか。',
         answerEn: 'What time do you get up?',
+        pos: ['sentence'],
         orderIndex: 3,
     },
     {
@@ -7417,6 +8090,7 @@ export const questions: Question[] = [
         sectionLabel: '第3回 時刻の表し方',
         promptJp: '私は6時に起きます。',
         answerEn: 'I get up at six.',
+        pos: ['sentence'],
         orderIndex: 4,
     },
     {
@@ -7428,6 +8102,7 @@ export const questions: Question[] = [
         sectionLabel: '第5回 単語の学習—名詞②',
         promptJp: '台所',
         answerEn: 'kitchen',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -7439,6 +8114,7 @@ export const questions: Question[] = [
         sectionLabel: '第5回 単語の学習—名詞②',
         promptJp: '部屋',
         answerEn: 'room',
+        pos: ['noun'],
         orderIndex: 2,
     },
     {
@@ -7450,6 +8126,7 @@ export const questions: Question[] = [
         sectionLabel: '第5回 単語の学習—名詞②',
         promptJp: '風呂場',
         answerEn: 'bath',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -7461,6 +8138,7 @@ export const questions: Question[] = [
         sectionLabel: '第5回 単語の学習—名詞②',
         promptJp: '門',
         answerEn: 'gate',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -7472,6 +8150,7 @@ export const questions: Question[] = [
         sectionLabel: '第5回 単語の学習—名詞②',
         promptJp: '屋根',
         answerEn: 'roof',
+        pos: ['noun'],
         orderIndex: 5,
     },
     {
@@ -7483,6 +8162,7 @@ export const questions: Question[] = [
         sectionLabel: '第5回 単語の学習—名詞②',
         promptJp: '庭',
         answerEn: 'garden',
+        pos: ['noun'],
         orderIndex: 6,
     },
     {
@@ -7494,6 +8174,7 @@ export const questions: Question[] = [
         sectionLabel: '第7回 曜日・日付の表し方',
         promptJp: '今日は何曜日ですか。',
         answerEn: 'What day is it today?',
+        pos: ['sentence'],
         orderIndex: 1,
     },
     {
@@ -7505,6 +8186,7 @@ export const questions: Question[] = [
         sectionLabel: '第7回 曜日・日付の表し方',
         promptJp: '水曜日です。',
         answerEn: 'It is Wednesday.',
+        pos: ['sentence'],
         orderIndex: 2,
     },
     {
@@ -7516,6 +8198,7 @@ export const questions: Question[] = [
         sectionLabel: '第7回 曜日・日付の表し方',
         promptJp: 'あなたの誕生日はいつですか。',
         answerEn: 'When is your birthday?',
+        pos: ['sentence'],
         orderIndex: 3,
     },
     {
@@ -7527,6 +8210,7 @@ export const questions: Question[] = [
         sectionLabel: '第7回 曜日・日付の表し方',
         promptJp: '4月5日です。',
         answerEn: 'It is April 5.',
+        pos: ['sentence'],
         orderIndex: 4,
     },
     {
@@ -7538,6 +8222,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 単語の学習—名詞①',
         promptJp: 'コンピュータ',
         answerEn: 'computer',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -7549,6 +8234,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 単語の学習—名詞①',
         promptJp: '機械',
         answerEn: 'machine',
+        pos: ['noun'],
         orderIndex: 2,
     },
     {
@@ -7560,6 +8246,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 単語の学習—名詞①',
         promptJp: 'インターネット',
         answerEn: 'Internet',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -7571,6 +8258,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 単語の学習—名詞①',
         promptJp: '科学',
         answerEn: 'science',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -7582,6 +8270,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 単語の学習—名詞①',
         promptJp: '宇宙',
         answerEn: 'space',
+        pos: ['noun'],
         orderIndex: 5,
     },
     {
@@ -7593,6 +8282,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 単語の学習—名詞①',
         promptJp: '未来',
         answerEn: 'future',
+        pos: ['noun'],
         orderIndex: 6,
     },
     {
@@ -7604,6 +8294,7 @@ export const questions: Question[] = [
         sectionLabel: '第3回 場所のたずね方',
         promptJp: '新聞はどこにありますか。',
         answerEn: 'Where is the newspaper?',
+        pos: ['sentence'],
         orderIndex: 1,
     },
     {
@@ -7615,6 +8306,7 @@ export const questions: Question[] = [
         sectionLabel: '第3回 場所のたずね方',
         promptJp: 'それは私の机の上にあります。',
         answerEn: 'It\'s on my desk.',
+        pos: ['noun'],
         orderIndex: 2,
     },
     {
@@ -7626,6 +8318,7 @@ export const questions: Question[] = [
         sectionLabel: '第3回 場所のたずね方',
         promptJp: 'あなたはどこで勉強しますか。',
         answerEn: 'Where do you study?',
+        pos: ['sentence'],
         orderIndex: 3,
     },
     {
@@ -7637,6 +8330,7 @@ export const questions: Question[] = [
         sectionLabel: '第3回 場所のたずね方',
         promptJp: '私は私の部屋で勉強します。',
         answerEn: 'I study in my room.',
+        pos: ['sentence'],
         orderIndex: 4,
     },
     {
@@ -7648,6 +8342,7 @@ export const questions: Question[] = [
         sectionLabel: '第5回 単語の学習—名詞②',
         promptJp: 'ジャーナリスト',
         answerEn: 'journalist',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -7659,6 +8354,7 @@ export const questions: Question[] = [
         sectionLabel: '第5回 単語の学習—名詞②',
         promptJp: '作家',
         answerEn: 'writer',
+        pos: ['noun'],
         orderIndex: 2,
     },
     {
@@ -7670,6 +8366,7 @@ export const questions: Question[] = [
         sectionLabel: '第5回 単語の学習—名詞②',
         promptJp: '俳優',
         answerEn: 'actor',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -7681,6 +8378,7 @@ export const questions: Question[] = [
         sectionLabel: '第5回 単語の学習—名詞②',
         promptJp: 'シェフ',
         answerEn: 'chef',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -7692,6 +8390,7 @@ export const questions: Question[] = [
         sectionLabel: '第5回 単語の学習—名詞②',
         promptJp: '宇宙飛行士',
         answerEn: 'astronaut',
+        pos: ['noun'],
         orderIndex: 5,
     },
     {
@@ -7703,6 +8402,7 @@ export const questions: Question[] = [
         sectionLabel: '第5回 単語の学習—名詞②',
         promptJp: 'ニュース解説者',
         answerEn: 'newscaster',
+        pos: ['noun'],
         orderIndex: 6,
     },
     {
@@ -7714,6 +8414,7 @@ export const questions: Question[] = [
         sectionLabel: '第7回 所有者のたずね方',
         promptJp: 'これはだれのかばんですか。',
         answerEn: 'Whose bag is this?',
+        pos: ['sentence'],
         orderIndex: 1,
     },
     {
@@ -7725,6 +8426,7 @@ export const questions: Question[] = [
         sectionLabel: '第7回 所有者のたずね方',
         promptJp: 'それは私のものです。',
         answerEn: 'It\'s mine.',
+        pos: ['noun'],
         orderIndex: 2,
     },
     {
@@ -7736,6 +8438,7 @@ export const questions: Question[] = [
         sectionLabel: '第7回 所有者のたずね方',
         promptJp: 'あれはだれの犬ですか。',
         answerEn: 'Whose dog is that?',
+        pos: ['sentence'],
         orderIndex: 3,
     },
     {
@@ -7747,6 +8450,7 @@ export const questions: Question[] = [
         sectionLabel: '第7回 所有者のたずね方',
         promptJp: 'それは彼女のものです。',
         answerEn: 'It\'s hers.',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -7758,6 +8462,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 単語の学習—形容詞',
         promptJp: 'ひまな',
         answerEn: 'free',
+        pos: ['adj'],
         orderIndex: 1,
     },
     {
@@ -7769,6 +8474,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 単語の学習—形容詞',
         promptJp: '忙しい',
         answerEn: 'busy',
+        pos: ['adj'],
         orderIndex: 2,
     },
     {
@@ -7780,6 +8486,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 単語の学習—形容詞',
         promptJp: '嬉しい',
         answerEn: 'glad',
+        pos: ['adj'],
         orderIndex: 3,
     },
     {
@@ -7791,6 +8498,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 単語の学習—形容詞',
         promptJp: '怒った',
         answerEn: 'angry',
+        pos: ['adj'],
         orderIndex: 4,
     },
     {
@@ -7802,6 +8510,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 単語の学習—形容詞',
         promptJp: '空腹な',
         answerEn: 'hungry',
+        pos: ['adj'],
         orderIndex: 5,
     },
     {
@@ -7813,6 +8522,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 単語の学習—形容詞',
         promptJp: 'のどがかわいた',
         answerEn: 'thirsty',
+        pos: ['adj'],
         orderIndex: 6,
     },
     {
@@ -7824,6 +8534,7 @@ export const questions: Question[] = [
         sectionLabel: '第3回 助動詞 can の使い方①',
         promptJp: '私は英語を話すことができます。',
         answerEn: 'I can speak English.',
+        pos: ['sentence'],
         orderIndex: 1,
     },
     {
@@ -7835,6 +8546,7 @@ export const questions: Question[] = [
         sectionLabel: '第3回 助動詞 can の使い方①',
         promptJp: '彼はギターを弾くことができます。',
         answerEn: 'He can play the guitar.',
+        pos: ['sentence'],
         orderIndex: 2,
     },
     {
@@ -7846,6 +8558,7 @@ export const questions: Question[] = [
         sectionLabel: '第5回 単語の学習—動詞',
         promptJp: '開く',
         answerEn: 'open',
+        pos: ['verb'],
         orderIndex: 1,
     },
     {
@@ -7857,6 +8570,7 @@ export const questions: Question[] = [
         sectionLabel: '第5回 単語の学習—動詞',
         promptJp: '閉じる',
         answerEn: 'close',
+        pos: ['verb'],
         orderIndex: 2,
     },
     {
@@ -7868,6 +8582,7 @@ export const questions: Question[] = [
         sectionLabel: '第5回 単語の学習—動詞',
         promptJp: '勝つ',
         answerEn: 'win',
+        pos: ['verb'],
         orderIndex: 3,
     },
     {
@@ -7879,6 +8594,7 @@ export const questions: Question[] = [
         sectionLabel: '第5回 単語の学習—動詞',
         promptJp: '負ける',
         answerEn: 'lose',
+        pos: ['verb'],
         orderIndex: 4,
     },
     {
@@ -7890,6 +8606,7 @@ export const questions: Question[] = [
         sectionLabel: '第5回 単語の学習—動詞',
         promptJp: '行く',
         answerEn: 'go',
+        pos: ['verb'],
         orderIndex: 5,
     },
     {
@@ -7901,6 +8618,7 @@ export const questions: Question[] = [
         sectionLabel: '第5回 単語の学習—動詞',
         promptJp: '来る',
         answerEn: 'come',
+        pos: ['verb'],
         orderIndex: 6,
     },
     {
@@ -7912,6 +8630,7 @@ export const questions: Question[] = [
         sectionLabel: '第7回 助動詞 can の使い方②',
         promptJp: '私は海で泳ぐことができます。',
         answerEn: 'I can swim in the sea.',
+        pos: ['sentence'],
         orderIndex: 1,
     },
     {
@@ -7923,6 +8642,7 @@ export const questions: Question[] = [
         sectionLabel: '第7回 助動詞 can の使い方②',
         promptJp: '私は海で泳ぐことができません。',
         answerEn: 'I cannot swim in the sea.',
+        pos: ['sentence'],
         orderIndex: 2,
     },
     {
@@ -7934,6 +8654,7 @@ export const questions: Question[] = [
         sectionLabel: '第7回 助動詞 can の使い方②',
         promptJp: 'あなたは速く走ることができます。',
         answerEn: 'You can run fast.',
+        pos: ['sentence'],
         orderIndex: 3,
     },
     {
@@ -7945,6 +8666,7 @@ export const questions: Question[] = [
         sectionLabel: '第7回 助動詞 can の使い方②',
         promptJp: 'あなたは速く走ることができますか。',
         answerEn: 'Can you run fast?',
+        pos: ['sentence'],
         orderIndex: 4,
     },
     {
@@ -7956,6 +8678,7 @@ export const questions: Question[] = [
         sectionLabel: '第7回 助動詞 can の使い方②',
         promptJp: 'はい、速く走ることができます。',
         answerEn: 'Yes, I can.',
+        pos: ['sentence'],
         orderIndex: 5,
     },
     {
@@ -7967,6 +8690,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 形容詞',
         promptJp: '長い',
         answerEn: 'long',
+        pos: ['adj'],
         orderIndex: 1,
     },
     {
@@ -7978,6 +8702,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 形容詞',
         promptJp: '短い',
         answerEn: 'short',
+        pos: ['adj'],
         orderIndex: 2,
     },
     {
@@ -7989,6 +8714,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 形容詞',
         promptJp: '若い',
         answerEn: 'young',
+        pos: ['adj'],
         orderIndex: 3,
     },
     {
@@ -8000,6 +8726,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 形容詞',
         promptJp: '年老いた',
         answerEn: 'old',
+        pos: ['adj'],
         orderIndex: 4,
     },
     {
@@ -8011,6 +8738,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 形容詞',
         promptJp: 'マイナスの',
         answerEn: 'minus',
+        pos: ['adj'],
         orderIndex: 5,
     },
     {
@@ -8022,6 +8750,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 形容詞',
         promptJp: 'プラスの',
         answerEn: 'plus',
+        pos: ['adj'],
         orderIndex: 6,
     },
     {
@@ -8033,6 +8762,7 @@ export const questions: Question[] = [
         sectionLabel: '第3回 形容詞の文',
         promptJp: '私は空腹です。',
         answerEn: 'I am hungry.',
+        pos: ['sentence'],
         orderIndex: 1,
     },
     {
@@ -8044,6 +8774,7 @@ export const questions: Question[] = [
         sectionLabel: '第3回 形容詞の文',
         promptJp: 'サッカーは私のお気に入りのスポーツです。',
         answerEn: 'Soccer is my favorite sport.',
+        pos: ['sentence'],
         orderIndex: 2,
     },
     {
@@ -8055,6 +8786,7 @@ export const questions: Question[] = [
         sectionLabel: '第3回 形容詞の文',
         promptJp: '日本語はむずかしいです。',
         answerEn: 'Japanese is difficult.',
+        pos: ['sentence'],
         orderIndex: 3,
     },
     {
@@ -8066,6 +8798,7 @@ export const questions: Question[] = [
         sectionLabel: '第3回 形容詞の文',
         promptJp: '私たちはわくわくしています。',
         answerEn: 'We are excited.',
+        pos: ['sentence'],
         orderIndex: 4,
     },
     {
@@ -8077,6 +8810,7 @@ export const questions: Question[] = [
         sectionLabel: '第5回 単語の学習',
         promptJp: '数学・算数',
         answerEn: 'math',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -8088,6 +8822,7 @@ export const questions: Question[] = [
         sectionLabel: '第5回 単語の学習',
         promptJp: '美術',
         answerEn: 'art',
+        pos: ['noun'],
         orderIndex: 2,
     },
     {
@@ -8099,6 +8834,7 @@ export const questions: Question[] = [
         sectionLabel: '第5回 単語の学習',
         promptJp: '歴史',
         answerEn: 'history',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -8110,6 +8846,7 @@ export const questions: Question[] = [
         sectionLabel: '第5回 単語の学習',
         promptJp: '体育',
         answerEn: 'PE',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -8121,6 +8858,7 @@ export const questions: Question[] = [
         sectionLabel: '第5回 単語の学習',
         promptJp: '学生,生徒',
         answerEn: 'student',
+        pos: ['noun'],
         orderIndex: 5,
     },
     {
@@ -8132,6 +8870,7 @@ export const questions: Question[] = [
         sectionLabel: '第5回 単語の学習',
         promptJp: '宿題',
         answerEn: 'homework',
+        pos: ['noun'],
         orderIndex: 6,
     },
     {
@@ -8143,6 +8882,7 @@ export const questions: Question[] = [
         sectionLabel: '第6・7回 冠詞＋名詞',
         promptJp: 'これはペンです。',
         answerEn: 'This is a pen.',
+        pos: ['sentence'],
         orderIndex: 1,
     },
     {
@@ -8154,6 +8894,7 @@ export const questions: Question[] = [
         sectionLabel: '第6・7回 冠詞＋名詞',
         promptJp: 'その犬は大きいです。',
         answerEn: 'The dog is big.',
+        pos: ['sentence'],
         orderIndex: 2,
     },
     {
@@ -8165,6 +8906,7 @@ export const questions: Question[] = [
         sectionLabel: '第6・7回 冠詞＋名詞',
         promptJp: 'その図書館は良いです。',
         answerEn: 'The library is good.',
+        pos: ['sentence'],
         orderIndex: 3,
     },
     {
@@ -8176,6 +8918,7 @@ export const questions: Question[] = [
         sectionLabel: '第6・7回 冠詞＋名詞',
         promptJp: '私の母は英語の先生です。',
         answerEn: 'My mother is an English teacher.',
+        pos: ['sentence'],
         orderIndex: 4,
     },
     {
@@ -8187,6 +8930,7 @@ export const questions: Question[] = [
         sectionLabel: '第9回 単語の学習',
         promptJp: 'サッカー',
         answerEn: 'soccer',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -8198,6 +8942,7 @@ export const questions: Question[] = [
         sectionLabel: '第9回 単語の学習',
         promptJp: 'バドミントン',
         answerEn: 'badminton',
+        pos: ['noun'],
         orderIndex: 2,
     },
     {
@@ -8209,6 +8954,7 @@ export const questions: Question[] = [
         sectionLabel: '第9回 単語の学習',
         promptJp: 'コーラス',
         answerEn: 'chorus',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -8220,6 +8966,7 @@ export const questions: Question[] = [
         sectionLabel: '第9回 単語の学習',
         promptJp: '音楽',
         answerEn: 'music',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -8231,6 +8978,7 @@ export const questions: Question[] = [
         sectionLabel: '第9回 単語の学習',
         promptJp: 'テニス',
         answerEn: 'tennis',
+        pos: ['noun'],
         orderIndex: 5,
     },
     {
@@ -8242,6 +8990,7 @@ export const questions: Question[] = [
         sectionLabel: '第9回 単語の学習',
         promptJp: '柔道',
         answerEn: 'judo',
+        pos: ['noun'],
         orderIndex: 6,
     },
     {
@@ -8253,6 +9002,7 @@ export const questions: Question[] = [
         sectionLabel: '第10・11回 代名詞',
         promptJp: '彼は私を知りません。',
         answerEn: 'He doesn\'t know me.',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -8264,6 +9014,7 @@ export const questions: Question[] = [
         sectionLabel: '第10・11回 代名詞',
         promptJp: '私は彼のためにケーキを作ります。',
         answerEn: 'I make a cake for him.',
+        pos: ['sentence'],
         orderIndex: 2,
     },
     {
@@ -8275,6 +9026,7 @@ export const questions: Question[] = [
         sectionLabel: '第10・11回 代名詞',
         promptJp: 'あの自転車は私のものです。',
         answerEn: 'That bike is mine.',
+        pos: ['sentence'],
         orderIndex: 3,
     },
     {
@@ -8286,6 +9038,7 @@ export const questions: Question[] = [
         sectionLabel: '第10・11回 代名詞',
         promptJp: '私は彼とバドミントンをします。',
         answerEn: 'I play badminton with him.',
+        pos: ['sentence'],
         orderIndex: 4,
     },
     {
@@ -8297,6 +9050,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 単語の学習',
         promptJp: '飛行機',
         answerEn: 'plane',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -8308,6 +9062,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 単語の学習',
         promptJp: 'パスポート',
         answerEn: 'passport',
+        pos: ['noun'],
         orderIndex: 2,
     },
     {
@@ -8319,6 +9074,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 単語の学習',
         promptJp: 'うで時計',
         answerEn: 'watch',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -8330,6 +9086,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 単語の学習',
         promptJp: 'かさ',
         answerEn: 'umbrella',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -8341,6 +9098,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 単語の学習',
         promptJp: '本',
         answerEn: 'book',
+        pos: ['noun'],
         orderIndex: 5,
     },
     {
@@ -8352,6 +9110,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 単語の学習',
         promptJp: '観光',
         answerEn: 'sightseeing',
+        pos: ['noun'],
         orderIndex: 6,
     },
     {
@@ -8363,6 +9122,7 @@ export const questions: Question[] = [
         sectionLabel: '第2・3回 疑問詞(1)の使い方',
         promptJp: 'あなたは何を買いますか。',
         answerEn: 'What do you buy?',
+        pos: ['sentence'],
         orderIndex: 1,
     },
     {
@@ -8374,6 +9134,7 @@ export const questions: Question[] = [
         sectionLabel: '第2・3回 疑問詞(1)の使い方',
         promptJp: '彼はどこに住んでいますか。',
         answerEn: 'Where does he live?',
+        pos: ['sentence'],
         orderIndex: 2,
     },
     {
@@ -8385,6 +9146,7 @@ export const questions: Question[] = [
         sectionLabel: '第2・3回 疑問詞(1)の使い方',
         promptJp: 'あなたはいつ野球をすることができますか。',
         answerEn: 'When can you play baseball?',
+        pos: ['sentence'],
         orderIndex: 3,
     },
     {
@@ -8396,6 +9158,7 @@ export const questions: Question[] = [
         sectionLabel: '第2・3回 疑問詞(1)の使い方',
         promptJp: 'これはだれの本ですか。',
         answerEn: 'Whose book is this?',
+        pos: ['sentence'],
         orderIndex: 4,
     },
     {
@@ -8407,6 +9170,7 @@ export const questions: Question[] = [
         sectionLabel: '第5回 単語の学習②',
         promptJp: '正午',
         answerEn: 'noon',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -8418,6 +9182,7 @@ export const questions: Question[] = [
         sectionLabel: '第5回 単語の学習②',
         promptJp: '朝、午前',
         answerEn: 'morning',
+        pos: ['noun'],
         orderIndex: 2,
     },
     {
@@ -8429,6 +9194,7 @@ export const questions: Question[] = [
         sectionLabel: '第5回 単語の学習②',
         promptJp: '夕方',
         answerEn: 'evening',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -8440,6 +9206,7 @@ export const questions: Question[] = [
         sectionLabel: '第5回 単語の学習②',
         promptJp: '昨日',
         answerEn: 'yesterday',
+        pos: ['noun', 'adv'],
         orderIndex: 4,
     },
     {
@@ -8451,6 +9218,8 @@ export const questions: Question[] = [
         sectionLabel: '第5回 単語の学習②',
         promptJp: '今日',
         answerEn: 'today',
+        pos: ['noun', 'adv'],
+adv'],
         orderIndex: 5,
     },
     {
@@ -8462,6 +9231,7 @@ export const questions: Question[] = [
         sectionLabel: '第5回 単語の学習②',
         promptJp: '明日',
         answerEn: 'tomorrow',
+        pos: ['adv'],
         orderIndex: 6,
     },
     {
@@ -8473,6 +9243,7 @@ export const questions: Question[] = [
         sectionLabel: '第6・7回 疑問詞(2)の使い方',
         promptJp: '彼は何歳ですか。',
         answerEn: 'How old is he?',
+        pos: ['sentence'],
         orderIndex: 1,
     },
     {
@@ -8484,6 +9255,7 @@ export const questions: Question[] = [
         sectionLabel: '第6・7回 疑問詞(2)の使い方',
         promptJp: '彼女はなぜ日本語がはなせますか。',
         answerEn: 'Why can she speak Japanese?',
+        pos: ['sentence'],
         orderIndex: 2,
     },
     {
@@ -8495,6 +9267,7 @@ export const questions: Question[] = [
         sectionLabel: '第6・7回 疑問詞(2)の使い方',
         promptJp: 'あなたはなぜ奈良をおとずれますか。',
         answerEn: 'Why do you visit Nara?',
+        pos: ['sentence'],
         orderIndex: 3,
     },
     {
@@ -8506,6 +9279,7 @@ export const questions: Question[] = [
         sectionLabel: '第6・7回 疑問詞(2)の使い方',
         promptJp: 'あなたはどのようにして英語を勉強しますか。',
         answerEn: 'How do you study English?',
+        pos: ['sentence'],
         orderIndex: 4,
     },
     {
@@ -8517,6 +9291,7 @@ export const questions: Question[] = [
         sectionLabel: '第9回 単語の学習③',
         promptJp: 'カフェテリア',
         answerEn: 'cafeteria',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -8528,6 +9303,7 @@ export const questions: Question[] = [
         sectionLabel: '第9回 単語の学習③',
         promptJp: 'チョコレート',
         answerEn: 'chocolate',
+        pos: ['noun'],
         orderIndex: 2,
     },
     {
@@ -8539,6 +9315,7 @@ export const questions: Question[] = [
         sectionLabel: '第9回 単語の学習③',
         promptJp: 'サンドイッチ',
         answerEn: 'sandwich',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -8550,6 +9327,7 @@ export const questions: Question[] = [
         sectionLabel: '第9回 単語の学習③',
         promptJp: 'レストラン',
         answerEn: 'restaurant',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -8561,6 +9339,7 @@ export const questions: Question[] = [
         sectionLabel: '第9回 単語の学習③',
         promptJp: '鶏肉',
         answerEn: 'chicken',
+        pos: ['noun'],
         orderIndex: 5,
     },
     {
@@ -8572,6 +9351,7 @@ export const questions: Question[] = [
         sectionLabel: '第9回 単語の学習③',
         promptJp: '店員',
         answerEn: 'clerk',
+        pos: ['noun'],
         orderIndex: 6,
     },
     {
@@ -8583,6 +9363,7 @@ export const questions: Question[] = [
         sectionLabel: '第10・11・12回 過去形',
         promptJp: '私は先週の金曜日にピアノを弾きました。',
         answerEn: 'I played the piano last Friday.',
+        pos: ['sentence'],
         orderIndex: 1,
     },
     {
@@ -8594,6 +9375,7 @@ export const questions: Question[] = [
         sectionLabel: '第10・11・12回 過去形',
         promptJp: '彼女は昨日歌いましたか。',
         answerEn: 'Did she sing yesterday?',
+        pos: ['sentence'],
         orderIndex: 2,
     },
     {
@@ -8605,6 +9387,7 @@ export const questions: Question[] = [
         sectionLabel: '第10・11・12回 過去形',
         promptJp: '私は昨夜、理科を勉強しました。',
         answerEn: 'I studied science last night.',
+        pos: ['sentence'],
         orderIndex: 3,
     },
     {
@@ -8616,6 +9399,7 @@ export const questions: Question[] = [
         sectionLabel: '第10・11・12回 過去形',
         promptJp: '彼はその本を読みませんでした。',
         answerEn: 'He didn\'t read the book.',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -8627,6 +9411,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 名詞①',
         promptJp: '橋',
         answerEn: 'bridge',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -8638,6 +9423,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 名詞①',
         promptJp: '市場',
         answerEn: 'market',
+        pos: ['noun'],
         orderIndex: 2,
     },
     {
@@ -8649,6 +9435,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 名詞①',
         promptJp: '会社',
         answerEn: 'company',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -8660,6 +9447,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 名詞①',
         promptJp: '建物',
         answerEn: 'building',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -8671,6 +9459,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 名詞①',
         promptJp: '工場',
         answerEn: 'factory',
+        pos: ['noun'],
         orderIndex: 5,
     },
     {
@@ -8682,6 +9471,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 名詞①',
         promptJp: '大学',
         answerEn: 'university',
+        pos: ['noun'],
         orderIndex: 6,
     },
     {
@@ -8693,6 +9483,7 @@ export const questions: Question[] = [
         sectionLabel: '第2・3回 現在進行形',
         promptJp: '彼女は昼食を食べています。',
         answerEn: 'She is eating lunch.',
+        pos: ['sentence'],
         orderIndex: 1,
     },
     {
@@ -8704,6 +9495,7 @@ export const questions: Question[] = [
         sectionLabel: '第2・3回 現在進行形',
         promptJp: 'あなたは速く走っています。',
         answerEn: 'You are running fast.',
+        pos: ['sentence'],
         orderIndex: 2,
     },
     {
@@ -8715,6 +9507,7 @@ export const questions: Question[] = [
         sectionLabel: '第2・3回 現在進行形',
         promptJp: '彼らは公園をそうじしていますか。',
         answerEn: 'Are they cleaning the park?',
+        pos: ['sentence'],
         orderIndex: 3,
     },
     {
@@ -8726,6 +9519,7 @@ export const questions: Question[] = [
         sectionLabel: '第2・3回 現在進行形',
         promptJp: 'サラは今勉強していません。',
         answerEn: 'Sara is not studying now.',
+        pos: ['sentence'],
         orderIndex: 4,
     },
     {
@@ -8737,6 +9531,7 @@ export const questions: Question[] = [
         sectionLabel: '第5回 名詞②',
         promptJp: 'CD',
         answerEn: 'CD',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -8748,6 +9543,7 @@ export const questions: Question[] = [
         sectionLabel: '第5回 名詞②',
         promptJp: 'クッション',
         answerEn: 'cushion',
+        pos: ['noun'],
         orderIndex: 2,
     },
     {
@@ -8759,6 +9555,7 @@ export const questions: Question[] = [
         sectionLabel: '第5回 名詞②',
         promptJp: '衣服',
         answerEn: 'clothes',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -8770,6 +9567,7 @@ export const questions: Question[] = [
         sectionLabel: '第5回 名詞②',
         promptJp: 'テーブル',
         answerEn: 'table',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -8781,6 +9579,7 @@ export const questions: Question[] = [
         sectionLabel: '第5回 名詞②',
         promptJp: '冷蔵庫',
         answerEn: 'fridge',
+        pos: ['noun'],
         orderIndex: 5,
     },
     {
@@ -8792,6 +9591,7 @@ export const questions: Question[] = [
         sectionLabel: '第5回 名詞②',
         promptJp: 'コップ',
         answerEn: 'glass',
+        pos: ['noun'],
         orderIndex: 6,
     },
     {
@@ -8803,6 +9603,7 @@ export const questions: Question[] = [
         sectionLabel: '第6・7回 be動詞の過去形',
         promptJp: '私はひまでした。',
         answerEn: 'I was free.',
+        pos: ['sentence'],
         orderIndex: 1,
     },
     {
@@ -8814,6 +9615,7 @@ export const questions: Question[] = [
         sectionLabel: '第6・7回 be動詞の過去形',
         promptJp: 'あなたは昨日忙しかったですか。',
         answerEn: 'Were you busy yesterday?',
+        pos: ['sentence'],
         orderIndex: 2,
     },
     {
@@ -8825,6 +9627,7 @@ export const questions: Question[] = [
         sectionLabel: '第6・7回 be動詞の過去形',
         promptJp: '私たちはじょうずな選手ではありませんでした。',
         answerEn: 'We were not good players.',
+        pos: ['sentence'],
         orderIndex: 3,
     },
     {
@@ -8836,6 +9639,7 @@ export const questions: Question[] = [
         sectionLabel: '第6・7回 be動詞の過去形',
         promptJp: '私たちはそのとき13歳でした。',
         answerEn: 'We were thirteen then.',
+        pos: ['sentence'],
         orderIndex: 4,
     },
     {
@@ -8847,6 +9651,7 @@ export const questions: Question[] = [
         sectionLabel: '第9回 名詞③',
         promptJp: 'ゲーム',
         answerEn: 'game',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -8858,6 +9663,7 @@ export const questions: Question[] = [
         sectionLabel: '第9回 名詞③',
         promptJp: '子ども',
         answerEn: 'child',
+        pos: ['noun'],
         orderIndex: 2,
     },
     {
@@ -8869,6 +9675,7 @@ export const questions: Question[] = [
         sectionLabel: '第9回 名詞③',
         promptJp: '夢',
         answerEn: 'dream',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -8880,6 +9687,7 @@ export const questions: Question[] = [
         sectionLabel: '第9回 名詞③',
         promptJp: '遊園地',
         answerEn: 'amusement park',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -8891,6 +9699,7 @@ export const questions: Question[] = [
         sectionLabel: '第9回 名詞③',
         promptJp: '女優',
         answerEn: 'actress',
+        pos: ['noun'],
         orderIndex: 5,
     },
     {
@@ -8902,6 +9711,7 @@ export const questions: Question[] = [
         sectionLabel: '第9回 名詞③',
         promptJp: 'まんが',
         answerEn: 'cartoon',
+        pos: ['noun'],
         orderIndex: 6,
     },
     {
@@ -8913,6 +9723,7 @@ export const questions: Question[] = [
         sectionLabel: '第10・11・12回 過去進行形',
         promptJp: '彼らは歌っていました。',
         answerEn: 'They were singing.',
+        pos: ['sentence'],
         orderIndex: 1,
     },
     {
@@ -8924,6 +9735,7 @@ export const questions: Question[] = [
         sectionLabel: '第10・11・12回 過去進行形',
         promptJp: '私は紅茶を飲んでいました。',
         answerEn: 'I was drinking tea.',
+        pos: ['sentence'],
         orderIndex: 2,
     },
     {
@@ -8935,6 +9747,7 @@ export const questions: Question[] = [
         sectionLabel: '第10・11・12回 過去進行形',
         promptJp: '私は写真を撮っていませんでした。',
         answerEn: 'I was not taking a picture.',
+        pos: ['sentence'],
         orderIndex: 3,
     },
     {
@@ -8946,6 +9759,7 @@ export const questions: Question[] = [
         sectionLabel: '第10・11・12回 過去進行形',
         promptJp: 'あなたはおりづるを作っていたのですか。',
         answerEn: 'Were you making orizuru?',
+        pos: ['sentence'],
         orderIndex: 4,
     },
     {
@@ -8957,6 +9771,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 単語の学習 名詞①',
         promptJp: '体育館',
         answerEn: 'gym',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -8968,6 +9783,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 単語の学習 名詞①',
         promptJp: 'チャイム',
         answerEn: 'chime',
+        pos: ['noun'],
         orderIndex: 2,
     },
     {
@@ -8979,6 +9795,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 単語の学習 名詞①',
         promptJp: '花(特に果樹の)',
         answerEn: 'blossom',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -8990,6 +9807,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 単語の学習 名詞①',
         promptJp: '入り口',
         answerEn: 'entrance',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -9001,6 +9819,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 単語の学習 名詞①',
         promptJp: '教室',
         answerEn: 'classroom',
+        pos: ['noun'],
         orderIndex: 5,
     },
     {
@@ -9012,6 +9831,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 単語の学習 名詞①',
         promptJp: '黒板',
         answerEn: 'blackboard',
+        pos: ['noun'],
         orderIndex: 6,
     },
     {
@@ -9023,6 +9843,7 @@ export const questions: Question[] = [
         sectionLabel: '第2・3回 be going to',
         promptJp: '私は京都を訪れるつもりです。',
         answerEn: 'I am going to visit Kyoto.',
+        pos: ['sentence'],
         orderIndex: 1,
     },
     {
@@ -9034,6 +9855,7 @@ export const questions: Question[] = [
         sectionLabel: '第2・3回 be going to',
         promptJp: 'あなたはテレビを見るつもりですか。',
         answerEn: 'Are you going to watch TV?',
+        pos: ['sentence'],
         orderIndex: 2,
     },
     {
@@ -9045,6 +9867,7 @@ export const questions: Question[] = [
         sectionLabel: '第2・3回 be going to',
         promptJp: 'アンディはその質問に答えるつもりではありません。',
         answerEn: 'Andy is not going to answer the question.',
+        pos: ['sentence'],
         orderIndex: 3,
     },
     {
@@ -9056,6 +9879,7 @@ export const questions: Question[] = [
         sectionLabel: '第2・3回 be going to',
         promptJp: 'あなたはえんぴつを何本買うつもりですか。',
         answerEn: 'How many pencils are you going to buy?',
+        pos: ['sentence'],
         orderIndex: 4,
     },
     {
@@ -9067,6 +9891,7 @@ export const questions: Question[] = [
         sectionLabel: '第5回 単語の学習 名詞②',
         promptJp: '新聞',
         answerEn: 'newspaper',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -9078,6 +9903,7 @@ export const questions: Question[] = [
         sectionLabel: '第5回 単語の学習 名詞②',
         promptJp: '話',
         answerEn: 'story',
+        pos: ['noun'],
         orderIndex: 2,
     },
     {
@@ -9089,6 +9915,7 @@ export const questions: Question[] = [
         sectionLabel: '第5回 単語の学習 名詞②',
         promptJp: '雑誌',
         answerEn: 'magazine',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -9100,6 +9927,7 @@ export const questions: Question[] = [
         sectionLabel: '第5回 単語の学習 名詞②',
         promptJp: 'まんが',
         answerEn: 'comic',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -9111,6 +9939,7 @@ export const questions: Question[] = [
         sectionLabel: '第5回 単語の学習 名詞②',
         promptJp: 'パンフレット',
         answerEn: 'pamphlet',
+        pos: ['noun'],
         orderIndex: 5,
     },
     {
@@ -9122,6 +9951,7 @@ export const questions: Question[] = [
         sectionLabel: '第5回 単語の学習 名詞②',
         promptJp: '言語',
         answerEn: 'language',
+        pos: ['noun'],
         orderIndex: 6,
     },
     {
@@ -9133,6 +9963,7 @@ export const questions: Question[] = [
         sectionLabel: '第6・7回 will',
         promptJp: '私はスパゲッティを食べるでしょう。',
         answerEn: 'I will eat spaghetti.',
+        pos: ['sentence'],
         orderIndex: 1,
     },
     {
@@ -9144,6 +9975,7 @@ export const questions: Question[] = [
         sectionLabel: '第6・7回 will',
         promptJp: 'ルーシーは歩いて学校に行くでしょうか。',
         answerEn: 'Will Lucy walk to school?',
+        pos: ['sentence'],
         orderIndex: 2,
     },
     {
@@ -9155,6 +9987,7 @@ export const questions: Question[] = [
         sectionLabel: '第6・7回 will',
         promptJp: '明日は寒くないでしょう。',
         answerEn: 'It will not be cold tomorrow.',
+        pos: ['sentence'],
         orderIndex: 3,
     },
     {
@@ -9166,6 +9999,7 @@ export const questions: Question[] = [
         sectionLabel: '第6・7回 will',
         promptJp: 'タクは何時に家に帰るでしょうか。',
         answerEn: 'What time will Takumi go home?',
+        pos: ['sentence'],
         orderIndex: 4,
     },
     {
@@ -9177,6 +10011,7 @@ export const questions: Question[] = [
         sectionLabel: '第9回 単語の学習③ 動詞',
         promptJp: '(自転車などに)乗る',
         answerEn: 'ride',
+        pos: ['verb'],
         orderIndex: 1,
     },
     {
@@ -9188,6 +10023,7 @@ export const questions: Question[] = [
         sectionLabel: '第9回 単語の学習③ 動詞',
         promptJp: '(電車などに)乗る',
         answerEn: 'take',
+        pos: ['verb'],
         orderIndex: 2,
     },
     {
@@ -9199,6 +10035,7 @@ export const questions: Question[] = [
         sectionLabel: '第9回 単語の学習③ 動詞',
         promptJp: '運転する',
         answerEn: 'drive',
+        pos: ['verb'],
         orderIndex: 3,
     },
     {
@@ -9210,6 +10047,7 @@ export const questions: Question[] = [
         sectionLabel: '第9回 単語の学習③ 動詞',
         promptJp: '書く',
         answerEn: 'write',
+        pos: ['verb'],
         orderIndex: 4,
     },
     {
@@ -9221,6 +10059,7 @@ export const questions: Question[] = [
         sectionLabel: '第9回 単語の学習③ 動詞',
         promptJp: '痛む',
         answerEn: 'hurt',
+        pos: ['verb'],
         orderIndex: 5,
     },
     {
@@ -9232,6 +10071,7 @@ export const questions: Question[] = [
         sectionLabel: '第9回 単語の学習③ 動詞',
         promptJp: '失くす',
         answerEn: 'lose',
+        pos: ['verb'],
         orderIndex: 6,
     },
     {
@@ -9243,6 +10083,7 @@ export const questions: Question[] = [
         sectionLabel: '第10・11・12回 不規則変化',
         promptJp: '私はつくえを作りました。',
         answerEn: 'I made a desk.',
+        pos: ['sentence'],
         orderIndex: 1,
     },
     {
@@ -9254,6 +10095,7 @@ export const questions: Question[] = [
         sectionLabel: '第10・11・12回 不規則変化',
         promptJp: '私の父は昨日、ロンドンに行きました。',
         answerEn: 'My father went to London yesterday.',
+        pos: ['sentence'],
         orderIndex: 2,
     },
     {
@@ -9265,6 +10107,7 @@ export const questions: Question[] = [
         sectionLabel: '第10・11・12回 不規則変化',
         promptJp: 'ミクはその手紙を読みましたか。',
         answerEn: 'Did Miku read the letter?',
+        pos: ['sentence'],
         orderIndex: 3,
     },
     {
@@ -9276,6 +10119,7 @@ export const questions: Question[] = [
         sectionLabel: '第10・11・12回 不規則変化',
         promptJp: '彼らは水を飲みませんでした。',
         answerEn: 'They didn\'t drink water.',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -9287,6 +10131,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 単語の学習① 動詞',
         promptJp: '食べる',
         answerEn: 'eat',
+        pos: ['verb'],
         orderIndex: 1,
     },
     {
@@ -9298,6 +10143,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 単語の学習① 動詞',
         promptJp: '楽しむ',
         answerEn: 'enjoy',
+        pos: ['verb'],
         orderIndex: 2,
     },
     {
@@ -9309,6 +10155,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 単語の学習① 動詞',
         promptJp: '持っている',
         answerEn: 'have',
+        pos: ['verb'],
         orderIndex: 3,
     },
     {
@@ -9320,6 +10167,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 単語の学習① 動詞',
         promptJp: '話す',
         answerEn: 'talk',
+        pos: ['verb'],
         orderIndex: 4,
     },
     {
@@ -9331,6 +10179,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 単語の学習① 動詞',
         promptJp: '聞く',
         answerEn: 'listen',
+        pos: ['verb'],
         orderIndex: 5,
     },
     {
@@ -9342,6 +10191,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 単語の学習① 動詞',
         promptJp: '見る',
         answerEn: 'look',
+        pos: ['verb'],
         orderIndex: 6,
     },
     {
@@ -9353,6 +10203,7 @@ export const questions: Question[] = [
         sectionLabel: '第3・4回 助動詞(1)',
         promptJp: 'この箱を開けてもよいですか。',
         answerEn: 'May I open this box?',
+        pos: ['sentence'],
         orderIndex: 1,
     },
     {
@@ -9364,6 +10215,7 @@ export const questions: Question[] = [
         sectionLabel: '第3・4回 助動詞(1)',
         promptJp: '私たちは明日、あなたを訪れるかもしれません。',
         answerEn: 'We may visit you tomorrow.',
+        pos: ['sentence'],
         orderIndex: 2,
     },
     {
@@ -9375,6 +10227,7 @@ export const questions: Question[] = [
         sectionLabel: '第3・4回 助動詞(1)',
         promptJp: '私がその歌を歌いましょうか。',
         answerEn: 'Shall I sing the song?',
+        pos: ['sentence'],
         orderIndex: 3,
     },
     {
@@ -9386,6 +10239,7 @@ export const questions: Question[] = [
         sectionLabel: '第3・4回 助動詞(1)',
         promptJp: '彼女は自転車に乗ることができませんでした。',
         answerEn: 'She could not ride a bike.',
+        pos: ['sentence'],
         orderIndex: 4,
     },
     {
@@ -9397,6 +10251,7 @@ export const questions: Question[] = [
         sectionLabel: '第5回 単語の学習② 名詞',
         promptJp: '午後',
         answerEn: 'afternoon',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -9408,6 +10263,7 @@ export const questions: Question[] = [
         sectionLabel: '第5回 単語の学習② 名詞',
         promptJp: '日',
         answerEn: 'day',
+        pos: ['noun'],
         orderIndex: 2,
     },
     {
@@ -9419,6 +10275,7 @@ export const questions: Question[] = [
         sectionLabel: '第5回 単語の学習② 名詞',
         promptJp: '時計、時刻',
         answerEn: 'time',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -9430,6 +10287,7 @@ export const questions: Question[] = [
         sectionLabel: '第5回 単語の学習② 名詞',
         promptJp: '年',
         answerEn: 'year',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -9441,6 +10299,7 @@ export const questions: Question[] = [
         sectionLabel: '第5回 単語の学習② 名詞',
         promptJp: '月',
         answerEn: 'month',
+        pos: ['noun'],
         orderIndex: 5,
     },
     {
@@ -9452,6 +10311,7 @@ export const questions: Question[] = [
         sectionLabel: '第5回 単語の学習② 名詞',
         promptJp: '週',
         answerEn: 'week',
+        pos: ['noun'],
         orderIndex: 6,
     },
     {
@@ -9463,6 +10323,7 @@ export const questions: Question[] = [
         sectionLabel: '第7・8回 助動詞(2)',
         promptJp: '私は寝なければなりません。',
         answerEn: 'I must go to bed.',
+        pos: ['sentence'],
         orderIndex: 1,
     },
     {
@@ -9474,6 +10335,7 @@ export const questions: Question[] = [
         sectionLabel: '第7・8回 助動詞(2)',
         promptJp: '彼はここを出発するべきです。',
         answerEn: 'He should leave here.',
+        pos: ['sentence'],
         orderIndex: 2,
     },
     {
@@ -9485,6 +10347,7 @@ export const questions: Question[] = [
         sectionLabel: '第7・8回 助動詞(2)',
         promptJp: 'あなたはサラダを作る必要はありません。',
         answerEn: 'You don\'t have to make salad.',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -9496,6 +10359,7 @@ export const questions: Question[] = [
         sectionLabel: '第7・8回 助動詞(2)',
         promptJp: '私たちはコンピュータを使うべきです。',
         answerEn: 'We should use computers.',
+        pos: ['sentence'],
         orderIndex: 4,
     },
     {
@@ -9507,6 +10371,7 @@ export const questions: Question[] = [
         sectionLabel: '第9回 単語の学習③ 形容詞',
         promptJp: '美しい',
         answerEn: 'beautiful',
+        pos: ['adj'],
         orderIndex: 1,
     },
     {
@@ -9518,6 +10383,7 @@ export const questions: Question[] = [
         sectionLabel: '第9回 単語の学習③ 形容詞',
         promptJp: 'かわいい',
         answerEn: 'cute',
+        pos: ['adj'],
         orderIndex: 2,
     },
     {
@@ -9529,6 +10395,7 @@ export const questions: Question[] = [
         sectionLabel: '第9回 単語の学習③ 形容詞',
         promptJp: '高い',
         answerEn: 'high',
+        pos: ['adj'],
         orderIndex: 3,
     },
     {
@@ -9540,6 +10407,7 @@ export const questions: Question[] = [
         sectionLabel: '第9回 単語の学習③ 形容詞',
         promptJp: '低い',
         answerEn: 'low',
+        pos: ['adj'],
         orderIndex: 4,
     },
     {
@@ -9551,6 +10419,7 @@ export const questions: Question[] = [
         sectionLabel: '第9回 単語の学習③ 形容詞',
         promptJp: 'たくさんの',
         answerEn: 'much',
+        pos: ['adj'],
         orderIndex: 5,
     },
     {
@@ -9562,6 +10431,7 @@ export const questions: Question[] = [
         sectionLabel: '第9回 単語の学習③ 形容詞',
         promptJp: '小さい',
         answerEn: 'little',
+        pos: ['adj'],
         orderIndex: 6,
     },
     {
@@ -9573,6 +10443,7 @@ export const questions: Question[] = [
         sectionLabel: '第11・12回 There is',
         promptJp: '私のかばんの中には1本のラケットがあります。',
         answerEn: 'There is a racket in my bag.',
+        pos: ['sentence'],
         orderIndex: 1,
     },
     {
@@ -9584,6 +10455,7 @@ export const questions: Question[] = [
         sectionLabel: '第11・12回 There is',
         promptJp: 'いすの上に1匹の犬がいます。',
         answerEn: 'There is a dog on the chair.',
+        pos: ['sentence'],
         orderIndex: 2,
     },
     {
@@ -9595,6 +10467,7 @@ export const questions: Question[] = [
         sectionLabel: '第11・12回 There is',
         promptJp: 'あなたの家族に音楽家はいますか。',
         answerEn: 'Is there a musician in your family?',
+        pos: ['sentence'],
         orderIndex: 3,
     },
     {
@@ -9606,6 +10479,7 @@ export const questions: Question[] = [
         sectionLabel: '第11・12回 There is',
         promptJp: 'ここには本屋はありませんでした。',
         answerEn: 'There was not a bookstore here.',
+        pos: ['sentence'],
         orderIndex: 4,
     },
     {
@@ -9617,6 +10491,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 単語の学習① 名詞',
         promptJp: '卵',
         answerEn: 'egg',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -9628,6 +10503,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 単語の学習① 名詞',
         promptJp: 'サクランボ',
         answerEn: 'cherry',
+        pos: ['noun'],
         orderIndex: 2,
     },
     {
@@ -9639,6 +10515,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 単語の学習① 名詞',
         promptJp: '軽食(おかし)',
         answerEn: 'snack',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -9650,6 +10527,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 単語の学習① 名詞',
         promptJp: 'めん(麺)',
         answerEn: 'noodle',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -9661,6 +10539,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 単語の学習① 名詞',
         promptJp: 'おにぎり',
         answerEn: 'rice ball',
+        pos: ['noun'],
         orderIndex: 5,
     },
     {
@@ -9672,6 +10551,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 単語の学習① 名詞',
         promptJp: 'もち(餅)',
         answerEn: 'rice cake',
+        pos: ['noun'],
         orderIndex: 6,
     },
     {
@@ -9683,6 +10563,7 @@ export const questions: Question[] = [
         sectionLabel: '第3・4回 不定詞の使い方',
         promptJp: '私はコアラを見るためにオーストラリアを訪れました。',
         answerEn: 'I visited Australia to see koalas.',
+        pos: ['sentence'],
         orderIndex: 1,
     },
     {
@@ -9694,6 +10575,7 @@ export const questions: Question[] = [
         sectionLabel: '第3・4回 不定詞の使い方',
         promptJp: 'リンダはあなたに会いに来ましたか。',
         answerEn: 'Did Linda come to see you?',
+        pos: ['sentence'],
         orderIndex: 2,
     },
     {
@@ -9705,6 +10587,7 @@ export const questions: Question[] = [
         sectionLabel: '第3・4回 不定詞の使い方',
         promptJp: '私はじょうずに弾くためにピアノを練習します。',
         answerEn: 'I practice the piano to play well.',
+        pos: ['sentence'],
         orderIndex: 3,
     },
     {
@@ -9716,6 +10599,7 @@ export const questions: Question[] = [
         sectionLabel: '第3・4回 不定詞の使い方',
         promptJp: '彼女はパンを買うためにその店に行きます。',
         answerEn: 'She goes to the shop to buy bread.',
+        pos: ['sentence'],
         orderIndex: 4,
     },
     {
@@ -9727,6 +10611,7 @@ export const questions: Question[] = [
         sectionLabel: '第5回 単語の学習② 名詞',
         promptJp: 'コンビニエンスストア',
         answerEn: 'convenience store',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -9738,6 +10623,7 @@ export const questions: Question[] = [
         sectionLabel: '第5回 単語の学習② 名詞',
         promptJp: '保育園',
         answerEn: 'nursery',
+        pos: ['noun'],
         orderIndex: 2,
     },
     {
@@ -9749,6 +10635,7 @@ export const questions: Question[] = [
         sectionLabel: '第5回 単語の学習② 名詞',
         promptJp: '校庭',
         answerEn: 'schoolyard',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -9760,6 +10647,7 @@ export const questions: Question[] = [
         sectionLabel: '第5回 単語の学習② 名詞',
         promptJp: '水族館',
         answerEn: 'aquarium',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -9771,6 +10659,7 @@ export const questions: Question[] = [
         sectionLabel: '第5回 単語の学習② 名詞',
         promptJp: '劇場',
         answerEn: 'theater',
+        pos: ['noun'],
         orderIndex: 5,
     },
     {
@@ -9782,6 +10671,7 @@ export const questions: Question[] = [
         sectionLabel: '第5回 単語の学習② 名詞',
         promptJp: '美容院',
         answerEn: 'beauty shop',
+        pos: ['noun'],
         orderIndex: 6,
     },
     {
@@ -9793,6 +10683,7 @@ export const questions: Question[] = [
         sectionLabel: '第7・8回 不定詞の使い方',
         promptJp: '私はおりづるを作るための紙が欲しいです。',
         answerEn: 'I want paper to make orizuru.',
+        pos: ['sentence'],
         orderIndex: 1,
     },
     {
@@ -9804,6 +10695,7 @@ export const questions: Question[] = [
         sectionLabel: '第7・8回 不定詞の使い方',
         promptJp: 'あなたはするべき宿題はありますか。',
         answerEn: 'Do you have homework to do?',
+        pos: ['sentence'],
         orderIndex: 2,
     },
     {
@@ -9815,6 +10707,7 @@ export const questions: Question[] = [
         sectionLabel: '第7・8回 不定詞の使い方',
         promptJp: '私は読むための本を持っていません。',
         answerEn: 'I don\'t have any books to read.',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -9826,6 +10719,7 @@ export const questions: Question[] = [
         sectionLabel: '第7・8回 不定詞の使い方',
         promptJp: 'あなたは何か温かい飲み物が必要です。',
         answerEn: 'You need something hot to drink.',
+        pos: ['sentence'],
         orderIndex: 4,
     },
     {
@@ -9837,6 +10731,7 @@ export const questions: Question[] = [
         sectionLabel: '第9回 単語の学習③ 副詞・形容詞',
         promptJp: '上へ',
         answerEn: 'up',
+        pos: ['adv'],
         orderIndex: 1,
     },
     {
@@ -9848,6 +10743,7 @@ export const questions: Question[] = [
         sectionLabel: '第9回 単語の学習③ 副詞・形容詞',
         promptJp: '下へ',
         answerEn: 'down',
+        pos: ['adv'],
         orderIndex: 2,
     },
     {
@@ -9859,6 +10755,7 @@ export const questions: Question[] = [
         sectionLabel: '第9回 単語の学習③ 副詞・形容詞',
         promptJp: '安い',
         answerEn: 'cheap',
+        pos: ['adj'],
         orderIndex: 3,
     },
     {
@@ -9870,6 +10767,7 @@ export const questions: Question[] = [
         sectionLabel: '第9回 単語の学習③ 副詞・形容詞',
         promptJp: '高価な',
         answerEn: 'expensive',
+        pos: ['adj'],
         orderIndex: 4,
     },
     {
@@ -9881,6 +10779,7 @@ export const questions: Question[] = [
         sectionLabel: '第9回 単語の学習③ 副詞・形容詞',
         promptJp: '強い',
         answerEn: 'strong',
+        pos: ['adj'],
         orderIndex: 5,
     },
     {
@@ -9892,6 +10791,7 @@ export const questions: Question[] = [
         sectionLabel: '第9回 単語の学習③ 副詞・形容詞',
         promptJp: '弱い',
         answerEn: 'weak',
+        pos: ['adj'],
         orderIndex: 6,
     },
     {
@@ -9903,6 +10803,7 @@ export const questions: Question[] = [
         sectionLabel: '第11・12回 不定詞の使い方',
         promptJp: '私は家に帰りたいです。',
         answerEn: 'I want to go home.',
+        pos: ['sentence'],
         orderIndex: 1,
     },
     {
@@ -9914,6 +10815,7 @@ export const questions: Question[] = [
         sectionLabel: '第11・12回 不定詞の使い方',
         promptJp: '英語を勉強することはとてもおもしろいです。',
         answerEn: 'To study English is very interesting.',
+        pos: ['sentence'],
         orderIndex: 2,
     },
     {
@@ -9925,6 +10827,7 @@ export const questions: Question[] = [
         sectionLabel: '第11・12回 不定詞の使い方',
         promptJp: '私の仕事は歌を歌うことでした。',
         answerEn: 'My job was to sing songs.',
+        pos: ['sentence'],
         orderIndex: 3,
     },
     {
@@ -9936,6 +10839,7 @@ export const questions: Question[] = [
         sectionLabel: '第11・12回 不定詞の使い方',
         promptJp: '英語の歌を歌うことは簡単ではありません。',
         answerEn: 'To sing English songs is not easy.',
+        pos: ['sentence'],
         orderIndex: 4,
     },
     {
@@ -9947,6 +10851,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 単語の学習① 形容詞',
         promptJp: '第1(番目)の',
         answerEn: 'first',
+        pos: ['adj', 'adv', 'noun', 'num'],
         orderIndex: 1,
     },
     {
@@ -9958,6 +10863,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 単語の学習① 形容詞',
         promptJp: '第2(番目)の',
         answerEn: 'second',
+        pos: ['adj', 'adv', 'noun', 'num'],
         orderIndex: 2,
     },
     {
@@ -9969,6 +10875,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 単語の学習① 形容詞',
         promptJp: '第3(番目)の',
         answerEn: 'third',
+        pos: ['adj', 'adv', 'noun', 'num'],
         orderIndex: 3,
     },
     {
@@ -9980,6 +10887,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 単語の学習① 形容詞',
         promptJp: '第4(番目)の',
         answerEn: 'fourth',
+        pos: ['adj', 'adv', 'noun', 'num'],
         orderIndex: 4,
     },
     {
@@ -9991,6 +10899,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 単語の学習① 形容詞',
         promptJp: '第5(番目)の',
         answerEn: 'fifth',
+        pos: ['adj', 'adv', 'noun', 'num'],
         orderIndex: 5,
     },
     {
@@ -10002,6 +10911,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 単語の学習① 形容詞',
         promptJp: '第6(番目)の',
         answerEn: 'sixth',
+        pos: ['adj', 'adv', 'noun', 'num'],
         orderIndex: 6,
     },
     {
@@ -10013,6 +10923,7 @@ export const questions: Question[] = [
         sectionLabel: '第3・4回 動名詞の使い方',
         promptJp: '私は本を読むことが好きです。',
         answerEn: 'I like reading books.',
+        pos: ['sentence'],
         orderIndex: 1,
     },
     {
@@ -10024,6 +10935,7 @@ export const questions: Question[] = [
         sectionLabel: '第3・4回 動名詞の使い方',
         promptJp: 'あなたは走ることが好きですか。',
         answerEn: 'Do you like running?',
+        pos: ['sentence'],
         orderIndex: 2,
     },
     {
@@ -10035,6 +10947,7 @@ export const questions: Question[] = [
         sectionLabel: '第3・4回 動名詞の使い方',
         promptJp: '私は軽食を食べることは好きではありません。',
         answerEn: 'I don\'t like eating snacks.',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -10046,6 +10959,7 @@ export const questions: Question[] = [
         sectionLabel: '第3・4回 動名詞の使い方',
         promptJp: 'あなたは放課後、何をして楽しみますか。',
         answerEn: 'What do you enjoy doing after school?',
+        pos: ['sentence'],
         orderIndex: 4,
     },
     {
@@ -10057,6 +10971,7 @@ export const questions: Question[] = [
         sectionLabel: '第5回 単語の学習② 名詞',
         promptJp: '料理人',
         answerEn: 'cook',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -10068,6 +10983,7 @@ export const questions: Question[] = [
         sectionLabel: '第5回 単語の学習② 名詞',
         promptJp: '歌手',
         answerEn: 'singer',
+        pos: ['noun'],
         orderIndex: 2,
     },
     {
@@ -10079,6 +10995,7 @@ export const questions: Question[] = [
         sectionLabel: '第5回 単語の学習② 名詞',
         promptJp: '写真家',
         answerEn: 'photographer',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -10090,6 +11007,7 @@ export const questions: Question[] = [
         sectionLabel: '第5回 単語の学習② 名詞',
         promptJp: '先生',
         answerEn: 'teacher',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -10101,6 +11019,7 @@ export const questions: Question[] = [
         sectionLabel: '第5回 単語の学習② 名詞',
         promptJp: '作家',
         answerEn: 'writer',
+        pos: ['noun'],
         orderIndex: 5,
     },
     {
@@ -10112,6 +11031,7 @@ export const questions: Question[] = [
         sectionLabel: '第5回 単語の学習② 名詞',
         promptJp: 'プログラマー',
         answerEn: 'programmer',
+        pos: ['noun'],
         orderIndex: 6,
     },
     {
@@ -10123,6 +11043,7 @@ export const questions: Question[] = [
         sectionLabel: '第7・8回 名詞の使い方',
         promptJp: '私はコップ1杯の水がほしい。',
         answerEn: 'I want a cup of water.',
+        pos: ['sentence'],
         orderIndex: 1,
     },
     {
@@ -10134,6 +11055,7 @@ export const questions: Question[] = [
         sectionLabel: '第7・8回 名詞の使い方',
         promptJp: '私には1人の兄弟と2人の姉妹がいます。',
         answerEn: 'I have one brother and two sisters.',
+        pos: ['sentence'],
         orderIndex: 2,
     },
     {
@@ -10145,6 +11067,7 @@ export const questions: Question[] = [
         sectionLabel: '第7・8回 名詞の使い方',
         promptJp: '私は1切れのケーキを食べました。',
         answerEn: 'I ate a piece of cake.',
+        pos: ['sentence'],
         orderIndex: 3,
     },
     {
@@ -10156,6 +11079,7 @@ export const questions: Question[] = [
         sectionLabel: '第7・8回 名詞の使い方',
         promptJp: '昨夜、たくさんの雨が降りました。',
         answerEn: 'It rained a lot last night.',
+        pos: ['sentence'],
         orderIndex: 4,
     },
     {
@@ -10167,6 +11091,7 @@ export const questions: Question[] = [
         sectionLabel: '第9回 単語の学習③ 名詞・動詞',
         promptJp: 'Eメール',
         answerEn: 'email',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -10178,6 +11103,7 @@ export const questions: Question[] = [
         sectionLabel: '第9回 単語の学習③ 名詞・動詞',
         promptJp: 'ホームページ',
         answerEn: 'website',
+        pos: ['noun'],
         orderIndex: 2,
     },
     {
@@ -10189,6 +11115,7 @@ export const questions: Question[] = [
         sectionLabel: '第9回 単語の学習③ 名詞・動詞',
         promptJp: 'アニメーション',
         answerEn: 'animation',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -10200,6 +11127,7 @@ export const questions: Question[] = [
         sectionLabel: '第9回 単語の学習③ 名詞・動詞',
         promptJp: '受け取る',
         answerEn: 'receive',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -10211,6 +11139,7 @@ export const questions: Question[] = [
         sectionLabel: '第9回 単語の学習③ 名詞・動詞',
         promptJp: '電話',
         answerEn: 'phone',
+        pos: ['noun'],
         orderIndex: 5,
     },
     {
@@ -10222,6 +11151,7 @@ export const questions: Question[] = [
         sectionLabel: '第9回 単語の学習③ 名詞・動詞',
         promptJp: 'コミュニケーション',
         answerEn: 'communication',
+        pos: ['noun'],
         orderIndex: 6,
     },
     {
@@ -10233,6 +11163,7 @@ export const questions: Question[] = [
         sectionLabel: '第11・12回 代名詞の使い方',
         promptJp: 'これらは彼らの車です。',
         answerEn: 'These are their cars.',
+        pos: ['sentence'],
         orderIndex: 1,
     },
     {
@@ -10244,6 +11175,7 @@ export const questions: Question[] = [
         sectionLabel: '第11・12回 代名詞の使い方',
         promptJp: '今日は雨です。',
         answerEn: 'It is rainy today.',
+        pos: ['sentence'],
         orderIndex: 2,
     },
     {
@@ -10255,6 +11187,7 @@ export const questions: Question[] = [
         sectionLabel: '第11・12回 代名詞の使い方',
         promptJp: 'そこにある何枚かのCDは私のものです。',
         answerEn: 'Some CDs over there are mine.',
+        pos: ['sentence'],
         orderIndex: 3,
     },
     {
@@ -10266,6 +11199,7 @@ export const questions: Question[] = [
         sectionLabel: '第11・12回 代名詞の使い方',
         promptJp: '家族全員が本を読みます。',
         answerEn: 'Everyone in my family reads books.',
+        pos: ['sentence'],
         orderIndex: 4,
     },
     {
@@ -10277,6 +11211,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 単語の学習① 名詞',
         promptJp: 'インド',
         answerEn: 'India',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -10288,6 +11223,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 単語の学習① 名詞',
         promptJp: '中国',
         answerEn: 'China',
+        pos: ['noun'],
         orderIndex: 2,
     },
     {
@@ -10299,6 +11235,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 単語の学習① 名詞',
         promptJp: 'ブラジル',
         answerEn: 'Brazil',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -10310,6 +11247,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 単語の学習① 名詞',
         promptJp: 'イギリス',
         answerEn: 'U.K.',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -10321,6 +11259,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 単語の学習① 名詞',
         promptJp: 'アフリカ',
         answerEn: 'Africa',
+        pos: ['noun'],
         orderIndex: 5,
     },
     {
@@ -10332,6 +11271,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 単語の学習① 名詞',
         promptJp: 'スペイン',
         answerEn: 'Spain',
+        pos: ['noun'],
         orderIndex: 6,
     },
     {
@@ -10343,6 +11283,7 @@ export const questions: Question[] = [
         sectionLabel: '第3・4回 付加疑問文・否定疑問文',
         promptJp: 'あなたは秋が好きですね。',
         answerEn: 'You like fall, don\'t you?',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -10354,6 +11295,7 @@ export const questions: Question[] = [
         sectionLabel: '第3・4回 付加疑問文・否定疑問文',
         promptJp: 'あなたは家を8時に出ないのですか。',
         answerEn: 'Don\'t you leave home at eight?',
+        pos: ['noun'],
         orderIndex: 2,
     },
     {
@@ -10365,6 +11307,7 @@ export const questions: Question[] = [
         sectionLabel: '第3・4回 付加疑問文・否定疑問文',
         promptJp: '東京は暑くありませんね。',
         answerEn: 'It isn\'t hot in Tokyo, is it?',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -10376,6 +11319,7 @@ export const questions: Question[] = [
         sectionLabel: '第3・4回 付加疑問文・否定疑問文',
         promptJp: 'あなたはこの本を読むつもりはないのですか。',
         answerEn: 'Aren\'t you going to read this book?',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -10387,6 +11331,7 @@ export const questions: Question[] = [
         sectionLabel: '第5回 単語の学習② 名詞',
         promptJp: '1000',
         answerEn: 'thousand',
+        pos: ['num'],
         orderIndex: 1,
     },
     {
@@ -10398,6 +11343,7 @@ export const questions: Question[] = [
         sectionLabel: '第5回 単語の学習② 名詞',
         promptJp: '100万',
         answerEn: 'million',
+        pos: ['num'],
         orderIndex: 2,
     },
     {
@@ -10409,6 +11355,7 @@ export const questions: Question[] = [
         sectionLabel: '第5回 単語の学習② 名詞',
         promptJp: '10億',
         answerEn: 'billion',
+        pos: ['num'],
         orderIndex: 3,
     },
     {
@@ -10420,6 +11367,7 @@ export const questions: Question[] = [
         sectionLabel: '第5回 単語の学習② 名詞',
         promptJp: 'メートル',
         answerEn: 'meter',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -10431,6 +11379,7 @@ export const questions: Question[] = [
         sectionLabel: '第5回 単語の学習② 名詞',
         promptJp: 'キロメートル',
         answerEn: 'kilometer',
+        pos: ['noun'],
         orderIndex: 5,
     },
     {
@@ -10442,6 +11391,7 @@ export const questions: Question[] = [
         sectionLabel: '第5回 単語の学習② 名詞',
         promptJp: 'グラム',
         answerEn: 'gram',
+        pos: ['noun'],
         orderIndex: 6,
     },
     {
@@ -10453,6 +11403,7 @@ export const questions: Question[] = [
         sectionLabel: '第7・8回 疑問詞',
         promptJp: 'あなたはどんな種類の本を読みますか。',
         answerEn: 'What kind of books do you read?',
+        pos: ['sentence'],
         orderIndex: 1,
     },
     {
@@ -10464,6 +11415,7 @@ export const questions: Question[] = [
         sectionLabel: '第7・8回 疑問詞',
         promptJp: 'トムはどのくらいの間日本に住んでいましたか。',
         answerEn: 'How long did Tom live in Japan?',
+        pos: ['sentence'],
         orderIndex: 2,
     },
     {
@@ -10475,6 +11427,7 @@ export const questions: Question[] = [
         sectionLabel: '第7・8回 疑問詞',
         promptJp: 'なぜジュディはバスで学校に行ったのですか。',
         answerEn: 'Why did Judy go to school by bus?',
+        pos: ['sentence'],
         orderIndex: 3,
     },
     {
@@ -10486,6 +11439,7 @@ export const questions: Question[] = [
         sectionLabel: '第7・8回 疑問詞',
         promptJp: 'どちらがあなたの新しい自転車ですか。',
         answerEn: 'Which is your new bike?',
+        pos: ['sentence'],
         orderIndex: 4,
     },
     {
@@ -10497,6 +11451,7 @@ export const questions: Question[] = [
         sectionLabel: '第9回 単語の学習③ 副詞・名詞',
         promptJp: '早く',
         answerEn: 'early',
+        pos: ['adv'],
         orderIndex: 1,
     },
     {
@@ -10508,6 +11463,7 @@ export const questions: Question[] = [
         sectionLabel: '第9回 単語の学習③ 副詞・名詞',
         promptJp: 'おそく',
         answerEn: 'late',
+        pos: ['adv'],
         orderIndex: 2,
     },
     {
@@ -10519,6 +11475,7 @@ export const questions: Question[] = [
         sectionLabel: '第9回 単語の学習③ 副詞・名詞',
         promptJp: '秒',
         answerEn: 'second',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -10530,6 +11487,7 @@ export const questions: Question[] = [
         sectionLabel: '第9回 単語の学習③ 副詞・名詞',
         promptJp: '分',
         answerEn: 'minute',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -10541,6 +11499,7 @@ export const questions: Question[] = [
         sectionLabel: '第9回 単語の学習③ 副詞・名詞',
         promptJp: 'パーセント',
         answerEn: 'percent',
+        pos: ['noun'],
         orderIndex: 5,
     },
     {
@@ -10552,6 +11511,7 @@ export const questions: Question[] = [
         sectionLabel: '第9回 単語の学習③ 副詞・名詞',
         promptJp: '風',
         answerEn: 'wind',
+        pos: ['noun'],
         orderIndex: 6,
     },
     {
@@ -10563,6 +11523,7 @@ export const questions: Question[] = [
         sectionLabel: '第11・12回 SVCの文型',
         promptJp: 'このバスは古そうに見えます。',
         answerEn: 'This bus looks old.',
+        pos: ['sentence'],
         orderIndex: 1,
     },
     {
@@ -10574,6 +11535,7 @@ export const questions: Question[] = [
         sectionLabel: '第11・12回 SVCの文型',
         promptJp: '私は歌手になりたい。',
         answerEn: 'I want to be a singer.',
+        pos: ['sentence'],
         orderIndex: 2,
     },
     {
@@ -10585,6 +11547,7 @@ export const questions: Question[] = [
         sectionLabel: '第11・12回 SVCの文型',
         promptJp: '私はこの部屋の中は寒く感じます。',
         answerEn: 'I feel cold in this room.',
+        pos: ['sentence'],
         orderIndex: 3,
     },
     {
@@ -10596,6 +11559,7 @@ export const questions: Question[] = [
         sectionLabel: '第11・12回 SVCの文型',
         promptJp: 'このお茶はいやな味がします。',
         answerEn: 'This tea tastes bad.',
+        pos: ['sentence'],
         orderIndex: 4,
     },
     {
@@ -10607,6 +11571,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 単語の学習① 形容詞',
         promptJp: '大きい',
         answerEn: 'large',
+        pos: ['adj'],
         orderIndex: 1,
     },
     {
@@ -10618,6 +11583,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 単語の学習① 形容詞',
         promptJp: '小さい',
         answerEn: 'small',
+        pos: ['adj'],
         orderIndex: 2,
     },
     {
@@ -10629,6 +11595,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 単語の学習① 形容詞',
         promptJp: '重い',
         answerEn: 'heavy',
+        pos: ['adj'],
         orderIndex: 3,
     },
     {
@@ -10640,6 +11607,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 単語の学習① 形容詞',
         promptJp: '軽い',
         answerEn: 'light',
+        pos: ['adj'],
         orderIndex: 4,
     },
     {
@@ -10651,6 +11619,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 単語の学習① 形容詞',
         promptJp: 'いっぱいの',
         answerEn: 'full',
+        pos: ['adj'],
         orderIndex: 5,
     },
     {
@@ -10662,6 +11631,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 単語の学習① 形容詞',
         promptJp: 'からっぽの',
         answerEn: 'empty',
+        pos: ['adj'],
         orderIndex: 6,
     },
     {
@@ -10673,6 +11643,7 @@ export const questions: Question[] = [
         sectionLabel: '第3・4回 SVOO/SVOCの文型',
         promptJp: '私は彼に地図を見せました。',
         answerEn: 'I showed him a map.',
+        pos: ['sentence'],
         orderIndex: 1,
     },
     {
@@ -10684,6 +11655,7 @@ export const questions: Question[] = [
         sectionLabel: '第3・4回 SVOO/SVOCの文型',
         promptJp: '私はあなたを悲しませるかもしれません。',
         answerEn: 'I may make you sad.',
+        pos: ['sentence'],
         orderIndex: 2,
     },
     {
@@ -10695,6 +11667,7 @@ export const questions: Question[] = [
         sectionLabel: '第3・4回 SVOO/SVOCの文型',
         promptJp: 'ナナは彼女のネコをクロと名づけました。',
         answerEn: 'Nana named her cat Kuro.',
+        pos: ['sentence'],
         orderIndex: 3,
     },
     {
@@ -10706,6 +11679,7 @@ export const questions: Question[] = [
         sectionLabel: '第3・4回 SVOO/SVOCの文型',
         promptJp: '私にドーナツを買ってください。',
         answerEn: 'Please buy me a donut.',
+        pos: ['sentence'],
         orderIndex: 4,
     },
     {
@@ -10717,6 +11691,7 @@ export const questions: Question[] = [
         sectionLabel: '第6回 単語の学習② 動詞',
         promptJp: 'そうじする',
         answerEn: 'clean',
+        pos: ['verb'],
         orderIndex: 1,
     },
     {
@@ -10728,6 +11703,7 @@ export const questions: Question[] = [
         sectionLabel: '第6回 単語の学習② 動詞',
         promptJp: '立つ、立っている',
         answerEn: 'stand',
+        pos: ['verb'],
         orderIndex: 2,
     },
     {
@@ -10739,6 +11715,7 @@ export const questions: Question[] = [
         sectionLabel: '第6回 単語の学習② 動詞',
         promptJp: '～を[と]呼ぶ',
         answerEn: 'call',
+        pos: ['verb'],
         orderIndex: 3,
     },
     {
@@ -10750,6 +11727,7 @@ export const questions: Question[] = [
         sectionLabel: '第6回 単語の学習② 動詞',
         promptJp: '待つ',
         answerEn: 'wait',
+        pos: ['verb'],
         orderIndex: 4,
     },
     {
@@ -10761,6 +11739,7 @@ export const questions: Question[] = [
         sectionLabel: '第6回 単語の学習② 動詞',
         promptJp: '登る',
         answerEn: 'climb',
+        pos: ['verb'],
         orderIndex: 5,
     },
     {
@@ -10772,6 +11751,7 @@ export const questions: Question[] = [
         sectionLabel: '第6回 単語の学習② 動詞',
         promptJp: '泣く、叫ぶ',
         answerEn: 'cry',
+        pos: ['verb'],
         orderIndex: 6,
     },
     {
@@ -10783,6 +11763,7 @@ export const questions: Question[] = [
         sectionLabel: '第8・9回 接続詞',
         promptJp: '私はアイスクリームが好きですが、たくさんは食べられません。',
         answerEn: 'I like ice cream, but I cannot eat much.',
+        pos: ['sentence'],
         orderIndex: 1,
     },
     {
@@ -10794,6 +11775,7 @@ export const questions: Question[] = [
         sectionLabel: '第8・9回 接続詞',
         promptJp: 'すぐに帰りなさい、そうしないと昼食を食べられませんよ。',
         answerEn: 'Go home now, or you cannot eat lunch.',
+        pos: ['sentence'],
         orderIndex: 2,
     },
     {
@@ -10805,6 +11787,7 @@ export const questions: Question[] = [
         sectionLabel: '第8・9回 接続詞',
         promptJp: '私は卵を買い、そしてクッキーを作りました。',
         answerEn: 'I bought eggs, and I made cookies.',
+        pos: ['sentence'],
         orderIndex: 3,
     },
     {
@@ -10816,6 +11799,7 @@ export const questions: Question[] = [
         sectionLabel: '第8・9回 接続詞',
         promptJp: '彼らは私は医者だということを知りませんでした。',
         answerEn: 'They didn\'t know that I was a doctor.',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -10827,6 +11811,7 @@ export const questions: Question[] = [
         sectionLabel: '第11回 単語の学習③ 名詞',
         promptJp: 'マグロ',
         answerEn: 'tuna',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -10838,6 +11823,7 @@ export const questions: Question[] = [
         sectionLabel: '第11回 単語の学習③ 名詞',
         promptJp: '牛肉、ビーフ',
         answerEn: 'beef',
+        pos: ['noun'],
         orderIndex: 2,
     },
     {
@@ -10849,6 +11835,7 @@ export const questions: Question[] = [
         sectionLabel: '第11回 単語の学習③ 名詞',
         promptJp: 'ハンバーガー',
         answerEn: 'burger',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -10860,6 +11847,7 @@ export const questions: Question[] = [
         sectionLabel: '第11回 単語の学習③ 名詞',
         promptJp: 'ホットドッグ',
         answerEn: 'hot dog',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -10871,6 +11859,7 @@ export const questions: Question[] = [
         sectionLabel: '第11回 単語の学習③ 名詞',
         promptJp: '七面鳥',
         answerEn: 'turkey',
+        pos: ['noun'],
         orderIndex: 5,
     },
     {
@@ -10882,6 +11871,7 @@ export const questions: Question[] = [
         sectionLabel: '第11回 単語の学習③ 名詞',
         promptJp: 'スパイス、香辛料',
         answerEn: 'spice',
+        pos: ['noun'],
         orderIndex: 6,
     },
     {
@@ -10893,6 +11883,7 @@ export const questions: Question[] = [
         sectionLabel: '第13・14回 接続詞(2)',
         promptJp: 'リョウスケは駅に行くとき、バスに乗っています。',
         answerEn: 'Ryosuke takes a bus when he goes to the station.',
+        pos: ['sentence'],
         orderIndex: 1,
     },
     {
@@ -10904,6 +11895,7 @@ export const questions: Question[] = [
         sectionLabel: '第13・14回 接続詞(2)',
         promptJp: 'もしあなたが自分のを持っていないのなら、このペンを使いなさい。',
         answerEn: 'Use this pen if you don\'t have yours.',
+        pos: ['noun'],
         orderIndex: 2,
     },
     {
@@ -10915,6 +11907,7 @@ export const questions: Question[] = [
         sectionLabel: '第13・14回 接続詞(2)',
         promptJp: '私は数学が面白いので、それが好きです。',
         answerEn: 'I like math because it\'s interesting.',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -10926,6 +11919,7 @@ export const questions: Question[] = [
         sectionLabel: '第13・14回 接続詞(2)',
         promptJp: 'テストが始まる前に、あなたの名前を書きなさい。',
         answerEn: 'Write your name before the test starts.',
+        pos: ['sentence'],
         orderIndex: 4,
     },
     {
@@ -10937,6 +11931,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 単語の学習① 名詞①',
         promptJp: '韓国',
         answerEn: 'Korea',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -10948,6 +11943,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 単語の学習① 名詞①',
         promptJp: 'タイ',
         answerEn: 'Thailand',
+        pos: ['noun'],
         orderIndex: 2,
     },
     {
@@ -10959,6 +11955,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 単語の学習① 名詞①',
         promptJp: 'マレーシア',
         answerEn: 'Malaysia',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -10970,6 +11967,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 単語の学習① 名詞①',
         promptJp: 'ドイツ',
         answerEn: 'Germany',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -10981,6 +11979,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 単語の学習① 名詞①',
         promptJp: 'フランス',
         answerEn: 'France',
+        pos: ['noun'],
         orderIndex: 5,
     },
     {
@@ -10992,6 +11991,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 単語の学習① 名詞①',
         promptJp: 'イタリア',
         answerEn: 'Italy',
+        pos: ['noun'],
         orderIndex: 6,
     },
     {
@@ -11003,6 +12003,7 @@ export const questions: Question[] = [
         sectionLabel: '第3・4回 前置詞(1)',
         promptJp: '海へ行きましょう。',
         answerEn: 'Let\'s go to the sea.',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -11014,6 +12015,7 @@ export const questions: Question[] = [
         sectionLabel: '第3・4回 前置詞(1)',
         promptJp: 'ベッドの上にぼうしがあります。',
         answerEn: 'There is a cap on the bed.',
+        pos: ['sentence'],
         orderIndex: 2,
     },
     {
@@ -11025,6 +12027,7 @@ export const questions: Question[] = [
         sectionLabel: '第3・4回 前置詞(1)',
         promptJp: 'この近くに銀行はありますか。',
         answerEn: 'Is there a bank near here?',
+        pos: ['sentence'],
         orderIndex: 3,
     },
     {
@@ -11036,6 +12039,7 @@ export const questions: Question[] = [
         sectionLabel: '第3・4回 前置詞(1)',
         promptJp: '私はその本をあの店で買いました。',
         answerEn: 'I bought the book at that store.',
+        pos: ['sentence'],
         orderIndex: 4,
     },
     {
@@ -11047,6 +12051,7 @@ export const questions: Question[] = [
         sectionLabel: '第6回 単語の学習② 動詞',
         promptJp: '壊す、割る',
         answerEn: 'break',
+        pos: ['verb'],
         orderIndex: 1,
     },
     {
@@ -11058,6 +12063,7 @@ export const questions: Question[] = [
         sectionLabel: '第6回 単語の学習② 動詞',
         promptJp: '踊る',
         answerEn: 'dance',
+        pos: ['verb'],
         orderIndex: 2,
     },
     {
@@ -11069,6 +12075,7 @@ export const questions: Question[] = [
         sectionLabel: '第6回 単語の学習② 動詞',
         promptJp: '手渡す',
         answerEn: 'hand',
+        pos: ['verb'],
         orderIndex: 3,
     },
     {
@@ -11080,6 +12087,7 @@ export const questions: Question[] = [
         sectionLabel: '第6回 単語の学習② 動詞',
         promptJp: '会う',
         answerEn: 'meet',
+        pos: ['verb'],
         orderIndex: 4,
     },
     {
@@ -11091,6 +12099,7 @@ export const questions: Question[] = [
         sectionLabel: '第6回 単語の学習② 動詞',
         promptJp: '歌う',
         answerEn: 'sing',
+        pos: ['verb'],
         orderIndex: 5,
     },
     {
@@ -11102,6 +12111,7 @@ export const questions: Question[] = [
         sectionLabel: '第6回 単語の学習② 動詞',
         promptJp: '読む',
         answerEn: 'read',
+        pos: ['verb'],
         orderIndex: 6,
     },
     {
@@ -11113,6 +12123,7 @@ export const questions: Question[] = [
         sectionLabel: '第8・9回 前置詞(2)',
         promptJp: '私はあなたと一緒に昼食を作るつもりです。',
         answerEn: 'I am going to make lunch with you.',
+        pos: ['sentence'],
         orderIndex: 1,
     },
     {
@@ -11124,6 +12135,7 @@ export const questions: Question[] = [
         sectionLabel: '第8・9回 前置詞(2)',
         promptJp: '私たちはサラを待たなければなりません。',
         answerEn: 'We have to wait for Sara.',
+        pos: ['sentence'],
         orderIndex: 2,
     },
     {
@@ -11135,6 +12147,7 @@ export const questions: Question[] = [
         sectionLabel: '第8・9回 前置詞(2)',
         promptJp: '私は牛乳なしでコーヒーを飲みます。',
         answerEn: 'I drink coffee without milk.',
+        pos: ['sentence'],
         orderIndex: 3,
     },
     {
@@ -11146,6 +12159,7 @@ export const questions: Question[] = [
         sectionLabel: '第8・9回 前置詞(2)',
         promptJp: 'あなたはその物語について知っていますか。',
         answerEn: 'Do you know about the story?',
+        pos: ['sentence'],
         orderIndex: 4,
     },
     {
@@ -11157,6 +12171,7 @@ export const questions: Question[] = [
         sectionLabel: '第11回 単語の学習③ 名詞②',
         promptJp: '島',
         answerEn: 'island',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -11168,6 +12183,7 @@ export const questions: Question[] = [
         sectionLabel: '第11回 単語の学習③ 名詞②',
         promptJp: '地震',
         answerEn: 'earthquake',
+        pos: ['noun'],
         orderIndex: 2,
     },
     {
@@ -11179,6 +12195,7 @@ export const questions: Question[] = [
         sectionLabel: '第11回 単語の学習③ 名詞②',
         promptJp: '丘、小山',
         answerEn: 'hill',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -11190,6 +12207,7 @@ export const questions: Question[] = [
         sectionLabel: '第11回 単語の学習③ 名詞②',
         promptJp: '森',
         answerEn: 'forest',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -11201,6 +12219,7 @@ export const questions: Question[] = [
         sectionLabel: '第11回 単語の学習③ 名詞②',
         promptJp: '滝',
         answerEn: 'waterfall',
+        pos: ['noun'],
         orderIndex: 5,
     },
     {
@@ -11212,6 +12231,7 @@ export const questions: Question[] = [
         sectionLabel: '第11回 単語の学習③ 名詞②',
         promptJp: '火山',
         answerEn: 'volcano',
+        pos: ['noun'],
         orderIndex: 6,
     },
     {
@@ -11223,6 +12243,7 @@ export const questions: Question[] = [
         sectionLabel: '第13・14回 比較の文(1)',
         promptJp: 'あなたは私より若いです。',
         answerEn: 'You are younger than I.',
+        pos: ['sentence'],
         orderIndex: 1,
     },
     {
@@ -11234,6 +12255,7 @@ export const questions: Question[] = [
         sectionLabel: '第13・14回 比較の文(1)',
         promptJp: 'このイヌは3匹の中で一番大きいです。',
         answerEn: 'This dog is the biggest of the three.',
+        pos: ['sentence'],
         orderIndex: 2,
     },
     {
@@ -11245,6 +12267,7 @@ export const questions: Question[] = [
         sectionLabel: '第13・14回 比較の文(1)',
         promptJp: '歌うことは踊ることより簡単ですか。',
         answerEn: 'Is singing easier than dancing?',
+        pos: ['sentence'],
         orderIndex: 3,
     },
     {
@@ -11256,6 +12279,7 @@ export const questions: Question[] = [
         sectionLabel: '第13・14回 比較の文(1)',
         promptJp: 'その5人の中でだれがいちばん長く走りましたか。',
         answerEn: 'Who ran the longest of the five?',
+        pos: ['sentence'],
         orderIndex: 4,
     },
     {
@@ -11267,6 +12291,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 単語の学習① 形容詞',
         promptJp: '安全な',
         answerEn: 'safe',
+        pos: ['adj'],
         orderIndex: 1,
     },
     {
@@ -11278,6 +12303,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 単語の学習① 形容詞',
         promptJp: '危険な',
         answerEn: 'dangerous',
+        pos: ['adj'],
         orderIndex: 2,
     },
     {
@@ -11289,6 +12315,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 単語の学習① 形容詞',
         promptJp: '(幅が)広い',
         answerEn: 'wide',
+        pos: ['adj'],
         orderIndex: 3,
     },
     {
@@ -11300,6 +12327,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 単語の学習① 形容詞',
         promptJp: '(幅が)せまい',
         answerEn: 'narrow',
+        pos: ['adj'],
         orderIndex: 4,
     },
     {
@@ -11311,6 +12339,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 単語の学習① 形容詞',
         promptJp: '太った',
         answerEn: 'fat',
+        pos: ['adj'],
         orderIndex: 5,
     },
     {
@@ -11322,6 +12351,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 単語の学習① 形容詞',
         promptJp: 'やせた',
         answerEn: 'thin',
+        pos: ['adj'],
         orderIndex: 6,
     },
     {
@@ -11333,6 +12363,7 @@ export const questions: Question[] = [
         sectionLabel: '第3・4回 比較の文(2)',
         promptJp: 'この帽子はあの帽子よりよいです。',
         answerEn: 'This cap is better than that one.',
+        pos: ['sentence'],
         orderIndex: 1,
     },
     {
@@ -11344,6 +12375,7 @@ export const questions: Question[] = [
         sectionLabel: '第3・4回 比較の文(2)',
         promptJp: 'この写真はすべての中でいちばんよいです。',
         answerEn: 'This picture is the best of all.',
+        pos: ['sentence'],
         orderIndex: 2,
     },
     {
@@ -11355,6 +12387,7 @@ export const questions: Question[] = [
         sectionLabel: '第3・4回 比較の文(2)',
         promptJp: 'クミはあなたより上手に歌えます。',
         answerEn: 'Kumi can sing better than you.',
+        pos: ['sentence'],
         orderIndex: 3,
     },
     {
@@ -11366,6 +12399,7 @@ export const questions: Question[] = [
         sectionLabel: '第3・4回 比較の文(2)',
         promptJp: '私は夏がいちばん好きです。',
         answerEn: 'I like summer the best.',
+        pos: ['sentence'],
         orderIndex: 4,
     },
     {
@@ -11377,6 +12411,7 @@ export const questions: Question[] = [
         sectionLabel: '第6回 単語の学習② 名詞',
         promptJp: '紳士',
         answerEn: 'gentleman',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -11388,6 +12423,7 @@ export const questions: Question[] = [
         sectionLabel: '第6回 単語の学習② 名詞',
         promptJp: 'ご婦人',
         answerEn: 'lady',
+        pos: ['noun'],
         orderIndex: 2,
     },
     {
@@ -11399,6 +12435,7 @@ export const questions: Question[] = [
         sectionLabel: '第6回 単語の学習② 名詞',
         promptJp: '親',
         answerEn: 'parent',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -11410,6 +12447,7 @@ export const questions: Question[] = [
         sectionLabel: '第6回 単語の学習② 名詞',
         promptJp: 'いとこ',
         answerEn: 'cousin',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -11421,6 +12459,7 @@ export const questions: Question[] = [
         sectionLabel: '第6回 単語の学習② 名詞',
         promptJp: '夫',
         answerEn: 'husband',
+        pos: ['noun'],
         orderIndex: 5,
     },
     {
@@ -11432,6 +12471,7 @@ export const questions: Question[] = [
         sectionLabel: '第6回 単語の学習② 名詞',
         promptJp: '妻',
         answerEn: 'wife',
+        pos: ['noun'],
         orderIndex: 6,
     },
     {
@@ -11443,6 +12483,7 @@ export const questions: Question[] = [
         sectionLabel: '第8・9回 比較の文(3)',
         promptJp: 'もっとゆっくり歩いてください。',
         answerEn: 'Please walk more slowly.',
+        pos: ['sentence'],
         orderIndex: 1,
     },
     {
@@ -11454,6 +12495,7 @@ export const questions: Question[] = [
         sectionLabel: '第8・9回 比較の文(3)',
         promptJp: '私は彼と同じくらい速く走れます。',
         answerEn: 'I can run as fast as him.',
+        pos: ['sentence'],
         orderIndex: 2,
     },
     {
@@ -11465,6 +12507,7 @@ export const questions: Question[] = [
         sectionLabel: '第8・9回 比較の文(3)',
         promptJp: '理科はすべての中でいちばんおもしろいです。',
         answerEn: 'Science is the most interesting of all.',
+        pos: ['sentence'],
         orderIndex: 3,
     },
     {
@@ -11476,6 +12519,7 @@ export const questions: Question[] = [
         sectionLabel: '第8・9回 比較の文(3)',
         promptJp: 'この川はあの川より危険です。',
         answerEn: 'This river is more dangerous than that one.',
+        pos: ['sentence'],
         orderIndex: 4,
     },
     {
@@ -11487,6 +12531,7 @@ export const questions: Question[] = [
         sectionLabel: '第11回 単語の学習③ 名詞・動詞',
         promptJp: '戦争',
         answerEn: 'war',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -11498,6 +12543,7 @@ export const questions: Question[] = [
         sectionLabel: '第11回 単語の学習③ 名詞・動詞',
         promptJp: '平和',
         answerEn: 'peace',
+        pos: ['noun'],
         orderIndex: 2,
     },
     {
@@ -11509,6 +12555,7 @@ export const questions: Question[] = [
         sectionLabel: '第11回 単語の学習③ 名詞・動詞',
         promptJp: '人々',
         answerEn: 'people',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -11520,6 +12567,7 @@ export const questions: Question[] = [
         sectionLabel: '第11回 単語の学習③ 名詞・動詞',
         promptJp: '場所',
         answerEn: 'place',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -11531,6 +12579,7 @@ export const questions: Question[] = [
         sectionLabel: '第11回 単語の学習③ 名詞・動詞',
         promptJp: '賛成する',
         answerEn: 'agree',
+        pos: ['noun'],
         orderIndex: 5,
     },
     {
@@ -11542,6 +12591,7 @@ export const questions: Question[] = [
         sectionLabel: '第11回 単語の学習③ 名詞・動詞',
         promptJp: '押す',
         answerEn: 'push',
+        pos: ['noun'],
         orderIndex: 6,
     },
     {
@@ -11553,6 +12603,7 @@ export const questions: Question[] = [
         sectionLabel: '第13・14回 比較の文(4)',
         promptJp: '彼女はあなたよりずっと年上です。',
         answerEn: 'She is much older than you.',
+        pos: ['sentence'],
         orderIndex: 1,
     },
     {
@@ -11564,6 +12615,7 @@ export const questions: Question[] = [
         sectionLabel: '第13・14回 比較の文(4)',
         promptJp: '数学と理科のどちらがより面白いですか。',
         answerEn: 'Which is more interesting, math or science?',
+        pos: ['sentence'],
         orderIndex: 2,
     },
     {
@@ -11575,6 +12627,7 @@ export const questions: Question[] = [
         sectionLabel: '第13・14回 比較の文(4)',
         promptJp: 'この木はあの木よりもずっと高いです。',
         answerEn: 'This tree is much taller than that one.',
+        pos: ['sentence'],
         orderIndex: 3,
     },
     {
@@ -11586,6 +12639,7 @@ export const questions: Question[] = [
         sectionLabel: '第13・14回 比較の文(4)',
         promptJp: 'サッカーと野球のどちらがよりかんたんですか。',
         answerEn: 'Which is easier, soccer or baseball?',
+        pos: ['sentence'],
         orderIndex: 4,
     },
     {
@@ -11597,6 +12651,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 単語の学習① 動詞',
         promptJp: '描く',
         answerEn: 'draw',
+        pos: ['verb'],
         orderIndex: 1,
     },
     {
@@ -11608,6 +12663,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 単語の学習① 動詞',
         promptJp: '学ぶ',
         answerEn: 'learn',
+        pos: ['verb'],
         orderIndex: 2,
     },
     {
@@ -11619,6 +12675,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 単語の学習① 動詞',
         promptJp: '(ものを)投げる',
         answerEn: 'throw',
+        pos: ['verb'],
         orderIndex: 3,
     },
     {
@@ -11630,6 +12687,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 単語の学習① 動詞',
         promptJp: '決心する',
         answerEn: 'decide',
+        pos: ['verb'],
         orderIndex: 4,
     },
     {
@@ -11641,6 +12699,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 単語の学習① 動詞',
         promptJp: 'デザインする',
         answerEn: 'design',
+        pos: ['verb'],
         orderIndex: 5,
     },
     {
@@ -11652,6 +12711,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 単語の学習① 動詞',
         promptJp: '(...を)売る',
         answerEn: 'sell',
+        pos: ['verb'],
         orderIndex: 6,
     },
     {
@@ -11663,6 +12723,7 @@ export const questions: Question[] = [
         sectionLabel: '第3・4回 受け身(1)',
         promptJp: 'このペンは学校で使われています。',
         answerEn: 'This pen is used at school.',
+        pos: ['sentence'],
         orderIndex: 1,
     },
     {
@@ -11674,6 +12735,7 @@ export const questions: Question[] = [
         sectionLabel: '第3・4回 受け身(1)',
         promptJp: 'これらのラケットはエミによって使われています。',
         answerEn: 'These rackets are used by Emi.',
+        pos: ['sentence'],
         orderIndex: 2,
     },
     {
@@ -11685,6 +12747,7 @@ export const questions: Question[] = [
         sectionLabel: '第3・4回 受け身(1)',
         promptJp: 'そのネコは子どもたちによってつかまえられましたか。',
         answerEn: 'Was the cat caught by children?',
+        pos: ['sentence'],
         orderIndex: 3,
     },
     {
@@ -11696,6 +12759,7 @@ export const questions: Question[] = [
         sectionLabel: '第3・4回 受け身(1)',
         promptJp: '昼食は私の母によって料理されたのではありません。',
         answerEn: 'Lunch was not cooked by my mother.',
+        pos: ['sentence'],
         orderIndex: 4,
     },
     {
@@ -11707,6 +12771,7 @@ export const questions: Question[] = [
         sectionLabel: '第6回 単語の学習② 形容詞',
         promptJp: 'かっこいい',
         answerEn: 'cool',
+        pos: ['adj'],
         orderIndex: 1,
     },
     {
@@ -11718,6 +12783,7 @@ export const questions: Question[] = [
         sectionLabel: '第6回 単語の学習② 形容詞',
         promptJp: 'とてもおいしい',
         answerEn: 'delicious',
+        pos: ['adj'],
         orderIndex: 2,
     },
     {
@@ -11729,6 +12795,7 @@ export const questions: Question[] = [
         sectionLabel: '第6回 単語の学習② 形容詞',
         promptJp: '(...を)恐れて',
         answerEn: 'afraid',
+        pos: ['adj'],
         orderIndex: 3,
     },
     {
@@ -11740,6 +12807,7 @@ export const questions: Question[] = [
         sectionLabel: '第6回 単語の学習② 形容詞',
         promptJp: '驚くべき',
         answerEn: 'amazing',
+        pos: ['adj'],
         orderIndex: 4,
     },
     {
@@ -11751,6 +12819,7 @@ export const questions: Question[] = [
         sectionLabel: '第6回 単語の学習② 形容詞',
         promptJp: '年下のほうの',
         answerEn: 'junior',
+        pos: ['adj'],
         orderIndex: 5,
     },
     {
@@ -11762,6 +12831,7 @@ export const questions: Question[] = [
         sectionLabel: '第6回 単語の学習② 形容詞',
         promptJp: '大声の',
         answerEn: 'loud',
+        pos: ['adj'],
         orderIndex: 6,
     },
     {
@@ -11773,6 +12843,7 @@ export const questions: Question[] = [
         sectionLabel: '第8・9回 受け身(2)',
         promptJp: 'このCDは生徒によって聞かれています。',
         answerEn: 'This CD is listened to by students.',
+        pos: ['sentence'],
         orderIndex: 1,
     },
     {
@@ -11784,6 +12855,7 @@ export const questions: Question[] = [
         sectionLabel: '第8・9回 受け身(2)',
         promptJp: '彼の名前はみんなに知られています。',
         answerEn: 'His name is known to everyone.',
+        pos: ['sentence'],
         orderIndex: 2,
     },
     {
@@ -11795,6 +12867,7 @@ export const questions: Question[] = [
         sectionLabel: '第8・9回 受け身(2)',
         promptJp: '私は家族によってタクと呼ばれています。',
         answerEn: 'I am called Taku by my family.',
+        pos: ['sentence'],
         orderIndex: 3,
     },
     {
@@ -11806,6 +12879,7 @@ export const questions: Question[] = [
         sectionLabel: '第8・9回 受け身(2)',
         promptJp: 'これらのウサギはその生徒たちによって世話させています。',
         answerEn: 'These rabbits are cared for by the students.',
+        pos: ['sentence'],
         orderIndex: 4,
     },
     {
@@ -11817,6 +12891,7 @@ export const questions: Question[] = [
         sectionLabel: '第11回 単語の学習③ 名詞・副詞',
         promptJp: '旅行',
         answerEn: 'trip',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -11828,6 +12903,7 @@ export const questions: Question[] = [
         sectionLabel: '第11回 単語の学習③ 名詞・副詞',
         promptJp: '休み',
         answerEn: 'vacation',
+        pos: ['noun'],
         orderIndex: 2,
     },
     {
@@ -11839,6 +12915,7 @@ export const questions: Question[] = [
         sectionLabel: '第11回 単語の学習③ 名詞・副詞',
         promptJp: '週末',
         answerEn: 'weekend',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -11850,6 +12927,7 @@ export const questions: Question[] = [
         sectionLabel: '第11回 単語の学習③ 名詞・副詞',
         promptJp: '海外へ',
         answerEn: 'abroad',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -11861,6 +12939,7 @@ export const questions: Question[] = [
         sectionLabel: '第11回 単語の学習③ 名詞・副詞',
         promptJp: 'カレンダー',
         answerEn: 'calendar',
+        pos: ['noun'],
         orderIndex: 5,
     },
     {
@@ -11872,6 +12951,7 @@ export const questions: Question[] = [
         sectionLabel: '第11回 単語の学習③ 名詞・副詞',
         promptJp: '祝日',
         answerEn: 'holiday',
+        pos: ['noun'],
         orderIndex: 6,
     },
     {
@@ -11883,6 +12963,7 @@ export const questions: Question[] = [
         sectionLabel: '第13・14回 現在完了(継続)',
         promptJp: '私はギターを9年間弾いています。',
         answerEn: 'I have played the guitar for nine years.',
+        pos: ['sentence'],
         orderIndex: 1,
     },
     {
@@ -11894,6 +12975,7 @@ export const questions: Question[] = [
         sectionLabel: '第13・14回 現在完了(継続)',
         promptJp: '彼は先週の月曜日から忙しくありません。',
         answerEn: 'He has not been busy since last Monday.',
+        pos: ['sentence'],
         orderIndex: 2,
     },
     {
@@ -11905,6 +12987,7 @@ export const questions: Question[] = [
         sectionLabel: '第13・14回 現在完了(継続)',
         promptJp: '彼は昨夜から怒っていますか。',
         answerEn: 'Has he been angry since last night?',
+        pos: ['sentence'],
         orderIndex: 3,
     },
     {
@@ -11916,6 +12999,7 @@ export const questions: Question[] = [
         sectionLabel: '第13・14回 現在完了(継続)',
         promptJp: 'あなたはどのくらいの間ギターを練習していますか。',
         answerEn: 'How long have you practiced the guitar?',
+        pos: ['sentence'],
         orderIndex: 4,
     },
     {
@@ -11927,6 +13011,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 単語の学習① 名詞①',
         promptJp: 'ネクタイ',
         answerEn: 'tie',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -11938,6 +13023,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 単語の学習① 名詞①',
         promptJp: 'ユニフォーム',
         answerEn: 'uniform',
+        pos: ['noun'],
         orderIndex: 2,
     },
     {
@@ -11949,6 +13035,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 単語の学習① 名詞①',
         promptJp: 'ベルト、帯',
         answerEn: 'belt',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -11960,6 +13047,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 単語の学習① 名詞①',
         promptJp: 'コート、上着',
         answerEn: 'coat',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -11971,6 +13059,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 単語の学習① 名詞①',
         promptJp: '長ぐつ、ブーツ',
         answerEn: 'boot',
+        pos: ['noun'],
         orderIndex: 5,
     },
     {
@@ -11982,6 +13071,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 単語の学習① 名詞①',
         promptJp: 'ワイシャツ',
         answerEn: 'shirt',
+        pos: ['noun'],
         orderIndex: 6,
     },
     {
@@ -11993,6 +13083,7 @@ export const questions: Question[] = [
         sectionLabel: '第3〜5回 現在完了(完了・結果)',
         promptJp: '彼はちょうど宿題を終えたところです。',
         answerEn: 'He has just finished his homework.',
+        pos: ['sentence'],
         orderIndex: 1,
     },
     {
@@ -12004,6 +13095,7 @@ export const questions: Question[] = [
         sectionLabel: '第3〜5回 現在完了(完了・結果)',
         promptJp: '彼女は傘をなくしてしまいました。',
         answerEn: 'She has lost her umbrella.',
+        pos: ['sentence'],
         orderIndex: 2,
     },
     {
@@ -12015,6 +13107,7 @@ export const questions: Question[] = [
         sectionLabel: '第3〜5回 現在完了(完了・結果)',
         promptJp: 'あなたはもうその映画を見てしまいましたか。',
         answerEn: 'Have you watched the movie yet?',
+        pos: ['sentence'],
         orderIndex: 3,
     },
     {
@@ -12026,6 +13119,7 @@ export const questions: Question[] = [
         sectionLabel: '第3〜5回 現在完了(完了・結果)',
         promptJp: '彼女はもう学校を出てしまいました。',
         answerEn: 'She has already left school.',
+        pos: ['sentence'],
         orderIndex: 4,
     },
     {
@@ -12037,6 +13131,7 @@ export const questions: Question[] = [
         sectionLabel: '第6回 単語の学習② 名詞②',
         promptJp: '円',
         answerEn: 'yen',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -12048,6 +13143,7 @@ export const questions: Question[] = [
         sectionLabel: '第6回 単語の学習② 名詞②',
         promptJp: 'ドル',
         answerEn: 'dollar',
+        pos: ['noun'],
         orderIndex: 2,
     },
     {
@@ -12059,6 +13155,7 @@ export const questions: Question[] = [
         sectionLabel: '第6回 単語の学習② 名詞②',
         promptJp: 'カード',
         answerEn: 'card',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -12070,6 +13167,7 @@ export const questions: Question[] = [
         sectionLabel: '第6回 単語の学習② 名詞②',
         promptJp: '案・計画',
         answerEn: 'plan',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -12081,6 +13179,7 @@ export const questions: Question[] = [
         sectionLabel: '第6回 単語の学習② 名詞②',
         promptJp: '財布・札入れ',
         answerEn: 'wallet',
+        pos: ['noun'],
         orderIndex: 5,
     },
     {
@@ -12092,6 +13191,7 @@ export const questions: Question[] = [
         sectionLabel: '第6回 単語の学習② 名詞②',
         promptJp: '硬貨',
         answerEn: 'coin',
+        pos: ['noun'],
         orderIndex: 6,
     },
     {
@@ -12103,6 +13203,7 @@ export const questions: Question[] = [
         sectionLabel: '第8〜10回 現在完了(経験)',
         promptJp: 'ユキは以前ブラジルに行ったことがあります。',
         answerEn: 'Yuki has been to Brazil before.',
+        pos: ['sentence'],
         orderIndex: 1,
     },
     {
@@ -12114,6 +13215,7 @@ export const questions: Question[] = [
         sectionLabel: '第8〜10回 現在完了(経験)',
         promptJp: '私は1度もピアノを弾いたことがありません。',
         answerEn: 'I have never played the piano.',
+        pos: ['sentence'],
         orderIndex: 2,
     },
     {
@@ -12125,6 +13227,7 @@ export const questions: Question[] = [
         sectionLabel: '第8〜10回 現在完了(経験)',
         promptJp: '私の母は奈良を2度訪れたことがあります。',
         answerEn: 'My mother has visited Nara twice.',
+        pos: ['sentence'],
         orderIndex: 3,
     },
     {
@@ -12136,6 +13239,7 @@ export const questions: Question[] = [
         sectionLabel: '第8〜10回 現在完了(経験)',
         promptJp: 'あなたのお兄さんは今までにギターを弾いたことがありますか。',
         answerEn: 'Has your brother ever played the guitar?',
+        pos: ['sentence'],
         orderIndex: 4,
     },
     {
@@ -12147,6 +13251,7 @@ export const questions: Question[] = [
         sectionLabel: '第11回 単語の学習③ 名詞③',
         promptJp: 'バイオリン',
         answerEn: 'violin',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -12158,6 +13263,7 @@ export const questions: Question[] = [
         sectionLabel: '第11回 単語の学習③ 名詞③',
         promptJp: '太鼓・ドラム',
         answerEn: 'drum',
+        pos: ['noun'],
         orderIndex: 2,
     },
     {
@@ -12169,6 +13275,7 @@ export const questions: Question[] = [
         sectionLabel: '第11回 単語の学習③ 名詞③',
         promptJp: '楽団・バンド',
         answerEn: 'band',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -12180,6 +13287,8 @@ export const questions: Question[] = [
         sectionLabel: '第11回 単語の学習③ 名詞③',
         promptJp: 'フルート',
         answerEn: 'flute',
+        pos: ['noun', 'verb'],
+verb'],
         orderIndex: 4,
     },
     {
@@ -12191,6 +13300,7 @@ export const questions: Question[] = [
         sectionLabel: '第11回 単語の学習③ 名詞③',
         promptJp: 'オーケストラ',
         answerEn: 'orchestra',
+        pos: ['noun'],
         orderIndex: 5,
     },
     {
@@ -12202,6 +13312,7 @@ export const questions: Question[] = [
         sectionLabel: '第11回 単語の学習③ 名詞③',
         promptJp: 'コンサート',
         answerEn: 'concert',
+        pos: ['noun'],
         orderIndex: 6,
     },
     {
@@ -12213,6 +13324,7 @@ export const questions: Question[] = [
         sectionLabel: '第13〜15回 時制のまとめ',
         promptJp: '私は1度その自転車を使ったことがあります。',
         answerEn: 'I have used the bike once.',
+        pos: ['sentence'],
         orderIndex: 1,
     },
     {
@@ -12224,6 +13336,7 @@ export const questions: Question[] = [
         sectionLabel: '第13〜15回 時制のまとめ',
         promptJp: 'あなたはそのCDを買うつもりですか。',
         answerEn: 'Are you going to buy the CD?',
+        pos: ['sentence'],
         orderIndex: 2,
     },
     {
@@ -12235,6 +13348,7 @@ export const questions: Question[] = [
         sectionLabel: '第13〜15回 時制のまとめ',
         promptJp: '彼はちょうど宿題をしたところです。',
         answerEn: 'He has just done his homework.',
+        pos: ['sentence'],
         orderIndex: 3,
     },
     {
@@ -12246,6 +13360,7 @@ export const questions: Question[] = [
         sectionLabel: '第13〜15回 時制のまとめ',
         promptJp: '彼女は今コンピュータを使っていますか。',
         answerEn: 'Is she using a computer now?',
+        pos: ['sentence'],
         orderIndex: 4,
     },
     {
@@ -12257,6 +13372,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 単語の学習① 名詞①',
         promptJp: '大工',
         answerEn: 'carpenter',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -12268,6 +13384,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 単語の学習① 名詞①',
         promptJp: '農民',
         answerEn: 'farmer',
+        pos: ['noun'],
         orderIndex: 2,
     },
     {
@@ -12279,6 +13396,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 単語の学習① 名詞①',
         promptJp: '運転手',
         answerEn: 'driver',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -12290,6 +13408,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 単語の学習① 名詞①',
         promptJp: '兵士',
         answerEn: 'soldier',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -12301,6 +13420,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 単語の学習① 名詞①',
         promptJp: '弁護士',
         answerEn: 'lawyer',
+        pos: ['noun'],
         orderIndex: 5,
     },
     {
@@ -12312,6 +13432,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 単語の学習① 名詞①',
         promptJp: '歯医者',
         answerEn: 'dentist',
+        pos: ['noun'],
         orderIndex: 6,
     },
     {
@@ -12323,6 +13444,7 @@ export const questions: Question[] = [
         sectionLabel: '第3〜5回 不定詞のいろいろな用法',
         promptJp: '彼は私にいつ東京を訪れるべきか言いました。',
         answerEn: 'He told me when to visit Tokyo.',
+        pos: ['sentence'],
         orderIndex: 1,
     },
     {
@@ -12334,6 +13456,7 @@ export const questions: Question[] = [
         sectionLabel: '第3〜5回 不定詞のいろいろな用法',
         promptJp: 'あなたはいつ出発すべきか知っていますか。',
         answerEn: 'Do you know when to leave?',
+        pos: ['sentence'],
         orderIndex: 2,
     },
     {
@@ -12345,6 +13468,7 @@ export const questions: Question[] = [
         sectionLabel: '第3〜5回 不定詞のいろいろな用法',
         promptJp: 'あなたは私に数学を教えてほしいですか。',
         answerEn: 'Do you want me to teach you math?',
+        pos: ['sentence'],
         orderIndex: 3,
     },
     {
@@ -12356,6 +13480,7 @@ export const questions: Question[] = [
         sectionLabel: '第3〜5回 不定詞のいろいろな用法',
         promptJp: '彼女は私たちに泳ぎかたを見せてくれました。',
         answerEn: 'She showed us how to swim.',
+        pos: ['sentence'],
         orderIndex: 4,
     },
     {
@@ -12367,6 +13492,7 @@ export const questions: Question[] = [
         sectionLabel: '第6回 単語の学習② 名詞②・動詞・形容詞',
         promptJp: '計画、プログラム',
         answerEn: 'program',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -12378,6 +13504,7 @@ export const questions: Question[] = [
         sectionLabel: '第6回 単語の学習② 名詞②・動詞・形容詞',
         promptJp: 'ラジオ',
         answerEn: 'radio',
+        pos: ['noun'],
         orderIndex: 2,
     },
     {
@@ -12389,6 +13516,7 @@ export const questions: Question[] = [
         sectionLabel: '第6回 単語の学習② 名詞②・動詞・形容詞',
         promptJp: '文化、教養',
         answerEn: 'culture',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -12400,6 +13528,7 @@ export const questions: Question[] = [
         sectionLabel: '第6回 単語の学習② 名詞②・動詞・形容詞',
         promptJp: 'インタビューする',
         answerEn: 'interview',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -12411,6 +13540,7 @@ export const questions: Question[] = [
         sectionLabel: '第6回 単語の学習② 名詞②・動詞・形容詞',
         promptJp: '(声を立てて)笑う',
         answerEn: 'laugh',
+        pos: ['verb'],
         orderIndex: 5,
     },
     {
@@ -12422,6 +13552,7 @@ export const questions: Question[] = [
         sectionLabel: '第6回 単語の学習② 名詞②・動詞・形容詞',
         promptJp: '静かな',
         answerEn: 'quiet',
+        pos: ['adj'],
         orderIndex: 6,
     },
     {
@@ -12433,6 +13564,7 @@ export const questions: Question[] = [
         sectionLabel: '第8〜10回 分詞の形容詞的用法',
         promptJp: 'あなたはあの泣いている男の子を知っていますか。',
         answerEn: 'Do you know that crying boy?',
+        pos: ['sentence'],
         orderIndex: 1,
     },
     {
@@ -12444,6 +13576,7 @@ export const questions: Question[] = [
         sectionLabel: '第8〜10回 分詞の形容詞的用法',
         promptJp: 'これは彼によって書かれた本です。',
         answerEn: 'This is a book written by him.',
+        pos: ['sentence'],
         orderIndex: 2,
     },
     {
@@ -12455,6 +13588,7 @@ export const questions: Question[] = [
         sectionLabel: '第8〜10回 分詞の形容詞的用法',
         promptJp: 'トムと話しているあの少女は私の姉です。',
         answerEn: 'That girl talking with Tom is my sister.',
+        pos: ['sentence'],
         orderIndex: 3,
     },
     {
@@ -12466,6 +13600,7 @@ export const questions: Question[] = [
         sectionLabel: '第8〜10回 分詞の形容詞的用法',
         promptJp: 'あなたはあの割られた窓を見ましたか。',
         answerEn: 'Did you see that broken window?',
+        pos: ['sentence'],
         orderIndex: 4,
     },
     {
@@ -12477,6 +13612,7 @@ export const questions: Question[] = [
         sectionLabel: '第11回 単語の学習③ 形容詞②・動詞②',
         promptJp: '甘い',
         answerEn: 'sweet',
+        pos: ['adj'],
         orderIndex: 1,
     },
     {
@@ -12488,6 +13624,7 @@ export const questions: Question[] = [
         sectionLabel: '第11回 単語の学習③ 形容詞②・動詞②',
         promptJp: 'すばらしい',
         answerEn: 'wonderful',
+        pos: ['adj'],
         orderIndex: 2,
     },
     {
@@ -12499,6 +13636,7 @@ export const questions: Question[] = [
         sectionLabel: '第11回 単語の学習③ 形容詞②・動詞②',
         promptJp: '特別の',
         answerEn: 'special',
+        pos: ['adj'],
         orderIndex: 3,
     },
     {
@@ -12510,6 +13648,7 @@ export const questions: Question[] = [
         sectionLabel: '第11回 単語の学習③ 形容詞②・動詞②',
         promptJp: '驚いた',
         answerEn: 'surprised',
+        pos: ['adj'],
         orderIndex: 4,
     },
     {
@@ -12521,6 +13660,7 @@ export const questions: Question[] = [
         sectionLabel: '第11回 単語の学習③ 形容詞②・動詞②',
         promptJp: '心配させる',
         answerEn: 'worry',
+        pos: ['verb'],
         orderIndex: 5,
     },
     {
@@ -12532,6 +13672,7 @@ export const questions: Question[] = [
         sectionLabel: '第11回 単語の学習③ 形容詞②・動詞②',
         promptJp: 'かわいい、見事な',
         answerEn: 'nice',
+        pos: ['adj'],
         orderIndex: 6,
     },
     {
@@ -12543,6 +13684,7 @@ export const questions: Question[] = [
         sectionLabel: '第13〜15回 いろいろな疑問文',
         promptJp: '彼女は忙しくないのですよね。',
         answerEn: 'She isn\'t busy, is she?',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -12554,6 +13696,7 @@ export const questions: Question[] = [
         sectionLabel: '第13〜15回 いろいろな疑問文',
         promptJp: '私はあの男性が誰か知りません。',
         answerEn: 'I don\'t know who that man is.',
+        pos: ['noun'],
         orderIndex: 2,
     },
     {
@@ -12565,6 +13708,7 @@ export const questions: Question[] = [
         sectionLabel: '第13〜15回 いろいろな疑問文',
         promptJp: '彼はイヌを3匹飼っているのですよね。',
         answerEn: 'He has three dogs, doesn\'t he?',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -12576,6 +13720,7 @@ export const questions: Question[] = [
         sectionLabel: '第13〜15回 いろいろな疑問文',
         promptJp: '彼女はサッカーが好きではないのですか。',
         answerEn: 'Doesn\'t she like soccer?',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -12587,6 +13732,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 単語の学習① 名詞',
         promptJp: 'つめ',
         answerEn: 'nail',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -12598,6 +13744,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 単語の学習① 名詞',
         promptJp: '指',
         answerEn: 'finger',
+        pos: ['noun'],
         orderIndex: 2,
     },
     {
@@ -12609,6 +13756,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 単語の学習① 名詞',
         promptJp: 'ひざ',
         answerEn: 'lap',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -12620,6 +13768,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 単語の学習① 名詞',
         promptJp: '肩',
         answerEn: 'shoulder',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -12631,6 +13780,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 単語の学習① 名詞',
         promptJp: '胃',
         answerEn: 'stomach',
+        pos: ['noun'],
         orderIndex: 5,
     },
     {
@@ -12642,6 +13792,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 単語の学習① 名詞',
         promptJp: '歯',
         answerEn: 'tooth',
+        pos: ['noun'],
         orderIndex: 6,
     },
     {
@@ -12653,6 +13804,7 @@ export const questions: Question[] = [
         sectionLabel: '第3〜5回 関係代名詞 who',
         promptJp: '私にはカナダに住んでいる姉がいます。',
         answerEn: 'I have a sister who lives in Canada.',
+        pos: ['sentence'],
         orderIndex: 1,
     },
     {
@@ -12664,6 +13816,7 @@ export const questions: Question[] = [
         sectionLabel: '第3〜5回 関係代名詞 who',
         promptJp: 'その会社は英語を話す男性を必要としています。',
         answerEn: 'The company needs a man who speaks English.',
+        pos: ['sentence'],
         orderIndex: 2,
     },
     {
@@ -12675,6 +13828,7 @@ export const questions: Question[] = [
         sectionLabel: '第3〜5回 関係代名詞 who',
         promptJp: 'あなたはそこで走っている男の子を知っていますか。',
         answerEn: 'Do you know the boy who is running there?',
+        pos: ['sentence'],
         orderIndex: 3,
     },
     {
@@ -12686,6 +13840,7 @@ export const questions: Question[] = [
         sectionLabel: '第3〜5回 関係代名詞 who',
         promptJp: '彼はじょうずに歌を歌う少年です。',
         answerEn: 'He is the boy who sings well.',
+        pos: ['sentence'],
         orderIndex: 4,
     },
     {
@@ -12697,6 +13852,7 @@ export const questions: Question[] = [
         sectionLabel: '第6回 単語の学習② 動詞',
         promptJp: '去る、出発する',
         answerEn: 'leave',
+        pos: ['verb'],
         orderIndex: 1,
     },
     {
@@ -12708,6 +13864,7 @@ export const questions: Question[] = [
         sectionLabel: '第6回 単語の学習② 動詞',
         promptJp: '着く、到着する',
         answerEn: 'arrive',
+        pos: ['verb'],
         orderIndex: 2,
     },
     {
@@ -12719,6 +13876,7 @@ export const questions: Question[] = [
         sectionLabel: '第6回 単語の学習② 動詞',
         promptJp: '思い出す、覚えている',
         answerEn: 'remember',
+        pos: ['verb'],
         orderIndex: 3,
     },
     {
@@ -12730,6 +13888,7 @@ export const questions: Question[] = [
         sectionLabel: '第6回 単語の学習② 動詞',
         promptJp: '(...を)忘れる',
         answerEn: 'forget',
+        pos: ['verb'],
         orderIndex: 4,
     },
     {
@@ -12741,6 +13900,7 @@ export const questions: Question[] = [
         sectionLabel: '第6回 単語の学習② 動詞',
         promptJp: '生まれる',
         answerEn: 'born',
+        pos: ['verb'],
         orderIndex: 5,
     },
     {
@@ -12752,6 +13912,7 @@ export const questions: Question[] = [
         sectionLabel: '第6回 単語の学習② 動詞',
         promptJp: '死ぬ',
         answerEn: 'die',
+        pos: ['verb'],
         orderIndex: 6,
     },
     {
@@ -12763,6 +13924,7 @@ export const questions: Question[] = [
         sectionLabel: '第8〜10回 主格の関係代名詞',
         promptJp: '泳いでいるそのイヌはゴンです。',
         answerEn: 'The dog which is swimming is Gon.',
+        pos: ['sentence'],
         orderIndex: 1,
     },
     {
@@ -12774,6 +13936,7 @@ export const questions: Question[] = [
         sectionLabel: '第8〜10回 主格の関係代名詞',
         promptJp: '私はこの本を書いた男性に会いました。',
         answerEn: 'I met a man who wrote this book.',
+        pos: ['sentence'],
         orderIndex: 2,
     },
     {
@@ -12785,6 +13948,7 @@ export const questions: Question[] = [
         sectionLabel: '第8〜10回 主格の関係代名詞',
         promptJp: '私は彼によってとられた写真を何枚か見ました。',
         answerEn: 'I saw some pictures taken by him.',
+        pos: ['sentence'],
         orderIndex: 3,
     },
     {
@@ -12796,6 +13960,7 @@ export const questions: Question[] = [
         sectionLabel: '第8〜10回 主格の関係代名詞',
         promptJp: '短い髪をしたその女の子はエミの妹です。',
         answerEn: 'The girl who has short hair is Emi\'s sister.',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -12807,6 +13972,7 @@ export const questions: Question[] = [
         sectionLabel: '第11回 単語の学習③ 形容詞',
         promptJp: '中国の',
         answerEn: 'Chinese',
+        pos: ['adj'],
         orderIndex: 1,
     },
     {
@@ -12818,6 +13984,7 @@ export const questions: Question[] = [
         sectionLabel: '第11回 単語の学習③ 形容詞',
         promptJp: 'インドの',
         answerEn: 'Indian',
+        pos: ['adj'],
         orderIndex: 2,
     },
     {
@@ -12829,6 +13996,7 @@ export const questions: Question[] = [
         sectionLabel: '第11回 単語の学習③ 形容詞',
         promptJp: '韓国の',
         answerEn: 'Korean',
+        pos: ['adj'],
         orderIndex: 3,
     },
     {
@@ -12840,6 +14008,7 @@ export const questions: Question[] = [
         sectionLabel: '第11回 単語の学習③ 形容詞',
         promptJp: 'スペインの',
         answerEn: 'Spanish',
+        pos: ['adj'],
         orderIndex: 4,
     },
     {
@@ -12851,6 +14020,7 @@ export const questions: Question[] = [
         sectionLabel: '第11回 単語の学習③ 形容詞',
         promptJp: 'フランスの',
         answerEn: 'French',
+        pos: ['adj'],
         orderIndex: 5,
     },
     {
@@ -12862,6 +14032,7 @@ export const questions: Question[] = [
         sectionLabel: '第11回 単語の学習③ 形容詞',
         promptJp: '外国の',
         answerEn: 'foreign',
+        pos: ['adj'],
         orderIndex: 6,
     },
     {
@@ -12873,6 +14044,7 @@ export const questions: Question[] = [
         sectionLabel: '第13〜15回 目的格の関係代名詞',
         promptJp: '彼が建てた家は美しいです。',
         answerEn: 'The house he built is beautiful.',
+        pos: ['sentence'],
         orderIndex: 1,
     },
     {
@@ -12884,6 +14056,7 @@ export const questions: Question[] = [
         sectionLabel: '第13〜15回 目的格の関係代名詞',
         promptJp: '私はユウコがくれた帽子が好きです。',
         answerEn: 'I like the hat Yuko gave me.',
+        pos: ['sentence'],
         orderIndex: 2,
     },
     {
@@ -12895,6 +14068,7 @@ export const questions: Question[] = [
         sectionLabel: '第13〜15回 目的格の関係代名詞',
         promptJp: 'これは私が昨日読んだ本です。',
         answerEn: 'This is the book I read yesterday.',
+        pos: ['sentence'],
         orderIndex: 3,
     },
     {
@@ -12906,6 +14080,7 @@ export const questions: Question[] = [
         sectionLabel: '第13〜15回 目的格の関係代名詞',
         promptJp: '夏は私がいちばん好きな季節です。',
         answerEn: 'Summer is the season I like the best.',
+        pos: ['sentence'],
         orderIndex: 4,
     },
     {
@@ -12917,6 +14092,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 単語の学習① 名詞①・動詞',
         promptJp: '大皿、料理',
         answerEn: 'dish',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -12928,6 +14104,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 単語の学習① 名詞①・動詞',
         promptJp: '服装、ワンピース',
         answerEn: 'dress',
+        pos: ['noun'],
         orderIndex: 2,
     },
     {
@@ -12939,6 +14116,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 単語の学習① 名詞①・動詞',
         promptJp: '招待する',
         answerEn: 'invite',
+        pos: ['verb'],
         orderIndex: 3,
     },
     {
@@ -12950,6 +14128,8 @@ export const questions: Question[] = [
         sectionLabel: '第1回 単語の学習① 名詞①・動詞',
         promptJp: '注文、命令',
         answerEn: 'order',
+        pos: ['noun', 'verb'],
+verb'],
         orderIndex: 4,
     },
     {
@@ -12961,6 +14141,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 単語の学習① 名詞①・動詞',
         promptJp: '席、座席',
         answerEn: 'seat',
+        pos: ['noun'],
         orderIndex: 5,
     },
     {
@@ -12972,6 +14153,7 @@ export const questions: Question[] = [
         sectionLabel: '第1回 単語の学習① 名詞①・動詞',
         promptJp: '顧客、得意先',
         answerEn: 'customer',
+        pos: ['noun'],
         orderIndex: 6,
     },
     {
@@ -12983,6 +14165,7 @@ export const questions: Question[] = [
         sectionLabel: '第3〜5回 連語の接続詞',
         promptJp: '私は眠すぎて映画を見られませんでした。',
         answerEn: 'I was too sleepy to see the movie.',
+        pos: ['sentence'],
         orderIndex: 1,
     },
     {
@@ -12994,6 +14177,7 @@ export const questions: Question[] = [
         sectionLabel: '第3〜5回 連語の接続詞',
         promptJp: 'あなたはできるだけ速く走らなければなりません。',
         answerEn: 'You have to run as fast as you can.',
+        pos: ['sentence'],
         orderIndex: 2,
     },
     {
@@ -13005,6 +14189,7 @@ export const questions: Question[] = [
         sectionLabel: '第3〜5回 連語の接続詞',
         promptJp: '彼は科学者ではなくパイロットです。',
         answerEn: 'He is not a scientist but a pilot.',
+        pos: ['sentence'],
         orderIndex: 3,
     },
     {
@@ -13016,6 +14201,7 @@ export const questions: Question[] = [
         sectionLabel: '第3〜5回 連語の接続詞',
         promptJp: '私は牛乳かジュースのどちらかを飲みたいです。',
         answerEn: 'I want to drink either milk or juice.',
+        pos: ['sentence'],
         orderIndex: 4,
     },
     {
@@ -13027,6 +14213,7 @@ export const questions: Question[] = [
         sectionLabel: '第6回 単語の学習② 名詞②・形容詞',
         promptJp: '力、エネルギー',
         answerEn: 'power',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -13038,6 +14225,7 @@ export const questions: Question[] = [
         sectionLabel: '第6回 単語の学習② 名詞②・形容詞',
         promptJp: 'エネルギー、気力',
         answerEn: 'energy',
+        pos: ['noun'],
         orderIndex: 2,
     },
     {
@@ -13049,6 +14237,7 @@ export const questions: Question[] = [
         sectionLabel: '第6回 単語の学習② 名詞②・形容詞',
         promptJp: '正しくない、調子が悪い',
         answerEn: 'wrong',
+        pos: ['adj'],
         orderIndex: 3,
     },
     {
@@ -13060,6 +14249,7 @@ export const questions: Question[] = [
         sectionLabel: '第6回 単語の学習② 名詞②・形容詞',
         promptJp: '健康',
         answerEn: 'health',
+        pos: ['noun'],
         orderIndex: 4,
     },
     {
@@ -13071,6 +14261,7 @@ export const questions: Question[] = [
         sectionLabel: '第6回 単語の学習② 名詞②・形容詞',
         promptJp: 'レシピ',
         answerEn: 'recipe',
+        pos: ['noun'],
         orderIndex: 5,
     },
     {
@@ -13082,6 +14273,7 @@ export const questions: Question[] = [
         sectionLabel: '第6回 単語の学習② 名詞②・形容詞',
         promptJp: '生活、人生',
         answerEn: 'life',
+        pos: ['noun'],
         orderIndex: 6,
     },
     {
@@ -13093,6 +14285,7 @@ export const questions: Question[] = [
         sectionLabel: '第8〜10回 時・場所・方向を表す前置詞',
         promptJp: '彼女は金曜日にカナダへ向けて出発しました。',
         answerEn: 'She left for Canada on Friday.',
+        pos: ['sentence'],
         orderIndex: 1,
     },
     {
@@ -13104,6 +14297,7 @@ export const questions: Question[] = [
         sectionLabel: '第8〜10回 時・場所・方向を表す前置詞',
         promptJp: 'ベッドの上にかわいいネコがいました。',
         answerEn: 'There was a cute cat on the bed.',
+        pos: ['sentence'],
         orderIndex: 2,
     },
     {
@@ -13115,6 +14309,7 @@ export const questions: Question[] = [
         sectionLabel: '第8〜10回 時・場所・方向を表す前置詞',
         promptJp: 'タロウとジロウの間にいる少女はユミです。',
         answerEn: 'The girl between Taro and Jiro is Yumi.',
+        pos: ['sentence'],
         orderIndex: 3,
     },
     {
@@ -13126,6 +14321,7 @@ export const questions: Question[] = [
         sectionLabel: '第8〜10回 時・場所・方向を表す前置詞',
         promptJp: '1羽の小さな鳥が私の部屋に入ってきました。',
         answerEn: 'A small bird came into my room.',
+        pos: ['sentence'],
         orderIndex: 4,
     },
     {
@@ -13137,6 +14333,7 @@ export const questions: Question[] = [
         sectionLabel: '第11回 単語の学習③ 名詞③・形容詞②',
         promptJp: '写真',
         answerEn: 'photo',
+        pos: ['noun'],
         orderIndex: 1,
     },
     {
@@ -13148,6 +14345,7 @@ export const questions: Question[] = [
         sectionLabel: '第11回 単語の学習③ 名詞③・形容詞②',
         promptJp: '祝祭、祭り',
         answerEn: 'festival',
+        pos: ['noun'],
         orderIndex: 2,
     },
     {
@@ -13159,6 +14357,7 @@ export const questions: Question[] = [
         sectionLabel: '第11回 単語の学習③ 名詞③・形容詞②',
         promptJp: '旅行(する)',
         answerEn: 'travel',
+        pos: ['noun'],
         orderIndex: 3,
     },
     {
@@ -13170,6 +14369,7 @@ export const questions: Question[] = [
         sectionLabel: '第11回 単語の学習③ 名詞③・形容詞②',
         promptJp: '国際的な',
         answerEn: 'international',
+        pos: ['adj'],
         orderIndex: 4,
     },
     {
@@ -13181,6 +14381,7 @@ export const questions: Question[] = [
         sectionLabel: '第11回 単語の学習③ 名詞③・形容詞②',
         promptJp: 'イルカ',
         answerEn: 'dolphin',
+        pos: ['noun'],
         orderIndex: 5,
     },
     {
@@ -13192,6 +14393,7 @@ export const questions: Question[] = [
         sectionLabel: '第11回 単語の学習③ 名詞③・形容詞②',
         promptJp: 'タコ',
         answerEn: 'octopus',
+        pos: ['noun'],
         orderIndex: 6,
     },
     {
@@ -13203,6 +14405,7 @@ export const questions: Question[] = [
         sectionLabel: '第13〜15回 その他の前置詞・連語',
         promptJp: 'ユミは毎日彼女のイヌの世話をします。',
         answerEn: 'Yumi takes care of her dog every day.',
+        pos: ['sentence'],
         orderIndex: 1,
     },
     {
@@ -13214,6 +14417,7 @@ export const questions: Question[] = [
         sectionLabel: '第13〜15回 その他の前置詞・連語',
         promptJp: '私の兄は英語が得意です。',
         answerEn: 'My brother is good at English.',
+        pos: ['sentence'],
         orderIndex: 2,
     },
     {
@@ -13225,6 +14429,7 @@ export const questions: Question[] = [
         sectionLabel: '第13〜15回 その他の前置詞・連語',
         promptJp: '最初はマイクは納豆が好きではありませんでした。',
         answerEn: 'At first Mike did not like natto.',
+        pos: ['sentence'],
         orderIndex: 3,
     },
     {
@@ -13236,6 +14441,7 @@ export const questions: Question[] = [
         sectionLabel: '第13〜15回 その他の前置詞・連語',
         promptJp: '私たちはユウタの家に着きました。',
         answerEn: 'We arrived at Yuta\'s house.',
+        pos: ['noun'],
         orderIndex: 4,
     },
 ];
