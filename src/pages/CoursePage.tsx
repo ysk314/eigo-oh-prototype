@@ -22,7 +22,7 @@ export function CoursePage() {
     const selectedPartLabel = selectedUnit?.parts.find((part) => part.id === selectedPartId)?.label || '';
     const [openUnitId, setOpenUnitId] = useState<string | null>(null);
     const hasInitializedRef = useRef(false);
-    const accordionItemRefs = useRef(new Map<string, HTMLDivElement>());
+    const accordionItemRefs = useRef(new Map<string, HTMLElement>());
 
     const questionIdToPartId = useMemo(() => {
         const map = new Map<string, string>();
