@@ -81,22 +81,6 @@ export function ChoicePage() {
     }, [state.studyMode, navigate]);
 
     useEffect(() => {
-        if (!choiceState || isFinished) return;
-        const handler = (event: KeyboardEvent) => {
-            if (selected) return;
-            const key = event.key;
-            if (!['1', '2', '3', '4'].includes(key)) return;
-            const index = Number(key) - 1;
-            const option = choiceState.options[index];
-            if (!option) return;
-            event.preventDefault();
-            handleChoice(option);
-        };
-        window.addEventListener('keydown', handler);
-        return () => window.removeEventListener('keydown', handler);
-    }, [choiceState, handleChoice, selected, isFinished]);
-
-    useEffect(() => {
         if (questions.length === 0) return;
         const totalChars = calculateTotalChars(questions);
         const limit = Math.max(1, Math.ceil(calculateTimeLimit(totalChars, 1, 10) / 4));
@@ -229,6 +213,22 @@ export function ChoicePage() {
             }, 300);
         }
     }, [choiceState, selected, isFinished, currentIndex, questions.length, isCountingDown]);
+
+    useEffect(() => {
+        if (!choiceState || isFinished) return;
+        const handler = (event: KeyboardEvent) => {
+            if (selected) return;
+            const key = event.key;
+            if (!['1', '2', '3', '4'].includes(key)) return;
+            const index = Number(key) - 1;
+            const option = choiceState.options[index];
+            if (!option) return;
+            event.preventDefault();
+            handleChoice(option);
+        };
+        window.addEventListener('keydown', handler);
+        return () => window.removeEventListener('keydown', handler);
+    }, [choiceState, handleChoice, selected, isFinished]);
 
     const finishSession = (timeUpFlag: boolean) => {
         setIsFinished(true);
