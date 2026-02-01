@@ -112,6 +112,27 @@
     gap: var(--space-xs);
 }
 
+.modeTabs {
+    display: flex;
+    gap: var(--space-sm);
+}
+
+.modeTab {
+    border: none;
+    background: rgba(255, 255, 255, 0.8);
+    color: var(--color-text-secondary);
+    padding: var(--space-sm) var(--space-md);
+    border-radius: var(--radius-md);
+    font-weight: var(--font-weight-semibold);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.modeTabActive {
+    background: var(--color-primary);
+    color: var(--color-text-inverse);
+}
+
 .desktopLayout {
     display: flex;
     flex: 1;

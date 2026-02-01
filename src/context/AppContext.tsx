@@ -3,7 +3,7 @@
 // ================================
 
 import { createContext, useContext, useReducer, useEffect, useCallback, type ReactNode, type Dispatch } from 'react';
-import { AppState, AppAction, User, LearningMode, UserProgress, SectionProgress, Rank } from '@/types';
+import { AppState, AppAction, User, LearningMode, ChoiceLevel, StudyMode, UserProgress, SectionProgress, Rank } from '@/types';
 import { appReducer, initialState } from './AppReducer';
 import { loadFromStorage, saveToStorage, storageToAppState, getProgressKey, getSectionProgressKey } from '@/utils/storage';
 
@@ -19,6 +19,8 @@ interface AppContextValue {
     setPart: (partId: string | null) => void;
     setSection: (sectionId: string | null) => void;
     setMode: (mode: LearningMode) => void;
+    setStudyMode: (mode: StudyMode) => void;
+    setChoiceLevel: (level: ChoiceLevel) => void;
     setQuestionIndex: (index: number) => void;
     toggleShuffle: () => void;
     setShuffledIds: (ids: string[]) => void;
@@ -96,6 +98,14 @@ export function AppProvider({ children }: AppProviderProps) {
         dispatch({ type: 'SET_MODE', payload: mode });
     }, []);
 
+    const setStudyMode = useCallback((mode: StudyMode) => {
+        dispatch({ type: 'SET_STUDY_MODE', payload: mode });
+    }, []);
+
+    const setChoiceLevel = useCallback((level: ChoiceLevel) => {
+        dispatch({ type: 'SET_CHOICE_LEVEL', payload: level });
+    }, []);
+
     const setQuestionIndex = useCallback((index: number) => {
         dispatch({ type: 'SET_QUESTION_INDEX', payload: index });
     }, []);
@@ -158,6 +168,8 @@ export function AppProvider({ children }: AppProviderProps) {
         setPart,
         setSection,
         setMode,
+        setStudyMode,
+        setChoiceLevel,
         setQuestionIndex,
         toggleShuffle,
         setShuffledIds,

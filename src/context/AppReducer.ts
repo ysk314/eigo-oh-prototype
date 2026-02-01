@@ -12,6 +12,8 @@ export const initialState: AppState = {
     selectedPart: null,
     selectedSection: null,
     selectedMode: 1,
+    studyMode: 'typing',
+    selectedChoiceLevel: 1,
     currentQuestionIndex: 0,
     shuffleMode: false,
     shuffledQuestionIds: [],
@@ -74,6 +76,16 @@ export function appReducer(state: AppState, action: AppAction): AppState {
                 ...state,
                 selectedMode: action.payload,
                 currentQuestionIndex: 0,
+            };
+        case 'SET_STUDY_MODE':
+            return {
+                ...state,
+                studyMode: action.payload,
+            };
+        case 'SET_CHOICE_LEVEL':
+            return {
+                ...state,
+                selectedChoiceLevel: action.payload,
             };
 
         case 'SET_QUESTION_INDEX':

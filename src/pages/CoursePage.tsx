@@ -8,12 +8,12 @@ import { useApp } from '@/context/AppContext';
 import { Header } from '@/components/Header';
 import { SectionCard } from '@/components/SectionCard';
 import { courses, getCourseById, getQuestionsByCourseId, getSectionsByPart } from '@/data/questions';
-import { LearningMode } from '@/types';
+import { LearningMode, ChoiceLevel } from '@/types';
 import styles from './CoursePage.module.css';
 
 export function CoursePage() {
     const navigate = useNavigate();
-    const { state, setCourse, setUnit, setPart, setSection, setMode } = useApp();
+    const { state, setCourse, setUnit, setPart, setSection, setMode, setStudyMode, setChoiceLevel } = useApp();
 
     const currentCourse = getCourseById(state.selectedCourse) ?? courses[0];
     const units = currentCourse?.units || [];
@@ -201,8 +201,20 @@ export function CoursePage() {
         navigate('/play');
     };
 
+    const handleChoiceSelect = (sectionId: string, level: ChoiceLevel) => {
+        if (!selectedPartId) return;
+        setPart(selectedPartId);
+        setSection(sectionId);
+        setChoiceLevel(level);
+        navigate('/choice');
+    };
+
     const handleBack = () => {
         navigate('/');
+    };
+
+    const handleStudyModeChange = (mode: 'typing' | 'choice') => {
+        setStudyMode(mode);
     };
 
     const getCompletedCount = (_partId: string) => {
@@ -275,6 +287,20 @@ export function CoursePage() {
                                     aria-hidden={!isOpen}
                                 >
                                     <div className={styles.accordionPanelContent}>
+                                        <div className={styles.modeTabs}>
+                                            <button
+                                                className={`${styles.modeTab} ${state.studyMode === 'typing' ? styles.modeTabActive : ''}`}
+                                                onClick={() => handleStudyModeChange('typing')}
+                                            >
+                                                タイピング
+                                            </button>
+                                            <button
+                                                className={`${styles.modeTab} ${state.studyMode === 'choice' ? styles.modeTabActive : ''}`}
+                                                onClick={() => handleStudyModeChange('choice')}
+                                            >
+                                                4択
+                                            </button>
+                                        </div>
                                         <div className={styles.mobilePartList} aria-label="パート一覧">
                                             {(unit.parts || []).map((part) => {
                                                 const completed = getCompletedCount(part.id);
@@ -299,20 +325,22 @@ export function CoursePage() {
                                         </div>
 
                                         <div className={styles.sections}>
-                                            {sections.length > 0 ? (
-                                                sections.map((section) => (
-                                                    <SectionCard
-                                                        key={section.id}
-                                                        section={section}
-                                                        completedCount={0}
-                                                        onModeSelect={handleModeSelect}
-                                                    />
-                                                ))
-                                            ) : (
-                                                <div className={styles.emptyState}>
-                                                    <p>このパートにはまだ問題がありません</p>
-                                                </div>
-                                            )}
+                        {sections.length > 0 ? (
+                            sections.map((section) => (
+                                <SectionCard
+                                    key={section.id}
+                                    section={section}
+                                    completedCount={0}
+                                    onModeSelect={handleModeSelect}
+                                    onChoiceSelect={handleChoiceSelect}
+                                    modeType={state.studyMode}
+                                />
+                            ))
+                        ) : (
+                            <div className={styles.emptyState}>
+                                <p>このパートにはまだ問題がありません</p>
+                            </div>
+                        )}
                                         </div>
                                     </div>
                                 </div>
@@ -381,6 +409,20 @@ export function CoursePage() {
 
                     {/* メインエリア: セクションカード */}
                     <main className={styles.main}>
+                        <div className={styles.modeTabs}>
+                            <button
+                                className={`${styles.modeTab} ${state.studyMode === 'typing' ? styles.modeTabActive : ''}`}
+                                onClick={() => handleStudyModeChange('typing')}
+                            >
+                                タイピング
+                            </button>
+                            <button
+                                className={`${styles.modeTab} ${state.studyMode === 'choice' ? styles.modeTabActive : ''}`}
+                                onClick={() => handleStudyModeChange('choice')}
+                            >
+                                4択
+                            </button>
+                        </div>
                         {/* セクションリスト */}
                         <div className={styles.sections}>
                             {sections.length > 0 ? (
@@ -390,6 +432,8 @@ export function CoursePage() {
                                         section={section}
                                         completedCount={0}
                                         onModeSelect={handleModeSelect}
+                                        onChoiceSelect={handleChoiceSelect}
+                                        modeType={state.studyMode}
                                     />
                                 ))
                             ) : (

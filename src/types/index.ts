@@ -8,6 +8,9 @@ export type LearningMode = 1 | 2 | 3;
 // 2: 音あり・スペルなし
 // 3: 音なし・スペルなし
 
+export type StudyMode = 'typing' | 'choice';
+export type ChoiceLevel = 1 | 2;
+
 // Rank Types
 export type Rank = 'S' | 'A' | 'B' | 'C';
 
@@ -100,6 +103,8 @@ export interface AppState {
     selectedPart: string | null;
     selectedSection: string | null;
     selectedMode: LearningMode;
+    studyMode: StudyMode;
+    selectedChoiceLevel: ChoiceLevel;
 
     // Play state
     currentQuestionIndex: number;
@@ -123,6 +128,8 @@ export type AppAction =
     | { type: 'SET_PART'; payload: string | null }
     | { type: 'SET_SECTION'; payload: string | null }
     | { type: 'SET_MODE'; payload: LearningMode }
+    | { type: 'SET_STUDY_MODE'; payload: StudyMode }
+    | { type: 'SET_CHOICE_LEVEL'; payload: ChoiceLevel }
     | { type: 'SET_QUESTION_INDEX'; payload: number }
     | { type: 'TOGGLE_SHUFFLE'; payload?: boolean }
     | { type: 'SET_SHUFFLED_IDS'; payload: string[] }
