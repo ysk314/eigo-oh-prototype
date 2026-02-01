@@ -8,7 +8,7 @@ import { useApp } from '@/context/AppContext';
 import { Header } from '@/components/Header';
 import { Card } from '@/components/Card';
 import { Button } from '@/components/Button';
-import { courses, getCourseById, getQuestionsBySection } from '@/data/questions';
+import { courses, getCourseById, getQuestionsBySection, getSectionsByPart } from '@/data/questions';
 import { ProgressBar } from '@/components/ProgressBar';
 import { buildScoreResult, ScoreResult } from '@/utils/score';
 import { calculateTimeLimit, calculateTotalChars, calculateTimeBarPercent } from '@/utils/timer';
@@ -17,6 +17,8 @@ import styles from './ChoicePage.module.css';
 type ChoiceState = {
     options: string[];
     correct: string;
+    prompt: string;
+    maskOptions: boolean;
 };
 
 function shuffle<T>(items: T[]): T[] {
@@ -33,16 +35,20 @@ function maskWord(word: string): string {
         .split(/(\s+)/)
         .map((segment) => {
             if (segment.trim() === '') return segment;
-            if (segment.length <= 2) return segment;
-            const middle = '_'.repeat(segment.length - 2);
-            return `${segment[0]}${middle}${segment[segment.length - 1]}`;
+            const first = segment[0];
+            const rest = '_'.repeat(Math.max(1, segment.length - 1));
+            return `${first}${rest}`;
         })
         .join('');
 }
 
+function stripTags(text: string): string {
+    return text.replace(/\[[^\]]+\]/g, '').trim();
+}
+
 export function ChoicePage() {
     const navigate = useNavigate();
-    const { state } = useApp();
+    const { state, setChoiceRank } = useApp();
     const { selectedCourse, selectedPart, selectedSection, selectedChoiceLevel } = state;
     const currentCourse = getCourseById(selectedCourse) ?? courses[0];
 
@@ -116,6 +122,20 @@ export function ChoicePage() {
         return () => clearTimeout(timer);
     }, [isCountingDown, countdown]);
 
+    const finishSession = useCallback((timeUpFlag: boolean) => {
+        setIsFinished(true);
+        const score = buildScoreResult({
+            missCount,
+            timeLeft,
+            timeLimit,
+            timeUp: timeUpFlag,
+        });
+        setScoreResult(score);
+        if (selectedSection) {
+            setChoiceRank(selectedSection, selectedChoiceLevel, score.rank);
+        }
+    }, [missCount, timeLeft, timeLimit, selectedSection, selectedChoiceLevel, setChoiceRank]);
+
     useEffect(() => {
         if (isCountingDown || isFinished || timeLimit === 0) return;
         if (timeLeft <= 0) {
@@ -131,7 +151,7 @@ export function ChoicePage() {
         }, 1000);
 
         return () => clearInterval(interval);
-    }, [isFinished, timeLeft, timeLimit, timeUp]);
+    }, [isCountingDown, isFinished, timeLeft, timeLimit, timeUp, finishSession]);
 
     useEffect(() => {
         timeUpRef.current = timeUp;
@@ -154,21 +174,29 @@ export function ChoicePage() {
             (q) => q.id !== currentQuestion.id && q.pos?.includes(pos)
         );
 
+        const isEnToJp = selectedChoiceLevel === 1 || selectedChoiceLevel === 3;
+        const isMasked = selectedChoiceLevel === 3 || selectedChoiceLevel === 4;
+        const prompt = isEnToJp ? currentQuestion.answerEn : stripTags(currentQuestion.promptJp);
+        const shouldMaskPrompt = isEnToJp && isMasked;
+        const promptText = shouldMaskPrompt ? maskWord(prompt) : prompt;
+        const correctOption = isEnToJp ? stripTags(currentQuestion.promptJp) : currentQuestion.answerEn;
+        const maskOptions = !isEnToJp && isMasked;
+
         const options: string[] = [];
         const displaySet = new Set<string>();
 
         const addOption = (answer: string) => {
             if (options.includes(answer)) return false;
-            const display = selectedChoiceLevel === 2 ? maskWord(answer) : answer;
+            const display = maskOptions ? maskWord(answer) : answer;
             if (displaySet.has(display)) return false;
             options.push(answer);
             displaySet.add(display);
             return true;
         };
 
-        addOption(currentQuestion.answerEn);
+        addOption(correctOption);
         shuffle(samePos)
-            .map((q) => q.answerEn)
+            .map((q) => (isEnToJp ? stripTags(q.promptJp) : q.answerEn))
             .forEach((answer) => {
                 if (options.length >= 4) return;
                 addOption(answer);
@@ -176,7 +204,7 @@ export function ChoicePage() {
 
         if (options.length < 4) {
             shuffle(pool)
-                .map((q) => q.answerEn)
+                .map((q) => (isEnToJp ? stripTags(q.promptJp) : q.answerEn))
                 .forEach((answer) => {
                     if (options.length >= 4) return;
                     addOption(answer);
@@ -185,7 +213,9 @@ export function ChoicePage() {
 
         setChoiceState({
             options: shuffle(options),
-            correct: currentQuestion.answerEn,
+            correct: correctOption,
+            prompt: promptText,
+            maskOptions,
         });
         setSelected(null);
     }, [currentQuestion, questions, selectedChoiceLevel, isCountingDown]);
@@ -212,7 +242,7 @@ export function ChoicePage() {
                 setLastWrong(null);
             }, 300);
         }
-    }, [choiceState, selected, isFinished, currentIndex, questions.length, isCountingDown]);
+    }, [choiceState, selected, isFinished, currentIndex, questions.length, isCountingDown, finishSession]);
 
     useEffect(() => {
         if (!choiceState || isFinished) return;
@@ -230,16 +260,42 @@ export function ChoicePage() {
         return () => window.removeEventListener('keydown', handler);
     }, [choiceState, handleChoice, selected, isFinished]);
 
-    const finishSession = (timeUpFlag: boolean) => {
-        setIsFinished(true);
-        const score = buildScoreResult({
-            missCount,
-            timeLeft,
-            timeLimit,
-            timeUp: timeUpFlag,
-        });
-        setScoreResult(score);
-    };
+    const selectedUnitLabel = useMemo(() => {
+        if (!state.selectedUnit) return '';
+        return currentCourse?.units.find((unit) => unit.id === state.selectedUnit)?.name || '';
+    }, [state.selectedUnit, currentCourse?.id]);
+
+    const selectedPartLabelText = useMemo(() => {
+        if (!state.selectedPart) return '';
+        const part = currentCourse?.units.flatMap((unit) => unit.parts).find((item) => item.id === state.selectedPart);
+        return part?.label || '';
+    }, [state.selectedPart, currentCourse?.id]);
+
+    const selectedSectionLabel = useMemo(() => {
+        if (!state.selectedPart || !state.selectedSection) return '';
+        const section = getSectionsByPart(state.selectedPart, currentCourse?.id)
+            .find((item) => item.id === state.selectedSection);
+        return section?.label || '';
+    }, [state.selectedPart, state.selectedSection, currentCourse?.id]);
+
+    const selectedLevelLabel = useMemo(() => {
+        switch (selectedChoiceLevel) {
+            case 1:
+                return '英語→日本語 1';
+            case 2:
+                return '日本語→英語 1';
+            case 3:
+                return '英語→日本語 2';
+            case 4:
+                return '日本語→英語 2';
+            default:
+                return '';
+        }
+    }, [selectedChoiceLevel]);
+
+    const promptLabel = useMemo(() => {
+        return selectedChoiceLevel === 1 || selectedChoiceLevel === 3 ? '英語' : '日本語';
+    }, [selectedChoiceLevel]);
 
     if (isFinished && scoreResult) {
         const total = correctCount + missCount;
@@ -271,7 +327,15 @@ export function ChoicePage() {
                         </div>
                     )}
                     <Card className={styles.resultCard} padding="lg">
-                        <h2 className={styles.resultTitle}>結果発表</h2>
+                        <h2 className={styles.resultTitle}>
+                            {scoreResult.rank === 'S' ? 'Perfect' : 'Good Job'}
+                        </h2>
+                        <div className={styles.resultMeta}>
+                            <span>Unit: {selectedUnitLabel || '-'}</span>
+                            <span>Part: {selectedPartLabelText || '-'}</span>
+                            <span>Section: {selectedSectionLabel || '-'}</span>
+                            <span>Level: {selectedLevelLabel || '-'}</span>
+                        </div>
                         <div className={styles.stats}>
                             <div className={styles.statItem}>
                                 <span className={styles.statLabel}>ランク</span>
@@ -312,7 +376,17 @@ export function ChoicePage() {
 
     return (
         <div className={styles.page}>
-                <Header title="4択モード" showUserSelect={false} showBackButton onBack={() => navigate('/course')} />
+            <header className={styles.playHeader}>
+                <button className={styles.backButton} onClick={() => navigate('/course')}>
+                    ← 戻る
+                </button>
+                <div className={styles.progressContainer}>
+                    <ProgressBar current={currentIndex + 1} total={questions.length} />
+                </div>
+                <div className={styles.userInfo}>
+                    {state.currentUser?.name}
+                </div>
+            </header>
             <main className={styles.main}>
                 <div className={styles.timerWrapper}>
                     <div className={styles.timerBarContainer}>
@@ -330,8 +404,8 @@ export function ChoicePage() {
                     <ProgressBar current={currentIndex + 1} total={questions.length} />
                 </div>
                 <div className={styles.promptCard}>
-                    <div className={styles.promptLabel}>日本語</div>
-                    <div className={styles.promptText}>{currentQuestion?.promptJp}</div>
+                    <div className={styles.promptLabel}>{promptLabel}</div>
+                    <div className={styles.promptText}>{choiceState?.prompt}</div>
                 </div>
 
                 <div className={styles.choices}>
@@ -339,7 +413,7 @@ export function ChoicePage() {
                         const isCorrect = selected && option === choiceState.correct;
                         const isWrong = lastWrong && option === lastWrong;
                         const displayText =
-                            selectedChoiceLevel === 2 ? maskWord(option) : option;
+                            choiceState?.maskOptions ? maskWord(option) : option;
                         return (
                             <button
                                 key={option}

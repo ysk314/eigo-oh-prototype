@@ -41,6 +41,26 @@
     gap: var(--space-sm);
 }
 
+.choiceGroups {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+}
+
+.choiceGroup {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    justify-content: flex-end;
+}
+
+.choiceLabel {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+    min-width: 110px;
+    text-align: right;
+}
+
 .choiceButton {
     width: 56px;
     height: 56px;
@@ -69,6 +89,13 @@
     background: var(--color-accent);
     color: var(--color-text-primary);
     box-shadow: 0 4px 0 var(--color-accent-dark);
+}
+
+.choiceButton:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
 }
 
 /* Responsive */

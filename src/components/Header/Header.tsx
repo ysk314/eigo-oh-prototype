@@ -66,37 +66,39 @@ export function Header({
             </div>
 
             <div className={styles.right}>
-                {showShuffleToggle && (
-                    <div className={styles.shuffleToggle}>
-                        <span className={styles.shuffleLabel}>シャッフルモード</span>
-                        <button
-                            className={`${styles.toggleButton} ${state.shuffleMode ? styles.active : ''}`}
-                            onClick={toggleShuffle}
-                            role="switch"
-                            aria-checked={state.shuffleMode}
-                        >
-                            <span className={styles.toggleOption} data-active={state.shuffleMode}>ON</span>
-                            <span className={styles.toggleOption} data-active={!state.shuffleMode}>OFF</span>
-                        </button>
-                    </div>
-                )}
+                <div className={styles.controlsColumn}>
+                    {showShuffleToggle && (
+                        <div className={styles.shuffleToggle}>
+                            <span className={styles.shuffleLabel}>シャッフルモード</span>
+                            <button
+                                className={`${styles.toggleButton} ${state.shuffleMode ? styles.active : ''}`}
+                                onClick={toggleShuffle}
+                                role="switch"
+                                aria-checked={state.shuffleMode}
+                            >
+                                <span className={styles.toggleOption} data-active={state.shuffleMode}>ON</span>
+                                <span className={styles.toggleOption} data-active={!state.shuffleMode}>OFF</span>
+                            </button>
+                        </div>
+                    )}
 
-                {showStudyModeToggle && (
-                    <div className={styles.studyModeToggle}>
-                        <button
-                            className={`${styles.modeTab} ${state.studyMode === 'typing' ? styles.modeTabActive : ''}`}
-                            onClick={() => setStudyMode('typing')}
-                        >
-                            タイピング
-                        </button>
-                        <button
-                            className={`${styles.modeTab} ${state.studyMode === 'choice' ? styles.modeTabActive : ''}`}
-                            onClick={() => setStudyMode('choice')}
-                        >
-                            4択
-                        </button>
-                    </div>
-                )}
+                    {showStudyModeToggle && (
+                        <div className={styles.studyModeToggle}>
+                            <button
+                                className={`${styles.modeTab} ${state.studyMode === 'typing' ? styles.modeTabActive : ''}`}
+                                onClick={() => setStudyMode('typing')}
+                            >
+                                タイピング
+                            </button>
+                            <button
+                                className={`${styles.modeTab} ${state.studyMode === 'choice' ? styles.modeTabActive : ''}`}
+                                onClick={() => setStudyMode('choice')}
+                            >
+                                4択
+                            </button>
+                        </div>
+                    )}
+                </div>
 
                 {showUserSelect && state.users.length > 0 && (
                     <div className={styles.userSelect}>

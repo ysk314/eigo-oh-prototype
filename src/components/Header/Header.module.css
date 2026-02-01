@@ -20,6 +20,13 @@
     gap: var(--space-lg);
 }
 
+.controlsColumn {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+    align-items: flex-end;
+}
+
 /* Back Button */
 .backButton {
     display: flex;
@@ -176,5 +183,9 @@
     .modeTab {
         padding: 4px 10px;
         font-size: var(--font-size-xs);
+    }
+
+    .controlsColumn {
+        align-items: flex-start;
     }
 }

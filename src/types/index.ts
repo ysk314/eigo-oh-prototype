@@ -9,7 +9,7 @@ export type LearningMode = 1 | 2 | 3;
 // 3: 音なし・スペルなし
 
 export type StudyMode = 'typing' | 'choice';
-export type ChoiceLevel = 1 | 2;
+export type ChoiceLevel = 1 | 2 | 3 | 4;
 
 // Rank Types
 export type Rank = 'S' | 'A' | 'B' | 'C';
@@ -79,6 +79,10 @@ export interface SectionProgress {
     mode1Rank: Rank | null;
     mode2Rank: Rank | null;
     mode3Rank: Rank | null;
+    choice1Rank: Rank | null;
+    choice2Rank: Rank | null;
+    choice3Rank: Rank | null;
+    choice4Rank: Rank | null;
     totalAttempts: number;
     totalCorrect: number;
     totalMiss: number;
@@ -130,6 +134,7 @@ export type AppAction =
     | { type: 'SET_MODE'; payload: LearningMode }
     | { type: 'SET_STUDY_MODE'; payload: StudyMode }
     | { type: 'SET_CHOICE_LEVEL'; payload: ChoiceLevel }
+    | { type: 'SET_CHOICE_RANK'; payload: { sectionId: string; level: ChoiceLevel; rank: Rank } }
     | { type: 'SET_QUESTION_INDEX'; payload: number }
     | { type: 'TOGGLE_SHUFFLE'; payload?: boolean }
     | { type: 'SET_SHUFFLED_IDS'; payload: string[] }

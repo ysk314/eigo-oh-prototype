@@ -147,6 +147,10 @@ export function appReducer(state: AppState, action: AppAction): AppState {
                 mode1Rank: null,
                 mode2Rank: null,
                 mode3Rank: null,
+                choice1Rank: null,
+                choice2Rank: null,
+                choice3Rank: null,
+                choice4Rank: null,
                 totalAttempts: 0,
                 totalCorrect: 0,
                 totalMiss: 0,
@@ -180,6 +184,10 @@ export function appReducer(state: AppState, action: AppAction): AppState {
                 mode1Rank: null,
                 mode2Rank: null,
                 mode3Rank: null,
+                choice1Rank: null,
+                choice2Rank: null,
+                choice3Rank: null,
+                choice4Rank: null,
                 totalAttempts: 0,
                 totalCorrect: 0,
                 totalMiss: 0,
@@ -201,6 +209,47 @@ export function appReducer(state: AppState, action: AppAction): AppState {
                         ...currentProgress,
                         [rankKey]: isBetter ? rank : currentRank,
                         [clearedKey]: rank === 'S' ? true : currentProgress[clearedKey],
+                    },
+                },
+            };
+        }
+
+        case 'SET_CHOICE_RANK': {
+            const { sectionId, level, rank } = action.payload;
+            const key = state.currentUser
+                ? `${state.currentUser.id}-${sectionId}`
+                : sectionId;
+
+            const currentProgress = state.sectionProgress[key] || {
+                sectionId,
+                mode1Cleared: false,
+                mode2Cleared: false,
+                mode3Cleared: false,
+                mode1Rank: null,
+                mode2Rank: null,
+                mode3Rank: null,
+                choice1Rank: null,
+                choice2Rank: null,
+                choice3Rank: null,
+                choice4Rank: null,
+                totalAttempts: 0,
+                totalCorrect: 0,
+                totalMiss: 0,
+            };
+
+            const rankKey = `choice${level}Rank` as keyof typeof currentProgress;
+            const rankOrder: Rank[] = ['S', 'A', 'B', 'C'];
+            const currentRank = currentProgress[rankKey] as Rank | null;
+            const isBetter =
+                !currentRank || rankOrder.indexOf(rank) < rankOrder.indexOf(currentRank);
+
+            return {
+                ...state,
+                sectionProgress: {
+                    ...state.sectionProgress,
+                    [key]: {
+                        ...currentProgress,
+                        [rankKey]: isBetter ? rank : currentRank,
                     },
                 },
             };

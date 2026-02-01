@@ -21,6 +21,7 @@ interface AppContextValue {
     setMode: (mode: LearningMode) => void;
     setStudyMode: (mode: StudyMode) => void;
     setChoiceLevel: (level: ChoiceLevel) => void;
+    setChoiceRank: (sectionId: string, level: ChoiceLevel, rank: Rank) => void;
     setQuestionIndex: (index: number) => void;
     toggleShuffle: () => void;
     setShuffledIds: (ids: string[]) => void;
@@ -106,6 +107,10 @@ export function AppProvider({ children }: AppProviderProps) {
         dispatch({ type: 'SET_CHOICE_LEVEL', payload: level });
     }, []);
 
+    const setChoiceRank = useCallback((sectionId: string, level: ChoiceLevel, rank: Rank) => {
+        dispatch({ type: 'SET_CHOICE_RANK', payload: { sectionId, level, rank } });
+    }, []);
+
     const setQuestionIndex = useCallback((index: number) => {
         dispatch({ type: 'SET_QUESTION_INDEX', payload: index });
     }, []);
@@ -170,6 +175,7 @@ export function AppProvider({ children }: AppProviderProps) {
         setMode,
         setStudyMode,
         setChoiceLevel,
+        setChoiceRank,
         setQuestionIndex,
         toggleShuffle,
         setShuffledIds,

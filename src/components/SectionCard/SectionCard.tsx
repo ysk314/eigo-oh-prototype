@@ -32,6 +32,12 @@ export function SectionCard({
         return progress[key] ?? null;
     };
 
+    const getRankForChoice = (level: ChoiceLevel): Rank | null => {
+        if (!progress) return null;
+        const key = `choice${level}Rank` as const;
+        return progress[key] ?? null;
+    };
+
     const handleModeClick = (mode: LearningMode) => {
         if (isModeUnlocked(section.id, mode)) {
             onModeSelect(section.id, mode);
@@ -69,19 +75,43 @@ export function SectionCard({
                     />
                 </div>
             ) : (
-                <div className={styles.choiceModes}>
-                    <button
-                        className={`${styles.choiceButton} ${styles.choiceButtonPrimary}`}
-                        onClick={() => onChoiceSelect?.(section.id, 1)}
-                    >
-                        1
-                    </button>
-                    <button
-                        className={`${styles.choiceButton} ${styles.choiceButtonSecondary}`}
-                        onClick={() => onChoiceSelect?.(section.id, 2)}
-                    >
-                        2
-                    </button>
+                <div className={styles.choiceGroups}>
+                    <div className={styles.choiceGroup}>
+                        <span className={styles.choiceLabel}>英語→日本語</span>
+                        <div className={styles.choiceModes}>
+                            <button
+                                className={`${styles.choiceButton} ${styles.choiceButtonPrimary}`}
+                                onClick={() => onChoiceSelect?.(section.id, 1)}
+                            >
+                                1
+                            </button>
+                            <button
+                                className={`${styles.choiceButton} ${styles.choiceButtonSecondary}`}
+                                onClick={() => onChoiceSelect?.(section.id, 3)}
+                                disabled={getRankForChoice(1) !== 'S'}
+                            >
+                                2
+                            </button>
+                        </div>
+                    </div>
+                    <div className={styles.choiceGroup}>
+                        <span className={styles.choiceLabel}>日本語→英語</span>
+                        <div className={styles.choiceModes}>
+                            <button
+                                className={`${styles.choiceButton} ${styles.choiceButtonPrimary}`}
+                                onClick={() => onChoiceSelect?.(section.id, 2)}
+                            >
+                                1
+                            </button>
+                            <button
+                                className={`${styles.choiceButton} ${styles.choiceButtonSecondary}`}
+                                onClick={() => onChoiceSelect?.(section.id, 4)}
+                                disabled={getRankForChoice(2) !== 'S'}
+                            >
+                                2
+                            </button>
+                        </div>
+                    </div>
                 </div>
             )}
         </div>
