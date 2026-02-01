@@ -13,6 +13,17 @@
     position: relative;
 }
 
+.hiddenInput {
+    position: absolute;
+    opacity: 0;
+    width: 1px;
+    height: 1px;
+    border: none;
+    padding: 0;
+    margin: 0;
+    pointer-events: none;
+}
+
 .container:focus {
     box-shadow: var(--shadow-lg), 0 0 0 3px var(--color-primary-soft);
 }

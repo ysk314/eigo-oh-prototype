@@ -37,6 +37,10 @@ export function TypingInput({
     const [consecutiveMiss, setConsecutiveMiss] = useState(0);
     const hasCompletedRef = useRef(false);
     const containerRef = useRef<HTMLDivElement>(null);
+    const inputRef = useRef<HTMLInputElement>(null);
+    const [inputValue, setInputValue] = useState('');
+    const isComposingRef = useRef(false);
+    const isInputFocusedRef = useRef(false);
 
     // 回答が変わったらリセット
     useEffect(() => {
@@ -44,6 +48,7 @@ export function TypingInput({
         setLastError(false);
         setConsecutiveMiss(0);
         hasCompletedRef.current = false;
+        setInputValue('');
     }, [answer]);
 
     // 進捗を通知
@@ -80,6 +85,7 @@ export function TypingInput({
     // キー入力ハンドラ
     const handleKeyDown = useCallback((e: KeyboardEvent) => {
         if (disabled || typingState.isComplete) return;
+        if (isInputFocusedRef.current) return;
 
         // 特殊キーは無視
         if (e.ctrlKey || e.metaKey || e.altKey) return;
@@ -115,6 +121,38 @@ export function TypingInput({
         containerRef.current?.focus();
     }, []);
 
+    const focusInput = () => {
+        inputRef.current?.focus();
+    };
+
+    const handleInputChange = (nextValue: string) => {
+        if (disabled || typingState.isComplete) return;
+        if (isComposingRef.current) return;
+        if (!nextValue) return;
+
+        const chars = nextValue.replace(/\n/g, '').split('');
+        let nextState = typingState;
+        let missStreak = consecutiveMiss;
+
+        chars.forEach((char) => {
+            const expected = nextState.normalizedAnswer[nextState.currentIndex];
+            const isError = char !== expected;
+            nextState = processKeyInput(nextState, char);
+            if (isError) {
+                setLastError(true);
+                setTimeout(() => setLastError(false), 300);
+                missStreak += 1;
+            } else {
+                missStreak = 0;
+            }
+            onKeyResult?.(!isError);
+        });
+
+        setTypingState(nextState);
+        setConsecutiveMiss(missStreak);
+        setInputValue('');
+    };
+
     const displayState = getDisplayState(typingState);
     const isComplete = typingState.isComplete;
     const currentCharDisplay = isComplete
@@ -135,7 +173,32 @@ export function TypingInput({
             tabIndex={0}
             role="textbox"
             aria-label="タイピング入力"
+            onClick={focusInput}
+            onTouchStart={focusInput}
         >
+            <input
+                ref={inputRef}
+                className={styles.hiddenInput}
+                value={inputValue}
+                onChange={(e) => {
+                    setInputValue(e.target.value);
+                    handleInputChange(e.target.value);
+                }}
+                onCompositionStart={() => { isComposingRef.current = true; }}
+                onCompositionEnd={(e) => {
+                    isComposingRef.current = false;
+                    handleInputChange(e.currentTarget.value);
+                    setInputValue('');
+                }}
+                onFocus={() => { isInputFocusedRef.current = true; }}
+                onBlur={() => { isInputFocusedRef.current = false; }}
+                autoComplete="off"
+                autoCorrect="off"
+                autoCapitalize="none"
+                spellCheck={false}
+                inputMode="text"
+                enterKeyHint="done"
+            />
             <div className={styles.completeIndicator} aria-hidden="true">
                 ✓
             </div>
