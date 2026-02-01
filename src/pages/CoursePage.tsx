@@ -7,15 +7,16 @@ import { useNavigate } from 'react-router-dom';
 import { useApp } from '@/context/AppContext';
 import { Header } from '@/components/Header';
 import { SectionCard } from '@/components/SectionCard';
-import { courseStructure, getSectionsByPart, questions } from '@/data/questions';
+import { courses, getCourseById, getQuestionsByCourseId, getSectionsByPart } from '@/data/questions';
 import { LearningMode } from '@/types';
 import styles from './CoursePage.module.css';
 
 export function CoursePage() {
     const navigate = useNavigate();
-    const { state, setUnit, setPart, setSection, setMode } = useApp();
+    const { state, setCourse, setUnit, setPart, setSection, setMode } = useApp();
 
-    const units = courseStructure.units || [];
+    const currentCourse = getCourseById(state.selectedCourse) ?? courses[0];
+    const units = currentCourse?.units || [];
     const selectedUnitId = state.selectedUnit || units[0]?.id || null;
     const selectedPartId = state.selectedPart || units[0]?.parts[0]?.id || null;
     const selectedUnit = units.find((unit) => unit.id === selectedUnitId) || units[0] || null;
@@ -27,13 +28,18 @@ export function CoursePage() {
     const scrollAnimationRef = useRef<number | null>(null);
     const manualCloseRef = useRef(false);
 
+    const courseQuestions = useMemo(
+        () => getQuestionsByCourseId(currentCourse?.id),
+        [currentCourse?.id]
+    );
+
     const questionIdToPartId = useMemo(() => {
         const map = new Map<string, string>();
-        questions.forEach((question) => {
+        courseQuestions.forEach((question) => {
             map.set(question.id, question.partId);
         });
         return map;
-    }, []);
+    }, [courseQuestions]);
 
     const partIdToUnitId = useMemo(() => {
         const map = new Map<string, string>();
@@ -69,9 +75,14 @@ export function CoursePage() {
     }, [state.userProgress, questionIdToPartId, partIdToUnitId]);
 
     const sections = useMemo(() =>
-        selectedPartId ? getSectionsByPart(selectedPartId) : [],
-        [selectedPartId]
+        selectedPartId ? getSectionsByPart(selectedPartId, currentCourse?.id) : [],
+        [selectedPartId, currentCourse?.id]
     );
+
+    useEffect(() => {
+        if (state.selectedCourse || !courses[0]) return;
+        setCourse(courses[0].id);
+    }, [state.selectedCourse, setCourse]);
 
     useEffect(() => {
         if (hasInitializedRef.current || units.length === 0) return;
@@ -217,7 +228,7 @@ export function CoursePage() {
         <div className={styles.page}>
             <div className={styles.stickyHeader}>
                 <Header
-                    breadcrumb={[courseStructure.name, selectedUnit?.name || '', selectedPartLabel]}
+                    breadcrumb={[currentCourse?.name || '', selectedUnit?.name || '', selectedPartLabel]}
                     showShuffleToggle
                     showBackButton
                     onBack={handleBack}

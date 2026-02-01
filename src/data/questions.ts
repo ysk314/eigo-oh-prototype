@@ -4,30 +4,50 @@
 
 import { Course, Part, Question, Section } from '@/types';
 import { courseStructure as aiCanCourse, questions as aiCanQuestions } from './courses/ai-can';
+import { courseStructure as getThroughCourse, questions as getThroughQuestions } from './courses/getthrough';
 
-export const courses: Course[] = [aiCanCourse];
+export const courses: Course[] = [aiCanCourse, getThroughCourse];
 
 export const questions: Question[] = [
     ...aiCanQuestions,
+    ...getThroughQuestions,
 ];
 
 // Backward-compatible single-course export
 export const courseStructure: Course = aiCanCourse;
 
 // Helper functions
+export function getCourseById(courseId?: string | null): Course | undefined {
+    if (!courseId) return undefined;
+    return courses.find(course => course.id === courseId);
+}
+
+export function getQuestionsByCourseId(courseId?: string | null): Question[] {
+    if (!courseId) return questions;
+    const course = getCourseById(courseId);
+    if (!course) return questions;
+    return questions.filter(q => q.course === course.name);
+}
+
 export function getQuestionById(id: string): Question | undefined {
     return questions.find(q => q.id === id);
 }
 
-export function getQuestionsBySection(partId: string, sectionType: string): Question[] {
-    return questions.filter(q => q.partId === partId && q.section === sectionType);
+export function getQuestionsBySection(
+    partId: string,
+    sectionType: string,
+    courseId?: string | null
+): Question[] {
+    const pool = courseId ? getQuestionsByCourseId(courseId) : questions;
+    return pool.filter(q => q.partId === partId && q.section === sectionType);
 }
 
-export function getParts(): Part[] {
-    return courseStructure.units.flatMap(unit => unit.parts);
+export function getParts(courseId?: string | null): Part[] {
+    const course = getCourseById(courseId) ?? courseStructure;
+    return course.units.flatMap(unit => unit.parts);
 }
 
-export function getSectionsByPart(partId: string): Section[] {
-    const part = getParts().find(p => p.id === partId);
+export function getSectionsByPart(partId: string, courseId?: string | null): Section[] {
+    const part = getParts(courseId).find(p => p.id === partId);
     return part?.sections || [];
 }

@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import { useApp } from '@/context/AppContext';
 import { Card } from '@/components/Card';
 import { Button } from '@/components/Button';
-import { courseStructure } from '@/data/questions';
+import { courses } from '@/data/questions';
 import styles from './HomePage.module.css';
 
 export function HomePage() {
@@ -101,26 +101,20 @@ export function HomePage() {
                         <h2 className={styles.sectionTitle}>コースを選択</h2>
 
                         <div className={styles.courseList}>
-                            <div
-                                className={styles.courseItem}
-                                onClick={() => handleCourseSelect(courseStructure.id)}
-                            >
-                                <div className={styles.courseIcon}>📚</div>
-                                <div className={styles.courseInfo}>
-                                    <h3 className={styles.courseName}>{courseStructure.name}</h3>
-                                    <p className={styles.courseDesc}>中学1年生レベルの単語と文法</p>
+                            {courses.map((course) => (
+                                <div
+                                    key={course.id}
+                                    className={styles.courseItem}
+                                    onClick={() => handleCourseSelect(course.id)}
+                                >
+                                    <div className={styles.courseIcon}>📚</div>
+                                    <div className={styles.courseInfo}>
+                                        <h3 className={styles.courseName}>{course.name}</h3>
+                                        <p className={styles.courseDesc}>コースを選択して学習を開始</p>
+                                    </div>
+                                    <div className={styles.arrow}>→</div>
                                 </div>
-                                <div className={styles.arrow}>→</div>
-                            </div>
-
-                            {/* Future courses */}
-                            <div className={`${styles.courseItem} ${styles.disabled}`}>
-                                <div className={styles.courseIcon}>📘</div>
-                                <div className={styles.courseInfo}>
-                                    <h3 className={styles.courseName}>New Horizon 2</h3>
-                                    <p className={styles.courseDesc}>準備中...</p>
-                                </div>
-                            </div>
+                            ))}
                         </div>
                     </Card>
                 </div>

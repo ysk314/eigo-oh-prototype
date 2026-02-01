@@ -11,7 +11,7 @@ import { TypingInput } from '@/components/TypingInput';
 import { ProgressBar } from '@/components/ProgressBar';
 import { Button } from '@/components/Button';
 import { Card } from '@/components/Card';
-import { courseStructure, getQuestionsBySection, getSectionsByPart } from '@/data/questions';
+import { courses, getCourseById, getQuestionsBySection, getSectionsByPart } from '@/data/questions';
 import { shuffleWithNoConsecutive } from '@/utils/shuffle';
 import { UserProgress } from '@/types';
 import { buildScoreResult, ScoreResult } from '@/utils/score';
@@ -29,18 +29,19 @@ export function PlayPage() {
         setSectionRank
     } = useApp();
 
-    const { selectedPart, selectedSection, selectedMode, currentUser, shuffleMode } = state;
+    const { selectedCourse, selectedPart, selectedSection, selectedMode, currentUser, shuffleMode } = state;
+    const currentCourse = getCourseById(selectedCourse) ?? courses[0];
 
     // セクションの問題をロード & シャッフル
     const questions = useMemo(() => {
         if (!selectedPart || !selectedSection) return [];
-        const baseQuestions = getQuestionsBySection(selectedPart, selectedSection);
+        const baseQuestions = getQuestionsBySection(selectedPart, selectedSection, currentCourse?.id);
 
         if (shuffleMode) {
             return shuffleWithNoConsecutive(baseQuestions, (q) => q.answerEn);
         }
         return baseQuestions.sort((a, b) => a.orderIndex - b.orderIndex);
-    }, [selectedPart, selectedSection, shuffleMode]);
+    }, [selectedPart, selectedSection, shuffleMode, currentCourse?.id]);
 
     // 現在の状態
     const [currentIndex, setCurrentIndex] = useState(0);
@@ -322,21 +323,22 @@ export function PlayPage() {
 
     const selectedUnitLabel = useMemo(() => {
         if (!state.selectedUnit) return '';
-        return courseStructure.units.find((unit) => unit.id === state.selectedUnit)?.name || '';
-    }, [state.selectedUnit]);
+        return currentCourse?.units.find((unit) => unit.id === state.selectedUnit)?.name || '';
+    }, [state.selectedUnit, currentCourse?.id]);
 
     const selectedPartLabelText = useMemo(() => {
         if (!state.selectedPart) return '';
         const part =
-            courseStructure.units.flatMap((unit) => unit.parts).find((item) => item.id === state.selectedPart);
+            currentCourse?.units.flatMap((unit) => unit.parts).find((item) => item.id === state.selectedPart);
         return part?.label || '';
-    }, [state.selectedPart]);
+    }, [state.selectedPart, currentCourse?.id]);
 
     const selectedSectionLabel = useMemo(() => {
         if (!state.selectedPart || !state.selectedSection) return '';
-        const section = getSectionsByPart(state.selectedPart).find((item) => item.id === state.selectedSection);
+        const section = getSectionsByPart(state.selectedPart, currentCourse?.id)
+            .find((item) => item.id === state.selectedSection);
         return section?.label || '';
-    }, [state.selectedPart, state.selectedSection]);
+    }, [state.selectedPart, state.selectedSection, currentCourse?.id]);
 
     const selectedModeLabel = useMemo(() => {
         switch (selectedMode) {
