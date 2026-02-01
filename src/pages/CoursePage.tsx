@@ -134,7 +134,9 @@ export function CoursePage() {
         const target = accordionItemRefs.current.get(openUnitId);
         if (!target) return;
         const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-        const offset = 12;
+        const headerEl = document.querySelector('header');
+        const headerHeight = headerEl ? headerEl.getBoundingClientRect().height : 0;
+        const offset = headerHeight + 12;
 
         if (scrollAnimationRef.current) {
             cancelAnimationFrame(scrollAnimationRef.current);
