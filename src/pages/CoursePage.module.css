@@ -39,6 +39,10 @@
     transition: background var(--transition-fast), color var(--transition-fast);
 }
 
+.lastPlayed {
+    box-shadow: inset 0 0 0 2px var(--color-primary);
+}
+
 .accordionButton:hover:not(:disabled) {
     background: rgba(255, 255, 255, 1);
 }
@@ -200,9 +204,6 @@
     color: var(--color-text-inverse);
 }
 
-.modeIcon {
-    font-size: var(--font-size-lg);
-}
 
 /* Sections */
 .sections {

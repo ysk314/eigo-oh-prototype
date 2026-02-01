@@ -11,7 +11,7 @@ import { TypingInput } from '@/components/TypingInput';
 import { ProgressBar } from '@/components/ProgressBar';
 import { Button } from '@/components/Button';
 import { Card } from '@/components/Card';
-import { getQuestionsBySection } from '@/data/questions';
+import { courseStructure, getQuestionsBySection, getSectionsByPart } from '@/data/questions';
 import { shuffleWithNoConsecutive } from '@/utils/shuffle';
 import { UserProgress } from '@/types';
 import { buildScoreResult, ScoreResult } from '@/utils/score';
@@ -320,6 +320,37 @@ export function PlayPage() {
         { id: 'right-pinky', label: '右小指' },
     ];
 
+    const selectedUnitLabel = useMemo(() => {
+        if (!state.selectedUnit) return '';
+        return courseStructure.units.find((unit) => unit.id === state.selectedUnit)?.name || '';
+    }, [state.selectedUnit]);
+
+    const selectedPartLabelText = useMemo(() => {
+        if (!state.selectedPart) return '';
+        const part =
+            courseStructure.units.flatMap((unit) => unit.parts).find((item) => item.id === state.selectedPart);
+        return part?.label || '';
+    }, [state.selectedPart]);
+
+    const selectedSectionLabel = useMemo(() => {
+        if (!state.selectedPart || !state.selectedSection) return '';
+        const section = getSectionsByPart(state.selectedPart).find((item) => item.id === state.selectedSection);
+        return section?.label || '';
+    }, [state.selectedPart, state.selectedSection]);
+
+    const selectedModeLabel = useMemo(() => {
+        switch (selectedMode) {
+            case 1:
+                return '音あり / スペルあり';
+            case 2:
+                return '音あり / スペルなし';
+            case 3:
+                return '音なし / スペルなし';
+            default:
+                return '';
+        }
+    }, [selectedMode]);
+
     // 完了画面
     if (isFinished) {
         const totalMiss = sessionResults.reduce((acc, cur) => acc + cur.missCount, 0);
@@ -362,6 +393,12 @@ export function PlayPage() {
                         <h2 className={styles.resultTitle}>
                             {finalScore.rank === 'S' ? '🎉 Excellent! 🎉' : 'Good Job!'}
                         </h2>
+                        <div className={styles.resultMeta}>
+                            <span>Unit: {selectedUnitLabel || '-'}</span>
+                            <span>Part: {selectedPartLabelText || '-'}</span>
+                            <span>Section: {selectedSectionLabel || '-'}</span>
+                            <span>Level: {selectedModeLabel || '-'}</span>
+                        </div>
 
                         <div className={styles.stats}>
                             <div className={styles.statItem}>

@@ -22,6 +22,7 @@ export function CoursePage() {
     const selectedPartLabel = selectedUnit?.parts.find((part) => part.id === selectedPartId)?.label || '';
     const [openUnitId, setOpenUnitId] = useState<string | null>(null);
     const hasInitializedRef = useRef(false);
+    const accordionItemRefs = useRef(new Map<string, HTMLDivElement>());
 
     const questionIdToPartId = useMemo(() => {
         const map = new Map<string, string>();
@@ -83,7 +84,6 @@ export function CoursePage() {
 
         if (initialUnit?.id) {
             setUnit(initialUnit.id);
-            setOpenUnitId(initialUnit.id);
         }
         if (initialPartId) {
             setPart(initialPartId);
@@ -110,6 +110,18 @@ export function CoursePage() {
         setOpenUnitId(unitId);
         handleUnitSelect(unitId);
     };
+
+    useEffect(() => {
+        if (!openUnitId) return;
+        if (typeof window === 'undefined') return;
+        if (!window.matchMedia('(max-width: 768px)').matches) return;
+
+        const target = accordionItemRefs.current.get(openUnitId);
+        if (!target) return;
+        requestAnimationFrame(() => {
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+    }, [openUnitId]);
 
     const handlePartSelect = (unitId: string, partId: string) => {
         setUnit(unitId);
@@ -155,11 +167,22 @@ export function CoursePage() {
                         const isSelected = unit.id === selectedUnitId;
                         const isEmpty = totalQuestions === 0;
                         const isOpen = unit.id === openUnitId;
+                        const isLastPlayed = unit.id === lastPlayed.unitId;
 
                         return (
-                            <section key={unit.id} className={styles.accordionItem}>
+                            <section
+                                key={unit.id}
+                                className={styles.accordionItem}
+                                ref={(node) => {
+                                    if (node) {
+                                        accordionItemRefs.current.set(unit.id, node);
+                                    } else {
+                                        accordionItemRefs.current.delete(unit.id);
+                                    }
+                                }}
+                            >
                                 <button
-                                    className={`${styles.accordionButton} ${isSelected ? styles.selected : ''} ${isEmpty ? styles.empty : ''}`}
+                                    className={`${styles.accordionButton} ${isSelected ? styles.selected : ''} ${isEmpty ? styles.empty : ''} ${isLastPlayed ? styles.lastPlayed : ''}`}
                                     onClick={() => !isEmpty && handleUnitToggle(unit.id)}
                                     disabled={isEmpty}
                                     aria-expanded={isOpen}
@@ -175,15 +198,12 @@ export function CoursePage() {
                                     <div id={`unit-panel-${unit.id}`} className={styles.accordionPanel}>
                                         <div className={styles.modeHeader}>
                                             <div className={styles.modeLabel} data-mode="1">
-                                                <span className={styles.modeIcon}>🔊</span>
                                                 <span>音あり<br />スペルあり</span>
                                             </div>
                                             <div className={styles.modeLabel} data-mode="2">
-                                                <span className={styles.modeIcon}>🔊</span>
                                                 <span>音あり<br />スペルなし</span>
                                             </div>
                                             <div className={styles.modeLabel} data-mode="3">
-                                                <span className={styles.modeIcon}>🔇</span>
                                                 <span>音なし<br />スペルなし</span>
                                             </div>
                                         </div>
@@ -297,15 +317,12 @@ export function CoursePage() {
                         {/* モード説明ヘッダー */}
                         <div className={styles.modeHeader}>
                             <div className={styles.modeLabel} data-mode="1">
-                                <span className={styles.modeIcon}>🔊</span>
                                 <span>音あり<br />スペルあり</span>
                             </div>
                             <div className={styles.modeLabel} data-mode="2">
-                                <span className={styles.modeIcon}>🔊</span>
                                 <span>音あり<br />スペルなし</span>
                             </div>
                             <div className={styles.modeLabel} data-mode="3">
-                                <span className={styles.modeIcon}>🔇</span>
                                 <span>音なし<br />スペルなし</span>
                             </div>
                         </div>
