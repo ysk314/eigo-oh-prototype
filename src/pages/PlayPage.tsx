@@ -6,16 +6,17 @@ import { useState, useEffect, useMemo, useCallback, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useApp } from '@/context/AppContext';
 import { Header } from '@/components/Header';
+import { GameHeader } from '@/components/GameHeader';
+import { TimerBar } from '@/components/TimerBar';
 import { QuestionDisplay } from '@/components/QuestionDisplay';
 import { TypingInput } from '@/components/TypingInput';
-import { ProgressBar } from '@/components/ProgressBar';
 import { Button } from '@/components/Button';
 import { Card } from '@/components/Card';
 import { courses, getCourseById, getQuestionsBySection, getSectionsByPart } from '@/data/questions';
 import { shuffleWithNoConsecutive } from '@/utils/shuffle';
 import { UserProgress } from '@/types';
 import { buildScoreResult, ScoreResult } from '@/utils/score';
-import { calculateTimeLimit, calculateTotalChars, calculateTimeBarPercent } from '@/utils/timer';
+import { calculateTimeLimit, calculateTotalChars } from '@/utils/timer';
 import { playSound } from '@/utils/sound';
 import { useCountdown } from '@/hooks/useCountdown';
 import { getRankMessage } from '@/utils/result';
@@ -76,11 +77,15 @@ export function PlayPage() {
 
     useEffect(() => {
         const originalOverflow = document.body.style.overflow;
-        document.body.style.overflow = 'hidden';
+        if (!isFinished) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = originalOverflow;
+        }
         return () => {
             document.body.style.overflow = originalOverflow;
         };
-    }, []);
+    }, [isFinished]);
 
     // セッション初期化（問題セット変更時）
     useEffect(() => {
@@ -437,30 +442,15 @@ export function PlayPage() {
     // プレイ画面
     return (
         <div className={styles.page}>
-            <header className={styles.playHeader}>
-                <button className={styles.backButton} onClick={handleBack}>
-                    ← 戻る
-                </button>
-                <div className={styles.progressContainer}>
-                    <ProgressBar current={currentIndex + 1} total={questions.length} />
-                </div>
-                <div className={styles.userInfo}>
-                    {currentUser?.name}
-                </div>
-            </header>
+            <GameHeader
+                current={currentIndex + 1}
+                total={questions.length}
+                userName={currentUser?.name}
+                onBack={handleBack}
+            />
 
             <main className={styles.playMain}>
-                <div className={styles.timerWrapper}>
-                    <div className={styles.timerBarContainer}>
-                        <div
-                            className={`${styles.timerBar} ${timeLeft < 10 ? styles.timerDanger : ''}`}
-                            style={{ width: `${calculateTimeBarPercent(timeLeft, timeLimit)}%` }}
-                        />
-                    </div>
-                    <div className={styles.timerLabel}>
-                        残り {timeLeft} / {timeLimit} 秒
-                    </div>
-                </div>
+                <TimerBar timeLeft={timeLeft} timeLimit={timeLimit} dangerThreshold={10} maxWidth={600} />
 
                 {/* 問題番号ナビゲーション (オプション) */}
                 {currentQuestion ? (

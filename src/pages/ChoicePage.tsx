@@ -9,10 +9,11 @@ import { Header } from '@/components/Header';
 import { Card } from '@/components/Card';
 import { Button } from '@/components/Button';
 import { AudioPlayer } from '@/components/AudioPlayer';
+import { GameHeader } from '@/components/GameHeader';
+import { TimerBar } from '@/components/TimerBar';
 import { courses, getCourseById, getQuestionsBySection, getSectionsByPart } from '@/data/questions';
-import { ProgressBar } from '@/components/ProgressBar';
 import { buildScoreResult, ScoreResult } from '@/utils/score';
-import { calculateTimeLimit, calculateTotalChars, calculateTimeBarPercent } from '@/utils/timer';
+import { calculateTimeLimit, calculateTotalChars } from '@/utils/timer';
 import { playSound } from '@/utils/sound';
 import { getRankMessage } from '@/utils/result';
 import { useCountdown } from '@/hooks/useCountdown';
@@ -85,11 +86,15 @@ export function ChoicePage() {
 
     useEffect(() => {
         const originalOverflow = document.body.style.overflow;
-        document.body.style.overflow = 'hidden';
+        if (!isFinished) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = originalOverflow;
+        }
         return () => {
             document.body.style.overflow = originalOverflow;
         };
-    }, []);
+    }, [isFinished]);
 
     useEffect(() => {
         if (state.studyMode === 'typing') {
@@ -385,29 +390,14 @@ export function ChoicePage() {
 
     return (
         <div className={styles.page}>
-            <header className={styles.playHeader}>
-                <button className={styles.backButton} onClick={handleBack}>
-                    ← 戻る
-                </button>
-                <div className={styles.progressContainer}>
-                    <ProgressBar current={currentIndex + 1} total={questions.length} />
-                </div>
-                <div className={styles.userInfo}>
-                    {state.currentUser?.name}
-                </div>
-            </header>
+            <GameHeader
+                current={currentIndex + 1}
+                total={questions.length}
+                userName={state.currentUser?.name}
+                onBack={handleBack}
+            />
             <main className={styles.main}>
-                <div className={styles.timerWrapper}>
-                    <div className={styles.timerBarContainer}>
-                        <div
-                            className={styles.timerBar}
-                            style={{ width: `${calculateTimeBarPercent(timeLeft, timeLimit)}%` }}
-                        />
-                    </div>
-                    <div className={styles.timerLabel}>
-                        残り {timeLeft} / {timeLimit} 秒
-                    </div>
-                </div>
+                <TimerBar timeLeft={timeLeft} timeLimit={timeLimit} maxWidth={680} />
                 <div className={styles.promptCard}>
                     <div className={styles.promptText}>{choiceState?.prompt}</div>
                     {shouldPlayAudio && currentQuestion && (

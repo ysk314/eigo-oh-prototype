@@ -1,0 +1,54 @@
+.playHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--space-md) var(--space-lg);
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.backButton {
+    background: none;
+    border: none;
+    color: var(--color-text-secondary);
+    font-weight: var(--font-weight-medium);
+    cursor: pointer;
+    padding: var(--space-sm);
+    border-radius: var(--radius-md);
+    transition: background var(--transition-fast);
+}
+
+.backButton:hover {
+    background: rgba(0, 0, 0, 0.05);
+    color: var(--color-primary);
+}
+
+.progressContainer {
+    flex: 1;
+    max-width: 400px;
+    margin: 0 var(--space-xl);
+}
+
+.userInfo {
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-primary);
+}
+
+@media (max-width: 768px) {
+    .playHeader {
+        padding: var(--space-sm);
+    }
+
+    .userInfo {
+        display: none;
+    }
+
+    .progressContainer {
+        margin: 0 var(--space-md);
+    }
+}

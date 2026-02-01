@@ -204,6 +204,10 @@ export function CoursePage() {
 
     const handleChoiceSelect = (sectionId: string, level: ChoiceLevel) => {
         if (!selectedPartId) return;
+        const unitId = partIdToUnitId.get(selectedPartId) ?? selectedUnitId;
+        if (unitId) {
+            setUnit(unitId);
+        }
         setPart(selectedPartId);
         setSection(sectionId);
         setChoiceLevel(level);
