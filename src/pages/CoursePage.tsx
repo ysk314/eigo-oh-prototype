@@ -169,9 +169,6 @@ export function CoursePage() {
 
         window.setTimeout(() => {
             const rect = target.getBoundingClientRect();
-            const viewHeight = window.innerHeight || 0;
-            const shouldScroll = rect.top < offset || rect.top > viewHeight * 0.6;
-            if (!shouldScroll) return;
             const top = rect.top + window.scrollY - offset;
             smoothScrollTo(top, 420);
         }, 120);
