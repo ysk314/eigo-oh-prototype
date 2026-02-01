@@ -14,6 +14,39 @@
     padding: var(--space-xl);
 }
 
+.timerWrapper {
+    width: 100%;
+    max-width: 680px;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+}
+
+.timerBarContainer {
+    width: 100%;
+    height: 8px;
+    background: #eee;
+    border-radius: var(--radius-full);
+    overflow: hidden;
+}
+
+.timerBar {
+    height: 100%;
+    background: var(--color-primary);
+    transition: width 1s linear;
+}
+
+.timerLabel {
+    text-align: right;
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+}
+
+.progressContainer {
+    width: 100%;
+    max-width: 680px;
+}
+
 .promptCard {
     width: 100%;
     max-width: 680px;
@@ -99,22 +132,31 @@
     color: var(--color-primary);
 }
 
-.resultStats {
+.stats {
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: var(--space-md);
 }
 
-.resultLabel {
-    display: block;
+.statItem {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-xs);
+    text-align: center;
+}
+
+.statLabel {
     font-size: var(--font-size-xs);
     color: var(--color-text-secondary);
 }
 
-.resultValue {
-    font-size: var(--font-size-2xl);
+.statValue {
+    font-size: clamp(1.4rem, 3.5vw, 2.2rem);
     font-weight: var(--font-weight-bold);
     color: var(--color-text-primary);
+    line-height: 1.1;
+    font-variant-numeric: tabular-nums;
 }
 
 .actions {
@@ -125,5 +167,9 @@
 @media (max-width: 640px) {
     .choices {
         grid-template-columns: 1fr;
+    }
+
+    .stats {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 }

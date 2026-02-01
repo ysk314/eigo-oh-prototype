@@ -26,11 +26,18 @@ export function PlayPage() {
         updateProgress,
         setQuestionIndex,
         markSectionCleared,
-        setSectionRank
+        setSectionRank,
+        setStudyMode,
     } = useApp();
 
     const { selectedCourse, selectedPart, selectedSection, selectedMode, currentUser, shuffleMode } = state;
     const currentCourse = getCourseById(selectedCourse) ?? courses[0];
+
+    useEffect(() => {
+        if (state.studyMode === 'choice') {
+            navigate('/choice');
+        }
+    }, [state.studyMode, navigate]);
 
     // セクションの問題をロード & シャッフル
     const questions = useMemo(() => {
@@ -382,7 +389,7 @@ export function PlayPage() {
 
         return (
             <div className={styles.page}>
-                <Header title="結果発表" showUserSelect={false} />
+                <Header title="結果発表" showUserSelect={false} showStudyModeToggle />
                 <main className={styles.resultMain}>
                     {finalScore.rank === 'S' && (
                         <div className={styles.confettiWrapper} aria-hidden="true">
@@ -468,8 +475,24 @@ export function PlayPage() {
                 <div className={styles.progressContainer}>
                     <ProgressBar current={currentIndex + 1} total={questions.length} />
                 </div>
-                <div className={styles.userInfo}>
-                    {currentUser?.name}
+                <div className={styles.playHeaderRight}>
+                    <div className={styles.studyModeToggle}>
+                        <button
+                            className={`${styles.modeTab} ${state.studyMode === 'typing' ? styles.modeTabActive : ''}`}
+                            onClick={() => setStudyMode('typing')}
+                        >
+                            タイピング
+                        </button>
+                        <button
+                            className={`${styles.modeTab} ${state.studyMode === 'choice' ? styles.modeTabActive : ''}`}
+                            onClick={() => setStudyMode('choice')}
+                        >
+                            4択
+                        </button>
+                    </div>
+                    <div className={styles.userInfo}>
+                        {currentUser?.name}
+                    </div>
                 </div>
             </header>
 

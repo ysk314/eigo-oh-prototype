@@ -198,6 +198,7 @@ export function CoursePage() {
         setPart(selectedPartId);
         setSection(sectionId);
         setMode(mode);
+        setStudyMode('typing');
         navigate('/play');
     };
 
@@ -206,15 +207,12 @@ export function CoursePage() {
         setPart(selectedPartId);
         setSection(sectionId);
         setChoiceLevel(level);
+        setStudyMode('choice');
         navigate('/choice');
     };
 
     const handleBack = () => {
         navigate('/');
-    };
-
-    const handleStudyModeChange = (mode: 'typing' | 'choice') => {
-        setStudyMode(mode);
     };
 
     const getCompletedCount = (_partId: string) => {
@@ -243,6 +241,7 @@ export function CoursePage() {
                     breadcrumb={[currentCourse?.name || '', selectedUnit?.name || '', selectedPartLabel]}
                     showShuffleToggle
                     showBackButton
+                    showStudyModeToggle
                     onBack={handleBack}
                 />
             </div>
@@ -287,20 +286,6 @@ export function CoursePage() {
                                     aria-hidden={!isOpen}
                                 >
                                     <div className={styles.accordionPanelContent}>
-                                        <div className={styles.modeTabs}>
-                                            <button
-                                                className={`${styles.modeTab} ${state.studyMode === 'typing' ? styles.modeTabActive : ''}`}
-                                                onClick={() => handleStudyModeChange('typing')}
-                                            >
-                                                タイピング
-                                            </button>
-                                            <button
-                                                className={`${styles.modeTab} ${state.studyMode === 'choice' ? styles.modeTabActive : ''}`}
-                                                onClick={() => handleStudyModeChange('choice')}
-                                            >
-                                                4択
-                                            </button>
-                                        </div>
                                         <div className={styles.mobilePartList} aria-label="パート一覧">
                                             {(unit.parts || []).map((part) => {
                                                 const completed = getCompletedCount(part.id);
@@ -409,20 +394,6 @@ export function CoursePage() {
 
                     {/* メインエリア: セクションカード */}
                     <main className={styles.main}>
-                        <div className={styles.modeTabs}>
-                            <button
-                                className={`${styles.modeTab} ${state.studyMode === 'typing' ? styles.modeTabActive : ''}`}
-                                onClick={() => handleStudyModeChange('typing')}
-                            >
-                                タイピング
-                            </button>
-                            <button
-                                className={`${styles.modeTab} ${state.studyMode === 'choice' ? styles.modeTabActive : ''}`}
-                                onClick={() => handleStudyModeChange('choice')}
-                            >
-                                4択
-                            </button>
-                        </div>
                         {/* セクションリスト */}
                         <div className={styles.sections}>
                             {sections.length > 0 ? (

@@ -2,13 +2,16 @@
 // Choice Page (4択)
 // ================================
 
-import { useMemo, useState, useEffect } from 'react';
+import { useMemo, useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useApp } from '@/context/AppContext';
 import { Header } from '@/components/Header';
 import { Card } from '@/components/Card';
 import { Button } from '@/components/Button';
 import { courses, getCourseById, getQuestionsBySection } from '@/data/questions';
+import { ProgressBar } from '@/components/ProgressBar';
+import { buildScoreResult, ScoreResult } from '@/utils/score';
+import { calculateTimeLimit, calculateTotalChars, calculateTimeBarPercent } from '@/utils/timer';
 import styles from './ChoicePage.module.css';
 
 type ChoiceState = {
@@ -27,13 +30,9 @@ function shuffle<T>(items: T[]): T[] {
 
 function maskWord(word: string): string {
     return word
-        .split(' ')
-        .map((token) => {
-            if (!token) return token;
-            if (token.length <= 2) return token[0] + '…';
-            return token[0] + '…'.repeat(Math.min(3, token.length - 1));
-        })
-        .join(' ');
+        .split('')
+        .map((char) => (char === ' ' ? ' ' : '_'))
+        .join('');
 }
 
 export function ChoicePage() {
@@ -52,6 +51,12 @@ export function ChoicePage() {
     const [selected, setSelected] = useState<string | null>(null);
     const [correctCount, setCorrectCount] = useState(0);
     const [missCount, setMissCount] = useState(0);
+    const [isFinished, setIsFinished] = useState(false);
+    const [scoreResult, setScoreResult] = useState<ScoreResult | null>(null);
+    const [timeLimit, setTimeLimit] = useState(0);
+    const [timeLeft, setTimeLeft] = useState(0);
+    const [timeUp, setTimeUp] = useState(false);
+    const timeUpRef = useRef(false);
 
     const currentQuestion = questions[currentIndex];
 
@@ -60,6 +65,47 @@ export function ChoicePage() {
             navigate('/course');
         }
     }, [selectedSection, questions, navigate]);
+
+    useEffect(() => {
+        if (state.studyMode === 'typing') {
+            navigate('/play');
+        }
+    }, [state.studyMode, navigate]);
+
+    useEffect(() => {
+        if (questions.length === 0) return;
+        const totalChars = calculateTotalChars(questions);
+        const limit = calculateTimeLimit(totalChars, 1, 10);
+        setCurrentIndex(0);
+        setIsFinished(false);
+        setTimeUp(false);
+        setCorrectCount(0);
+        setMissCount(0);
+        setScoreResult(null);
+        setTimeLimit(limit);
+        setTimeLeft(limit);
+    }, [questions]);
+
+    useEffect(() => {
+        if (isFinished || timeLimit === 0) return;
+        if (timeLeft <= 0) {
+            if (!timeUp) {
+                setTimeUp(true);
+                finishSession(true);
+            }
+            return;
+        }
+
+        const interval = setInterval(() => {
+            setTimeLeft((prev) => (prev <= 1 ? 0 : prev - 1));
+        }, 1000);
+
+        return () => clearInterval(interval);
+    }, [isFinished, timeLeft, timeLimit, timeUp]);
+
+    useEffect(() => {
+        timeUpRef.current = timeUp;
+    }, [timeUp]);
 
     useEffect(() => {
         if (!currentQuestion) return;
@@ -77,19 +123,33 @@ export function ChoicePage() {
             (q) => q.id !== currentQuestion.id && q.pos?.includes(pos)
         );
 
-        const options: string[] = [currentQuestion.answerEn];
+        const options: string[] = [];
+        const displaySet = new Set<string>();
+
+        const addOption = (answer: string) => {
+            if (options.includes(answer)) return false;
+            const display = selectedChoiceLevel === 2 ? maskWord(answer) : answer;
+            if (displaySet.has(display)) return false;
+            options.push(answer);
+            displaySet.add(display);
+            return true;
+        };
+
+        addOption(currentQuestion.answerEn);
         shuffle(samePos)
             .map((q) => q.answerEn)
-            .filter((answer) => !options.includes(answer))
-            .slice(0, 3)
-            .forEach((answer) => options.push(answer));
+            .forEach((answer) => {
+                if (options.length >= 4) return;
+                addOption(answer);
+            });
 
         if (options.length < 4) {
             shuffle(pool)
                 .map((q) => q.answerEn)
-                .filter((answer) => !options.includes(answer))
-                .slice(0, 4 - options.length)
-                .forEach((answer) => options.push(answer));
+                .forEach((answer) => {
+                    if (options.length >= 4) return;
+                    addOption(answer);
+                });
         }
 
         setChoiceState({
@@ -97,7 +157,7 @@ export function ChoicePage() {
             correct: currentQuestion.answerEn,
         });
         setSelected(null);
-    }, [currentQuestion, questions]);
+    }, [currentQuestion, questions, selectedChoiceLevel]);
 
     const handleChoice = (answer: string) => {
         if (!choiceState || selected) return;
@@ -111,31 +171,50 @@ export function ChoicePage() {
 
         window.setTimeout(() => {
             setSelected(null);
-            setCurrentIndex((prev) => prev + 1);
+            if (currentIndex < questions.length - 1 && !timeUpRef.current) {
+                setCurrentIndex((prev) => prev + 1);
+                return;
+            }
+            finishSession(timeUpRef.current);
         }, 500);
     };
 
-    if (currentIndex >= questions.length && questions.length > 0) {
+    const finishSession = (timeUpFlag: boolean) => {
+        setIsFinished(true);
+        const score = buildScoreResult({
+            missCount,
+            timeLeft,
+            timeLimit,
+            timeUp: timeUpFlag,
+        });
+        setScoreResult(score);
+    };
+
+    if (isFinished && scoreResult) {
         const total = correctCount + missCount;
         const accuracy = total > 0 ? Math.round((correctCount / total) * 100) : 0;
         return (
             <div className={styles.page}>
-                <Header title="結果発表" showUserSelect={false} />
+                <Header title="結果発表" showUserSelect={false} showStudyModeToggle />
                 <main className={styles.resultMain}>
                     <Card className={styles.resultCard} padding="lg">
                         <h2 className={styles.resultTitle}>4択結果</h2>
-                        <div className={styles.resultStats}>
-                            <div>
-                                <span className={styles.resultLabel}>正解</span>
-                                <span className={styles.resultValue}>{correctCount}</span>
+                        <div className={styles.stats}>
+                            <div className={styles.statItem}>
+                                <span className={styles.statLabel}>ランク</span>
+                                <span className={styles.statValue}>{scoreResult.rank}</span>
                             </div>
-                            <div>
-                                <span className={styles.resultLabel}>ミス</span>
-                                <span className={styles.resultValue}>{missCount}</span>
+                            <div className={styles.statItem}>
+                                <span className={styles.statLabel}>正答率</span>
+                                <span className={styles.statValue}>{accuracy}%</span>
                             </div>
-                            <div>
-                                <span className={styles.resultLabel}>正答率</span>
-                                <span className={styles.resultValue}>{accuracy}%</span>
+                            <div className={styles.statItem}>
+                                <span className={styles.statLabel}>ミス回数</span>
+                                <span className={styles.statValue}>{missCount}回</span>
+                            </div>
+                            <div className={styles.statItem}>
+                                <span className={styles.statLabel}>スコア</span>
+                                <span className={styles.statValue}>{scoreResult.totalScore}</span>
                             </div>
                         </div>
                         <div className={styles.actions}>
@@ -151,8 +230,23 @@ export function ChoicePage() {
 
     return (
         <div className={styles.page}>
-            <Header title="4択モード" showUserSelect={false} />
+            <Header title="4択モード" showUserSelect={false} showStudyModeToggle />
             <main className={styles.main}>
+                <div className={styles.timerWrapper}>
+                    <div className={styles.timerBarContainer}>
+                        <div
+                            className={styles.timerBar}
+                            style={{ width: `${calculateTimeBarPercent(timeLeft, timeLimit)}%` }}
+                        />
+                    </div>
+                    <div className={styles.timerLabel}>
+                        残り {timeLeft} / {timeLimit} 秒
+                    </div>
+                </div>
+
+                <div className={styles.progressContainer}>
+                    <ProgressBar current={currentIndex + 1} total={questions.length} />
+                </div>
                 <div className={styles.promptCard}>
                     <div className={styles.promptLabel}>日本語</div>
                     <div className={styles.promptText}>{currentQuestion?.promptJp}</div>

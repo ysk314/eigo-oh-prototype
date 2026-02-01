@@ -12,6 +12,7 @@ interface HeaderProps {
     showUserSelect?: boolean;
     showShuffleToggle?: boolean;
     showBackButton?: boolean;
+    showStudyModeToggle?: boolean;
     onBack?: () => void;
 }
 
@@ -21,9 +22,10 @@ export function Header({
     showUserSelect = true,
     showShuffleToggle = false,
     showBackButton = false,
+    showStudyModeToggle = false,
     onBack,
 }: HeaderProps) {
-    const { state, setUser, toggleShuffle } = useApp();
+    const { state, setUser, toggleShuffle, setStudyMode } = useApp();
 
     const handleUserChange = (e: ChangeEvent<HTMLSelectElement>) => {
         const user = state.users.find(u => u.id === e.target.value);
@@ -75,6 +77,23 @@ export function Header({
                         >
                             <span className={styles.toggleOption} data-active={state.shuffleMode}>ON</span>
                             <span className={styles.toggleOption} data-active={!state.shuffleMode}>OFF</span>
+                        </button>
+                    </div>
+                )}
+
+                {showStudyModeToggle && (
+                    <div className={styles.studyModeToggle}>
+                        <button
+                            className={`${styles.modeTab} ${state.studyMode === 'typing' ? styles.modeTabActive : ''}`}
+                            onClick={() => setStudyMode('typing')}
+                        >
+                            タイピング
+                        </button>
+                        <button
+                            className={`${styles.modeTab} ${state.studyMode === 'choice' ? styles.modeTabActive : ''}`}
+                            onClick={() => setStudyMode('choice')}
+                        >
+                            4択
                         </button>
                     </div>
                 )}

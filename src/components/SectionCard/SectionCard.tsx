@@ -74,13 +74,13 @@ export function SectionCard({
                         className={`${styles.choiceButton} ${styles.choiceButtonPrimary}`}
                         onClick={() => onChoiceSelect?.(section.id, 1)}
                     >
-                        英語表示あり
+                        1
                     </button>
                     <button
                         className={styles.choiceButton}
                         onClick={() => onChoiceSelect?.(section.id, 2)}
                     >
-                        英語表示なし
+                        2
                     </button>
                 </div>
             )}
