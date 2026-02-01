@@ -17,6 +17,8 @@ import { UserProgress } from '@/types';
 import { buildScoreResult, ScoreResult } from '@/utils/score';
 import { calculateTimeLimit, calculateTotalChars, calculateTimeBarPercent } from '@/utils/timer';
 import { playSound } from '@/utils/sound';
+import { useCountdown } from '@/hooks/useCountdown';
+import { getRankMessage } from '@/utils/result';
 import styles from './PlayPage.module.css';
 
 export function PlayPage() {
@@ -53,8 +55,7 @@ export function PlayPage() {
     const [currentIndex, setCurrentIndex] = useState(0);
     const [isFinished, setIsFinished] = useState(false);
     const [sessionResults, setSessionResults] = useState<UserProgress[]>([]);
-    const [countdown, setCountdown] = useState<number | null>(null);
-    const [isCountingDown, setIsCountingDown] = useState(false);
+    const { countdown, isCountingDown, start: startCountdown } = useCountdown(3, () => playSound('countdown'));
     const [timeLimit, setTimeLimit] = useState(0);
     const [timeLeft, setTimeLeft] = useState(0);
     const [timeUp, setTimeUp] = useState(false);
@@ -73,6 +74,14 @@ export function PlayPage() {
         }
     }, [selectedSection, questions, navigate]);
 
+    useEffect(() => {
+        const originalOverflow = document.body.style.overflow;
+        document.body.style.overflow = 'hidden';
+        return () => {
+            document.body.style.overflow = originalOverflow;
+        };
+    }, []);
+
     // セッション初期化（問題セット変更時）
     useEffect(() => {
         if (questions.length === 0) return;
@@ -88,36 +97,8 @@ export function PlayPage() {
         setScoreResult(null);
         setTimeLimit(limit);
         setTimeLeft(limit);
-        setCountdown(3);
-        setIsCountingDown(true);
-    }, [questions]);
-
-    // カウントダウン処理
-    useEffect(() => {
-        if (!isCountingDown || countdown === null) return;
-
-        playSound('countdown');
-        const interval = setInterval(() => {
-            setCountdown((prev) => {
-                if (prev === null) return null;
-                if (prev <= 1) return null;
-                playSound('countdown');
-                return prev - 1;
-            });
-        }, 1000);
-
-        return () => clearInterval(interval);
-    }, [isCountingDown]);
-
-    useEffect(() => {
-        if (!isCountingDown || countdown !== null) return;
-
-        const timer = setTimeout(() => {
-            setIsCountingDown(false);
-        }, 300);
-
-        return () => clearTimeout(timer);
-    }, [isCountingDown, countdown]);
+        startCountdown(3);
+    }, [questions, startCountdown]);
 
     // タイマー処理
     useEffect(() => {
@@ -249,8 +230,7 @@ export function PlayPage() {
         setScoreResult(null);
         setTimeUp(false);
         setTimeLeft(timeLimit);
-        setCountdown(3);
-        setIsCountingDown(true);
+        startCountdown(3);
     };
 
     const handleBack = () => {
@@ -370,21 +350,11 @@ export function PlayPage() {
 
         if (!finalScore) return null;
         const isCleared = finalScore.rank === 'S';
-        const resultMessage = (() => {
-            switch (finalScore.rank) {
-                case 'S':
-                    return selectedMode === 3
-                        ? '最高！次のセクションに進もう！'
-                        : '目標達成！次のモードが解放されました！';
-                case 'A':
-                    return 'あと一歩！もう一度でSに届きそう！';
-                case 'B':
-                    return 'いい調子！ミスを減らせばSも見えるよ';
-                case 'C':
-                default:
-                    return 'まずは正確さ重視。ゆっくりでOK！';
-            }
-        })();
+        const resultMessage = finalScore.rank === 'S'
+            ? (selectedMode === 3
+                ? '最高！次のセクションに進もう！'
+                : '目標達成！次のモードが解放されました！')
+            : getRankMessage(finalScore.rank);
 
         return (
             <div className={styles.page}>

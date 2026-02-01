@@ -38,12 +38,19 @@ export function SectionCard({
         return progress[key] ?? null;
     };
 
+    const isChoiceUnlocked = (level: ChoiceLevel) => {
+        if (level === 3) return getRankForChoice(1) === 'S';
+        if (level === 4) return getRankForChoice(2) === 'S';
+        return true;
+    };
+
     const getChoiceLabel = (level: ChoiceLevel, fallback: string) => {
         const rank = getRankForChoice(level);
         return rank ?? fallback;
     };
 
     const getChoiceRankClass = (level: ChoiceLevel) => {
+        if (!isChoiceUnlocked(level)) return '';
         const rank = getRankForChoice(level);
         if (!rank) return '';
         switch (rank) {
@@ -105,14 +112,22 @@ export function SectionCard({
                                 className={`${styles.choiceButton} ${styles.choiceButtonPrimary} ${getChoiceRankClass(1)}`}
                                 onClick={() => onChoiceSelect?.(section.id, 1)}
                             >
-                                {getChoiceLabel(1, '1')}
+                                <span className={styles.number}>{getChoiceLabel(1, '1')}</span>
                             </button>
                             <button
-                                className={`${styles.choiceButton} ${styles.choiceButtonSecondary} ${getChoiceRankClass(3)}`}
+                                className={`${styles.choiceButton} ${styles.choiceButtonSecondary} ${getChoiceRankClass(3)} ${!isChoiceUnlocked(3) ? styles.locked : ''}`}
                                 onClick={() => onChoiceSelect?.(section.id, 3)}
-                                disabled={getRankForChoice(1) !== 'S'}
+                                disabled={!isChoiceUnlocked(3)}
                             >
-                                {getChoiceLabel(3, '2')}
+                                {isChoiceUnlocked(3) ? (
+                                    <span className={styles.number}>{getChoiceLabel(3, '2')}</span>
+                                ) : (
+                                    <span className={styles.lockIcon} aria-hidden="true">
+                                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                            <path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z" />
+                                        </svg>
+                                    </span>
+                                )}
                             </button>
                         </div>
                     </div>
@@ -123,14 +138,22 @@ export function SectionCard({
                                 className={`${styles.choiceButton} ${styles.choiceButtonPrimary} ${getChoiceRankClass(2)}`}
                                 onClick={() => onChoiceSelect?.(section.id, 2)}
                             >
-                                {getChoiceLabel(2, '1')}
+                                <span className={styles.number}>{getChoiceLabel(2, '1')}</span>
                             </button>
                             <button
-                                className={`${styles.choiceButton} ${styles.choiceButtonSecondary} ${getChoiceRankClass(4)}`}
+                                className={`${styles.choiceButton} ${styles.choiceButtonSecondary} ${getChoiceRankClass(4)} ${!isChoiceUnlocked(4) ? styles.locked : ''}`}
                                 onClick={() => onChoiceSelect?.(section.id, 4)}
-                                disabled={getRankForChoice(2) !== 'S'}
+                                disabled={!isChoiceUnlocked(4)}
                             >
-                                {getChoiceLabel(4, '2')}
+                                {isChoiceUnlocked(4) ? (
+                                    <span className={styles.number}>{getChoiceLabel(4, '2')}</span>
+                                ) : (
+                                    <span className={styles.lockIcon} aria-hidden="true">
+                                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                            <path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z" />
+                                        </svg>
+                                    </span>
+                                )}
                             </button>
                         </div>
                     </div>

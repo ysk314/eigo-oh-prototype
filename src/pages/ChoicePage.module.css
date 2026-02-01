@@ -45,8 +45,8 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: var(--space-xl);
-    padding: var(--space-xl);
+    gap: var(--space-lg);
+    padding: var(--space-lg);
 }
 
 .countdownOverlay {
@@ -120,16 +120,10 @@
     text-align: center;
 }
 
-.promptLabel {
-    font-size: var(--font-size-sm);
-    color: var(--color-text-secondary);
-}
-
 .promptText {
     font-size: var(--font-size-2xl);
     font-weight: var(--font-weight-bold);
     color: var(--color-text-primary);
-    margin-top: var(--space-sm);
 }
 
 .audioRow {
@@ -143,7 +137,7 @@
     max-width: 680px;
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: var(--space-md);
+    gap: var(--space-sm);
 }
 
 .choiceButton {
@@ -310,6 +304,11 @@
     .choices {
         grid-template-columns: 1fr;
         gap: var(--space-sm);
+    }
+
+    .main {
+        gap: var(--space-md);
+        padding: var(--space-md);
     }
 
     .choiceButton {

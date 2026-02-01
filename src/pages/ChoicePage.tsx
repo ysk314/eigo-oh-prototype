@@ -14,6 +14,8 @@ import { ProgressBar } from '@/components/ProgressBar';
 import { buildScoreResult, ScoreResult } from '@/utils/score';
 import { calculateTimeLimit, calculateTotalChars, calculateTimeBarPercent } from '@/utils/timer';
 import { playSound } from '@/utils/sound';
+import { getRankMessage } from '@/utils/result';
+import { useCountdown } from '@/hooks/useCountdown';
 import styles from './ChoicePage.module.css';
 
 type ChoiceState = {
@@ -71,8 +73,7 @@ export function ChoicePage() {
     const [timeLeft, setTimeLeft] = useState(0);
     const [timeUp, setTimeUp] = useState(false);
     const timeUpRef = useRef(false);
-    const [countdown, setCountdown] = useState<number | null>(null);
-    const [isCountingDown, setIsCountingDown] = useState(false);
+    const { countdown, isCountingDown, start: startCountdown } = useCountdown(3, () => playSound('countdown'));
 
     const currentQuestion = questions[currentIndex];
 
@@ -81,6 +82,14 @@ export function ChoicePage() {
             navigate('/course');
         }
     }, [selectedSection, questions, navigate]);
+
+    useEffect(() => {
+        const originalOverflow = document.body.style.overflow;
+        document.body.style.overflow = 'hidden';
+        return () => {
+            document.body.style.overflow = originalOverflow;
+        };
+    }, []);
 
     useEffect(() => {
         if (state.studyMode === 'typing') {
@@ -100,31 +109,8 @@ export function ChoicePage() {
         setScoreResult(null);
         setTimeLimit(limit);
         setTimeLeft(limit);
-        setCountdown(3);
-        setIsCountingDown(true);
-    }, [questions]);
-
-    useEffect(() => {
-        if (!isCountingDown || countdown === null) return;
-        playSound('countdown');
-        const interval = setInterval(() => {
-            setCountdown((prev) => {
-                if (prev === null) return null;
-                if (prev <= 1) return null;
-                playSound('countdown');
-                return prev - 1;
-            });
-        }, 1000);
-        return () => clearInterval(interval);
-    }, [isCountingDown, countdown]);
-
-    useEffect(() => {
-        if (!isCountingDown || countdown !== null) return;
-        const timer = setTimeout(() => {
-            setIsCountingDown(false);
-        }, 300);
-        return () => clearTimeout(timer);
-    }, [isCountingDown, countdown]);
+        startCountdown(3);
+    }, [questions, startCountdown]);
 
     const finishSession = useCallback((timeUpFlag: boolean) => {
         setIsFinished(true);
@@ -299,10 +285,6 @@ export function ChoicePage() {
         }
     }, [selectedChoiceLevel]);
 
-    const promptLabel = useMemo(() => {
-        return selectedChoiceLevel === 1 || selectedChoiceLevel === 3 ? '英語' : '日本語';
-    }, [selectedChoiceLevel]);
-
     const shouldPlayAudio = selectedChoiceLevel === 1;
 
     const handleBack = useCallback(() => {
@@ -324,9 +306,8 @@ export function ChoicePage() {
         setSelected(null);
         setLastWrong(null);
         setTimeLeft(timeLimit);
-        setCountdown(3);
-        setIsCountingDown(true);
-    }, [questions.length, timeLimit]);
+        startCountdown(3);
+    }, [questions.length, timeLimit, startCountdown]);
 
     if (isFinished && scoreResult) {
         const total = correctCount + missCount;
@@ -386,13 +367,7 @@ export function ChoicePage() {
                             </div>
                         </div>
                         <div className={styles.message}>
-                            {scoreResult.rank === 'S'
-                                ? '素晴らしい！次のセクションに進もう！'
-                                : scoreResult.rank === 'A'
-                                    ? 'あと一歩！もう一度でSに届きそう！'
-                                    : scoreResult.rank === 'B'
-                                        ? 'いい調子！ミスを減らせばSも見えるよ'
-                                        : 'まずは正確さ重視。ゆっくりでOK！'}
+                            {getRankMessage(scoreResult.rank)}
                         </div>
                         <div className={styles.actions}>
                             <Button onClick={handleRetry} variant="secondary" size="lg">
@@ -434,7 +409,6 @@ export function ChoicePage() {
                     </div>
                 </div>
                 <div className={styles.promptCard}>
-                    <div className={styles.promptLabel}>{promptLabel}</div>
                     <div className={styles.promptText}>{choiceState?.prompt}</div>
                     {shouldPlayAudio && currentQuestion && (
                         <div className={styles.audioRow}>

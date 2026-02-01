@@ -124,6 +124,31 @@
     box-shadow: none;
 }
 
+.locked {
+    background: #E0E0E0 !important;
+    color: #9E9E9E !important;
+    box-shadow: 0 4px 0 #BDBDBD !important;
+    opacity: 1;
+}
+
+.number {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.lockIcon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0.5;
+}
+
+.lockIcon svg {
+    width: 50%;
+    height: 50%;
+}
+
 /* Responsive */
 @media (max-width: 640px) {
     .card {
