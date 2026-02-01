@@ -7,6 +7,74 @@
 .content {
     display: flex;
     flex: 1;
+    flex-direction: column;
+    gap: var(--space-lg);
+}
+
+.mobileAccordion {
+    display: none;
+    flex-direction: column;
+    gap: var(--space-md);
+    padding: var(--space-lg) var(--space-lg) var(--space-xl);
+}
+
+.accordionItem {
+    background: #ffffff;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    overflow: hidden;
+}
+
+.accordionButton {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--space-md) var(--space-lg);
+    border: none;
+    background: rgba(255, 255, 255, 0.9);
+    font-family: var(--font-family-sans);
+    cursor: pointer;
+    text-align: left;
+    transition: background var(--transition-fast), color var(--transition-fast);
+}
+
+.accordionButton:hover:not(:disabled) {
+    background: rgba(255, 255, 255, 1);
+}
+
+.accordionButton:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+}
+
+.accordionTitle {
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-semibold);
+}
+
+.accordionMeta {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+}
+
+.accordionPanel {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+    padding: var(--space-lg);
+    background: #ffffff;
+}
+
+.mobilePartList {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+}
+
+.desktopLayout {
+    display: flex;
+    flex: 1;
 }
 
 /* Sidebar */
@@ -154,22 +222,11 @@
 
 /* Responsive */
 @media (max-width: 768px) {
-    .content {
-        flex-direction: column;
+    .mobileAccordion {
+        display: flex;
     }
 
-    .sidebar {
-        width: 100%;
-        border-right: none;
-        border-bottom: 1px solid var(--color-primary-soft);
-    }
-
-    .sidebarGrid {
-        grid-template-columns: 1fr;
-    }
-
-    .modeHeader {
-        justify-content: center;
-        padding-right: 0;
+    .desktopLayout {
+        display: none;
     }
 }
