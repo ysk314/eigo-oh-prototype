@@ -94,6 +94,12 @@
     transition-delay: 0.12s;
 }
 
+.accordionPanelClosing .accordionPanelContent {
+    opacity: 0;
+    transform: translateY(-4px);
+    transition-delay: 0s;
+}
+
 .mobilePartList {
     display: flex;
     flex-direction: column;

@@ -21,6 +21,7 @@ export function CoursePage() {
     const selectedUnit = units.find((unit) => unit.id === selectedUnitId) || units[0] || null;
     const selectedPartLabel = selectedUnit?.parts.find((part) => part.id === selectedPartId)?.label || '';
     const [openUnitId, setOpenUnitId] = useState<string | null>(null);
+    const [closingUnitId, setClosingUnitId] = useState<string | null>(null);
     const hasInitializedRef = useRef(false);
     const accordionItemRefs = useRef(new Map<string, HTMLElement>());
     const scrollAnimationRef = useRef<number | null>(null);
@@ -93,6 +94,15 @@ export function CoursePage() {
         hasInitializedRef.current = true;
     }, [lastPlayed.unitId, lastPlayed.partId, state.selectedUnit, state.selectedPart, units, setUnit, setPart]);
 
+    useEffect(() => {
+        if (closingUnitId === null) return;
+        const timer = window.setTimeout(() => {
+            setOpenUnitId(null);
+            setClosingUnitId(null);
+        }, 220);
+        return () => window.clearTimeout(timer);
+    }, [closingUnitId]);
+
     const handleUnitSelect = (unitId: string) => {
         setUnit(unitId);
         const nextUnit = units.find((unit) => unit.id === unitId);
@@ -104,8 +114,9 @@ export function CoursePage() {
     };
 
     const handleUnitToggle = (unitId: string) => {
+        if (closingUnitId) return;
         if (unitId === openUnitId) {
-            setOpenUnitId(null);
+            setClosingUnitId(unitId);
             return;
         }
         setOpenUnitId(unitId);
@@ -187,6 +198,13 @@ export function CoursePage() {
         return unit.parts.reduce((sum, part) => sum + part.totalQuestions, 0);
     };
 
+    useEffect(() => {
+        if (openUnitId) return;
+        if (!state.selectedUnit) return;
+        if (!units.some((unit) => unit.id === state.selectedUnit)) return;
+        setOpenUnitId(state.selectedUnit);
+    }, [openUnitId, state.selectedUnit, units]);
+
     return (
         <div className={styles.page}>
             <Header
@@ -203,6 +221,7 @@ export function CoursePage() {
                         const isSelected = unit.id === selectedUnitId;
                         const isEmpty = totalQuestions === 0;
                         const isOpen = unit.id === openUnitId;
+                        const isClosing = unit.id === closingUnitId;
 
                         return (
                             <section
@@ -231,7 +250,7 @@ export function CoursePage() {
 
                                 <div
                                     id={`unit-panel-${unit.id}`}
-                                    className={`${styles.accordionPanel} ${isOpen ? styles.accordionPanelOpen : ''}`}
+                                    className={`${styles.accordionPanel} ${isOpen ? styles.accordionPanelOpen : ''} ${isClosing ? styles.accordionPanelClosing : ''}`}
                                     aria-hidden={!isOpen}
                                 >
                                     <div className={styles.accordionPanelContent}>

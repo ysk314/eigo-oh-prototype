@@ -365,7 +365,9 @@ export function PlayPage() {
         const resultMessage = (() => {
             switch (finalScore.rank) {
                 case 'S':
-                    return '目標達成！次のモードが解放されました！';
+                    return selectedMode === 3
+                        ? '最高！次のセクションに進もう！'
+                        : '目標達成！次のモードが解放されました！';
                 case 'A':
                     return 'あと一歩！もう一度でSに届きそう！';
                 case 'B':
