@@ -100,7 +100,7 @@ export function CoursePage() {
         const timer = window.setTimeout(() => {
             setOpenUnitId(null);
             setClosingUnitId(null);
-        }, 140);
+        }, 100);
         return () => window.clearTimeout(timer);
     }, [closingUnitId]);
 
@@ -168,9 +168,13 @@ export function CoursePage() {
         };
 
         window.setTimeout(() => {
-            const top = target.getBoundingClientRect().top + window.scrollY - offset;
-            smoothScrollTo(top, 520);
-        }, 140);
+            const rect = target.getBoundingClientRect();
+            const viewHeight = window.innerHeight || 0;
+            const shouldScroll = rect.top < offset || rect.top > viewHeight * 0.6;
+            if (!shouldScroll) return;
+            const top = rect.top + window.scrollY - offset;
+            smoothScrollTo(top, 420);
+        }, 120);
     }, [openUnitId]);
 
     const handlePartSelect = (unitId: string, partId: string) => {

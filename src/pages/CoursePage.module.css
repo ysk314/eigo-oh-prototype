@@ -85,13 +85,13 @@
 .accordionPanelContent {
     opacity: 0;
     transform: translateY(-4px);
-    transition: opacity 0.15s ease, transform 0.25s ease;
+    transition: opacity 0.12s ease, transform 0.2s ease;
 }
 
 .accordionPanelOpen .accordionPanelContent {
     opacity: 1;
     transform: translateY(0);
-    transition-delay: 0.08s;
+    transition-delay: 0.06s;
 }
 
 .accordionPanelClosing .accordionPanelContent {
