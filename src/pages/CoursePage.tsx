@@ -25,6 +25,7 @@ export function CoursePage() {
     const hasInitializedRef = useRef(false);
     const accordionItemRefs = useRef(new Map<string, HTMLElement>());
     const scrollAnimationRef = useRef<number | null>(null);
+    const manualCloseRef = useRef(false);
 
     const questionIdToPartId = useMemo(() => {
         const map = new Map<string, string>();
@@ -116,9 +117,11 @@ export function CoursePage() {
     const handleUnitToggle = (unitId: string) => {
         if (closingUnitId) return;
         if (unitId === openUnitId) {
+            manualCloseRef.current = true;
             setClosingUnitId(unitId);
             return;
         }
+        manualCloseRef.current = false;
         setOpenUnitId(unitId);
         handleUnitSelect(unitId);
     };
@@ -200,6 +203,7 @@ export function CoursePage() {
 
     useEffect(() => {
         if (openUnitId) return;
+        if (manualCloseRef.current) return;
         if (!state.selectedUnit) return;
         if (!units.some((unit) => unit.id === state.selectedUnit)) return;
         setOpenUnitId(state.selectedUnit);
