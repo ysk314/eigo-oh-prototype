@@ -100,7 +100,7 @@ export function CoursePage() {
         const timer = window.setTimeout(() => {
             setOpenUnitId(null);
             setClosingUnitId(null);
-        }, 220);
+        }, 140);
         return () => window.clearTimeout(timer);
     }, [closingUnitId]);
 
