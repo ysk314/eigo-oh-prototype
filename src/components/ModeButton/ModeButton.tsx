@@ -47,7 +47,7 @@ export function ModeButton({
             aria-label={`モード${mode}: ${label.subtitle.replace('\n', '・')}`}
         >
             {isUnlocked ? (
-                <span className={styles.number}>{label.title}</span>
+                <span className={styles.number}>{rank ?? label.title}</span>
             ) : (
                 <span className={styles.lockIcon}>
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">

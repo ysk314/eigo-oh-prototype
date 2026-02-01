@@ -63,9 +63,15 @@
 }
 
 .rankB {
-    background: #9CCC65 !important;
+    background: #F4D03F !important;
+    color: #6B4F00 !important;
+    box-shadow: 0 4px 0 #C9A227 !important;
+}
+
+.rankC {
+    background: #EF5350 !important;
     color: #fff !important;
-    box-shadow: 0 4px 0 #7CB342 !important;
+    box-shadow: 0 4px 0 #D32F2F !important;
 }
 
 /* Locked */

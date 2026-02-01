@@ -23,6 +23,7 @@ export function CoursePage() {
     const [openUnitId, setOpenUnitId] = useState<string | null>(null);
     const hasInitializedRef = useRef(false);
     const accordionItemRefs = useRef(new Map<string, HTMLElement>());
+    const scrollAnimationRef = useRef<number | null>(null);
 
     const questionIdToPartId = useMemo(() => {
         const map = new Map<string, string>();
@@ -119,13 +120,43 @@ export function CoursePage() {
         const target = accordionItemRefs.current.get(openUnitId);
         if (!target) return;
         const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-        const behavior: ScrollBehavior = prefersReducedMotion ? 'auto' : 'smooth';
+        const offset = 12;
+
+        if (scrollAnimationRef.current) {
+            cancelAnimationFrame(scrollAnimationRef.current);
+            scrollAnimationRef.current = null;
+        }
+
+        const smoothScrollTo = (top: number, durationMs: number) => {
+            if (prefersReducedMotion) {
+                window.scrollTo({ top, behavior: 'auto' });
+                return;
+            }
+
+            const startTop = window.scrollY;
+            const delta = top - startTop;
+            const startTime = performance.now();
+
+            const easeOutCubic = (t: number) => 1 - Math.pow(1 - t, 3);
+            const tick = (now: number) => {
+                const elapsed = now - startTime;
+                const progress = Math.min(elapsed / durationMs, 1);
+                const nextTop = startTop + delta * easeOutCubic(progress);
+                window.scrollTo(0, nextTop);
+                if (progress < 1) {
+                    scrollAnimationRef.current = requestAnimationFrame(tick);
+                } else {
+                    scrollAnimationRef.current = null;
+                }
+            };
+
+            scrollAnimationRef.current = requestAnimationFrame(tick);
+        };
 
         window.setTimeout(() => {
-            const offset = 12;
             const top = target.getBoundingClientRect().top + window.scrollY - offset;
-            window.scrollTo({ top, behavior });
-        }, 120);
+            smoothScrollTo(top, 520);
+        }, 140);
     }, [openUnitId]);
 
     const handlePartSelect = (unitId: string, partId: string) => {
@@ -203,44 +234,46 @@ export function CoursePage() {
                                     className={`${styles.accordionPanel} ${isOpen ? styles.accordionPanelOpen : ''}`}
                                     aria-hidden={!isOpen}
                                 >
-                                    <div className={styles.mobilePartList} aria-label="パート一覧">
-                                        {(unit.parts || []).map((part) => {
-                                            const completed = getCompletedCount(part.id);
-                                            const isPartSelected = part.id === selectedPartId;
-                                            const isPartEmpty = part.totalQuestions === 0;
+                                    <div className={styles.accordionPanelContent}>
+                                        <div className={styles.mobilePartList} aria-label="パート一覧">
+                                            {(unit.parts || []).map((part) => {
+                                                const completed = getCompletedCount(part.id);
+                                                const isPartSelected = part.id === selectedPartId;
+                                                const isPartEmpty = part.totalQuestions === 0;
 
-                                            return (
-                                                <button
-                                                    key={part.id}
-                                                    className={`${styles.navItem} ${isPartSelected ? styles.selected : ''} ${isPartEmpty ? styles.empty : ''}`}
-                                                    onClick={() => !isPartEmpty && handlePartSelect(unit.id, part.id)}
-                                                    disabled={isPartEmpty}
-                                                    aria-current={isPartSelected ? 'page' : undefined}
-                                                >
-                                                    <span className={styles.navLabel}>{part.label}</span>
-                                                    <span className={styles.navCount}>
-                                                        {isPartEmpty ? '-' : `${completed}/${part.totalQuestions}`}
-                                                    </span>
-                                                </button>
-                                            );
-                                        })}
-                                    </div>
+                                                return (
+                                                    <button
+                                                        key={part.id}
+                                                        className={`${styles.navItem} ${isPartSelected ? styles.selected : ''} ${isPartEmpty ? styles.empty : ''}`}
+                                                        onClick={() => !isPartEmpty && handlePartSelect(unit.id, part.id)}
+                                                        disabled={isPartEmpty}
+                                                        aria-current={isPartSelected ? 'page' : undefined}
+                                                    >
+                                                        <span className={styles.navLabel}>{part.label}</span>
+                                                        <span className={styles.navCount}>
+                                                            {isPartEmpty ? '-' : `${completed}/${part.totalQuestions}`}
+                                                        </span>
+                                                    </button>
+                                                );
+                                            })}
+                                        </div>
 
-                                    <div className={styles.sections}>
-                                        {sections.length > 0 ? (
-                                            sections.map((section) => (
-                                                <SectionCard
-                                                    key={section.id}
-                                                    section={section}
-                                                    completedCount={0}
-                                                    onModeSelect={handleModeSelect}
-                                                />
-                                            ))
-                                        ) : (
-                                            <div className={styles.emptyState}>
-                                                <p>このパートにはまだ問題がありません</p>
-                                            </div>
-                                        )}
+                                        <div className={styles.sections}>
+                                            {sections.length > 0 ? (
+                                                sections.map((section) => (
+                                                    <SectionCard
+                                                        key={section.id}
+                                                        section={section}
+                                                        completedCount={0}
+                                                        onModeSelect={handleModeSelect}
+                                                    />
+                                                ))
+                                            ) : (
+                                                <div className={styles.emptyState}>
+                                                    <p>このパートにはまだ問題がありません</p>
+                                                </div>
+                                            )}
+                                        </div>
                                     </div>
                                 </div>
                             </section>
