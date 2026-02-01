@@ -38,6 +38,28 @@ export function SectionCard({
         return progress[key] ?? null;
     };
 
+    const getChoiceLabel = (level: ChoiceLevel, fallback: string) => {
+        const rank = getRankForChoice(level);
+        return rank ?? fallback;
+    };
+
+    const getChoiceRankClass = (level: ChoiceLevel) => {
+        const rank = getRankForChoice(level);
+        if (!rank) return '';
+        switch (rank) {
+            case 'S':
+                return styles.rankS;
+            case 'A':
+                return styles.rankA;
+            case 'B':
+                return styles.rankB;
+            case 'C':
+                return styles.rankC;
+            default:
+                return '';
+        }
+    };
+
     const handleModeClick = (mode: LearningMode) => {
         if (isModeUnlocked(section.id, mode)) {
             onModeSelect(section.id, mode);
@@ -80,17 +102,17 @@ export function SectionCard({
                         <span className={styles.choiceLabel}>英語→日本語</span>
                         <div className={styles.choiceModes}>
                             <button
-                                className={`${styles.choiceButton} ${styles.choiceButtonPrimary}`}
+                                className={`${styles.choiceButton} ${styles.choiceButtonPrimary} ${getChoiceRankClass(1)}`}
                                 onClick={() => onChoiceSelect?.(section.id, 1)}
                             >
-                                1
+                                {getChoiceLabel(1, '1')}
                             </button>
                             <button
-                                className={`${styles.choiceButton} ${styles.choiceButtonSecondary}`}
+                                className={`${styles.choiceButton} ${styles.choiceButtonSecondary} ${getChoiceRankClass(3)}`}
                                 onClick={() => onChoiceSelect?.(section.id, 3)}
                                 disabled={getRankForChoice(1) !== 'S'}
                             >
-                                2
+                                {getChoiceLabel(3, '2')}
                             </button>
                         </div>
                     </div>
@@ -98,17 +120,17 @@ export function SectionCard({
                         <span className={styles.choiceLabel}>日本語→英語</span>
                         <div className={styles.choiceModes}>
                             <button
-                                className={`${styles.choiceButton} ${styles.choiceButtonPrimary}`}
+                                className={`${styles.choiceButton} ${styles.choiceButtonPrimary} ${getChoiceRankClass(2)}`}
                                 onClick={() => onChoiceSelect?.(section.id, 2)}
                             >
-                                1
+                                {getChoiceLabel(2, '1')}
                             </button>
                             <button
-                                className={`${styles.choiceButton} ${styles.choiceButtonSecondary}`}
+                                className={`${styles.choiceButton} ${styles.choiceButtonSecondary} ${getChoiceRankClass(4)}`}
                                 onClick={() => onChoiceSelect?.(section.id, 4)}
                                 disabled={getRankForChoice(2) !== 'S'}
                             >
-                                2
+                                {getChoiceLabel(4, '2')}
                             </button>
                         </div>
                     </div>

@@ -8,6 +8,7 @@ import { useApp } from '@/context/AppContext';
 import { Header } from '@/components/Header';
 import { Card } from '@/components/Card';
 import { Button } from '@/components/Button';
+import { AudioPlayer } from '@/components/AudioPlayer';
 import { courses, getCourseById, getQuestionsBySection, getSectionsByPart } from '@/data/questions';
 import { ProgressBar } from '@/components/ProgressBar';
 import { buildScoreResult, ScoreResult } from '@/utils/score';
@@ -302,6 +303,8 @@ export function ChoicePage() {
         return selectedChoiceLevel === 1 || selectedChoiceLevel === 3 ? '英語' : '日本語';
     }, [selectedChoiceLevel]);
 
+    const shouldPlayAudio = selectedChoiceLevel === 1;
+
     const handleBack = useCallback(() => {
         if (!isFinished) {
             const confirmLeave = window.confirm('中断してコース画面に戻りますか？');
@@ -433,6 +436,16 @@ export function ChoicePage() {
                 <div className={styles.promptCard}>
                     <div className={styles.promptLabel}>{promptLabel}</div>
                     <div className={styles.promptText}>{choiceState?.prompt}</div>
+                    {shouldPlayAudio && currentQuestion && (
+                        <div className={styles.audioRow}>
+                            <AudioPlayer
+                                text={currentQuestion.answerEn}
+                                audioUrl={currentQuestion.audioUrl}
+                                autoPlay={state.autoPlayAudio && !isCountingDown}
+                                size="sm"
+                            />
+                        </div>
+                    )}
                 </div>
 
                 <div className={styles.choices}>

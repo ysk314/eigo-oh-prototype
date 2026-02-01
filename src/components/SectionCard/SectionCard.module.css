@@ -69,6 +69,7 @@
     color: var(--color-text-primary);
     border-radius: var(--radius-md);
     font-weight: var(--font-weight-semibold);
+    font-size: var(--font-size-2xl);
     cursor: pointer;
     transition: all var(--transition-fast);
     box-shadow: 0 4px 0 rgba(0, 0, 0, 0.08);
@@ -89,6 +90,31 @@
     background: var(--color-accent);
     color: var(--color-text-primary);
     box-shadow: 0 4px 0 var(--color-accent-dark);
+}
+
+.rankS {
+    background: #FFD700 !important;
+    color: #fff !important;
+    border: 2px solid #FFA000 !important;
+    box-shadow: 0 4px 0 #FFA000 !important;
+}
+
+.rankA {
+    background: #42A5F5 !important;
+    color: #fff !important;
+    box-shadow: 0 4px 0 #1E88E5 !important;
+}
+
+.rankB {
+    background: #F4D03F !important;
+    color: #6B4F00 !important;
+    box-shadow: 0 4px 0 #C9A227 !important;
+}
+
+.rankC {
+    background: #EF5350 !important;
+    color: #fff !important;
+    box-shadow: 0 4px 0 #D32F2F !important;
 }
 
 .choiceButton:disabled {
