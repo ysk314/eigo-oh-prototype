@@ -9219,7 +9219,6 @@ export const questions: Question[] = [
         promptJp: '今日',
         answerEn: 'today',
         pos: ['noun', 'adv'],
-adv'],
         orderIndex: 5,
     },
     {
@@ -13288,7 +13287,6 @@ adv'],
         promptJp: 'フルート',
         answerEn: 'flute',
         pos: ['noun', 'verb'],
-verb'],
         orderIndex: 4,
     },
     {
@@ -14129,7 +14127,6 @@ verb'],
         promptJp: '注文、命令',
         answerEn: 'order',
         pos: ['noun', 'verb'],
-verb'],
         orderIndex: 4,
     },
     {
