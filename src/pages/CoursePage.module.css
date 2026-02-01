@@ -62,8 +62,8 @@
     display: flex;
     flex-direction: column;
     gap: var(--space-lg);
-    padding: var(--space-lg);
-    background: #ffffff;
+    padding: 0;
+    background: transparent;
     max-height: 0;
     opacity: 0;
     transform: translateY(-6px);
@@ -78,6 +78,8 @@
     opacity: 1;
     transform: translateY(0);
     pointer-events: auto;
+    padding: var(--space-lg);
+    background: #ffffff;
 }
 
 .mobilePartList {

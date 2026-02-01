@@ -118,9 +118,14 @@ export function CoursePage() {
 
         const target = accordionItemRefs.current.get(openUnitId);
         if (!target) return;
-        requestAnimationFrame(() => {
-            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        });
+        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        const behavior: ScrollBehavior = prefersReducedMotion ? 'auto' : 'smooth';
+
+        window.setTimeout(() => {
+            const offset = 12;
+            const top = target.getBoundingClientRect().top + window.scrollY - offset;
+            window.scrollTo({ top, behavior });
+        }, 120);
     }, [openUnitId]);
 
     const handlePartSelect = (unitId: string, partId: string) => {

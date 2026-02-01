@@ -362,6 +362,19 @@ export function PlayPage() {
 
         if (!finalScore) return null;
         const isCleared = finalScore.rank === 'S';
+        const resultMessage = (() => {
+            switch (finalScore.rank) {
+                case 'S':
+                    return '目標達成！次のモードが解放されました！';
+                case 'A':
+                    return 'あと一歩！もう一度でSに届きそう！';
+                case 'B':
+                    return 'いい調子！ミスを減らせばSも見えるよ';
+                case 'C':
+                default:
+                    return 'まずは正確さ重視。ゆっくりでOK！';
+            }
+        })();
 
         return (
             <div className={styles.page}>
@@ -423,15 +436,9 @@ export function PlayPage() {
                             </div>
                         </div>
 
-                        {isCleared ? (
-                            <div className={styles.message}>
-                                目標達成！次のモードが解放されました！
-                            </div>
-                        ) : (
-                            <div className={styles.message}>
-                                惜しい！90%以上を目指してもう一度チャレンジしよう！
-                            </div>
-                        )}
+                        <div className={styles.message}>
+                            {resultMessage}
+                        </div>
 
                         <div className={styles.actions}>
                             <Button onClick={handleRetry} variant="secondary" size="lg">
@@ -501,7 +508,7 @@ export function PlayPage() {
                                 <div className={styles.keyboardGuide} aria-live="polite">
                                     <div className={styles.keyboard}>
                                         {[
-                                            ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '-', '@'],
+                                            ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0'],
                                             ['Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P'],
                                             ['A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L', ';'],
                                             ['Z', 'X', 'C', 'V', 'B', 'N', 'M', ',', '.', '/'],
