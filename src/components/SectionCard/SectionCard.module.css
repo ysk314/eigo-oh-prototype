@@ -42,14 +42,16 @@
 }
 
 .choiceButton {
-    border: 2px solid rgba(0, 0, 0, 0.08);
+    width: 56px;
+    height: 56px;
+    border: none;
     background: #fff;
     color: var(--color-text-primary);
-    padding: var(--space-sm) var(--space-md);
     border-radius: var(--radius-md);
     font-weight: var(--font-weight-semibold);
     cursor: pointer;
-    transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+    transition: all var(--transition-fast);
+    box-shadow: 0 4px 0 rgba(0, 0, 0, 0.08);
 }
 
 .choiceButton:hover {
@@ -60,7 +62,13 @@
 .choiceButtonPrimary {
     background: var(--color-primary);
     color: var(--color-text-inverse);
-    border-color: transparent;
+    box-shadow: 0 4px 0 var(--color-primary-dark);
+}
+
+.choiceButtonSecondary {
+    background: var(--color-accent);
+    color: var(--color-text-primary);
+    box-shadow: 0 4px 0 var(--color-accent-dark);
 }
 
 /* Responsive */

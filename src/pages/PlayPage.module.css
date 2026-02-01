@@ -46,32 +46,6 @@
     color: var(--color-text-primary);
 }
 
-.playHeaderRight {
-    display: flex;
-    align-items: center;
-    gap: var(--space-sm);
-}
-
-.studyModeToggle {
-    display: flex;
-    gap: var(--space-xs);
-}
-
-.modeTab {
-    border: none;
-    background: rgba(0, 0, 0, 0.06);
-    color: var(--color-text-secondary);
-    padding: var(--space-xs) var(--space-md);
-    border-radius: var(--radius-full);
-    font-weight: var(--font-weight-semibold);
-    cursor: pointer;
-    transition: all var(--transition-fast);
-}
-
-.modeTabActive {
-    background: var(--color-primary);
-    color: var(--color-text-inverse);
-}
 
 .playMain {
     flex: 1;

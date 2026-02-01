@@ -102,6 +102,7 @@
 .studyModeToggle {
     display: flex;
     gap: var(--space-xs);
+    flex-wrap: nowrap;
 }
 
 .modeTab {
@@ -166,5 +167,14 @@
 
     .shuffleLabel {
         display: none;
+    }
+
+    .studyModeToggle {
+        gap: 4px;
+    }
+
+    .modeTab {
+        padding: 4px 10px;
+        font-size: var(--font-size-xs);
     }
 }

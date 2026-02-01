@@ -77,7 +77,7 @@ export function SectionCard({
                         1
                     </button>
                     <button
-                        className={styles.choiceButton}
+                        className={`${styles.choiceButton} ${styles.choiceButtonSecondary}`}
                         onClick={() => onChoiceSelect?.(section.id, 2)}
                     >
                         2

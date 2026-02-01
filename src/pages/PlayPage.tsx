@@ -27,7 +27,6 @@ export function PlayPage() {
         setQuestionIndex,
         markSectionCleared,
         setSectionRank,
-        setStudyMode,
     } = useApp();
 
     const { selectedCourse, selectedPart, selectedSection, selectedMode, currentUser, shuffleMode } = state;
@@ -389,7 +388,7 @@ export function PlayPage() {
 
         return (
             <div className={styles.page}>
-                <Header title="結果発表" showUserSelect={false} showStudyModeToggle />
+                <Header title="結果発表" showUserSelect={false} showBackButton onBack={handleBack} />
                 <main className={styles.resultMain}>
                     {finalScore.rank === 'S' && (
                         <div className={styles.confettiWrapper} aria-hidden="true">
@@ -475,24 +474,8 @@ export function PlayPage() {
                 <div className={styles.progressContainer}>
                     <ProgressBar current={currentIndex + 1} total={questions.length} />
                 </div>
-                <div className={styles.playHeaderRight}>
-                    <div className={styles.studyModeToggle}>
-                        <button
-                            className={`${styles.modeTab} ${state.studyMode === 'typing' ? styles.modeTabActive : ''}`}
-                            onClick={() => setStudyMode('typing')}
-                        >
-                            タイピング
-                        </button>
-                        <button
-                            className={`${styles.modeTab} ${state.studyMode === 'choice' ? styles.modeTabActive : ''}`}
-                            onClick={() => setStudyMode('choice')}
-                        >
-                            4択
-                        </button>
-                    </div>
-                    <div className={styles.userInfo}>
-                        {currentUser?.name}
-                    </div>
+                <div className={styles.userInfo}>
+                    {currentUser?.name}
                 </div>
             </header>
 

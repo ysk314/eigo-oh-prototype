@@ -14,6 +14,34 @@
     padding: var(--space-xl);
 }
 
+.countdownOverlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(255, 255, 255, 0.9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+}
+
+.countdownNumber {
+    font-size: 8rem;
+    font-weight: var(--font-weight-bold);
+    color: var(--color-primary);
+    animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes popIn {
+    from {
+        transform: scale(0.5);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
 .timerWrapper {
     width: 100%;
     max-width: 680px;
@@ -86,6 +114,9 @@
     font-weight: var(--font-weight-semibold);
     cursor: pointer;
     transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
 }
 
 .choiceButton:hover:not(:disabled) {
@@ -103,6 +134,24 @@
     background: #f44336;
     color: #fff;
     border-color: #f44336;
+    animation: shake 0.25s ease;
+}
+
+.choiceIndex {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border-radius: 999px;
+    background: rgba(0, 0, 0, 0.08);
+    font-size: var(--font-size-sm);
+}
+
+.choiceText {
+    flex: 1;
+    text-align: left;
+    word-break: break-word;
 }
 
 .progress {
@@ -116,6 +165,8 @@
     align-items: center;
     justify-content: center;
     padding: var(--space-lg);
+    position: relative;
+    overflow: hidden;
 }
 
 .resultCard {
@@ -162,6 +213,46 @@
 .actions {
     display: flex;
     justify-content: center;
+}
+
+.message {
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-medium);
+    line-height: 1.5;
+}
+
+.confettiWrapper {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.confetti {
+    position: absolute;
+    top: -10px;
+    width: 10px;
+    height: 10px;
+    animation: confettiFall 3s linear infinite;
+}
+
+@keyframes confettiFall {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(110vh) rotate(720deg);
+        opacity: 0;
+    }
+}
+
+@keyframes shake {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(-4px); }
+    50% { transform: translateX(4px); }
+    75% { transform: translateX(-2px); }
+    100% { transform: translateX(0); }
 }
 
 @media (max-width: 640px) {

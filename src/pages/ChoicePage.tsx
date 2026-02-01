@@ -2,7 +2,7 @@
 // Choice Page (4択)
 // ================================
 
-import { useMemo, useState, useEffect, useRef } from 'react';
+import { useMemo, useState, useEffect, useRef, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useApp } from '@/context/AppContext';
 import { Header } from '@/components/Header';
@@ -30,8 +30,13 @@ function shuffle<T>(items: T[]): T[] {
 
 function maskWord(word: string): string {
     return word
-        .split('')
-        .map((char) => (char === ' ' ? ' ' : '_'))
+        .split(/(\s+)/)
+        .map((segment) => {
+            if (segment.trim() === '') return segment;
+            if (segment.length <= 2) return segment;
+            const middle = '_'.repeat(segment.length - 2);
+            return `${segment[0]}${middle}${segment[segment.length - 1]}`;
+        })
         .join('');
 }
 
@@ -49,6 +54,7 @@ export function ChoicePage() {
     const [currentIndex, setCurrentIndex] = useState(0);
     const [choiceState, setChoiceState] = useState<ChoiceState | null>(null);
     const [selected, setSelected] = useState<string | null>(null);
+    const [lastWrong, setLastWrong] = useState<string | null>(null);
     const [correctCount, setCorrectCount] = useState(0);
     const [missCount, setMissCount] = useState(0);
     const [isFinished, setIsFinished] = useState(false);
@@ -57,6 +63,8 @@ export function ChoicePage() {
     const [timeLeft, setTimeLeft] = useState(0);
     const [timeUp, setTimeUp] = useState(false);
     const timeUpRef = useRef(false);
+    const [countdown, setCountdown] = useState<number | null>(null);
+    const [isCountingDown, setIsCountingDown] = useState(false);
 
     const currentQuestion = questions[currentIndex];
 
@@ -73,9 +81,25 @@ export function ChoicePage() {
     }, [state.studyMode, navigate]);
 
     useEffect(() => {
+        if (!choiceState || isFinished) return;
+        const handler = (event: KeyboardEvent) => {
+            if (selected) return;
+            const key = event.key;
+            if (!['1', '2', '3', '4'].includes(key)) return;
+            const index = Number(key) - 1;
+            const option = choiceState.options[index];
+            if (!option) return;
+            event.preventDefault();
+            handleChoice(option);
+        };
+        window.addEventListener('keydown', handler);
+        return () => window.removeEventListener('keydown', handler);
+    }, [choiceState, handleChoice, selected, isFinished]);
+
+    useEffect(() => {
         if (questions.length === 0) return;
         const totalChars = calculateTotalChars(questions);
-        const limit = calculateTimeLimit(totalChars, 1, 10);
+        const limit = Math.max(1, Math.ceil(calculateTimeLimit(totalChars, 1, 10) / 4));
         setCurrentIndex(0);
         setIsFinished(false);
         setTimeUp(false);
@@ -84,10 +108,32 @@ export function ChoicePage() {
         setScoreResult(null);
         setTimeLimit(limit);
         setTimeLeft(limit);
+        setCountdown(3);
+        setIsCountingDown(true);
     }, [questions]);
 
     useEffect(() => {
-        if (isFinished || timeLimit === 0) return;
+        if (!isCountingDown || countdown === null) return;
+        const interval = setInterval(() => {
+            setCountdown((prev) => {
+                if (prev === null) return null;
+                if (prev <= 1) return null;
+                return prev - 1;
+            });
+        }, 1000);
+        return () => clearInterval(interval);
+    }, [isCountingDown, countdown]);
+
+    useEffect(() => {
+        if (!isCountingDown || countdown !== null) return;
+        const timer = setTimeout(() => {
+            setIsCountingDown(false);
+        }, 300);
+        return () => clearTimeout(timer);
+    }, [isCountingDown, countdown]);
+
+    useEffect(() => {
+        if (isCountingDown || isFinished || timeLimit === 0) return;
         if (timeLeft <= 0) {
             if (!timeUp) {
                 setTimeUp(true);
@@ -109,6 +155,7 @@ export function ChoicePage() {
 
     useEffect(() => {
         if (!currentQuestion) return;
+        if (isCountingDown) return;
 
         const pos = currentQuestion.pos?.[0] ?? 'noun';
         const uniqueByAnswer = new Map<string, (typeof currentQuestion)>();
@@ -157,27 +204,31 @@ export function ChoicePage() {
             correct: currentQuestion.answerEn,
         });
         setSelected(null);
-    }, [currentQuestion, questions, selectedChoiceLevel]);
+    }, [currentQuestion, questions, selectedChoiceLevel, isCountingDown]);
 
-    const handleChoice = (answer: string) => {
-        if (!choiceState || selected) return;
-        setSelected(answer);
+    const handleChoice = useCallback((answer: string) => {
+        if (isCountingDown) return;
+        if (!choiceState || selected || isFinished) return;
         const isCorrect = answer === choiceState.correct;
         if (isCorrect) {
+            setSelected(answer);
             setCorrectCount((prev) => prev + 1);
+            window.setTimeout(() => {
+                setSelected(null);
+                if (currentIndex < questions.length - 1 && !timeUpRef.current) {
+                    setCurrentIndex((prev) => prev + 1);
+                    return;
+                }
+                finishSession(timeUpRef.current);
+            }, 400);
         } else {
             setMissCount((prev) => prev + 1);
+            setLastWrong(answer);
+            window.setTimeout(() => {
+                setLastWrong(null);
+            }, 300);
         }
-
-        window.setTimeout(() => {
-            setSelected(null);
-            if (currentIndex < questions.length - 1 && !timeUpRef.current) {
-                setCurrentIndex((prev) => prev + 1);
-                return;
-            }
-            finishSession(timeUpRef.current);
-        }, 500);
-    };
+    }, [choiceState, selected, isFinished, currentIndex, questions.length, isCountingDown]);
 
     const finishSession = (timeUpFlag: boolean) => {
         setIsFinished(true);
@@ -195,10 +246,32 @@ export function ChoicePage() {
         const accuracy = total > 0 ? Math.round((correctCount / total) * 100) : 0;
         return (
             <div className={styles.page}>
-                <Header title="結果発表" showUserSelect={false} showStudyModeToggle />
+                <Header title="結果発表" showUserSelect={false} showBackButton onBack={() => navigate('/course')} />
                 <main className={styles.resultMain}>
+                    {scoreResult.rank === 'S' && (
+                        <div className={styles.confettiWrapper} aria-hidden="true">
+                            {Array.from({ length: 24 }).map((_, i) => {
+                                const colors = ['#FFC107', '#2196F3', '#4CAF50', '#E91E63'];
+                                const left = `${Math.random() * 100}%`;
+                                const delay = `${Math.random()}s`;
+                                const duration = `${2 + Math.random() * 2}s`;
+                                return (
+                                    <span
+                                        key={i}
+                                        className={styles.confetti}
+                                        style={{
+                                            left,
+                                            backgroundColor: colors[i % colors.length],
+                                            animationDelay: delay,
+                                            animationDuration: duration,
+                                        }}
+                                    />
+                                );
+                            })}
+                        </div>
+                    )}
                     <Card className={styles.resultCard} padding="lg">
-                        <h2 className={styles.resultTitle}>4択結果</h2>
+                        <h2 className={styles.resultTitle}>結果発表</h2>
                         <div className={styles.stats}>
                             <div className={styles.statItem}>
                                 <span className={styles.statLabel}>ランク</span>
@@ -217,6 +290,15 @@ export function ChoicePage() {
                                 <span className={styles.statValue}>{scoreResult.totalScore}</span>
                             </div>
                         </div>
+                        <div className={styles.message}>
+                            {scoreResult.rank === 'S'
+                                ? '素晴らしい！次のセクションに進もう！'
+                                : scoreResult.rank === 'A'
+                                    ? 'あと一歩！もう一度でSに届きそう！'
+                                    : scoreResult.rank === 'B'
+                                        ? 'いい調子！ミスを減らせばSも見えるよ'
+                                        : 'まずは正確さ重視。ゆっくりでOK！'}
+                        </div>
                         <div className={styles.actions}>
                             <Button onClick={() => navigate('/course')} variant="primary" size="lg">
                                 コースへ戻る
@@ -230,7 +312,7 @@ export function ChoicePage() {
 
     return (
         <div className={styles.page}>
-            <Header title="4択モード" showUserSelect={false} showStudyModeToggle />
+                <Header title="4択モード" showUserSelect={false} showBackButton onBack={() => navigate('/course')} />
             <main className={styles.main}>
                 <div className={styles.timerWrapper}>
                     <div className={styles.timerBarContainer}>
@@ -253,9 +335,9 @@ export function ChoicePage() {
                 </div>
 
                 <div className={styles.choices}>
-                    {choiceState?.options.map((option) => {
+                    {choiceState?.options.map((option, index) => {
                         const isCorrect = selected && option === choiceState.correct;
-                        const isWrong = selected && option === selected && option !== choiceState.correct;
+                        const isWrong = lastWrong && option === lastWrong;
                         const displayText =
                             selectedChoiceLevel === 2 ? maskWord(option) : option;
                         return (
@@ -265,7 +347,8 @@ export function ChoicePage() {
                                 onClick={() => handleChoice(option)}
                                 disabled={!!selected}
                             >
-                                {displayText}
+                                <span className={styles.choiceIndex}>{index + 1}</span>
+                                <span className={styles.choiceText}>{displayText}</span>
                             </button>
                         );
                     })}
@@ -275,6 +358,11 @@ export function ChoicePage() {
                     {currentIndex + 1} / {questions.length}
                 </div>
             </main>
+            {isCountingDown && countdown !== null && (
+                <div className={styles.countdownOverlay} aria-live="polite">
+                    <div className={styles.countdownNumber}>{countdown}</div>
+                </div>
+            )}
         </div>
     );
 }
