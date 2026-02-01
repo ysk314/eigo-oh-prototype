@@ -213,12 +213,14 @@ export function CoursePage() {
 
     return (
         <div className={styles.page}>
-            <Header
-                breadcrumb={[courseStructure.name, selectedUnit?.name || '', selectedPartLabel]}
-                showShuffleToggle
-                showBackButton
-                onBack={handleBack}
-            />
+            <div className={styles.stickyHeader}>
+                <Header
+                    breadcrumb={[courseStructure.name, selectedUnit?.name || '', selectedPartLabel]}
+                    showShuffleToggle
+                    showBackButton
+                    onBack={handleBack}
+                />
+            </div>
 
             <div className={styles.content}>
                 <div className={styles.mobileAccordion} aria-label="ユニット一覧">

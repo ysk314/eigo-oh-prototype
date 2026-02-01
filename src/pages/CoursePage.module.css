@@ -4,6 +4,12 @@
     min-height: 100vh;
 }
 
+.stickyHeader {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+}
+
 .content {
     display: flex;
     flex: 1;
