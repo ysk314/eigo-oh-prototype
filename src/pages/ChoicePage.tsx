@@ -12,6 +12,7 @@ import { courses, getCourseById, getQuestionsBySection, getSectionsByPart } from
 import { ProgressBar } from '@/components/ProgressBar';
 import { buildScoreResult, ScoreResult } from '@/utils/score';
 import { calculateTimeLimit, calculateTotalChars, calculateTimeBarPercent } from '@/utils/timer';
+import { playSound } from '@/utils/sound';
 import styles from './ChoicePage.module.css';
 
 type ChoiceState = {
@@ -89,7 +90,7 @@ export function ChoicePage() {
     useEffect(() => {
         if (questions.length === 0) return;
         const totalChars = calculateTotalChars(questions);
-        const limit = Math.max(1, Math.ceil(calculateTimeLimit(totalChars, 1, 10) / 4));
+        const limit = Math.max(1, Math.ceil(calculateTimeLimit(totalChars, 1, 10) / 3));
         setCurrentIndex(0);
         setIsFinished(false);
         setTimeUp(false);
@@ -104,10 +105,12 @@ export function ChoicePage() {
 
     useEffect(() => {
         if (!isCountingDown || countdown === null) return;
+        playSound('countdown');
         const interval = setInterval(() => {
             setCountdown((prev) => {
                 if (prev === null) return null;
                 if (prev <= 1) return null;
+                playSound('countdown');
                 return prev - 1;
             });
         }, 1000);
@@ -131,6 +134,7 @@ export function ChoicePage() {
             timeUp: timeUpFlag,
         });
         setScoreResult(score);
+        playSound(score.rank === 'S' ? 'fanfare' : 'try-again');
         if (selectedSection) {
             setChoiceRank(selectedSection, selectedChoiceLevel, score.rank);
         }
@@ -159,7 +163,6 @@ export function ChoicePage() {
 
     useEffect(() => {
         if (!currentQuestion) return;
-        if (isCountingDown) return;
 
         const pos = currentQuestion.pos?.[0] ?? 'noun';
         const uniqueByAnswer = new Map<string, (typeof currentQuestion)>();
@@ -218,13 +221,14 @@ export function ChoicePage() {
             maskOptions,
         });
         setSelected(null);
-    }, [currentQuestion, questions, selectedChoiceLevel, isCountingDown]);
+    }, [currentQuestion, questions, selectedChoiceLevel]);
 
     const handleChoice = useCallback((answer: string) => {
         if (isCountingDown) return;
         if (!choiceState || selected || isFinished) return;
         const isCorrect = answer === choiceState.correct;
         if (isCorrect) {
+            playSound('success');
             setSelected(answer);
             setCorrectCount((prev) => prev + 1);
             window.setTimeout(() => {
@@ -236,6 +240,7 @@ export function ChoicePage() {
                 finishSession(timeUpRef.current);
             }, 400);
         } else {
+            playSound('error');
             setMissCount((prev) => prev + 1);
             setLastWrong(answer);
             window.setTimeout(() => {
@@ -297,12 +302,35 @@ export function ChoicePage() {
         return selectedChoiceLevel === 1 || selectedChoiceLevel === 3 ? '英語' : '日本語';
     }, [selectedChoiceLevel]);
 
+    const handleBack = useCallback(() => {
+        if (!isFinished) {
+            const confirmLeave = window.confirm('中断してコース画面に戻りますか？');
+            if (!confirmLeave) return;
+        }
+        navigate('/course');
+    }, [isFinished, navigate]);
+
+    const handleRetry = useCallback(() => {
+        if (questions.length === 0) return;
+        setCurrentIndex(0);
+        setIsFinished(false);
+        setTimeUp(false);
+        setCorrectCount(0);
+        setMissCount(0);
+        setScoreResult(null);
+        setSelected(null);
+        setLastWrong(null);
+        setTimeLeft(timeLimit);
+        setCountdown(3);
+        setIsCountingDown(true);
+    }, [questions.length, timeLimit]);
+
     if (isFinished && scoreResult) {
         const total = correctCount + missCount;
         const accuracy = total > 0 ? Math.round((correctCount / total) * 100) : 0;
         return (
             <div className={styles.page}>
-                <Header title="結果発表" showUserSelect={false} showBackButton onBack={() => navigate('/course')} />
+                <Header title="結果発表" showUserSelect={false} showBackButton onBack={handleBack} />
                 <main className={styles.resultMain}>
                     {scoreResult.rank === 'S' && (
                         <div className={styles.confettiWrapper} aria-hidden="true">
@@ -364,6 +392,9 @@ export function ChoicePage() {
                                         : 'まずは正確さ重視。ゆっくりでOK！'}
                         </div>
                         <div className={styles.actions}>
+                            <Button onClick={handleRetry} variant="secondary" size="lg">
+                                もう一度
+                            </Button>
                             <Button onClick={() => navigate('/course')} variant="primary" size="lg">
                                 コースへ戻る
                             </Button>
@@ -377,7 +408,7 @@ export function ChoicePage() {
     return (
         <div className={styles.page}>
             <header className={styles.playHeader}>
-                <button className={styles.backButton} onClick={() => navigate('/course')}>
+                <button className={styles.backButton} onClick={handleBack}>
                     ← 戻る
                 </button>
                 <div className={styles.progressContainer}>
@@ -398,10 +429,6 @@ export function ChoicePage() {
                     <div className={styles.timerLabel}>
                         残り {timeLeft} / {timeLimit} 秒
                     </div>
-                </div>
-
-                <div className={styles.progressContainer}>
-                    <ProgressBar current={currentIndex + 1} total={questions.length} />
                 </div>
                 <div className={styles.promptCard}>
                     <div className={styles.promptLabel}>{promptLabel}</div>
@@ -426,10 +453,6 @@ export function ChoicePage() {
                             </button>
                         );
                     })}
-                </div>
-
-                <div className={styles.progress}>
-                    {currentIndex + 1} / {questions.length}
                 </div>
             </main>
             {isCountingDown && countdown !== null && (
