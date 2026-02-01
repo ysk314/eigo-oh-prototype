@@ -167,7 +167,6 @@ export function CoursePage() {
                         const isSelected = unit.id === selectedUnitId;
                         const isEmpty = totalQuestions === 0;
                         const isOpen = unit.id === openUnitId;
-                        const isLastPlayed = unit.id === lastPlayed.unitId;
 
                         return (
                             <section
@@ -182,7 +181,7 @@ export function CoursePage() {
                                 }}
                             >
                                 <button
-                                    className={`${styles.accordionButton} ${isSelected ? styles.selected : ''} ${isEmpty ? styles.empty : ''} ${isLastPlayed ? styles.lastPlayed : ''}`}
+                                    className={`${styles.accordionButton} ${isSelected ? styles.selected : ''} ${isEmpty ? styles.empty : ''}`}
                                     onClick={() => !isEmpty && handleUnitToggle(unit.id)}
                                     disabled={isEmpty}
                                     aria-expanded={isOpen}
@@ -194,61 +193,51 @@ export function CoursePage() {
                                     </span>
                                 </button>
 
-                                {isOpen && (
-                                    <div id={`unit-panel-${unit.id}`} className={styles.accordionPanel}>
-                                        <div className={styles.modeHeader}>
-                                            <div className={styles.modeLabel} data-mode="1">
-                                                <span>音あり<br />スペルあり</span>
-                                            </div>
-                                            <div className={styles.modeLabel} data-mode="2">
-                                                <span>音あり<br />スペルなし</span>
-                                            </div>
-                                            <div className={styles.modeLabel} data-mode="3">
-                                                <span>音なし<br />スペルなし</span>
-                                            </div>
-                                        </div>
+                                <div
+                                    id={`unit-panel-${unit.id}`}
+                                    className={`${styles.accordionPanel} ${isOpen ? styles.accordionPanelOpen : ''}`}
+                                    aria-hidden={!isOpen}
+                                >
+                                    <div className={styles.mobilePartList} aria-label="パート一覧">
+                                        {(unit.parts || []).map((part) => {
+                                            const completed = getCompletedCount(part.id);
+                                            const isPartSelected = part.id === selectedPartId;
+                                            const isPartEmpty = part.totalQuestions === 0;
 
-                                        <div className={styles.mobilePartList} aria-label="パート一覧">
-                                            {(unit.parts || []).map((part) => {
-                                                const completed = getCompletedCount(part.id);
-                                                const isPartSelected = part.id === selectedPartId;
-                                                const isPartEmpty = part.totalQuestions === 0;
-
-                                                return (
-                                                    <button
-                                                        key={part.id}
-                                                        className={`${styles.navItem} ${isPartSelected ? styles.selected : ''} ${isPartEmpty ? styles.empty : ''}`}
-                                                        onClick={() => !isPartEmpty && handlePartSelect(unit.id, part.id)}
-                                                        disabled={isPartEmpty}
-                                                        aria-current={isPartSelected ? 'page' : undefined}
-                                                    >
-                                                        <span className={styles.navLabel}>{part.label}</span>
-                                                        <span className={styles.navCount}>
-                                                            {isPartEmpty ? '-' : `${completed}/${part.totalQuestions}`}
-                                                        </span>
-                                                    </button>
-                                                );
-                                            })}
-                                        </div>
-
-                                        <div className={styles.sections}>
-                                            {sections.length > 0 ? (
-                                                sections.map((section) => (
-                                                    <SectionCard
-                                                        key={section.id}
-                                                        section={section}
-                                                        completedCount={0}
-                                                        onModeSelect={handleModeSelect}
-                                                    />
-                                                ))
-                                            ) : (
-                                                <div className={styles.emptyState}>
-                                                    <p>このパートにはまだ問題がありません</p>
-                                                </div>
-                                            )}
-                                        </div>
+                                            return (
+                                                <button
+                                                    key={part.id}
+                                                    className={`${styles.navItem} ${isPartSelected ? styles.selected : ''} ${isPartEmpty ? styles.empty : ''}`}
+                                                    onClick={() => !isPartEmpty && handlePartSelect(unit.id, part.id)}
+                                                    disabled={isPartEmpty}
+                                                    aria-current={isPartSelected ? 'page' : undefined}
+                                                >
+                                                    <span className={styles.navLabel}>{part.label}</span>
+                                                    <span className={styles.navCount}>
+                                                        {isPartEmpty ? '-' : `${completed}/${part.totalQuestions}`}
+                                                    </span>
+                                                </button>
+                                            );
+                                        })}
                                     </div>
-                                )}
+
+                                    <div className={styles.sections}>
+                                        {sections.length > 0 ? (
+                                            sections.map((section) => (
+                                                <SectionCard
+                                                    key={section.id}
+                                                    section={section}
+                                                    completedCount={0}
+                                                    onModeSelect={handleModeSelect}
+                                                />
+                                            ))
+                                        ) : (
+                                            <div className={styles.emptyState}>
+                                                <p>このパートにはまだ問題がありません</p>
+                                            </div>
+                                        )}
+                                    </div>
+                                </div>
                             </section>
                         );
                     })}
@@ -314,19 +303,6 @@ export function CoursePage() {
 
                     {/* メインエリア: セクションカード */}
                     <main className={styles.main}>
-                        {/* モード説明ヘッダー */}
-                        <div className={styles.modeHeader}>
-                            <div className={styles.modeLabel} data-mode="1">
-                                <span>音あり<br />スペルあり</span>
-                            </div>
-                            <div className={styles.modeLabel} data-mode="2">
-                                <span>音あり<br />スペルなし</span>
-                            </div>
-                            <div className={styles.modeLabel} data-mode="3">
-                                <span>音なし<br />スペルなし</span>
-                            </div>
-                        </div>
-
                         {/* セクションリスト */}
                         <div className={styles.sections}>
                             {sections.length > 0 ? (
