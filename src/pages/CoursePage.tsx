@@ -167,11 +167,12 @@ export function CoursePage() {
             scrollAnimationRef.current = requestAnimationFrame(tick);
         };
 
+        const openAnimationMs = 360;
         window.setTimeout(() => {
             const rect = target.getBoundingClientRect();
             const top = rect.top + window.scrollY - offset;
             smoothScrollTo(top, 420);
-        }, 120);
+        }, openAnimationMs);
     }, [openUnitId]);
 
     const handlePartSelect = (unitId: string, partId: string) => {
