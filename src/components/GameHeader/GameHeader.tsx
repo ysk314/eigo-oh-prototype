@@ -29,6 +29,7 @@ export function GameHeader({
     dangerThreshold,
 }: GameHeaderProps) {
     const headerRef = useRef<HTMLElement | null>(null);
+    const maxHeightRef = useRef(0);
     const shouldShowTimer = typeof timeLeft === 'number' && typeof timeLimit === 'number';
 
     useLayoutEffect(() => {
@@ -36,19 +37,20 @@ export function GameHeader({
         if (!node) return;
         const updateHeight = () => {
             const height = node.getBoundingClientRect().height;
-            document.documentElement.style.setProperty('--game-header-height', `${height}px`);
+            if (height > maxHeightRef.current) {
+                maxHeightRef.current = height;
+                document.documentElement.style.setProperty('--game-header-height', `${height}px`);
+            }
         };
 
         updateHeight();
         const rafId = requestAnimationFrame(updateHeight);
-        const timeoutId = window.setTimeout(updateHeight, 150);
 
         if (typeof ResizeObserver !== 'undefined') {
             const observer = new ResizeObserver(() => updateHeight());
             observer.observe(node);
             return () => {
                 cancelAnimationFrame(rafId);
-                window.clearTimeout(timeoutId);
                 observer.disconnect();
                 document.documentElement.style.removeProperty('--game-header-height');
             };
@@ -57,7 +59,6 @@ export function GameHeader({
         window.addEventListener('resize', updateHeight);
         return () => {
             cancelAnimationFrame(rafId);
-            window.clearTimeout(timeoutId);
             window.removeEventListener('resize', updateHeight);
             document.documentElement.style.removeProperty('--game-header-height');
         };
