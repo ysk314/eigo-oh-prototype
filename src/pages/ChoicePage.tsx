@@ -12,7 +12,6 @@ import { AudioPlayer } from '@/components/AudioPlayer';
 import { GameHeader } from '@/components/GameHeader';
 import { courses, getCourseById, getQuestionsBySection, getSectionsByPart } from '@/data/questions';
 import { buildScoreResult, ScoreResult } from '@/utils/score';
-import { calculateTimeLimit, calculateTotalChars } from '@/utils/timer';
 import { playSound } from '@/utils/sound';
 import { getRankMessage } from '@/utils/result';
 import { useCountdown } from '@/hooks/useCountdown';
@@ -96,8 +95,7 @@ export function ChoicePage() {
 
     useEffect(() => {
         if (questions.length === 0) return;
-        const totalChars = calculateTotalChars(questions);
-        const limit = Math.max(1, Math.ceil(calculateTimeLimit(totalChars, 1, 10) / 3));
+        const limit = Math.max(1, questions.length * 5);
         setCurrentIndex(0);
         setIsFinished(false);
         setTimeUp(false);
