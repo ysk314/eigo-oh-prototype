@@ -5,6 +5,20 @@
     background: linear-gradient(135deg, #FFF1B8 0%, #FFE082 100%);
 }
 
+.choiceHeader {
+    background: linear-gradient(135deg, #FFE082 0%, #FFD54F 100%);
+    color: #5D4A00;
+}
+
+.choiceHeader button {
+    background: rgba(255, 255, 255, 0.55);
+    color: #5D4A00;
+}
+
+.choiceHeader button:hover {
+    background: rgba(255, 255, 255, 0.8);
+}
+
 .main {
     flex: 1;
     display: flex;
@@ -144,6 +158,25 @@
     flex-direction: column;
     gap: var(--space-lg);
     background: #FFFDF1;
+}
+
+.choiceResultPrimary {
+    background: #FFD54F;
+    color: #5D4A00;
+}
+
+.choiceResultPrimary:hover:not(:disabled) {
+    background: #FFC107;
+}
+
+.choiceResultSecondary {
+    background: #FFF3BF;
+    color: #7A5C00;
+    border: 2px solid #FFD54F;
+}
+
+.choiceResultSecondary:hover:not(:disabled) {
+    background: #FFE082;
 }
 
 .resultTitle {

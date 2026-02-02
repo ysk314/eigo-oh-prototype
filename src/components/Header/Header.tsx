@@ -14,6 +14,7 @@ interface HeaderProps {
     showBackButton?: boolean;
     showStudyModeToggle?: boolean;
     onBack?: () => void;
+    className?: string;
 }
 
 export function Header({
@@ -24,6 +25,7 @@ export function Header({
     showBackButton = false,
     showStudyModeToggle = false,
     onBack,
+    className = '',
 }: HeaderProps) {
     const { state, setUser, toggleShuffle, setStudyMode } = useApp();
 
@@ -35,7 +37,7 @@ export function Header({
     };
 
     return (
-        <header className={styles.header}>
+        <header className={`${styles.header} ${className}`.trim()}>
             <div className={styles.left}>
                 {showBackButton && onBack && (
                     <button

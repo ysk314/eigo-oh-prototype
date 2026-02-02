@@ -309,7 +309,13 @@ export function ChoicePage() {
         const accuracy = total > 0 ? Math.round((correctCount / total) * 100) : 0;
         return (
             <div className={styles.page}>
-                <Header title="結果発表" showUserSelect={false} showBackButton onBack={handleBack} />
+                <Header
+                    title="結果発表"
+                    showUserSelect={false}
+                    showBackButton
+                    onBack={handleBack}
+                    className={styles.choiceHeader}
+                />
                 <main className={styles.resultMain}>
                     {scoreResult.rank === 'S' && (
                         <div className={styles.confettiWrapper} aria-hidden="true">
@@ -365,10 +371,20 @@ export function ChoicePage() {
                             {getRankMessage(scoreResult.rank)}
                         </div>
                         <div className={styles.actions}>
-                            <Button onClick={handleRetry} variant="secondary" size="lg">
+                            <Button
+                                onClick={handleRetry}
+                                variant="secondary"
+                                size="lg"
+                                className={styles.choiceResultSecondary}
+                            >
                                 もう一度
                             </Button>
-                            <Button onClick={() => navigate('/course')} variant="primary" size="lg">
+                            <Button
+                                onClick={() => navigate('/course')}
+                                variant="primary"
+                                size="lg"
+                                className={styles.choiceResultPrimary}
+                            >
                                 コースへ戻る
                             </Button>
                         </div>
