@@ -218,7 +218,7 @@ export function TypingInput({
                 }}
                 onFocus={() => { isInputFocusedRef.current = true; }}
                 onBlur={() => { isInputFocusedRef.current = false; }}
-                autoComplete="new-password"
+                autoComplete="one-time-code"
                 autoCorrect="off"
                 autoCapitalize="none"
                 spellCheck={false}

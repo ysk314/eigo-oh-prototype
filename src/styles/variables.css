@@ -97,7 +97,7 @@
 
 @media (max-width: 768px) {
   :root {
-    --game-header-height: 96px;
+    --game-header-height: 84px;
   }
 }
 
