@@ -84,18 +84,6 @@ export function ChoicePage() {
     }, [selectedSection, questions, navigate]);
 
     useEffect(() => {
-        const originalOverflow = document.body.style.overflow;
-        if (!isFinished) {
-            document.body.style.overflow = 'hidden';
-        } else {
-            document.body.style.overflow = originalOverflow;
-        }
-        return () => {
-            document.body.style.overflow = originalOverflow;
-        };
-    }, [isFinished]);
-
-    useEffect(() => {
         if (state.studyMode === 'typing') {
             navigate('/play');
         }
