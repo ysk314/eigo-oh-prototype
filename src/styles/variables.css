@@ -4,6 +4,7 @@
    ================================ */
 
 :root {
+  --game-header-height: 112px;
   /* Primary Colors - Coral Red Base */
   --color-primary: #E57373;
   --color-primary-light: #FFAB91;

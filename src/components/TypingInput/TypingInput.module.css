@@ -60,10 +60,7 @@
     letter-spacing: 0.05em;
     line-height: 1.2;
     min-height: 60px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-wrap: wrap;
+    display: block;
     white-space: pre-wrap;
     max-width: 100%;
     overflow: visible;
@@ -76,6 +73,7 @@
     color: var(--color-success);
     overflow-wrap: anywhere;
     word-break: break-word;
+    display: inline;
 }
 
 .current {
@@ -86,6 +84,7 @@
     position: relative;
     overflow-wrap: anywhere;
     word-break: break-word;
+    display: inline;
 }
 
 .space {
@@ -122,6 +121,7 @@
     color: var(--color-text-muted);
     overflow-wrap: anywhere;
     word-break: break-word;
+    display: inline;
 }
 
 .shake {
