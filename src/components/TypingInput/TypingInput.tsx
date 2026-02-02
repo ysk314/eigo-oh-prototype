@@ -222,7 +222,7 @@ export function TypingInput({
                 autoCorrect="off"
                 autoCapitalize="none"
                 spellCheck={false}
-                inputMode="latin"
+                inputMode="text"
                 enterKeyHint="done"
                 lang="en"
             />
