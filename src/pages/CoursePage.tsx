@@ -108,13 +108,13 @@ export function CoursePage() {
     useEffect(() => {
         if (hasInitializedRef.current || units.length === 0) return;
 
-        const initialUnitId = lastPlayed.unitId ?? state.selectedUnit ?? units[0]?.id ?? null;
+        const initialUnitId = state.selectedUnit ?? lastPlayed.unitId ?? units[0]?.id ?? null;
         const initialUnit = units.find((unit) => unit.id === initialUnitId) || units[0];
         const initialPartId =
-            (lastPlayed.partId && initialUnit.parts.some((part) => part.id === lastPlayed.partId))
-                ? lastPlayed.partId
-                : (state.selectedPart && initialUnit.parts.some((part) => part.id === state.selectedPart))
-                    ? state.selectedPart
+            (state.selectedPart && initialUnit.parts.some((part) => part.id === state.selectedPart))
+                ? state.selectedPart
+                : (lastPlayed.partId && initialUnit.parts.some((part) => part.id === lastPlayed.partId))
+                    ? lastPlayed.partId
                     : initialUnit.parts[0]?.id || null;
 
         if (initialUnit?.id) {
