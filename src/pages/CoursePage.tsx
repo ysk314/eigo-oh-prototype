@@ -51,6 +51,18 @@ export function CoursePage() {
         return map;
     }, [units]);
 
+    const sectionIdToPartUnit = useMemo(() => {
+        const map = new Map<string, { partId: string; unitId: string }>();
+        units.forEach((unit) => {
+            unit.parts.forEach((part) => {
+                part.sections.forEach((section) => {
+                    map.set(section.id, { partId: part.id, unitId: unit.id });
+                });
+            });
+        });
+        return map;
+    }, [units]);
+
     const lastPlayed = useMemo(() => {
         let latestTime = 0;
         let unitId: string | null = null;
@@ -83,6 +95,15 @@ export function CoursePage() {
         if (state.selectedCourse || !courses[0]) return;
         setCourse(courses[0].id);
     }, [state.selectedCourse, setCourse]);
+
+    useEffect(() => {
+        if (!state.selectedSection) return;
+        if (state.selectedPart && state.selectedUnit) return;
+        const match = sectionIdToPartUnit.get(state.selectedSection);
+        if (!match) return;
+        setUnit(match.unitId);
+        setPart(match.partId);
+    }, [state.selectedSection, state.selectedPart, state.selectedUnit, sectionIdToPartUnit, setUnit, setPart]);
 
     useEffect(() => {
         if (hasInitializedRef.current || units.length === 0) return;

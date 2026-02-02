@@ -12,7 +12,7 @@
     align-items: center;
     gap: var(--space-lg);
     padding: var(--space-lg);
-    padding-top: calc(var(--space-lg) + env(safe-area-inset-top));
+    padding-top: calc(var(--game-header-height, 0px) + var(--space-lg));
 }
 
 .countdownOverlay {
@@ -242,6 +242,7 @@
     .main {
         gap: var(--space-md);
         padding: var(--space-md);
+        padding-top: calc(var(--game-header-height, 0px) + var(--space-md));
     }
 
     .choiceButton {

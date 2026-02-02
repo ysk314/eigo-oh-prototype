@@ -12,7 +12,7 @@
     align-items: center;
     justify-content: flex-start;
     padding: var(--space-md);
-    padding-top: calc(var(--space-md) + env(safe-area-inset-top));
+    padding-top: calc(var(--game-header-height, 0px) + var(--space-md));
     gap: var(--space-lg);
     max-width: 1000px;
     margin: 0 auto;
@@ -303,6 +303,7 @@
 @media (max-width: 768px) {
     .playMain {
         padding: var(--space-sm);
+        padding-top: calc(var(--game-header-height, 0px) + var(--space-sm));
         gap: var(--space-md);
     }
 

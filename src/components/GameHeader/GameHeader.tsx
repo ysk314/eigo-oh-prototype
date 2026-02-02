@@ -2,6 +2,7 @@
 // Game Header Component
 // ================================
 
+import { useLayoutEffect, useRef } from 'react';
 import { ProgressBar } from '@/components/ProgressBar';
 import { TimerBar } from '@/components/TimerBar';
 import styles from './GameHeader.module.css';
@@ -27,9 +28,37 @@ export function GameHeader({
     timerMaxWidth,
     dangerThreshold,
 }: GameHeaderProps) {
+    const headerRef = useRef<HTMLElement | null>(null);
     const shouldShowTimer = typeof timeLeft === 'number' && typeof timeLimit === 'number';
+
+    useLayoutEffect(() => {
+        const node = headerRef.current;
+        if (!node) return;
+        const updateHeight = () => {
+            const height = node.getBoundingClientRect().height;
+            document.documentElement.style.setProperty('--game-header-height', `${height}px`);
+        };
+
+        updateHeight();
+
+        if (typeof ResizeObserver !== 'undefined') {
+            const observer = new ResizeObserver(() => updateHeight());
+            observer.observe(node);
+            return () => {
+                observer.disconnect();
+                document.documentElement.style.removeProperty('--game-header-height');
+            };
+        }
+
+        window.addEventListener('resize', updateHeight);
+        return () => {
+            window.removeEventListener('resize', updateHeight);
+            document.documentElement.style.removeProperty('--game-header-height');
+        };
+    }, []);
+
     return (
-        <header className={styles.playHeader}>
+        <header className={styles.playHeader} ref={headerRef}>
             <div className={styles.topRow}>
                 <button className={styles.backButton} onClick={onBack}>
                     ← 戻る
