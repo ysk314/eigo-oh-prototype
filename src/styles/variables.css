@@ -95,6 +95,12 @@
   --z-tooltip: 300;
 }
 
+@media (max-width: 768px) {
+  :root {
+    --game-header-height: 96px;
+  }
+}
+
 /* Dark mode support (optional) */
 @media (prefers-color-scheme: dark) {
   :root {

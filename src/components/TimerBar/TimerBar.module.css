@@ -28,3 +28,13 @@
     font-size: var(--font-size-sm);
     color: var(--color-text-secondary);
 }
+
+@media (max-width: 768px) {
+    .timerBarContainer {
+        height: 6px;
+    }
+
+    .timerLabel {
+        font-size: var(--font-size-xs);
+    }
+}

@@ -218,11 +218,11 @@ export function TypingInput({
                 }}
                 onFocus={() => { isInputFocusedRef.current = true; }}
                 onBlur={() => { isInputFocusedRef.current = false; }}
-                autoComplete="off"
+                autoComplete="new-password"
                 autoCorrect="off"
                 autoCapitalize="none"
                 spellCheck={false}
-                inputMode="text"
+                inputMode="latin"
                 enterKeyHint="done"
                 lang="en"
             />
