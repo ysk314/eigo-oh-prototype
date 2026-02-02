@@ -2,7 +2,7 @@
     display: flex;
     flex-direction: column;
     min-height: 100dvh;
-    background: linear-gradient(135deg, var(--color-bg-gradient-start) 0%, var(--color-bg-gradient-end) 100%);
+    background: linear-gradient(135deg, #FFF1B8 0%, #FFE082 100%);
 }
 
 .main {
@@ -46,7 +46,7 @@
 .promptCard {
     width: 100%;
     max-width: 680px;
-    background: #fff;
+    background: #FFFDF1;
     border-radius: var(--radius-lg);
     padding: var(--space-lg);
     box-shadow: var(--shadow-sm);
@@ -76,8 +76,8 @@
 .choiceButton {
     padding: var(--space-md) var(--space-lg);
     border-radius: var(--radius-md);
-    border: 2px solid rgba(0, 0, 0, 0.08);
-    background: #fff;
+    border: 2px solid rgba(255, 193, 7, 0.35);
+    background: #FFF7D6;
     font-size: var(--font-size-lg);
     font-weight: var(--font-weight-semibold);
     cursor: pointer;
@@ -143,6 +143,7 @@
     display: flex;
     flex-direction: column;
     gap: var(--space-lg);
+    background: #FFFDF1;
 }
 
 .resultTitle {
