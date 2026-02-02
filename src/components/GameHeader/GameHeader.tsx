@@ -40,11 +40,15 @@ export function GameHeader({
         };
 
         updateHeight();
+        const rafId = requestAnimationFrame(updateHeight);
+        const timeoutId = window.setTimeout(updateHeight, 150);
 
         if (typeof ResizeObserver !== 'undefined') {
             const observer = new ResizeObserver(() => updateHeight());
             observer.observe(node);
             return () => {
+                cancelAnimationFrame(rafId);
+                window.clearTimeout(timeoutId);
                 observer.disconnect();
                 document.documentElement.style.removeProperty('--game-header-height');
             };
@@ -52,6 +56,8 @@ export function GameHeader({
 
         window.addEventListener('resize', updateHeight);
         return () => {
+            cancelAnimationFrame(rafId);
+            window.clearTimeout(timeoutId);
             window.removeEventListener('resize', updateHeight);
             document.documentElement.style.removeProperty('--game-header-height');
         };

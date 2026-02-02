@@ -11,6 +11,9 @@
     outline: none;
     transition: all var(--transition-fast);
     position: relative;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
 }
 
 .hiddenInput {
@@ -57,18 +60,22 @@
     letter-spacing: 0.05em;
     line-height: 1.2;
     min-height: 60px;
-    min-width: calc(var(--answer-length) * 0.65em + 1.5em);
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-wrap: nowrap;
-    white-space: pre;
+    flex-wrap: wrap;
+    white-space: pre-wrap;
     max-width: 100%;
-    overflow-x: auto;
+    overflow: visible;
+    text-align: center;
+    overflow-wrap: anywhere;
+    word-break: break-word;
 }
 
 .completed {
     color: var(--color-success);
+    overflow-wrap: anywhere;
+    word-break: break-word;
 }
 
 .current {
@@ -77,6 +84,8 @@
     padding: 0 2px;
     border-radius: 4px;
     position: relative;
+    overflow-wrap: anywhere;
+    word-break: break-word;
 }
 
 .space {
@@ -111,6 +120,8 @@
 
 .remaining {
     color: var(--color-text-muted);
+    overflow-wrap: anywhere;
+    word-break: break-word;
 }
 
 .shake {

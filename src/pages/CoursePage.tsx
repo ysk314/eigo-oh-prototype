@@ -18,7 +18,7 @@ export function CoursePage() {
     const currentCourse = getCourseById(state.selectedCourse) ?? courses[0];
     const units = currentCourse?.units || [];
     const selectedUnitId = state.selectedUnit || units[0]?.id || null;
-    const selectedPartId = state.selectedPart || units[0]?.parts[0]?.id || null;
+    const selectedPartId = state.selectedPart || selectedUnit?.parts[0]?.id || null;
     const selectedUnit = units.find((unit) => unit.id === selectedUnitId) || units[0] || null;
     const selectedPartLabel = selectedUnit?.parts.find((part) => part.id === selectedPartId)?.label || '';
     const [openUnitId, setOpenUnitId] = useState<string | null>(null);
