@@ -3,7 +3,6 @@
     flex-direction: column;
     min-height: 100dvh;
     background: linear-gradient(135deg, var(--color-bg-gradient-start) 0%, var(--color-bg-gradient-end) 100%);
-    padding-top: calc(var(--game-header-height, 0px) + env(safe-area-inset-top));
 }
 
 .main {
@@ -13,6 +12,7 @@
     align-items: center;
     gap: var(--space-lg);
     padding: var(--space-lg);
+    padding-top: calc(var(--game-header-height, 0px) + env(safe-area-inset-top) + var(--space-lg));
 }
 
 .countdownOverlay {
@@ -242,6 +242,7 @@
     .main {
         gap: var(--space-md);
         padding: var(--space-md);
+        padding-top: calc(var(--game-header-height, 0px) + env(safe-area-inset-top) + var(--space-md));
     }
 
     .choiceButton {

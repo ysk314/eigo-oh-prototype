@@ -3,7 +3,6 @@
     flex-direction: column;
     min-height: 100dvh;
     background: linear-gradient(135deg, var(--color-bg-gradient-start) 0%, var(--color-bg-gradient-end) 100%);
-    padding-top: calc(var(--game-header-height, 0px) + env(safe-area-inset-top));
 }
 
 .playMain {
@@ -13,6 +12,7 @@
     align-items: center;
     justify-content: flex-start;
     padding: var(--space-md);
+    padding-top: calc(var(--game-header-height, 0px) + env(safe-area-inset-top) + var(--space-md));
     gap: var(--space-lg);
     max-width: 1000px;
     margin: 0 auto;
@@ -303,6 +303,7 @@
 @media (max-width: 768px) {
     .playMain {
         padding: var(--space-sm);
+        padding-top: calc(var(--game-header-height, 0px) + env(safe-area-inset-top) + var(--space-sm));
         gap: var(--space-md);
     }
 
