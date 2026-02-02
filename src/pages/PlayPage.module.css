@@ -12,6 +12,7 @@
     align-items: center;
     justify-content: flex-start;
     padding: var(--space-md);
+    padding-top: calc(var(--space-md) + env(safe-area-inset-top));
     gap: var(--space-lg);
     max-width: 1000px;
     margin: 0 auto;

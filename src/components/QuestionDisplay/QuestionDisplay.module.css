@@ -12,6 +12,9 @@
     font-weight: var(--font-weight-medium);
     color: var(--color-text-primary);
     margin: 0;
+    white-space: normal;
+    overflow-wrap: anywhere;
+    word-break: break-word;
 }
 
 .englishArea {
@@ -26,6 +29,9 @@
     color: var(--color-text-primary);
     letter-spacing: 0.02em;
     line-height: 1.2;
+    white-space: normal;
+    overflow-wrap: anywhere;
+    word-break: break-word;
 }
 
 .englishSlot {
