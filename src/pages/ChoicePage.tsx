@@ -39,9 +39,10 @@ function maskWord(word: string): string {
         .split(/(\s+)/)
         .map((segment) => {
             if (segment.trim() === '') return segment;
-            const first = segment[0];
-            const rest = '_'.repeat(Math.max(1, segment.length - 1));
-            return `${first}${rest}`;
+            const visibleCount = segment.length <= 3 ? 1 : 2;
+            const visible = segment.slice(0, visibleCount);
+            const rest = '_'.repeat(Math.max(1, segment.length - visibleCount));
+            return `${visible}${rest}`;
         })
         .join('');
 }
