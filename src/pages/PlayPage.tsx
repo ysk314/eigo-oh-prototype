@@ -74,6 +74,10 @@ export function PlayPage() {
         }
     }, [selectedSection, questions, navigate]);
 
+    useEffect(() => {
+        window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
+    }, []);
+
     // セッション初期化（問題セット変更時）
     useEffect(() => {
         if (questions.length === 0) return;

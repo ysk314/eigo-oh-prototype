@@ -84,6 +84,10 @@ export function ChoicePage() {
     }, [selectedSection, questions, navigate]);
 
     useEffect(() => {
+        window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
+    }, []);
+
+    useEffect(() => {
         if (state.studyMode === 'typing') {
             navigate('/play');
         }
