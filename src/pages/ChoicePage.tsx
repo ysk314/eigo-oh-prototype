@@ -10,7 +10,6 @@ import { Card } from '@/components/Card';
 import { Button } from '@/components/Button';
 import { AudioPlayer } from '@/components/AudioPlayer';
 import { GameHeader } from '@/components/GameHeader';
-import { TimerBar } from '@/components/TimerBar';
 import { courses, getCourseById, getQuestionsBySection, getSectionsByPart } from '@/data/questions';
 import { buildScoreResult, ScoreResult } from '@/utils/score';
 import { calculateTimeLimit, calculateTotalChars } from '@/utils/timer';
@@ -395,9 +394,11 @@ export function ChoicePage() {
                 total={questions.length}
                 userName={state.currentUser?.name}
                 onBack={handleBack}
+                timeLeft={timeLeft}
+                timeLimit={timeLimit}
+                timerMaxWidth={680}
             />
             <main className={styles.main}>
-                <TimerBar timeLeft={timeLeft} timeLimit={timeLimit} maxWidth={680} />
                 <div className={styles.promptCard}>
                     <div className={styles.promptText}>{choiceState?.prompt}</div>
                     {shouldPlayAudio && currentQuestion && (

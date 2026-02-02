@@ -1,7 +1,7 @@
 .playHeader {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
+    flex-direction: column;
+    gap: var(--space-sm);
     padding: var(--space-md) var(--space-lg);
     background: rgba(255, 255, 255, 0.8);
     backdrop-filter: blur(10px);
@@ -9,6 +9,12 @@
     position: sticky;
     top: 0;
     z-index: 10;
+}
+
+.topRow {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .backButton {

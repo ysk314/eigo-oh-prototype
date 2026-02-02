@@ -7,7 +7,6 @@ import { useNavigate } from 'react-router-dom';
 import { useApp } from '@/context/AppContext';
 import { Header } from '@/components/Header';
 import { GameHeader } from '@/components/GameHeader';
-import { TimerBar } from '@/components/TimerBar';
 import { QuestionDisplay } from '@/components/QuestionDisplay';
 import { TypingInput } from '@/components/TypingInput';
 import { Button } from '@/components/Button';
@@ -447,10 +446,13 @@ export function PlayPage() {
                 total={questions.length}
                 userName={currentUser?.name}
                 onBack={handleBack}
+                timeLeft={timeLeft}
+                timeLimit={timeLimit}
+                dangerThreshold={10}
+                timerMaxWidth={600}
             />
 
             <main className={styles.playMain}>
-                <TimerBar timeLeft={timeLeft} timeLimit={timeLimit} dangerThreshold={10} maxWidth={600} />
 
                 {/* 問題番号ナビゲーション (オプション) */}
                 {currentQuestion ? (
