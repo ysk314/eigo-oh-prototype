@@ -136,11 +136,6 @@
     word-break: break-word;
 }
 
-.progress {
-    font-size: var(--font-size-sm);
-    color: var(--color-text-secondary);
-}
-
 .resultMain {
     flex: 1;
     display: flex;
