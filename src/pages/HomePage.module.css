@@ -45,6 +45,10 @@
     color: var(--color-text-secondary);
 }
 
+.backButton {
+    margin-top: var(--space-md);
+}
+
 .container {
     display: grid;
     grid-template-columns: 1fr 1fr;

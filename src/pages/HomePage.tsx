@@ -5,6 +5,7 @@
 import { useNavigate } from 'react-router-dom';
 import { useApp } from '@/context/AppContext';
 import { Card } from '@/components/Card';
+import { Button } from '@/components/Button';
 import { courses } from '@/data/questions';
 import styles from './HomePage.module.css';
 
@@ -17,6 +18,10 @@ export function HomePage() {
         navigate('/course');
     };
 
+    const handleBackToLogin = () => {
+        navigate('/');
+    };
+
     return (
         <div className={styles.page}>
             <main className={styles.main}>
@@ -24,6 +29,14 @@ export function HomePage() {
                     <h1 className={styles.title}>Welcome to Tap! Type! English!</h1>
                     <div className={styles.versionBadge}>v2</div>
                     <p className={styles.subtitle}>楽しく英語タイピングをマスターしよう</p>
+                    <Button
+                        variant="ghost"
+                        size="sm"
+                        className={styles.backButton}
+                        onClick={handleBackToLogin}
+                    >
+                        ログイン画面に戻る
+                    </Button>
                 </div>
 
                 <div className={styles.container}>
