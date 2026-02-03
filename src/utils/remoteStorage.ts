@@ -107,7 +107,7 @@ export async function seedRemoteStorage(uid: string, storage: StorageData): Prom
     const progressEntries = Object.entries(storage.userProgress);
     const sectionEntries = Object.entries(storage.sectionProgress);
 
-    const batchWrite = async <T>(
+    const batchWrite = async <T extends Record<string, unknown>>(
         entries: Array<[string, T]>,
         collectionRef: ReturnType<typeof userProgressCollection> | ReturnType<typeof sectionProgressCollection>
     ) => {
@@ -116,7 +116,7 @@ export async function seedRemoteStorage(uid: string, storage: StorageData): Prom
             const batch = writeBatch(db);
             const chunk = entries.slice(i, i + batchSize);
             chunk.forEach(([key, value]) => {
-                batch.set(doc(collectionRef, key), value, { merge: true });
+                batch.set(doc(collectionRef, key), value as Record<string, unknown>, { merge: true });
             });
             await batch.commit();
         }
