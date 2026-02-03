@@ -12,6 +12,7 @@ export function LoginPage() {
     const navigate = useNavigate();
     const { state, addUser } = useApp();
     const [nameInput, setNameInput] = useState('');
+    const [showCreateForm, setShowCreateForm] = useState(false);
 
     const hasUser = Boolean(state.currentUser);
 
@@ -32,6 +33,8 @@ export function LoginPage() {
         const trimmed = nameInput.trim();
         if (!trimmed) return;
         addUser(trimmed);
+        setNameInput('');
+        setShowCreateForm(false);
         navigate('/dashboard');
     };
 
@@ -52,16 +55,7 @@ export function LoginPage() {
                         <span className={styles.status}>ゲストモード</span>
                     </div>
 
-                    {hasUser ? (
-                        <div className={styles.actions}>
-                            <Button size="lg" fullWidth onClick={handleGuestStart}>
-                                続ける
-                            </Button>
-                            <Button size="lg" variant="secondary" fullWidth disabled>
-                                メールでログイン（準備中）
-                            </Button>
-                        </div>
-                    ) : (
+                    {showCreateForm || !hasUser ? (
                         <form className={styles.actions} onSubmit={handleCreateUser}>
                             <label className={styles.inputLabel} htmlFor="login-name">
                                 はじめに名前を入力してください
@@ -78,10 +72,38 @@ export function LoginPage() {
                             <Button size="lg" fullWidth type="submit">
                                 はじめる
                             </Button>
+                            {hasUser && (
+                                <Button
+                                    size="lg"
+                                    variant="ghost"
+                                    fullWidth
+                                    type="button"
+                                    onClick={() => setShowCreateForm(false)}
+                                >
+                                    戻る
+                                </Button>
+                            )}
                             <Button size="lg" variant="secondary" fullWidth disabled>
                                 メールでログイン（準備中）
                             </Button>
                         </form>
+                    ) : (
+                        <div className={styles.actions}>
+                            <Button size="lg" fullWidth onClick={handleGuestStart}>
+                                続ける
+                            </Button>
+                            <Button
+                                size="lg"
+                                variant="ghost"
+                                fullWidth
+                                onClick={() => setShowCreateForm(true)}
+                            >
+                                新しい名前で始める
+                            </Button>
+                            <Button size="lg" variant="secondary" fullWidth disabled>
+                                メールでログイン（準備中）
+                            </Button>
+                        </div>
                     )}
 
                     <p className={styles.note}>
