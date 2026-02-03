@@ -2,7 +2,6 @@
 // Question Display Component
 // ================================
 
-import React from 'react';
 import { Question, LearningMode } from '@/types';
 import { highlightTokens } from '@/utils/typing';
 import { AudioPlayer } from '@/components/AudioPlayer';
@@ -13,6 +12,8 @@ interface QuestionDisplayProps {
     mode: LearningMode;
     showEnglish?: boolean;
     autoPlayAudio?: boolean;
+    inputSlot?: React.ReactNode;
+    showModeIndicator?: boolean;
 }
 
 export function QuestionDisplay({
@@ -20,6 +21,8 @@ export function QuestionDisplay({
     mode,
     showEnglish = true,
     autoPlayAudio = false,
+    inputSlot,
+    showModeIndicator = true,
 }: QuestionDisplayProps) {
     const isAudioEnabled = mode !== 3;
     const isSpellingVisible = mode === 1;
@@ -66,20 +69,28 @@ export function QuestionDisplay({
                     size="lg"
                 />
 
-                {/* 英語テキスト */}
-                <div className={styles.english}>
-                    {showEnglish && renderEnglishText()}
-                </div>
+                {/* 英語テキスト / 入力 */}
+                {inputSlot ? (
+                    <div className={styles.englishSlot}>
+                        {inputSlot}
+                    </div>
+                ) : (
+                    <div className={styles.english}>
+                        {showEnglish && renderEnglishText()}
+                    </div>
+                )}
             </div>
 
             {/* モード表示 */}
-            <div className={styles.modeIndicator}>
-                <span className={styles.modeLabel}>
-                    {mode === 1 && '音声あり・スペルあり'}
-                    {mode === 2 && '音声あり・スペルなし'}
-                    {mode === 3 && '音声なし・スペルなし'}
-                </span>
-            </div>
+            {showModeIndicator && (
+                <div className={styles.modeIndicator}>
+                    <span className={styles.modeLabel}>
+                        {mode === 1 && '音声あり・スペルあり'}
+                        {mode === 2 && '音声あり・スペルなし'}
+                        {mode === 3 && '音声なし・スペルなし'}
+                    </span>
+                </div>
+            )}
         </div>
     );
 }

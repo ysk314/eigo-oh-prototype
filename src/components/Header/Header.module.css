@@ -20,6 +20,13 @@
     gap: var(--space-lg);
 }
 
+.controlsColumn {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+    align-items: flex-end;
+}
+
 /* Back Button */
 .backButton {
     display: flex;
@@ -44,6 +51,7 @@
     font-size: var(--font-size-xl);
     font-weight: var(--font-weight-bold);
     margin: 0;
+    color: var(--color-text-inverse);
 }
 
 /* Breadcrumb */
@@ -98,6 +106,28 @@
     color: var(--color-text-primary);
 }
 
+.studyModeToggle {
+    display: flex;
+    gap: var(--space-xs);
+    flex-wrap: nowrap;
+}
+
+.modeTab {
+    border: none;
+    background: rgba(255, 255, 255, 0.2);
+    color: rgba(255, 255, 255, 0.9);
+    padding: var(--space-xs) var(--space-md);
+    border-radius: var(--radius-full);
+    font-weight: var(--font-weight-semibold);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.modeTabActive {
+    background: var(--color-text-inverse);
+    color: var(--color-primary);
+}
+
 /* User Select */
 .userSelect {
     position: relative;
@@ -144,5 +174,18 @@
 
     .shuffleLabel {
         display: none;
+    }
+
+    .studyModeToggle {
+        gap: 4px;
+    }
+
+    .modeTab {
+        padding: 4px 10px;
+        font-size: var(--font-size-xs);
+    }
+
+    .controlsColumn {
+        align-items: flex-start;
     }
 }

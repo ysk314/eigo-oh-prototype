@@ -2,7 +2,7 @@
 // Audio Player Component
 // ================================
 
-import React, { useState, useRef, useCallback, useEffect } from 'react';
+import { useState, useRef, useCallback, useEffect } from 'react';
 import styles from './AudioPlayer.module.css';
 
 interface AudioPlayerProps {
@@ -23,6 +23,38 @@ export function AudioPlayer({
     const [isPlaying, setIsPlaying] = useState(false);
     const audioRef = useRef<HTMLAudioElement | null>(null);
     const synthRef = useRef<SpeechSynthesisUtterance | null>(null);
+
+    useEffect(() => {
+        if (!('speechSynthesis' in window)) return;
+        const handleVoices = () => {
+            window.speechSynthesis.getVoices();
+        };
+        window.speechSynthesis.addEventListener('voiceschanged', handleVoices);
+        handleVoices();
+        return () => window.speechSynthesis.removeEventListener('voiceschanged', handleVoices);
+    }, []);
+
+    const getPreferredVoice = () => {
+        const voices = window.speechSynthesis.getVoices();
+        if (!voices || voices.length === 0) return null;
+
+        const englishVoices = voices.filter(voice =>
+            voice.lang.startsWith('en') &&
+            !voice.name.includes('Japanese') &&
+            !voice.name.includes('Japan')
+        );
+
+        return (
+            englishVoices.find(v => v.name.includes('Google') && v.name.includes('US')) ||
+            englishVoices.find(v => v.name.includes('Zira')) ||
+            englishVoices.find(v => v.name.includes('Samantha')) ||
+            englishVoices.find(v => v.name.includes('Tom')) ||
+            englishVoices.find(v => v.lang === 'en-US' && v.localService === false) ||
+            englishVoices.find(v => v.lang === 'en-US') ||
+            englishVoices.find(v => v.lang.startsWith('en')) ||
+            null
+        );
+    };
 
     const play = useCallback(() => {
         if (disabled) return;
@@ -59,8 +91,13 @@ export function AudioPlayer({
     const playTTS = useCallback(() => {
         const utterance = new SpeechSynthesisUtterance(text);
         utterance.lang = 'en-US';
-        utterance.rate = 0.9;
-        utterance.pitch = 1;
+        utterance.rate = 1.0;
+        utterance.pitch = 1.0;
+
+        const preferredVoice = getPreferredVoice();
+        if (preferredVoice) {
+            utterance.voice = preferredVoice;
+        }
 
         utterance.onend = () => setIsPlaying(false);
         utterance.onerror = () => setIsPlaying(false);
@@ -81,7 +118,7 @@ export function AudioPlayer({
     // 自動再生
     useEffect(() => {
         if (autoPlay && !disabled) {
-            const timer = setTimeout(() => play(), 300);
+            const timer = setTimeout(() => play(), 500);
             return () => clearTimeout(timer);
         }
     }, [autoPlay, disabled, text]);

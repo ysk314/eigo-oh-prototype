@@ -1,0 +1,70 @@
+.playHeader {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+    padding: calc(var(--space-md) + env(safe-area-inset-top)) var(--space-lg) var(--space-sm);
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 10;
+    box-sizing: border-box;
+    min-height: var(--game-header-height);
+}
+
+.topRow {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.backButton {
+    background: none;
+    border: none;
+    color: var(--color-text-secondary);
+    font-weight: var(--font-weight-medium);
+    cursor: pointer;
+    padding: var(--space-sm);
+    border-radius: var(--radius-md);
+    transition: background var(--transition-fast);
+}
+
+.backButton:hover {
+    background: rgba(0, 0, 0, 0.05);
+    color: var(--color-primary);
+}
+
+.progressContainer {
+    flex: 1;
+    max-width: 400px;
+    margin: 0 var(--space-xl);
+}
+
+.userInfo {
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-primary);
+}
+
+@media (max-width: 768px) {
+    .playHeader {
+        padding: calc(var(--space-xs) + env(safe-area-inset-top)) var(--space-md) var(--space-xs);
+        gap: var(--space-xs);
+    }
+
+    .userInfo {
+        display: none;
+    }
+
+    .progressContainer {
+        margin: 0 var(--space-sm);
+        max-width: 320px;
+    }
+
+    .backButton {
+        padding: var(--space-xs);
+    }
+}

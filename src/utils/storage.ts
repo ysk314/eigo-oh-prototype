@@ -5,7 +5,7 @@
 import { AppState, User, UserProgress, SectionProgress } from '@/types';
 
 const STORAGE_KEY = 'eigo-typing-app';
-const SCHEMA_VERSION = 1;
+const SCHEMA_VERSION = 2;
 
 interface StorageData {
     version: number;
@@ -98,6 +98,25 @@ export function saveSettings(settings: { shuffleMode?: boolean; autoPlayAudio?: 
 function migrateData(oldData: StorageData): StorageData {
     // 将来のバージョンアップ時にここでマイグレーション処理
     console.log('Migrating data from version', oldData.version, 'to', SCHEMA_VERSION);
+
+    if (oldData.version === 1) {
+        const migratedSectionProgress: Record<string, SectionProgress> = {};
+
+        Object.entries(oldData.sectionProgress || {}).forEach(([key, value]) => {
+            migratedSectionProgress[key] = {
+                ...value,
+                mode1Rank: value.mode1Cleared ? 'S' : null,
+                mode2Rank: value.mode2Cleared ? 'S' : null,
+                mode3Rank: value.mode3Cleared ? 'S' : null,
+            };
+        });
+
+        return {
+            ...oldData,
+            version: SCHEMA_VERSION,
+            sectionProgress: migratedSectionProgress,
+        };
+    }
 
     // 現時点ではデフォルトにリセット
     return getDefaultStorageData();

@@ -21,9 +21,9 @@ export function isModeUnlocked(
         case 1:
             return true; // モード1は常にアンロック
         case 2:
-            return sectionProgress.mode1Cleared;
+            return sectionProgress.mode1Rank === 'S' || sectionProgress.mode1Cleared;
         case 3:
-            return sectionProgress.mode2Cleared;
+            return sectionProgress.mode2Rank === 'S' || sectionProgress.mode2Cleared;
         default:
             return false;
     }
@@ -120,6 +120,13 @@ export function updateSectionProgress(
         mode1Cleared: false,
         mode2Cleared: false,
         mode3Cleared: false,
+        mode1Rank: null,
+        mode2Rank: null,
+        mode3Rank: null,
+        choice1Rank: null,
+        choice2Rank: null,
+        choice3Rank: null,
+        choice4Rank: null,
         totalAttempts: 0,
         totalCorrect: 0,
         totalMiss: 0,

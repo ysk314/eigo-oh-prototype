@@ -36,6 +36,119 @@
     gap: var(--space-md);
 }
 
+.choiceModes {
+    display: flex;
+    gap: var(--space-sm);
+}
+
+.choiceGroups {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+}
+
+.choiceGroup {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    justify-content: flex-end;
+}
+
+.choiceLabel {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+    min-width: 110px;
+    text-align: right;
+}
+
+.choiceButton {
+    width: 56px;
+    height: 56px;
+    border: none;
+    background: #fff;
+    color: var(--color-text-primary);
+    border-radius: var(--radius-md);
+    font-weight: var(--font-weight-semibold);
+    font-size: var(--font-size-2xl);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    box-shadow: 0 4px 0 rgba(0, 0, 0, 0.08);
+}
+
+.choiceButton:hover {
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-sm);
+}
+
+.choiceButtonPrimary {
+    background: var(--color-primary);
+    color: var(--color-text-inverse);
+    box-shadow: 0 4px 0 var(--color-primary-dark);
+}
+
+.choiceButtonSecondary {
+    background: var(--color-accent);
+    color: var(--color-text-primary);
+    box-shadow: 0 4px 0 var(--color-accent-dark);
+}
+
+.rankS {
+    background: #FFD700 !important;
+    color: #fff !important;
+    border: 2px solid #FFA000 !important;
+    box-shadow: 0 4px 0 #FFA000 !important;
+}
+
+.rankA {
+    background: #42A5F5 !important;
+    color: #fff !important;
+    box-shadow: 0 4px 0 #1E88E5 !important;
+}
+
+.rankB {
+    background: #F4D03F !important;
+    color: #6B4F00 !important;
+    box-shadow: 0 4px 0 #C9A227 !important;
+}
+
+.rankC {
+    background: #EF5350 !important;
+    color: #fff !important;
+    box-shadow: 0 4px 0 #D32F2F !important;
+}
+
+.choiceButton:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+.locked {
+    background: #E0E0E0 !important;
+    color: #9E9E9E !important;
+    box-shadow: 0 4px 0 #BDBDBD !important;
+    opacity: 1;
+}
+
+.number {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.lockIcon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0.5;
+}
+
+.lockIcon svg {
+    width: 50%;
+    height: 50%;
+}
+
 /* Responsive */
 @media (max-width: 640px) {
     .card {

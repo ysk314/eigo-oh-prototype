@@ -2,7 +2,7 @@
 // Header Component
 // ================================
 
-import React from 'react';
+import { Fragment, type ChangeEvent } from 'react';
 import { useApp } from '@/context/AppContext';
 import styles from './Header.module.css';
 
@@ -12,7 +12,9 @@ interface HeaderProps {
     showUserSelect?: boolean;
     showShuffleToggle?: boolean;
     showBackButton?: boolean;
+    showStudyModeToggle?: boolean;
     onBack?: () => void;
+    className?: string;
 }
 
 export function Header({
@@ -21,11 +23,13 @@ export function Header({
     showUserSelect = true,
     showShuffleToggle = false,
     showBackButton = false,
+    showStudyModeToggle = false,
     onBack,
+    className = '',
 }: HeaderProps) {
-    const { state, setUser, toggleShuffle } = useApp();
+    const { state, setUser, toggleShuffle, setStudyMode } = useApp();
 
-    const handleUserChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const handleUserChange = (e: ChangeEvent<HTMLSelectElement>) => {
         const user = state.users.find(u => u.id === e.target.value);
         if (user) {
             setUser(user);
@@ -33,7 +37,7 @@ export function Header({
     };
 
     return (
-        <header className={styles.header}>
+        <header className={`${styles.header} ${className}`.trim()}>
             <div className={styles.left}>
                 {showBackButton && onBack && (
                     <button
@@ -50,12 +54,12 @@ export function Header({
                 {breadcrumb.length > 0 ? (
                     <nav className={styles.breadcrumb} aria-label="パンくずリスト">
                         {breadcrumb.map((item, index) => (
-                            <React.Fragment key={index}>
+                            <Fragment key={index}>
                                 {index > 0 && <span className={styles.separator}>/</span>}
                                 <span className={index === breadcrumb.length - 1 ? styles.current : ''}>
                                     {item}
                                 </span>
-                            </React.Fragment>
+                            </Fragment>
                         ))}
                     </nav>
                 ) : title ? (
@@ -64,20 +68,39 @@ export function Header({
             </div>
 
             <div className={styles.right}>
-                {showShuffleToggle && (
-                    <div className={styles.shuffleToggle}>
-                        <span className={styles.shuffleLabel}>シャッフルモード</span>
-                        <button
-                            className={`${styles.toggleButton} ${state.shuffleMode ? styles.active : ''}`}
-                            onClick={toggleShuffle}
-                            role="switch"
-                            aria-checked={state.shuffleMode}
-                        >
-                            <span className={styles.toggleOption} data-active={state.shuffleMode}>ON</span>
-                            <span className={styles.toggleOption} data-active={!state.shuffleMode}>OFF</span>
-                        </button>
-                    </div>
-                )}
+                <div className={styles.controlsColumn}>
+                    {showShuffleToggle && (
+                        <div className={styles.shuffleToggle}>
+                            <span className={styles.shuffleLabel}>シャッフルモード</span>
+                            <button
+                                className={`${styles.toggleButton} ${state.shuffleMode ? styles.active : ''}`}
+                                onClick={toggleShuffle}
+                                role="switch"
+                                aria-checked={state.shuffleMode}
+                            >
+                                <span className={styles.toggleOption} data-active={state.shuffleMode}>ON</span>
+                                <span className={styles.toggleOption} data-active={!state.shuffleMode}>OFF</span>
+                            </button>
+                        </div>
+                    )}
+
+                    {showStudyModeToggle && (
+                        <div className={styles.studyModeToggle}>
+                            <button
+                                className={`${styles.modeTab} ${state.studyMode === 'typing' ? styles.modeTabActive : ''}`}
+                                onClick={() => setStudyMode('typing')}
+                            >
+                                タイピング
+                            </button>
+                            <button
+                                className={`${styles.modeTab} ${state.studyMode === 'choice' ? styles.modeTabActive : ''}`}
+                                onClick={() => setStudyMode('choice')}
+                            >
+                                4択
+                            </button>
+                        </div>
+                    )}
+                </div>
 
                 {showUserSelect && state.users.length > 0 && (
                     <div className={styles.userSelect}>

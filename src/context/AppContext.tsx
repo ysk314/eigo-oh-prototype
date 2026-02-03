@@ -2,27 +2,32 @@
 // App Context
 // ================================
 
-import React, { createContext, useContext, useReducer, useEffect, ReactNode } from 'react';
-import { AppState, AppAction, User, LearningMode, UserProgress, SectionProgress } from '@/types';
+import { createContext, useContext, useReducer, useEffect, useCallback, type ReactNode, type Dispatch } from 'react';
+import { AppState, AppAction, User, LearningMode, ChoiceLevel, StudyMode, UserProgress, SectionProgress, Rank } from '@/types';
 import { appReducer, initialState } from './AppReducer';
 import { loadFromStorage, saveToStorage, storageToAppState, getProgressKey, getSectionProgressKey } from '@/utils/storage';
 
 interface AppContextValue {
     state: AppState;
-    dispatch: React.Dispatch<AppAction>;
+    dispatch: Dispatch<AppAction>;
 
     // Convenience methods
     setUser: (user: User) => void;
     addUser: (name: string) => void;
     setCourse: (courseId: string | null) => void;
-    setPageRange: (pageRangeId: string | null) => void;
+    setUnit: (unitId: string | null) => void;
+    setPart: (partId: string | null) => void;
     setSection: (sectionId: string | null) => void;
     setMode: (mode: LearningMode) => void;
+    setStudyMode: (mode: StudyMode) => void;
+    setChoiceLevel: (level: ChoiceLevel) => void;
+    setChoiceRank: (sectionId: string, level: ChoiceLevel, rank: Rank) => void;
     setQuestionIndex: (index: number) => void;
     toggleShuffle: () => void;
     setShuffledIds: (ids: string[]) => void;
     updateProgress: (questionId: string, data: Partial<UserProgress>) => void;
     markSectionCleared: (sectionId: string, mode: LearningMode) => void;
+    setSectionRank: (sectionId: string, mode: LearningMode, rank: Rank) => void;
     getProgressForQuestion: (questionId: string) => UserProgress | undefined;
     getSectionProgressData: (sectionId: string) => SectionProgress | undefined;
     isModeUnlocked: (sectionId: string, mode: LearningMode) => boolean;
@@ -60,55 +65,80 @@ export function AppProvider({ children }: AppProviderProps) {
         }
     }, [state.users, state.currentUser, state.userProgress, state.sectionProgress, state.shuffleMode, state.autoPlayAudio]);
 
-    // Convenience methods
-    const setUser = (user: User) => {
-        dispatch({ type: 'SET_USER', payload: user });
-    };
+    useEffect(() => {
+        const theme = state.studyMode === 'choice' ? 'choice' : 'typing';
+        document.documentElement.dataset.theme = theme;
+    }, [state.studyMode]);
 
-    const addUser = (name: string) => {
+    // Convenience methods
+    const setUser = useCallback((user: User) => {
+        dispatch({ type: 'SET_USER', payload: user });
+    }, []);
+
+    const addUser = useCallback((name: string) => {
         const newUser: User = {
             id: `user-${Date.now()}`,
             name,
             createdAt: new Date().toISOString(),
         };
         dispatch({ type: 'ADD_USER', payload: newUser });
-    };
+    }, []);
 
-    const setCourse = (courseId: string | null) => {
+    const setCourse = useCallback((courseId: string | null) => {
         dispatch({ type: 'SET_COURSE', payload: courseId });
-    };
+    }, []);
 
-    const setPageRange = (pageRangeId: string | null) => {
-        dispatch({ type: 'SET_PAGE_RANGE', payload: pageRangeId });
-    };
+    const setUnit = useCallback((unitId: string | null) => {
+        dispatch({ type: 'SET_UNIT', payload: unitId });
+    }, []);
 
-    const setSection = (sectionId: string | null) => {
+    const setPart = useCallback((partId: string | null) => {
+        dispatch({ type: 'SET_PART', payload: partId });
+    }, []);
+
+    const setSection = useCallback((sectionId: string | null) => {
         dispatch({ type: 'SET_SECTION', payload: sectionId });
-    };
+    }, []);
 
-    const setMode = (mode: LearningMode) => {
+    const setMode = useCallback((mode: LearningMode) => {
         dispatch({ type: 'SET_MODE', payload: mode });
-    };
+    }, []);
 
-    const setQuestionIndex = (index: number) => {
+    const setStudyMode = useCallback((mode: StudyMode) => {
+        dispatch({ type: 'SET_STUDY_MODE', payload: mode });
+    }, []);
+
+    const setChoiceLevel = useCallback((level: ChoiceLevel) => {
+        dispatch({ type: 'SET_CHOICE_LEVEL', payload: level });
+    }, []);
+
+    const setChoiceRank = useCallback((sectionId: string, level: ChoiceLevel, rank: Rank) => {
+        dispatch({ type: 'SET_CHOICE_RANK', payload: { sectionId, level, rank } });
+    }, []);
+
+    const setQuestionIndex = useCallback((index: number) => {
         dispatch({ type: 'SET_QUESTION_INDEX', payload: index });
-    };
+    }, []);
 
-    const toggleShuffle = () => {
+    const toggleShuffle = useCallback(() => {
         dispatch({ type: 'TOGGLE_SHUFFLE' });
-    };
+    }, []);
 
-    const setShuffledIds = (ids: string[]) => {
+    const setShuffledIds = useCallback((ids: string[]) => {
         dispatch({ type: 'SET_SHUFFLED_IDS', payload: ids });
-    };
+    }, []);
 
-    const updateProgress = (questionId: string, data: Partial<UserProgress>) => {
+    const updateProgress = useCallback((questionId: string, data: Partial<UserProgress>) => {
         dispatch({ type: 'UPDATE_PROGRESS', payload: { questionId, ...data } });
-    };
+    }, []);
 
-    const markSectionCleared = (sectionId: string, mode: LearningMode) => {
+    const markSectionCleared = useCallback((sectionId: string, mode: LearningMode) => {
         dispatch({ type: 'MARK_SECTION_CLEARED', payload: { sectionId, mode } });
-    };
+    }, []);
+
+    const setSectionRank = useCallback((sectionId: string, mode: LearningMode, rank: Rank) => {
+        dispatch({ type: 'SET_SECTION_RANK', payload: { sectionId, mode, rank } });
+    }, []);
 
     const getProgressForQuestion = (questionId: string): UserProgress | undefined => {
         if (!state.currentUser) return undefined;
@@ -130,9 +160,9 @@ export function AppProvider({ children }: AppProviderProps) {
 
         switch (mode) {
             case 2:
-                return progress.mode1Cleared;
+                return progress.mode1Rank === 'S' || progress.mode1Cleared;
             case 3:
-                return progress.mode2Cleared;
+                return progress.mode2Rank === 'S' || progress.mode2Cleared;
             default:
                 return false;
         }
@@ -144,14 +174,19 @@ export function AppProvider({ children }: AppProviderProps) {
         setUser,
         addUser,
         setCourse,
-        setPageRange,
+        setUnit,
+        setPart,
         setSection,
         setMode,
+        setStudyMode,
+        setChoiceLevel,
+        setChoiceRank,
         setQuestionIndex,
         toggleShuffle,
         setShuffledIds,
         updateProgress,
         markSectionCleared,
+        setSectionRank,
         getProgressForQuestion,
         getSectionProgressData,
         isModeUnlocked,

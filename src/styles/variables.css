@@ -4,6 +4,7 @@
    ================================ */
 
 :root {
+  --game-header-height: 112px;
   /* Primary Colors - Coral Red Base */
   --color-primary: #E57373;
   --color-primary-light: #FFAB91;
@@ -92,6 +93,21 @@
   --z-dropdown: 100;
   --z-modal: 200;
   --z-tooltip: 300;
+}
+
+:root[data-theme="choice"] {
+  --color-primary: #F79800;
+  --color-primary-light: #FFD27A;
+  --color-primary-dark: #D87E00;
+  --color-primary-soft: #FFE6BD;
+  --color-bg-gradient-start: #FFF1B8;
+  --color-bg-gradient-end: #FFE082;
+}
+
+@media (max-width: 768px) {
+  :root {
+    --game-header-height: 76px;
+  }
 }
 
 /* Dark mode support (optional) */

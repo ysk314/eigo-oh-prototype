@@ -1,17 +1,17 @@
-import React from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { AppProvider } from '@/context/AppContext';
-import { HomePage, CoursePage, PlayPage } from '@/pages';
+import { HomePage, CoursePage, PlayPage, ChoicePage } from '@/pages';
 import '@/styles/global.css';
 
 function App() {
     return (
         <AppProvider>
-            <BrowserRouter>
+            <BrowserRouter basename={import.meta.env.BASE_URL}>
                 <Routes>
                     <Route path="/" element={<HomePage />} />
                     <Route path="/course" element={<CoursePage />} />
                     <Route path="/play" element={<PlayPage />} />
+                    <Route path="/choice" element={<ChoicePage />} />
                     <Route path="*" element={<Navigate to="/" replace />} />
                 </Routes>
             </BrowserRouter>
