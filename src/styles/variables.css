@@ -95,6 +95,15 @@
   --z-tooltip: 300;
 }
 
+:root[data-theme="choice"] {
+  --color-primary: #F6C344;
+  --color-primary-light: #FFE082;
+  --color-primary-dark: #F9A825;
+  --color-primary-soft: #FFF3BF;
+  --color-bg-gradient-start: #FFF1B8;
+  --color-bg-gradient-end: #FFE082;
+}
+
 @media (max-width: 768px) {
   :root {
     --game-header-height: 76px;

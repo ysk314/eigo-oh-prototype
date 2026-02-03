@@ -65,6 +65,11 @@ export function AppProvider({ children }: AppProviderProps) {
         }
     }, [state.users, state.currentUser, state.userProgress, state.sectionProgress, state.shuffleMode, state.autoPlayAudio]);
 
+    useEffect(() => {
+        const theme = state.studyMode === 'choice' ? 'choice' : 'typing';
+        document.documentElement.dataset.theme = theme;
+    }, [state.studyMode]);
+
     // Convenience methods
     const setUser = useCallback((user: User) => {
         dispatch({ type: 'SET_USER', payload: user });

@@ -314,7 +314,6 @@ export function ChoicePage() {
                     showUserSelect={false}
                     showBackButton
                     onBack={handleBack}
-                    className={styles.choiceHeader}
                 />
                 <main className={styles.resultMain}>
                     {scoreResult.rank === 'S' && (
@@ -375,7 +374,6 @@ export function ChoicePage() {
                                 onClick={handleRetry}
                                 variant="secondary"
                                 size="lg"
-                                className={styles.choiceResultSecondary}
                             >
                                 もう一度
                             </Button>
@@ -383,7 +381,6 @@ export function ChoicePage() {
                                 onClick={() => navigate('/course')}
                                 variant="primary"
                                 size="lg"
-                                className={styles.choiceResultPrimary}
                             >
                                 コースへ戻る
                             </Button>
