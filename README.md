@@ -1,4 +1,4 @@
-# eigo-oh-prototype
+# tap-type-english
 英語タイピング学習アプリ（React + Vite + TypeScript）
 
 ## 概要

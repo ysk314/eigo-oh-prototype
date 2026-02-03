@@ -3,12 +3,12 @@
 目的: React版（GitHub Pages公開版）が **HTML版ではなく**、移植済みの仕様通りに動作するかを確認する。
 
 対象URL:
-- https://ysk314.github.io/eigo-oh-prototype/
+- https://ysk314.github.io/tap-type-english/
 
 前提:
 - 表示がHTML版ではないことを確認してから検証を開始する
   - `view-source:` で `@babel/standalone` が **出ない**こと
-  - `/eigo-oh-prototype/assets/*.js` が **出る**こと
+  - `/tap-type-english/assets/*.js` が **出る**こと
 
 ---
 
@@ -18,7 +18,7 @@
 2) 画面を **強制リロード（⌘+Shift+R）**  
 3) `view-source:` でHTMLを確認  
    - OK: `@babel/standalone` がない  
-   - OK: `/eigo-oh-prototype/assets/` の script がある  
+   - OK: `/tap-type-english/assets/` の script がある  
    - NG: まだHTML版 → 検証は中止し、通知
 
 ---

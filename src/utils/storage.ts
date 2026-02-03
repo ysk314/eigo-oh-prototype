@@ -4,7 +4,7 @@
 
 import { AppState, User, UserProgress, SectionProgress } from '@/types';
 
-const STORAGE_KEY = 'eigo-typing-app';
+const STORAGE_KEY = 'tap-type-english';
 const SCHEMA_VERSION = 2;
 
 interface StorageData {
