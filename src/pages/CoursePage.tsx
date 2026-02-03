@@ -237,7 +237,7 @@ export function CoursePage() {
     };
 
     const handleBack = () => {
-        navigate('/');
+        navigate('/dashboard');
     };
 
     const getCompletedCount = (_partId: string) => {
