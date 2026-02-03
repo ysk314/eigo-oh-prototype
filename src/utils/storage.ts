@@ -23,14 +23,8 @@ export interface StorageData {
 function getDefaultStorageData(): StorageData {
     return {
         version: SCHEMA_VERSION,
-        users: [
-            {
-                id: 'user-1',
-                name: '田中太郎さん',
-                createdAt: new Date().toISOString(),
-            },
-        ],
-        currentUserId: 'user-1',
+        users: [],
+        currentUserId: null,
         userProgress: {},
         sectionProgress: {},
         settings: {
