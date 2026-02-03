@@ -2,10 +2,46 @@
 // App Context
 // ================================
 
-import { createContext, useContext, useReducer, useEffect, useCallback, type ReactNode, type Dispatch } from 'react';
-import { AppState, AppAction, User, LearningMode, ChoiceLevel, StudyMode, UserProgress, SectionProgress, Rank } from '@/types';
+import {
+    createContext,
+    useContext,
+    useReducer,
+    useEffect,
+    useCallback,
+    useRef,
+    useState,
+    type ReactNode,
+    type Dispatch,
+} from 'react';
+import { onAuthStateChanged, signInAnonymously } from 'firebase/auth';
+import {
+    AppState,
+    AppAction,
+    User,
+    LearningMode,
+    ChoiceLevel,
+    StudyMode,
+    UserProgress,
+    SectionProgress,
+    Rank,
+} from '@/types';
+import { auth } from '@/firebase';
 import { appReducer, initialState } from './AppReducer';
-import { loadFromStorage, saveToStorage, storageToAppState, getProgressKey, getSectionProgressKey } from '@/utils/storage';
+import {
+    loadFromStorage,
+    saveToStorage,
+    storageToAppState,
+    getProgressKey,
+    getSectionProgressKey,
+    type StorageData,
+} from '@/utils/storage';
+import {
+    loadRemoteStorage,
+    saveRemoteUserState,
+    saveRemoteUserProgress,
+    saveRemoteSectionProgress,
+    seedRemoteStorage,
+} from '@/utils/remoteStorage';
 
 interface AppContextValue {
     state: AppState;
@@ -39,17 +75,73 @@ interface AppProviderProps {
     children: ReactNode;
 }
 
+const diffRecords = <T,>(prev: Record<string, T>, next: Record<string, T>): Array<[string, T]> => {
+    const changed: Array<[string, T]> = [];
+    Object.entries(next).forEach(([key, value]) => {
+        if (prev[key] !== value) {
+            changed.push([key, value]);
+        }
+    });
+    return changed;
+};
+
 export function AppProvider({ children }: AppProviderProps) {
     const [state, dispatch] = useReducer(appReducer, initialState);
+    const [remoteUid, setRemoteUid] = useState<string | null>(null);
+    const [remoteSyncEnabled, setRemoteSyncEnabled] = useState(false);
+
+    const initialStorageRef = useRef<StorageData | null>(null);
+    const prevUserProgressRef = useRef<Record<string, UserProgress>>({});
+    const prevSectionProgressRef = useRef<Record<string, SectionProgress>>({});
 
     // Load from storage on mount
     useEffect(() => {
         const storageData = loadFromStorage();
+        initialStorageRef.current = storageData;
         const appState = storageToAppState(storageData);
         dispatch({ type: 'LOAD_STATE', payload: appState });
     }, []);
 
-    // Save to storage on state change
+    // Firebase anonymous auth + remote load
+    useEffect(() => {
+        let isMounted = true;
+        const unsubscribe = onAuthStateChanged(auth, async (user) => {
+            if (!isMounted) return;
+
+            if (!user) {
+                try {
+                    await signInAnonymously(auth);
+                } catch (error) {
+                    console.error('Failed to sign in anonymously:', error);
+                }
+                return;
+            }
+
+            setRemoteUid(user.uid);
+
+            try {
+                const remoteData = await loadRemoteStorage(user.uid);
+                if (remoteData) {
+                    dispatch({ type: 'LOAD_STATE', payload: storageToAppState(remoteData) });
+                    prevUserProgressRef.current = remoteData.userProgress;
+                    prevSectionProgressRef.current = remoteData.sectionProgress;
+                } else if (initialStorageRef.current) {
+                    await seedRemoteStorage(user.uid, initialStorageRef.current);
+                }
+            } catch (error) {
+                console.error('Failed to load remote storage:', error);
+            } finally {
+                setRemoteSyncEnabled(true);
+            }
+        });
+
+        return () => {
+            isMounted = false;
+            unsubscribe();
+        };
+    }, []);
+
+    // Save to local storage on state change
     useEffect(() => {
         if (state.currentUser) {
             saveToStorage({
@@ -64,6 +156,56 @@ export function AppProvider({ children }: AppProviderProps) {
             });
         }
     }, [state.users, state.currentUser, state.userProgress, state.sectionProgress, state.shuffleMode, state.autoPlayAudio]);
+
+    // Save basic profile + settings to Firestore
+    useEffect(() => {
+        if (!remoteSyncEnabled || !remoteUid || !state.currentUser) return;
+
+        saveRemoteUserState(remoteUid, {
+            users: state.users,
+            currentUserId: state.currentUser.id,
+            settings: {
+                shuffleMode: state.shuffleMode,
+                autoPlayAudio: state.autoPlayAudio,
+            },
+        }).catch((error) => {
+            console.error('Failed to save remote user state:', error);
+        });
+    }, [remoteSyncEnabled, remoteUid, state.users, state.currentUser, state.shuffleMode, state.autoPlayAudio]);
+
+    // Sync user progress diffs to Firestore
+    useEffect(() => {
+        if (!remoteSyncEnabled || !remoteUid) {
+            prevUserProgressRef.current = state.userProgress;
+            return;
+        }
+
+        const changed = diffRecords(prevUserProgressRef.current, state.userProgress);
+        changed.forEach(([key, progress]) => {
+            saveRemoteUserProgress(remoteUid, key, progress).catch((error) => {
+                console.error('Failed to save remote user progress:', error);
+            });
+        });
+
+        prevUserProgressRef.current = state.userProgress;
+    }, [remoteSyncEnabled, remoteUid, state.userProgress]);
+
+    // Sync section progress diffs to Firestore
+    useEffect(() => {
+        if (!remoteSyncEnabled || !remoteUid) {
+            prevSectionProgressRef.current = state.sectionProgress;
+            return;
+        }
+
+        const changed = diffRecords(prevSectionProgressRef.current, state.sectionProgress);
+        changed.forEach(([key, progress]) => {
+            saveRemoteSectionProgress(remoteUid, key, progress).catch((error) => {
+                console.error('Failed to save remote section progress:', error);
+            });
+        });
+
+        prevSectionProgressRef.current = state.sectionProgress;
+    }, [remoteSyncEnabled, remoteUid, state.sectionProgress]);
 
     useEffect(() => {
         const theme = state.studyMode === 'choice' ? 'choice' : 'typing';
