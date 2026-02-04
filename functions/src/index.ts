@@ -71,7 +71,7 @@ async function logEvent(
   });
 }
 
-export const createGuest = onCall({ cors: true }, async (request) => {
+export const createGuest = onCall({ cors: ['https://ysk314.github.io'] }, async (request) => {
   const memberNo = await generateMemberNo();
   const tempPassword = generateTempPassword();
   const expiresAt = Timestamp.fromDate(new Date(Date.now() + GUEST_EXPIRES_DAYS * 24 * 60 * 60 * 1000));
@@ -124,7 +124,7 @@ export const createGuest = onCall({ cors: true }, async (request) => {
   };
 });
 
-export const loginWithMember = onCall({ cors: true }, async (request) => {
+export const loginWithMember = onCall({ cors: ['https://ysk314.github.io'] }, async (request) => {
   const { memberNo, password } = request.data as { memberNo?: string; password?: string };
 
   if (!memberNo || !password) {
@@ -192,7 +192,7 @@ export const loginWithMember = onCall({ cors: true }, async (request) => {
   return { uid: memberNo, customToken, forcePasswordChange };
 });
 
-export const changePassword = onCall({ cors: true }, async (request) => {
+export const changePassword = onCall({ cors: ['https://ysk314.github.io'] }, async (request) => {
   const { memberNo, currentPassword, newPassword } = request.data as {
     memberNo?: string;
     currentPassword?: string;
