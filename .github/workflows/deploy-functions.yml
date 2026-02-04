@@ -1,0 +1,44 @@
+name: Deploy Firebase Functions
+
+on:
+  push:
+    branches:
+      - version-v2
+    paths:
+      - functions/**
+      - firebase.json
+      - firestore.rules
+  workflow_dispatch:
+
+jobs:
+  deploy-functions:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+          cache-dependency-path: functions/package-lock.json
+
+      - name: Install dependencies
+        working-directory: functions
+        run: npm install
+
+      - name: Build functions
+        working-directory: functions
+        run: npm run build
+
+      - name: Deploy functions
+        uses: w9jds/firebase-action@v13.9.0
+        with:
+          args: deploy --only functions
+        env:
+          FIREBASE_PROJECT: tap-type-english
+          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
