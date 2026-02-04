@@ -12,7 +12,6 @@ import {
     DocumentData,
 } from 'firebase/firestore';
 import { db } from '@/firebase';
-import { StorageData, SCHEMA_VERSION } from '@/utils/storage';
 import { SectionProgress, UserProgress, User } from '@/types';
 
 const USERS_COLLECTION = 'users';
@@ -31,20 +30,32 @@ function sectionProgressCollection(uid: string) {
     return collection(db, USERS_COLLECTION, uid, SECTION_PROGRESS_COLLECTION);
 }
 
-export async function loadRemoteStorage(uid: string): Promise<StorageData | null> {
+export async function loadRemoteProfile(uid: string): Promise<User | null> {
     const userSnap = await getDoc(userDocRef(uid));
     if (!userSnap.exists()) return null;
-
-    const userData = userSnap.data() as Partial<StorageData> & {
-        users?: User[];
-        currentUserId?: string | null;
-        settings?: { shuffleMode: boolean; autoPlayAudio: boolean };
+    const data = userSnap.data() as {
+        uid: string;
+        displayName?: string;
+        createdAt?: unknown;
     };
 
-    const users = userData.users ?? [];
-    const currentUserId = userData.currentUserId ?? (users[0]?.id ?? null);
-    const settings = userData.settings ?? { shuffleMode: false, autoPlayAudio: true };
+    const createdAt = typeof data.createdAt === 'string'
+        ? data.createdAt
+        : data.createdAt && typeof (data.createdAt as any).toDate === 'function'
+            ? (data.createdAt as any).toDate().toISOString()
+            : new Date().toISOString();
 
+    return {
+        id: data.uid || uid,
+        name: data.displayName ?? 'ゲスト',
+        createdAt,
+    };
+}
+
+export async function loadRemoteProgress(uid: string): Promise<{
+    userProgress: Record<string, UserProgress>;
+    sectionProgress: Record<string, SectionProgress>;
+}> {
     const userProgress: Record<string, UserProgress> = {};
     const userProgressSnap = await getDocs(userProgressCollection(uid));
     userProgressSnap.forEach((docSnap) => {
@@ -57,29 +68,7 @@ export async function loadRemoteStorage(uid: string): Promise<StorageData | null
         sectionProgress[docSnap.id] = docSnap.data() as SectionProgress;
     });
 
-    return {
-        version: SCHEMA_VERSION,
-        users,
-        currentUserId,
-        userProgress,
-        sectionProgress,
-        settings,
-    };
-}
-
-export async function saveRemoteUserState(
-    uid: string,
-    data: { users: User[]; currentUserId: string | null; settings: { shuffleMode: boolean; autoPlayAudio: boolean } }
-): Promise<void> {
-    await setDoc(
-        userDocRef(uid),
-        {
-            ...data,
-            version: SCHEMA_VERSION,
-            updatedAt: new Date().toISOString(),
-        },
-        { merge: true }
-    );
+    return { userProgress, sectionProgress };
 }
 
 export async function saveRemoteUserProgress(
@@ -98,13 +87,10 @@ export async function saveRemoteSectionProgress(
     await setDoc(doc(sectionProgressCollection(uid), key), progress, { merge: true });
 }
 
-export async function seedRemoteStorage(uid: string, storage: StorageData): Promise<void> {
-    await saveRemoteUserState(uid, {
-        users: storage.users,
-        currentUserId: storage.currentUserId,
-        settings: storage.settings,
-    });
-
+export async function seedRemoteProgress(uid: string, storage: {
+    userProgress: Record<string, UserProgress>;
+    sectionProgress: Record<string, SectionProgress>;
+}): Promise<void> {
     const progressEntries = Object.entries(storage.userProgress);
     const sectionEntries = Object.entries(storage.sectionProgress);
 

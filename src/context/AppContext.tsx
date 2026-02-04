@@ -13,7 +13,7 @@ import {
     type ReactNode,
     type Dispatch,
 } from 'react';
-import { onAuthStateChanged, signInAnonymously } from 'firebase/auth';
+import { onAuthStateChanged } from 'firebase/auth';
 import {
     AppState,
     AppAction,
@@ -36,11 +36,11 @@ import {
     type StorageData,
 } from '@/utils/storage';
 import {
-    loadRemoteStorage,
-    saveRemoteUserState,
+    loadRemoteProfile,
+    loadRemoteProgress,
     saveRemoteUserProgress,
     saveRemoteSectionProgress,
-    seedRemoteStorage,
+    seedRemoteProgress,
 } from '@/utils/remoteStorage';
 
 interface AppContextValue {
@@ -102,31 +102,49 @@ export function AppProvider({ children }: AppProviderProps) {
         dispatch({ type: 'LOAD_STATE', payload: appState });
     }, []);
 
-    // Firebase anonymous auth + remote load
+    // Firebase auth + remote load
     useEffect(() => {
         let isMounted = true;
         const unsubscribe = onAuthStateChanged(auth, async (user) => {
             if (!isMounted) return;
 
             if (!user) {
-                try {
-                    await signInAnonymously(auth);
-                } catch (error) {
-                    console.error('Failed to sign in anonymously:', error);
-                }
+                setRemoteUid(null);
+                setRemoteSyncEnabled(false);
                 return;
             }
 
             setRemoteUid(user.uid);
 
             try {
-                const remoteData = await loadRemoteStorage(user.uid);
-                if (remoteData) {
-                    dispatch({ type: 'LOAD_STATE', payload: storageToAppState(remoteData) });
-                    prevUserProgressRef.current = remoteData.userProgress;
-                    prevSectionProgressRef.current = remoteData.sectionProgress;
+                const [profile, progress] = await Promise.all([
+                    loadRemoteProfile(user.uid),
+                    loadRemoteProgress(user.uid),
+                ]);
+
+                if (profile) {
+                    dispatch({
+                        type: 'LOAD_STATE',
+                        payload: {
+                            currentUser: profile,
+                            users: [profile],
+                        },
+                    });
+                }
+
+                if (progress) {
+                    dispatch({
+                        type: 'LOAD_STATE',
+                        payload: {
+                            userProgress: progress.userProgress,
+                            sectionProgress: progress.sectionProgress,
+                        },
+                    });
+
+                    prevUserProgressRef.current = progress.userProgress;
+                    prevSectionProgressRef.current = progress.sectionProgress;
                 } else if (initialStorageRef.current) {
-                    await seedRemoteStorage(user.uid, initialStorageRef.current);
+                    await seedRemoteProgress(user.uid, initialStorageRef.current);
                 }
             } catch (error) {
                 console.error('Failed to load remote storage:', error);
@@ -156,22 +174,6 @@ export function AppProvider({ children }: AppProviderProps) {
             });
         }
     }, [state.users, state.currentUser, state.userProgress, state.sectionProgress, state.shuffleMode, state.autoPlayAudio]);
-
-    // Save basic profile + settings to Firestore
-    useEffect(() => {
-        if (!remoteSyncEnabled || !remoteUid || !state.currentUser) return;
-
-        saveRemoteUserState(remoteUid, {
-            users: state.users,
-            currentUserId: state.currentUser.id,
-            settings: {
-                shuffleMode: state.shuffleMode,
-                autoPlayAudio: state.autoPlayAudio,
-            },
-        }).catch((error) => {
-            console.error('Failed to save remote user state:', error);
-        });
-    }, [remoteSyncEnabled, remoteUid, state.users, state.currentUser, state.shuffleMode, state.autoPlayAudio]);
 
     // Sync user progress diffs to Firestore
     useEffect(() => {

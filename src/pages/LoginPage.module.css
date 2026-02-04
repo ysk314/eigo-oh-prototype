@@ -99,11 +99,61 @@
     font-size: var(--font-size-base);
 }
 
+.error {
+    color: #c0392b;
+    font-size: var(--font-size-sm);
+    margin-top: -4px;
+}
+
 .note {
     margin-top: var(--space-lg);
     font-size: var(--font-size-sm);
     color: var(--color-text-secondary);
     line-height: 1.5;
+}
+
+.modalOverlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-lg);
+    z-index: 20;
+}
+
+.modal {
+    width: min(520px, 92vw);
+    background: #fff;
+    border-radius: var(--radius-xl);
+    padding: var(--space-xl);
+    box-shadow: var(--shadow-lg);
+    text-align: left;
+}
+
+.modalTitle {
+    font-size: var(--font-size-xl);
+    margin-bottom: var(--space-sm);
+}
+
+.modalText {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+    margin-bottom: var(--space-lg);
+}
+
+.modalForm {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+}
+
+.modalActions {
+    display: flex;
+    gap: var(--space-sm);
+    justify-content: flex-end;
+    margin-top: var(--space-sm);
 }
 
 @media (max-width: 640px) {
@@ -114,5 +164,10 @@
 
     .card {
         padding: var(--space-xl);
+    }
+
+    .modalActions {
+        flex-direction: column;
+        align-items: stretch;
     }
 }
