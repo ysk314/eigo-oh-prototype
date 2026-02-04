@@ -81,6 +81,30 @@
     white-space: nowrap;
 }
 
+modeTabs {
+    display: flex;
+    gap: var(--space-sm);
+    margin-bottom: var(--space-lg);
+}
+
+.modeTab {
+    flex: 1;
+    padding: 8px 12px;
+    border-radius: var(--radius-pill);
+    border: 1px solid var(--color-bg-base);
+    background: #fff;
+    color: var(--color-text-secondary);
+    font-weight: var(--font-weight-medium);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.activeTab {
+    background: var(--color-primary);
+    color: #fff;
+    border-color: transparent;
+}
+
 .actions {
     display: flex;
     flex-direction: column;

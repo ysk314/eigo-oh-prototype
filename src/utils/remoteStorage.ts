@@ -10,6 +10,7 @@ import {
     setDoc,
     writeBatch,
     DocumentData,
+    serverTimestamp,
 } from 'firebase/firestore';
 import { db } from '@/firebase';
 import { SectionProgress, UserProgress, User } from '@/types';
@@ -41,8 +42,8 @@ export async function loadRemoteProfile(uid: string): Promise<User | null> {
 
     const createdAt = typeof data.createdAt === 'string'
         ? data.createdAt
-        : data.createdAt && typeof (data.createdAt as any).toDate === 'function'
-            ? (data.createdAt as any).toDate().toISOString()
+        : data.createdAt && typeof (data.createdAt as { toDate: () => Date }).toDate === 'function'
+            ? (data.createdAt as { toDate: () => Date }).toDate().toISOString()
             : new Date().toISOString();
 
     return {
@@ -50,6 +51,15 @@ export async function loadRemoteProfile(uid: string): Promise<User | null> {
         name: data.displayName ?? 'ゲスト',
         createdAt,
     };
+}
+
+export async function saveRemoteProfile(uid: string, displayName: string): Promise<void> {
+    await setDoc(userDocRef(uid), {
+        uid,
+        displayName,
+        createdAt: serverTimestamp(),
+        updatedAt: serverTimestamp(),
+    }, { merge: true });
 }
 
 export async function loadRemoteProgress(uid: string): Promise<{

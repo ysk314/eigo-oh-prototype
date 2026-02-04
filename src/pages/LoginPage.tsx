@@ -4,24 +4,25 @@
 
 import { useMemo, useState, type FormEvent } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { signInAnonymously, signInWithEmailAndPassword, createUserWithEmailAndPassword } from 'firebase/auth';
 import { Button } from '@/components/Button';
 import { useApp } from '@/context/AppContext';
-import { changePassword, createGuest, loginWithMember, signInWithToken } from '@/utils/authApi';
+import { auth } from '@/firebase';
+import { saveRemoteProfile } from '@/utils/remoteStorage';
 import styles from './LoginPage.module.css';
+
+type LoginMode = 'login' | 'signup';
 
 export function LoginPage() {
     const navigate = useNavigate();
     const { state } = useApp();
 
-    const [loginId, setLoginId] = useState('');
+    const [mode, setMode] = useState<LoginMode>('login');
+    const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [displayName, setDisplayName] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
     const [isLoading, setIsLoading] = useState(false);
-
-    const [showPasswordPrompt, setShowPasswordPrompt] = useState(false);
-    const [newPassword, setNewPassword] = useState('');
-    const [pendingMemberNo, setPendingMemberNo] = useState('');
-    const [pendingPassword, setPendingPassword] = useState('');
 
     const welcomeMessage = useMemo(() => {
         const name = state.currentUser?.name?.trim();
@@ -35,12 +36,12 @@ export function LoginPage() {
         setErrorMessage('');
         setIsLoading(true);
         try {
-            const result = await createGuest();
-            await signInWithToken(result.customToken);
+            const result = await signInAnonymously(auth);
+            await saveRemoteProfile(result.user.uid, 'ゲスト');
             navigate('/dashboard');
         } catch (error) {
             console.error(error);
-            setErrorMessage('ゲスト作成に失敗しました。時間を置いて再度お試しください。');
+            setErrorMessage('ゲストでの開始に失敗しました。時間を置いて再度お試しください。');
         } finally {
             setIsLoading(false);
         }
@@ -50,67 +51,33 @@ export function LoginPage() {
         event.preventDefault();
         setErrorMessage('');
 
-        const trimmedId = loginId.trim();
-        if (!trimmedId || !password.trim()) {
-            setErrorMessage('会員番号とパスワードを入力してください。');
-            return;
-        }
-
-        if (!/^\d+$/.test(trimmedId)) {
-            setErrorMessage('現在は会員番号ログインのみ対応しています。');
+        if (!email.trim() || !password.trim()) {
+            setErrorMessage('メールアドレスとパスワードを入力してください。');
             return;
         }
 
         setIsLoading(true);
         try {
-            const result = await loginWithMember(trimmedId, password);
-            await signInWithToken(result.customToken);
-
-            if (result.forcePasswordChange) {
-                setPendingMemberNo(trimmedId);
-                setPendingPassword(password);
-                setShowPasswordPrompt(true);
+            if (mode === 'login') {
+                await signInWithEmailAndPassword(auth, email.trim(), password);
+                navigate('/dashboard');
                 return;
             }
 
+            const result = await createUserWithEmailAndPassword(auth, email.trim(), password);
+            const name = displayName.trim() || email.split('@')[0] || 'ユーザー';
+            await saveRemoteProfile(result.user.uid, name);
             navigate('/dashboard');
         } catch (error) {
             console.error(error);
-            setErrorMessage('ログインに失敗しました。会員番号とパスワードを確認してください。');
+            if (mode === 'login') {
+                setErrorMessage('ログインに失敗しました。メールアドレスとパスワードを確認してください。');
+            } else {
+                setErrorMessage('登録に失敗しました。入力内容を確認してください。');
+            }
         } finally {
             setIsLoading(false);
         }
-    };
-
-    const handlePasswordChange = async (event: FormEvent) => {
-        event.preventDefault();
-        if (!pendingMemberNo || !pendingPassword) {
-            setShowPasswordPrompt(false);
-            navigate('/dashboard');
-            return;
-        }
-
-        if (!/^\d{8,}$/.test(newPassword.trim())) {
-            setErrorMessage('パスワードは8桁以上の数字で入力してください。');
-            return;
-        }
-
-        setIsLoading(true);
-        try {
-            await changePassword(pendingMemberNo, pendingPassword, newPassword.trim());
-            setShowPasswordPrompt(false);
-            navigate('/dashboard');
-        } catch (error) {
-            console.error(error);
-            setErrorMessage('パスワード変更に失敗しました。');
-        } finally {
-            setIsLoading(false);
-        }
-    };
-
-    const handleSkipPasswordChange = () => {
-        setShowPasswordPrompt(false);
-        navigate('/dashboard');
     };
 
     return (
@@ -127,20 +94,53 @@ export function LoginPage() {
                             <p className={styles.cardLabel}>ログイン</p>
                             <h2 className={styles.cardTitle}>{welcomeMessage}</h2>
                         </div>
-                        <span className={styles.status}>会員番号ログイン</span>
+                        <span className={styles.status}>メールログイン</span>
+                    </div>
+
+                    <div className={styles.modeTabs}>
+                        <button
+                            type="button"
+                            className={`${styles.modeTab} ${mode === 'login' ? styles.activeTab : ''}`}
+                            onClick={() => setMode('login')}
+                        >
+                            ログイン
+                        </button>
+                        <button
+                            type="button"
+                            className={`${styles.modeTab} ${mode === 'signup' ? styles.activeTab : ''}`}
+                            onClick={() => setMode('signup')}
+                        >
+                            新規登録
+                        </button>
                     </div>
 
                     <form className={styles.actions} onSubmit={handleLoginSubmit}>
-                        <label className={styles.inputLabel} htmlFor="login-id">
-                            会員番号またはメールアドレス
+                        {mode === 'signup' && (
+                            <>
+                                <label className={styles.inputLabel} htmlFor="display-name">
+                                    表示名（任意）
+                                </label>
+                                <input
+                                    id="display-name"
+                                    className={styles.input}
+                                    type="text"
+                                    value={displayName}
+                                    onChange={(event) => setDisplayName(event.target.value)}
+                                    placeholder="例: さくら"
+                                />
+                            </>
+                        )}
+
+                        <label className={styles.inputLabel} htmlFor="login-email">
+                            メールアドレス
                         </label>
                         <input
-                            id="login-id"
+                            id="login-email"
                             className={styles.input}
-                            type="text"
-                            value={loginId}
-                            onChange={(event) => setLoginId(event.target.value)}
-                            placeholder="例: 25000001"
+                            type="email"
+                            value={email}
+                            onChange={(event) => setEmail(event.target.value)}
+                            placeholder="example@email.com"
                             autoComplete="username"
                         />
 
@@ -153,14 +153,14 @@ export function LoginPage() {
                             type="password"
                             value={password}
                             onChange={(event) => setPassword(event.target.value)}
-                            placeholder="8桁以上の数字"
-                            autoComplete="current-password"
+                            placeholder="8文字以上"
+                            autoComplete={mode === 'signup' ? 'new-password' : 'current-password'}
                         />
 
                         {errorMessage && <p className={styles.error}>{errorMessage}</p>}
 
                         <Button size="lg" fullWidth type="submit" isLoading={isLoading}>
-                            ログイン
+                            {mode === 'login' ? 'ログイン' : '登録する'}
                         </Button>
                         <Button size="lg" variant="secondary" fullWidth type="button" onClick={handleGuestStart}>
                             ゲストで練習
@@ -172,39 +172,6 @@ export function LoginPage() {
                         端末を変えると引き継げないため、必要になったら本登録に切り替えてください。
                     </p>
                 </section>
-
-                {showPasswordPrompt && (
-                    <div className={styles.modalOverlay}>
-                        <div className={styles.modal}>
-                            <h3 className={styles.modalTitle}>パスワードの変更をおすすめします</h3>
-                            <p className={styles.modalText}>
-                                仮パスワードのままでも利用できます。後から「会員情報」でも変更できます。
-                            </p>
-                            <form className={styles.modalForm} onSubmit={handlePasswordChange}>
-                                <label className={styles.inputLabel} htmlFor="new-password">
-                                    新しいパスワード（8桁以上の数字）
-                                </label>
-                                <input
-                                    id="new-password"
-                                    className={styles.input}
-                                    type="password"
-                                    value={newPassword}
-                                    onChange={(event) => setNewPassword(event.target.value)}
-                                    placeholder="例: 48271639"
-                                    autoComplete="new-password"
-                                />
-                                <div className={styles.modalActions}>
-                                    <Button size="md" type="submit" isLoading={isLoading}>
-                                        今変更する
-                                    </Button>
-                                    <Button size="md" variant="ghost" type="button" onClick={handleSkipPasswordChange}>
-                                        後で
-                                    </Button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                )}
             </main>
         </div>
     );
