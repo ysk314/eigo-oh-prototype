@@ -9,6 +9,7 @@ import { Button } from '@/components/Button';
 import { useApp } from '@/context/AppContext';
 import { auth } from '@/firebase';
 import { saveRemoteProfile } from '@/utils/remoteStorage';
+import { generateMemberNo, normalizeLoginId, isNumericId } from '@/utils/memberId';
 import styles from './LoginPage.module.css';
 
 type LoginMode = 'login' | 'signup';
@@ -18,9 +19,10 @@ export function LoginPage() {
     const { state } = useApp();
 
     const [mode, setMode] = useState<LoginMode>('login');
-    const [email, setEmail] = useState('');
+    const [loginId, setLoginId] = useState('');
     const [password, setPassword] = useState('');
     const [displayName, setDisplayName] = useState('');
+    const [issuedMemberNo, setIssuedMemberNo] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
     const [isLoading, setIsLoading] = useState(false);
 
@@ -50,31 +52,60 @@ export function LoginPage() {
     const handleLoginSubmit = async (event: FormEvent) => {
         event.preventDefault();
         setErrorMessage('');
+        setIssuedMemberNo('');
 
-        if (!email.trim() || !password.trim()) {
-            setErrorMessage('メールアドレスとパスワードを入力してください。');
+        if (!loginId.trim() || !password.trim()) {
+            setErrorMessage('会員番号またはメールアドレスとパスワードを入力してください。');
             return;
         }
 
         setIsLoading(true);
         try {
-            if (mode === 'login') {
-                await signInWithEmailAndPassword(auth, email.trim(), password);
-                navigate('/dashboard');
-                return;
-            }
-
-            const result = await createUserWithEmailAndPassword(auth, email.trim(), password);
-            const name = displayName.trim() || email.split('@')[0] || 'ユーザー';
-            await saveRemoteProfile(result.user.uid, name);
+            const normalized = normalizeLoginId(loginId);
+            await signInWithEmailAndPassword(auth, normalized, password);
             navigate('/dashboard');
         } catch (error) {
             console.error(error);
-            if (mode === 'login') {
-                setErrorMessage('ログインに失敗しました。メールアドレスとパスワードを確認してください。');
-            } else {
-                setErrorMessage('登録に失敗しました。入力内容を確認してください。');
+            setErrorMessage('ログインに失敗しました。入力内容を確認してください。');
+        } finally {
+            setIsLoading(false);
+        }
+    };
+
+    const handleSignupSubmit = async (event: FormEvent) => {
+        event.preventDefault();
+        setErrorMessage('');
+        setIssuedMemberNo('');
+
+        if (!password.trim()) {
+            setErrorMessage('パスワードを入力してください。');
+            return;
+        }
+
+        setIsLoading(true);
+        try {
+            let email = loginId.trim();
+            let memberNo = '';
+            if (!email) {
+                memberNo = await generateMemberNo();
+                email = normalizeLoginId(memberNo);
+            } else if (isNumericId(email)) {
+                memberNo = email;
+                email = normalizeLoginId(email);
             }
+
+            const result = await createUserWithEmailAndPassword(auth, email, password);
+            const name = displayName.trim() || (memberNo ? `会員${memberNo}` : email.split('@')[0]) || 'ユーザー';
+            await saveRemoteProfile(result.user.uid, name);
+
+            if (memberNo) {
+                setIssuedMemberNo(memberNo);
+            }
+
+            navigate('/dashboard');
+        } catch (error) {
+            console.error(error);
+            setErrorMessage('登録に失敗しました。入力内容を確認してください。');
         } finally {
             setIsLoading(false);
         }
@@ -94,7 +125,7 @@ export function LoginPage() {
                             <p className={styles.cardLabel}>ログイン</p>
                             <h2 className={styles.cardTitle}>{welcomeMessage}</h2>
                         </div>
-                        <span className={styles.status}>メールログイン</span>
+                        <span className={styles.status}>会員番号 or メール</span>
                     </div>
 
                     <div className={styles.modeTabs}>
@@ -114,58 +145,99 @@ export function LoginPage() {
                         </button>
                     </div>
 
-                    <form className={styles.actions} onSubmit={handleLoginSubmit}>
-                        {mode === 'signup' && (
-                            <>
-                                <label className={styles.inputLabel} htmlFor="display-name">
-                                    表示名（任意）
-                                </label>
-                                <input
-                                    id="display-name"
-                                    className={styles.input}
-                                    type="text"
-                                    value={displayName}
-                                    onChange={(event) => setDisplayName(event.target.value)}
-                                    placeholder="例: さくら"
-                                />
-                            </>
-                        )}
+                    {mode === 'login' ? (
+                        <form className={styles.actions} onSubmit={handleLoginSubmit}>
+                            <label className={styles.inputLabel} htmlFor="login-id">
+                                会員番号またはメールアドレス
+                            </label>
+                            <input
+                                id="login-id"
+                                className={styles.input}
+                                type="text"
+                                value={loginId}
+                                onChange={(event) => setLoginId(event.target.value)}
+                                placeholder="例: 25000001"
+                                autoComplete="username"
+                            />
 
-                        <label className={styles.inputLabel} htmlFor="login-email">
-                            メールアドレス
-                        </label>
-                        <input
-                            id="login-email"
-                            className={styles.input}
-                            type="email"
-                            value={email}
-                            onChange={(event) => setEmail(event.target.value)}
-                            placeholder="example@email.com"
-                            autoComplete="username"
-                        />
+                            <label className={styles.inputLabel} htmlFor="login-password">
+                                パスワード
+                            </label>
+                            <input
+                                id="login-password"
+                                className={styles.input}
+                                type="password"
+                                value={password}
+                                onChange={(event) => setPassword(event.target.value)}
+                                placeholder="8文字以上"
+                                autoComplete="current-password"
+                            />
 
-                        <label className={styles.inputLabel} htmlFor="login-password">
-                            パスワード
-                        </label>
-                        <input
-                            id="login-password"
-                            className={styles.input}
-                            type="password"
-                            value={password}
-                            onChange={(event) => setPassword(event.target.value)}
-                            placeholder="8文字以上"
-                            autoComplete={mode === 'signup' ? 'new-password' : 'current-password'}
-                        />
+                            {errorMessage && <p className={styles.error}>{errorMessage}</p>}
 
-                        {errorMessage && <p className={styles.error}>{errorMessage}</p>}
+                            <Button size="lg" fullWidth type="submit" isLoading={isLoading}>
+                                ログイン
+                            </Button>
+                            <Button size="lg" variant="secondary" fullWidth type="button" onClick={handleGuestStart}>
+                                ゲストで練習
+                            </Button>
+                        </form>
+                    ) : (
+                        <form className={styles.actions} onSubmit={handleSignupSubmit}>
+                            <label className={styles.inputLabel} htmlFor="signup-id">
+                                会員番号（空欄なら自動採番）またはメールアドレス
+                            </label>
+                            <input
+                                id="signup-id"
+                                className={styles.input}
+                                type="text"
+                                value={loginId}
+                                onChange={(event) => setLoginId(event.target.value)}
+                                placeholder="空欄で自動採番"
+                                autoComplete="username"
+                            />
 
-                        <Button size="lg" fullWidth type="submit" isLoading={isLoading}>
-                            {mode === 'login' ? 'ログイン' : '登録する'}
-                        </Button>
-                        <Button size="lg" variant="secondary" fullWidth type="button" onClick={handleGuestStart}>
-                            ゲストで練習
-                        </Button>
-                    </form>
+                            <label className={styles.inputLabel} htmlFor="signup-name">
+                                表示名（任意）
+                            </label>
+                            <input
+                                id="signup-name"
+                                className={styles.input}
+                                type="text"
+                                value={displayName}
+                                onChange={(event) => setDisplayName(event.target.value)}
+                                placeholder="例: さくら"
+                            />
+
+                            <label className={styles.inputLabel} htmlFor="signup-password">
+                                パスワード
+                            </label>
+                            <input
+                                id="signup-password"
+                                className={styles.input}
+                                type="password"
+                                value={password}
+                                onChange={(event) => setPassword(event.target.value)}
+                                placeholder="8文字以上"
+                                autoComplete="new-password"
+                            />
+
+                            {errorMessage && <p className={styles.error}>{errorMessage}</p>}
+
+                            {issuedMemberNo && (
+                                <p className={styles.memberNotice}>
+                                    会員番号が発行されました: <strong>{issuedMemberNo}</strong>
+                                </p>
+                            )}
+
+                            <Button size="lg" fullWidth type="submit" isLoading={isLoading}>
+                                登録する
+                            </Button>
+                            <Button size="lg" variant="secondary" fullWidth type="button" onClick={handleGuestStart}>
+                                ゲストで練習
+                            </Button>
+                        </form>
+                    )}
 
                     <p className={styles.note}>
                         ゲストの進捗はこの端末・ブラウザに保存されます。
