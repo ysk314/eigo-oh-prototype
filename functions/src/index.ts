@@ -250,7 +250,7 @@ export const cleanupExpiredGuests = onSchedule('every day 01:00', async () => {
     .where('expiresAt', '<', now)
     .get();
 
-  const deletions: Promise<void>[] = [];
+  const deletions: Promise<unknown>[] = [];
 
   for (const docSnap of querySnap.docs) {
     const uid = docSnap.id;
