@@ -163,7 +163,7 @@ export function LoginPage() {
                             ログイン
                         </Button>
                         <Button size="lg" variant="secondary" fullWidth type="button" onClick={handleGuestStart}>
-                            ゲストで遊ぶ
+                            ゲストで練習
                         </Button>
                     </form>
 
