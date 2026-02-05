@@ -16,6 +16,7 @@ import { playSound } from '@/utils/sound';
 import { getRankMessage } from '@/utils/result';
 import { useCountdown } from '@/hooks/useCountdown';
 import { logEvent } from '@/utils/analytics';
+import { recordSessionSummary } from '@/utils/dashboardStats';
 import styles from './ChoicePage.module.css';
 
 type ChoiceState = {
@@ -148,11 +149,37 @@ export function ChoicePage() {
                 level: selectedChoiceLevel,
             },
         }).catch(() => {});
+
+        if (state.currentUser?.id) {
+            const sectionMeta = selectedCourse && state.selectedUnit && selectedPart && selectedSection
+                ? {
+                    courseId: selectedCourse,
+                    unitId: state.selectedUnit,
+                    partId: selectedPart,
+                    sectionId: selectedSection,
+                    label: selectedSectionLabel || selectedSection,
+                }
+                : undefined;
+
+            const sessionSummary = {
+                sessionId: sessionIdRef.current,
+                mode: 'choice',
+                accuracy,
+                missCount,
+                totalTimeMs,
+                rank: score.rank,
+                level: selectedChoiceLevel,
+                playedAt: new Date().toISOString(),
+            };
+
+            recordSessionSummary(state.currentUser.id, sessionSummary, sectionMeta).catch(() => {});
+        }
+
         playSound(score.rank === 'S' ? 'fanfare' : 'try-again');
         if (selectedSection) {
             setChoiceRank(selectedSection, selectedChoiceLevel, score.rank);
         }
-    }, [correctCount, missCount, timeLeft, timeLimit, questions.length, selectedSection, selectedChoiceLevel, setChoiceRank, state.currentUser?.id]);
+    }, [correctCount, missCount, timeLeft, timeLimit, questions.length, selectedCourse, selectedPart, selectedSection, selectedSectionLabel, selectedChoiceLevel, setChoiceRank, state.currentUser?.id, state.selectedUnit]);
 
     useEffect(() => {
         if (isCountingDown || isFinished || timeLimit === 0) return;

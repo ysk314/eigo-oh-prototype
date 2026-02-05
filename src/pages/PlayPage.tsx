@@ -20,6 +20,7 @@ import { playSound } from '@/utils/sound';
 import { useCountdown } from '@/hooks/useCountdown';
 import { getRankMessage } from '@/utils/result';
 import { logEvent } from '@/utils/analytics';
+import { recordSessionSummary } from '@/utils/dashboardStats';
 import styles from './PlayPage.module.css';
 
 export function PlayPage() {
@@ -260,6 +261,31 @@ export function PlayPage() {
                 rank: score.rank,
             },
         }).catch(() => {});
+
+        if (currentUser?.id) {
+            const sectionMeta = selectedCourse && state.selectedUnit && selectedPart && selectedSection
+                ? {
+                    courseId: selectedCourse,
+                    unitId: state.selectedUnit,
+                    partId: selectedPart,
+                    sectionId: selectedSection,
+                    label: selectedSectionLabel || selectedSection,
+                }
+                : undefined;
+
+            const sessionSummary = {
+                sessionId: sessionIdRef.current,
+                mode: 'typing',
+                accuracy,
+                wpm,
+                missCount: totalMiss,
+                totalTimeMs,
+                rank: score.rank,
+                playedAt: new Date().toISOString(),
+            };
+
+            recordSessionSummary(currentUser.id, sessionSummary, sectionMeta).catch(() => {});
+        }
 
         if (score.rank === 'S') {
             playSound('fanfare');
