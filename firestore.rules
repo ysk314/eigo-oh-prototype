@@ -10,7 +10,15 @@ service cloud.firestore {
     }
 
     match /member_counters/{yearId} {
-      allow read, write: if request.auth != null;
+      allow read: if request.auth != null;
+      allow create: if request.auth != null
+        && request.resource.data.keys().hasOnly(['lastNumber', 'updatedAt'])
+        && request.resource.data.lastNumber is int
+        && request.resource.data.lastNumber == 1;
+      allow update: if request.auth != null
+        && request.resource.data.keys().hasOnly(['lastNumber', 'updatedAt'])
+        && request.resource.data.lastNumber is int
+        && request.resource.data.lastNumber == resource.data.lastNumber + 1;
     }
 
     match /auth_students/{memberNo} {

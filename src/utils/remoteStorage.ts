@@ -38,6 +38,7 @@ export async function loadRemoteProfile(uid: string): Promise<User | null> {
         uid: string;
         displayName?: string;
         createdAt?: unknown;
+        memberNo?: string;
     };
 
     const createdAt = typeof data.createdAt === 'string'
@@ -50,13 +51,15 @@ export async function loadRemoteProfile(uid: string): Promise<User | null> {
         id: data.uid || uid,
         name: data.displayName ?? 'ゲスト',
         createdAt,
+        memberNo: data.memberNo ?? undefined,
     };
 }
 
-export async function saveRemoteProfile(uid: string, displayName: string): Promise<void> {
+export async function saveRemoteProfile(uid: string, displayName: string, memberNo?: string): Promise<void> {
     await setDoc(userDocRef(uid), {
         uid,
         displayName,
+        memberNo: memberNo ?? null,
         createdAt: serverTimestamp(),
         updatedAt: serverTimestamp(),
     }, { merge: true });

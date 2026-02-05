@@ -196,11 +196,3 @@ modeTabs {
     }
 }
 
-.memberNotice {
-    margin-top: -4px;
-    font-size: var(--font-size-sm);
-    color: var(--color-text-primary);
-    background: var(--color-primary-soft);
-    padding: 8px 12px;
-    border-radius: var(--radius-md);
-}

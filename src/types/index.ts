@@ -93,6 +93,7 @@ export interface User {
     id: string;
     name: string;
     createdAt: string;
+    memberNo?: string;
 }
 
 // App State

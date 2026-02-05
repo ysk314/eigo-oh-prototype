@@ -45,6 +45,12 @@
     color: var(--color-text-secondary);
 }
 
+.memberNo {
+    margin-top: var(--space-sm);
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+}
+
 .backButton {
     margin-top: var(--space-md);
 }

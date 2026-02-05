@@ -21,9 +21,7 @@ export function LoginPage() {
     const [mode, setMode] = useState<LoginMode>('login');
     const [loginId, setLoginId] = useState('');
     const [password, setPassword] = useState('');
-    const [displayName, setDisplayName] = useState('');
-    const [issuedMemberNo, setIssuedMemberNo] = useState('');
-    const [errorMessage, setErrorMessage] = useState('');
+    const [displayName, setDisplayName] = useState('');    const [errorMessage, setErrorMessage] = useState('');
     const [isLoading, setIsLoading] = useState(false);
 
     const welcomeMessage = useMemo(() => {
@@ -52,8 +50,6 @@ export function LoginPage() {
     const handleLoginSubmit = async (event: FormEvent) => {
         event.preventDefault();
         setErrorMessage('');
-        setIssuedMemberNo('');
-
         if (!loginId.trim() || !password.trim()) {
             setErrorMessage('会員番号またはメールアドレスとパスワードを入力してください。');
             return;
@@ -75,7 +71,6 @@ export function LoginPage() {
     const handleSignupSubmit = async (event: FormEvent) => {
         event.preventDefault();
         setErrorMessage('');
-        setIssuedMemberNo('');
 
         if (!password.trim()) {
             setErrorMessage('パスワードを入力してください。');
@@ -96,11 +91,7 @@ export function LoginPage() {
 
             const result = await createUserWithEmailAndPassword(auth, email, password);
             const name = displayName.trim() || (memberNo ? `会員${memberNo}` : email.split('@')[0]) || 'ユーザー';
-            await saveRemoteProfile(result.user.uid, name);
-
-            if (memberNo) {
-                setIssuedMemberNo(memberNo);
-            }
+            await saveRemoteProfile(result.user.uid, name, memberNo || undefined);
 
             navigate('/dashboard');
         } catch (error) {
@@ -223,13 +214,6 @@ export function LoginPage() {
                             />
 
                             {errorMessage && <p className={styles.error}>{errorMessage}</p>}
-
-                            {issuedMemberNo && (
-                                <p className={styles.memberNotice}>
-                                    会員番号が発行されました: <strong>{issuedMemberNo}</strong>
-                                </p>
-                            )}
-
                             <Button size="lg" fullWidth type="submit" isLoading={isLoading}>
                                 登録する
                             </Button>

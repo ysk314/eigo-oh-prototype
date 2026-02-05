@@ -11,7 +11,7 @@ import styles from './HomePage.module.css';
 
 export function HomePage() {
     const navigate = useNavigate();
-    const { setCourse } = useApp();
+    const { state, setCourse } = useApp();
 
     const handleCourseSelect = (courseId: string) => {
         setCourse(courseId);
@@ -29,6 +29,9 @@ export function HomePage() {
                     <h1 className={styles.title}>Welcome to Tap! Type! English!</h1>
                     <div className={styles.versionBadge}>v2</div>
                     <p className={styles.subtitle}>楽しく英語タイピングをマスターしよう</p>
+                    {state.currentUser?.memberNo && (
+                        <p className={styles.memberNo}>会員番号: {state.currentUser.memberNo}</p>
+                    )}
                     <Button
                         variant="ghost"
                         size="sm"
