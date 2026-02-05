@@ -15,6 +15,7 @@ import { buildScoreResult, ScoreResult } from '@/utils/score';
 import { playSound } from '@/utils/sound';
 import { getRankMessage } from '@/utils/result';
 import { useCountdown } from '@/hooks/useCountdown';
+import { logEvent } from '@/utils/analytics';
 import styles from './ChoicePage.module.css';
 
 type ChoiceState = {
@@ -73,6 +74,7 @@ export function ChoicePage() {
     const [timeLeft, setTimeLeft] = useState(0);
     const [timeUp, setTimeUp] = useState(false);
     const timeUpRef = useRef(false);
+    const sessionIdRef = useRef('');
     const { countdown, isCountingDown, start: startCountdown } = useCountdown(3, () => playSound('countdown'));
 
     const currentQuestion = questions[currentIndex];
@@ -96,6 +98,7 @@ export function ChoicePage() {
     useEffect(() => {
         if (questions.length === 0) return;
         const limit = Math.max(1, questions.length * 5);
+        sessionIdRef.current = `choice-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`;
         setCurrentIndex(0);
         setIsFinished(false);
         setTimeUp(false);
@@ -105,7 +108,19 @@ export function ChoicePage() {
         setTimeLimit(limit);
         setTimeLeft(limit);
         startCountdown(3);
-    }, [questions, startCountdown]);
+
+        logEvent({
+            eventType: 'session_started',
+            userId: state.currentUser?.id ?? null,
+            payload: {
+                sessionId: sessionIdRef.current,
+                mode: 'choice',
+                questionCount: questions.length,
+                level: selectedChoiceLevel,
+                startedAt: new Date().toISOString(),
+            },
+        }).catch(() => {});
+    }, [questions, startCountdown, selectedChoiceLevel, state.currentUser?.id]);
 
     const finishSession = useCallback(() => {
         setIsFinished(true);
@@ -117,11 +132,27 @@ export function ChoicePage() {
             timeLimit,
         });
         setScoreResult(score);
+        const totalTimeMs = (timeLimit - timeLeft) * 1000;
+        logEvent({
+            eventType: 'session_ended',
+            userId: state.currentUser?.id ?? null,
+            payload: {
+                sessionId: sessionIdRef.current,
+                mode: 'choice',
+                totalQuestions: questions.length,
+                correctCount,
+                missCount,
+                totalTimeMs,
+                accuracy,
+                rank: score.rank,
+                level: selectedChoiceLevel,
+            },
+        }).catch(() => {});
         playSound(score.rank === 'S' ? 'fanfare' : 'try-again');
         if (selectedSection) {
             setChoiceRank(selectedSection, selectedChoiceLevel, score.rank);
         }
-    }, [missCount, timeLeft, timeLimit, selectedSection, selectedChoiceLevel, setChoiceRank]);
+    }, [correctCount, missCount, timeLeft, timeLimit, questions.length, selectedSection, selectedChoiceLevel, setChoiceRank, state.currentUser?.id]);
 
     useEffect(() => {
         if (isCountingDown || isFinished || timeLimit === 0) return;
@@ -226,11 +257,20 @@ export function ChoicePage() {
             playSound('error');
             setMissCount((prev) => prev + 1);
             setLastWrong(answer);
+            logEvent({
+                eventType: 'question_answered',
+                userId: state.currentUser?.id ?? null,
+                payload: {
+                    sessionId: sessionIdRef.current,
+                    questionId: currentQuestion?.id ?? null,
+                    missCount: 1,
+                },
+            }).catch(() => {});
             window.setTimeout(() => {
                 setLastWrong(null);
             }, 300);
         }
-    }, [choiceState, selected, isFinished, currentIndex, questions.length, isCountingDown, finishSession]);
+    }, [choiceState, selected, isFinished, currentIndex, questions.length, isCountingDown, finishSession, currentQuestion?.id, state.currentUser?.id]);
 
     useEffect(() => {
         if (!choiceState || isFinished) return;

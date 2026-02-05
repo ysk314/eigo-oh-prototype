@@ -19,6 +19,7 @@ import { calculateTimeLimit, calculateTotalChars } from '@/utils/timer';
 import { playSound } from '@/utils/sound';
 import { useCountdown } from '@/hooks/useCountdown';
 import { getRankMessage } from '@/utils/result';
+import { logEvent } from '@/utils/analytics';
 import styles from './PlayPage.module.css';
 
 export function PlayPage() {
@@ -65,6 +66,7 @@ export function PlayPage() {
     const isAdvancingRef = useRef(false);
     const timeUpRef = useRef(false);
     const isFinishedRef = useRef(false);
+    const sessionIdRef = useRef(`typing-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`);
 
     const currentQuestion = questions[currentIndex];
     // 初期化チェック
@@ -94,7 +96,18 @@ export function PlayPage() {
         setTimeLimit(limit);
         setTimeLeft(limit);
         startCountdown(3);
-    }, [questions, startCountdown]);
+
+        logEvent({
+            eventType: 'session_started',
+            userId: currentUser?.id ?? null,
+            payload: {
+                sessionId: sessionIdRef.current,
+                mode: 'typing',
+                questionCount: questions.length,
+                startedAt: new Date().toISOString(),
+            },
+        }).catch(() => {});
+    }, [questions, startCountdown, currentUser?.id]);
 
     // タイマー処理
     useEffect(() => {
@@ -168,6 +181,19 @@ export function PlayPage() {
             missCount: result.missCount,
         });
 
+        if (result.missCount > 0) {
+            logEvent({
+                eventType: 'question_answered',
+                userId: currentUser?.id ?? null,
+                payload: {
+                    sessionId: sessionIdRef.current,
+                    questionId: currentQuestion.id,
+                    missCount: result.missCount,
+                    timeMs: result.timeMs,
+                },
+            }).catch(() => {});
+        }
+
         // セッション結果を記録（後でクリア判定に使用）
         const nextResult: UserProgress = {
             questionId: currentQuestion.id,
@@ -197,7 +223,7 @@ export function PlayPage() {
             }
             finishSession(nextResults);
         }, 800);
-    }, [currentQuestion, currentIndex, questions.length, updateProgress, setQuestionIndex, selectedMode, isFinished, timeUp]);
+    }, [currentQuestion, currentIndex, questions.length, updateProgress, setQuestionIndex, selectedMode, isFinished, timeUp, currentUser?.id]);
 
     // セッション完了処理
     const finishSession = (resultsOverride?: UserProgress[]) => {
@@ -214,6 +240,26 @@ export function PlayPage() {
             timeLimit,
         });
         setScoreResult(score);
+
+        const totalTimeMs = (timeLimit - timeLeft) * 1000;
+        const totalCorrectChars = Math.max(0, totalChars - totalMiss);
+        const wpm = totalTimeMs > 0 ? Math.round((totalCorrectChars / 5) / (totalTimeMs / 60000)) : 0;
+        logEvent({
+            eventType: 'session_ended',
+            userId: currentUser?.id ?? null,
+            payload: {
+                sessionId: sessionIdRef.current,
+                mode: 'typing',
+                totalQuestions: questions.length,
+                totalMiss,
+                totalChars,
+                totalCorrectChars,
+                totalTimeMs,
+                accuracy,
+                wpm,
+                rank: score.rank,
+            },
+        }).catch(() => {});
 
         if (score.rank === 'S') {
             playSound('fanfare');

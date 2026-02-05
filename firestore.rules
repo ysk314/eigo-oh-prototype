@@ -26,7 +26,11 @@ service cloud.firestore {
     }
 
     match /analytics_events/{eventId} {
-      allow read, write: if false;
+      allow create: if request.auth != null
+        && request.resource.data.keys().hasAll(['eventType', 'userId', 'payload', 'createdAt'])
+        && request.resource.data.eventType is string
+        && request.resource.data.payload is map;
+      allow read, update, delete: if false;
     }
   }
 }
