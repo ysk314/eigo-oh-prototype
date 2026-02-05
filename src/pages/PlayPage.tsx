@@ -103,7 +103,7 @@ export function PlayPage() {
         if (timeLeft <= 0) {
             if (!timeUp && !isFinished) {
                 setTimeUp(true);
-                finishSession(true);
+                finishSession();
             }
             return;
         }
@@ -195,12 +195,12 @@ export function PlayPage() {
                 setQuestionIndex(currentIndex + 1);
                 return;
             }
-            finishSession(timeUpRef.current, nextResults);
+            finishSession(nextResults);
         }, 800);
     }, [currentQuestion, currentIndex, questions.length, updateProgress, setQuestionIndex, selectedMode, isFinished, timeUp]);
 
     // セッション完了処理
-    const finishSession = (timeUpFlag: boolean, resultsOverride?: UserProgress[]) => {
+    const finishSession = (resultsOverride?: UserProgress[]) => {
         setIsFinished(true);
         const results = resultsOverride ?? sessionResultsRef.current;
         const totalMiss = results.reduce((acc, cur) => acc + cur.missCount, 0);

@@ -107,7 +107,7 @@ export function ChoicePage() {
         startCountdown(3);
     }, [questions, startCountdown]);
 
-    const finishSession = useCallback((timeUpFlag: boolean) => {
+    const finishSession = useCallback(() => {
         setIsFinished(true);
         const total = correctCount + missCount;
         const accuracy = total > 0 ? Math.round((correctCount / total) * 100) : 0;
@@ -128,7 +128,7 @@ export function ChoicePage() {
         if (timeLeft <= 0) {
             if (!timeUp) {
                 setTimeUp(true);
-                finishSession(true);
+                finishSession();
             }
             return;
         }
@@ -220,7 +220,7 @@ export function ChoicePage() {
                     setCurrentIndex((prev) => prev + 1);
                     return;
                 }
-                finishSession(timeUpRef.current);
+                finishSession();
             }, 400);
         } else {
             playSound('error');
