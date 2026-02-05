@@ -109,11 +109,12 @@ export function ChoicePage() {
 
     const finishSession = useCallback((timeUpFlag: boolean) => {
         setIsFinished(true);
+        const total = correctCount + missCount;
+        const accuracy = total > 0 ? Math.round((correctCount / total) * 100) : 0;
         const score = buildScoreResult({
-            missCount,
+            accuracy,
             timeLeft,
             timeLimit,
-            timeUp: timeUpFlag,
         });
         setScoreResult(score);
         playSound(score.rank === 'S' ? 'fanfare' : 'try-again');

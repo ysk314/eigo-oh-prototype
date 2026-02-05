@@ -130,13 +130,16 @@ export function PlayPage() {
     const finalScore = useMemo(() => {
         if (!isFinished) return null;
         const totalMiss = sessionResults.reduce((acc, cur) => acc + cur.missCount, 0);
+        const totalChars = questions.reduce((acc, q) => acc + q.answerEn.length, 0);
+        const accuracy = totalChars > 0
+            ? Math.round((totalChars / (totalChars + totalMiss)) * 100)
+            : 0;
         return scoreResult ?? buildScoreResult({
-            missCount: totalMiss,
+            accuracy,
             timeLeft,
             timeLimit,
-            timeUp,
         });
-    }, [isFinished, scoreResult, sessionResults, timeLeft, timeLimit, timeUp]);
+    }, [isFinished, scoreResult, sessionResults, timeLeft, timeLimit, questions]);
 
     useEffect(() => {
         if (!isFinished || !finalScore || !selectedSection) return;
@@ -201,11 +204,14 @@ export function PlayPage() {
         setIsFinished(true);
         const results = resultsOverride ?? sessionResultsRef.current;
         const totalMiss = results.reduce((acc, cur) => acc + cur.missCount, 0);
+        const totalChars = questions.reduce((acc, q) => acc + q.answerEn.length, 0);
+        const accuracy = totalChars > 0
+            ? Math.round((totalChars / (totalChars + totalMiss)) * 100)
+            : 0;
         const score = buildScoreResult({
-            missCount: totalMiss,
+            accuracy,
             timeLeft,
             timeLimit,
-            timeUp: timeUpFlag,
         });
         setScoreResult(score);
 
