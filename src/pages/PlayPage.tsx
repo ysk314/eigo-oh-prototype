@@ -20,7 +20,7 @@ import { playSound } from '@/utils/sound';
 import { useCountdown } from '@/hooks/useCountdown';
 import { getRankMessage } from '@/utils/result';
 import { logEvent } from '@/utils/analytics';
-import { recordSessionSummary } from '@/utils/dashboardStats';
+import { recordSessionSummary, type SessionSummary } from '@/utils/dashboardStats';
 import styles from './PlayPage.module.css';
 
 export function PlayPage() {
@@ -273,7 +273,7 @@ export function PlayPage() {
                 }
                 : undefined;
 
-            const sessionSummary = {
+            const sessionSummary: SessionSummary = {
                 sessionId: sessionIdRef.current,
                 mode: 'typing',
                 accuracy,

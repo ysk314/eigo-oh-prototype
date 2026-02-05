@@ -16,7 +16,7 @@ import { playSound } from '@/utils/sound';
 import { getRankMessage } from '@/utils/result';
 import { useCountdown } from '@/hooks/useCountdown';
 import { logEvent } from '@/utils/analytics';
-import { recordSessionSummary } from '@/utils/dashboardStats';
+import { recordSessionSummary, type SessionSummary } from '@/utils/dashboardStats';
 import styles from './ChoicePage.module.css';
 
 type ChoiceState = {
@@ -134,6 +134,10 @@ export function ChoicePage() {
         });
         setScoreResult(score);
         const totalTimeMs = (timeLimit - timeLeft) * 1000;
+        const sectionLabel = selectedSection && selectedPart
+            ? getSectionsByPart(selectedPart, currentCourse?.id)
+                .find((item) => item.id === selectedSection)?.label
+            : undefined;
         logEvent({
             eventType: 'session_ended',
             userId: state.currentUser?.id ?? null,
@@ -157,11 +161,11 @@ export function ChoicePage() {
                     unitId: state.selectedUnit,
                     partId: selectedPart,
                     sectionId: selectedSection,
-                    label: selectedSectionLabel || selectedSection,
+                    label: sectionLabel || selectedSection,
                 }
                 : undefined;
 
-            const sessionSummary = {
+            const sessionSummary: SessionSummary = {
                 sessionId: sessionIdRef.current,
                 mode: 'choice',
                 accuracy,
@@ -179,7 +183,7 @@ export function ChoicePage() {
         if (selectedSection) {
             setChoiceRank(selectedSection, selectedChoiceLevel, score.rank);
         }
-    }, [correctCount, missCount, timeLeft, timeLimit, questions.length, selectedCourse, selectedPart, selectedSection, selectedSectionLabel, selectedChoiceLevel, setChoiceRank, state.currentUser?.id, state.selectedUnit]);
+    }, [correctCount, missCount, timeLeft, timeLimit, questions.length, selectedCourse, selectedPart, selectedSection, selectedChoiceLevel, setChoiceRank, state.currentUser?.id, state.selectedUnit]);
 
     useEffect(() => {
         if (isCountingDown || isFinished || timeLimit === 0) return;
