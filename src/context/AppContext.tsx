@@ -48,6 +48,41 @@ interface AppContextValue {
     dispatch: Dispatch<AppAction>;
 
     // Convenience methods
+    const beginSectionSession = useCallback(() => {
+        setDeferRemoteSync(true);
+    }, []);
+
+    const completeSectionSession = useCallback(() => {
+        if (!remoteSyncEnabled || !remoteUid) {
+            setDeferRemoteSync(false);
+            return;
+        }
+
+        const changedProgress = diffRecords(prevUserProgressRef.current, state.userProgress);
+        changedProgress.forEach(([key, progress]) => {
+            saveRemoteUserProgress(remoteUid, key, progress).catch((error) => {
+                console.error('Failed to save remote user progress:', error);
+            });
+        });
+
+        const changedSections = diffRecords(prevSectionProgressRef.current, state.sectionProgress);
+        changedSections.forEach(([key, progress]) => {
+            saveRemoteSectionProgress(remoteUid, key, progress).catch((error) => {
+                console.error('Failed to save remote section progress:', error);
+            });
+        });
+
+        prevUserProgressRef.current = state.userProgress;
+        prevSectionProgressRef.current = state.sectionProgress;
+        setDeferRemoteSync(false);
+    }, [remoteSyncEnabled, remoteUid, state.userProgress, state.sectionProgress]);
+
+    const abortSectionSession = useCallback(() => {
+        prevUserProgressRef.current = state.userProgress;
+        prevSectionProgressRef.current = state.sectionProgress;
+        setDeferRemoteSync(false);
+    }, [state.userProgress, state.sectionProgress]);
+
     setUser: (user: User) => void;
     addUser: (name: string) => void;
     setCourse: (courseId: string | null) => void;
@@ -67,6 +102,9 @@ interface AppContextValue {
     getProgressForQuestion: (questionId: string) => UserProgress | undefined;
     getSectionProgressData: (sectionId: string) => SectionProgress | undefined;
     isModeUnlocked: (sectionId: string, mode: LearningMode) => boolean;
+    beginSectionSession: () => void;
+    completeSectionSession: () => void;
+    abortSectionSession: () => void;
 }
 
 const AppContext = createContext<AppContextValue | null>(null);
@@ -89,6 +127,7 @@ export function AppProvider({ children }: AppProviderProps) {
     const [state, dispatch] = useReducer(appReducer, initialState);
     const [remoteUid, setRemoteUid] = useState<string | null>(null);
     const [remoteSyncEnabled, setRemoteSyncEnabled] = useState(false);
+    const [deferRemoteSync, setDeferRemoteSync] = useState(false);
 
     const initialStorageRef = useRef<StorageData | null>(null);
     const prevUserProgressRef = useRef<Record<string, UserProgress>>({});
@@ -182,6 +221,8 @@ export function AppProvider({ children }: AppProviderProps) {
             return;
         }
 
+        if (deferRemoteSync) return;
+
         const changed = diffRecords(prevUserProgressRef.current, state.userProgress);
         changed.forEach(([key, progress]) => {
             saveRemoteUserProgress(remoteUid, key, progress).catch((error) => {
@@ -190,7 +231,7 @@ export function AppProvider({ children }: AppProviderProps) {
         });
 
         prevUserProgressRef.current = state.userProgress;
-    }, [remoteSyncEnabled, remoteUid, state.userProgress]);
+    }, [remoteSyncEnabled, remoteUid, state.userProgress, deferRemoteSync]);
 
     // Sync section progress diffs to Firestore
     useEffect(() => {
@@ -198,6 +239,8 @@ export function AppProvider({ children }: AppProviderProps) {
             prevSectionProgressRef.current = state.sectionProgress;
             return;
         }
+
+        if (deferRemoteSync) return;
 
         const changed = diffRecords(prevSectionProgressRef.current, state.sectionProgress);
         changed.forEach(([key, progress]) => {
@@ -207,7 +250,7 @@ export function AppProvider({ children }: AppProviderProps) {
         });
 
         prevSectionProgressRef.current = state.sectionProgress;
-    }, [remoteSyncEnabled, remoteUid, state.sectionProgress]);
+    }, [remoteSyncEnabled, remoteUid, state.sectionProgress, deferRemoteSync]);
 
     useEffect(() => {
         const theme = state.studyMode === 'choice' ? 'choice' : 'typing';
@@ -215,6 +258,41 @@ export function AppProvider({ children }: AppProviderProps) {
     }, [state.studyMode]);
 
     // Convenience methods
+    const beginSectionSession = useCallback(() => {
+        setDeferRemoteSync(true);
+    }, []);
+
+    const completeSectionSession = useCallback(() => {
+        if (!remoteSyncEnabled || !remoteUid) {
+            setDeferRemoteSync(false);
+            return;
+        }
+
+        const changedProgress = diffRecords(prevUserProgressRef.current, state.userProgress);
+        changedProgress.forEach(([key, progress]) => {
+            saveRemoteUserProgress(remoteUid, key, progress).catch((error) => {
+                console.error('Failed to save remote user progress:', error);
+            });
+        });
+
+        const changedSections = diffRecords(prevSectionProgressRef.current, state.sectionProgress);
+        changedSections.forEach(([key, progress]) => {
+            saveRemoteSectionProgress(remoteUid, key, progress).catch((error) => {
+                console.error('Failed to save remote section progress:', error);
+            });
+        });
+
+        prevUserProgressRef.current = state.userProgress;
+        prevSectionProgressRef.current = state.sectionProgress;
+        setDeferRemoteSync(false);
+    }, [remoteSyncEnabled, remoteUid, state.userProgress, state.sectionProgress]);
+
+    const abortSectionSession = useCallback(() => {
+        prevUserProgressRef.current = state.userProgress;
+        prevSectionProgressRef.current = state.sectionProgress;
+        setDeferRemoteSync(false);
+    }, [state.userProgress, state.sectionProgress]);
+
     const setUser = useCallback((user: User) => {
         dispatch({ type: 'SET_USER', payload: user });
     }, []);
@@ -334,6 +412,9 @@ export function AppProvider({ children }: AppProviderProps) {
         getProgressForQuestion,
         getSectionProgressData,
         isModeUnlocked,
+        beginSectionSession,
+        completeSectionSession,
+        abortSectionSession,
     };
 
     return (

@@ -31,6 +31,9 @@ export function PlayPage() {
         setQuestionIndex,
         markSectionCleared,
         setSectionRank,
+        beginSectionSession,
+        completeSectionSession,
+        abortSectionSession,
     } = useApp();
 
     const { selectedCourse, selectedPart, selectedSection, selectedMode, currentUser, shuffleMode } = state;
@@ -97,6 +100,7 @@ export function PlayPage() {
         setTimeLimit(limit);
         setTimeLeft(limit);
         startCountdown(3);
+        beginSectionSession();
 
         logEvent({
             eventType: 'session_started',
@@ -108,7 +112,7 @@ export function PlayPage() {
                 startedAt: new Date().toISOString(),
             },
         }).catch(() => {});
-    }, [questions, startCountdown, currentUser?.id]);
+    }, [questions, startCountdown, currentUser?.id, beginSectionSession]);
 
     // タイマー処理
     useEffect(() => {
@@ -287,6 +291,8 @@ export function PlayPage() {
             recordSessionSummary(currentUser.id, sessionSummary, sectionMeta).catch(() => {});
         }
 
+        completeSectionSession();
+
         if (score.rank === 'S') {
             playSound('fanfare');
         } else if (score.rank === 'A' || score.rank === 'B') {
@@ -305,11 +311,13 @@ export function PlayPage() {
         setTimeUp(false);
         setTimeLeft(timeLimit);
         startCountdown(3);
+        beginSectionSession();
     };
 
     const handleBack = () => {
         const confirm = window.confirm('学習を中断して戻りますか？');
         if (confirm) {
+            abortSectionSession();
             navigate('/course');
         }
     };

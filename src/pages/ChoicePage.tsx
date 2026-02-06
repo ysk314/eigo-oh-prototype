@@ -54,7 +54,7 @@ function stripTags(text: string): string {
 
 export function ChoicePage() {
     const navigate = useNavigate();
-    const { state, setChoiceRank } = useApp();
+    const { state, setChoiceRank, beginSectionSession, completeSectionSession, abortSectionSession } = useApp();
     const { selectedCourse, selectedPart, selectedSection, selectedChoiceLevel } = state;
     const currentCourse = getCourseById(selectedCourse) ?? courses[0];
 
@@ -109,6 +109,7 @@ export function ChoicePage() {
         setTimeLimit(limit);
         setTimeLeft(limit);
         startCountdown(3);
+        beginSectionSession();
 
         logEvent({
             eventType: 'session_started',
@@ -121,7 +122,7 @@ export function ChoicePage() {
                 startedAt: new Date().toISOString(),
             },
         }).catch(() => {});
-    }, [questions, startCountdown, selectedChoiceLevel, state.currentUser?.id]);
+    }, [questions, startCountdown, selectedChoiceLevel, state.currentUser?.id, beginSectionSession]);
 
     const finishSession = useCallback(() => {
         setIsFinished(true);
@@ -179,11 +180,13 @@ export function ChoicePage() {
             recordSessionSummary(state.currentUser.id, sessionSummary, sectionMeta).catch(() => {});
         }
 
+        completeSectionSession();
+
         playSound(score.rank === 'S' ? 'fanfare' : 'try-again');
         if (selectedSection) {
             setChoiceRank(selectedSection, selectedChoiceLevel, score.rank);
         }
-    }, [correctCount, missCount, timeLeft, timeLimit, questions.length, selectedCourse, selectedPart, selectedSection, selectedChoiceLevel, setChoiceRank, state.currentUser?.id, state.selectedUnit]);
+    }, [correctCount, missCount, timeLeft, timeLimit, questions.length, selectedCourse, selectedPart, selectedSection, selectedChoiceLevel, setChoiceRank, state.currentUser?.id, state.selectedUnit, completeSectionSession]);
 
     useEffect(() => {
         if (isCountingDown || isFinished || timeLimit === 0) return;
@@ -359,8 +362,9 @@ export function ChoicePage() {
             const confirmLeave = window.confirm('中断してコース画面に戻りますか？');
             if (!confirmLeave) return;
         }
+        abortSectionSession();
         navigate('/course');
-    }, [isFinished, navigate]);
+    }, [isFinished, navigate, abortSectionSession]);
 
     const handleRetry = useCallback(() => {
         if (questions.length === 0) return;
@@ -374,7 +378,8 @@ export function ChoicePage() {
         setLastWrong(null);
         setTimeLeft(timeLimit);
         startCountdown(3);
-    }, [questions.length, timeLimit, startCountdown]);
+        beginSectionSession();
+    }, [questions.length, timeLimit, startCountdown, beginSectionSession]);
 
     if (isFinished && scoreResult) {
         const total = correctCount + missCount;
