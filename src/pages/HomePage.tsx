@@ -3,15 +3,67 @@
 // ================================
 
 import { useNavigate } from 'react-router-dom';
+import { useEffect, useMemo, useState } from 'react';
+import { doc, getDoc } from 'firebase/firestore';
 import { useApp } from '@/context/AppContext';
 import { Card } from '@/components/Card';
 import { Button } from '@/components/Button';
 import { courses } from '@/data/questions';
+import { db } from '@/firebase';
 import styles from './HomePage.module.css';
+
+type DashboardStats = {
+    totalStudyTimeMs_7d?: number;
+    totalStudyTimeMs_28d?: number;
+    avgWpm_7d?: number;
+    bestWpm_7d?: number;
+    avgAccuracy_7d?: number;
+};
+
+type RecentSectionItem = {
+    courseId: string;
+    unitId: string;
+    partId: string;
+    sectionId: string;
+    label: string;
+    lastPlayedAt?: string;
+};
+
+type RecentSessionItem = {
+    sessionId: string;
+    mode: 'typing' | 'choice';
+    accuracy: number;
+    wpm?: number;
+    missCount: number;
+    totalTimeMs: number;
+    rank: string;
+    level?: number;
+    playedAt: string;
+};
+
+function formatDuration(ms?: number): string {
+    if (!ms || ms <= 0) return '0分';
+    const totalMinutes = Math.round(ms / 60000);
+    if (totalMinutes < 60) return `${totalMinutes}分`;
+    const hours = Math.floor(totalMinutes / 60);
+    const minutes = totalMinutes % 60;
+    return minutes === 0 ? `${hours}時間` : `${hours}時間${minutes}分`;
+}
+
+function formatDateTime(value?: string): string {
+    if (!value) return '—';
+    const date = new Date(value);
+    if (Number.isNaN(date.getTime())) return '—';
+    return `${date.getMonth() + 1}/${date.getDate()} ${date.getHours()}:${String(date.getMinutes()).padStart(2, '0')}`;
+}
 
 export function HomePage() {
     const navigate = useNavigate();
-    const { state, setCourse } = useApp();
+    const { state, setCourse, setUnit, setPart, setSection } = useApp();
+    const [stats, setStats] = useState<DashboardStats | null>(null);
+    const [recentSections, setRecentSections] = useState<RecentSectionItem[]>([]);
+    const [recentSessions, setRecentSessions] = useState<RecentSessionItem[]>([]);
+    const [loading, setLoading] = useState(false);
 
     const handleCourseSelect = (courseId: string) => {
         setCourse(courseId);
@@ -20,6 +72,66 @@ export function HomePage() {
 
     const handleBackToLogin = () => {
         navigate('/');
+    };
+
+    const totalSections = useMemo(() => {
+        return courses.reduce((acc, course) => {
+            const count = course.units.flatMap((unit) => unit.parts).flatMap((part) => part.sections).length;
+            return acc + count;
+        }, 0);
+    }, []);
+
+    const clearedSections = useMemo(() => {
+        return Object.values(state.sectionProgress).filter((progress) =>
+            progress.mode1Cleared ||
+            progress.mode2Cleared ||
+            progress.mode3Cleared ||
+            progress.choice1Rank ||
+            progress.choice2Rank ||
+            progress.choice3Rank ||
+            progress.choice4Rank
+        ).length;
+    }, [state.sectionProgress]);
+
+    useEffect(() => {
+        const uid = state.currentUser?.id;
+        if (!uid) return;
+        let isMounted = true;
+        setLoading(true);
+
+        Promise.all([
+            getDoc(doc(db, 'user_stats', uid)),
+            getDoc(doc(db, 'user_recent_sections', uid)),
+            getDoc(doc(db, 'user_recent_sessions', uid)),
+        ])
+            .then(([statsSnap, sectionsSnap, sessionsSnap]) => {
+                if (!isMounted) return;
+                setStats(statsSnap.exists() ? (statsSnap.data() as DashboardStats) : null);
+                const sectionsData = sectionsSnap.exists() ? (sectionsSnap.data() as { items?: RecentSectionItem[] }) : {};
+                const sessionsData = sessionsSnap.exists() ? (sessionsSnap.data() as { items?: RecentSessionItem[] }) : {};
+                setRecentSections(sectionsData.items ?? []);
+                setRecentSessions(sessionsData.items ?? []);
+            })
+            .catch((error) => {
+                console.error('Failed to load dashboard data:', error);
+            })
+            .finally(() => {
+                if (isMounted) setLoading(false);
+            });
+
+        return () => {
+            isMounted = false;
+        };
+    }, [state.currentUser?.id]);
+
+    const latestSession = recentSessions[0];
+
+    const handleOpenRecentSection = (item: RecentSectionItem) => {
+        setCourse(item.courseId);
+        setUnit(item.unitId);
+        setPart(item.partId);
+        setSection(item.sectionId);
+        navigate('/course');
     };
 
     return (
@@ -43,7 +155,98 @@ export function HomePage() {
                 </div>
 
                 <div className={styles.container}>
-                    {/* コース選択カード */}
+                    <div className={styles.dashboardColumn}>
+                        <Card className={styles.dashboardCard} padding="lg">
+                            <div className={styles.sectionHeader}>
+                                <h2 className={styles.sectionTitle}>学習サマリー</h2>
+                                <span className={styles.sectionNote}>{loading ? '読み込み中…' : '直近7日'}</span>
+                            </div>
+                            <div className={styles.statsGrid}>
+                                <div className={styles.statItem}>
+                                    <span className={styles.statLabel}>学習時間</span>
+                                    <span className={styles.statValue}>{formatDuration(stats?.totalStudyTimeMs_7d)}</span>
+                                    <span className={styles.statSub}>{formatDuration(stats?.totalStudyTimeMs_28d)} / 28日</span>
+                                </div>
+                                <div className={styles.statItem}>
+                                    <span className={styles.statLabel}>WPM 平均</span>
+                                    <span className={styles.statValue}>{stats?.avgWpm_7d ?? 0}</span>
+                                    <span className={styles.statSub}>ベスト {stats?.bestWpm_7d ?? 0}</span>
+                                </div>
+                                <div className={styles.statItem}>
+                                    <span className={styles.statLabel}>正答率</span>
+                                    <span className={styles.statValue}>{stats?.avgAccuracy_7d ?? 0}%</span>
+                                </div>
+                                <div className={styles.statItem}>
+                                    <span className={styles.statLabel}>セクション進捗</span>
+                                    <span className={styles.statValue}>{clearedSections} / {totalSections}</span>
+                                </div>
+                            </div>
+                        </Card>
+
+                        <Card className={styles.dashboardCard} padding="lg">
+                            <div className={styles.sectionHeader}>
+                                <h2 className={styles.sectionTitle}>直近セッション</h2>
+                                <span className={styles.sectionNote}>{latestSession ? formatDateTime(latestSession.playedAt) : '—'}</span>
+                            </div>
+                            {latestSession ? (
+                                <div className={styles.sessionSummary}>
+                                    <div>
+                                        <span className={styles.sessionLabel}>ランク</span>
+                                        <span className={styles.sessionValue}>{latestSession.rank}</span>
+                                    </div>
+                                    <div>
+                                        <span className={styles.sessionLabel}>正答率</span>
+                                        <span className={styles.sessionValue}>{latestSession.accuracy}%</span>
+                                    </div>
+                                    <div>
+                                        <span className={styles.sessionLabel}>WPM</span>
+                                        <span className={styles.sessionValue}>{latestSession.wpm ?? '-'}</span>
+                                    </div>
+                                    <div>
+                                        <span className={styles.sessionLabel}>ミス</span>
+                                        <span className={styles.sessionValue}>{latestSession.missCount}回</span>
+                                    </div>
+                                    <div>
+                                        <span className={styles.sessionLabel}>時間</span>
+                                        <span className={styles.sessionValue}>{formatDuration(latestSession.totalTimeMs)}</span>
+                                    </div>
+                                    <div>
+                                        <span className={styles.sessionLabel}>モード</span>
+                                        <span className={styles.sessionValue}>{latestSession.mode === 'typing' ? 'タイピング' : '4択'}</span>
+                                    </div>
+                                </div>
+                            ) : (
+                                <p className={styles.emptyText}>まだセッションがありません。</p>
+                            )}
+                        </Card>
+
+                        <Card className={styles.dashboardCard} padding="lg">
+                            <div className={styles.sectionHeader}>
+                                <h2 className={styles.sectionTitle}>直近挑戦セクション</h2>
+                                <span className={styles.sectionNote}>最新5件</span>
+                            </div>
+                            {recentSections.length > 0 ? (
+                                <div className={styles.recentList}>
+                                    {recentSections.map((item) => (
+                                        <button
+                                            key={item.sectionId}
+                                            className={styles.recentItem}
+                                            onClick={() => handleOpenRecentSection(item)}
+                                        >
+                                            <div>
+                                                <div className={styles.recentLabel}>{item.label}</div>
+                                                <div className={styles.recentMeta}>{formatDateTime(item.lastPlayedAt)}</div>
+                                            </div>
+                                            <span className={styles.recentArrow}>→</span>
+                                        </button>
+                                    ))}
+                                </div>
+                            ) : (
+                                <p className={styles.emptyText}>まだ挑戦履歴がありません。</p>
+                            )}
+                        </Card>
+                    </div>
+
                     <Card className={styles.courseCard} padding="lg">
                         <h2 className={styles.sectionTitle}>コースを選択</h2>
 
