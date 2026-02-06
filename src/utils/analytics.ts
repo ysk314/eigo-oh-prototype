@@ -8,7 +8,8 @@ import { db } from '@/firebase';
 export type AnalyticsEventType =
     | 'session_started'
     | 'session_ended'
-    | 'question_answered';
+    | 'question_answered'
+    | 'admin_users_loaded';
 
 export interface AnalyticsEvent {
     eventType: AnalyticsEventType;

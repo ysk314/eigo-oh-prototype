@@ -4,11 +4,13 @@
 
 import { useCallback, useEffect, useMemo, useState, type FormEvent } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { collection, doc, getDoc, getDocs } from 'firebase/firestore';
+import { collection, doc, getDoc, getDocs, setDoc, serverTimestamp } from 'firebase/firestore';
 import { onAuthStateChanged, signInWithEmailAndPassword, signOut, type User } from 'firebase/auth';
 import { Button } from '@/components/Button';
 import { Card } from '@/components/Card';
 import { auth, db } from '@/firebase';
+import { logEvent } from '@/utils/analytics';
+import { saveMemberProfileTemplate, type MemberProfile } from '@/utils/memberProfiles';
 import styles from './AdminPage.module.css';
 
 type AdminUser = {
@@ -104,6 +106,21 @@ export function AdminPage() {
     const [error, setError] = useState<string | null>(null);
     const [searchTerm, setSearchTerm] = useState('');
     const [selectedUserId, setSelectedUserId] = useState<string | null>(null);
+    const [isEditingUser, setIsEditingUser] = useState(false);
+    const [editDisplayName, setEditDisplayName] = useState('');
+    const [editMemberNo, setEditMemberNo] = useState('');
+    const [userSaving, setUserSaving] = useState(false);
+    const [userEditError, setUserEditError] = useState<string | null>(null);
+
+    const [memberProfiles, setMemberProfiles] = useState<MemberProfile[]>([]);
+    const [memberProfilesLoading, setMemberProfilesLoading] = useState(false);
+    const [memberProfilesError, setMemberProfilesError] = useState<string | null>(null);
+    const [selectedMemberNo, setSelectedMemberNo] = useState<string | null>(null);
+    const [profileMemberNo, setProfileMemberNo] = useState('');
+    const [profileDisplayName, setProfileDisplayName] = useState('');
+    const [profileNote, setProfileNote] = useState('');
+    const [profileSaving, setProfileSaving] = useState(false);
+    const [profileFormError, setProfileFormError] = useState<string | null>(null);
 
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, async (user) => {
@@ -200,6 +217,14 @@ export function AdminPage() {
                 return a.displayName.localeCompare(b.displayName, 'ja');
             });
             setUsers(items);
+            logEvent({
+                eventType: 'admin_users_loaded',
+                userId: currentUser?.uid ?? null,
+                payload: {
+                    usersCount: usersSnap.size,
+                    statsCount: statsSnap.size,
+                },
+            }).catch(() => {});
             if (!selectedUserId && items.length > 0) {
                 setSelectedUserId(items[0].uid);
             }
@@ -208,12 +233,44 @@ export function AdminPage() {
         } finally {
             setLoading(false);
         }
-    }, [selectedUserId]);
+    }, [selectedUserId, currentUser?.uid]);
+
+    const loadMemberProfiles = useCallback(async () => {
+        setMemberProfilesLoading(true);
+        setMemberProfilesError(null);
+        try {
+            const snap = await getDocs(collection(db, 'member_profiles'));
+            const items: MemberProfile[] = snap.docs.map((docSnap) => {
+                const data = docSnap.data() as MemberProfile;
+                return {
+                    memberNo: docSnap.id,
+                    displayName: data.displayName ?? undefined,
+                    note: data.note ?? undefined,
+                    createdAt: data.createdAt,
+                    updatedAt: data.updatedAt,
+                };
+            });
+            items.sort((a, b) => a.memberNo.localeCompare(b.memberNo));
+            setMemberProfiles(items);
+            if (!selectedMemberNo && items.length > 0) {
+                setSelectedMemberNo(items[0].memberNo);
+            }
+        } catch {
+            setMemberProfilesError('会員番号テンプレートの取得に失敗しました。');
+        } finally {
+            setMemberProfilesLoading(false);
+        }
+    }, [selectedMemberNo]);
 
     useEffect(() => {
         if (!isAdmin) return;
         void loadUsers();
     }, [isAdmin, loadUsers]);
+
+    useEffect(() => {
+        if (!isAdmin) return;
+        void loadMemberProfiles();
+    }, [isAdmin, loadMemberProfiles]);
 
     const filteredUsers = useMemo(() => {
         const keyword = normalize(searchTerm);
@@ -230,6 +287,35 @@ export function AdminPage() {
         return filteredUsers.find((user) => user.uid === selectedUserId) ?? null;
     }, [filteredUsers, selectedUserId]);
 
+    useEffect(() => {
+        if (!selectedUser) {
+            setEditDisplayName('');
+            setEditMemberNo('');
+            setIsEditingUser(false);
+            setUserEditError(null);
+            return;
+        }
+        setEditDisplayName(selectedUser.displayName ?? '');
+        setEditMemberNo(selectedUser.memberNo ?? '');
+        setIsEditingUser(false);
+        setUserEditError(null);
+    }, [selectedUser]);
+
+    useEffect(() => {
+        if (!selectedMemberNo) {
+            setProfileMemberNo('');
+            setProfileDisplayName('');
+            setProfileNote('');
+            setProfileFormError(null);
+            return;
+        }
+        const profile = memberProfiles.find((item) => item.memberNo === selectedMemberNo);
+        setProfileMemberNo(profile?.memberNo ?? selectedMemberNo);
+        setProfileDisplayName(profile?.displayName ?? '');
+        setProfileNote(profile?.note ?? '');
+        setProfileFormError(null);
+    }, [selectedMemberNo, memberProfiles]);
+
     const handleBack = () => {
         navigate('/');
     };
@@ -238,6 +324,82 @@ export function AdminPage() {
         await signOut(auth);
         setLoginPassword('');
         setLoginError(null);
+    };
+
+    const handleUserSave = async () => {
+        if (!selectedUser) return;
+        setUserSaving(true);
+        setUserEditError(null);
+        const nextDisplayName = editDisplayName.trim() || null;
+        const nextMemberNo = editMemberNo.trim() || null;
+        try {
+            await setDoc(
+                doc(db, 'users', selectedUser.uid),
+                {
+                    displayName: nextDisplayName,
+                    memberNo: nextMemberNo,
+                    updatedAt: serverTimestamp(),
+                },
+                { merge: true }
+            );
+            setUsers((prev) =>
+                prev.map((item) =>
+                    item.uid === selectedUser.uid
+                        ? {
+                            ...item,
+                            displayName: nextDisplayName ?? '未設定',
+                            memberNo: nextMemberNo ?? undefined,
+                        }
+                        : item
+                )
+            );
+            setIsEditingUser(false);
+        } catch {
+            setUserEditError('ユーザー情報の更新に失敗しました。');
+        } finally {
+            setUserSaving(false);
+        }
+    };
+
+    const handleUserEditCancel = () => {
+        if (!selectedUser) return;
+        setEditDisplayName(selectedUser.displayName ?? '');
+        setEditMemberNo(selectedUser.memberNo ?? '');
+        setIsEditingUser(false);
+        setUserEditError(null);
+    };
+
+    const handleProfileNew = () => {
+        setSelectedMemberNo(null);
+        setProfileMemberNo('');
+        setProfileDisplayName('');
+        setProfileNote('');
+        setProfileFormError(null);
+    };
+
+    const handleProfileSave = async () => {
+        const memberNo = profileMemberNo.trim();
+        if (!memberNo) {
+            setProfileFormError('会員番号を入力してください。');
+            return;
+        }
+        setProfileSaving(true);
+        setProfileFormError(null);
+        const isNew = !memberProfiles.some((item) => item.memberNo === memberNo);
+        try {
+            await saveMemberProfileTemplate(
+                memberNo,
+                profileDisplayName.trim(),
+                profileNote.trim() || undefined,
+                isNew
+            );
+            await loadMemberProfiles();
+            setSelectedMemberNo(memberNo);
+        } catch {
+            setProfileFormError('テンプレートの保存に失敗しました。');
+        } finally {
+            setProfileSaving(false);
+        }
     };
 
     const handleAdminLogin = async (event: FormEvent<HTMLFormElement>) => {
@@ -444,9 +606,136 @@ export function AdminPage() {
                                     <span>ミス数</span>
                                     <strong>{formatNumber(selectedUser.stats?.totalMiss)}</strong>
                                 </div>
+                                <div className={styles.sectionDivider} />
+                                <div className={styles.editSection}>
+                                    <div className={styles.editHeader}>
+                                        <span>ユーザー情報の編集</span>
+                                        {!isEditingUser && (
+                                            <Button variant="secondary" type="button" onClick={() => setIsEditingUser(true)}>
+                                                編集
+                                            </Button>
+                                        )}
+                                    </div>
+                                    <label className={styles.editField}>
+                                        <span>表示名</span>
+                                        <input
+                                            className={styles.editInput}
+                                            type="text"
+                                            value={editDisplayName}
+                                            onChange={(event) => setEditDisplayName(event.target.value)}
+                                            disabled={!isEditingUser}
+                                        />
+                                    </label>
+                                    <label className={styles.editField}>
+                                        <span>会員番号</span>
+                                        <input
+                                            className={styles.editInput}
+                                            type="text"
+                                            value={editMemberNo}
+                                            onChange={(event) => setEditMemberNo(event.target.value)}
+                                            disabled={!isEditingUser}
+                                        />
+                                    </label>
+                                    {userEditError && <div className={styles.error}>{userEditError}</div>}
+                                    {isEditingUser && (
+                                        <div className={styles.editActions}>
+                                            <Button variant="primary" type="button" onClick={handleUserSave} isLoading={userSaving}>
+                                                保存
+                                            </Button>
+                                            <Button variant="secondary" type="button" onClick={handleUserEditCancel}>
+                                                キャンセル
+                                            </Button>
+                                        </div>
+                                    )}
+                                </div>
                             </div>
                         )}
                     </Card>
+                </section>
+
+                <section className={styles.templateSection}>
+                    <header className={styles.templateHeader}>
+                        <div>
+                            <h2 className={styles.templateTitle}>会員番号テンプレート</h2>
+                            <p className={styles.subtitle}>自己登録時の表示名を事前に用意します。</p>
+                        </div>
+                        <div className={styles.actions}>
+                            <Button variant="secondary" type="button" onClick={handleProfileNew}>
+                                新規作成
+                            </Button>
+                            <Button variant="secondary" type="button" onClick={loadMemberProfiles} isLoading={memberProfilesLoading}>
+                                一覧更新
+                            </Button>
+                        </div>
+                    </header>
+
+                    <div className={styles.templateGrid}>
+                        <Card className={styles.listCard} variant="outlined" padding="none">
+                            <div className={styles.listHeader}>テンプレート一覧</div>
+                            <div className={styles.list}>
+                                {memberProfilesError && <div className={styles.error}>{memberProfilesError}</div>}
+                                {!memberProfilesError && memberProfiles.length === 0 && (
+                                    <div className={styles.empty}>テンプレートがありません。</div>
+                                )}
+                                {memberProfiles.map((profile) => {
+                                    const active = profile.memberNo === selectedMemberNo;
+                                    return (
+                                        <button
+                                            key={profile.memberNo}
+                                            type="button"
+                                            className={`${styles.listItem} ${active ? styles.activeItem : ''}`}
+                                            onClick={() => setSelectedMemberNo(profile.memberNo)}
+                                        >
+                                            <div className={styles.listItemHeader}>
+                                                <div className={styles.userName}>会員番号: {profile.memberNo}</div>
+                                            </div>
+                                            <div className={styles.userMeta}>表示名: {profile.displayName ?? '—'}</div>
+                                        </button>
+                                    );
+                                })}
+                            </div>
+                        </Card>
+
+                        <Card className={styles.detailCard} variant="outlined">
+                            <div className={styles.listHeader}>テンプレート編集</div>
+                            <div className={styles.detailBody}>
+                                <label className={styles.editField}>
+                                    <span>会員番号</span>
+                                    <input
+                                        className={styles.editInput}
+                                        type="text"
+                                        value={profileMemberNo}
+                                        onChange={(event) => setProfileMemberNo(event.target.value)}
+                                    />
+                                </label>
+                                <label className={styles.editField}>
+                                    <span>表示名</span>
+                                    <input
+                                        className={styles.editInput}
+                                        type="text"
+                                        value={profileDisplayName}
+                                        onChange={(event) => setProfileDisplayName(event.target.value)}
+                                        placeholder="例: さくら"
+                                    />
+                                </label>
+                                <label className={styles.editField}>
+                                    <span>メモ（任意）</span>
+                                    <textarea
+                                        className={styles.editTextarea}
+                                        value={profileNote}
+                                        onChange={(event) => setProfileNote(event.target.value)}
+                                        rows={3}
+                                    />
+                                </label>
+                                {profileFormError && <div className={styles.error}>{profileFormError}</div>}
+                                <div className={styles.editActions}>
+                                    <Button variant="primary" type="button" onClick={handleProfileSave} isLoading={profileSaving}>
+                                        保存
+                                    </Button>
+                                </div>
+                            </div>
+                        </Card>
+                    </div>
                 </section>
             </main>
         </div>

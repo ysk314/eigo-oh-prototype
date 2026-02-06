@@ -153,6 +153,53 @@
     font-size: var(--font-size-md);
 }
 
+.sectionDivider {
+    height: 1px;
+    background: rgba(229, 115, 115, 0.15);
+    margin: var(--space-sm) 0;
+}
+
+.editSection {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+}
+
+.editHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-sm);
+    font-weight: var(--font-weight-bold);
+}
+
+.editField {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+}
+
+.editInput,
+.editTextarea {
+    padding: var(--space-sm) var(--space-md);
+    border-radius: var(--radius-md);
+    border: 1px solid rgba(229, 115, 115, 0.25);
+    background: #fff;
+    font-size: var(--font-size-md);
+}
+
+.editTextarea {
+    resize: vertical;
+}
+
+.editActions {
+    display: flex;
+    gap: var(--space-sm);
+    flex-wrap: wrap;
+}
+
 .mono {
     font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
     font-size: var(--font-size-sm);
@@ -220,6 +267,32 @@
     color: var(--color-text-secondary);
 }
 
+.templateSection {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+}
+
+.templateHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-lg);
+    flex-wrap: wrap;
+}
+
+.templateTitle {
+    margin: 0;
+    font-size: var(--font-size-2xl);
+    color: var(--color-primary);
+}
+
+.templateGrid {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: var(--space-xl);
+}
+
 @media (max-width: 900px) {
     .grid {
         grid-template-columns: 1fr;
@@ -227,5 +300,9 @@
 
     .list {
         max-height: 360px;
+    }
+
+    .templateGrid {
+        grid-template-columns: 1fr;
     }
 }

@@ -10,6 +10,7 @@ import { useApp } from '@/context/AppContext';
 import { auth } from '@/firebase';
 import { saveRemoteProfile } from '@/utils/remoteStorage';
 import { generateMemberNo, normalizeLoginId, isNumericId } from '@/utils/memberId';
+import { loadMemberProfile } from '@/utils/memberProfiles';
 import styles from './LoginPage.module.css';
 
 type LoginMode = 'login' | 'signup';
@@ -91,7 +92,12 @@ export function LoginPage() {
             }
 
             const result = await createUserWithEmailAndPassword(auth, email, password);
-            const name = displayName.trim() || (memberNo ? `会員${memberNo}` : email.split('@')[0]) || 'ユーザー';
+            const template = memberNo ? await loadMemberProfile(memberNo) : null;
+            const templateName = template?.displayName?.trim();
+            const name = displayName.trim()
+                || templateName
+                || (memberNo ? `会員${memberNo}` : email.split('@')[0])
+                || 'ユーザー';
             await saveRemoteProfile(result.user.uid, name, memberNo || undefined);
 
             navigate('/dashboard');
