@@ -350,3 +350,20 @@
         grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 }
+
+.recentContext {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: var(--font-size-xs);
+    color: var(--color-text-secondary);
+}
+
+.recentCourse,
+.recentUnit {
+    font-size: var(--font-size-xs);
+}
+
+.recentDivider {
+    color: var(--color-text-muted);
+}

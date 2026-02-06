@@ -74,6 +74,35 @@ export function HomePage() {
         navigate('/');
     };
 
+    const sectionIndex = useMemo(() => {
+        const map = new Map();
+        courses.forEach((course) => {
+            course.units.forEach((unit) => {
+                unit.parts.forEach((part) => {
+                    part.sections.forEach((section) => {
+                        map.set(section.id, {
+                            courseName: course.name,
+                            unitName: unit.name,
+                            partLabel: part.label,
+                            sectionLabel: section.label,
+                        });
+                    });
+                });
+            });
+        });
+        return map;
+    }, []);
+
+    const resolveSectionInfo = (item: RecentSectionItem) => {
+        const info = sectionIndex.get(item.sectionId);
+        return {
+            courseName: info?.courseName ?? item.courseId,
+            unitName: info?.unitName ?? item.unitId,
+            partLabel: info?.partLabel ?? item.partId,
+            sectionLabel: info?.sectionLabel ?? item.label,
+        };
+    };
+
     const totalSections = useMemo(() => {
         return courses.reduce((acc, course) => {
             const count = course.units.flatMap((unit) => unit.parts).flatMap((part) => part.sections).length;
@@ -227,19 +256,29 @@ export function HomePage() {
                             </div>
                             {recentSections.length > 0 ? (
                                 <div className={styles.recentList}>
-                                    {recentSections.map((item) => (
-                                        <button
-                                            key={item.sectionId}
-                                            className={styles.recentItem}
-                                            onClick={() => handleOpenRecentSection(item)}
-                                        >
-                                            <div>
-                                                <div className={styles.recentLabel}>{item.label}</div>
-                                                <div className={styles.recentMeta}>{formatDateTime(item.lastPlayedAt)}</div>
-                                            </div>
-                                            <span className={styles.recentArrow}>→</span>
-                                        </button>
-                                    ))}
+                                    {recentSections.map((item) => {
+                                        const info = resolveSectionInfo(item);
+                                        return (
+                                            <button
+                                                key={item.sectionId}
+                                                className={styles.recentItem}
+                                                onClick={() => handleOpenRecentSection(item)}
+                                            >
+                                                <div>
+                                                    <div className={styles.recentContext}>
+                                                        <span className={styles.recentCourse}>{info.courseName}</span>
+                                                        <span className={styles.recentDivider}>/</span>
+                                                        <span className={styles.recentUnit}>{info.unitName}</span>
+                                                    </div>
+                                                    <div className={styles.recentLabel}>
+                                                        {info.partLabel} / {info.sectionLabel}
+                                                    </div>
+                                                    <div className={styles.recentMeta}>{formatDateTime(item.lastPlayedAt)}</div>
+                                                </div>
+                                                <span className={styles.recentArrow}>→</span>
+                                            </button>
+                                        );
+                                    })}
                                 </div>
                             ) : (
                                 <p className={styles.emptyText}>まだ挑戦履歴がありません。</p>
