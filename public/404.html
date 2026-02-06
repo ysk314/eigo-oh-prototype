@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>Tap! Type! English! - 英語タイピング学習</title>
+    <script>
+      (function () {
+        var segmentCount = 1;
+        var location = window.location;
+        var pathSegments = location.pathname.split('/');
+        var baseSegments = pathSegments.slice(0, 1 + segmentCount);
+        var basePath = baseSegments.join('/');
+        var redirectPath = '/' + pathSegments.slice(1 + segmentCount).join('/');
+        var search = location.search ? location.search.slice(1).replace(/&/g, '~and~') : '';
+        var redirectUrl = basePath + '/?p=' + redirectPath + (search ? '&q=' + search : '') + location.hash;
+        location.replace(redirectUrl);
+      })();
+    </script>
+  </head>
+  <body></body>
+</html>
