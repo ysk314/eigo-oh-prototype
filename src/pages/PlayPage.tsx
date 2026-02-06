@@ -11,7 +11,8 @@ import { QuestionDisplay } from '@/components/QuestionDisplay';
 import { TypingInput } from '@/components/TypingInput';
 import { Button } from '@/components/Button';
 import { Card } from '@/components/Card';
-import { courses, getCourseById, getQuestionsBySection, getSectionsByPart } from '@/data/questions';
+import { Confetti } from '@/components/Confetti';
+import { courses, getCourseById, getQuestionsBySection } from '@/data/questions';
 import { shuffleWithNoConsecutive } from '@/utils/shuffle';
 import { UserProgress } from '@/types';
 import { buildScoreResult, ScoreResult } from '@/utils/score';
@@ -21,6 +22,7 @@ import { useCountdown } from '@/hooks/useCountdown';
 import { getRankMessage } from '@/utils/result';
 import { logEvent } from '@/utils/analytics';
 import { recordSessionSummary, type SessionSummary } from '@/utils/dashboardStats';
+import { useSelectedLabels } from '@/hooks/useSelectedLabels';
 import styles from './PlayPage.module.css';
 
 export function PlayPage() {
@@ -389,24 +391,8 @@ export function PlayPage() {
         { id: 'right-pinky', label: '右小指' },
     ];
 
-    const selectedUnitLabel = useMemo(() => {
-        if (!state.selectedUnit) return '';
-        return currentCourse?.units.find((unit) => unit.id === state.selectedUnit)?.name || '';
-    }, [state.selectedUnit, currentCourse?.id]);
-
-    const selectedPartLabelText = useMemo(() => {
-        if (!state.selectedPart) return '';
-        const part =
-            currentCourse?.units.flatMap((unit) => unit.parts).find((item) => item.id === state.selectedPart);
-        return part?.label || '';
-    }, [state.selectedPart, currentCourse?.id]);
-
-    const selectedSectionLabel = useMemo(() => {
-        if (!state.selectedPart || !state.selectedSection) return '';
-        const section = getSectionsByPart(state.selectedPart, currentCourse?.id)
-            .find((item) => item.id === state.selectedSection);
-        return section?.label || '';
-    }, [state.selectedPart, state.selectedSection, currentCourse?.id]);
+    const { unitLabel: selectedUnitLabel, partLabel: selectedPartLabelText, sectionLabel: selectedSectionLabel } =
+        useSelectedLabels(currentCourse, state.selectedUnit, state.selectedPart, state.selectedSection);
 
     const selectedModeLabel = useMemo(() => {
         switch (selectedMode) {
@@ -443,26 +429,11 @@ export function PlayPage() {
                 <Header title="結果発表" showUserSelect={false} showBackButton onBack={handleBack} />
                 <main className={styles.resultMain}>
                     {finalScore.rank === 'S' && (
-                        <div className={styles.confettiWrapper} aria-hidden="true">
-                            {Array.from({ length: 30 }).map((_, i) => {
-                                const colors = ['#FFC107', '#2196F3', '#4CAF50', '#E91E63'];
-                                const left = `${Math.random() * 100}%`;
-                                const delay = `${Math.random() * 2}s`;
-                                const duration = `${2 + Math.random() * 3}s`;
-                                return (
-                                    <span
-                                        key={i}
-                                        className={styles.confetti}
-                                        style={{
-                                            left,
-                                            backgroundColor: colors[i % colors.length],
-                                            animationDelay: delay,
-                                            animationDuration: duration,
-                                        }}
-                                    />
-                                );
-                            })}
-                        </div>
+                        <Confetti
+                            count={30}
+                            wrapperClassName={styles.confettiWrapper}
+                            itemClassName={styles.confetti}
+                        />
                     )}
                     <Card className={styles.resultCard} padding="lg">
                         <h2 className={styles.resultTitle}>

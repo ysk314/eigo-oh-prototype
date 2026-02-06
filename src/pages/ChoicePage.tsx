@@ -10,6 +10,7 @@ import { Card } from '@/components/Card';
 import { Button } from '@/components/Button';
 import { AudioPlayer } from '@/components/AudioPlayer';
 import { GameHeader } from '@/components/GameHeader';
+import { Confetti } from '@/components/Confetti';
 import { courses, getCourseById, getQuestionsBySection, getSectionsByPart } from '@/data/questions';
 import { buildScoreResult, ScoreResult } from '@/utils/score';
 import { playSound } from '@/utils/sound';
@@ -17,6 +18,7 @@ import { getRankMessage } from '@/utils/result';
 import { useCountdown } from '@/hooks/useCountdown';
 import { logEvent } from '@/utils/analytics';
 import { recordSessionSummary, type SessionSummary } from '@/utils/dashboardStats';
+import { useSelectedLabels } from '@/hooks/useSelectedLabels';
 import styles from './ChoicePage.module.css';
 
 type ChoiceState = {
@@ -322,23 +324,8 @@ export function ChoicePage() {
         return () => window.removeEventListener('keydown', handler);
     }, [choiceState, handleChoice, selected, isFinished]);
 
-    const selectedUnitLabel = useMemo(() => {
-        if (!state.selectedUnit) return '';
-        return currentCourse?.units.find((unit) => unit.id === state.selectedUnit)?.name || '';
-    }, [state.selectedUnit, currentCourse?.id]);
-
-    const selectedPartLabelText = useMemo(() => {
-        if (!state.selectedPart) return '';
-        const part = currentCourse?.units.flatMap((unit) => unit.parts).find((item) => item.id === state.selectedPart);
-        return part?.label || '';
-    }, [state.selectedPart, currentCourse?.id]);
-
-    const selectedSectionLabel = useMemo(() => {
-        if (!state.selectedPart || !state.selectedSection) return '';
-        const section = getSectionsByPart(state.selectedPart, currentCourse?.id)
-            .find((item) => item.id === state.selectedSection);
-        return section?.label || '';
-    }, [state.selectedPart, state.selectedSection, currentCourse?.id]);
+    const { unitLabel: selectedUnitLabel, partLabel: selectedPartLabelText, sectionLabel: selectedSectionLabel } =
+        useSelectedLabels(currentCourse, state.selectedUnit, state.selectedPart, state.selectedSection);
 
     const selectedLevelLabel = useMemo(() => {
         switch (selectedChoiceLevel) {
@@ -394,26 +381,11 @@ export function ChoicePage() {
                 />
                 <main className={styles.resultMain}>
                     {scoreResult.rank === 'S' && (
-                        <div className={styles.confettiWrapper} aria-hidden="true">
-                            {Array.from({ length: 24 }).map((_, i) => {
-                                const colors = ['#FFC107', '#2196F3', '#4CAF50', '#E91E63'];
-                                const left = `${Math.random() * 100}%`;
-                                const delay = `${Math.random()}s`;
-                                const duration = `${2 + Math.random() * 2}s`;
-                                return (
-                                    <span
-                                        key={i}
-                                        className={styles.confetti}
-                                        style={{
-                                            left,
-                                            backgroundColor: colors[i % colors.length],
-                                            animationDelay: delay,
-                                            animationDuration: duration,
-                                        }}
-                                    />
-                                );
-                            })}
-                        </div>
+                        <Confetti
+                            count={24}
+                            wrapperClassName={styles.confettiWrapper}
+                            itemClassName={styles.confetti}
+                        />
                     )}
                     <Card className={styles.resultCard} padding="lg">
                         <h2 className={styles.resultTitle}>

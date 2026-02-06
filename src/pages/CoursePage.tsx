@@ -96,6 +96,16 @@ export function CoursePage() {
         [selectedPartId, currentCourse?.id]
     );
 
+    const progressQuestionIds = useMemo(() => {
+        if (!state.currentUser) return new Set<string>();
+        const prefix = `${state.currentUser.id}-`;
+        return new Set(
+            Object.keys(state.userProgress)
+                .filter((key) => key.startsWith(prefix))
+                .map((key) => key.slice(prefix.length))
+        );
+    }, [state.currentUser, state.userProgress]);
+
     useEffect(() => {
         if (state.selectedCourse || !courses[0]) return;
         setCourse(courses[0].id);
@@ -245,9 +255,16 @@ export function CoursePage() {
         navigate('/dashboard');
     };
 
-    const getCompletedCount = (_partId: string) => {
-        // TODO: 進捗から完了数を計算
-        return 0;
+    const getCompletedCount = (partId: string) => {
+        const partSections = getSectionsByPart(partId, currentCourse?.id);
+        return partSections.reduce((sum, section) => {
+            const completed = section.questionIds.filter((questionId) => progressQuestionIds.has(questionId)).length;
+            return sum + completed;
+        }, 0);
+    };
+
+    const getSectionCompletedCount = (questionIds: string[]) => {
+        return questionIds.filter((questionId) => progressQuestionIds.has(questionId)).length;
     };
 
     const getUnitTotalQuestions = (unitId: string) => {
@@ -263,6 +280,23 @@ export function CoursePage() {
         if (!units.some((unit) => unit.id === state.selectedUnit)) return;
         setOpenUnitId(state.selectedUnit);
     }, [openUnitId, state.selectedUnit, units]);
+
+    const sectionList = sections.length > 0 ? (
+        sections.map((section) => (
+            <SectionCard
+                key={section.id}
+                section={section}
+                completedCount={getSectionCompletedCount(section.questionIds)}
+                onModeSelect={handleModeSelect}
+                onChoiceSelect={handleChoiceSelect}
+                modeType={state.studyMode}
+            />
+        ))
+    ) : (
+        <div className={styles.emptyState}>
+            <p>このパートにはまだ問題がありません</p>
+        </div>
+    );
 
     return (
         <div className={styles.page}>
@@ -340,22 +374,7 @@ export function CoursePage() {
                                         </div>
 
                                         <div className={styles.sections}>
-                        {sections.length > 0 ? (
-                            sections.map((section) => (
-                                <SectionCard
-                                    key={section.id}
-                                    section={section}
-                                    completedCount={0}
-                                    onModeSelect={handleModeSelect}
-                                    onChoiceSelect={handleChoiceSelect}
-                                    modeType={state.studyMode}
-                                />
-                            ))
-                        ) : (
-                            <div className={styles.emptyState}>
-                                <p>このパートにはまだ問題がありません</p>
-                            </div>
-                        )}
+                                            {sectionList}
                                         </div>
                                     </div>
                                 </div>
@@ -426,22 +445,7 @@ export function CoursePage() {
                     <main className={styles.main}>
                         {/* セクションリスト */}
                         <div className={styles.sections}>
-                            {sections.length > 0 ? (
-                                sections.map((section) => (
-                                    <SectionCard
-                                        key={section.id}
-                                        section={section}
-                                        completedCount={0}
-                                        onModeSelect={handleModeSelect}
-                                        onChoiceSelect={handleChoiceSelect}
-                                        modeType={state.studyMode}
-                                    />
-                                ))
-                            ) : (
-                                <div className={styles.emptyState}>
-                                    <p>このパートにはまだ問題がありません</p>
-                                </div>
-                            )}
+                            {sectionList}
                         </div>
                     </main>
                 </div>
