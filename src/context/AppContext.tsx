@@ -48,41 +48,6 @@ interface AppContextValue {
     dispatch: Dispatch<AppAction>;
 
     // Convenience methods
-    const beginSectionSession = useCallback(() => {
-        setDeferRemoteSync(true);
-    }, []);
-
-    const completeSectionSession = useCallback(() => {
-        if (!remoteSyncEnabled || !remoteUid) {
-            setDeferRemoteSync(false);
-            return;
-        }
-
-        const changedProgress = diffRecords(prevUserProgressRef.current, state.userProgress);
-        changedProgress.forEach(([key, progress]) => {
-            saveRemoteUserProgress(remoteUid, key, progress).catch((error) => {
-                console.error('Failed to save remote user progress:', error);
-            });
-        });
-
-        const changedSections = diffRecords(prevSectionProgressRef.current, state.sectionProgress);
-        changedSections.forEach(([key, progress]) => {
-            saveRemoteSectionProgress(remoteUid, key, progress).catch((error) => {
-                console.error('Failed to save remote section progress:', error);
-            });
-        });
-
-        prevUserProgressRef.current = state.userProgress;
-        prevSectionProgressRef.current = state.sectionProgress;
-        setDeferRemoteSync(false);
-    }, [remoteSyncEnabled, remoteUid, state.userProgress, state.sectionProgress]);
-
-    const abortSectionSession = useCallback(() => {
-        prevUserProgressRef.current = state.userProgress;
-        prevSectionProgressRef.current = state.sectionProgress;
-        setDeferRemoteSync(false);
-    }, [state.userProgress, state.sectionProgress]);
-
     setUser: (user: User) => void;
     addUser: (name: string) => void;
     setCourse: (courseId: string | null) => void;
