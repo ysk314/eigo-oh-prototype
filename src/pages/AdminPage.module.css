@@ -44,6 +44,38 @@
     flex-wrap: wrap;
 }
 
+.metricsSection {
+    margin-top: var(--space-sm);
+}
+
+.metricsCard {
+    padding-bottom: var(--space-md);
+}
+
+.metricsGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: var(--space-md);
+    padding: var(--space-md) var(--space-lg);
+}
+
+.metricItem {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-sm);
+}
+
+.metricItem strong {
+    font-size: var(--font-size-xl);
+    color: var(--color-text-primary);
+}
+
+.metricsActions {
+    padding: 0 var(--space-lg) var(--space-md);
+}
+
 .searchInput {
     flex: 1;
     min-width: 240px;

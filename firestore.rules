@@ -74,7 +74,8 @@ service cloud.firestore {
         && request.resource.data.keys().hasAll(['eventType', 'userId', 'payload', 'createdAt'])
         && request.resource.data.eventType is string
         && request.resource.data.payload is map;
-      allow read, update, delete: if false;
+      allow read: if isAdmin();
+      allow update, delete: if false;
     }
   }
 }

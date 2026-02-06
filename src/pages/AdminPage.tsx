@@ -4,7 +4,18 @@
 
 import { useCallback, useEffect, useMemo, useState, type FormEvent } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { collection, doc, getDoc, getDocs, setDoc, serverTimestamp } from 'firebase/firestore';
+import {
+    collection,
+    doc,
+    getDoc,
+    getDocs,
+    setDoc,
+    serverTimestamp,
+    query,
+    where,
+    orderBy,
+    Timestamp,
+} from 'firebase/firestore';
 import { onAuthStateChanged, signInWithEmailAndPassword, signOut, type User } from 'firebase/auth';
 import { Button } from '@/components/Button';
 import { Card } from '@/components/Card';
@@ -73,6 +84,17 @@ function formatNumber(value?: number): string {
     return value.toLocaleString('ja-JP');
 }
 
+function startOfDayLocal(date: Date): Date {
+    return new Date(date.getFullYear(), date.getMonth(), date.getDate());
+}
+
+function diffDaysFromToday(date: Date, today: Date): number {
+    const todayStart = startOfDayLocal(today);
+    const targetStart = startOfDayLocal(date);
+    const diffMs = todayStart.getTime() - targetStart.getTime();
+    return Math.floor(diffMs / 86400000);
+}
+
 const rolePriority: Record<string, number> = {
     owner: 3,
     admin: 2,
@@ -121,6 +143,13 @@ export function AdminPage() {
     const [profileNote, setProfileNote] = useState('');
     const [profileSaving, setProfileSaving] = useState(false);
     const [profileFormError, setProfileFormError] = useState<string | null>(null);
+
+    const [usageLoading, setUsageLoading] = useState(false);
+    const [usageError, setUsageError] = useState<string | null>(null);
+    const [usageToday, setUsageToday] = useState(0);
+    const [usageYesterday, setUsageYesterday] = useState(0);
+    const [usage7d, setUsage7d] = useState(0);
+    const [usage30d, setUsage30d] = useState(0);
 
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, async (user) => {
@@ -262,6 +291,49 @@ export function AdminPage() {
         }
     }, [selectedMemberNo]);
 
+    const loadUsageSummary = useCallback(async () => {
+        setUsageLoading(true);
+        setUsageError(null);
+        try {
+            const now = new Date();
+            const todayStart = startOfDayLocal(now);
+            const start30 = new Date(todayStart.getTime() - 29 * 86400000);
+            const usageQuery = query(
+                collection(db, 'analytics_events'),
+                where('eventType', '==', 'admin_users_loaded'),
+                where('createdAt', '>=', Timestamp.fromDate(start30)),
+                orderBy('createdAt', 'asc')
+            );
+            const snap = await getDocs(usageQuery);
+
+            let todayCount = 0;
+            let yesterdayCount = 0;
+            let count7d = 0;
+            let count30d = 0;
+
+            snap.forEach((docSnap) => {
+                const data = docSnap.data() as { createdAt?: { toDate?: () => Date } | null };
+                const createdAt = data.createdAt?.toDate ? data.createdAt.toDate() : null;
+                if (!createdAt) return;
+                const diff = diffDaysFromToday(createdAt, now);
+                if (diff < 0 || diff > 29) return;
+                count30d += 1;
+                if (diff < 7) count7d += 1;
+                if (diff === 0) todayCount += 1;
+                if (diff === 1) yesterdayCount += 1;
+            });
+
+            setUsageToday(todayCount);
+            setUsageYesterday(yesterdayCount);
+            setUsage7d(count7d);
+            setUsage30d(count30d);
+        } catch {
+            setUsageError('運用指標の取得に失敗しました。');
+        } finally {
+            setUsageLoading(false);
+        }
+    }, []);
+
     useEffect(() => {
         if (!isAdmin) return;
         void loadUsers();
@@ -271,6 +343,11 @@ export function AdminPage() {
         if (!isAdmin) return;
         void loadMemberProfiles();
     }, [isAdmin, loadMemberProfiles]);
+
+    useEffect(() => {
+        if (!isAdmin) return;
+        void loadUsageSummary();
+    }, [isAdmin, loadUsageSummary]);
 
     const filteredUsers = useMemo(() => {
         const keyword = normalize(searchTerm);
@@ -504,6 +581,38 @@ export function AdminPage() {
                         </Button>
                     </div>
                 </header>
+
+                <section className={styles.metricsSection}>
+                    <Card className={styles.metricsCard} variant="outlined">
+                        <div className={styles.listHeader}>運用指標（Admin 利用回数）</div>
+                        {usageError && <div className={styles.error}>{usageError}</div>}
+                        {!usageError && (
+                            <div className={styles.metricsGrid}>
+                                <div className={styles.metricItem}>
+                                    <span>当日</span>
+                                    <strong>{usageLoading ? '…' : formatNumber(usageToday)}</strong>
+                                </div>
+                                <div className={styles.metricItem}>
+                                    <span>前日</span>
+                                    <strong>{usageLoading ? '…' : formatNumber(usageYesterday)}</strong>
+                                </div>
+                                <div className={styles.metricItem}>
+                                    <span>直近7日</span>
+                                    <strong>{usageLoading ? '…' : formatNumber(usage7d)}</strong>
+                                </div>
+                                <div className={styles.metricItem}>
+                                    <span>直近30日</span>
+                                    <strong>{usageLoading ? '…' : formatNumber(usage30d)}</strong>
+                                </div>
+                            </div>
+                        )}
+                        <div className={styles.metricsActions}>
+                            <Button variant="secondary" onClick={loadUsageSummary} isLoading={usageLoading}>
+                                指標更新
+                            </Button>
+                        </div>
+                    </Card>
+                </section>
 
                 <section className={styles.searchSection}>
                     <input
