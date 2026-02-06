@@ -78,7 +78,7 @@ interface AppProviderProps {
     children: ReactNode;
 }
 
-const diffRecords = <T,>(prev: Record<string, T>, next: Record<string, T>): Array<[string, T]> => {
+function diffRecords<T>(prev: Record<string, T>, next: Record<string, T>): Array<[string, T]> {
     const changed: Array<[string, T]> = [];
     Object.entries(next).forEach(([key, value]) => {
         if (prev[key] !== value) {
@@ -86,7 +86,7 @@ const diffRecords = <T,>(prev: Record<string, T>, next: Record<string, T>): Arra
         }
     });
     return changed;
-};
+}
 
 export function AppProvider({ children }: AppProviderProps) {
     const [state, dispatch] = useReducer(appReducer, initialState);
