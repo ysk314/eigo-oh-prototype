@@ -18,7 +18,7 @@ import { getRankMessage } from '@/utils/result';
 import { useCountdown } from '@/hooks/useCountdown';
 import { logEvent } from '@/utils/analytics';
 import { recordProgressSnapshot, recordSessionSummary, type SessionSummary } from '@/utils/dashboardStats';
-import { buildSectionProgressTotals, getTotalSectionsCount } from '@/utils/progressSummary';
+import { buildSectionProgressTotals, buildUserProgressTotals, getTotalSectionsCount } from '@/utils/progressSummary';
 import { useSelectedLabels } from '@/hooks/useSelectedLabels';
 import styles from './ChoicePage.module.css';
 
@@ -182,9 +182,11 @@ export function ChoicePage() {
 
             recordSessionSummary(state.currentUser.id, sessionSummary, sectionMeta).catch(() => {});
 
-            const progressTotals = buildSectionProgressTotals(state.sectionProgress);
+            const progressTotals = buildUserProgressTotals(state.userProgress, state.currentUser.id);
+            const sectionTotals = buildSectionProgressTotals(state.sectionProgress, state.currentUser.id);
             recordProgressSnapshot(state.currentUser.id, {
                 ...progressTotals,
+                clearedSectionsCount: sectionTotals.clearedSectionsCount,
                 totalSectionsCount: getTotalSectionsCount(),
                 lastMode: 'choice',
                 lastActiveAt: new Date().toISOString(),

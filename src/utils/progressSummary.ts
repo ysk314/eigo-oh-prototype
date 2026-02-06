@@ -22,10 +22,16 @@ export function getTotalSectionsCount(): number {
 }
 
 export function buildSectionProgressTotals(
-    sectionProgress: Record<string, SectionProgress>
+    sectionProgress: Record<string, SectionProgress>,
+    currentUserId?: string
 ): ProgressTotals {
-    return Object.values(sectionProgress).reduce(
-        (acc, progress) => {
+    const entries = currentUserId
+        ? Object.entries(sectionProgress).filter(([key]) => key.startsWith(`${currentUserId}-`))
+        : Object.entries(sectionProgress);
+
+    return entries.reduce(
+        (acc, [, progress]) => {
+            if (!progress) return acc;
             acc.totalAttempts += progress.totalAttempts || 0;
             acc.totalCorrect += progress.totalCorrect || 0;
             acc.totalMiss += progress.totalMiss || 0;
@@ -48,5 +54,25 @@ export function buildSectionProgressTotals(
             totalMiss: 0,
             clearedSectionsCount: 0,
         }
+    );
+}
+
+export function buildUserProgressTotals(
+    userProgress: Record<string, { attemptsCount?: number; correctCount?: number; missCount?: number }>,
+    currentUserId?: string
+): Pick<ProgressTotals, 'totalAttempts' | 'totalCorrect' | 'totalMiss'> {
+    const entries = currentUserId
+        ? Object.entries(userProgress).filter(([key]) => key.startsWith(`${currentUserId}-`))
+        : Object.entries(userProgress);
+
+    return entries.reduce(
+        (acc, [, progress]) => {
+            if (!progress) return acc;
+            acc.totalAttempts += progress.attemptsCount || 0;
+            acc.totalCorrect += progress.correctCount || 0;
+            acc.totalMiss += progress.missCount || 0;
+            return acc;
+        },
+        { totalAttempts: 0, totalCorrect: 0, totalMiss: 0 }
     );
 }
