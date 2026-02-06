@@ -3,7 +3,7 @@
 // ================================
 
 import { useMemo, useState, type FormEvent } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { signInAnonymously, signInWithEmailAndPassword, createUserWithEmailAndPassword } from 'firebase/auth';
 import { Button } from '@/components/Button';
 import { useApp } from '@/context/AppContext';
@@ -21,7 +21,8 @@ export function LoginPage() {
     const [mode, setMode] = useState<LoginMode>('login');
     const [loginId, setLoginId] = useState('');
     const [password, setPassword] = useState('');
-    const [displayName, setDisplayName] = useState('');    const [errorMessage, setErrorMessage] = useState('');
+    const [displayName, setDisplayName] = useState('');
+    const [errorMessage, setErrorMessage] = useState('');
     const [isLoading, setIsLoading] = useState(false);
 
     const welcomeMessage = useMemo(() => {
@@ -227,6 +228,9 @@ export function LoginPage() {
                         ゲストの進捗はこの端末・ブラウザに保存されます。
                         端末を変えると引き継げないため、必要になったら本登録に切り替えてください。
                     </p>
+                    <div className={styles.adminLink}>
+                        <Link to="/admin">管理者ページはこちら</Link>
+                    </div>
                 </section>
             </main>
         </div>

@@ -136,6 +136,22 @@ modeTabs {
     line-height: 1.5;
 }
 
+.adminLink {
+    margin-top: var(--space-sm);
+    font-size: var(--font-size-xs);
+    text-align: right;
+}
+
+.adminLink a {
+    color: var(--color-text-muted);
+    text-decoration: none;
+}
+
+.adminLink a:hover {
+    text-decoration: underline;
+    color: var(--color-text-secondary);
+}
+
 .modalOverlay {
     position: fixed;
     inset: 0;
@@ -195,4 +211,3 @@ modeTabs {
         align-items: stretch;
     }
 }
-
