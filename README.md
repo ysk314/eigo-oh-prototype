@@ -7,6 +7,15 @@ Tap! Type! English! / 英語タイピング学習アプリ（React + Vite + Type
 
 ---
 
+# 最近の変更（2026-02-06）
+- Course 画面: Section リスト描画を共通化し、進捗表示を `userProgress` から計算。
+- Play / Choice 画面: 選択中ラベル計算を共通フック化。
+- 結果画面: 紙吹雪レンダリングを共通コンポーネント化。
+- 追加された共通モジュール:
+  - `/Users/yasuki/Documents/GitHub/tap-type-english/src/hooks/useSelectedLabels.ts`
+  - `/Users/yasuki/Documents/GitHub/tap-type-english/src/components/Confetti/Confetti.tsx`
+
+# 仕様書
 # 仕様書
 
 ## 目的・対象

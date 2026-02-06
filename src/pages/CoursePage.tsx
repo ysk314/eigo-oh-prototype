@@ -6,7 +6,7 @@ import { useMemo, useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useApp } from '@/context/AppContext';
 import { Header } from '@/components/Header';
-import { SectionCard } from '@/components/SectionCard';
+import { SectionList } from '@/components/SectionList';
 import { courses, getCourseById, getQuestionsByCourseId, getSectionsByPart } from '@/data/questions';
 import { LearningMode, ChoiceLevel } from '@/types';
 import styles from './CoursePage.module.css';
@@ -281,23 +281,6 @@ export function CoursePage() {
         setOpenUnitId(state.selectedUnit);
     }, [openUnitId, state.selectedUnit, units]);
 
-    const sectionList = sections.length > 0 ? (
-        sections.map((section) => (
-            <SectionCard
-                key={section.id}
-                section={section}
-                completedCount={getSectionCompletedCount(section.questionIds)}
-                onModeSelect={handleModeSelect}
-                onChoiceSelect={handleChoiceSelect}
-                modeType={state.studyMode}
-            />
-        ))
-    ) : (
-        <div className={styles.emptyState}>
-            <p>このパートにはまだ問題がありません</p>
-        </div>
-    );
-
     return (
         <div className={styles.page}>
             <div className={styles.stickyHeader}>
@@ -373,9 +356,15 @@ export function CoursePage() {
                                             })}
                                         </div>
 
-                                        <div className={styles.sections}>
-                                            {sectionList}
-                                        </div>
+                                        <SectionList
+                                            sections={sections}
+                                            modeType={state.studyMode}
+                                            onModeSelect={handleModeSelect}
+                                            onChoiceSelect={handleChoiceSelect}
+                                            getCompletedCount={getSectionCompletedCount}
+                                            className={styles.sections}
+                                            emptyClassName={styles.emptyState}
+                                        />
                                     </div>
                                 </div>
                             </section>
@@ -444,9 +433,15 @@ export function CoursePage() {
                     {/* メインエリア: セクションカード */}
                     <main className={styles.main}>
                         {/* セクションリスト */}
-                        <div className={styles.sections}>
-                            {sectionList}
-                        </div>
+                        <SectionList
+                            sections={sections}
+                            modeType={state.studyMode}
+                            onModeSelect={handleModeSelect}
+                            onChoiceSelect={handleChoiceSelect}
+                            getCompletedCount={getSectionCompletedCount}
+                            className={styles.sections}
+                            emptyClassName={styles.emptyState}
+                        />
                     </main>
                 </div>
             </div>
