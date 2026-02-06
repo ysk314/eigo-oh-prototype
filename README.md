@@ -45,7 +45,9 @@ Tap! Type! English! / 英語タイピング学習アプリ（React + Vite + Type
   - 会員番号入力時は `s{番号}@students.tap-type.invalid` に正規化。
   - 表示名未入力時は `会員{番号}` or メールのローカル部を使用。
 - **ゲスト**: 匿名ログインを行い、プロフィールを「ゲスト」で登録。
-- **管理者**: Firebase カスタムクレーム `admin` が true の場合のみ管理画面を表示。
+- **管理者**:
+  - `/admin` では管理者用の ID/PASS でログイン（Firebase Auth のメール/パスワードを使用）。
+  - 管理者の権限は `admin_roles/{uid}` の `role` で判定（`owner` / `admin` / `staff`）。
 
 ## 学習モード
 ### タイピング（3モード）
@@ -123,6 +125,7 @@ Tap! Type! English! / 英語タイピング学習アプリ（React + Vite + Type
 ## 永続化・同期
 - **LocalStorage**: `tap-type-english` に保存（ユーザー、進捗、設定）。
 - **Firestore**:
+  - `admin_roles/{uid}`: 管理者権限（`role` を保持）
   - `users/{uid}`: プロフィール
   - `users/{uid}/userProgress/*`: 問題別進捗
   - `users/{uid}/sectionProgress/*`: セクション進捗

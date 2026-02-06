@@ -1,8 +1,21 @@
 rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
+    function adminRole() {
+      return request.auth != null
+        ? get(/databases/$(database)/documents/admin_roles/$(request.auth.uid)).data.role
+        : null;
+    }
+
     function isAdmin() {
-      return request.auth != null && request.auth.token.admin == true;
+      return adminRole() == 'owner'
+        || adminRole() == 'admin'
+        || adminRole() == 'staff';
+    }
+
+    match /admin_roles/{userId} {
+      allow read: if request.auth != null && request.auth.uid == userId;
+      allow write: if false;
     }
 
     match /users/{userId} {

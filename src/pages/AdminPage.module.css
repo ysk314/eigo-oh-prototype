@@ -153,6 +153,48 @@
     margin-top: var(--space-md);
 }
 
+.loginCard {
+    padding: var(--space-2xl);
+    max-width: 520px;
+    margin: 0 auto;
+}
+
+.loginForm {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+    margin-top: var(--space-lg);
+}
+
+.loginField {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+    text-align: left;
+}
+
+.loginInput {
+    padding: var(--space-sm) var(--space-md);
+    border-radius: var(--radius-md);
+    border: 1px solid rgba(229, 115, 115, 0.25);
+    background: #fff;
+    font-size: var(--font-size-md);
+}
+
+.loginActions {
+    display: flex;
+    gap: var(--space-sm);
+    flex-wrap: wrap;
+    margin-top: var(--space-sm);
+}
+
+.loginNotice {
+    margin-top: var(--space-sm);
+    color: var(--color-text-secondary);
+}
+
 @media (max-width: 900px) {
     .grid {
         grid-template-columns: 1fr;

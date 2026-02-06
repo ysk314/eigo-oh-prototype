@@ -2,10 +2,10 @@
 // Admin Page
 // ================================
 
-import { useCallback, useEffect, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState, type FormEvent } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { collection, getDocs } from 'firebase/firestore';
-import { getIdTokenResult, onAuthStateChanged } from 'firebase/auth';
+import { collection, doc, getDoc, getDocs } from 'firebase/firestore';
+import { onAuthStateChanged, signInWithEmailAndPassword, signOut, type User } from 'firebase/auth';
 import { Button } from '@/components/Button';
 import { Card } from '@/components/Card';
 import { auth, db } from '@/firebase';
@@ -39,10 +39,34 @@ function formatDate(value?: string): string {
     return `${date.getFullYear()}/${date.getMonth() + 1}/${date.getDate()}`;
 }
 
+const rolePriority: Record<string, number> = {
+    owner: 3,
+    admin: 2,
+    staff: 1,
+};
+
+function getRoleRank(role?: string | null) {
+    if (!role) return 0;
+    return rolePriority[role] ?? 0;
+}
+
+function normalizeAdminId(value: string) {
+    const trimmed = value.trim().toLowerCase();
+    if (!trimmed) return '';
+    if (trimmed.includes('@')) return trimmed;
+    return `${trimmed}@admin.tap-type.invalid`;
+}
+
 export function AdminPage() {
     const navigate = useNavigate();
     const [authLoading, setAuthLoading] = useState(true);
-    const [isAdmin, setIsAdmin] = useState(false);
+    const [roleLoading, setRoleLoading] = useState(false);
+    const [currentUser, setCurrentUser] = useState<User | null>(null);
+    const [role, setRole] = useState<string | null>(null);
+    const [loginId, setLoginId] = useState('');
+    const [loginPassword, setLoginPassword] = useState('');
+    const [loginError, setLoginError] = useState<string | null>(null);
+    const [loginLoading, setLoginLoading] = useState(false);
     const [users, setUsers] = useState<AdminUser[]>([]);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState<string | null>(null);
@@ -51,22 +75,40 @@ export function AdminPage() {
 
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, async (user) => {
-            if (!user) {
-                setIsAdmin(false);
-                setAuthLoading(false);
-                return;
-            }
-            try {
-                const tokenResult = await getIdTokenResult(user, true);
-                setIsAdmin(Boolean(tokenResult.claims.admin));
-            } catch {
-                setIsAdmin(false);
-            } finally {
-                setAuthLoading(false);
-            }
+            setCurrentUser(user);
+            setAuthLoading(false);
         });
         return () => unsubscribe();
     }, []);
+
+    useEffect(() => {
+        if (!currentUser) {
+            setRole(null);
+            setRoleLoading(false);
+            return;
+        }
+        let cancelled = false;
+        setRoleLoading(true);
+        getDoc(doc(db, 'admin_roles', currentUser.uid))
+            .then((snapshot) => {
+                if (cancelled) return;
+                const data = snapshot.data() as { role?: string } | undefined;
+                setRole(data?.role ?? null);
+            })
+            .catch(() => {
+                if (cancelled) return;
+                setRole(null);
+            })
+            .finally(() => {
+                if (cancelled) return;
+                setRoleLoading(false);
+            });
+        return () => {
+            cancelled = true;
+        };
+    }, [currentUser]);
+
+    const isAdmin = getRoleRank(role) >= 1;
 
     const loadUsers = useCallback(async () => {
         setLoading(true);
@@ -123,7 +165,31 @@ export function AdminPage() {
         navigate('/');
     };
 
-    if (authLoading) {
+    const handleLogout = async () => {
+        await signOut(auth);
+        setLoginPassword('');
+        setLoginError(null);
+    };
+
+    const handleAdminLogin = async (event: FormEvent<HTMLFormElement>) => {
+        event.preventDefault();
+        setLoginError(null);
+        const email = normalizeAdminId(loginId);
+        if (!email || !loginPassword) {
+            setLoginError('ID とパスワードを入力してください。');
+            return;
+        }
+        setLoginLoading(true);
+        try {
+            await signInWithEmailAndPassword(auth, email, loginPassword);
+        } catch {
+            setLoginError('ログインに失敗しました。ID/PASSを確認してください。');
+        } finally {
+            setLoginLoading(false);
+        }
+    };
+
+    if (authLoading || (currentUser && roleLoading)) {
         return (
             <div className={styles.page}>
                 <main className={styles.main}>
@@ -139,12 +205,51 @@ export function AdminPage() {
         return (
             <div className={styles.page}>
                 <main className={styles.main}>
-                    <Card className={styles.stateCard} variant="outlined">
-                        <h1 className={styles.title}>管理者権限が必要です</h1>
-                        <p className={styles.subtitle}>このページを表示する権限がありません。</p>
-                        <Button variant="secondary" onClick={handleBack} className={styles.backButton}>
-                            ログインへ戻る
-                        </Button>
+                    <Card className={styles.loginCard} variant="outlined">
+                        <h1 className={styles.title}>管理者ログイン</h1>
+                        <p className={styles.subtitle}>ID とパスワードを入力してください。</p>
+                        {currentUser && !roleLoading && (
+                            <p className={styles.loginNotice}>
+                                このアカウントには管理者権限がありません。別のアカウントでログインしてください。
+                            </p>
+                        )}
+                        <form className={styles.loginForm} onSubmit={handleAdminLogin}>
+                            <label className={styles.loginField}>
+                                <span>ID</span>
+                                <input
+                                    className={styles.loginInput}
+                                    type="text"
+                                    value={loginId}
+                                    onChange={(event) => setLoginId(event.target.value)}
+                                    placeholder="admin"
+                                    autoComplete="username"
+                                />
+                            </label>
+                            <label className={styles.loginField}>
+                                <span>パスワード</span>
+                                <input
+                                    className={styles.loginInput}
+                                    type="password"
+                                    value={loginPassword}
+                                    onChange={(event) => setLoginPassword(event.target.value)}
+                                    autoComplete="current-password"
+                                />
+                            </label>
+                            {loginError && <div className={styles.error}>{loginError}</div>}
+                            <div className={styles.loginActions}>
+                                <Button variant="primary" type="submit" isLoading={loginLoading}>
+                                    ログイン
+                                </Button>
+                                {currentUser && (
+                                    <Button variant="secondary" type="button" onClick={handleLogout}>
+                                        ログアウト
+                                    </Button>
+                                )}
+                                <Button variant="secondary" type="button" onClick={handleBack}>
+                                    ログインへ戻る
+                                </Button>
+                            </div>
+                        </form>
                     </Card>
                 </main>
             </div>
