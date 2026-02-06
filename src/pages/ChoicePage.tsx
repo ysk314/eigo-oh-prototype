@@ -17,7 +17,8 @@ import { playSound } from '@/utils/sound';
 import { getRankMessage } from '@/utils/result';
 import { useCountdown } from '@/hooks/useCountdown';
 import { logEvent } from '@/utils/analytics';
-import { recordSessionSummary, type SessionSummary } from '@/utils/dashboardStats';
+import { recordProgressSnapshot, recordSessionSummary, type SessionSummary } from '@/utils/dashboardStats';
+import { buildSectionProgressTotals, getTotalSectionsCount } from '@/utils/progressSummary';
 import { useSelectedLabels } from '@/hooks/useSelectedLabels';
 import styles from './ChoicePage.module.css';
 
@@ -180,6 +181,19 @@ export function ChoicePage() {
             };
 
             recordSessionSummary(state.currentUser.id, sessionSummary, sectionMeta).catch(() => {});
+
+            const progressTotals = buildSectionProgressTotals(state.sectionProgress);
+            recordProgressSnapshot(state.currentUser.id, {
+                ...progressTotals,
+                totalSectionsCount: getTotalSectionsCount(),
+                lastMode: 'choice',
+                lastActiveAt: new Date().toISOString(),
+                lastSectionId: selectedSection ?? undefined,
+                lastSectionLabel: sectionLabel ?? selectedSection ?? undefined,
+                lastCourseId: selectedCourse ?? undefined,
+                lastUnitId: state.selectedUnit ?? undefined,
+                lastPartId: selectedPart ?? undefined,
+            }).catch(() => {});
         }
 
         completeSectionSession();
@@ -188,7 +202,23 @@ export function ChoicePage() {
         if (selectedSection) {
             setChoiceRank(selectedSection, selectedChoiceLevel, score.rank);
         }
-    }, [correctCount, missCount, timeLeft, timeLimit, questions.length, selectedCourse, selectedPart, selectedSection, selectedChoiceLevel, setChoiceRank, state.currentUser?.id, state.selectedUnit, completeSectionSession]);
+    }, [
+        correctCount,
+        missCount,
+        timeLeft,
+        timeLimit,
+        questions.length,
+        selectedCourse,
+        selectedPart,
+        selectedSection,
+        selectedChoiceLevel,
+        setChoiceRank,
+        state.currentUser?.id,
+        state.selectedUnit,
+        state.sectionProgress,
+        currentCourse?.id,
+        completeSectionSession,
+    ]);
 
     useEffect(() => {
         if (isCountingDown || isFinished || timeLimit === 0) return;

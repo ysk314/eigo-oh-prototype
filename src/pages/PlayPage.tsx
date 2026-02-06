@@ -21,7 +21,8 @@ import { playSound } from '@/utils/sound';
 import { useCountdown } from '@/hooks/useCountdown';
 import { getRankMessage } from '@/utils/result';
 import { logEvent } from '@/utils/analytics';
-import { recordSessionSummary, type SessionSummary } from '@/utils/dashboardStats';
+import { recordProgressSnapshot, recordSessionSummary, type SessionSummary } from '@/utils/dashboardStats';
+import { buildSectionProgressTotals, getTotalSectionsCount } from '@/utils/progressSummary';
 import { useSelectedLabels } from '@/hooks/useSelectedLabels';
 import styles from './PlayPage.module.css';
 
@@ -291,6 +292,19 @@ export function PlayPage() {
             };
 
             recordSessionSummary(currentUser.id, sessionSummary, sectionMeta).catch(() => {});
+
+            const progressTotals = buildSectionProgressTotals(state.sectionProgress);
+            recordProgressSnapshot(currentUser.id, {
+                ...progressTotals,
+                totalSectionsCount: getTotalSectionsCount(),
+                lastMode: 'typing',
+                lastActiveAt: new Date().toISOString(),
+                lastSectionId: selectedSection ?? undefined,
+                lastSectionLabel: selectedSectionLabel ?? selectedSection ?? undefined,
+                lastCourseId: selectedCourse ?? undefined,
+                lastUnitId: state.selectedUnit ?? undefined,
+                lastPartId: selectedPart ?? undefined,
+            }).catch(() => {});
         }
 
         completeSectionSession();

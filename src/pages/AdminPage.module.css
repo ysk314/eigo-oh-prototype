@@ -102,15 +102,40 @@
     background: var(--color-primary-soft);
 }
 
+.listItemHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-sm);
+}
+
 .userName {
     font-weight: var(--font-weight-bold);
     color: var(--color-text-primary);
+}
+
+.progressBadge {
+    padding: 2px 10px;
+    border-radius: 999px;
+    background: rgba(229, 115, 115, 0.12);
+    color: var(--color-primary);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-bold);
 }
 
 .userMeta {
     font-size: var(--font-size-sm);
     color: var(--color-text-secondary);
     margin-top: 4px;
+}
+
+.userMetaRow {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-sm);
+    font-size: var(--font-size-xs);
+    color: var(--color-text-secondary);
+    margin-top: var(--space-xs);
 }
 
 .detailBody {

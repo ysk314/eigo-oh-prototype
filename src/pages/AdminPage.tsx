@@ -16,6 +16,19 @@ type AdminUser = {
     displayName: string;
     memberNo?: string;
     createdAt?: string;
+    stats?: AdminUserStats;
+};
+
+type AdminUserStats = {
+    totalAttempts?: number;
+    totalCorrect?: number;
+    totalMiss?: number;
+    clearedSectionsCount?: number;
+    totalSectionsCount?: number;
+    lastActiveAt?: string;
+    lastMode?: string;
+    lastSectionId?: string;
+    lastSectionLabel?: string;
 };
 
 function normalize(value: string) {
@@ -37,6 +50,25 @@ function formatDate(value?: string): string {
     const date = new Date(value);
     if (Number.isNaN(date.getTime())) return '—';
     return `${date.getFullYear()}/${date.getMonth() + 1}/${date.getDate()}`;
+}
+
+function formatDateTime(value?: string): string {
+    if (!value) return '—';
+    const date = new Date(value);
+    if (Number.isNaN(date.getTime())) return '—';
+    return `${date.getFullYear()}/${date.getMonth() + 1}/${date.getDate()} ${String(date.getHours()).padStart(2, '0')}:${String(date.getMinutes()).padStart(2, '0')}`;
+}
+
+function formatProgress(cleared?: number, total?: number): string {
+    if (!total) return '—';
+    const safeCleared = cleared ?? 0;
+    const percent = Math.round((safeCleared / total) * 100);
+    return `${safeCleared}/${total} (${percent}%)`;
+}
+
+function formatNumber(value?: number): string {
+    if (value === undefined || value === null) return '—';
+    return value.toLocaleString('ja-JP');
 }
 
 const rolePriority: Record<string, number> = {
@@ -114,7 +146,37 @@ export function AdminPage() {
         setLoading(true);
         setError(null);
         try {
-            const snap = await getDocs(collection(db, 'users'));
+            const [usersSnap, statsSnap] = await Promise.all([
+                getDocs(collection(db, 'users')),
+                getDocs(collection(db, 'user_stats')),
+            ]);
+            const statsMap = new Map<string, AdminUserStats>();
+            statsSnap.forEach((docSnap) => {
+                const data = docSnap.data() as {
+                    totalAttempts?: number;
+                    totalCorrect?: number;
+                    totalMiss?: number;
+                    clearedSectionsCount?: number;
+                    totalSectionsCount?: number;
+                    lastActiveAt?: unknown;
+                    lastActiveAtIso?: string | null;
+                    lastMode?: string;
+                    lastSectionId?: string | null;
+                    lastSectionLabel?: string | null;
+                };
+                const lastActiveAt = parseTimestamp(data.lastActiveAt) ?? data.lastActiveAtIso ?? undefined;
+                statsMap.set(docSnap.id, {
+                    totalAttempts: data.totalAttempts,
+                    totalCorrect: data.totalCorrect,
+                    totalMiss: data.totalMiss,
+                    clearedSectionsCount: data.clearedSectionsCount,
+                    totalSectionsCount: data.totalSectionsCount,
+                    lastActiveAt,
+                    lastMode: data.lastMode,
+                    lastSectionId: data.lastSectionId ?? undefined,
+                    lastSectionLabel: data.lastSectionLabel ?? undefined,
+                });
+            });
             const items: AdminUser[] = snap.docs.map((docSnap) => {
                 const data = docSnap.data() as {
                     uid?: string;
@@ -122,14 +184,21 @@ export function AdminPage() {
                     memberNo?: string | null;
                     createdAt?: unknown;
                 };
+                const uid = data.uid ?? docSnap.id;
                 return {
-                    uid: data.uid ?? docSnap.id,
+                    uid,
                     displayName: data.displayName ?? '未設定',
                     memberNo: data.memberNo ?? undefined,
                     createdAt: parseTimestamp(data.createdAt),
+                    stats: statsMap.get(uid),
                 };
             });
-            items.sort((a, b) => a.displayName.localeCompare(b.displayName, 'ja'));
+            items.sort((a, b) => {
+                const aActive = a.stats?.lastActiveAt ? new Date(a.stats.lastActiveAt).getTime() : 0;
+                const bActive = b.stats?.lastActiveAt ? new Date(b.stats.lastActiveAt).getTime() : 0;
+                if (aActive !== bActive) return bActive - aActive;
+                return a.displayName.localeCompare(b.displayName, 'ja');
+            });
             setUsers(items);
             if (!selectedUserId && items.length > 0) {
                 setSelectedUserId(items[0].uid);
@@ -294,6 +363,11 @@ export function AdminPage() {
                             )}
                             {filteredUsers.map((user) => {
                                 const active = user.uid === selectedUserId;
+                                const progressText = formatProgress(
+                                    user.stats?.clearedSectionsCount,
+                                    user.stats?.totalSectionsCount
+                                );
+                                const lastSection = user.stats?.lastSectionLabel || user.stats?.lastSectionId || '—';
                                 return (
                                     <button
                                         key={user.uid}
@@ -301,7 +375,14 @@ export function AdminPage() {
                                         className={`${styles.listItem} ${active ? styles.activeItem : ''}`}
                                         onClick={() => setSelectedUserId(user.uid)}
                                     >
-                                        <div className={styles.userName}>{user.displayName}</div>
+                                        <div className={styles.listItemHeader}>
+                                            <div className={styles.userName}>{user.displayName}</div>
+                                            <span className={styles.progressBadge}>進捗 {progressText}</span>
+                                        </div>
+                                        <div className={styles.userMetaRow}>
+                                            <span>最終学習: {formatDateTime(user.stats?.lastActiveAt)}</span>
+                                            <span>直近セクション: {lastSection}</span>
+                                        </div>
                                         <div className={styles.userMeta}>UID: {user.uid}</div>
                                         <div className={styles.userMeta}>会員番号: {user.memberNo ?? '—'}</div>
                                     </button>
@@ -333,6 +414,35 @@ export function AdminPage() {
                                 <div className={styles.detailRow}>
                                     <span>作成日</span>
                                     <strong>{formatDate(selectedUser.createdAt)}</strong>
+                                </div>
+                                <div className={styles.detailRow}>
+                                    <span>最終学習</span>
+                                    <strong>{formatDateTime(selectedUser.stats?.lastActiveAt)}</strong>
+                                </div>
+                                <div className={styles.detailRow}>
+                                    <span>進捗</span>
+                                    <strong>
+                                        {formatProgress(
+                                            selectedUser.stats?.clearedSectionsCount,
+                                            selectedUser.stats?.totalSectionsCount
+                                        )}
+                                    </strong>
+                                </div>
+                                <div className={styles.detailRow}>
+                                    <span>直近セクション</span>
+                                    <strong>{selectedUser.stats?.lastSectionLabel || selectedUser.stats?.lastSectionId || '—'}</strong>
+                                </div>
+                                <div className={styles.detailRow}>
+                                    <span>総回答数</span>
+                                    <strong>{formatNumber(selectedUser.stats?.totalAttempts)}</strong>
+                                </div>
+                                <div className={styles.detailRow}>
+                                    <span>正解数</span>
+                                    <strong>{formatNumber(selectedUser.stats?.totalCorrect)}</strong>
+                                </div>
+                                <div className={styles.detailRow}>
+                                    <span>ミス数</span>
+                                    <strong>{formatNumber(selectedUser.stats?.totalMiss)}</strong>
                                 </div>
                             </div>
                         )}

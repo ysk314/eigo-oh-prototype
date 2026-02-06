@@ -7,6 +7,21 @@ import { db } from '@/firebase';
 
 export type SessionMode = 'typing' | 'choice';
 
+export type ProgressSnapshot = {
+    totalAttempts: number;
+    totalCorrect: number;
+    totalMiss: number;
+    clearedSectionsCount: number;
+    totalSectionsCount: number;
+    lastMode: SessionMode;
+    lastActiveAt: string;
+    lastSectionId?: string;
+    lastSectionLabel?: string;
+    lastCourseId?: string;
+    lastUnitId?: string;
+    lastPartId?: string;
+};
+
 export interface SectionMeta {
     courseId: string;
     unitId: string;
@@ -183,4 +198,28 @@ export async function recordSessionSummary(
         tasks.push(updateRecentSections(uid, sectionMeta));
     }
     await Promise.all(tasks);
+}
+
+export async function recordProgressSnapshot(uid: string, snapshot: ProgressSnapshot): Promise<void> {
+    const statsRef = doc(db, 'user_stats', uid);
+    await setDoc(
+        statsRef,
+        {
+            totalAttempts: snapshot.totalAttempts,
+            totalCorrect: snapshot.totalCorrect,
+            totalMiss: snapshot.totalMiss,
+            clearedSectionsCount: snapshot.clearedSectionsCount,
+            totalSectionsCount: snapshot.totalSectionsCount,
+            lastMode: snapshot.lastMode,
+            lastSectionId: snapshot.lastSectionId ?? null,
+            lastSectionLabel: snapshot.lastSectionLabel ?? null,
+            lastCourseId: snapshot.lastCourseId ?? null,
+            lastUnitId: snapshot.lastUnitId ?? null,
+            lastPartId: snapshot.lastPartId ?? null,
+            lastActiveAt: serverTimestamp(),
+            lastActiveAtIso: snapshot.lastActiveAt,
+            lastUpdatedAt: serverTimestamp(),
+        },
+        { merge: true }
+    );
 }
