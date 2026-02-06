@@ -1,60 +1,65 @@
 # tap-type-english
-英語タイピング学習アプリ（React + Vite + TypeScript）
+Tap! Type! English! / 英語タイピング学習アプリ（React + Vite + TypeScript）
 
 ## 概要
-日本語のプロンプトに対して英語タイピングを行う学習アプリ。  
-ユーザー選択、コース/ページ/セクション選択、3つの学習モード、ローカル保存の進捗管理を備えています。
+英語タイピング + 4択の語彙学習を提供する学習アプリ。Firebase Auth + Firestore を使い、
+ログイン（会員番号 or メール + パスワード / ゲスト）と進捗のクラウド保存に対応しています。
 
 ## 画面構成
-- Home: ユーザー選択 + コース選択
-- Course: ページ一覧 + セクション選択 + 学習モード選択
-- Play: タイピング学習 + 進捗表示 + 結果画面
+- Login: ログイン（会員番号 or メール）/ ゲスト
+- Dashboard: 学習サマリー、直近セッション、直近セクション、コース選択
+- Course: Unit/Part/Section 選択、学習モード選択
+- Play: タイピング学習 + 結果
+- Choice: 4択学習 + 結果
 
 ## ルーティング
-- `/` Home: `src/pages/HomePage.tsx`
+- `/` Login: `src/pages/LoginPage.tsx`
+- `/dashboard` Dashboard: `src/pages/HomePage.tsx`
 - `/course` Course: `src/pages/CoursePage.tsx`
-- `/play` Play: `src/pages/PlayPage.tsx`
-- その他は `/` にリダイレクト（`src/App.tsx`）
+- `/play` Typing: `src/pages/PlayPage.tsx`
+- `/choice` 4択: `src/pages/ChoicePage.tsx`
 
 ## 学習モード
-- モード1: 音あり / スペルあり
-- モード2: 音あり / スペルなし
-- モード3: 音なし / スペルなし
+- タイピング
+  - モード1: 音あり / スペルあり
+  - モード2: 音あり / スペルなし
+  - モード3: 音なし / スペルなし
+- 4択
+  - レベル1: 英語→日本語（音声あり）
+  - レベル2: 日本語→英語
+  - レベル3: 英語→日本語（マスク）
+  - レベル4: 日本語→英語（マスク）
 
 ## データ構造
 - 型定義: `src/types/index.ts`
 - 問題データ + コース構造: `src/data/questions.ts`
   - `questions[]` が問題一覧
   - `courseStructure` が Unit/Part/Section 構成
-  - `getQuestionById`, `getQuestionsBySection`, `getSectionsByPart` などのヘルパー
+  - `getQuestionsBySection`, `getSectionsByPart` などのヘルパー
+
+## Firebase 構成（Spark 想定）
+- Auth: 匿名ログイン + メール/パスワード
+- Firestore コレクション
+  - `users/{uid}`: ユーザープロフィール
+  - `users/{uid}/userProgress/*`: 問題ごとの進捗
+  - `users/{uid}/sectionProgress/*`: セクションの進捗/ランク
+  - `member_counters/{yearId}`: 会員番号採番
+  - `analytics_events/*`: イベントログ（create-only）
+  - `user_stats/{uid}`: ダッシュボード集計
+  - `user_recent_sections/{uid}`: 直近セクション（最大5件）
+  - `user_recent_sessions/{uid}`: 直近セッション（最大3件）
+- ルール: `firestore.rules`
 
 ## 状態管理（Context/Reducer）
-- `src/context/AppContext.tsx`: Context Provider、localStorage 連携、便利メソッド
+- `src/context/AppContext.tsx`: Context Provider、localStorage 連携、Firebase同期
 - `src/context/AppReducer.ts`: state 更新ロジック
-- 主な state
-  - ユーザー: `currentUser`, `users`
-  - 選択状態: `selectedCourse`, `selectedUnit`, `selectedPart`, `selectedSection`, `selectedMode`
-  - プレイ状態: `currentQuestionIndex`, `shuffleMode`, `shuffledQuestionIds`
-  - 進捗: `userProgress`, `sectionProgress`
-  - 設定: `autoPlayAudio`
 
-## 主要コンポーネント
-- `Header`: ユーザー選択/シャッフル切替/パンくず/戻る
-- `PartList`: Unit/Part 一覧 + 進捗表示
-- `SectionCard`: セクション + モード選択（ロック表示あり）
-- `QuestionDisplay`: 日本語プロンプト + 英語表示 + 音声
-- `TypingInput`: タイピング判定 + ヒント + ミス数 + 完了表示
-- `ProgressBar`, `QuestionNav`, `AudioPlayer`, `Button`, `Card`, `ModeButton`
-
-## ユーティリティ
-- `src/utils/typing.ts`: 文字入力判定/正規化/表示状態/ハイライト
-- `src/utils/shuffle.ts`: シャッフル/連続重複回避
-- `src/utils/progress.ts`: 正答率計算/クリア判定
+## 主要ユーティリティ
 - `src/utils/storage.ts`: localStorage 永続化
-
-## スタイル
-- グローバル: `src/styles/global.css`, `src/styles/variables.css`
-- コンポーネント/ページごとに `*.module.css`
+- `src/utils/remoteStorage.ts`: Firestore 同期
+- `src/utils/analytics.ts`: イベント送信
+- `src/utils/dashboardStats.ts`: ダッシュボード集計
+- `src/utils/score.ts`: ランク判定/スコア算出
 
 ## 開発
 ```bash
