@@ -177,7 +177,7 @@ export function AdminPage() {
                     lastSectionLabel: data.lastSectionLabel ?? undefined,
                 });
             });
-            const items: AdminUser[] = snap.docs.map((docSnap) => {
+            const items: AdminUser[] = usersSnap.docs.map((docSnap) => {
                 const data = docSnap.data() as {
                     uid?: string;
                     displayName?: string;
