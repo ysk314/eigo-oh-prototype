@@ -84,6 +84,22 @@ function formatNumber(value?: number): string {
     return value.toLocaleString('ja-JP');
 }
 
+function getProgressRatio(stats?: AdminUserStats): number | null {
+    if (!stats?.totalSectionsCount || stats.totalSectionsCount <= 0) return null;
+    const cleared = stats.clearedSectionsCount ?? 0;
+    return cleared / stats.totalSectionsCount;
+}
+
+function getDaysSince(value?: string): number | null {
+    if (!value) return null;
+    const date = new Date(value);
+    if (Number.isNaN(date.getTime())) return null;
+    const todayStart = startOfDayLocal(new Date());
+    const targetStart = startOfDayLocal(date);
+    const diffMs = todayStart.getTime() - targetStart.getTime();
+    return Math.floor(diffMs / 86400000);
+}
+
 function startOfDayLocal(date: Date): Date {
     return new Date(date.getFullYear(), date.getMonth(), date.getDate());
 }
@@ -128,6 +144,8 @@ export function AdminPage() {
     const [error, setError] = useState<string | null>(null);
     const [searchTerm, setSearchTerm] = useState('');
     const [selectedUserId, setSelectedUserId] = useState<string | null>(null);
+    const [activityFilter, setActivityFilter] = useState<'all' | 'active7' | 'inactive30'>('all');
+    const [progressFilter, setProgressFilter] = useState<'all' | 'zero' | 'low' | 'mid' | 'complete'>('all');
     const [isEditingUser, setIsEditingUser] = useState(false);
     const [editDisplayName, setEditDisplayName] = useState('');
     const [editMemberNo, setEditMemberNo] = useState('');
@@ -351,14 +369,37 @@ export function AdminPage() {
 
     const filteredUsers = useMemo(() => {
         const keyword = normalize(searchTerm);
-        if (!keyword) return users;
-        return users.filter((user) => {
-            const name = normalize(user.displayName);
-            const memberNo = normalize(user.memberNo ?? '');
-            const uid = normalize(user.uid);
-            return name.includes(keyword) || memberNo.includes(keyword) || uid.includes(keyword);
+        const base = keyword
+            ? users.filter((user) => {
+                const name = normalize(user.displayName);
+                const memberNo = normalize(user.memberNo ?? '');
+                const uid = normalize(user.uid);
+                return name.includes(keyword) || memberNo.includes(keyword) || uid.includes(keyword);
+            })
+            : users;
+
+        return base.filter((user) => {
+            const ratio = getProgressRatio(user.stats);
+            const daysSince = getDaysSince(user.stats?.lastActiveAt);
+
+            if (activityFilter === 'active7') {
+                if (daysSince === null || daysSince > 7) return false;
+            }
+            if (activityFilter === 'inactive30') {
+                if (daysSince === null || daysSince <= 30) return false;
+            }
+
+            if (progressFilter !== 'all') {
+                if (ratio === null) return false;
+                if (progressFilter === 'zero' && ratio !== 0) return false;
+                if (progressFilter === 'low' && !(ratio > 0 && ratio < 0.5)) return false;
+                if (progressFilter === 'mid' && !(ratio >= 0.5 && ratio < 1)) return false;
+                if (progressFilter === 'complete' && ratio < 1) return false;
+            }
+
+            return true;
         });
-    }, [users, searchTerm]);
+    }, [users, searchTerm, activityFilter, progressFilter]);
 
     const selectedUser = useMemo(() => {
         return filteredUsers.find((user) => user.uid === selectedUserId) ?? null;
@@ -623,6 +664,79 @@ export function AdminPage() {
                         onChange={(event) => setSearchTerm(event.target.value)}
                     />
                     <span className={styles.count}>表示 {filteredUsers.length} / 全 {users.length}</span>
+                </section>
+
+                <section className={styles.filterSection}>
+                    <div className={styles.filterGroup}>
+                        <span className={styles.filterLabel}>アクティブ</span>
+                        <button
+                            type="button"
+                            className={`${styles.filterButton} ${activityFilter === 'all' ? styles.filterButtonActive : ''}`}
+                            aria-pressed={activityFilter === 'all'}
+                            onClick={() => setActivityFilter('all')}
+                        >
+                            すべて
+                        </button>
+                        <button
+                            type="button"
+                            className={`${styles.filterButton} ${activityFilter === 'active7' ? styles.filterButtonActive : ''}`}
+                            aria-pressed={activityFilter === 'active7'}
+                            onClick={() => setActivityFilter('active7')}
+                        >
+                            7日以内
+                        </button>
+                        <button
+                            type="button"
+                            className={`${styles.filterButton} ${activityFilter === 'inactive30' ? styles.filterButtonActive : ''}`}
+                            aria-pressed={activityFilter === 'inactive30'}
+                            onClick={() => setActivityFilter('inactive30')}
+                        >
+                            30日以上未学習
+                        </button>
+                    </div>
+                    <div className={styles.filterGroup}>
+                        <span className={styles.filterLabel}>進捗</span>
+                        <button
+                            type="button"
+                            className={`${styles.filterButton} ${progressFilter === 'all' ? styles.filterButtonActive : ''}`}
+                            aria-pressed={progressFilter === 'all'}
+                            onClick={() => setProgressFilter('all')}
+                        >
+                            すべて
+                        </button>
+                        <button
+                            type="button"
+                            className={`${styles.filterButton} ${progressFilter === 'zero' ? styles.filterButtonActive : ''}`}
+                            aria-pressed={progressFilter === 'zero'}
+                            onClick={() => setProgressFilter('zero')}
+                        >
+                            0%
+                        </button>
+                        <button
+                            type="button"
+                            className={`${styles.filterButton} ${progressFilter === 'low' ? styles.filterButtonActive : ''}`}
+                            aria-pressed={progressFilter === 'low'}
+                            onClick={() => setProgressFilter('low')}
+                        >
+                            1-49%
+                        </button>
+                        <button
+                            type="button"
+                            className={`${styles.filterButton} ${progressFilter === 'mid' ? styles.filterButtonActive : ''}`}
+                            aria-pressed={progressFilter === 'mid'}
+                            onClick={() => setProgressFilter('mid')}
+                        >
+                            50-99%
+                        </button>
+                        <button
+                            type="button"
+                            className={`${styles.filterButton} ${progressFilter === 'complete' ? styles.filterButtonActive : ''}`}
+                            aria-pressed={progressFilter === 'complete'}
+                            onClick={() => setProgressFilter('complete')}
+                        >
+                            100%
+                        </button>
+                    </div>
                 </section>
 
                 <section className={styles.grid}>

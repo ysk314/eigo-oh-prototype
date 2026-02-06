@@ -252,6 +252,12 @@
     gap: var(--space-md);
 }
 
+.quickActions {
+    display: flex;
+    gap: var(--space-sm);
+    flex-wrap: wrap;
+}
+
 .statItem {
     background: var(--color-bg-base);
     border-radius: var(--radius-md);

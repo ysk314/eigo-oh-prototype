@@ -44,6 +44,48 @@
     flex-wrap: wrap;
 }
 
+.filterSection {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+    padding: var(--space-sm) 0;
+}
+
+.filterGroup {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    flex-wrap: wrap;
+}
+
+.filterLabel {
+    font-size: var(--font-size-xs);
+    color: var(--color-text-muted);
+    min-width: 60px;
+}
+
+.filterButton {
+    padding: 4px 12px;
+    border-radius: 999px;
+    border: 1px solid rgba(229, 115, 115, 0.3);
+    background: #fff;
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-xs);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.filterButton:hover {
+    border-color: rgba(229, 115, 115, 0.6);
+    color: var(--color-primary);
+}
+
+.filterButtonActive {
+    background: rgba(229, 115, 115, 0.16);
+    border-color: rgba(229, 115, 115, 0.6);
+    color: var(--color-primary);
+}
+
 .metricsSection {
     margin-top: var(--space-sm);
 }

@@ -81,7 +81,7 @@
     white-space: nowrap;
 }
 
-modeTabs {
+.modeTabs {
     display: flex;
     gap: var(--space-sm);
     margin-bottom: var(--space-lg);
@@ -123,10 +123,23 @@ modeTabs {
     font-size: var(--font-size-base);
 }
 
+.inputHelp {
+    font-size: var(--font-size-xs);
+    color: var(--color-text-muted);
+    margin-top: -4px;
+}
+
 .error {
     color: #c0392b;
     font-size: var(--font-size-sm);
     margin-top: -4px;
+}
+
+.errorBox {
+    background: rgba(192, 57, 43, 0.08);
+    border: 1px solid rgba(192, 57, 43, 0.2);
+    border-radius: var(--radius-sm);
+    padding: var(--space-sm);
 }
 
 .note {

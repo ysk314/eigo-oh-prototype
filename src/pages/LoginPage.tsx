@@ -156,7 +156,9 @@ export function LoginPage() {
                                 onChange={(event) => setLoginId(event.target.value)}
                                 placeholder="例: 25000001"
                                 autoComplete="username"
+                                required
                             />
+                            <p className={styles.inputHelp}>会員番号は自動採番した番号、メールは登録時のものです。</p>
 
                             <label className={styles.inputLabel} htmlFor="login-password">
                                 パスワード
@@ -169,9 +171,14 @@ export function LoginPage() {
                                 onChange={(event) => setPassword(event.target.value)}
                                 placeholder="8文字以上"
                                 autoComplete="current-password"
+                                required
                             />
 
-                            {errorMessage && <p className={styles.error}>{errorMessage}</p>}
+                            {errorMessage && (
+                                <div className={styles.errorBox} role="alert" aria-live="polite">
+                                    <p className={styles.error}>{errorMessage}</p>
+                                </div>
+                            )}
 
                             <Button size="lg" fullWidth type="submit" isLoading={isLoading}>
                                 ログイン
@@ -194,6 +201,7 @@ export function LoginPage() {
                                 placeholder="空欄で自動採番"
                                 autoComplete="username"
                             />
+                            <p className={styles.inputHelp}>会員番号で登録すると、管理者が用意した表示名が反映されます。</p>
 
                             <label className={styles.inputLabel} htmlFor="signup-name">
                                 表示名（任意）
@@ -218,9 +226,14 @@ export function LoginPage() {
                                 onChange={(event) => setPassword(event.target.value)}
                                 placeholder="8文字以上"
                                 autoComplete="new-password"
+                                required
                             />
 
-                            {errorMessage && <p className={styles.error}>{errorMessage}</p>}
+                            {errorMessage && (
+                                <div className={styles.errorBox} role="alert" aria-live="polite">
+                                    <p className={styles.error}>{errorMessage}</p>
+                                </div>
+                            )}
                             <Button size="lg" fullWidth type="submit" isLoading={isLoading}>
                                 登録する
                             </Button>

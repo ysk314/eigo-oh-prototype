@@ -122,6 +122,10 @@ export function HomePage() {
         ).length;
     }, [state.sectionProgress]);
 
+    const progressRate = totalSections > 0
+        ? Math.round((clearedSections / totalSections) * 100)
+        : 0;
+
     useEffect(() => {
         const uid = state.currentUser?.id;
         if (!uid) return;
@@ -208,7 +212,32 @@ export function HomePage() {
                                 <div className={styles.statItem}>
                                     <span className={styles.statLabel}>セクション進捗</span>
                                     <span className={styles.statValue}>{clearedSections} / {totalSections}</span>
+                                    <span className={styles.statSub}>達成率 {progressRate}%</span>
                                 </div>
+                            </div>
+                        </Card>
+
+                        <Card className={styles.dashboardCard} padding="lg">
+                            <div className={styles.sectionHeader}>
+                                <h2 className={styles.sectionTitle}>クイックスタート</h2>
+                                <span className={styles.sectionNote}>次の学習にすぐ移動</span>
+                            </div>
+                            <div className={styles.quickActions}>
+                                <Button
+                                    variant="primary"
+                                    onClick={() => {
+                                        if (recentSections[0]) {
+                                            handleOpenRecentSection(recentSections[0]);
+                                        } else if (courses[0]) {
+                                            handleCourseSelect(courses[0].id);
+                                        }
+                                    }}
+                                >
+                                    {recentSections[0] ? '前回のセクションへ' : '最初のコースへ'}
+                                </Button>
+                                <Button variant="secondary" onClick={() => handleCourseSelect(courses[0].id)}>
+                                    コース一覧へ
+                                </Button>
                             </div>
                         </Card>
 
