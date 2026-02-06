@@ -33,6 +33,11 @@ export function CoursePage() {
         [currentCourse?.id]
     );
 
+    useEffect(() => {
+        if (typeof window === 'undefined') return;
+        window.scrollTo(0, 0);
+    }, []);
+
     const questionIdToPartId = useMemo(() => {
         const map = new Map<string, string>();
         courseQuestions.forEach((question) => {
