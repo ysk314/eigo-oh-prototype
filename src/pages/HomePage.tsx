@@ -249,69 +249,69 @@ export function HomePage() {
                                         {latestSession ? formatDateTime(latestSession.playedAt) : '—'}
                                     </span>
                                 </summary>
-                                {latestSession ? (
-                                    <div className={styles.accordionBody}>
+                                <div className={styles.accordionBody}>
+                                    {latestSession ? (
                                         <div className={styles.sessionSummary}>
-                                        <div>
-                                            <span className={styles.sessionLabel}>ランク</span>
-                                            <span className={styles.sessionValue}>{latestSession.rank}</span>
+                                            <div>
+                                                <span className={styles.sessionLabel}>ランク</span>
+                                                <span className={styles.sessionValue}>{latestSession.rank}</span>
+                                            </div>
+                                            <div>
+                                                <span className={styles.sessionLabel}>正答率</span>
+                                                <span className={styles.sessionValue}>{latestSession.accuracy}%</span>
+                                            </div>
+                                            <div>
+                                                <span className={styles.sessionLabel}>WPM</span>
+                                                <span className={styles.sessionValue}>{latestSession.wpm ?? '-'}</span>
+                                            </div>
+                                            <div>
+                                                <span className={styles.sessionLabel}>ミス</span>
+                                                <span className={styles.sessionValue}>{latestSession.missCount}回</span>
+                                            </div>
+                                            <div>
+                                                <span className={styles.sessionLabel}>時間</span>
+                                                <span className={styles.sessionValue}>{formatDuration(latestSession.totalTimeMs)}</span>
+                                            </div>
+                                            <div>
+                                                <span className={styles.sessionLabel}>モード</span>
+                                                <span className={styles.sessionValue}>{latestSession.mode === 'typing' ? 'タイピング' : '選択'}</span>
+                                            </div>
                                         </div>
-                                        <div>
-                                            <span className={styles.sessionLabel}>正答率</span>
-                                            <span className={styles.sessionValue}>{latestSession.accuracy}%</span>
-                                        </div>
-                                        <div>
-                                            <span className={styles.sessionLabel}>WPM</span>
-                                            <span className={styles.sessionValue}>{latestSession.wpm ?? '-'}</span>
-                                        </div>
-                                        <div>
-                                            <span className={styles.sessionLabel}>ミス</span>
-                                            <span className={styles.sessionValue}>{latestSession.missCount}回</span>
-                                        </div>
-                                        <div>
-                                            <span className={styles.sessionLabel}>時間</span>
-                                            <span className={styles.sessionValue}>{formatDuration(latestSession.totalTimeMs)}</span>
-                                        </div>
-                                        <div>
-                                            <span className={styles.sessionLabel}>モード</span>
-                                            <span className={styles.sessionValue}>{latestSession.mode === 'typing' ? 'タイピング' : '選択'}</span>
-                                        </div>
-                                        </div>
-                                ) : (
-                                    <p className={styles.emptyText}>まだセッションがありません。</p>
-                                )}
-                                {recentSections.length > 0 ? (
-                                    <div className={styles.recentList}>
-                                        {recentSections.map((item) => {
-                                            const info = resolveSectionInfo(item);
-                                            const modeLabel = item.mode === 'choice' ? '選択' : 'タイピング';
-                                            return (
-                                                <button
-                                                    key={item.sectionId}
-                                                    className={styles.recentItem}
-                                                    onClick={() => handleOpenRecentSection(item)}
-                                                >
-                                                    <div>
-                                                        <div className={styles.recentContext}>
-                                                            <span className={styles.recentCourse}>{info.courseName}</span>
-                                                            <span className={styles.recentDivider}>/</span>
-                                                            <span className={styles.recentUnit}>{info.unitName}</span>
+                                    ) : (
+                                        <p className={styles.emptyText}>まだセッションがありません。</p>
+                                    )}
+                                    {recentSections.length > 0 ? (
+                                        <div className={styles.recentList}>
+                                            {recentSections.map((item) => {
+                                                const info = resolveSectionInfo(item);
+                                                const modeLabel = item.mode === 'choice' ? '選択' : 'タイピング';
+                                                return (
+                                                    <button
+                                                        key={item.sectionId}
+                                                        className={styles.recentItem}
+                                                        onClick={() => handleOpenRecentSection(item)}
+                                                    >
+                                                        <div>
+                                                            <div className={styles.recentContext}>
+                                                                <span className={styles.recentCourse}>{info.courseName}</span>
+                                                                <span className={styles.recentDivider}>/</span>
+                                                                <span className={styles.recentUnit}>{info.unitName}</span>
+                                                            </div>
+                                                            <div className={styles.recentLabel}>
+                                                                {info.partLabel} / {info.sectionLabel}
+                                                            </div>
+                                                            <div className={styles.recentMeta}>
+                                                                {formatDateTime(item.lastPlayedAt)} · {modeLabel}
+                                                            </div>
                                                         </div>
-                                                        <div className={styles.recentLabel}>
-                                                            {info.partLabel} / {info.sectionLabel}
-                                                        </div>
-                                                        <div className={styles.recentMeta}>
-                                                            {formatDateTime(item.lastPlayedAt)} · {modeLabel}
-                                                        </div>
-                                                    </div>
-                                                    <span className={styles.recentArrow}>→</span>
-                                                </button>
-                                            );
-                                        })}
-                                    </div>
-                                ) : (
-                                    <p className={styles.emptyText}>まだ挑戦履歴がありません。</p>
-                                )}
+                                                        <span className={styles.recentArrow}>→</span>
+                                                    </button>
+                                                );
+                                            })}
+                                        </div>
+                                    ) : (
+                                        <p className={styles.emptyText}>まだ挑戦履歴がありません。</p>
+                                    )}
                                 </div>
                             </details>
                         </Card>
