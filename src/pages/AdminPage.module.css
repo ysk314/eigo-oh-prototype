@@ -86,12 +86,35 @@
     color: var(--color-primary);
 }
 
-.metricsSection {
-    margin-top: var(--space-sm);
+.toolbar {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    padding: var(--space-md);
+    margin: calc(-1 * var(--space-md));
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+    border-radius: var(--radius-lg);
+}
+
+.toolbarControls {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+}
+
+.toolbarActions {
+    display: flex;
+    gap: var(--space-sm);
+    justify-content: flex-end;
+    flex-wrap: wrap;
 }
 
 .metricsCard {
-    padding-bottom: var(--space-md);
+    padding-bottom: var(--space-sm);
 }
 
 .metricsGrid {
@@ -110,12 +133,8 @@
 }
 
 .metricItem strong {
-    font-size: var(--font-size-xl);
+    font-size: var(--font-size-2xl);
     color: var(--color-text-primary);
-}
-
-.metricsActions {
-    padding: 0 var(--space-lg) var(--space-md);
 }
 
 .metricsNotice {
@@ -237,6 +256,31 @@
     justify-content: space-between;
     gap: var(--space-md);
     font-size: var(--font-size-md);
+}
+
+.detailSection {
+    border: 1px solid rgba(229, 115, 115, 0.18);
+    border-radius: var(--radius-md);
+    padding: var(--space-sm) var(--space-md);
+    background: #fff;
+}
+
+.detailSummary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-sm);
+    font-weight: var(--font-weight-bold);
+    cursor: pointer;
+    list-style: none;
+}
+
+.detailSummary::-webkit-details-marker {
+    display: none;
+}
+
+.detailSummary::marker {
+    content: '';
 }
 
 .sectionDivider {
