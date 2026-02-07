@@ -85,6 +85,9 @@ type ClassroomItem = {
     grade?: number;
 };
 
+type SortKey = 'name' | 'memberNo' | 'lastActive' | 'progress' | 'createdAt';
+type ColumnKey = 'memberNo' | 'uid' | 'progress' | 'lastActive' | 'lastSection' | 'createdAt';
+
 function normalize(value: string) {
     return value.trim().toLowerCase();
 }
@@ -187,6 +190,16 @@ export function AdminPage() {
     const [selectedUserId, setSelectedUserId] = useState<string | null>(null);
     const [activityFilter, setActivityFilter] = useState<'all' | 'active7' | 'inactive30'>('all');
     const [progressFilter, setProgressFilter] = useState<'all' | 'zero' | 'low' | 'mid' | 'complete'>('all');
+    const [sortKey, setSortKey] = useState<SortKey>('lastActive');
+    const [sortDir, setSortDir] = useState<'asc' | 'desc'>('desc');
+    const [visibleColumns, setVisibleColumns] = useState<Record<ColumnKey, boolean>>({
+        memberNo: true,
+        uid: false,
+        progress: true,
+        lastActive: true,
+        lastSection: false,
+        createdAt: false,
+    });
     const [isEditingUser, setIsEditingUser] = useState(false);
     const [editDisplayName, setEditDisplayName] = useState('');
     const [editMemberNo, setEditMemberNo] = useState('');
@@ -598,6 +611,96 @@ export function AdminPage() {
         });
     }, [users, searchTerm, activityFilter, progressFilter]);
 
+    const sortedUsers = useMemo(() => {
+        const getSortValue = (user: AdminUser) => {
+            switch (sortKey) {
+                case 'name':
+                    return normalize(user.displayName ?? '');
+                case 'memberNo':
+                    return normalize(user.memberNo ?? '');
+                case 'lastActive':
+                    return user.stats?.lastActiveAt ? new Date(user.stats.lastActiveAt).getTime() : null;
+                case 'progress':
+                    return getProgressRatio(user.stats);
+                case 'createdAt':
+                    return user.createdAt ? new Date(user.createdAt).getTime() : null;
+                default:
+                    return null;
+            }
+        };
+
+        const compareValues = (a: AdminUser, b: AdminUser) => {
+            const aVal = getSortValue(a);
+            const bVal = getSortValue(b);
+            if (aVal === null || aVal === undefined) return 1;
+            if (bVal === null || bVal === undefined) return -1;
+            if (typeof aVal === 'string' && typeof bVal === 'string') {
+                const result = aVal.localeCompare(bVal, 'ja');
+                return sortDir === 'asc' ? result : -result;
+            }
+            const result = Number(aVal) - Number(bVal);
+            return sortDir === 'asc' ? result : -result;
+        };
+
+        return [...filteredUsers].sort(compareValues);
+    }, [filteredUsers, sortKey, sortDir]);
+
+    const dashboardStats = useMemo(() => {
+        let active7 = 0;
+        let inactive30 = 0;
+        let zeroProgress = 0;
+        let complete = 0;
+        let progressSum = 0;
+        let progressCount = 0;
+        const riskItems: Array<{ user: AdminUser; daysSince: number | null; ratio: number | null }> = [];
+        const recentItems: Array<{ user: AdminUser; daysSince: number | null; ratio: number | null }> = [];
+
+        users.forEach((user) => {
+            const daysSince = getDaysSince(user.stats?.lastActiveAt);
+            const ratio = getProgressRatio(user.stats);
+
+            if (daysSince !== null) {
+                if (daysSince <= 7) active7 += 1;
+                if (daysSince > 30) inactive30 += 1;
+                recentItems.push({ user, daysSince, ratio });
+            }
+
+            if (ratio !== null) {
+                if (ratio === 0) zeroProgress += 1;
+                if (ratio >= 1) complete += 1;
+                progressSum += Math.min(ratio, 1);
+                progressCount += 1;
+            }
+
+            if ((daysSince !== null && daysSince > 30) || ratio === 0) {
+                riskItems.push({ user, daysSince, ratio });
+            }
+        });
+
+        const avgProgress = progressCount ? Math.round((progressSum / progressCount) * 100) : null;
+        const atRiskUsers = riskItems
+            .sort((a, b) => {
+                const aScore = (a.ratio === 0 ? 1000 : 0) + (a.daysSince ?? 0);
+                const bScore = (b.ratio === 0 ? 1000 : 0) + (b.daysSince ?? 0);
+                return bScore - aScore;
+            })
+            .slice(0, 5);
+        const recentActiveUsers = recentItems
+            .sort((a, b) => (a.daysSince ?? 9999) - (b.daysSince ?? 9999))
+            .slice(0, 5);
+
+        return {
+            total: users.length,
+            active7,
+            inactive30,
+            zeroProgress,
+            complete,
+            avgProgress,
+            atRiskUsers,
+            recentActiveUsers,
+        };
+    }, [users]);
+
     const selectedUser = useMemo(() => {
         return filteredUsers.find((user) => user.uid === selectedUserId) ?? null;
     }, [filteredUsers, selectedUserId]);
@@ -687,6 +790,30 @@ export function AdminPage() {
 
     const handleBack = () => {
         navigate('/');
+    };
+
+    const handleResetFilters = () => {
+        setSearchTerm('');
+        setActivityFilter('all');
+        setProgressFilter('all');
+    };
+
+    const handleSort = (key: SortKey) => {
+        setSortKey((prev) => {
+            if (prev === key) {
+                setSortDir((dir) => (dir === 'asc' ? 'desc' : 'asc'));
+                return prev;
+            }
+            setSortDir('desc');
+            return key;
+        });
+    };
+
+    const toggleColumn = (key: ColumnKey) => {
+        setVisibleColumns((prev) => ({
+            ...prev,
+            [key]: !prev[key],
+        }));
     };
 
     const handleLogout = async () => {
@@ -1040,7 +1167,53 @@ export function AdminPage() {
                     </div>
                 </header>
 
-                <section className={styles.toolbar}>
+                <section className={styles.dashboard}>
+                    <div className={styles.sectionHeader}>
+                        <div>
+                            <h2 className={styles.sectionTitle}>運用サマリ</h2>
+                            <p className={styles.sectionSub}>KPIと学習リスクを素早く把握</p>
+                        </div>
+                        <div className={styles.sectionActions}>
+                            <Button variant="secondary" size="sm" onClick={loadUsageSummary} isLoading={usageLoading}>
+                                指標更新
+                            </Button>
+                            <Button variant="primary" size="sm" onClick={loadUsers} isLoading={loading}>
+                                ユーザー更新
+                            </Button>
+                        </div>
+                    </div>
+                    <div className={styles.kpiGrid}>
+                        <Card className={styles.kpiCard} variant="outlined">
+                            <div className={styles.kpiLabel}>総ユーザー</div>
+                            <div className={styles.kpiValue}>{formatNumber(dashboardStats.total)}</div>
+                            <div className={styles.kpiMeta}>アクティブ7日以内 {formatNumber(dashboardStats.active7)}</div>
+                        </Card>
+                        <Card className={styles.kpiCard} variant="outlined">
+                            <div className={styles.kpiLabel}>学習停滞</div>
+                            <div className={styles.kpiValue}>{formatNumber(dashboardStats.inactive30)}</div>
+                            <div className={styles.kpiMeta}>30日以上未学習</div>
+                        </Card>
+                        <Card className={styles.kpiCard} variant="outlined">
+                            <div className={styles.kpiLabel}>進捗0%</div>
+                            <div className={styles.kpiValue}>{formatNumber(dashboardStats.zeroProgress)}</div>
+                            <div className={styles.kpiMeta}>未着手ユーザー</div>
+                        </Card>
+                        <Card className={styles.kpiCard} variant="outlined">
+                            <div className={styles.kpiLabel}>完了率</div>
+                            <div className={styles.kpiValue}>{dashboardStats.avgProgress === null ? '—' : `${dashboardStats.avgProgress}%`}</div>
+                            <div className={styles.kpiMeta}>進捗あり {formatNumber(dashboardStats.complete)} 名が100%</div>
+                        </Card>
+                        <Card className={styles.kpiCard} variant="outlined">
+                            <div className={styles.kpiLabel}>組織</div>
+                            <div className={styles.kpiValue}>{orgLoading ? '—' : formatNumber(organizations.length)}</div>
+                            <div className={styles.kpiMeta}>クラス {classroomLoading ? '—' : formatNumber(classrooms.length)}</div>
+                        </Card>
+                        <Card className={styles.kpiCard} variant="outlined">
+                            <div className={styles.kpiLabel}>運用ログ</div>
+                            <div className={styles.kpiValue}>{usageLoading ? '…' : formatNumber(usage7d)}</div>
+                            <div className={styles.kpiMeta}>直近30日 {usageLoading ? '…' : formatNumber(usage30d)}</div>
+                        </Card>
+                    </div>
                     <Card className={styles.metricsCard} variant="outlined">
                         <div className={styles.listHeader}>運用指標（Admin 利用回数）</div>
                         {usageHidden ? (
@@ -1083,6 +1256,77 @@ export function AdminPage() {
                             </>
                         )}
                     </Card>
+                    <div className={styles.alertGrid}>
+                        <Card className={styles.alertCard} variant="outlined">
+                            <div className={styles.alertHeader}>要フォロー</div>
+                            <div className={styles.alertList}>
+                                {dashboardStats.atRiskUsers.length === 0 && (
+                                    <div className={styles.empty}>要フォローユーザーは見つかりませんでした。</div>
+                                )}
+                                {dashboardStats.atRiskUsers.map((item) => {
+                                    const reasons: string[] = [];
+                                    if (item.daysSince !== null && item.daysSince > 30) reasons.push('30日以上未学習');
+                                    if (item.ratio === 0) reasons.push('進捗0%');
+                                    return (
+                                        <button
+                                            key={item.user.uid}
+                                            type="button"
+                                            className={styles.alertItem}
+                                            onClick={() => setSelectedUserId(item.user.uid)}
+                                        >
+                                            <div>
+                                                <div className={styles.alertName}>{item.user.displayName}</div>
+                                                <div className={styles.alertMeta}>
+                                                    最終学習: {formatDateTime(item.user.stats?.lastActiveAt)}
+                                                </div>
+                                            </div>
+                                            <span className={styles.alertBadge}>{reasons.join(' / ') || '要確認'}</span>
+                                        </button>
+                                    );
+                                })}
+                            </div>
+                        </Card>
+                        <Card className={styles.alertCard} variant="outlined">
+                            <div className={styles.alertHeader}>最近の学習</div>
+                            <div className={styles.alertList}>
+                                {dashboardStats.recentActiveUsers.length === 0 && (
+                                    <div className={styles.empty}>最近の学習が見つかりませんでした。</div>
+                                )}
+                                {dashboardStats.recentActiveUsers.map((item) => (
+                                    <button
+                                        key={item.user.uid}
+                                        type="button"
+                                        className={styles.alertItem}
+                                        onClick={() => setSelectedUserId(item.user.uid)}
+                                    >
+                                        <div>
+                                            <div className={styles.alertName}>{item.user.displayName}</div>
+                                            <div className={styles.alertMeta}>
+                                                最終学習: {formatDateTime(item.user.stats?.lastActiveAt)}
+                                            </div>
+                                        </div>
+                                        <span className={styles.alertBadge}>
+                                            進捗 {formatProgress(item.user.stats?.clearedSectionsCount, item.user.stats?.totalSectionsCount)}
+                                        </span>
+                                    </button>
+                                ))}
+                            </div>
+                        </Card>
+                    </div>
+                </section>
+
+                <section className={styles.toolbar}>
+                    <div className={styles.sectionHeader}>
+                        <div>
+                            <h2 className={styles.sectionTitle}>ユーザー管理</h2>
+                            <p className={styles.sectionSub}>検索・フィルタで対象ユーザーを絞り込み</p>
+                        </div>
+                        <div className={styles.sectionActions}>
+                            <Button variant="secondary" size="sm" onClick={handleResetFilters}>
+                                フィルタ解除
+                            </Button>
+                        </div>
+                    </div>
                     <div className={styles.toolbarControls}>
                         <div className={styles.searchSection}>
                             <input
@@ -1166,10 +1410,60 @@ export function AdminPage() {
                                 </button>
                             </div>
                         </div>
+                        <div className={styles.filterSection}>
+                            <div className={styles.filterGroup}>
+                                <span className={styles.filterLabel}>表示列</span>
+                                <label className={styles.columnToggle}>
+                                    <input
+                                        type="checkbox"
+                                        checked={visibleColumns.memberNo}
+                                        onChange={() => toggleColumn('memberNo')}
+                                    />
+                                    会員番号
+                                </label>
+                                <label className={styles.columnToggle}>
+                                    <input
+                                        type="checkbox"
+                                        checked={visibleColumns.progress}
+                                        onChange={() => toggleColumn('progress')}
+                                    />
+                                    進捗
+                                </label>
+                                <label className={styles.columnToggle}>
+                                    <input
+                                        type="checkbox"
+                                        checked={visibleColumns.lastActive}
+                                        onChange={() => toggleColumn('lastActive')}
+                                    />
+                                    最終学習
+                                </label>
+                                <label className={styles.columnToggle}>
+                                    <input
+                                        type="checkbox"
+                                        checked={visibleColumns.lastSection}
+                                        onChange={() => toggleColumn('lastSection')}
+                                    />
+                                    直近セクション
+                                </label>
+                                <label className={styles.columnToggle}>
+                                    <input
+                                        type="checkbox"
+                                        checked={visibleColumns.createdAt}
+                                        onChange={() => toggleColumn('createdAt')}
+                                    />
+                                    作成日
+                                </label>
+                                <label className={styles.columnToggle}>
+                                    <input
+                                        type="checkbox"
+                                        checked={visibleColumns.uid}
+                                        onChange={() => toggleColumn('uid')}
+                                    />
+                                    UID
+                                </label>
+                            </div>
+                        </div>
                         <div className={styles.toolbarActions}>
-                            <Button variant="secondary" onClick={loadUsageSummary} isLoading={usageLoading}>
-                                指標更新
-                            </Button>
                             <Button variant="primary" onClick={loadUsers} isLoading={loading}>
                                 再読み込み
                             </Button>
@@ -1180,37 +1474,132 @@ export function AdminPage() {
                 <section className={styles.grid}>
                     <Card className={styles.listCard} variant="outlined" padding="none">
                         <div className={styles.listHeader}>ユーザー一覧</div>
-                        <div className={styles.list}>
+                        <div className={styles.tableWrap}>
                             {filteredUsers.length === 0 && (
                                 <div className={styles.empty}>該当ユーザーがいません。</div>
                             )}
-                            {filteredUsers.map((user) => {
-                                const active = user.uid === selectedUserId;
-                                const progressText = formatProgress(
-                                    user.stats?.clearedSectionsCount,
-                                    user.stats?.totalSectionsCount
-                                );
-                                const lastSection = user.stats?.lastSectionLabel || user.stats?.lastSectionId || '—';
-                                return (
-                                    <button
-                                        key={user.uid}
-                                        type="button"
-                                        className={`${styles.listItem} ${active ? styles.activeItem : ''}`}
-                                        onClick={() => setSelectedUserId(user.uid)}
-                                    >
-                                        <div className={styles.listItemHeader}>
-                                            <div className={styles.userName}>{user.displayName}</div>
-                                            <span className={styles.progressBadge}>進捗 {progressText}</span>
-                                        </div>
-                                        <div className={styles.userMetaRow}>
-                                            <span>最終学習: {formatDateTime(user.stats?.lastActiveAt)}</span>
-                                            <span>直近セクション: {lastSection}</span>
-                                        </div>
-                                        <div className={styles.userMeta}>UID: {user.uid}</div>
-                                        <div className={styles.userMeta}>会員番号: {user.memberNo ?? '—'}</div>
-                                    </button>
-                                );
-                            })}
+                            {filteredUsers.length > 0 && (
+                                <table className={styles.table}>
+                                    <thead>
+                                        <tr>
+                                            <th className={styles.th}>
+                                                <button
+                                                    type="button"
+                                                    className={styles.sortButton}
+                                                    onClick={() => handleSort('name')}
+                                                    aria-sort={sortKey === 'name' ? (sortDir === 'asc' ? 'ascending' : 'descending') : 'none'}
+                                                >
+                                                    表示名
+                                                    {sortKey === 'name' && (
+                                                        <span className={styles.sortIndicator}>{sortDir === 'asc' ? '▲' : '▼'}</span>
+                                                    )}
+                                                </button>
+                                            </th>
+                                            {visibleColumns.memberNo && (
+                                                <th className={styles.th}>
+                                                    <button
+                                                        type="button"
+                                                        className={styles.sortButton}
+                                                        onClick={() => handleSort('memberNo')}
+                                                        aria-sort={sortKey === 'memberNo' ? (sortDir === 'asc' ? 'ascending' : 'descending') : 'none'}
+                                                    >
+                                                        会員番号
+                                                        {sortKey === 'memberNo' && (
+                                                            <span className={styles.sortIndicator}>{sortDir === 'asc' ? '▲' : '▼'}</span>
+                                                        )}
+                                                    </button>
+                                                </th>
+                                            )}
+                                            {visibleColumns.progress && (
+                                                <th className={styles.th}>
+                                                    <button
+                                                        type="button"
+                                                        className={styles.sortButton}
+                                                        onClick={() => handleSort('progress')}
+                                                        aria-sort={sortKey === 'progress' ? (sortDir === 'asc' ? 'ascending' : 'descending') : 'none'}
+                                                    >
+                                                        進捗
+                                                        {sortKey === 'progress' && (
+                                                            <span className={styles.sortIndicator}>{sortDir === 'asc' ? '▲' : '▼'}</span>
+                                                        )}
+                                                    </button>
+                                                </th>
+                                            )}
+                                            {visibleColumns.lastActive && (
+                                                <th className={styles.th}>
+                                                    <button
+                                                        type="button"
+                                                        className={styles.sortButton}
+                                                        onClick={() => handleSort('lastActive')}
+                                                        aria-sort={sortKey === 'lastActive' ? (sortDir === 'asc' ? 'ascending' : 'descending') : 'none'}
+                                                    >
+                                                        最終学習
+                                                        {sortKey === 'lastActive' && (
+                                                            <span className={styles.sortIndicator}>{sortDir === 'asc' ? '▲' : '▼'}</span>
+                                                        )}
+                                                    </button>
+                                                </th>
+                                            )}
+                                            {visibleColumns.lastSection && <th className={styles.th}>直近セクション</th>}
+                                            {visibleColumns.createdAt && (
+                                                <th className={styles.th}>
+                                                    <button
+                                                        type="button"
+                                                        className={styles.sortButton}
+                                                        onClick={() => handleSort('createdAt')}
+                                                        aria-sort={sortKey === 'createdAt' ? (sortDir === 'asc' ? 'ascending' : 'descending') : 'none'}
+                                                    >
+                                                        作成日
+                                                        {sortKey === 'createdAt' && (
+                                                            <span className={styles.sortIndicator}>{sortDir === 'asc' ? '▲' : '▼'}</span>
+                                                        )}
+                                                    </button>
+                                                </th>
+                                            )}
+                                            {visibleColumns.uid && <th className={styles.th}>UID</th>}
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {sortedUsers.map((user) => {
+                                            const active = user.uid === selectedUserId;
+                                            const progressText = formatProgress(
+                                                user.stats?.clearedSectionsCount,
+                                                user.stats?.totalSectionsCount
+                                            );
+                                            const lastSection = user.stats?.lastSectionLabel || user.stats?.lastSectionId || '—';
+                                            return (
+                                                <tr
+                                                    key={user.uid}
+                                                    className={`${styles.tr} ${active ? styles.activeRow : ''}`}
+                                                    onClick={() => setSelectedUserId(user.uid)}
+                                                    role="button"
+                                                    tabIndex={0}
+                                                    onKeyDown={(event) => {
+                                                        if (event.key === 'Enter' || event.key === ' ') {
+                                                            event.preventDefault();
+                                                            setSelectedUserId(user.uid);
+                                                        }
+                                                    }}
+                                                >
+                                                    <td className={styles.tdPrimary}>{user.displayName}</td>
+                                                    {visibleColumns.memberNo && <td className={styles.td}>{user.memberNo ?? '—'}</td>}
+                                                    {visibleColumns.progress && (
+                                                        <td className={styles.td}>
+                                                            <span className={styles.progressBadge}>進捗 {progressText}</span>
+                                                        </td>
+                                                    )}
+                                                    {visibleColumns.lastActive && (
+                                                        <td className={styles.td}>{formatDateTime(user.stats?.lastActiveAt)}</td>
+                                                    )}
+                                                    {visibleColumns.lastSection && <td className={styles.td}>{lastSection}</td>}
+                                                    {visibleColumns.createdAt && <td className={styles.td}>{formatDate(user.createdAt)}</td>}
+                                                    {visibleColumns.uid && <td className={styles.tdMono}>{user.uid}</td>}
+                                                </tr>
+                                            );
+                                        })}
+                                    </tbody>
+                                </table>
+                            )}
                         </div>
                     </Card>
 
