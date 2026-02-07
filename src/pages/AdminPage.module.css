@@ -264,6 +264,14 @@
     font-size: var(--font-size-md);
 }
 
+.toggleField {
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+}
+
 .editTextarea {
     resize: vertical;
 }

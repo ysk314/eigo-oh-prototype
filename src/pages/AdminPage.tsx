@@ -30,6 +30,19 @@ type AdminUser = {
     memberNo?: string;
     createdAt?: string;
     stats?: AdminUserStats;
+    accountType?: 'guest' | 'consumer' | 'b2b2c';
+    orgId?: string;
+    classroomId?: string;
+    status?: 'active' | 'inactive' | 'archived' | 'pending';
+    billing?: {
+        plan: 'free' | 'paid';
+        status: 'active' | 'past_due' | 'canceled' | 'trial';
+    };
+    entitlements?: {
+        typing: boolean;
+        flashMentalMath: boolean;
+        reading: boolean;
+    };
 };
 
 type AdminUserStats = {
@@ -151,6 +164,17 @@ export function AdminPage() {
     const [editMemberNo, setEditMemberNo] = useState('');
     const [userSaving, setUserSaving] = useState(false);
     const [userEditError, setUserEditError] = useState<string | null>(null);
+    const [adminSaving, setAdminSaving] = useState(false);
+    const [adminEditError, setAdminEditError] = useState<string | null>(null);
+    const [adminAccountType, setAdminAccountType] = useState<'guest' | 'consumer' | 'b2b2c'>('consumer');
+    const [adminOrgId, setAdminOrgId] = useState('');
+    const [adminClassroomId, setAdminClassroomId] = useState('');
+    const [adminStatus, setAdminStatus] = useState<'active' | 'inactive' | 'archived' | 'pending'>('active');
+    const [adminBillingPlan, setAdminBillingPlan] = useState<'free' | 'paid'>('free');
+    const [adminBillingStatus, setAdminBillingStatus] = useState<'active' | 'past_due' | 'canceled' | 'trial'>('active');
+    const [adminEntTyping, setAdminEntTyping] = useState(true);
+    const [adminEntFlash, setAdminEntFlash] = useState(false);
+    const [adminEntReading, setAdminEntReading] = useState(false);
 
     const [memberProfiles, setMemberProfiles] = useState<MemberProfile[]>([]);
     const [memberProfilesLoading, setMemberProfilesLoading] = useState(false);
@@ -247,6 +271,19 @@ export function AdminPage() {
                     displayName?: string;
                     memberNo?: string | null;
                     createdAt?: unknown;
+                    accountType?: 'guest' | 'consumer' | 'b2b2c';
+                    orgId?: string | null;
+                    classroomId?: string | null;
+                    status?: 'active' | 'inactive' | 'archived' | 'pending';
+                    billing?: {
+                        plan?: 'free' | 'paid';
+                        status?: 'active' | 'past_due' | 'canceled' | 'trial';
+                    } | null;
+                    entitlements?: {
+                        typing?: boolean;
+                        flashMentalMath?: boolean;
+                        reading?: boolean;
+                    } | null;
                 };
                 const uid = data.uid ?? docSnap.id;
                 return {
@@ -254,6 +291,16 @@ export function AdminPage() {
                     displayName: data.displayName ?? '未設定',
                     memberNo: data.memberNo ?? undefined,
                     createdAt: parseTimestamp(data.createdAt),
+                    accountType: data.accountType ?? undefined,
+                    orgId: data.orgId ?? undefined,
+                    classroomId: data.classroomId ?? undefined,
+                    status: data.status ?? undefined,
+                    billing: data.billing ?? undefined,
+                    entitlements: {
+                        typing: data.entitlements?.typing ?? false,
+                        flashMentalMath: data.entitlements?.flashMentalMath ?? false,
+                        reading: data.entitlements?.reading ?? false,
+                    },
                     stats: statsMap.get(uid),
                 };
             });
@@ -411,12 +458,23 @@ export function AdminPage() {
             setEditMemberNo('');
             setIsEditingUser(false);
             setUserEditError(null);
+            setAdminEditError(null);
             return;
         }
         setEditDisplayName(selectedUser.displayName ?? '');
         setEditMemberNo(selectedUser.memberNo ?? '');
         setIsEditingUser(false);
         setUserEditError(null);
+        setAdminEditError(null);
+        setAdminAccountType(selectedUser.accountType ?? 'consumer');
+        setAdminOrgId(selectedUser.orgId ?? '');
+        setAdminClassroomId(selectedUser.classroomId ?? '');
+        setAdminStatus(selectedUser.status ?? 'active');
+        setAdminBillingPlan(selectedUser.billing?.plan ?? 'free');
+        setAdminBillingStatus(selectedUser.billing?.status ?? 'active');
+        setAdminEntTyping(selectedUser.entitlements?.typing ?? true);
+        setAdminEntFlash(selectedUser.entitlements?.flashMentalMath ?? false);
+        setAdminEntReading(selectedUser.entitlements?.reading ?? false);
     }, [selectedUser]);
 
     useEffect(() => {
@@ -485,6 +543,60 @@ export function AdminPage() {
         setEditMemberNo(selectedUser.memberNo ?? '');
         setIsEditingUser(false);
         setUserEditError(null);
+    };
+
+    const handleAdminSave = async () => {
+        if (!selectedUser) return;
+        setAdminSaving(true);
+        setAdminEditError(null);
+        try {
+            await setDoc(
+                doc(db, 'users', selectedUser.uid),
+                {
+                    accountType: adminAccountType,
+                    orgId: adminOrgId.trim() || null,
+                    classroomId: adminClassroomId.trim() || null,
+                    status: adminStatus,
+                    billing: {
+                        plan: adminBillingPlan,
+                        status: adminBillingStatus,
+                    },
+                    entitlements: {
+                        typing: adminEntTyping,
+                        flashMentalMath: adminEntFlash,
+                        reading: adminEntReading,
+                    },
+                    updatedAt: serverTimestamp(),
+                },
+                { merge: true }
+            );
+            setUsers((prev) =>
+                prev.map((item) =>
+                    item.uid === selectedUser.uid
+                        ? {
+                            ...item,
+                            accountType: adminAccountType,
+                            orgId: adminOrgId.trim() || undefined,
+                            classroomId: adminClassroomId.trim() || undefined,
+                            status: adminStatus,
+                            billing: {
+                                plan: adminBillingPlan,
+                                status: adminBillingStatus,
+                            },
+                            entitlements: {
+                                typing: adminEntTyping,
+                                flashMentalMath: adminEntFlash,
+                                reading: adminEntReading,
+                            },
+                        }
+                        : item
+                )
+            );
+        } catch {
+            setAdminEditError('管理者設定の保存に失敗しました。');
+        } finally {
+            setAdminSaving(false);
+        }
     };
 
     const handleProfileNew = () => {
@@ -870,6 +982,112 @@ export function AdminPage() {
                                             </Button>
                                         </div>
                                     )}
+                                </div>
+                                <div className={styles.sectionDivider} />
+                                <div className={styles.editSection}>
+                                    <div className={styles.editHeader}>
+                                        <span>管理者設定</span>
+                                    </div>
+                                    <label className={styles.editField}>
+                                        <span>アカウント種別</span>
+                                        <select
+                                            className={styles.editInput}
+                                            value={adminAccountType}
+                                            onChange={(event) => setAdminAccountType(event.target.value as 'guest' | 'consumer' | 'b2b2c')}
+                                        >
+                                            <option value="guest">guest</option>
+                                            <option value="consumer">consumer</option>
+                                            <option value="b2b2c">b2b2c</option>
+                                        </select>
+                                    </label>
+                                    <label className={styles.editField}>
+                                        <span>法人ID</span>
+                                        <input
+                                            className={styles.editInput}
+                                            type="text"
+                                            value={adminOrgId}
+                                            onChange={(event) => setAdminOrgId(event.target.value)}
+                                        />
+                                    </label>
+                                    <label className={styles.editField}>
+                                        <span>教室ID</span>
+                                        <input
+                                            className={styles.editInput}
+                                            type="text"
+                                            value={adminClassroomId}
+                                            onChange={(event) => setAdminClassroomId(event.target.value)}
+                                        />
+                                    </label>
+                                    <label className={styles.editField}>
+                                        <span>在籍ステータス</span>
+                                        <select
+                                            className={styles.editInput}
+                                            value={adminStatus}
+                                            onChange={(event) => setAdminStatus(event.target.value as 'active' | 'inactive' | 'archived' | 'pending')}
+                                        >
+                                            <option value="active">active</option>
+                                            <option value="inactive">inactive</option>
+                                            <option value="archived">archived</option>
+                                            <option value="pending">pending</option>
+                                        </select>
+                                    </label>
+                                    <label className={styles.editField}>
+                                        <span>課金プラン</span>
+                                        <select
+                                            className={styles.editInput}
+                                            value={adminBillingPlan}
+                                            onChange={(event) => setAdminBillingPlan(event.target.value as 'free' | 'paid')}
+                                        >
+                                            <option value="free">free</option>
+                                            <option value="paid">paid</option>
+                                        </select>
+                                    </label>
+                                    <label className={styles.editField}>
+                                        <span>課金状態</span>
+                                        <select
+                                            className={styles.editInput}
+                                            value={adminBillingStatus}
+                                            onChange={(event) => setAdminBillingStatus(event.target.value as 'active' | 'past_due' | 'canceled' | 'trial')}
+                                        >
+                                            <option value="active">active</option>
+                                            <option value="past_due">past_due</option>
+                                            <option value="canceled">canceled</option>
+                                            <option value="trial">trial</option>
+                                        </select>
+                                    </label>
+                                    <div className={styles.editField}>
+                                        <span>利用可能サービス</span>
+                                        <label className={styles.toggleField}>
+                                            <input
+                                                type="checkbox"
+                                                checked={adminEntTyping}
+                                                onChange={(event) => setAdminEntTyping(event.target.checked)}
+                                            />
+                                            <span>タイピング</span>
+                                        </label>
+                                        <label className={styles.toggleField}>
+                                            <input
+                                                type="checkbox"
+                                                checked={adminEntFlash}
+                                                onChange={(event) => setAdminEntFlash(event.target.checked)}
+                                            />
+                                            <span>暗算</span>
+                                        </label>
+                                        <label className={styles.toggleField}>
+                                            <input
+                                                type="checkbox"
+                                                checked={adminEntReading}
+                                                onChange={(event) => setAdminEntReading(event.target.checked)}
+                                            />
+                                            <span>読書</span>
+                                        </label>
+                                    </div>
+                                    {adminEditError && <div className={styles.error}>{adminEditError}</div>}
+                                    <div className={styles.editActions}>
+                                        <Button variant="primary" type="button" onClick={handleAdminSave} isLoading={adminSaving}>
+                                            管理者設定を保存
+                                        </Button>
+                                    </div>
                                 </div>
                             </div>
                         )}
