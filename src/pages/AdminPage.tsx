@@ -22,6 +22,7 @@ import { Card } from '@/components/Card';
 import { auth, db } from '@/firebase';
 import { logEvent } from '@/utils/analytics';
 import { saveMemberProfileTemplate, type MemberProfile } from '@/utils/memberProfiles';
+import { calculateGradeFromBirthDate } from '@/utils/grade';
 import styles from './AdminPage.module.css';
 
 type AdminUser = {
@@ -66,6 +67,24 @@ type AdminUserStats = {
     lastMode?: string;
     lastSectionId?: string;
     lastSectionLabel?: string;
+};
+
+type OrganizationType = 'school' | 'cram_school' | 'company' | 'other';
+
+type OrganizationItem = {
+    id: string;
+    name: string;
+    type: OrganizationType;
+    contactName?: string;
+    contactEmail?: string;
+    contactPhone?: string;
+};
+
+type ClassroomItem = {
+    id: string;
+    orgId: string;
+    name: string;
+    grade?: number;
 };
 
 function normalize(value: string) {
@@ -205,6 +224,28 @@ export function AdminPage() {
     const [profileNote, setProfileNote] = useState('');
     const [profileSaving, setProfileSaving] = useState(false);
     const [profileFormError, setProfileFormError] = useState<string | null>(null);
+
+    const [organizations, setOrganizations] = useState<OrganizationItem[]>([]);
+    const [orgLoading, setOrgLoading] = useState(false);
+    const [orgError, setOrgError] = useState<string | null>(null);
+    const [selectedOrgId, setSelectedOrgId] = useState<string | null>(null);
+    const [orgName, setOrgName] = useState('');
+    const [orgType, setOrgType] = useState<OrganizationType>('school');
+    const [orgContactName, setOrgContactName] = useState('');
+    const [orgContactEmail, setOrgContactEmail] = useState('');
+    const [orgContactPhone, setOrgContactPhone] = useState('');
+    const [orgSaving, setOrgSaving] = useState(false);
+    const [orgFormError, setOrgFormError] = useState<string | null>(null);
+
+    const [classrooms, setClassrooms] = useState<ClassroomItem[]>([]);
+    const [classroomLoading, setClassroomLoading] = useState(false);
+    const [classroomError, setClassroomError] = useState<string | null>(null);
+    const [selectedClassroomId, setSelectedClassroomId] = useState<string | null>(null);
+    const [classroomName, setClassroomName] = useState('');
+    const [classroomOrgId, setClassroomOrgId] = useState('');
+    const [classroomGrade, setClassroomGrade] = useState('');
+    const [classroomSaving, setClassroomSaving] = useState(false);
+    const [classroomFormError, setClassroomFormError] = useState<string | null>(null);
 
     const [usageLoading, setUsageLoading] = useState(false);
     const [usageError, setUsageError] = useState<string | null>(null);
@@ -398,6 +439,68 @@ export function AdminPage() {
         }
     }, [selectedMemberNo]);
 
+    const loadOrganizations = useCallback(async () => {
+        setOrgLoading(true);
+        setOrgError(null);
+        try {
+            const snap = await getDocs(collection(db, 'organizations'));
+            const items: OrganizationItem[] = snap.docs.map((docSnap) => {
+                const data = docSnap.data() as {
+                    name?: string;
+                    type?: OrganizationType;
+                    contact?: { name?: string; email?: string; phone?: string };
+                };
+                return {
+                    id: docSnap.id,
+                    name: data.name ?? '未設定',
+                    type: data.type ?? 'other',
+                    contactName: data.contact?.name ?? undefined,
+                    contactEmail: data.contact?.email ?? undefined,
+                    contactPhone: data.contact?.phone ?? undefined,
+                };
+            });
+            items.sort((a, b) => a.name.localeCompare(b.name, 'ja'));
+            setOrganizations(items);
+            if (!selectedOrgId && items.length > 0) {
+                setSelectedOrgId(items[0].id);
+            }
+        } catch {
+            setOrgError('法人情報の取得に失敗しました。');
+        } finally {
+            setOrgLoading(false);
+        }
+    }, [selectedOrgId]);
+
+    const loadClassrooms = useCallback(async () => {
+        setClassroomLoading(true);
+        setClassroomError(null);
+        try {
+            const snap = await getDocs(collection(db, 'classrooms'));
+            const items: ClassroomItem[] = snap.docs.map((docSnap) => {
+                const data = docSnap.data() as {
+                    orgId?: string;
+                    name?: string;
+                    grade?: number | null;
+                };
+                return {
+                    id: docSnap.id,
+                    orgId: data.orgId ?? '',
+                    name: data.name ?? '未設定',
+                    grade: data.grade ?? undefined,
+                };
+            });
+            items.sort((a, b) => a.name.localeCompare(b.name, 'ja'));
+            setClassrooms(items);
+            if (!selectedClassroomId && items.length > 0) {
+                setSelectedClassroomId(items[0].id);
+            }
+        } catch {
+            setClassroomError('教室情報の取得に失敗しました。');
+        } finally {
+            setClassroomLoading(false);
+        }
+    }, [selectedClassroomId]);
+
     const loadUsageSummary = useCallback(async () => {
         setUsageLoading(true);
         setUsageError(null);
@@ -455,6 +558,16 @@ export function AdminPage() {
         if (!isAdmin) return;
         void loadUsageSummary();
     }, [isAdmin, loadUsageSummary]);
+
+    useEffect(() => {
+        if (!isAdmin) return;
+        void loadOrganizations();
+    }, [isAdmin, loadOrganizations]);
+
+    useEffect(() => {
+        if (!isAdmin) return;
+        void loadClassrooms();
+    }, [isAdmin, loadClassrooms]);
 
     const filteredUsers = useMemo(() => {
         const keyword = normalize(searchTerm);
@@ -542,6 +655,40 @@ export function AdminPage() {
         setProfileNote(profile?.note ?? '');
         setProfileFormError(null);
     }, [selectedMemberNo, memberProfiles]);
+
+    useEffect(() => {
+        if (!selectedOrgId) {
+            setOrgName('');
+            setOrgType('school');
+            setOrgContactName('');
+            setOrgContactEmail('');
+            setOrgContactPhone('');
+            setOrgFormError(null);
+            return;
+        }
+        const org = organizations.find((item) => item.id === selectedOrgId);
+        setOrgName(org?.name ?? '');
+        setOrgType(org?.type ?? 'other');
+        setOrgContactName(org?.contactName ?? '');
+        setOrgContactEmail(org?.contactEmail ?? '');
+        setOrgContactPhone(org?.contactPhone ?? '');
+        setOrgFormError(null);
+    }, [selectedOrgId, organizations]);
+
+    useEffect(() => {
+        if (!selectedClassroomId) {
+            setClassroomName('');
+            setClassroomOrgId('');
+            setClassroomGrade('');
+            setClassroomFormError(null);
+            return;
+        }
+        const classroom = classrooms.find((item) => item.id === selectedClassroomId);
+        setClassroomName(classroom?.name ?? '');
+        setClassroomOrgId(classroom?.orgId ?? '');
+        setClassroomGrade(classroom?.grade !== undefined ? String(classroom.grade) : '');
+        setClassroomFormError(null);
+    }, [selectedClassroomId, classrooms]);
 
     const handleBack = () => {
         navigate('/');
@@ -703,6 +850,99 @@ export function AdminPage() {
         } finally {
             setProfileSaving(false);
         }
+    };
+
+    const handleOrgNew = () => {
+        setSelectedOrgId(null);
+        setOrgName('');
+        setOrgType('school');
+        setOrgContactName('');
+        setOrgContactEmail('');
+        setOrgContactPhone('');
+        setOrgFormError(null);
+    };
+
+    const handleOrgSave = async () => {
+        const name = orgName.trim();
+        if (!name) {
+            setOrgFormError('法人名を入力してください。');
+            return;
+        }
+        setOrgSaving(true);
+        setOrgFormError(null);
+        try {
+            const id = selectedOrgId ?? doc(collection(db, 'organizations')).id;
+            await setDoc(
+                doc(db, 'organizations', id),
+                {
+                    name,
+                    type: orgType,
+                    contact: {
+                        name: orgContactName.trim() || null,
+                        email: orgContactEmail.trim() || null,
+                        phone: orgContactPhone.trim() || null,
+                    },
+                    updatedAt: serverTimestamp(),
+                },
+                { merge: true }
+            );
+            await loadOrganizations();
+            setSelectedOrgId(id);
+        } catch {
+            setOrgFormError('法人情報の保存に失敗しました。');
+        } finally {
+            setOrgSaving(false);
+        }
+    };
+
+    const handleClassroomNew = () => {
+        setSelectedClassroomId(null);
+        setClassroomName('');
+        setClassroomOrgId('');
+        setClassroomGrade('');
+        setClassroomFormError(null);
+    };
+
+    const handleClassroomSave = async () => {
+        const name = classroomName.trim();
+        const orgId = classroomOrgId.trim();
+        if (!name) {
+            setClassroomFormError('教室名を入力してください。');
+            return;
+        }
+        if (!orgId) {
+            setClassroomFormError('法人IDを入力してください。');
+            return;
+        }
+        setClassroomSaving(true);
+        setClassroomFormError(null);
+        try {
+            const id = selectedClassroomId ?? doc(collection(db, 'classrooms')).id;
+            await setDoc(
+                doc(db, 'classrooms', id),
+                {
+                    orgId,
+                    name,
+                    grade: classroomGrade.trim() ? Number(classroomGrade) : null,
+                    updatedAt: serverTimestamp(),
+                },
+                { merge: true }
+            );
+            await loadClassrooms();
+            setSelectedClassroomId(id);
+        } catch {
+            setClassroomFormError('教室情報の保存に失敗しました。');
+        } finally {
+            setClassroomSaving(false);
+        }
+    };
+
+    const handleAutoGrade = () => {
+        if (!adminBirthDate) return;
+        const result = calculateGradeFromBirthDate(adminBirthDate);
+        if (!result) return;
+        setAdminGrade(result.grade ? String(result.grade) : '');
+        setAdminSchoolType(result.schoolType);
     };
 
     const handleAdminLogin = async (event: FormEvent<HTMLFormElement>) => {
@@ -1118,6 +1358,11 @@ export function AdminPage() {
                                             onChange={(event) => setAdminBirthDate(event.target.value)}
                                         />
                                     </label>
+                                    <div className={styles.editActions}>
+                                        <Button variant="secondary" type="button" onClick={handleAutoGrade}>
+                                            学年を自動計算
+                                        </Button>
+                                    </div>
                                     <label className={styles.editField}>
                                         <span>性別</span>
                                         <select
@@ -1276,6 +1521,189 @@ export function AdminPage() {
                             </div>
                         )}
                     </Card>
+                </section>
+
+                <section className={styles.templateSection}>
+                    <header className={styles.templateHeader}>
+                        <div>
+                            <h2 className={styles.templateTitle}>法人・教室マスタ</h2>
+                            <p className={styles.subtitle}>法人と教室の基本情報を管理します。</p>
+                        </div>
+                        <div className={styles.actions}>
+                            <Button variant="secondary" type="button" onClick={handleOrgNew}>
+                                法人新規
+                            </Button>
+                            <Button variant="secondary" type="button" onClick={handleClassroomNew}>
+                                教室新規
+                            </Button>
+                            <Button variant="secondary" type="button" onClick={loadOrganizations} isLoading={orgLoading}>
+                                法人更新
+                            </Button>
+                            <Button variant="secondary" type="button" onClick={loadClassrooms} isLoading={classroomLoading}>
+                                教室更新
+                            </Button>
+                        </div>
+                    </header>
+
+                    <div className={styles.templateGrid}>
+                        <Card className={styles.listCard} variant="outlined" padding="none">
+                            <div className={styles.listHeader}>法人一覧</div>
+                            <div className={styles.list}>
+                                {orgError && <div className={styles.error}>{orgError}</div>}
+                                {!orgError && organizations.length === 0 && (
+                                    <div className={styles.empty}>法人がありません。</div>
+                                )}
+                                {organizations.map((org) => {
+                                    const active = org.id === selectedOrgId;
+                                    return (
+                                        <button
+                                            key={org.id}
+                                            type="button"
+                                            className={`${styles.listItem} ${active ? styles.activeItem : ''}`}
+                                            onClick={() => setSelectedOrgId(org.id)}
+                                        >
+                                            <div className={styles.listItemHeader}>
+                                                <div className={styles.userName}>{org.name}</div>
+                                            </div>
+                                            <div className={styles.userMeta}>種別: {org.type}</div>
+                                            <div className={styles.userMeta}>ID: {org.id}</div>
+                                        </button>
+                                    );
+                                })}
+                            </div>
+                        </Card>
+
+                        <Card className={styles.detailCard} variant="outlined">
+                            <div className={styles.listHeader}>法人編集</div>
+                            <div className={styles.detailBody}>
+                                <label className={styles.editField}>
+                                    <span>法人名</span>
+                                    <input
+                                        className={styles.editInput}
+                                        type="text"
+                                        value={orgName}
+                                        onChange={(event) => setOrgName(event.target.value)}
+                                    />
+                                </label>
+                                <label className={styles.editField}>
+                                    <span>種別</span>
+                                    <select
+                                        className={styles.editInput}
+                                        value={orgType}
+                                        onChange={(event) => setOrgType(event.target.value as OrganizationType)}
+                                    >
+                                        <option value="school">school</option>
+                                        <option value="cram_school">cram_school</option>
+                                        <option value="company">company</option>
+                                        <option value="other">other</option>
+                                    </select>
+                                </label>
+                                <label className={styles.editField}>
+                                    <span>担当者名</span>
+                                    <input
+                                        className={styles.editInput}
+                                        type="text"
+                                        value={orgContactName}
+                                        onChange={(event) => setOrgContactName(event.target.value)}
+                                    />
+                                </label>
+                                <label className={styles.editField}>
+                                    <span>連絡先メール</span>
+                                    <input
+                                        className={styles.editInput}
+                                        type="email"
+                                        value={orgContactEmail}
+                                        onChange={(event) => setOrgContactEmail(event.target.value)}
+                                    />
+                                </label>
+                                <label className={styles.editField}>
+                                    <span>連絡先電話</span>
+                                    <input
+                                        className={styles.editInput}
+                                        type="text"
+                                        value={orgContactPhone}
+                                        onChange={(event) => setOrgContactPhone(event.target.value)}
+                                    />
+                                </label>
+                                {orgFormError && <div className={styles.error}>{orgFormError}</div>}
+                                <div className={styles.editActions}>
+                                    <Button variant="primary" type="button" onClick={handleOrgSave} isLoading={orgSaving}>
+                                        保存
+                                    </Button>
+                                </div>
+                            </div>
+                        </Card>
+                    </div>
+
+                    <div className={styles.templateGrid}>
+                        <Card className={styles.listCard} variant="outlined" padding="none">
+                            <div className={styles.listHeader}>教室一覧</div>
+                            <div className={styles.list}>
+                                {classroomError && <div className={styles.error}>{classroomError}</div>}
+                                {!classroomError && classrooms.length === 0 && (
+                                    <div className={styles.empty}>教室がありません。</div>
+                                )}
+                                {classrooms.map((room) => {
+                                    const active = room.id === selectedClassroomId;
+                                    return (
+                                        <button
+                                            key={room.id}
+                                            type="button"
+                                            className={`${styles.listItem} ${active ? styles.activeItem : ''}`}
+                                            onClick={() => setSelectedClassroomId(room.id)}
+                                        >
+                                            <div className={styles.listItemHeader}>
+                                                <div className={styles.userName}>{room.name}</div>
+                                            </div>
+                                            <div className={styles.userMeta}>法人ID: {room.orgId}</div>
+                                            <div className={styles.userMeta}>ID: {room.id}</div>
+                                        </button>
+                                    );
+                                })}
+                            </div>
+                        </Card>
+
+                        <Card className={styles.detailCard} variant="outlined">
+                            <div className={styles.listHeader}>教室編集</div>
+                            <div className={styles.detailBody}>
+                                <label className={styles.editField}>
+                                    <span>教室名</span>
+                                    <input
+                                        className={styles.editInput}
+                                        type="text"
+                                        value={classroomName}
+                                        onChange={(event) => setClassroomName(event.target.value)}
+                                    />
+                                </label>
+                                <label className={styles.editField}>
+                                    <span>法人ID</span>
+                                    <input
+                                        className={styles.editInput}
+                                        type="text"
+                                        value={classroomOrgId}
+                                        onChange={(event) => setClassroomOrgId(event.target.value)}
+                                    />
+                                </label>
+                                <label className={styles.editField}>
+                                    <span>学年</span>
+                                    <input
+                                        className={styles.editInput}
+                                        type="number"
+                                        min={1}
+                                        max={12}
+                                        value={classroomGrade}
+                                        onChange={(event) => setClassroomGrade(event.target.value)}
+                                    />
+                                </label>
+                                {classroomFormError && <div className={styles.error}>{classroomFormError}</div>}
+                                <div className={styles.editActions}>
+                                    <Button variant="primary" type="button" onClick={handleClassroomSave} isLoading={classroomSaving}>
+                                        保存
+                                    </Button>
+                                </div>
+                            </div>
+                        </Card>
+                    </div>
                 </section>
 
                 <section className={styles.templateSection}>
