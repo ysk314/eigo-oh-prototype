@@ -5,12 +5,14 @@
 import { Course, Part, Question, Section } from '@/types';
 import { courseStructure as aiCanCourse, questions as aiCanQuestions } from './courses/ai-can';
 import { courseStructure as getThroughCourse, questions as getThroughQuestions } from './courses/getthrough';
+import { courseStructure as scoreUpEast2Course, questions as scoreUpEast2Questions } from './courses/score-up-east2';
 
-export const courses: Course[] = [aiCanCourse, getThroughCourse];
+export const courses: Course[] = [aiCanCourse, getThroughCourse, scoreUpEast2Course];
 
 export const questions: Question[] = [
     ...aiCanQuestions,
     ...getThroughQuestions,
+    ...scoreUpEast2Questions,
 ];
 
 // Backward-compatible single-course export
