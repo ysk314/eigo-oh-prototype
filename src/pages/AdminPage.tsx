@@ -295,7 +295,9 @@ export function AdminPage() {
                     orgId: data.orgId ?? undefined,
                     classroomId: data.classroomId ?? undefined,
                     status: data.status ?? undefined,
-                    billing: data.billing ?? undefined,
+                    billing: data.billing?.plan && data.billing?.status
+                        ? { plan: data.billing.plan, status: data.billing.status }
+                        : undefined,
                     entitlements: {
                         typing: data.entitlements?.typing ?? false,
                         flashMentalMath: data.entitlements?.flashMentalMath ?? false,
