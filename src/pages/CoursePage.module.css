@@ -121,7 +121,7 @@
 
 /* Sidebar */
 .sidebar {
-    width: 320px;
+    width: 400px;
     background: linear-gradient(180deg, var(--color-primary-soft) 0%, var(--color-bg-gradient-end) 100%);
     border-right: 1px solid var(--color-primary-soft);
     flex-shrink: 0;
@@ -190,11 +190,13 @@
 .navLabel {
     font-size: var(--font-size-base);
     font-weight: var(--font-weight-semibold);
+    white-space: nowrap;
 }
 
 .navCount {
     font-size: var(--font-size-sm);
     opacity: 0.8;
+    white-space: nowrap;
 }
 
 /* Main */
