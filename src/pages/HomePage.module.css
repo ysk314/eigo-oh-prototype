@@ -403,6 +403,13 @@
     color: var(--color-text-secondary);
 }
 
+.accordionBody {
+    padding-top: var(--space-md);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+}
+
 .accordionSummary::-webkit-details-marker {
     display: none;
 }
@@ -441,10 +448,6 @@
     .accordionSummary {
         padding-bottom: var(--space-sm);
         border-bottom: 1px solid var(--color-bg-base);
-    }
-
-    .accordion > *:not(summary) {
-        padding-top: var(--space-md);
     }
 }
 

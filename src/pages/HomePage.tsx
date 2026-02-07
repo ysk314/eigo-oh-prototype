@@ -238,30 +238,6 @@ export function HomePage() {
                         </Card>
 
                         <Card className={styles.dashboardCard} padding="lg">
-                            <div className={styles.sectionHeader}>
-                                <h2 className={styles.sectionTitle}>クイックスタート</h2>
-                                <span className={styles.sectionNote}>次の学習にすぐ移動</span>
-                            </div>
-                            <div className={styles.quickActions}>
-                                <Button
-                                    variant="primary"
-                                    onClick={() => {
-                                        if (recentSections[0]) {
-                                            handleOpenRecentSection(recentSections[0]);
-                                        } else if (courses[0]) {
-                                            handleCourseSelect(courses[0].id);
-                                        }
-                                    }}
-                                >
-                                    {recentSections[0] ? '前回のセクションへ' : '最初のコースへ'}
-                                </Button>
-                                <Button variant="secondary" onClick={() => handleCourseSelect(courses[0].id)}>
-                                    コース一覧へ
-                                </Button>
-                            </div>
-                        </Card>
-
-                        <Card className={styles.dashboardCard} padding="lg">
                             <details
                                 className={styles.accordion}
                                 open={recentOpen}
@@ -274,7 +250,8 @@ export function HomePage() {
                                     </span>
                                 </summary>
                                 {latestSession ? (
-                                    <div className={styles.sessionSummary}>
+                                    <div className={styles.accordionBody}>
+                                        <div className={styles.sessionSummary}>
                                         <div>
                                             <span className={styles.sessionLabel}>ランク</span>
                                             <span className={styles.sessionValue}>{latestSession.rank}</span>
@@ -299,7 +276,7 @@ export function HomePage() {
                                             <span className={styles.sessionLabel}>モード</span>
                                             <span className={styles.sessionValue}>{latestSession.mode === 'typing' ? 'タイピング' : '選択'}</span>
                                         </div>
-                                    </div>
+                                        </div>
                                 ) : (
                                     <p className={styles.emptyText}>まだセッションがありません。</p>
                                 )}
@@ -335,6 +312,7 @@ export function HomePage() {
                                 ) : (
                                     <p className={styles.emptyText}>まだ挑戦履歴がありません。</p>
                                 )}
+                                </div>
                             </details>
                         </Card>
                     </div>
@@ -376,20 +354,22 @@ export function HomePage() {
                                     <span>コースを選択</span>
                                     <span className={styles.sectionNote}>学習を開始</span>
                                 </summary>
-                                <div className={styles.courseList}>
-                                    {courses.map((course) => (
-                                        <div
-                                            key={course.id}
-                                            className={styles.courseItem}
-                                            onClick={() => handleCourseSelect(course.id)}
-                                        >
-                                            <div className={styles.courseIcon}>📚</div>
-                                            <div className={styles.courseInfo}>
-                                                <h3 className={styles.courseName}>{course.name}</h3>
+                                <div className={styles.accordionBody}>
+                                    <div className={styles.courseList}>
+                                        {courses.map((course) => (
+                                            <div
+                                                key={course.id}
+                                                className={styles.courseItem}
+                                                onClick={() => handleCourseSelect(course.id)}
+                                            >
+                                                <div className={styles.courseIcon}>📚</div>
+                                                <div className={styles.courseInfo}>
+                                                    <h3 className={styles.courseName}>{course.name}</h3>
+                                                </div>
+                                                <div className={styles.arrow}>→</div>
                                             </div>
-                                            <div className={styles.arrow}>→</div>
-                                        </div>
-                                    ))}
+                                        ))}
+                                    </div>
                                 </div>
                             </details>
                         </Card>
