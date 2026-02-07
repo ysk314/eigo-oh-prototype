@@ -13,8 +13,6 @@ import {
     serverTimestamp,
     query,
     where,
-    orderBy,
-    Timestamp,
 } from 'firebase/firestore';
 import { onAuthStateChanged, signInWithEmailAndPassword, signOut, type User } from 'firebase/auth';
 import { Button } from '@/components/Button';
@@ -510,9 +508,7 @@ export function AdminPage() {
             const start30 = new Date(todayStart.getTime() - 29 * 86400000);
             const usageQuery = query(
                 collection(db, 'analytics_events'),
-                where('eventType', '==', 'admin_users_loaded'),
-                where('createdAt', '>=', Timestamp.fromDate(start30)),
-                orderBy('createdAt', 'asc')
+                where('eventType', '==', 'admin_users_loaded')
             );
             const snap = await getDocs(usageQuery);
 
@@ -522,7 +518,8 @@ export function AdminPage() {
             let count30d = 0;
 
             snap.forEach((docSnap) => {
-                const data = docSnap.data() as { createdAt?: { toDate?: () => Date } | null };
+                const data = docSnap.data() as { createdAt?: { toDate?: () => Date } | null; eventType?: string };
+                if (data.eventType !== 'admin_users_loaded') return;
                 const createdAt = data.createdAt?.toDate ? data.createdAt.toDate() : null;
                 if (!createdAt) return;
                 const diff = diffDaysFromToday(createdAt, now);
