@@ -51,6 +51,29 @@
     color: var(--color-text-secondary);
 }
 
+.loginMapRow {
+    margin-top: var(--space-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-sm);
+    flex-wrap: wrap;
+}
+
+.loginMapStatus {
+    font-size: var(--font-size-xs);
+    color: var(--color-primary);
+    background: rgba(229, 115, 115, 0.16);
+    padding: 2px 8px;
+    border-radius: 999px;
+}
+
+.loginMapNote {
+    margin-top: var(--space-xs);
+    font-size: var(--font-size-xs);
+    color: var(--color-text-muted);
+}
+
 .backButton {
     margin-top: var(--space-md);
 }
