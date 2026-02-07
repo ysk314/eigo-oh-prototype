@@ -43,6 +43,17 @@ type AdminUser = {
         flashMentalMath: boolean;
         reading: boolean;
     };
+    name?: {
+        family?: string;
+        given?: string;
+    };
+    birthDate?: string;
+    gender?: 'male' | 'female' | 'other' | 'undisclosed';
+    schoolType?: 'elementary' | 'junior' | 'high' | 'other';
+    grade?: number | null;
+    timezone?: string;
+    enrollmentDate?: string;
+    notes?: string;
 };
 
 type AdminUserStats = {
@@ -175,6 +186,15 @@ export function AdminPage() {
     const [adminEntTyping, setAdminEntTyping] = useState(true);
     const [adminEntFlash, setAdminEntFlash] = useState(false);
     const [adminEntReading, setAdminEntReading] = useState(false);
+    const [adminFamilyName, setAdminFamilyName] = useState('');
+    const [adminGivenName, setAdminGivenName] = useState('');
+    const [adminBirthDate, setAdminBirthDate] = useState('');
+    const [adminGender, setAdminGender] = useState<'male' | 'female' | 'other' | 'undisclosed'>('undisclosed');
+    const [adminSchoolType, setAdminSchoolType] = useState<'elementary' | 'junior' | 'high' | 'other'>('other');
+    const [adminGrade, setAdminGrade] = useState('');
+    const [adminTimezone, setAdminTimezone] = useState('');
+    const [adminEnrollmentDate, setAdminEnrollmentDate] = useState('');
+    const [adminNotes, setAdminNotes] = useState('');
 
     const [memberProfiles, setMemberProfiles] = useState<MemberProfile[]>([]);
     const [memberProfilesLoading, setMemberProfilesLoading] = useState(false);
@@ -285,6 +305,17 @@ export function AdminPage() {
                         flashMentalMath?: boolean;
                         reading?: boolean;
                     } | null;
+                    name?: {
+                        family?: string | null;
+                        given?: string | null;
+                    };
+                    birthDate?: string | null;
+                    gender?: 'male' | 'female' | 'other' | 'undisclosed' | null;
+                    schoolType?: 'elementary' | 'junior' | 'high' | 'other' | null;
+                    grade?: number | null;
+                    timezone?: string | null;
+                    enrollmentDate?: string | null;
+                    notes?: string | null;
                 };
                 const uid = data.uid ?? docSnap.id;
                 return {
@@ -304,6 +335,14 @@ export function AdminPage() {
                         flashMentalMath: data.entitlements?.flashMentalMath ?? false,
                         reading: data.entitlements?.reading ?? false,
                     },
+                    name: data.name ? { family: data.name.family ?? undefined, given: data.name.given ?? undefined } : undefined,
+                    birthDate: data.birthDate ?? undefined,
+                    gender: data.gender ?? undefined,
+                    schoolType: data.schoolType ?? undefined,
+                    grade: data.grade ?? undefined,
+                    timezone: data.timezone ?? undefined,
+                    enrollmentDate: data.enrollmentDate ?? undefined,
+                    notes: data.notes ?? undefined,
                     stats: statsMap.get(uid),
                 };
             });
@@ -478,6 +517,15 @@ export function AdminPage() {
         setAdminEntTyping(selectedUser.entitlements?.typing ?? true);
         setAdminEntFlash(selectedUser.entitlements?.flashMentalMath ?? false);
         setAdminEntReading(selectedUser.entitlements?.reading ?? false);
+        setAdminFamilyName(selectedUser.name?.family ?? '');
+        setAdminGivenName(selectedUser.name?.given ?? '');
+        setAdminBirthDate(selectedUser.birthDate ?? '');
+        setAdminGender(selectedUser.gender ?? 'undisclosed');
+        setAdminSchoolType(selectedUser.schoolType ?? 'other');
+        setAdminGrade(selectedUser.grade !== undefined && selectedUser.grade !== null ? String(selectedUser.grade) : '');
+        setAdminTimezone(selectedUser.timezone ?? '');
+        setAdminEnrollmentDate(selectedUser.enrollmentDate ?? '');
+        setAdminNotes(selectedUser.notes ?? '');
     }, [selectedUser]);
 
     useEffect(() => {
@@ -569,6 +617,17 @@ export function AdminPage() {
                         flashMentalMath: adminEntFlash,
                         reading: adminEntReading,
                     },
+                    name: {
+                        family: adminFamilyName.trim() || null,
+                        given: adminGivenName.trim() || null,
+                    },
+                    birthDate: adminBirthDate.trim() || null,
+                    gender: adminGender,
+                    schoolType: adminSchoolType,
+                    grade: adminGrade.trim() ? Number(adminGrade) : null,
+                    timezone: adminTimezone.trim() || null,
+                    enrollmentDate: adminEnrollmentDate.trim() || null,
+                    notes: adminNotes.trim() || null,
                     updatedAt: serverTimestamp(),
                 },
                 { merge: true }
@@ -591,6 +650,17 @@ export function AdminPage() {
                                 flashMentalMath: adminEntFlash,
                                 reading: adminEntReading,
                             },
+                            name: {
+                                family: adminFamilyName.trim() || undefined,
+                                given: adminGivenName.trim() || undefined,
+                            },
+                            birthDate: adminBirthDate.trim() || undefined,
+                            gender: adminGender,
+                            schoolType: adminSchoolType,
+                            grade: adminGrade.trim() ? Number(adminGrade) : undefined,
+                            timezone: adminTimezone.trim() || undefined,
+                            enrollmentDate: adminEnrollmentDate.trim() || undefined,
+                            notes: adminNotes.trim() || undefined,
                         }
                         : item
                 )
@@ -1020,6 +1090,99 @@ export function AdminPage() {
                                             <option value="consumer">consumer</option>
                                             <option value="b2b2c">b2b2c</option>
                                         </select>
+                                    </label>
+                                    <label className={styles.editField}>
+                                        <span>姓</span>
+                                        <input
+                                            className={styles.editInput}
+                                            type="text"
+                                            value={adminFamilyName}
+                                            onChange={(event) => setAdminFamilyName(event.target.value)}
+                                        />
+                                    </label>
+                                    <label className={styles.editField}>
+                                        <span>名</span>
+                                        <input
+                                            className={styles.editInput}
+                                            type="text"
+                                            value={adminGivenName}
+                                            onChange={(event) => setAdminGivenName(event.target.value)}
+                                        />
+                                    </label>
+                                    <label className={styles.editField}>
+                                        <span>生年月日</span>
+                                        <input
+                                            className={styles.editInput}
+                                            type="date"
+                                            value={adminBirthDate}
+                                            onChange={(event) => setAdminBirthDate(event.target.value)}
+                                        />
+                                    </label>
+                                    <label className={styles.editField}>
+                                        <span>性別</span>
+                                        <select
+                                            className={styles.editInput}
+                                            value={adminGender}
+                                            onChange={(event) => setAdminGender(event.target.value as 'male' | 'female' | 'other' | 'undisclosed')}
+                                        >
+                                            <option value="undisclosed">undisclosed</option>
+                                            <option value="male">male</option>
+                                            <option value="female">female</option>
+                                            <option value="other">other</option>
+                                        </select>
+                                    </label>
+                                    <label className={styles.editField}>
+                                        <span>学校種別</span>
+                                        <select
+                                            className={styles.editInput}
+                                            value={adminSchoolType}
+                                            onChange={(event) => setAdminSchoolType(event.target.value as 'elementary' | 'junior' | 'high' | 'other')}
+                                        >
+                                            <option value="elementary">elementary</option>
+                                            <option value="junior">junior</option>
+                                            <option value="high">high</option>
+                                            <option value="other">other</option>
+                                        </select>
+                                    </label>
+                                    <label className={styles.editField}>
+                                        <span>学年</span>
+                                        <input
+                                            className={styles.editInput}
+                                            type="number"
+                                            min={1}
+                                            max={12}
+                                            value={adminGrade}
+                                            onChange={(event) => setAdminGrade(event.target.value)}
+                                            placeholder="例: 3"
+                                        />
+                                    </label>
+                                    <label className={styles.editField}>
+                                        <span>タイムゾーン</span>
+                                        <input
+                                            className={styles.editInput}
+                                            type="text"
+                                            value={adminTimezone}
+                                            onChange={(event) => setAdminTimezone(event.target.value)}
+                                            placeholder="例: Asia/Tokyo"
+                                        />
+                                    </label>
+                                    <label className={styles.editField}>
+                                        <span>在籍開始日</span>
+                                        <input
+                                            className={styles.editInput}
+                                            type="date"
+                                            value={adminEnrollmentDate}
+                                            onChange={(event) => setAdminEnrollmentDate(event.target.value)}
+                                        />
+                                    </label>
+                                    <label className={styles.editField}>
+                                        <span>メモ</span>
+                                        <textarea
+                                            className={styles.editTextarea}
+                                            value={adminNotes}
+                                            onChange={(event) => setAdminNotes(event.target.value)}
+                                            rows={3}
+                                        />
                                     </label>
                                     <label className={styles.editField}>
                                         <span>法人ID</span>
