@@ -9,7 +9,12 @@ export type AnalyticsEventType =
     | 'session_started'
     | 'session_ended'
     | 'question_answered'
-    | 'admin_users_loaded';
+    | 'admin_users_loaded'
+    | 'guest_started'
+    | 'login_success'
+    | 'signup_success'
+    | 'dashboard_viewed'
+    | 'section_launch_clicked';
 
 export interface AnalyticsEvent {
     eventType: AnalyticsEventType;

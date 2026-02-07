@@ -9,6 +9,7 @@ import { Header } from '@/components/Header';
 import { SectionList } from '@/components/SectionList';
 import { courses, getCourseById, getQuestionsByCourseId, getSectionsByPart } from '@/data/questions';
 import { LearningMode, ChoiceLevel } from '@/types';
+import { logEvent } from '@/utils/analytics';
 import styles from './CoursePage.module.css';
 
 export function CoursePage() {
@@ -235,6 +236,18 @@ export function CoursePage() {
         setSection(sectionId);
         setMode(mode);
         setStudyMode('typing');
+        logEvent({
+            eventType: 'section_launch_clicked',
+            userId: state.currentUser?.id ?? null,
+            payload: {
+                sectionId,
+                studyMode: 'typing',
+                level: mode,
+                courseId: currentCourse?.id ?? null,
+                unitId: selectedUnitId ?? null,
+                partId: selectedPartId,
+            },
+        }).catch(() => {});
         navigate('/play');
     };
 
@@ -248,6 +261,18 @@ export function CoursePage() {
         setSection(sectionId);
         setChoiceLevel(level);
         setStudyMode('choice');
+        logEvent({
+            eventType: 'section_launch_clicked',
+            userId: state.currentUser?.id ?? null,
+            payload: {
+                sectionId,
+                studyMode: 'choice',
+                level,
+                courseId: currentCourse?.id ?? null,
+                unitId: selectedUnitId ?? null,
+                partId: selectedPartId,
+            },
+        }).catch(() => {});
         navigate('/choice');
     };
 

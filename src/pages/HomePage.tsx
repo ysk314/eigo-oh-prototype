@@ -3,13 +3,14 @@
 // ================================
 
 import { useNavigate } from 'react-router-dom';
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { doc, getDoc } from 'firebase/firestore';
 import { useApp } from '@/context/AppContext';
 import { Card } from '@/components/Card';
 import { Button } from '@/components/Button';
 import { courses } from '@/data/questions';
 import { db } from '@/firebase';
+import { logEvent } from '@/utils/analytics';
 import styles from './HomePage.module.css';
 
 type DashboardStats = {
@@ -67,6 +68,7 @@ export function HomePage() {
     const [loading, setLoading] = useState(false);
     const [recentOpen, setRecentOpen] = useState(false);
     const [coursesOpen, setCoursesOpen] = useState(false);
+    const viewedUidRef = useRef<string | null>(null);
 
     const handleCourseSelect = (courseId: string) => {
         setCourse(courseId);
@@ -139,6 +141,18 @@ export function HomePage() {
         const uid = state.currentUser?.id;
         if (!uid) return;
         let isMounted = true;
+
+        if (viewedUidRef.current !== uid) {
+            viewedUidRef.current = uid;
+            logEvent({
+                eventType: 'dashboard_viewed',
+                userId: uid,
+                payload: {
+                    source: 'home',
+                },
+            }).catch(() => {});
+        }
+
         setLoading(true);
 
         Promise.all([

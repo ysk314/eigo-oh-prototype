@@ -19,6 +19,7 @@ import { auth, db } from '@/firebase';
 import { saveRemoteProfile } from '@/utils/remoteStorage';
 import { generateMemberNo, normalizeLoginId } from '@/utils/memberId';
 import { loadMemberLoginEmail, saveMemberLoginMap } from '@/utils/memberLoginMap';
+import { logEvent } from '@/utils/analytics';
 import styles from './LoginPage.module.css';
 
 type LoginMode = 'login' | 'signup';
@@ -100,6 +101,13 @@ export function LoginPage() {
                 billing: { plan: 'free', status: 'active' },
                 entitlements: { typing: true, flashMentalMath: false, reading: false },
             });
+            logEvent({
+                eventType: 'guest_started',
+                userId: result.user.uid,
+                payload: {
+                    source: 'login',
+                },
+            }).catch(() => {});
             navigate('/dashboard');
         } catch (error) {
             console.error(error);
@@ -147,6 +155,13 @@ export function LoginPage() {
                     }
                 }
             }
+            logEvent({
+                eventType: 'login_success',
+                userId: auth.currentUser?.uid ?? null,
+                payload: {
+                    method: isMemberNo ? 'member_no' : 'email',
+                },
+            }).catch(() => {});
             navigate('/dashboard');
         } catch (error) {
             console.error(error);
@@ -196,6 +211,13 @@ export function LoginPage() {
             if (result.user.email) {
                 await saveMemberLoginMap(memberNo, result.user.uid, result.user.email);
             }
+            logEvent({
+                eventType: 'signup_success',
+                userId: result.user.uid,
+                payload: {
+                    accountType: 'consumer',
+                },
+            }).catch(() => {});
 
             navigate('/dashboard');
         } catch (error) {
