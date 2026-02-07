@@ -44,7 +44,8 @@ service cloud.firestore {
         && request.resource.data.memberNo == memberNo
         && request.resource.data.uid == request.auth.uid
         && get(/databases/$(database)/documents/users/$(request.auth.uid)).data.memberNo == memberNo;
-      allow delete: if false;
+      allow delete: if request.auth != null
+        && get(/databases/$(database)/documents/users/$(request.auth.uid)).data.memberNo == memberNo;
     }
 
     match /progress/{userId}/{document=**} {

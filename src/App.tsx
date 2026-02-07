@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { AppProvider } from '@/context/AppContext';
-import { HomePage, CoursePage, PlayPage, ChoicePage, LoginPage, AdminPage } from '@/pages';
+import { HomePage, CoursePage, PlayPage, ChoicePage, LoginPage, AdminPage, AccountPage } from '@/pages';
 import '@/styles/global.css';
 
 function App() {
@@ -14,6 +14,7 @@ function App() {
                     <Route path="/play" element={<PlayPage />} />
                     <Route path="/choice" element={<ChoicePage />} />
                     <Route path="/admin" element={<AdminPage />} />
+                    <Route path="/account" element={<AccountPage />} />
                     <Route path="*" element={<Navigate to="/" replace />} />
                 </Routes>
             </BrowserRouter>

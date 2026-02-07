@@ -9,8 +9,7 @@ import { useApp } from '@/context/AppContext';
 import { Card } from '@/components/Card';
 import { Button } from '@/components/Button';
 import { courses } from '@/data/questions';
-import { auth, db } from '@/firebase';
-import { loadMemberLoginEmail, saveMemberLoginMap } from '@/utils/memberLoginMap';
+import { db } from '@/firebase';
 import styles from './HomePage.module.css';
 
 type DashboardStats = {
@@ -66,9 +65,8 @@ export function HomePage() {
     const [recentSections, setRecentSections] = useState<RecentSectionItem[]>([]);
     const [recentSessions, setRecentSessions] = useState<RecentSessionItem[]>([]);
     const [loading, setLoading] = useState(false);
-    const [loginMapStatus, setLoginMapStatus] = useState<'idle' | 'enabled' | 'missing' | 'error'>('idle');
-    const [loginMapSaving, setLoginMapSaving] = useState(false);
-    const [loginMapMessage, setLoginMapMessage] = useState('');
+    const [recentOpen, setRecentOpen] = useState(false);
+    const [coursesOpen, setCoursesOpen] = useState(false);
 
     const handleCourseSelect = (courseId: string) => {
         setCourse(courseId);
@@ -132,30 +130,10 @@ export function HomePage() {
         : 0;
 
     useEffect(() => {
-        const memberNo = state.currentUser?.memberNo;
-        const email = auth.currentUser?.email ?? null;
-        if (!memberNo || !email) {
-            setLoginMapStatus('missing');
-            return;
-        }
-        let cancelled = false;
-        loadMemberLoginEmail(memberNo)
-            .then((mappedEmail) => {
-                if (cancelled) return;
-                if (mappedEmail) {
-                    setLoginMapStatus('enabled');
-                } else {
-                    setLoginMapStatus('missing');
-                }
-            })
-            .catch(() => {
-                if (cancelled) return;
-                setLoginMapStatus('error');
-            });
-        return () => {
-            cancelled = true;
-        };
-    }, [state.currentUser?.memberNo]);
+        const isDesktop = window.matchMedia('(min-width: 769px)').matches;
+        setRecentOpen(isDesktop);
+        setCoursesOpen(isDesktop);
+    }, []);
 
     useEffect(() => {
         const uid = state.currentUser?.id;
@@ -201,28 +179,6 @@ export function HomePage() {
         navigate('/course');
     };
 
-    const handleEnableMemberLogin = async () => {
-        const memberNo = state.currentUser?.memberNo;
-        const current = auth.currentUser;
-        const email = current?.email ?? null;
-        if (!memberNo || !current || !email) {
-            setLoginMapMessage('会員番号またはメールアドレスが未設定のため有効化できません。');
-            return;
-        }
-        setLoginMapSaving(true);
-        setLoginMapMessage('');
-        try {
-            await saveMemberLoginMap(memberNo, current.uid, email);
-            setLoginMapStatus('enabled');
-            setLoginMapMessage('会員番号ログインを有効にしました。');
-        } catch {
-            setLoginMapStatus('error');
-            setLoginMapMessage('有効化に失敗しました。時間を置いて再度お試しください。');
-        } finally {
-            setLoginMapSaving(false);
-        }
-    };
-
     return (
         <div className={styles.page}>
             <main className={styles.main}>
@@ -233,26 +189,6 @@ export function HomePage() {
                     {state.currentUser?.memberNo && (
                         <p className={styles.memberNo}>会員番号: {state.currentUser.memberNo}</p>
                     )}
-                    {!state.currentUser?.memberNo && (
-                        <p className={styles.memberNo}>会員番号: 未設定</p>
-                    )}
-                    <div className={styles.loginMapRow}>
-                        <Button
-                            variant="secondary"
-                            size="sm"
-                            onClick={handleEnableMemberLogin}
-                            isLoading={loginMapSaving}
-                            disabled={loginMapStatus === 'enabled'}
-                        >
-                            会員番号ログインを有効にする
-                        </Button>
-                        {loginMapStatus === 'enabled' && (
-                            <span className={styles.loginMapStatus}>有効</span>
-                        )}
-                    </div>
-                    {loginMapMessage && (
-                        <p className={styles.loginMapNote}>{loginMapMessage}</p>
-                    )}
                     <Button
                         variant="ghost"
                         size="sm"
@@ -260,6 +196,14 @@ export function HomePage() {
                         onClick={handleBackToLogin}
                     >
                         ログイン画面に戻る
+                    </Button>
+                    <Button
+                        variant="secondary"
+                        size="sm"
+                        className={styles.profileButton}
+                        onClick={() => navigate('/account')}
+                    >
+                        会員情報を変更
                     </Button>
                 </div>
 
@@ -318,72 +262,80 @@ export function HomePage() {
                         </Card>
 
                         <Card className={styles.dashboardCard} padding="lg">
-                            <div className={styles.sectionHeader}>
-                                <h2 className={styles.sectionTitle}>最近の挑戦</h2>
-                                <span className={styles.sectionNote}>{latestSession ? formatDateTime(latestSession.playedAt) : '—'}</span>
-                            </div>
-                            {latestSession ? (
-                                <div className={styles.sessionSummary}>
-                                    <div>
-                                        <span className={styles.sessionLabel}>ランク</span>
-                                        <span className={styles.sessionValue}>{latestSession.rank}</span>
+                            <details
+                                className={styles.accordion}
+                                open={recentOpen}
+                                onToggle={(event) => setRecentOpen((event.currentTarget as HTMLDetailsElement).open)}
+                            >
+                                <summary className={styles.accordionSummary}>
+                                    <span>最近の挑戦</span>
+                                    <span className={styles.sectionNote}>
+                                        {latestSession ? formatDateTime(latestSession.playedAt) : '—'}
+                                    </span>
+                                </summary>
+                                {latestSession ? (
+                                    <div className={styles.sessionSummary}>
+                                        <div>
+                                            <span className={styles.sessionLabel}>ランク</span>
+                                            <span className={styles.sessionValue}>{latestSession.rank}</span>
+                                        </div>
+                                        <div>
+                                            <span className={styles.sessionLabel}>正答率</span>
+                                            <span className={styles.sessionValue}>{latestSession.accuracy}%</span>
+                                        </div>
+                                        <div>
+                                            <span className={styles.sessionLabel}>WPM</span>
+                                            <span className={styles.sessionValue}>{latestSession.wpm ?? '-'}</span>
+                                        </div>
+                                        <div>
+                                            <span className={styles.sessionLabel}>ミス</span>
+                                            <span className={styles.sessionValue}>{latestSession.missCount}回</span>
+                                        </div>
+                                        <div>
+                                            <span className={styles.sessionLabel}>時間</span>
+                                            <span className={styles.sessionValue}>{formatDuration(latestSession.totalTimeMs)}</span>
+                                        </div>
+                                        <div>
+                                            <span className={styles.sessionLabel}>モード</span>
+                                            <span className={styles.sessionValue}>{latestSession.mode === 'typing' ? 'タイピング' : '選択'}</span>
+                                        </div>
                                     </div>
-                                    <div>
-                                        <span className={styles.sessionLabel}>正答率</span>
-                                        <span className={styles.sessionValue}>{latestSession.accuracy}%</span>
-                                    </div>
-                                    <div>
-                                        <span className={styles.sessionLabel}>WPM</span>
-                                        <span className={styles.sessionValue}>{latestSession.wpm ?? '-'}</span>
-                                    </div>
-                                    <div>
-                                        <span className={styles.sessionLabel}>ミス</span>
-                                        <span className={styles.sessionValue}>{latestSession.missCount}回</span>
-                                    </div>
-                                    <div>
-                                        <span className={styles.sessionLabel}>時間</span>
-                                        <span className={styles.sessionValue}>{formatDuration(latestSession.totalTimeMs)}</span>
-                                    </div>
-                                    <div>
-                                        <span className={styles.sessionLabel}>モード</span>
-                                        <span className={styles.sessionValue}>{latestSession.mode === 'typing' ? 'タイピング' : '選択'}</span>
-                                    </div>
-                                </div>
-                            ) : (
-                                <p className={styles.emptyText}>まだセッションがありません。</p>
-                            )}
-                            {recentSections.length > 0 ? (
-                                <div className={styles.recentList}>
-                                    {recentSections.map((item) => {
-                                        const info = resolveSectionInfo(item);
-                                        const modeLabel = item.mode === 'choice' ? '選択' : 'タイピング';
-                                        return (
-                                            <button
-                                                key={item.sectionId}
-                                                className={styles.recentItem}
-                                                onClick={() => handleOpenRecentSection(item)}
-                                            >
-                                                <div>
-                                                    <div className={styles.recentContext}>
-                                                        <span className={styles.recentCourse}>{info.courseName}</span>
-                                                        <span className={styles.recentDivider}>/</span>
-                                                        <span className={styles.recentUnit}>{info.unitName}</span>
+                                ) : (
+                                    <p className={styles.emptyText}>まだセッションがありません。</p>
+                                )}
+                                {recentSections.length > 0 ? (
+                                    <div className={styles.recentList}>
+                                        {recentSections.map((item) => {
+                                            const info = resolveSectionInfo(item);
+                                            const modeLabel = item.mode === 'choice' ? '選択' : 'タイピング';
+                                            return (
+                                                <button
+                                                    key={item.sectionId}
+                                                    className={styles.recentItem}
+                                                    onClick={() => handleOpenRecentSection(item)}
+                                                >
+                                                    <div>
+                                                        <div className={styles.recentContext}>
+                                                            <span className={styles.recentCourse}>{info.courseName}</span>
+                                                            <span className={styles.recentDivider}>/</span>
+                                                            <span className={styles.recentUnit}>{info.unitName}</span>
+                                                        </div>
+                                                        <div className={styles.recentLabel}>
+                                                            {info.partLabel} / {info.sectionLabel}
+                                                        </div>
+                                                        <div className={styles.recentMeta}>
+                                                            {formatDateTime(item.lastPlayedAt)} · {modeLabel}
+                                                        </div>
                                                     </div>
-                                                    <div className={styles.recentLabel}>
-                                                        {info.partLabel} / {info.sectionLabel}
-                                                    </div>
-                                                    <div className={styles.recentMeta}>
-                                                        {formatDateTime(item.lastPlayedAt)} · {modeLabel}
-                                                    </div>
-                                                </div>
-                                                <span className={styles.recentArrow}>→</span>
-                                            </button>
-                                        );
-                                    })}
-                                </div>
-                            ) : (
-                                <p className={styles.emptyText}>まだ挑戦履歴がありません。</p>
-                            )}
+                                                    <span className={styles.recentArrow}>→</span>
+                                                </button>
+                                            );
+                                        })}
+                                    </div>
+                                ) : (
+                                    <p className={styles.emptyText}>まだ挑戦履歴がありません。</p>
+                                )}
+                            </details>
                         </Card>
                     </div>
 
@@ -415,23 +367,31 @@ export function HomePage() {
                         </Card>
 
                         <Card className={styles.courseCard} padding="lg">
-                            <h2 className={styles.sectionTitle}>コースを選択</h2>
-
-                            <div className={styles.courseList}>
-                                {courses.map((course) => (
-                                    <div
-                                        key={course.id}
-                                        className={styles.courseItem}
-                                        onClick={() => handleCourseSelect(course.id)}
-                                    >
-                                        <div className={styles.courseIcon}>📚</div>
-                                        <div className={styles.courseInfo}>
-                                            <h3 className={styles.courseName}>{course.name}</h3>
+                            <details
+                                className={styles.accordion}
+                                open={coursesOpen}
+                                onToggle={(event) => setCoursesOpen((event.currentTarget as HTMLDetailsElement).open)}
+                            >
+                                <summary className={styles.accordionSummary}>
+                                    <span>コースを選択</span>
+                                    <span className={styles.sectionNote}>学習を開始</span>
+                                </summary>
+                                <div className={styles.courseList}>
+                                    {courses.map((course) => (
+                                        <div
+                                            key={course.id}
+                                            className={styles.courseItem}
+                                            onClick={() => handleCourseSelect(course.id)}
+                                        >
+                                            <div className={styles.courseIcon}>📚</div>
+                                            <div className={styles.courseInfo}>
+                                                <h3 className={styles.courseName}>{course.name}</h3>
+                                            </div>
+                                            <div className={styles.arrow}>→</div>
                                         </div>
-                                        <div className={styles.arrow}>→</div>
-                                    </div>
-                                ))}
-                            </div>
+                                    ))}
+                                </div>
+                            </details>
                         </Card>
                     </div>
                 </div>

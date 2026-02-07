@@ -2,7 +2,7 @@
 // MemberNo -> Login Email Map
 // ================================
 
-import { doc, getDoc, setDoc, serverTimestamp } from 'firebase/firestore';
+import { doc, getDoc, setDoc, serverTimestamp, deleteDoc } from 'firebase/firestore';
 import { db } from '@/firebase';
 
 export type MemberLoginMap = {
@@ -30,4 +30,10 @@ export async function saveMemberLoginMap(memberNo: string, uid: string, email: s
         email,
         updatedAt: serverTimestamp(),
     }, { merge: true });
+}
+
+export async function deleteMemberLoginMap(memberNo: string): Promise<void> {
+    if (!memberNo) return;
+    const ref = doc(db, 'member_login_map', memberNo);
+    await deleteDoc(ref);
 }

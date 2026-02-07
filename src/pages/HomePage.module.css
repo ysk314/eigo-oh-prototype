@@ -78,6 +78,10 @@
     margin-top: var(--space-md);
 }
 
+.profileButton {
+    margin-top: var(--space-sm);
+}
+
 .container {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -322,6 +326,7 @@
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: var(--space-md);
+    margin-bottom: var(--space-lg);
 }
 
 .sessionLabel {
@@ -340,6 +345,7 @@
     display: flex;
     flex-direction: column;
     gap: var(--space-sm);
+    margin-top: var(--space-md);
 }
 
 .recentItem {
@@ -382,13 +388,63 @@
     color: var(--color-text-muted);
 }
 
+.accordion {
+    border: none;
+}
+
+.accordionSummary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-sm);
+    list-style: none;
+    cursor: pointer;
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-secondary);
+}
+
+.accordionSummary::-webkit-details-marker {
+    display: none;
+}
+
+.accordionSummary::after {
+    content: '＋';
+    color: var(--color-text-muted);
+}
+
+.accordion[open] .accordionSummary::after {
+    content: '－';
+}
+
 @media (max-width: 768px) {
+    .container {
+        display: flex;
+        flex-direction: column;
+    }
+
     .statsGrid {
         grid-template-columns: 1fr;
     }
 
     .sessionSummary {
         grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .sideColumn {
+        order: 1;
+    }
+
+    .dashboardColumn {
+        order: 2;
+    }
+
+    .accordionSummary {
+        padding-bottom: var(--space-sm);
+        border-bottom: 1px solid var(--color-bg-base);
+    }
+
+    .accordion > *:not(summary) {
+        padding-top: var(--space-md);
     }
 }
 
