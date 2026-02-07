@@ -19,6 +19,7 @@ import { useCountdown } from '@/hooks/useCountdown';
 import { logEvent } from '@/utils/analytics';
 import { recordProgressSnapshot, recordSessionSummary, type SessionSummary, type SectionMeta } from '@/utils/dashboardStats';
 import { buildSectionProgressTotals, buildUserProgressTotals, getTotalSectionsCount } from '@/utils/progressSummary';
+import { getCourseTimeLimitMultiplier } from '@/utils/timer';
 import { useSelectedLabels } from '@/hooks/useSelectedLabels';
 import type { ChoiceLevel } from '@/types';
 import styles from './ChoicePage.module.css';
@@ -122,7 +123,8 @@ export function ChoicePage() {
 
     useEffect(() => {
         if (questions.length === 0) return;
-        const limit = Math.max(1, questions.length * 5);
+        const timeMultiplier = getCourseTimeLimitMultiplier(activeCourseId);
+        const limit = Math.max(1, Math.floor(questions.length * 5 * timeMultiplier));
         sessionIdRef.current = `choice-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`;
         setCurrentIndex(0);
         setIsFinished(false);
@@ -146,7 +148,7 @@ export function ChoicePage() {
                 startedAt: new Date().toISOString(),
             },
         }).catch(() => {});
-    }, [questions, startCountdown, activeChoiceLevel, state.currentUser?.id, beginSectionSession]);
+    }, [questions, startCountdown, activeChoiceLevel, state.currentUser?.id, beginSectionSession, activeCourseId]);
 
     const finishSession = useCallback(() => {
         setIsFinished(true);

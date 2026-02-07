@@ -16,7 +16,7 @@ import { useCourseBundle } from '@/hooks/useCourseBundle';
 import { shuffleWithNoConsecutive } from '@/utils/shuffle';
 import { LearningMode, UserProgress } from '@/types';
 import { buildScoreResult, ScoreResult } from '@/utils/score';
-import { calculateTimeLimit, calculateTotalChars } from '@/utils/timer';
+import { calculateTimeLimit, calculateTotalChars, getCourseTimeLimitMultiplier } from '@/utils/timer';
 import { playSound } from '@/utils/sound';
 import { useCountdown } from '@/hooks/useCountdown';
 import { getRankMessage } from '@/utils/result';
@@ -111,7 +111,9 @@ export function PlayPage() {
     useEffect(() => {
         if (questions.length === 0) return;
         const totalChars = calculateTotalChars(questions);
-        const limit = calculateTimeLimit(totalChars, 1, 10);
+        const timeMultiplier = getCourseTimeLimitMultiplier(activeCourseId);
+        const baseLimit = calculateTimeLimit(totalChars, 1, 10);
+        const limit = Math.max(1, Math.floor(baseLimit * timeMultiplier));
 
         setCurrentIndex(0);
         setQuestionIndex(0);
@@ -135,7 +137,7 @@ export function PlayPage() {
                 startedAt: new Date().toISOString(),
             },
         }).catch(() => {});
-    }, [questions, startCountdown, currentUser?.id, beginSectionSession]);
+    }, [questions, startCountdown, currentUser?.id, beginSectionSession, activeCourseId]);
 
     // タイマー処理
     useEffect(() => {
