@@ -19,7 +19,7 @@ export function useCourseBundle(courseId?: string | null): UseCourseBundleResult
     const resolvedCourseId = useMemo(() => resolveCourseId(courseId), [courseId]);
     const [course, setCourse] = useState<Course | undefined>(undefined);
     const [questions, setQuestions] = useState<Question[]>([]);
-    const [loading, setLoading] = useState(false);
+    const [loading, setLoading] = useState(() => Boolean(resolvedCourseId));
     const [error, setError] = useState<string | null>(null);
 
     useEffect(() => {

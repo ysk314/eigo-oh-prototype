@@ -3,7 +3,7 @@
 // ================================
 
 import { useMemo, useState, useEffect, useRef, useCallback } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { useApp } from '@/context/AppContext';
 import { Header } from '@/components/Header';
 import { Card } from '@/components/Card';
@@ -20,6 +20,7 @@ import { logEvent } from '@/utils/analytics';
 import { recordProgressSnapshot, recordSessionSummary, type SessionSummary, type SectionMeta } from '@/utils/dashboardStats';
 import { buildSectionProgressTotals, buildUserProgressTotals, getTotalSectionsCount } from '@/utils/progressSummary';
 import { useSelectedLabels } from '@/hooks/useSelectedLabels';
+import type { ChoiceLevel } from '@/types';
 import styles from './ChoicePage.module.css';
 
 type ChoiceState = {
@@ -57,20 +58,33 @@ function stripTags(text: string): string {
 
 export function ChoicePage() {
     const navigate = useNavigate();
+    const location = useLocation();
     const { state, setChoiceRank, beginSectionSession, completeSectionSession, abortSectionSession } = useApp();
     const { selectedCourse, selectedPart, selectedSection, selectedChoiceLevel } = state;
+    const launchState = (location.state ?? {}) as {
+        courseId?: string;
+        unitId?: string;
+        partId?: string;
+        sectionId?: string;
+        level?: ChoiceLevel;
+    };
+    const activeCourseId = selectedCourse ?? launchState.courseId ?? null;
+    const activeUnitId = state.selectedUnit ?? launchState.unitId ?? null;
+    const activePartId = selectedPart ?? launchState.partId ?? null;
+    const activeSectionId = selectedSection ?? launchState.sectionId ?? null;
+    const activeChoiceLevel: ChoiceLevel = selectedChoiceLevel ?? launchState.level ?? 1;
     const {
         course: currentCourse,
         questions: courseQuestions,
         loading: courseLoading,
-    } = useCourseBundle(selectedCourse);
+    } = useCourseBundle(activeCourseId);
 
     const questions = useMemo(() => {
-        if (!selectedPart || !selectedSection) return [];
+        if (!activePartId || !activeSectionId) return [];
         return courseQuestions.filter(
-            (question) => question.partId === selectedPart && question.section === selectedSection
+            (question) => question.partId === activePartId && question.section === activeSectionId
         );
-    }, [selectedPart, selectedSection, courseQuestions]);
+    }, [activePartId, activeSectionId, courseQuestions]);
 
     const [currentIndex, setCurrentIndex] = useState(0);
     const [choiceState, setChoiceState] = useState<ChoiceState | null>(null);
@@ -91,10 +105,10 @@ export function ChoicePage() {
 
     useEffect(() => {
         if (courseLoading) return;
-        if (!selectedSection || questions.length === 0) {
+        if (!activePartId || !activeSectionId || questions.length === 0) {
             navigate('/course');
         }
-    }, [selectedSection, questions, navigate, courseLoading]);
+    }, [activePartId, activeSectionId, questions, navigate, courseLoading]);
 
     useEffect(() => {
         window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
@@ -128,11 +142,11 @@ export function ChoicePage() {
                 sessionId: sessionIdRef.current,
                 mode: 'choice',
                 questionCount: questions.length,
-                level: selectedChoiceLevel,
+                level: activeChoiceLevel,
                 startedAt: new Date().toISOString(),
             },
         }).catch(() => {});
-    }, [questions, startCountdown, selectedChoiceLevel, state.currentUser?.id, beginSectionSession]);
+    }, [questions, startCountdown, activeChoiceLevel, state.currentUser?.id, beginSectionSession]);
 
     const finishSession = useCallback(() => {
         setIsFinished(true);
@@ -146,11 +160,11 @@ export function ChoicePage() {
         });
         setScoreResult(score);
         const totalTimeMs = (timeLimit - timeLeft) * 1000;
-        const sectionLabel = selectedSection && selectedPart
+        const sectionLabel = activeSectionId && activePartId
             ? currentCourse?.units
                 .flatMap((unit) => unit.parts)
-                .find((part) => part.id === selectedPart)
-                ?.sections.find((item) => item.id === selectedSection)
+                .find((part) => part.id === activePartId)
+                ?.sections.find((item) => item.id === activeSectionId)
                 ?.label
             : undefined;
         logEvent({
@@ -165,19 +179,19 @@ export function ChoicePage() {
                 totalTimeMs,
                 accuracy,
                 rank: score.rank,
-                level: selectedChoiceLevel,
+                level: activeChoiceLevel,
             },
         }).catch(() => {});
 
         if (state.currentUser?.id) {
             const currentUserId = state.currentUser.id;
-            const sectionMeta: SectionMeta | undefined = selectedCourse && state.selectedUnit && selectedPart && selectedSection
+            const sectionMeta: SectionMeta | undefined = activeCourseId && activeUnitId && activePartId && activeSectionId
                 ? {
-                    courseId: selectedCourse,
-                    unitId: state.selectedUnit,
-                    partId: selectedPart,
-                    sectionId: selectedSection,
-                    label: sectionLabel || selectedSection,
+                    courseId: activeCourseId,
+                    unitId: activeUnitId,
+                    partId: activePartId,
+                    sectionId: activeSectionId,
+                    label: sectionLabel || activeSectionId,
                     mode: 'choice' as const,
                 }
                 : undefined;
@@ -189,7 +203,7 @@ export function ChoicePage() {
                 missCount,
                 totalTimeMs,
                 rank: score.rank,
-                level: selectedChoiceLevel,
+                level: activeChoiceLevel,
                 playedAt: new Date().toISOString(),
             };
 
@@ -205,11 +219,11 @@ export function ChoicePage() {
                     totalSectionsCount,
                     lastMode: 'choice',
                     lastActiveAt: new Date().toISOString(),
-                    lastSectionId: selectedSection ?? undefined,
-                    lastSectionLabel: sectionLabel ?? selectedSection ?? undefined,
-                    lastCourseId: selectedCourse ?? undefined,
-                    lastUnitId: state.selectedUnit ?? undefined,
-                    lastPartId: selectedPart ?? undefined,
+                    lastSectionId: activeSectionId ?? undefined,
+                    lastSectionLabel: sectionLabel ?? activeSectionId ?? undefined,
+                    lastCourseId: activeCourseId ?? undefined,
+                    lastUnitId: activeUnitId ?? undefined,
+                    lastPartId: activePartId ?? undefined,
                 }).catch(() => {});
             })();
         }
@@ -217,8 +231,8 @@ export function ChoicePage() {
         completeSectionSession();
 
         playSound(score.rank === 'S' ? 'fanfare' : 'try-again');
-        if (selectedSection) {
-            setChoiceRank(selectedSection, selectedChoiceLevel, score.rank);
+        if (activeSectionId) {
+            setChoiceRank(activeSectionId, activeChoiceLevel, score.rank);
         }
     }, [
         correctCount,
@@ -226,13 +240,13 @@ export function ChoicePage() {
         timeLeft,
         timeLimit,
         questions.length,
-        selectedCourse,
-        selectedPart,
-        selectedSection,
-        selectedChoiceLevel,
+        activeCourseId,
+        activeUnitId,
+        activePartId,
+        activeSectionId,
+        activeChoiceLevel,
         setChoiceRank,
         state.currentUser,
-        state.selectedUnit,
         state.sectionProgress,
         state.userProgress,
         currentCourse?.units,
@@ -276,8 +290,8 @@ export function ChoicePage() {
             (q) => q.id !== currentQuestion.id && q.pos?.includes(pos)
         );
 
-        const isEnToJp = selectedChoiceLevel === 1 || selectedChoiceLevel === 3;
-        const isMasked = selectedChoiceLevel === 3 || selectedChoiceLevel === 4;
+        const isEnToJp = activeChoiceLevel === 1 || activeChoiceLevel === 3;
+        const isMasked = activeChoiceLevel === 3 || activeChoiceLevel === 4;
         const prompt = isEnToJp ? currentQuestion.answerEn : stripTags(currentQuestion.promptJp);
         const shouldMaskPrompt = isEnToJp && isMasked;
         const promptText = shouldMaskPrompt ? maskWord(prompt) : prompt;
@@ -320,7 +334,7 @@ export function ChoicePage() {
             maskOptions,
         });
         setSelected(null);
-    }, [currentQuestion, questions, selectedChoiceLevel]);
+    }, [currentQuestion, questions, activeChoiceLevel]);
 
     const handleChoice = useCallback((answer: string) => {
         if (isCountingDown) return;
@@ -374,10 +388,10 @@ export function ChoicePage() {
     }, [choiceState, handleChoice, selected, isFinished]);
 
     const { unitLabel: selectedUnitLabel, partLabel: selectedPartLabelText, sectionLabel: selectedSectionLabel } =
-        useSelectedLabels(currentCourse, state.selectedUnit, state.selectedPart, state.selectedSection);
+        useSelectedLabels(currentCourse, activeUnitId, activePartId, activeSectionId);
 
     const selectedLevelLabel = useMemo(() => {
-        switch (selectedChoiceLevel) {
+        switch (activeChoiceLevel) {
             case 1:
                 return '英語→日本語 1';
             case 2:
@@ -389,9 +403,9 @@ export function ChoicePage() {
             default:
                 return '';
         }
-    }, [selectedChoiceLevel]);
+    }, [activeChoiceLevel]);
 
-    const shouldPlayAudio = selectedChoiceLevel === 1;
+    const shouldPlayAudio = activeChoiceLevel === 1;
 
     const handleBack = useCallback(() => {
         if (!isFinished) {

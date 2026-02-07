@@ -3,7 +3,7 @@
 // ================================
 
 import { useState, useEffect, useMemo, useCallback, useRef } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { useApp } from '@/context/AppContext';
 import { Header } from '@/components/Header';
 import { GameHeader } from '@/components/GameHeader';
@@ -14,7 +14,7 @@ import { Card } from '@/components/Card';
 import { Confetti } from '@/components/Confetti';
 import { useCourseBundle } from '@/hooks/useCourseBundle';
 import { shuffleWithNoConsecutive } from '@/utils/shuffle';
-import { UserProgress } from '@/types';
+import { LearningMode, UserProgress } from '@/types';
 import { buildScoreResult, ScoreResult } from '@/utils/score';
 import { calculateTimeLimit, calculateTotalChars } from '@/utils/timer';
 import { playSound } from '@/utils/sound';
@@ -28,6 +28,7 @@ import styles from './PlayPage.module.css';
 
 export function PlayPage() {
     const navigate = useNavigate();
+    const location = useLocation();
     const {
         state,
         updateProgress,
@@ -40,11 +41,23 @@ export function PlayPage() {
     } = useApp();
 
     const { selectedCourse, selectedPart, selectedSection, selectedMode, currentUser, shuffleMode } = state;
+    const launchState = (location.state ?? {}) as {
+        courseId?: string;
+        unitId?: string;
+        partId?: string;
+        sectionId?: string;
+        mode?: LearningMode;
+    };
+    const activeCourseId = selectedCourse ?? launchState.courseId ?? null;
+    const activeUnitId = state.selectedUnit ?? launchState.unitId ?? null;
+    const activePartId = selectedPart ?? launchState.partId ?? null;
+    const activeSectionId = selectedSection ?? launchState.sectionId ?? null;
+    const activeMode = selectedMode ?? launchState.mode ?? 1;
     const {
         course: currentCourse,
         questions: courseQuestions,
         loading: courseLoading,
-    } = useCourseBundle(selectedCourse);
+    } = useCourseBundle(activeCourseId);
 
     useEffect(() => {
         if (state.studyMode === 'choice') {
@@ -54,16 +67,16 @@ export function PlayPage() {
 
     // セクションの問題をロード & シャッフル
     const questions = useMemo(() => {
-        if (!selectedPart || !selectedSection) return [];
+        if (!activePartId || !activeSectionId) return [];
         const baseQuestions = courseQuestions.filter(
-            (question) => question.partId === selectedPart && question.section === selectedSection
+            (question) => question.partId === activePartId && question.section === activeSectionId
         );
 
         if (shuffleMode) {
             return shuffleWithNoConsecutive(baseQuestions, (q) => q.answerEn);
         }
         return baseQuestions.sort((a, b) => a.orderIndex - b.orderIndex);
-    }, [selectedPart, selectedSection, shuffleMode, courseQuestions]);
+    }, [activePartId, activeSectionId, shuffleMode, courseQuestions]);
 
     // 現在の状態
     const [currentIndex, setCurrentIndex] = useState(0);
@@ -85,10 +98,10 @@ export function PlayPage() {
     // 初期化チェック
     useEffect(() => {
         if (courseLoading) return;
-        if (!selectedSection || questions.length === 0) {
+        if (!activePartId || !activeSectionId || questions.length === 0) {
             navigate('/course'); // 何も選択されてなければ戻る
         }
-    }, [selectedSection, questions, navigate, courseLoading]);
+    }, [activePartId, activeSectionId, questions, navigate, courseLoading]);
 
     useEffect(() => {
         window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
@@ -171,12 +184,12 @@ export function PlayPage() {
     }, [isFinished, scoreResult, sessionResults, timeLeft, timeLimit, questions]);
 
     useEffect(() => {
-        if (!isFinished || !finalScore || !selectedSection) return;
+        if (!isFinished || !finalScore || !activeSectionId) return;
         if (finalScore.rank === 'S') {
-            markSectionCleared(selectedSection, selectedMode);
+            markSectionCleared(activeSectionId, activeMode);
         }
-        setSectionRank(selectedSection, selectedMode, finalScore.rank);
-    }, [isFinished, finalScore, selectedSection, selectedMode, markSectionCleared, setSectionRank]);
+        setSectionRank(activeSectionId, activeMode, finalScore.rank);
+    }, [isFinished, finalScore, activeSectionId, activeMode, markSectionCleared, setSectionRank]);
 
     // デバッグ用: 進捗ログ
     useEffect(() => {
@@ -216,7 +229,7 @@ export function PlayPage() {
             attemptsCount: 1,
             correctCount: 1,
             missCount: result.missCount,
-            clearedMode: selectedMode, // 仮
+            clearedMode: activeMode,
         };
         const nextResults = [...sessionResultsRef.current, nextResult];
         sessionResultsRef.current = nextResults;
@@ -239,7 +252,7 @@ export function PlayPage() {
             }
             finishSession(nextResults);
         }, 800);
-    }, [currentQuestion, currentIndex, questions.length, updateProgress, setQuestionIndex, selectedMode, isFinished, timeUp, currentUser?.id]);
+    }, [currentQuestion, currentIndex, questions.length, updateProgress, setQuestionIndex, activeMode, isFinished, timeUp, currentUser?.id]);
 
     // セッション完了処理
     const finishSession = (resultsOverride?: UserProgress[]) => {
@@ -280,13 +293,13 @@ export function PlayPage() {
 
         if (currentUser?.id) {
             void (async () => {
-                const sectionMeta: SectionMeta | undefined = selectedCourse && state.selectedUnit && selectedPart && selectedSection
+                const sectionMeta: SectionMeta | undefined = activeCourseId && activeUnitId && activePartId && activeSectionId
                     ? {
-                        courseId: selectedCourse,
-                        unitId: state.selectedUnit,
-                        partId: selectedPart,
-                        sectionId: selectedSection,
-                        label: selectedSectionLabel || selectedSection,
+                        courseId: activeCourseId,
+                        unitId: activeUnitId,
+                        partId: activePartId,
+                        sectionId: activeSectionId,
+                        label: selectedSectionLabel || activeSectionId,
                         mode: 'typing' as const,
                     }
                     : undefined;
@@ -313,11 +326,11 @@ export function PlayPage() {
                     totalSectionsCount,
                     lastMode: 'typing',
                     lastActiveAt: new Date().toISOString(),
-                    lastSectionId: selectedSection ?? undefined,
-                    lastSectionLabel: selectedSectionLabel ?? selectedSection ?? undefined,
-                    lastCourseId: selectedCourse ?? undefined,
-                    lastUnitId: state.selectedUnit ?? undefined,
-                    lastPartId: selectedPart ?? undefined,
+                    lastSectionId: activeSectionId ?? undefined,
+                    lastSectionLabel: selectedSectionLabel ?? activeSectionId ?? undefined,
+                    lastCourseId: activeCourseId ?? undefined,
+                    lastUnitId: activeUnitId ?? undefined,
+                    lastPartId: activePartId ?? undefined,
                 }).catch(() => {});
             })();
         }
@@ -368,7 +381,7 @@ export function PlayPage() {
         return 'right-pinky';
     };
 
-    const activeFingerId = selectedMode === 1 ? getFingerIdForChar(currentChar) : null;
+    const activeFingerId = activeMode === 1 ? getFingerIdForChar(currentChar) : null;
     const getKeyIdForChar = (char: string | null) => {
         if (!char) return null;
         const key = char.toLowerCase();
@@ -395,7 +408,7 @@ export function PlayPage() {
         return map[key] ?? null;
     };
 
-    const activeKeyId = selectedMode === 1 ? getKeyIdForChar(currentChar) : null;
+    const activeKeyId = activeMode === 1 ? getKeyIdForChar(currentChar) : null;
     const getFingerIdForKeyLabel = (label: string) => {
         if (label === 'space') return 'thumb';
         if ("`~1!QAZ".includes(label)) return 'left-pinky';
@@ -421,10 +434,10 @@ export function PlayPage() {
     ];
 
     const { unitLabel: selectedUnitLabel, partLabel: selectedPartLabelText, sectionLabel: selectedSectionLabel } =
-        useSelectedLabels(currentCourse, state.selectedUnit, state.selectedPart, state.selectedSection);
+        useSelectedLabels(currentCourse, activeUnitId, activePartId, activeSectionId);
 
     const selectedModeLabel = useMemo(() => {
-        switch (selectedMode) {
+        switch (activeMode) {
             case 1:
                 return '音あり / スペルあり';
             case 2:
@@ -434,7 +447,7 @@ export function PlayPage() {
             default:
                 return '';
         }
-    }, [selectedMode]);
+    }, [activeMode]);
 
     // 完了画面
     if (isFinished) {
@@ -448,7 +461,7 @@ export function PlayPage() {
         if (!finalScore) return null;
         const isCleared = finalScore.rank === 'S';
         const resultMessage = finalScore.rank === 'S'
-            ? (selectedMode === 3
+            ? (activeMode === 3
                 ? '最高！次のセクションに進もう！'
                 : '目標達成！次のモードが解放されました！')
             : getRankMessage(finalScore.rank);
@@ -537,7 +550,7 @@ export function PlayPage() {
                     <div className={styles.questionArea}>
                         <QuestionDisplay
                             question={currentQuestion}
-                            mode={selectedMode}
+                            mode={activeMode}
                             autoPlayAudio={state.autoPlayAudio && !isCountingDown}
                             showEnglish={false}
                             showModeIndicator={false}
@@ -548,13 +561,13 @@ export function PlayPage() {
                                     onKeyResult={(isCorrect) => playSound(isCorrect ? 'type' : 'error')}
                                     onCurrentCharChange={setCurrentChar}
                                     disabled={isCountingDown || timeUp}
-                                    showHint={selectedMode === 1} // ヒントはモード1のみ表示
+                                    showHint={activeMode === 1}
                                 />
                             }
                         />
 
                         <div className={styles.inputArea}>
-                            {selectedMode === 1 && (
+                            {activeMode === 1 && (
                                 <div className={styles.keyboardGuide} aria-live="polite">
                                     <div className={styles.keyboard}>
                                         {[

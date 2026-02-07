@@ -4,6 +4,7 @@
 
 import { useMemo, useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { flushSync } from 'react-dom';
 import { useApp } from '@/context/AppContext';
 import { Header } from '@/components/Header';
 import { SectionList } from '@/components/SectionList';
@@ -162,6 +163,7 @@ export function CoursePage() {
     }, [closingUnitId]);
 
     const handleUnitSelect = (unitId: string) => {
+        hasInitializedRef.current = true;
         setUnit(unitId);
         const nextUnit = units.find((unit) => unit.id === unitId);
         const nextPartId =
@@ -235,16 +237,20 @@ export function CoursePage() {
     }, [openUnitId]);
 
     const handlePartSelect = (unitId: string, partId: string) => {
+        hasInitializedRef.current = true;
         setUnit(unitId);
         setPart(partId);
     };
 
     const handleModeSelect = (sectionId: string, mode: LearningMode) => {
         if (!selectedPartId) return;
-        setPart(selectedPartId);
-        setSection(sectionId);
-        setMode(mode);
-        setStudyMode('typing');
+        hasInitializedRef.current = true;
+        flushSync(() => {
+            setPart(selectedPartId);
+            setSection(sectionId);
+            setMode(mode);
+            setStudyMode('typing');
+        });
         logEvent({
             eventType: 'section_launch_clicked',
             userId: state.currentUser?.id ?? null,
@@ -257,19 +263,30 @@ export function CoursePage() {
                 partId: selectedPartId,
             },
         }).catch(() => {});
-        navigate('/play');
+        navigate('/play', {
+            state: {
+                courseId: activeCourseId ?? undefined,
+                unitId: selectedUnitId ?? undefined,
+                partId: selectedPartId,
+                sectionId,
+                mode,
+            },
+        });
     };
 
     const handleChoiceSelect = (sectionId: string, level: ChoiceLevel) => {
         if (!selectedPartId) return;
+        hasInitializedRef.current = true;
         const unitId = partIdToUnitId.get(selectedPartId) ?? selectedUnitId;
-        if (unitId) {
-            setUnit(unitId);
-        }
-        setPart(selectedPartId);
-        setSection(sectionId);
-        setChoiceLevel(level);
-        setStudyMode('choice');
+        flushSync(() => {
+            if (unitId) {
+                setUnit(unitId);
+            }
+            setPart(selectedPartId);
+            setSection(sectionId);
+            setChoiceLevel(level);
+            setStudyMode('choice');
+        });
         logEvent({
             eventType: 'section_launch_clicked',
             userId: state.currentUser?.id ?? null,
@@ -282,7 +299,15 @@ export function CoursePage() {
                 partId: selectedPartId,
             },
         }).catch(() => {});
-        navigate('/choice');
+        navigate('/choice', {
+            state: {
+                courseId: activeCourseId ?? undefined,
+                unitId: unitId ?? undefined,
+                partId: selectedPartId,
+                sectionId,
+                level,
+            },
+        });
     };
 
     const handleBack = () => {

@@ -48,6 +48,9 @@ export function appReducer(state: AppState, action: AppAction): AppState {
             };
 
         case 'SET_UNIT':
+            if (state.selectedUnit === action.payload) {
+                return state;
+            }
             return {
                 ...state,
                 selectedUnit: action.payload,
@@ -57,6 +60,9 @@ export function appReducer(state: AppState, action: AppAction): AppState {
             };
 
         case 'SET_PART':
+            if (state.selectedPart === action.payload) {
+                return state;
+            }
             return {
                 ...state,
                 selectedPart: action.payload,
