@@ -159,14 +159,14 @@ export function ChoicePage() {
         }).catch(() => {});
 
         if (state.currentUser?.id) {
-            const sectionMeta = selectedCourse && state.selectedUnit && selectedPart && selectedSection
+            const sectionMeta: SectionMeta | undefined = selectedCourse && state.selectedUnit && selectedPart && selectedSection
                 ? {
                     courseId: selectedCourse,
                     unitId: state.selectedUnit,
                     partId: selectedPart,
                     sectionId: selectedSection,
                     label: sectionLabel || selectedSection,
-                    mode: 'choice',
+                    mode: 'choice' as const,
                 }
                 : undefined;
 

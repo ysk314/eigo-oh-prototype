@@ -270,14 +270,14 @@ export function PlayPage() {
         }).catch(() => {});
 
         if (currentUser?.id) {
-            const sectionMeta = selectedCourse && state.selectedUnit && selectedPart && selectedSection
+            const sectionMeta: SectionMeta | undefined = selectedCourse && state.selectedUnit && selectedPart && selectedSection
                 ? {
                     courseId: selectedCourse,
                     unitId: state.selectedUnit,
                     partId: selectedPart,
                     sectionId: selectedSection,
                     label: selectedSectionLabel || selectedSection,
-                    mode: 'typing',
+                    mode: 'typing' as const,
                 }
                 : undefined;
 
