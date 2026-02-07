@@ -7,14 +7,25 @@ import { courseStructure as aiCanCourse, questions as aiCanQuestions } from './c
 import { courseStructure as getThroughCourse, questions as getThroughQuestions } from './courses/getthrough';
 import { courseStructure as scoreUpEast2Course, questions as scoreUpEast2Questions } from './courses/score-up-east2';
 import { courseStructure as scoreUpEast3Course, questions as scoreUpEast3Questions } from './courses/score-up-east3';
+import { courseStructure as alphabetStarterCourse, questions as alphabetStarterQuestions } from './courses/alphabet-starter';
+import { courseStructure as typingFoundationCourse, questions as typingFoundationQuestions } from './courses/typing-foundation';
 
-export const courses: Course[] = [aiCanCourse, getThroughCourse, scoreUpEast2Course, scoreUpEast3Course];
+export const courses: Course[] = [
+    aiCanCourse,
+    getThroughCourse,
+    scoreUpEast2Course,
+    scoreUpEast3Course,
+    alphabetStarterCourse,
+    typingFoundationCourse,
+];
 
 export const questions: Question[] = [
     ...aiCanQuestions,
     ...getThroughQuestions,
     ...scoreUpEast2Questions,
     ...scoreUpEast3Questions,
+    ...alphabetStarterQuestions,
+    ...typingFoundationQuestions,
 ];
 
 // Backward-compatible single-course export
