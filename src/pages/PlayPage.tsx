@@ -293,10 +293,12 @@ export function PlayPage() {
 
         if (currentUser?.id) {
             void (async () => {
-                const sectionMeta: SectionMeta | undefined = activeCourseId && activeUnitId && activePartId && activeSectionId
+                const resolvedUnitId = activeUnitId
+                    ?? currentCourse?.units.find((unit) => unit.parts.some((part) => part.id === activePartId))?.id;
+                const sectionMeta: SectionMeta | undefined = activeCourseId && activePartId && activeSectionId
                     ? {
                         courseId: activeCourseId,
-                        unitId: activeUnitId,
+                        unitId: resolvedUnitId,
                         partId: activePartId,
                         sectionId: activeSectionId,
                         label: selectedSectionLabel || activeSectionId,
@@ -315,7 +317,9 @@ export function PlayPage() {
                     playedAt: new Date().toISOString(),
                 };
 
-                recordSessionSummary(currentUser.id, sessionSummary, sectionMeta).catch(() => {});
+                recordSessionSummary(currentUser.id, sessionSummary, sectionMeta).catch((error) => {
+                    console.error('Failed to record typing session summary:', error);
+                });
 
                 const progressTotals = buildUserProgressTotals(state.userProgress, currentUser.id);
                 const sectionTotals = buildSectionProgressTotals(state.sectionProgress, currentUser.id);
@@ -331,7 +335,9 @@ export function PlayPage() {
                     lastCourseId: activeCourseId ?? undefined,
                     lastUnitId: activeUnitId ?? undefined,
                     lastPartId: activePartId ?? undefined,
-                }).catch(() => {});
+                }).catch((error) => {
+                    console.error('Failed to record typing progress snapshot:', error);
+                });
             })();
         }
 

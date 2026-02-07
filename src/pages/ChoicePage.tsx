@@ -185,10 +185,12 @@ export function ChoicePage() {
 
         if (state.currentUser?.id) {
             const currentUserId = state.currentUser.id;
-            const sectionMeta: SectionMeta | undefined = activeCourseId && activeUnitId && activePartId && activeSectionId
+            const resolvedUnitId = activeUnitId
+                ?? currentCourse?.units.find((unit) => unit.parts.some((part) => part.id === activePartId))?.id;
+            const sectionMeta: SectionMeta | undefined = activeCourseId && activePartId && activeSectionId
                 ? {
                     courseId: activeCourseId,
-                    unitId: activeUnitId,
+                    unitId: resolvedUnitId,
                     partId: activePartId,
                     sectionId: activeSectionId,
                     label: sectionLabel || activeSectionId,
@@ -208,7 +210,9 @@ export function ChoicePage() {
                 playedAt: new Date().toISOString(),
             };
 
-            recordSessionSummary(currentUserId, sessionSummary, sectionMeta).catch(() => {});
+            recordSessionSummary(currentUserId, sessionSummary, sectionMeta).catch((error) => {
+                console.error('Failed to record choice session summary:', error);
+            });
 
             void (async () => {
                 const progressTotals = buildUserProgressTotals(state.userProgress, currentUserId);
@@ -225,7 +229,9 @@ export function ChoicePage() {
                     lastCourseId: activeCourseId ?? undefined,
                     lastUnitId: activeUnitId ?? undefined,
                     lastPartId: activePartId ?? undefined,
-                }).catch(() => {});
+                }).catch((error) => {
+                    console.error('Failed to record choice progress snapshot:', error);
+                });
             })();
         }
 

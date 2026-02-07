@@ -24,7 +24,7 @@ export type ProgressSnapshot = {
 
 export interface SectionMeta {
     courseId: string;
-    unitId: string;
+    unitId?: string;
     partId: string;
     sectionId: string;
     label: string;
@@ -160,7 +160,6 @@ async function updateRecentSections(uid: string, section: SectionMeta): Promise<
     const filtered = existing.filter((item) => {
         const sameSection =
             item.courseId === section.courseId &&
-            item.unitId === section.unitId &&
             item.partId === section.partId &&
             item.sectionId === section.sectionId;
         if (!sameSection) return true;

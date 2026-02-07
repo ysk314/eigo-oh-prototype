@@ -25,7 +25,7 @@ type DashboardStats = {
 
 type RecentSectionItem = {
     courseId: string;
-    unitId: string;
+    unitId?: string;
     partId: string;
     sectionId: string;
     label: string;
@@ -65,10 +65,25 @@ function formatDateTime(value?: string): string {
 function normalizeMode(value: unknown): 'typing' | 'choice' {
     if (typeof value !== 'string') return 'typing';
     const mode = value.trim().toLowerCase();
-    if (mode === 'choice' || mode === '4choice' || mode === 'multiple-choice' || mode === 'multiple_choice' || mode === 'select') {
+    if (
+        mode === 'choice' ||
+        mode === '4choice' ||
+        mode === 'multiple-choice' ||
+        mode === 'multiple_choice' ||
+        mode === 'select' ||
+        mode === '4択' ||
+        mode === '選択'
+    ) {
         return 'choice';
     }
     return 'typing';
+}
+
+function normalizeChoiceLevel(value: unknown): 1 | 2 | 3 | 4 {
+    if (typeof value === 'number' && value >= 1 && value <= 4) {
+        return value as 1 | 2 | 3 | 4;
+    }
+    return 1;
 }
 
 function normalizeRecentSections(value: unknown): RecentSectionItem[] {
@@ -79,7 +94,6 @@ function normalizeRecentSections(value: unknown): RecentSectionItem[] {
             const record = item as Record<string, unknown>;
             if (
                 typeof record.courseId !== 'string' ||
-                typeof record.unitId !== 'string' ||
                 typeof record.partId !== 'string' ||
                 typeof record.sectionId !== 'string' ||
                 typeof record.label !== 'string'
@@ -88,7 +102,7 @@ function normalizeRecentSections(value: unknown): RecentSectionItem[] {
             }
             return {
                 courseId: record.courseId,
-                unitId: record.unitId,
+                unitId: typeof record.unitId === 'string' ? record.unitId : undefined,
                 partId: record.partId,
                 sectionId: record.sectionId,
                 label: record.label,
@@ -143,7 +157,7 @@ function normalizeRecentSessions(value: unknown): RecentSessionItem[] {
 
 export function HomePage() {
     const navigate = useNavigate();
-    const { state, setCourse, setUnit, setPart, setSection } = useApp();
+    const { state, setCourse, setUnit, setPart, setSection, setMode, setStudyMode, setChoiceLevel } = useApp();
     const [stats, setStats] = useState<DashboardStats | null>(null);
     const [recentSections, setRecentSections] = useState<RecentSectionItem[]>([]);
     const [recentSessions, setRecentSessions] = useState<RecentSessionItem[]>([]);
@@ -165,7 +179,7 @@ export function HomePage() {
         const courseName = courseCatalog.find((course) => course.id === item.courseId)?.name;
         return {
             courseName: courseName ?? item.courseId,
-            unitName: item.unitId,
+            unitName: item.unitId ?? '—',
             partLabel: item.partId,
             sectionLabel: item.label,
         };
@@ -256,11 +270,40 @@ export function HomePage() {
         : 'まずは好きなコースを選んで、1セクション完了を目標にしましょう。';
 
     const handleOpenRecentSection = (item: RecentSectionItem) => {
+        const recentMode = normalizeMode(item.mode);
+        const choiceLevel = normalizeChoiceLevel(item.level);
+
         setCourse(item.courseId);
-        setUnit(item.unitId);
+        setUnit(item.unitId ?? null);
         setPart(item.partId);
         setSection(item.sectionId);
-        navigate('/course');
+
+        if (recentMode === 'choice') {
+            setStudyMode('choice');
+            setChoiceLevel(choiceLevel);
+            navigate('/choice', {
+                state: {
+                    courseId: item.courseId,
+                    unitId: item.unitId,
+                    partId: item.partId,
+                    sectionId: item.sectionId,
+                    level: choiceLevel,
+                },
+            });
+            return;
+        }
+
+        setStudyMode('typing');
+        setMode(1);
+        navigate('/play', {
+            state: {
+                courseId: item.courseId,
+                unitId: item.unitId,
+                partId: item.partId,
+                sectionId: item.sectionId,
+                mode: 1,
+            },
+        });
     };
 
     return (
@@ -396,7 +439,7 @@ export function HomePage() {
                                             </div>
                                             <div>
                                                 <span className={styles.sessionLabel}>モード</span>
-                                                <span className={styles.sessionValue}>{latestSession.mode === 'typing' ? 'タイピング' : '選択'}</span>
+                                                <span className={styles.sessionValue}>{latestSession.mode === 'typing' ? 'タイピング' : '4択'}</span>
                                             </div>
                                         </div>
                                     ) : (
