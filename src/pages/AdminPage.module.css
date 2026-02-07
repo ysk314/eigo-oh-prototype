@@ -323,12 +323,14 @@
 .tableWrap {
     max-height: 520px;
     overflow: auto;
+    border-top: 1px solid rgba(229, 115, 115, 0.12);
 }
 
 .table {
     width: 100%;
     border-collapse: collapse;
     font-size: var(--font-size-sm);
+    min-width: 900px;
 }
 
 .th {
@@ -358,6 +360,48 @@
     color: var(--color-text-muted);
 }
 
+.stickyCol {
+    position: sticky;
+    left: 0;
+    z-index: 2;
+    background: #fff7f2;
+    box-shadow: 6px 0 0 rgba(255, 255, 255, 0.9);
+}
+
+.colName {
+    min-width: 220px;
+    width: 28%;
+}
+
+.colMemberNo {
+    min-width: 120px;
+    width: 12%;
+}
+
+.colProgress {
+    min-width: 150px;
+    width: 18%;
+}
+
+.colLastActive {
+    min-width: 170px;
+    width: 18%;
+}
+
+.colLastSection {
+    min-width: 180px;
+    width: 16%;
+}
+
+.colCreatedAt {
+    min-width: 130px;
+    width: 12%;
+}
+
+.colUid {
+    min-width: 220px;
+}
+
 .tr {
     border-bottom: 1px solid rgba(229, 115, 115, 0.12);
     cursor: pointer;
@@ -378,6 +422,9 @@
     padding: var(--space-sm) var(--space-lg);
     color: var(--color-text-secondary);
     vertical-align: middle;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .tdPrimary {
@@ -389,6 +436,17 @@
     font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
     font-size: var(--font-size-xs);
     color: var(--color-text-muted);
+}
+
+.srOnly {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
 }
 
 .listItem {
@@ -638,11 +696,47 @@
         grid-template-columns: 1fr;
     }
 
-    .list {
-        max-height: 360px;
+    .tableWrap {
+        max-height: 440px;
+    }
+
+    .table {
+        min-width: 760px;
+        font-size: var(--font-size-xs);
+    }
+
+    .th,
+    .td,
+    .tdPrimary,
+    .tdMono {
+        padding: var(--space-xs) var(--space-md);
+    }
+
+    .colUid,
+    .colLastSection {
+        display: none;
     }
 
     .templateGrid {
         grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 640px) {
+    .filterLabel {
+        min-width: auto;
+    }
+
+    .columnToggle {
+        font-size: 11px;
+    }
+
+    .table {
+        min-width: 620px;
+    }
+
+    .colCreatedAt,
+    .colMemberNo {
+        display: none;
     }
 }

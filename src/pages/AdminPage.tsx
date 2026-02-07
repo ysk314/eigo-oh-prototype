@@ -1480,14 +1480,17 @@ export function AdminPage() {
                             )}
                             {filteredUsers.length > 0 && (
                                 <table className={styles.table}>
+                                    <caption className={styles.srOnly}>ユーザー一覧テーブル</caption>
                                     <thead>
                                         <tr>
-                                            <th className={styles.th}>
+                                            <th
+                                                className={`${styles.th} ${styles.colName} ${styles.stickyCol}`}
+                                                aria-sort={sortKey === 'name' ? (sortDir === 'asc' ? 'ascending' : 'descending') : 'none'}
+                                            >
                                                 <button
                                                     type="button"
                                                     className={styles.sortButton}
                                                     onClick={() => handleSort('name')}
-                                                    aria-sort={sortKey === 'name' ? (sortDir === 'asc' ? 'ascending' : 'descending') : 'none'}
                                                 >
                                                     表示名
                                                     {sortKey === 'name' && (
@@ -1496,12 +1499,14 @@ export function AdminPage() {
                                                 </button>
                                             </th>
                                             {visibleColumns.memberNo && (
-                                                <th className={styles.th}>
+                                                <th
+                                                    className={`${styles.th} ${styles.colMemberNo}`}
+                                                    aria-sort={sortKey === 'memberNo' ? (sortDir === 'asc' ? 'ascending' : 'descending') : 'none'}
+                                                >
                                                     <button
                                                         type="button"
                                                         className={styles.sortButton}
                                                         onClick={() => handleSort('memberNo')}
-                                                        aria-sort={sortKey === 'memberNo' ? (sortDir === 'asc' ? 'ascending' : 'descending') : 'none'}
                                                     >
                                                         会員番号
                                                         {sortKey === 'memberNo' && (
@@ -1511,12 +1516,14 @@ export function AdminPage() {
                                                 </th>
                                             )}
                                             {visibleColumns.progress && (
-                                                <th className={styles.th}>
+                                                <th
+                                                    className={`${styles.th} ${styles.colProgress}`}
+                                                    aria-sort={sortKey === 'progress' ? (sortDir === 'asc' ? 'ascending' : 'descending') : 'none'}
+                                                >
                                                     <button
                                                         type="button"
                                                         className={styles.sortButton}
                                                         onClick={() => handleSort('progress')}
-                                                        aria-sort={sortKey === 'progress' ? (sortDir === 'asc' ? 'ascending' : 'descending') : 'none'}
                                                     >
                                                         進捗
                                                         {sortKey === 'progress' && (
@@ -1526,12 +1533,14 @@ export function AdminPage() {
                                                 </th>
                                             )}
                                             {visibleColumns.lastActive && (
-                                                <th className={styles.th}>
+                                                <th
+                                                    className={`${styles.th} ${styles.colLastActive}`}
+                                                    aria-sort={sortKey === 'lastActive' ? (sortDir === 'asc' ? 'ascending' : 'descending') : 'none'}
+                                                >
                                                     <button
                                                         type="button"
                                                         className={styles.sortButton}
                                                         onClick={() => handleSort('lastActive')}
-                                                        aria-sort={sortKey === 'lastActive' ? (sortDir === 'asc' ? 'ascending' : 'descending') : 'none'}
                                                     >
                                                         最終学習
                                                         {sortKey === 'lastActive' && (
@@ -1540,14 +1549,16 @@ export function AdminPage() {
                                                     </button>
                                                 </th>
                                             )}
-                                            {visibleColumns.lastSection && <th className={styles.th}>直近セクション</th>}
+                                            {visibleColumns.lastSection && <th className={`${styles.th} ${styles.colLastSection}`}>直近セクション</th>}
                                             {visibleColumns.createdAt && (
-                                                <th className={styles.th}>
+                                                <th
+                                                    className={`${styles.th} ${styles.colCreatedAt}`}
+                                                    aria-sort={sortKey === 'createdAt' ? (sortDir === 'asc' ? 'ascending' : 'descending') : 'none'}
+                                                >
                                                     <button
                                                         type="button"
                                                         className={styles.sortButton}
                                                         onClick={() => handleSort('createdAt')}
-                                                        aria-sort={sortKey === 'createdAt' ? (sortDir === 'asc' ? 'ascending' : 'descending') : 'none'}
                                                     >
                                                         作成日
                                                         {sortKey === 'createdAt' && (
@@ -1556,7 +1567,7 @@ export function AdminPage() {
                                                     </button>
                                                 </th>
                                             )}
-                                            {visibleColumns.uid && <th className={styles.th}>UID</th>}
+                                            {visibleColumns.uid && <th className={`${styles.th} ${styles.colUid}`}>UID</th>}
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -1581,19 +1592,19 @@ export function AdminPage() {
                                                         }
                                                     }}
                                                 >
-                                                    <td className={styles.tdPrimary}>{user.displayName}</td>
-                                                    {visibleColumns.memberNo && <td className={styles.td}>{user.memberNo ?? '—'}</td>}
+                                                    <td className={`${styles.tdPrimary} ${styles.colName} ${styles.stickyCol}`}>{user.displayName}</td>
+                                                    {visibleColumns.memberNo && <td className={`${styles.td} ${styles.colMemberNo}`}>{user.memberNo ?? '—'}</td>}
                                                     {visibleColumns.progress && (
-                                                        <td className={styles.td}>
+                                                        <td className={`${styles.td} ${styles.colProgress}`}>
                                                             <span className={styles.progressBadge}>進捗 {progressText}</span>
                                                         </td>
                                                     )}
                                                     {visibleColumns.lastActive && (
-                                                        <td className={styles.td}>{formatDateTime(user.stats?.lastActiveAt)}</td>
+                                                        <td className={`${styles.td} ${styles.colLastActive}`}>{formatDateTime(user.stats?.lastActiveAt)}</td>
                                                     )}
-                                                    {visibleColumns.lastSection && <td className={styles.td}>{lastSection}</td>}
-                                                    {visibleColumns.createdAt && <td className={styles.td}>{formatDate(user.createdAt)}</td>}
-                                                    {visibleColumns.uid && <td className={styles.tdMono}>{user.uid}</td>}
+                                                    {visibleColumns.lastSection && <td className={`${styles.td} ${styles.colLastSection}`}>{lastSection}</td>}
+                                                    {visibleColumns.createdAt && <td className={`${styles.td} ${styles.colCreatedAt}`}>{formatDate(user.createdAt)}</td>}
+                                                    {visibleColumns.uid && <td className={`${styles.tdMono} ${styles.colUid}`}>{user.uid}</td>}
                                                 </tr>
                                             );
                                         })}
