@@ -193,6 +193,7 @@ export function ChoicePage() {
                     sectionId: activeSectionId,
                     label: sectionLabel || activeSectionId,
                     mode: 'choice' as const,
+                    level: activeChoiceLevel,
                 }
                 : undefined;
 

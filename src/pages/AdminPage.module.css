@@ -297,13 +297,15 @@
 
 .grid {
     display: grid;
-    grid-template-columns: 1.1fr 0.9fr;
+    grid-template-columns: minmax(0, 1fr) minmax(300px, 360px);
     gap: var(--space-xl);
+    align-items: start;
 }
 
 .listCard,
 .detailCard {
     min-height: 420px;
+    min-width: 0;
 }
 
 .listHeader {
@@ -322,6 +324,7 @@
 
 .tableWrap {
     max-height: 520px;
+    max-width: 100%;
     overflow: auto;
     border-top: 1px solid rgba(229, 115, 115, 0.12);
 }
@@ -582,14 +585,28 @@
     display: flex;
     flex-direction: column;
     gap: var(--space-md);
+    min-width: 0;
 }
 
 .detailRow {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: space-between;
     gap: var(--space-md);
     font-size: var(--font-size-md);
+    min-width: 0;
+}
+
+.detailRow > span {
+    flex: 0 0 auto;
+}
+
+.detailRow > strong {
+    flex: 1 1 auto;
+    min-width: 0;
+    text-align: right;
+    overflow-wrap: anywhere;
+    word-break: break-word;
 }
 
 .detailSection {
@@ -675,6 +692,8 @@
 .mono {
     font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
     font-size: var(--font-size-sm);
+    overflow-wrap: anywhere;
+    word-break: break-all;
 }
 
 .empty {

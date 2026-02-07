@@ -31,6 +31,7 @@ type RecentSectionItem = {
     label: string;
     lastPlayedAt?: string;
     mode?: 'typing' | 'choice';
+    level?: number;
 };
 
 type RecentSessionItem = {
@@ -59,6 +60,85 @@ function formatDateTime(value?: string): string {
     const date = new Date(value);
     if (Number.isNaN(date.getTime())) return '—';
     return `${date.getMonth() + 1}/${date.getDate()} ${date.getHours()}:${String(date.getMinutes()).padStart(2, '0')}`;
+}
+
+function normalizeMode(value: unknown): 'typing' | 'choice' {
+    if (typeof value !== 'string') return 'typing';
+    const mode = value.trim().toLowerCase();
+    if (mode === 'choice' || mode === '4choice' || mode === 'multiple-choice' || mode === 'multiple_choice' || mode === 'select') {
+        return 'choice';
+    }
+    return 'typing';
+}
+
+function normalizeRecentSections(value: unknown): RecentSectionItem[] {
+    if (!Array.isArray(value)) return [];
+    return value
+        .map((item) => {
+            if (!item || typeof item !== 'object') return null;
+            const record = item as Record<string, unknown>;
+            if (
+                typeof record.courseId !== 'string' ||
+                typeof record.unitId !== 'string' ||
+                typeof record.partId !== 'string' ||
+                typeof record.sectionId !== 'string' ||
+                typeof record.label !== 'string'
+            ) {
+                return null;
+            }
+            return {
+                courseId: record.courseId,
+                unitId: record.unitId,
+                partId: record.partId,
+                sectionId: record.sectionId,
+                label: record.label,
+                lastPlayedAt: typeof record.lastPlayedAt === 'string' ? record.lastPlayedAt : undefined,
+                mode: normalizeMode(record.mode),
+                level: typeof record.level === 'number' ? record.level : undefined,
+            } as RecentSectionItem;
+        })
+        .filter((item): item is RecentSectionItem => item !== null)
+        .sort((a, b) => {
+            const aTime = a.lastPlayedAt ? Date.parse(a.lastPlayedAt) : 0;
+            const bTime = b.lastPlayedAt ? Date.parse(b.lastPlayedAt) : 0;
+            return (Number.isNaN(bTime) ? 0 : bTime) - (Number.isNaN(aTime) ? 0 : aTime);
+        });
+}
+
+function normalizeRecentSessions(value: unknown): RecentSessionItem[] {
+    if (!Array.isArray(value)) return [];
+    return value
+        .map((item) => {
+            if (!item || typeof item !== 'object') return null;
+            const record = item as Record<string, unknown>;
+            if (
+                typeof record.sessionId !== 'string' ||
+                typeof record.accuracy !== 'number' ||
+                typeof record.missCount !== 'number' ||
+                typeof record.totalTimeMs !== 'number' ||
+                typeof record.rank !== 'string' ||
+                typeof record.playedAt !== 'string'
+            ) {
+                return null;
+            }
+            return {
+                sessionId: record.sessionId,
+                mode: normalizeMode(record.mode),
+                accuracy: record.accuracy,
+                wpm: typeof record.wpm === 'number' ? record.wpm : undefined,
+                missCount: record.missCount,
+                totalTimeMs: record.totalTimeMs,
+                rank: record.rank,
+                level: typeof record.level === 'number' ? record.level : undefined,
+                playedAt: record.playedAt,
+            } as RecentSessionItem;
+        })
+        .filter((item): item is RecentSessionItem => item !== null)
+        .sort((a, b) => {
+            const aTime = Date.parse(a.playedAt);
+            const bTime = Date.parse(b.playedAt);
+            return (Number.isNaN(bTime) ? 0 : bTime) - (Number.isNaN(aTime) ? 0 : aTime);
+        });
 }
 
 export function HomePage() {
@@ -148,8 +228,8 @@ export function HomePage() {
                 setStats(statsSnap.exists() ? (statsSnap.data() as DashboardStats) : null);
                 const sectionsData = sectionsSnap.exists() ? (sectionsSnap.data() as { items?: RecentSectionItem[] }) : {};
                 const sessionsData = sessionsSnap.exists() ? (sessionsSnap.data() as { items?: RecentSessionItem[] }) : {};
-                setRecentSections(sectionsData.items ?? []);
-                setRecentSessions(sessionsData.items ?? []);
+                setRecentSections(normalizeRecentSections(sectionsData.items));
+                setRecentSessions(normalizeRecentSessions(sessionsData.items));
             })
             .catch((error) => {
                 console.error('Failed to load dashboard data:', error);
@@ -166,12 +246,13 @@ export function HomePage() {
     const latestSession = recentSessions[0];
     const latestRecentSection = recentSections[0];
     const latestRecentInfo = latestRecentSection ? resolveSectionInfo(latestRecentSection) : null;
+    const latestRecentModeLabel = latestRecentSection?.mode === 'choice' ? '4択' : 'タイピング';
     const nextCourseId = latestRecentSection?.courseId ?? courseCatalog[0]?.id;
     const missionTitle = latestRecentSection
         ? '前回の続きから再開'
         : '最初のセクションを始める';
     const missionMeta = latestRecentInfo
-        ? `${latestRecentInfo.courseName} / ${latestRecentInfo.partLabel} / ${latestRecentInfo.sectionLabel}`
+        ? `${latestRecentInfo.courseName} / ${latestRecentInfo.partLabel} / ${latestRecentInfo.sectionLabel} ・ ${latestRecentModeLabel}`
         : 'まずは好きなコースを選んで、1セクション完了を目標にしましょう。';
 
     const handleOpenRecentSection = (item: RecentSectionItem) => {
@@ -325,10 +406,10 @@ export function HomePage() {
                                         <div className={styles.recentList}>
                                             {recentSections.map((item) => {
                                                 const info = resolveSectionInfo(item);
-                                                const modeLabel = item.mode === 'choice' ? '選択' : 'タイピング';
+                                                const modeLabel = item.mode === 'choice' ? '4択' : 'タイピング';
                                                 return (
                                                     <button
-                                                        key={item.sectionId}
+                                                        key={`${item.courseId}:${item.unitId}:${item.partId}:${item.sectionId}:${item.mode ?? 'typing'}:${item.level ?? 0}:${item.lastPlayedAt ?? ''}`}
                                                         className={styles.recentItem}
                                                         onClick={() => handleOpenRecentSection(item)}
                                                     >

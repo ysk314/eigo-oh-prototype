@@ -29,6 +29,7 @@ export interface SectionMeta {
     sectionId: string;
     label: string;
     mode?: SessionMode;
+    level?: number;
 }
 
 export interface SessionSummary {
@@ -153,13 +154,31 @@ async function updateRecentSections(uid: string, section: SectionMeta): Promise<
     const ref = doc(db, 'user_recent_sections', uid);
     const snap = await getDoc(ref);
     const data = snap.exists() ? (snap.data() as { items?: SectionMeta[] }) : {};
-    const existing = data.items ?? [];
-    const filtered = existing.filter((item) => item.sectionId !== section.sectionId);
+    const existing = Array.isArray(data.items) ? data.items : [];
+    const mode = section.mode ?? 'typing';
+    const level = section.level ?? null;
+    const filtered = existing.filter((item) => {
+        const sameSection =
+            item.courseId === section.courseId &&
+            item.unitId === section.unitId &&
+            item.partId === section.partId &&
+            item.sectionId === section.sectionId;
+        if (!sameSection) return true;
+        const itemMode = item.mode ?? 'typing';
+        const itemLevel = item.level ?? null;
+        return itemMode !== mode || itemLevel !== level;
+    });
     const nowIso = new Date().toISOString();
     const next = [
         { ...section, lastPlayedAt: nowIso } as SectionMeta & { lastPlayedAt: string },
         ...filtered,
-    ].slice(0, 5);
+    ]
+        .sort((a, b) => {
+            const aTime = 'lastPlayedAt' in a ? Date.parse(String(a.lastPlayedAt)) : 0;
+            const bTime = 'lastPlayedAt' in b ? Date.parse(String(b.lastPlayedAt)) : 0;
+            return (Number.isNaN(bTime) ? 0 : bTime) - (Number.isNaN(aTime) ? 0 : aTime);
+        })
+        .slice(0, 5);
 
     await setDoc(
         ref,
@@ -175,9 +194,15 @@ async function updateRecentSessions(uid: string, summary: SessionSummary): Promi
     const ref = doc(db, 'user_recent_sessions', uid);
     const snap = await getDoc(ref);
     const data = snap.exists() ? (snap.data() as { items?: SessionSummary[] }) : {};
-    const existing = data.items ?? [];
+    const existing = Array.isArray(data.items) ? data.items : [];
     const filtered = existing.filter((item) => item.sessionId !== summary.sessionId);
-    const next = [summary, ...filtered].slice(0, 3);
+    const next = [summary, ...filtered]
+        .sort((a, b) => {
+            const aTime = Date.parse(a.playedAt);
+            const bTime = Date.parse(b.playedAt);
+            return (Number.isNaN(bTime) ? 0 : bTime) - (Number.isNaN(aTime) ? 0 : aTime);
+        })
+        .slice(0, 3);
 
     await setDoc(
         ref,
