@@ -2,390 +2,441 @@
 // Course Data: Alphabet Starter
 // ================================
 
-import { Question, Course } from '@/types';
+import { Course, Question } from '@/types';
 
-export const questions: Question[] = [
+type Seed = {
+    promptJp: string;
+    answerEn: string;
+};
+
+type SectionDef = {
+    id: string;
+    type: string;
+    label: string;
+    seeds: Seed[];
+};
+
+type PartDef = {
+    id: string;
+    label: string;
+    pos: string;
+    category: string[];
+    sections: SectionDef[];
+};
+
+type UnitDef = {
+    id: string;
+    name: string;
+    parts: PartDef[];
+};
+
+const courseName = 'Alphabet Starter';
+
+const units: UnitDef[] = [
     {
-        id: 'alp-q1',
-        course: 'Alphabet Starter',
-        unit: 'Unit 1 形の認識',
-        partId: 'alp-unit-1-part-1',
-        section: 'alp-unit-1-part-1-section-1',
-        sectionLabel: '小文字ベーシック1',
-        promptJp: 'エー（小文字）',
-        answerEn: 'a',
-        pos: ['letter-lower-basic-1'],
-        orderIndex: 1,
-        category: ['alphabet', 'recognition'],
+        id: 'alp-unit-1',
+        name: 'Unit 1: 形の認識（大文字）',
+        parts: [
+            {
+                id: 'alp-unit-1-part-1',
+                label: '直線系',
+                pos: 'alphabet-upper-linear',
+                category: ['alphabet', 'recognition', 'upper'],
+                sections: [
+                    {
+                        id: 'alp-unit-1-part-1-section-1',
+                        type: 'alp-unit-1-part-1-section-1',
+                        label: 'A E F',
+                        seeds: [
+                            { promptJp: '大文字 A', answerEn: 'A' },
+                            { promptJp: '大文字 E', answerEn: 'E' },
+                            { promptJp: '大文字 F', answerEn: 'F' },
+                        ],
+                    },
+                    {
+                        id: 'alp-unit-1-part-1-section-2',
+                        type: 'alp-unit-1-part-1-section-2',
+                        label: 'H I L',
+                        seeds: [
+                            { promptJp: '大文字 H', answerEn: 'H' },
+                            { promptJp: '大文字 I', answerEn: 'I' },
+                            { promptJp: '大文字 L', answerEn: 'L' },
+                        ],
+                    },
+                    {
+                        id: 'alp-unit-1-part-1-section-3',
+                        type: 'alp-unit-1-part-1-section-3',
+                        label: 'T',
+                        seeds: [
+                            { promptJp: '大文字 T', answerEn: 'T' },
+                        ],
+                    },
+                ],
+            },
+            {
+                id: 'alp-unit-1-part-2',
+                label: '曲線系',
+                pos: 'alphabet-upper-curve',
+                category: ['alphabet', 'recognition', 'upper'],
+                sections: [
+                    {
+                        id: 'alp-unit-1-part-2-section-1',
+                        type: 'alp-unit-1-part-2-section-1',
+                        label: 'B C D',
+                        seeds: [
+                            { promptJp: '大文字 B', answerEn: 'B' },
+                            { promptJp: '大文字 C', answerEn: 'C' },
+                            { promptJp: '大文字 D', answerEn: 'D' },
+                        ],
+                    },
+                    {
+                        id: 'alp-unit-1-part-2-section-2',
+                        type: 'alp-unit-1-part-2-section-2',
+                        label: 'G J O',
+                        seeds: [
+                            { promptJp: '大文字 G', answerEn: 'G' },
+                            { promptJp: '大文字 J', answerEn: 'J' },
+                            { promptJp: '大文字 O', answerEn: 'O' },
+                        ],
+                    },
+                    {
+                        id: 'alp-unit-1-part-2-section-3',
+                        type: 'alp-unit-1-part-2-section-3',
+                        label: 'P Q R S U',
+                        seeds: [
+                            { promptJp: '大文字 P', answerEn: 'P' },
+                            { promptJp: '大文字 Q', answerEn: 'Q' },
+                            { promptJp: '大文字 R', answerEn: 'R' },
+                            { promptJp: '大文字 S', answerEn: 'S' },
+                            { promptJp: '大文字 U', answerEn: 'U' },
+                        ],
+                    },
+                ],
+            },
+            {
+                id: 'alp-unit-1-part-3',
+                label: '斜線系',
+                pos: 'alphabet-upper-diagonal',
+                category: ['alphabet', 'recognition', 'upper'],
+                sections: [
+                    {
+                        id: 'alp-unit-1-part-3-section-1',
+                        type: 'alp-unit-1-part-3-section-1',
+                        label: 'K M N',
+                        seeds: [
+                            { promptJp: '大文字 K', answerEn: 'K' },
+                            { promptJp: '大文字 M', answerEn: 'M' },
+                            { promptJp: '大文字 N', answerEn: 'N' },
+                        ],
+                    },
+                    {
+                        id: 'alp-unit-1-part-3-section-2',
+                        type: 'alp-unit-1-part-3-section-2',
+                        label: 'V W X',
+                        seeds: [
+                            { promptJp: '大文字 V', answerEn: 'V' },
+                            { promptJp: '大文字 W', answerEn: 'W' },
+                            { promptJp: '大文字 X', answerEn: 'X' },
+                        ],
+                    },
+                    {
+                        id: 'alp-unit-1-part-3-section-3',
+                        type: 'alp-unit-1-part-3-section-3',
+                        label: 'Y Z',
+                        seeds: [
+                            { promptJp: '大文字 Y', answerEn: 'Y' },
+                            { promptJp: '大文字 Z', answerEn: 'Z' },
+                        ],
+                    },
+                ],
+            },
+        ],
     },
     {
-        id: 'alp-q2',
-        course: 'Alphabet Starter',
-        unit: 'Unit 1 形の認識',
-        partId: 'alp-unit-1-part-1',
-        section: 'alp-unit-1-part-1-section-1',
-        sectionLabel: '小文字ベーシック1',
-        promptJp: 'シー（小文字）',
-        answerEn: 'c',
-        pos: ['letter-lower-basic-1'],
-        orderIndex: 2,
-        category: ['alphabet', 'recognition'],
+        id: 'alp-unit-2',
+        name: 'Unit 2: 形の認識（小文字）',
+        parts: [
+            {
+                id: 'alp-unit-2-part-1',
+                label: '形が近い小文字',
+                pos: 'alphabet-lower-similar',
+                category: ['alphabet', 'recognition', 'lower'],
+                sections: [
+                    {
+                        id: 'alp-unit-2-part-1-section-1',
+                        type: 'alp-unit-2-part-1-section-1',
+                        label: 'a c e o u',
+                        seeds: [
+                            { promptJp: '小文字 a', answerEn: 'a' },
+                            { promptJp: '小文字 c', answerEn: 'c' },
+                            { promptJp: '小文字 e', answerEn: 'e' },
+                            { promptJp: '小文字 o', answerEn: 'o' },
+                            { promptJp: '小文字 u', answerEn: 'u' },
+                        ],
+                    },
+                ],
+            },
+            {
+                id: 'alp-unit-2-part-2',
+                label: '似やすいペア',
+                pos: 'alphabet-lower-confusable',
+                category: ['alphabet', 'recognition', 'lower'],
+                sections: [
+                    {
+                        id: 'alp-unit-2-part-2-section-1',
+                        type: 'alp-unit-2-part-2-section-1',
+                        label: 'b d p q',
+                        seeds: [
+                            { promptJp: '小文字 b', answerEn: 'b' },
+                            { promptJp: '小文字 d', answerEn: 'd' },
+                            { promptJp: '小文字 p', answerEn: 'p' },
+                            { promptJp: '小文字 q', answerEn: 'q' },
+                        ],
+                    },
+                    {
+                        id: 'alp-unit-2-part-2-section-2',
+                        type: 'alp-unit-2-part-2-section-2',
+                        label: 'i l',
+                        seeds: [
+                            { promptJp: '小文字 i', answerEn: 'i' },
+                            { promptJp: '小文字 l', answerEn: 'l' },
+                        ],
+                    },
+                    {
+                        id: 'alp-unit-2-part-2-section-3',
+                        type: 'alp-unit-2-part-2-section-3',
+                        label: 'n h m',
+                        seeds: [
+                            { promptJp: '小文字 n', answerEn: 'n' },
+                            { promptJp: '小文字 h', answerEn: 'h' },
+                            { promptJp: '小文字 m', answerEn: 'm' },
+                        ],
+                    },
+                ],
+            },
+            {
+                id: 'alp-unit-2-part-3',
+                label: '斜線・特殊形',
+                pos: 'alphabet-lower-diagonal-special',
+                category: ['alphabet', 'recognition', 'lower'],
+                sections: [
+                    {
+                        id: 'alp-unit-2-part-3-section-1',
+                        type: 'alp-unit-2-part-3-section-1',
+                        label: 'k v w',
+                        seeds: [
+                            { promptJp: '小文字 k', answerEn: 'k' },
+                            { promptJp: '小文字 v', answerEn: 'v' },
+                            { promptJp: '小文字 w', answerEn: 'w' },
+                        ],
+                    },
+                    {
+                        id: 'alp-unit-2-part-3-section-2',
+                        type: 'alp-unit-2-part-3-section-2',
+                        label: 'x y z',
+                        seeds: [
+                            { promptJp: '小文字 x', answerEn: 'x' },
+                            { promptJp: '小文字 y', answerEn: 'y' },
+                            { promptJp: '小文字 z', answerEn: 'z' },
+                        ],
+                    },
+                ],
+            },
+        ],
     },
     {
-        id: 'alp-q3',
-        course: 'Alphabet Starter',
-        unit: 'Unit 1 形の認識',
-        partId: 'alp-unit-1-part-1',
-        section: 'alp-unit-1-part-1-section-1',
-        sectionLabel: '小文字ベーシック1',
-        promptJp: 'イー（小文字）',
-        answerEn: 'e',
-        pos: ['letter-lower-basic-1'],
-        orderIndex: 3,
-        category: ['alphabet', 'recognition'],
-    },
-    {
-        id: 'alp-q4',
-        course: 'Alphabet Starter',
-        unit: 'Unit 1 形の認識',
-        partId: 'alp-unit-1-part-1',
-        section: 'alp-unit-1-part-1-section-1',
-        sectionLabel: '小文字ベーシック1',
-        promptJp: 'オー（小文字）',
-        answerEn: 'o',
-        pos: ['letter-lower-basic-1'],
-        orderIndex: 4,
-        category: ['alphabet', 'recognition'],
-    },
-    {
-        id: 'alp-q5',
-        course: 'Alphabet Starter',
-        unit: 'Unit 1 形の認識',
-        partId: 'alp-unit-1-part-1',
-        section: 'alp-unit-1-part-1-section-1',
-        sectionLabel: '小文字ベーシック1',
-        promptJp: 'エス（小文字）',
-        answerEn: 's',
-        pos: ['letter-lower-basic-1'],
-        orderIndex: 5,
-        category: ['alphabet', 'recognition'],
-    },
-    {
-        id: 'alp-q6',
-        course: 'Alphabet Starter',
-        unit: 'Unit 1 形の認識',
-        partId: 'alp-unit-1-part-1',
-        section: 'alp-unit-1-part-1-section-1',
-        sectionLabel: '小文字ベーシック1',
-        promptJp: 'ユー（小文字）',
-        answerEn: 'u',
-        pos: ['letter-lower-basic-1'],
-        orderIndex: 6,
-        category: ['alphabet', 'recognition'],
-    },
-    {
-        id: 'alp-q7',
-        course: 'Alphabet Starter',
-        unit: 'Unit 1 形の認識',
-        partId: 'alp-unit-1-part-2',
-        section: 'alp-unit-1-part-2-section-1',
-        sectionLabel: '小文字まぎらわしい形',
-        promptJp: 'ビー（小文字）',
-        answerEn: 'b',
-        pos: ['letter-lower-confuse'],
-        orderIndex: 1,
-        category: ['alphabet', 'recognition'],
-    },
-    {
-        id: 'alp-q8',
-        course: 'Alphabet Starter',
-        unit: 'Unit 1 形の認識',
-        partId: 'alp-unit-1-part-2',
-        section: 'alp-unit-1-part-2-section-1',
-        sectionLabel: '小文字まぎらわしい形',
-        promptJp: 'ディー（小文字）',
-        answerEn: 'd',
-        pos: ['letter-lower-confuse'],
-        orderIndex: 2,
-        category: ['alphabet', 'recognition'],
-    },
-    {
-        id: 'alp-q9',
-        course: 'Alphabet Starter',
-        unit: 'Unit 1 形の認識',
-        partId: 'alp-unit-1-part-2',
-        section: 'alp-unit-1-part-2-section-1',
-        sectionLabel: '小文字まぎらわしい形',
-        promptJp: 'ピー（小文字）',
-        answerEn: 'p',
-        pos: ['letter-lower-confuse'],
-        orderIndex: 3,
-        category: ['alphabet', 'recognition'],
-    },
-    {
-        id: 'alp-q10',
-        course: 'Alphabet Starter',
-        unit: 'Unit 1 形の認識',
-        partId: 'alp-unit-1-part-2',
-        section: 'alp-unit-1-part-2-section-1',
-        sectionLabel: '小文字まぎらわしい形',
-        promptJp: 'キュー（小文字）',
-        answerEn: 'q',
-        pos: ['letter-lower-confuse'],
-        orderIndex: 4,
-        category: ['alphabet', 'recognition'],
-    },
-    {
-        id: 'alp-q11',
-        course: 'Alphabet Starter',
-        unit: 'Unit 1 形の認識',
-        partId: 'alp-unit-1-part-2',
-        section: 'alp-unit-1-part-2-section-1',
-        sectionLabel: '小文字まぎらわしい形',
-        promptJp: 'エム（小文字）',
-        answerEn: 'm',
-        pos: ['letter-lower-confuse'],
-        orderIndex: 5,
-        category: ['alphabet', 'recognition'],
-    },
-    {
-        id: 'alp-q12',
-        course: 'Alphabet Starter',
-        unit: 'Unit 1 形の認識',
-        partId: 'alp-unit-1-part-2',
-        section: 'alp-unit-1-part-2-section-1',
-        sectionLabel: '小文字まぎらわしい形',
-        promptJp: 'エヌ（小文字）',
-        answerEn: 'n',
-        pos: ['letter-lower-confuse'],
-        orderIndex: 6,
-        category: ['alphabet', 'recognition'],
-    },
-    {
-        id: 'alp-q13',
-        course: 'Alphabet Starter',
-        unit: 'Unit 2 大小対応',
-        partId: 'alp-unit-2-part-1',
-        section: 'alp-unit-2-part-1-section-1',
-        sectionLabel: '同形に近い文字',
-        promptJp: 'C の小文字',
-        answerEn: 'c',
-        pos: ['case-match-similar'],
-        orderIndex: 1,
-        category: ['alphabet', 'case-match'],
-    },
-    {
-        id: 'alp-q14',
-        course: 'Alphabet Starter',
-        unit: 'Unit 2 大小対応',
-        partId: 'alp-unit-2-part-1',
-        section: 'alp-unit-2-part-1-section-1',
-        sectionLabel: '同形に近い文字',
-        promptJp: 'O の小文字',
-        answerEn: 'o',
-        pos: ['case-match-similar'],
-        orderIndex: 2,
-        category: ['alphabet', 'case-match'],
-    },
-    {
-        id: 'alp-q15',
-        course: 'Alphabet Starter',
-        unit: 'Unit 2 大小対応',
-        partId: 'alp-unit-2-part-1',
-        section: 'alp-unit-2-part-1-section-1',
-        sectionLabel: '同形に近い文字',
-        promptJp: 'S の小文字',
-        answerEn: 's',
-        pos: ['case-match-similar'],
-        orderIndex: 3,
-        category: ['alphabet', 'case-match'],
-    },
-    {
-        id: 'alp-q16',
-        course: 'Alphabet Starter',
-        unit: 'Unit 2 大小対応',
-        partId: 'alp-unit-2-part-1',
-        section: 'alp-unit-2-part-1-section-1',
-        sectionLabel: '同形に近い文字',
-        promptJp: 'V の小文字',
-        answerEn: 'v',
-        pos: ['case-match-similar'],
-        orderIndex: 4,
-        category: ['alphabet', 'case-match'],
-    },
-    {
-        id: 'alp-q17',
-        course: 'Alphabet Starter',
-        unit: 'Unit 2 大小対応',
-        partId: 'alp-unit-2-part-1',
-        section: 'alp-unit-2-part-1-section-1',
-        sectionLabel: '同形に近い文字',
-        promptJp: 'W の小文字',
-        answerEn: 'w',
-        pos: ['case-match-similar'],
-        orderIndex: 5,
-        category: ['alphabet', 'case-match'],
-    },
-    {
-        id: 'alp-q18',
-        course: 'Alphabet Starter',
-        unit: 'Unit 2 大小対応',
-        partId: 'alp-unit-2-part-1',
-        section: 'alp-unit-2-part-1-section-1',
-        sectionLabel: '同形に近い文字',
-        promptJp: 'X の小文字',
-        answerEn: 'x',
-        pos: ['case-match-similar'],
-        orderIndex: 6,
-        category: ['alphabet', 'case-match'],
-    },
-    {
-        id: 'alp-q19',
-        course: 'Alphabet Starter',
-        unit: 'Unit 2 大小対応',
-        partId: 'alp-unit-2-part-2',
-        section: 'alp-unit-2-part-2-section-1',
-        sectionLabel: '異形の文字',
-        promptJp: 'A の小文字',
-        answerEn: 'a',
-        pos: ['case-match-different'],
-        orderIndex: 1,
-        category: ['alphabet', 'case-match'],
-    },
-    {
-        id: 'alp-q20',
-        course: 'Alphabet Starter',
-        unit: 'Unit 2 大小対応',
-        partId: 'alp-unit-2-part-2',
-        section: 'alp-unit-2-part-2-section-1',
-        sectionLabel: '異形の文字',
-        promptJp: 'B の小文字',
-        answerEn: 'b',
-        pos: ['case-match-different'],
-        orderIndex: 2,
-        category: ['alphabet', 'case-match'],
-    },
-    {
-        id: 'alp-q21',
-        course: 'Alphabet Starter',
-        unit: 'Unit 2 大小対応',
-        partId: 'alp-unit-2-part-2',
-        section: 'alp-unit-2-part-2-section-1',
-        sectionLabel: '異形の文字',
-        promptJp: 'D の小文字',
-        answerEn: 'd',
-        pos: ['case-match-different'],
-        orderIndex: 3,
-        category: ['alphabet', 'case-match'],
-    },
-    {
-        id: 'alp-q22',
-        course: 'Alphabet Starter',
-        unit: 'Unit 2 大小対応',
-        partId: 'alp-unit-2-part-2',
-        section: 'alp-unit-2-part-2-section-1',
-        sectionLabel: '異形の文字',
-        promptJp: 'G の小文字',
-        answerEn: 'g',
-        pos: ['case-match-different'],
-        orderIndex: 4,
-        category: ['alphabet', 'case-match'],
-    },
-    {
-        id: 'alp-q23',
-        course: 'Alphabet Starter',
-        unit: 'Unit 2 大小対応',
-        partId: 'alp-unit-2-part-2',
-        section: 'alp-unit-2-part-2-section-1',
-        sectionLabel: '異形の文字',
-        promptJp: 'Q の小文字',
-        answerEn: 'q',
-        pos: ['case-match-different'],
-        orderIndex: 5,
-        category: ['alphabet', 'case-match'],
-    },
-    {
-        id: 'alp-q24',
-        course: 'Alphabet Starter',
-        unit: 'Unit 2 大小対応',
-        partId: 'alp-unit-2-part-2',
-        section: 'alp-unit-2-part-2-section-1',
-        sectionLabel: '異形の文字',
-        promptJp: 'R の小文字',
-        answerEn: 'r',
-        pos: ['case-match-different'],
-        orderIndex: 6,
-        category: ['alphabet', 'case-match'],
+        id: 'alp-unit-3',
+        name: 'Unit 3: 大文字⇄小文字対応',
+        parts: [
+            {
+                id: 'alp-unit-3-part-1',
+                label: '同形寄り',
+                pos: 'alphabet-case-similar',
+                category: ['alphabet', 'case-match'],
+                sections: [
+                    {
+                        id: 'alp-unit-3-part-1-section-1',
+                        type: 'alp-unit-3-part-1-section-1',
+                        label: 'C/c O/o S/s',
+                        seeds: [
+                            { promptJp: 'C の小文字', answerEn: 'c' },
+                            { promptJp: 'o の大文字', answerEn: 'O' },
+                            { promptJp: 'S の小文字', answerEn: 's' },
+                        ],
+                    },
+                    {
+                        id: 'alp-unit-3-part-1-section-2',
+                        type: 'alp-unit-3-part-1-section-2',
+                        label: 'V/v W/w X/x',
+                        seeds: [
+                            { promptJp: 'v の大文字', answerEn: 'V' },
+                            { promptJp: 'W の小文字', answerEn: 'w' },
+                            { promptJp: 'x の大文字', answerEn: 'X' },
+                        ],
+                    },
+                    {
+                        id: 'alp-unit-3-part-1-section-3',
+                        type: 'alp-unit-3-part-1-section-3',
+                        label: 'Z/z',
+                        seeds: [
+                            { promptJp: 'Z の小文字', answerEn: 'z' },
+                            { promptJp: 'z の大文字', answerEn: 'Z' },
+                        ],
+                    },
+                ],
+            },
+            {
+                id: 'alp-unit-3-part-2',
+                label: '形が違うペア',
+                pos: 'alphabet-case-different',
+                category: ['alphabet', 'case-match'],
+                sections: [
+                    {
+                        id: 'alp-unit-3-part-2-section-1',
+                        type: 'alp-unit-3-part-2-section-1',
+                        label: 'A/a B/b D/d',
+                        seeds: [
+                            { promptJp: 'A の小文字', answerEn: 'a' },
+                            { promptJp: 'b の大文字', answerEn: 'B' },
+                            { promptJp: 'D の小文字', answerEn: 'd' },
+                        ],
+                    },
+                    {
+                        id: 'alp-unit-3-part-2-section-2',
+                        type: 'alp-unit-3-part-2-section-2',
+                        label: 'G/g Q/q R/r',
+                        seeds: [
+                            { promptJp: 'g の大文字', answerEn: 'G' },
+                            { promptJp: 'Q の小文字', answerEn: 'q' },
+                            { promptJp: 'r の大文字', answerEn: 'R' },
+                        ],
+                    },
+                ],
+            },
+            {
+                id: 'alp-unit-3-part-3',
+                label: '混在ランダム（全26）',
+                pos: 'alphabet-case-random',
+                category: ['alphabet', 'case-match', 'mixed'],
+                sections: [
+                    {
+                        id: 'alp-unit-3-part-3-section-1',
+                        type: 'alp-unit-3-part-3-section-1',
+                        label: 'A-I',
+                        seeds: [
+                            { promptJp: 'a の大文字', answerEn: 'A' },
+                            { promptJp: 'B の小文字', answerEn: 'b' },
+                            { promptJp: 'c の大文字', answerEn: 'C' },
+                            { promptJp: 'D の小文字', answerEn: 'd' },
+                            { promptJp: 'e の大文字', answerEn: 'E' },
+                            { promptJp: 'F の小文字', answerEn: 'f' },
+                            { promptJp: 'g の大文字', answerEn: 'G' },
+                            { promptJp: 'H の小文字', answerEn: 'h' },
+                            { promptJp: 'i の大文字', answerEn: 'I' },
+                        ],
+                    },
+                    {
+                        id: 'alp-unit-3-part-3-section-2',
+                        type: 'alp-unit-3-part-3-section-2',
+                        label: 'J-R',
+                        seeds: [
+                            { promptJp: 'J の小文字', answerEn: 'j' },
+                            { promptJp: 'k の大文字', answerEn: 'K' },
+                            { promptJp: 'L の小文字', answerEn: 'l' },
+                            { promptJp: 'm の大文字', answerEn: 'M' },
+                            { promptJp: 'N の小文字', answerEn: 'n' },
+                            { promptJp: 'o の大文字', answerEn: 'O' },
+                            { promptJp: 'P の小文字', answerEn: 'p' },
+                            { promptJp: 'q の大文字', answerEn: 'Q' },
+                            { promptJp: 'R の小文字', answerEn: 'r' },
+                        ],
+                    },
+                    {
+                        id: 'alp-unit-3-part-3-section-3',
+                        type: 'alp-unit-3-part-3-section-3',
+                        label: 'S-Z',
+                        seeds: [
+                            { promptJp: 's の大文字', answerEn: 'S' },
+                            { promptJp: 'T の小文字', answerEn: 't' },
+                            { promptJp: 'u の大文字', answerEn: 'U' },
+                            { promptJp: 'V の小文字', answerEn: 'v' },
+                            { promptJp: 'w の大文字', answerEn: 'W' },
+                            { promptJp: 'X の小文字', answerEn: 'x' },
+                            { promptJp: 'y の大文字', answerEn: 'Y' },
+                            { promptJp: 'Z の小文字', answerEn: 'z' },
+                        ],
+                    },
+                ],
+            },
+        ],
     },
 ];
 
+const questions: Question[] = [];
+let serial = 1;
+
+const toQuestion = (
+    unitName: string,
+    partId: string,
+    sectionId: string,
+    sectionLabel: string,
+    pos: string,
+    category: string[],
+    seed: Seed,
+    orderIndex: number,
+): Question => ({
+    id: `alp-q${serial++}`,
+    course: courseName,
+    unit: unitName,
+    partId,
+    section: sectionId,
+    sectionLabel,
+    promptJp: seed.promptJp,
+    answerEn: seed.answerEn,
+    pos: [pos],
+    category,
+    orderIndex,
+});
+
+units.forEach((unit) => {
+    unit.parts.forEach((part) => {
+        part.sections.forEach((section) => {
+            section.seeds.forEach((seed, idx) => {
+                questions.push(
+                    toQuestion(
+                        unit.name,
+                        part.id,
+                        section.id,
+                        section.label,
+                        part.pos,
+                        part.category,
+                        seed,
+                        idx + 1,
+                    )
+                );
+            });
+        });
+    });
+});
+
+export { questions };
+
 export const courseStructure: Course = {
     id: 'course-alphabet-starter',
-    name: 'Alphabet Starter',
-    units: [
-        {
-            id: 'alp-unit-1',
-            name: 'Unit 1 形の認識',
-            parts: [
-                {
-                    id: 'alp-unit-1-part-1',
-                    label: '小文字ベーシック1',
-                    totalQuestions: 6,
-                    sections: [
-                        {
-                            id: 'alp-unit-1-part-1-section-1',
-                            type: 'alp-unit-1-part-1-section-1',
-                            label: '小文字ベーシック1',
-                            questionIds: ['alp-q1', 'alp-q2', 'alp-q3', 'alp-q4', 'alp-q5', 'alp-q6'],
-                        },
-                    ],
-                },
-                {
-                    id: 'alp-unit-1-part-2',
-                    label: '小文字まぎらわしい形',
-                    totalQuestions: 6,
-                    sections: [
-                        {
-                            id: 'alp-unit-1-part-2-section-1',
-                            type: 'alp-unit-1-part-2-section-1',
-                            label: '小文字まぎらわしい形',
-                            questionIds: ['alp-q7', 'alp-q8', 'alp-q9', 'alp-q10', 'alp-q11', 'alp-q12'],
-                        },
-                    ],
-                },
-            ],
-        },
-        {
-            id: 'alp-unit-2',
-            name: 'Unit 2 大小対応',
-            parts: [
-                {
-                    id: 'alp-unit-2-part-1',
-                    label: '同形に近い文字',
-                    totalQuestions: 6,
-                    sections: [
-                        {
-                            id: 'alp-unit-2-part-1-section-1',
-                            type: 'alp-unit-2-part-1-section-1',
-                            label: '同形に近い文字',
-                            questionIds: ['alp-q13', 'alp-q14', 'alp-q15', 'alp-q16', 'alp-q17', 'alp-q18'],
-                        },
-                    ],
-                },
-                {
-                    id: 'alp-unit-2-part-2',
-                    label: '異形の文字',
-                    totalQuestions: 6,
-                    sections: [
-                        {
-                            id: 'alp-unit-2-part-2-section-1',
-                            type: 'alp-unit-2-part-2-section-1',
-                            label: '異形の文字',
-                            questionIds: ['alp-q19', 'alp-q20', 'alp-q21', 'alp-q22', 'alp-q23', 'alp-q24'],
-                        },
-                    ],
-                },
-            ],
-        },
-    ],
+    name: courseName,
+    units: units.map((unit) => ({
+        id: unit.id,
+        name: unit.name,
+        parts: unit.parts.map((part) => ({
+            id: part.id,
+            label: part.label,
+            totalQuestions: part.sections.reduce((sum, section) => sum + section.seeds.length, 0),
+            sections: part.sections.map((section) => ({
+                id: section.id,
+                type: section.type,
+                label: section.label,
+                questionIds: questions.filter((q) => q.section === section.id).map((q) => q.id),
+            })),
+        })),
+    })),
 };

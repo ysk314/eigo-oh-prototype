@@ -2,390 +2,414 @@
 // Course Data: Typing Foundation
 // ================================
 
-import { Question, Course } from '@/types';
+import { Course, Question } from '@/types';
 
-export const questions: Question[] = [
+type Seed = {
+    promptJp: string;
+    answerEn: string;
+};
+
+type SectionDef = {
+    id: string;
+    type: string;
+    label: string;
+    seeds: Seed[];
+};
+
+type PartDef = {
+    id: string;
+    label: string;
+    pos: string;
+    category: string[];
+    sections: SectionDef[];
+};
+
+type UnitDef = {
+    id: string;
+    name: string;
+    parts: PartDef[];
+};
+
+const courseName = 'Typing Foundation';
+
+const units: UnitDef[] = [
     {
-        id: 'tbf-q1',
-        course: 'Typing Foundation',
-        unit: 'Unit 1 F/Jアンカー',
-        partId: 'tbf-unit-1-part-1',
-        section: 'tbf-unit-1-part-1-section-1',
-        sectionLabel: 'F/J 導入',
-        promptJp: 'Fキー（左人差し指）',
-        answerEn: 'f',
-        pos: ['home-anchor'],
-        orderIndex: 1,
-        category: ['typing', 'home-row'],
+        id: 'tbf-unit-1',
+        name: 'Unit 1: ホームポジション',
+        parts: [
+            {
+                id: 'tbf-unit-1-part-1',
+                label: '左手（ASDF）',
+                pos: 'typing-home-left',
+                category: ['typing', 'home-row', 'left'],
+                sections: [
+                    {
+                        id: 'tbf-unit-1-part-1-section-1',
+                        type: 'tbf-unit-1-part-1-section-1',
+                        label: 'A/S',
+                        seeds: [
+                            { promptJp: 'Aキー', answerEn: 'a' },
+                            { promptJp: 'Sキー', answerEn: 's' },
+                            { promptJp: 'AS', answerEn: 'as' },
+                            { promptJp: 'SA', answerEn: 'sa' },
+                        ],
+                    },
+                    {
+                        id: 'tbf-unit-1-part-1-section-2',
+                        type: 'tbf-unit-1-part-1-section-2',
+                        label: 'D/F',
+                        seeds: [
+                            { promptJp: 'Dキー', answerEn: 'd' },
+                            { promptJp: 'Fキー', answerEn: 'f' },
+                            { promptJp: 'DF', answerEn: 'df' },
+                            { promptJp: 'FD', answerEn: 'fd' },
+                        ],
+                    },
+                    {
+                        id: 'tbf-unit-1-part-1-section-3',
+                        type: 'tbf-unit-1-part-1-section-3',
+                        label: 'ASDF',
+                        seeds: [
+                            { promptJp: 'ASDF', answerEn: 'asdf' },
+                            { promptJp: 'FDSA', answerEn: 'fdsa' },
+                            { promptJp: 'AFSD', answerEn: 'afsd' },
+                            { promptJp: 'SDFA', answerEn: 'sdfa' },
+                        ],
+                    },
+                ],
+            },
+            {
+                id: 'tbf-unit-1-part-2',
+                label: '右手（JKL;）',
+                pos: 'typing-home-right',
+                category: ['typing', 'home-row', 'right'],
+                sections: [
+                    {
+                        id: 'tbf-unit-1-part-2-section-1',
+                        type: 'tbf-unit-1-part-2-section-1',
+                        label: 'J/K',
+                        seeds: [
+                            { promptJp: 'Jキー', answerEn: 'j' },
+                            { promptJp: 'Kキー', answerEn: 'k' },
+                            { promptJp: 'JK', answerEn: 'jk' },
+                            { promptJp: 'KJ', answerEn: 'kj' },
+                        ],
+                    },
+                    {
+                        id: 'tbf-unit-1-part-2-section-2',
+                        type: 'tbf-unit-1-part-2-section-2',
+                        label: 'L/;',
+                        seeds: [
+                            { promptJp: 'Lキー', answerEn: 'l' },
+                            { promptJp: ';キー', answerEn: ';' },
+                            { promptJp: 'L;', answerEn: 'l;' },
+                            { promptJp: ';L', answerEn: ';l' },
+                        ],
+                    },
+                    {
+                        id: 'tbf-unit-1-part-2-section-3',
+                        type: 'tbf-unit-1-part-2-section-3',
+                        label: 'JKL;',
+                        seeds: [
+                            { promptJp: 'JKL;', answerEn: 'jkl;' },
+                            { promptJp: ';LKJ', answerEn: ';lkj' },
+                            { promptJp: 'J;KL', answerEn: 'j;kl' },
+                            { promptJp: 'KL;J', answerEn: 'kl;j' },
+                        ],
+                    },
+                ],
+            },
+            {
+                id: 'tbf-unit-1-part-3',
+                label: '両手ホーム列',
+                pos: 'typing-home-both',
+                category: ['typing', 'home-row', 'both'],
+                sections: [
+                    {
+                        id: 'tbf-unit-1-part-3-section-1',
+                        type: 'tbf-unit-1-part-3-section-1',
+                        label: 'ASDF + JKL;',
+                        seeds: [
+                            { promptJp: 'FJ', answerEn: 'fj' },
+                            { promptJp: 'DK', answerEn: 'dk' },
+                            { promptJp: 'SL', answerEn: 'sl' },
+                            { promptJp: 'A;', answerEn: 'a;' },
+                        ],
+                    },
+                    {
+                        id: 'tbf-unit-1-part-3-section-2',
+                        type: 'tbf-unit-1-part-3-section-2',
+                        label: '短パターン（ASD / JKL / FJ）',
+                        seeds: [
+                            { promptJp: 'ASD', answerEn: 'asd' },
+                            { promptJp: 'JKL', answerEn: 'jkl' },
+                            { promptJp: 'FJ', answerEn: 'fj' },
+                            { promptJp: 'DFJK', answerEn: 'dfjk' },
+                        ],
+                    },
+                ],
+            },
+        ],
     },
     {
-        id: 'tbf-q2',
-        course: 'Typing Foundation',
-        unit: 'Unit 1 F/Jアンカー',
-        partId: 'tbf-unit-1-part-1',
-        section: 'tbf-unit-1-part-1-section-1',
-        sectionLabel: 'F/J 導入',
-        promptJp: 'Jキー（右人差し指）',
-        answerEn: 'j',
-        pos: ['home-anchor'],
-        orderIndex: 2,
-        category: ['typing', 'home-row'],
+        id: 'tbf-unit-2',
+        name: 'Unit 2: 上段（ホーム列と混合）',
+        parts: [
+            {
+                id: 'tbf-unit-2-part-1',
+                label: '左上段（QWERT）',
+                pos: 'typing-top-left',
+                category: ['typing', 'top-row', 'left'],
+                sections: [
+                    {
+                        id: 'tbf-unit-2-part-1-section-1',
+                        type: 'tbf-unit-2-part-1-section-1',
+                        label: 'QWERT',
+                        seeds: [
+                            { promptJp: 'Q', answerEn: 'q' },
+                            { promptJp: 'W', answerEn: 'w' },
+                            { promptJp: 'E', answerEn: 'e' },
+                            { promptJp: 'RT', answerEn: 'rt' },
+                        ],
+                    },
+                ],
+            },
+            {
+                id: 'tbf-unit-2-part-2',
+                label: '右上段（YUIOP）',
+                pos: 'typing-top-right',
+                category: ['typing', 'top-row', 'right'],
+                sections: [
+                    {
+                        id: 'tbf-unit-2-part-2-section-1',
+                        type: 'tbf-unit-2-part-2-section-1',
+                        label: 'YUIOP',
+                        seeds: [
+                            { promptJp: 'Y', answerEn: 'y' },
+                            { promptJp: 'U', answerEn: 'u' },
+                            { promptJp: 'I', answerEn: 'i' },
+                            { promptJp: 'OP', answerEn: 'op' },
+                        ],
+                    },
+                ],
+            },
+            {
+                id: 'tbf-unit-2-part-3',
+                label: '上段＋ホーム列',
+                pos: 'typing-top-home-mix',
+                category: ['typing', 'top-row', 'mix'],
+                sections: [
+                    {
+                        id: 'tbf-unit-2-part-3-section-1',
+                        type: 'tbf-unit-2-part-3-section-1',
+                        label: '上段＋ホーム列',
+                        seeds: [
+                            { promptJp: 'QAZ ではなく QAS', answerEn: 'qas' },
+                            { promptJp: 'WER + SDF', answerEn: 'wersdf' },
+                            { promptJp: 'UIO + JKL', answerEn: 'uiojkl' },
+                            { promptJp: 'TY + GH', answerEn: 'tygh' },
+                        ],
+                    },
+                ],
+            },
+        ],
     },
     {
-        id: 'tbf-q3',
-        course: 'Typing Foundation',
-        unit: 'Unit 1 F/Jアンカー',
-        partId: 'tbf-unit-1-part-1',
-        section: 'tbf-unit-1-part-1-section-1',
-        sectionLabel: 'F/J 導入',
-        promptJp: 'FJ と続けて打つ',
-        answerEn: 'fj',
-        pos: ['home-anchor'],
-        orderIndex: 3,
-        category: ['typing', 'home-row'],
+        id: 'tbf-unit-3',
+        name: 'Unit 3: 下段（ホーム列と混合）',
+        parts: [
+            {
+                id: 'tbf-unit-3-part-1',
+                label: '左下段（ZXCVB）',
+                pos: 'typing-bottom-left',
+                category: ['typing', 'bottom-row', 'left'],
+                sections: [
+                    {
+                        id: 'tbf-unit-3-part-1-section-1',
+                        type: 'tbf-unit-3-part-1-section-1',
+                        label: 'ZXCVB',
+                        seeds: [
+                            { promptJp: 'Z', answerEn: 'z' },
+                            { promptJp: 'X', answerEn: 'x' },
+                            { promptJp: 'CV', answerEn: 'cv' },
+                            { promptJp: 'VB', answerEn: 'vb' },
+                        ],
+                    },
+                ],
+            },
+            {
+                id: 'tbf-unit-3-part-2',
+                label: '右下段（NM,./）',
+                pos: 'typing-bottom-right',
+                category: ['typing', 'bottom-row', 'right'],
+                sections: [
+                    {
+                        id: 'tbf-unit-3-part-2-section-1',
+                        type: 'tbf-unit-3-part-2-section-1',
+                        label: 'NM,./',
+                        seeds: [
+                            { promptJp: 'N', answerEn: 'n' },
+                            { promptJp: 'M', answerEn: 'm' },
+                            { promptJp: ',.', answerEn: ',.' },
+                            { promptJp: './', answerEn: './' },
+                        ],
+                    },
+                ],
+            },
+            {
+                id: 'tbf-unit-3-part-3',
+                label: '下段＋ホーム列',
+                pos: 'typing-bottom-home-mix',
+                category: ['typing', 'bottom-row', 'mix'],
+                sections: [
+                    {
+                        id: 'tbf-unit-3-part-3-section-1',
+                        type: 'tbf-unit-3-part-3-section-1',
+                        label: '下段＋ホーム列',
+                        seeds: [
+                            { promptJp: 'zxc + asd', answerEn: 'zxcasd' },
+                            { promptJp: 'nm, + jkl', answerEn: 'nm,jkl' },
+                            { promptJp: 'vbn + fgh', answerEn: 'vbnfgh' },
+                            { promptJp: ',./ + jkl;', answerEn: ',./jkl;' },
+                        ],
+                    },
+                ],
+            },
+        ],
     },
     {
-        id: 'tbf-q4',
-        course: 'Typing Foundation',
-        unit: 'Unit 1 F/Jアンカー',
-        partId: 'tbf-unit-1-part-1',
-        section: 'tbf-unit-1-part-1-section-1',
-        sectionLabel: 'F/J 導入',
-        promptJp: 'JF と続けて打つ',
-        answerEn: 'jf',
-        pos: ['home-anchor'],
-        orderIndex: 4,
-        category: ['typing', 'home-row'],
-    },
-    {
-        id: 'tbf-q5',
-        course: 'Typing Foundation',
-        unit: 'Unit 1 F/Jアンカー',
-        partId: 'tbf-unit-1-part-1',
-        section: 'tbf-unit-1-part-1-section-1',
-        sectionLabel: 'F/J 導入',
-        promptJp: 'FF と続けて打つ',
-        answerEn: 'ff',
-        pos: ['home-anchor'],
-        orderIndex: 5,
-        category: ['typing', 'home-row'],
-    },
-    {
-        id: 'tbf-q6',
-        course: 'Typing Foundation',
-        unit: 'Unit 1 F/Jアンカー',
-        partId: 'tbf-unit-1-part-1',
-        section: 'tbf-unit-1-part-1-section-1',
-        sectionLabel: 'F/J 導入',
-        promptJp: 'JJ と続けて打つ',
-        answerEn: 'jj',
-        pos: ['home-anchor'],
-        orderIndex: 6,
-        category: ['typing', 'home-row'],
-    },
-    {
-        id: 'tbf-q7',
-        course: 'Typing Foundation',
-        unit: 'Unit 1 F/Jアンカー',
-        partId: 'tbf-unit-1-part-2',
-        section: 'tbf-unit-1-part-2-section-1',
-        sectionLabel: 'D/K/S/L',
-        promptJp: 'Dキー（左中指）',
-        answerEn: 'd',
-        pos: ['home-expand-1'],
-        orderIndex: 1,
-        category: ['typing', 'home-row'],
-    },
-    {
-        id: 'tbf-q8',
-        course: 'Typing Foundation',
-        unit: 'Unit 1 F/Jアンカー',
-        partId: 'tbf-unit-1-part-2',
-        section: 'tbf-unit-1-part-2-section-1',
-        sectionLabel: 'D/K/S/L',
-        promptJp: 'Kキー（右中指）',
-        answerEn: 'k',
-        pos: ['home-expand-1'],
-        orderIndex: 2,
-        category: ['typing', 'home-row'],
-    },
-    {
-        id: 'tbf-q9',
-        course: 'Typing Foundation',
-        unit: 'Unit 1 F/Jアンカー',
-        partId: 'tbf-unit-1-part-2',
-        section: 'tbf-unit-1-part-2-section-1',
-        sectionLabel: 'D/K/S/L',
-        promptJp: 'Sキー（左薬指）',
-        answerEn: 's',
-        pos: ['home-expand-1'],
-        orderIndex: 3,
-        category: ['typing', 'home-row'],
-    },
-    {
-        id: 'tbf-q10',
-        course: 'Typing Foundation',
-        unit: 'Unit 1 F/Jアンカー',
-        partId: 'tbf-unit-1-part-2',
-        section: 'tbf-unit-1-part-2-section-1',
-        sectionLabel: 'D/K/S/L',
-        promptJp: 'Lキー（右薬指）',
-        answerEn: 'l',
-        pos: ['home-expand-1'],
-        orderIndex: 4,
-        category: ['typing', 'home-row'],
-    },
-    {
-        id: 'tbf-q11',
-        course: 'Typing Foundation',
-        unit: 'Unit 1 F/Jアンカー',
-        partId: 'tbf-unit-1-part-2',
-        section: 'tbf-unit-1-part-2-section-1',
-        sectionLabel: 'D/K/S/L',
-        promptJp: 'DK と続けて打つ',
-        answerEn: 'dk',
-        pos: ['home-expand-1'],
-        orderIndex: 5,
-        category: ['typing', 'home-row'],
-    },
-    {
-        id: 'tbf-q12',
-        course: 'Typing Foundation',
-        unit: 'Unit 1 F/Jアンカー',
-        partId: 'tbf-unit-1-part-2',
-        section: 'tbf-unit-1-part-2-section-1',
-        sectionLabel: 'D/K/S/L',
-        promptJp: 'SL と続けて打つ',
-        answerEn: 'sl',
-        pos: ['home-expand-1'],
-        orderIndex: 6,
-        category: ['typing', 'home-row'],
-    },
-    {
-        id: 'tbf-q13',
-        course: 'Typing Foundation',
-        unit: 'Unit 2 ホーム段統合',
-        partId: 'tbf-unit-2-part-1',
-        section: 'tbf-unit-2-part-1-section-1',
-        sectionLabel: 'ASDF JKL;',
-        promptJp: 'ASDF と打つ',
-        answerEn: 'asdf',
-        pos: ['home-row-main'],
-        orderIndex: 1,
-        category: ['typing', 'home-row'],
-    },
-    {
-        id: 'tbf-q14',
-        course: 'Typing Foundation',
-        unit: 'Unit 2 ホーム段統合',
-        partId: 'tbf-unit-2-part-1',
-        section: 'tbf-unit-2-part-1-section-1',
-        sectionLabel: 'ASDF JKL;',
-        promptJp: 'JKL; と打つ',
-        answerEn: 'jkl;',
-        pos: ['home-row-main'],
-        orderIndex: 2,
-        category: ['typing', 'home-row'],
-    },
-    {
-        id: 'tbf-q15',
-        course: 'Typing Foundation',
-        unit: 'Unit 2 ホーム段統合',
-        partId: 'tbf-unit-2-part-1',
-        section: 'tbf-unit-2-part-1-section-1',
-        sectionLabel: 'ASDF JKL;',
-        promptJp: 'FJ と打つ',
-        answerEn: 'fj',
-        pos: ['home-row-main'],
-        orderIndex: 3,
-        category: ['typing', 'home-row'],
-    },
-    {
-        id: 'tbf-q16',
-        course: 'Typing Foundation',
-        unit: 'Unit 2 ホーム段統合',
-        partId: 'tbf-unit-2-part-1',
-        section: 'tbf-unit-2-part-1-section-1',
-        sectionLabel: 'ASDF JKL;',
-        promptJp: 'DK と打つ',
-        answerEn: 'dk',
-        pos: ['home-row-main'],
-        orderIndex: 4,
-        category: ['typing', 'home-row'],
-    },
-    {
-        id: 'tbf-q17',
-        course: 'Typing Foundation',
-        unit: 'Unit 2 ホーム段統合',
-        partId: 'tbf-unit-2-part-1',
-        section: 'tbf-unit-2-part-1-section-1',
-        sectionLabel: 'ASDF JKL;',
-        promptJp: 'SL と打つ',
-        answerEn: 'sl',
-        pos: ['home-row-main'],
-        orderIndex: 5,
-        category: ['typing', 'home-row'],
-    },
-    {
-        id: 'tbf-q18',
-        course: 'Typing Foundation',
-        unit: 'Unit 2 ホーム段統合',
-        partId: 'tbf-unit-2-part-1',
-        section: 'tbf-unit-2-part-1-section-1',
-        sectionLabel: 'ASDF JKL;',
-        promptJp: 'A; と打つ',
-        answerEn: 'a;',
-        pos: ['home-row-main'],
-        orderIndex: 6,
-        category: ['typing', 'home-row'],
-    },
-    {
-        id: 'tbf-q19',
-        course: 'Typing Foundation',
-        unit: 'Unit 2 ホーム段統合',
-        partId: 'tbf-unit-2-part-2',
-        section: 'tbf-unit-2-part-2-section-1',
-        sectionLabel: 'G/H と中央移動',
-        promptJp: 'Gキー（左人差し指）',
-        answerEn: 'g',
-        pos: ['home-center'],
-        orderIndex: 1,
-        category: ['typing', 'home-row'],
-    },
-    {
-        id: 'tbf-q20',
-        course: 'Typing Foundation',
-        unit: 'Unit 2 ホーム段統合',
-        partId: 'tbf-unit-2-part-2',
-        section: 'tbf-unit-2-part-2-section-1',
-        sectionLabel: 'G/H と中央移動',
-        promptJp: 'Hキー（右人差し指）',
-        answerEn: 'h',
-        pos: ['home-center'],
-        orderIndex: 2,
-        category: ['typing', 'home-row'],
-    },
-    {
-        id: 'tbf-q21',
-        course: 'Typing Foundation',
-        unit: 'Unit 2 ホーム段統合',
-        partId: 'tbf-unit-2-part-2',
-        section: 'tbf-unit-2-part-2-section-1',
-        sectionLabel: 'G/H と中央移動',
-        promptJp: 'FG と打つ',
-        answerEn: 'fg',
-        pos: ['home-center'],
-        orderIndex: 3,
-        category: ['typing', 'home-row'],
-    },
-    {
-        id: 'tbf-q22',
-        course: 'Typing Foundation',
-        unit: 'Unit 2 ホーム段統合',
-        partId: 'tbf-unit-2-part-2',
-        section: 'tbf-unit-2-part-2-section-1',
-        sectionLabel: 'G/H と中央移動',
-        promptJp: 'HJ と打つ',
-        answerEn: 'hj',
-        pos: ['home-center'],
-        orderIndex: 4,
-        category: ['typing', 'home-row'],
-    },
-    {
-        id: 'tbf-q23',
-        course: 'Typing Foundation',
-        unit: 'Unit 2 ホーム段統合',
-        partId: 'tbf-unit-2-part-2',
-        section: 'tbf-unit-2-part-2-section-1',
-        sectionLabel: 'G/H と中央移動',
-        promptJp: 'GHJ と打つ',
-        answerEn: 'ghj',
-        pos: ['home-center'],
-        orderIndex: 5,
-        category: ['typing', 'home-row'],
-    },
-    {
-        id: 'tbf-q24',
-        course: 'Typing Foundation',
-        unit: 'Unit 2 ホーム段統合',
-        partId: 'tbf-unit-2-part-2',
-        section: 'tbf-unit-2-part-2-section-1',
-        sectionLabel: 'G/H と中央移動',
-        promptJp: 'DFGH と打つ',
-        answerEn: 'dfgh',
-        pos: ['home-center'],
-        orderIndex: 6,
-        category: ['typing', 'home-row'],
+        id: 'tbf-unit-4',
+        name: 'Unit 4: レビュー＋大文字',
+        parts: [
+            {
+                id: 'tbf-unit-4-part-1',
+                label: '左手/右手単語',
+                pos: 'typing-review-words',
+                category: ['typing', 'word'],
+                sections: [
+                    {
+                        id: 'tbf-unit-4-part-1-section-1',
+                        type: 'tbf-unit-4-part-1-section-1',
+                        label: '3〜5文字単語',
+                        seeds: [
+                            { promptJp: 'cat', answerEn: 'cat' },
+                            { promptJp: 'dog', answerEn: 'dog' },
+                            { promptJp: 'sun', answerEn: 'sun' },
+                            { promptJp: 'hand', answerEn: 'hand' },
+                            { promptJp: 'jump', answerEn: 'jump' },
+                        ],
+                    },
+                ],
+            },
+            {
+                id: 'tbf-unit-4-part-2',
+                label: '両手交互（左右切替）',
+                pos: 'typing-review-alternate',
+                category: ['typing', 'pattern'],
+                sections: [
+                    {
+                        id: 'tbf-unit-4-part-2-section-1',
+                        type: 'tbf-unit-4-part-2-section-1',
+                        label: '左右切替パターン',
+                        seeds: [
+                            { promptJp: 'fa', answerEn: 'fa' },
+                            { promptJp: 'jo', answerEn: 'jo' },
+                            { promptJp: 'deki', answerEn: 'deki' },
+                            { promptJp: 'sul;', answerEn: 'sul;' },
+                            { promptJp: 'fghj', answerEn: 'fghj' },
+                        ],
+                    },
+                ],
+            },
+            {
+                id: 'tbf-unit-4-part-3',
+                label: 'Shiftで大文字（ホーム＋上段＋下段）',
+                pos: 'typing-review-uppercase',
+                category: ['typing', 'uppercase'],
+                sections: [
+                    {
+                        id: 'tbf-unit-4-part-3-section-1',
+                        type: 'tbf-unit-4-part-3-section-1',
+                        label: '大文字混じり短語',
+                        seeds: [
+                            { promptJp: 'Cat', answerEn: 'Cat' },
+                            { promptJp: 'Dog', answerEn: 'Dog' },
+                            { promptJp: 'Sun', answerEn: 'Sun' },
+                            { promptJp: 'Fast', answerEn: 'Fast' },
+                            { promptJp: 'Jump', answerEn: 'Jump' },
+                        ],
+                    },
+                ],
+            },
+        ],
     },
 ];
 
+const questions: Question[] = [];
+let serial = 1;
+
+const toQuestion = (
+    unitName: string,
+    partId: string,
+    sectionId: string,
+    sectionLabel: string,
+    pos: string,
+    category: string[],
+    seed: Seed,
+    orderIndex: number,
+): Question => ({
+    id: `tbf-q${serial++}`,
+    course: courseName,
+    unit: unitName,
+    partId,
+    section: sectionId,
+    sectionLabel,
+    promptJp: seed.promptJp,
+    answerEn: seed.answerEn,
+    pos: [pos],
+    category,
+    orderIndex,
+});
+
+units.forEach((unit) => {
+    unit.parts.forEach((part) => {
+        part.sections.forEach((section) => {
+            section.seeds.forEach((seed, idx) => {
+                questions.push(
+                    toQuestion(
+                        unit.name,
+                        part.id,
+                        section.id,
+                        section.label,
+                        part.pos,
+                        part.category,
+                        seed,
+                        idx + 1,
+                    )
+                );
+            });
+        });
+    });
+});
+
+export { questions };
+
 export const courseStructure: Course = {
     id: 'course-typing-foundation',
-    name: 'Typing Foundation',
-    units: [
-        {
-            id: 'tbf-unit-1',
-            name: 'Unit 1 F/Jアンカー',
-            parts: [
-                {
-                    id: 'tbf-unit-1-part-1',
-                    label: 'F/J 導入',
-                    totalQuestions: 6,
-                    sections: [
-                        {
-                            id: 'tbf-unit-1-part-1-section-1',
-                            type: 'tbf-unit-1-part-1-section-1',
-                            label: 'F/J 導入',
-                            questionIds: ['tbf-q1', 'tbf-q2', 'tbf-q3', 'tbf-q4', 'tbf-q5', 'tbf-q6'],
-                        },
-                    ],
-                },
-                {
-                    id: 'tbf-unit-1-part-2',
-                    label: 'D/K/S/L',
-                    totalQuestions: 6,
-                    sections: [
-                        {
-                            id: 'tbf-unit-1-part-2-section-1',
-                            type: 'tbf-unit-1-part-2-section-1',
-                            label: 'D/K/S/L',
-                            questionIds: ['tbf-q7', 'tbf-q8', 'tbf-q9', 'tbf-q10', 'tbf-q11', 'tbf-q12'],
-                        },
-                    ],
-                },
-            ],
-        },
-        {
-            id: 'tbf-unit-2',
-            name: 'Unit 2 ホーム段統合',
-            parts: [
-                {
-                    id: 'tbf-unit-2-part-1',
-                    label: 'ASDF JKL;',
-                    totalQuestions: 6,
-                    sections: [
-                        {
-                            id: 'tbf-unit-2-part-1-section-1',
-                            type: 'tbf-unit-2-part-1-section-1',
-                            label: 'ASDF JKL;',
-                            questionIds: ['tbf-q13', 'tbf-q14', 'tbf-q15', 'tbf-q16', 'tbf-q17', 'tbf-q18'],
-                        },
-                    ],
-                },
-                {
-                    id: 'tbf-unit-2-part-2',
-                    label: 'G/H と中央移動',
-                    totalQuestions: 6,
-                    sections: [
-                        {
-                            id: 'tbf-unit-2-part-2-section-1',
-                            type: 'tbf-unit-2-part-2-section-1',
-                            label: 'G/H と中央移動',
-                            questionIds: ['tbf-q19', 'tbf-q20', 'tbf-q21', 'tbf-q22', 'tbf-q23', 'tbf-q24'],
-                        },
-                    ],
-                },
-            ],
-        },
-    ],
+    name: courseName,
+    units: units.map((unit) => ({
+        id: unit.id,
+        name: unit.name,
+        parts: unit.parts.map((part) => ({
+            id: part.id,
+            label: part.label,
+            totalQuestions: part.sections.reduce((sum, section) => sum + section.seeds.length, 0),
+            sections: part.sections.map((section) => ({
+                id: section.id,
+                type: section.type,
+                label: section.label,
+                questionIds: questions.filter((q) => q.section === section.id).map((q) => q.id),
+            })),
+        })),
+    })),
 };
