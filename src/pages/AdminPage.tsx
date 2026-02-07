@@ -188,6 +188,7 @@ export function AdminPage() {
 
     const [usageLoading, setUsageLoading] = useState(false);
     const [usageError, setUsageError] = useState<string | null>(null);
+    const [usageHidden, setUsageHidden] = useState(false);
     const [usageToday, setUsageToday] = useState(0);
     const [usageYesterday, setUsageYesterday] = useState(0);
     const [usage7d, setUsage7d] = useState(0);
@@ -395,7 +396,7 @@ export function AdminPage() {
             setUsage7d(count7d);
             setUsage30d(count30d);
         } catch {
-            setUsageError('運用指標の取得に失敗しました。');
+            setUsageError('運用指標の取得に失敗しました。拡張機能の影響でブロックされている可能性があります。');
         } finally {
             setUsageLoading(false);
         }
@@ -740,32 +741,50 @@ export function AdminPage() {
                 <section className={styles.metricsSection}>
                     <Card className={styles.metricsCard} variant="outlined">
                         <div className={styles.listHeader}>運用指標（Admin 利用回数）</div>
-                        {usageError && <div className={styles.error}>{usageError}</div>}
-                        {!usageError && (
-                            <div className={styles.metricsGrid}>
-                                <div className={styles.metricItem}>
-                                    <span>当日</span>
-                                    <strong>{usageLoading ? '…' : formatNumber(usageToday)}</strong>
-                                </div>
-                                <div className={styles.metricItem}>
-                                    <span>前日</span>
-                                    <strong>{usageLoading ? '…' : formatNumber(usageYesterday)}</strong>
-                                </div>
-                                <div className={styles.metricItem}>
-                                    <span>直近7日</span>
-                                    <strong>{usageLoading ? '…' : formatNumber(usage7d)}</strong>
-                                </div>
-                                <div className={styles.metricItem}>
-                                    <span>直近30日</span>
-                                    <strong>{usageLoading ? '…' : formatNumber(usage30d)}</strong>
-                                </div>
+                        {usageHidden ? (
+                            <div className={styles.metricsNotice}>
+                                <span>運用指標は現在非表示です。</span>
+                                <Button variant="secondary" size="sm" onClick={() => setUsageHidden(false)}>
+                                    表示する
+                                </Button>
                             </div>
+                        ) : (
+                            <>
+                                {usageError && (
+                                    <div className={styles.metricsNotice}>
+                                        <span>{usageError}</span>
+                                        <Button variant="secondary" size="sm" onClick={() => setUsageHidden(true)}>
+                                            非表示にする
+                                        </Button>
+                                    </div>
+                                )}
+                                {!usageError && (
+                                    <div className={styles.metricsGrid}>
+                                        <div className={styles.metricItem}>
+                                            <span>当日</span>
+                                            <strong>{usageLoading ? '…' : formatNumber(usageToday)}</strong>
+                                        </div>
+                                        <div className={styles.metricItem}>
+                                            <span>前日</span>
+                                            <strong>{usageLoading ? '…' : formatNumber(usageYesterday)}</strong>
+                                        </div>
+                                        <div className={styles.metricItem}>
+                                            <span>直近7日</span>
+                                            <strong>{usageLoading ? '…' : formatNumber(usage7d)}</strong>
+                                        </div>
+                                        <div className={styles.metricItem}>
+                                            <span>直近30日</span>
+                                            <strong>{usageLoading ? '…' : formatNumber(usage30d)}</strong>
+                                        </div>
+                                    </div>
+                                )}
+                                <div className={styles.metricsActions}>
+                                    <Button variant="secondary" onClick={loadUsageSummary} isLoading={usageLoading}>
+                                        指標更新
+                                    </Button>
+                                </div>
+                            </>
                         )}
-                        <div className={styles.metricsActions}>
-                            <Button variant="secondary" onClick={loadUsageSummary} isLoading={usageLoading}>
-                                指標更新
-                            </Button>
-                        </div>
                     </Card>
                 </section>
 

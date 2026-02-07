@@ -118,6 +118,18 @@
     padding: 0 var(--space-lg) var(--space-md);
 }
 
+.metricsNotice {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-sm);
+    padding: var(--space-md) var(--space-lg);
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-sm);
+    background: rgba(229, 115, 115, 0.08);
+    border-bottom: 1px solid rgba(229, 115, 115, 0.12);
+}
+
 .searchInput {
     flex: 1;
     min-width: 240px;
