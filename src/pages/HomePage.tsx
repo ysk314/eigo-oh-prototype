@@ -27,6 +27,7 @@ type RecentSectionItem = {
     sectionId: string;
     label: string;
     lastPlayedAt?: string;
+    mode?: 'typing' | 'choice';
 };
 
 type RecentSessionItem = {
@@ -158,6 +159,9 @@ export function HomePage() {
     }, [state.currentUser?.id]);
 
     const latestSession = recentSessions[0];
+    const latestRecentSection = recentSections[0];
+    const latestRecentInfo = latestRecentSection ? resolveSectionInfo(latestRecentSection) : null;
+    const latestModeLabel = latestRecentSection?.mode === 'choice' ? '選択' : 'タイピング';
 
     const handleOpenRecentSection = (item: RecentSectionItem) => {
         setCourse(item.courseId);
@@ -243,7 +247,7 @@ export function HomePage() {
 
                         <Card className={styles.dashboardCard} padding="lg">
                             <div className={styles.sectionHeader}>
-                                <h2 className={styles.sectionTitle}>直近セッション</h2>
+                                <h2 className={styles.sectionTitle}>最近の挑戦</h2>
                                 <span className={styles.sectionNote}>{latestSession ? formatDateTime(latestSession.playedAt) : '—'}</span>
                             </div>
                             {latestSession ? (
@@ -270,23 +274,17 @@ export function HomePage() {
                                     </div>
                                     <div>
                                         <span className={styles.sessionLabel}>モード</span>
-                                        <span className={styles.sessionValue}>{latestSession.mode === 'typing' ? 'タイピング' : '4択'}</span>
+                                        <span className={styles.sessionValue}>{latestSession.mode === 'typing' ? 'タイピング' : '選択'}</span>
                                     </div>
                                 </div>
                             ) : (
                                 <p className={styles.emptyText}>まだセッションがありません。</p>
                             )}
-                        </Card>
-
-                        <Card className={styles.dashboardCard} padding="lg">
-                            <div className={styles.sectionHeader}>
-                                <h2 className={styles.sectionTitle}>直近挑戦セクション</h2>
-                                <span className={styles.sectionNote}>最新5件</span>
-                            </div>
                             {recentSections.length > 0 ? (
                                 <div className={styles.recentList}>
                                     {recentSections.map((item) => {
                                         const info = resolveSectionInfo(item);
+                                        const modeLabel = item.mode === 'choice' ? '選択' : 'タイピング';
                                         return (
                                             <button
                                                 key={item.sectionId}
@@ -302,7 +300,9 @@ export function HomePage() {
                                                     <div className={styles.recentLabel}>
                                                         {info.partLabel} / {info.sectionLabel}
                                                     </div>
-                                                    <div className={styles.recentMeta}>{formatDateTime(item.lastPlayedAt)}</div>
+                                                    <div className={styles.recentMeta}>
+                                                        {formatDateTime(item.lastPlayedAt)} · {modeLabel}
+                                                    </div>
                                                 </div>
                                                 <span className={styles.recentArrow}>→</span>
                                             </button>
@@ -315,26 +315,53 @@ export function HomePage() {
                         </Card>
                     </div>
 
-                    <Card className={styles.courseCard} padding="lg">
-                        <h2 className={styles.sectionTitle}>コースを選択</h2>
-
-                        <div className={styles.courseList}>
-                            {courses.map((course) => (
-                                <div
-                                    key={course.id}
-                                    className={styles.courseItem}
-                                    onClick={() => handleCourseSelect(course.id)}
+                    <div className={styles.sideColumn}>
+                        <Card className={styles.dashboardCard} padding="lg">
+                            <div className={styles.sectionHeader}>
+                                <h2 className={styles.sectionTitle}>クイックスタート</h2>
+                                <span className={styles.sectionNote}>前回から再開</span>
+                            </div>
+                            <div className={styles.quickActions}>
+                                <Button
+                                    variant="primary"
+                                    onClick={() => {
+                                        if (latestRecentSection) {
+                                            handleOpenRecentSection(latestRecentSection);
+                                        } else if (courses[0]) {
+                                            handleCourseSelect(courses[0].id);
+                                        }
+                                    }}
                                 >
-                                    <div className={styles.courseIcon}>📚</div>
-                                    <div className={styles.courseInfo}>
-                                        <h3 className={styles.courseName}>{course.name}</h3>
-                                        <p className={styles.courseDesc}>コースを選択して学習を開始</p>
-                                    </div>
-                                    <div className={styles.arrow}>→</div>
+                                    {latestRecentSection ? '前回のセクションへ' : '最初のコースへ'}
+                                </Button>
+                            </div>
+                            {latestRecentSection && latestRecentInfo && (
+                                <div className={styles.quickMeta}>
+                                    {latestRecentInfo.partLabel} / {latestRecentInfo.sectionLabel} · {latestModeLabel}
                                 </div>
-                            ))}
-                        </div>
-                    </Card>
+                            )}
+                        </Card>
+
+                        <Card className={styles.courseCard} padding="lg">
+                            <h2 className={styles.sectionTitle}>コースを選択</h2>
+
+                            <div className={styles.courseList}>
+                                {courses.map((course) => (
+                                    <div
+                                        key={course.id}
+                                        className={styles.courseItem}
+                                        onClick={() => handleCourseSelect(course.id)}
+                                    >
+                                        <div className={styles.courseIcon}>📚</div>
+                                        <div className={styles.courseInfo}>
+                                            <h3 className={styles.courseName}>{course.name}</h3>
+                                        </div>
+                                        <div className={styles.arrow}>→</div>
+                                    </div>
+                                ))}
+                            </div>
+                        </Card>
+                    </div>
                 </div>
             </main>
         </div>

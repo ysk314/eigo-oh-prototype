@@ -2,15 +2,21 @@
 // Login Page
 // ================================
 
-import { useMemo, useState, type FormEvent } from 'react';
+import { useEffect, useMemo, useState, type FormEvent } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { signInAnonymously, signInWithEmailAndPassword, createUserWithEmailAndPassword } from 'firebase/auth';
+import {
+    onAuthStateChanged,
+    signInAnonymously,
+    signInWithEmailAndPassword,
+    createUserWithEmailAndPassword,
+    signOut,
+    type User,
+} from 'firebase/auth';
 import { Button } from '@/components/Button';
 import { useApp } from '@/context/AppContext';
 import { auth } from '@/firebase';
 import { saveRemoteProfile } from '@/utils/remoteStorage';
-import { generateMemberNo, normalizeLoginId, isNumericId } from '@/utils/memberId';
-import { loadMemberProfile } from '@/utils/memberProfiles';
+import { generateMemberNo, normalizeLoginId } from '@/utils/memberId';
 import styles from './LoginPage.module.css';
 
 type LoginMode = 'login' | 'signup';
@@ -25,6 +31,8 @@ export function LoginPage() {
     const [displayName, setDisplayName] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
     const [isLoading, setIsLoading] = useState(false);
+    const [authUser, setAuthUser] = useState<User | null>(null);
+    const [authReady, setAuthReady] = useState(false);
 
     const welcomeMessage = useMemo(() => {
         const name = state.currentUser?.name?.trim();
@@ -33,6 +41,47 @@ export function LoginPage() {
         }
         return 'ようこそ！';
     }, [state.currentUser]);
+
+    useEffect(() => {
+        const unsubscribe = onAuthStateChanged(auth, (user) => {
+            setAuthUser(user);
+            setAuthReady(true);
+        });
+        return () => unsubscribe();
+    }, []);
+
+    const hasActiveSession = authReady && !!authUser;
+    const sessionLabel = state.currentUser?.name?.trim() || 'ゲスト';
+
+    const handleContinue = () => {
+        navigate('/dashboard');
+    };
+
+    const handleLogout = async () => {
+        await signOut(auth);
+        setLoginId('');
+        setPassword('');
+        setDisplayName('');
+        setErrorMessage('');
+    };
+
+    const containsBannedWords = (value: string): boolean => {
+        const blacklist = [
+            'ばか',
+            'バカ',
+            '馬鹿',
+            'あほ',
+            'アホ',
+            'くそ',
+            'クソ',
+            'fuck',
+            'shit',
+            'bitch',
+            'asshole',
+        ];
+        const lowered = value.toLowerCase();
+        return blacklist.some((word) => lowered.includes(word.toLowerCase()));
+    };
 
     const handleGuestStart = async () => {
         setErrorMessage('');
@@ -74,6 +123,16 @@ export function LoginPage() {
         event.preventDefault();
         setErrorMessage('');
 
+        if (!loginId.trim()) {
+            setErrorMessage('メールアドレスを入力してください。');
+            return;
+        }
+
+        if (displayName.trim() && containsBannedWords(displayName.trim())) {
+            setErrorMessage('表示名に不適切な表現が含まれています。');
+            return;
+        }
+
         if (!password.trim()) {
             setErrorMessage('パスワードを入力してください。');
             return;
@@ -81,24 +140,11 @@ export function LoginPage() {
 
         setIsLoading(true);
         try {
-            let email = loginId.trim();
-            let memberNo = '';
-            if (!email) {
-                memberNo = await generateMemberNo();
-                email = normalizeLoginId(memberNo);
-            } else if (isNumericId(email)) {
-                memberNo = email;
-                email = normalizeLoginId(email);
-            }
-
+            const email = loginId.trim();
             const result = await createUserWithEmailAndPassword(auth, email, password);
-            const template = memberNo ? await loadMemberProfile(memberNo) : null;
-            const templateName = template?.displayName?.trim();
-            const name = displayName.trim()
-                || templateName
-                || (memberNo ? `会員${memberNo}` : email.split('@')[0])
-                || 'ユーザー';
-            await saveRemoteProfile(result.user.uid, name, memberNo || undefined);
+            const memberNo = await generateMemberNo();
+            const name = displayName.trim() || email.split('@')[0] || 'ユーザー';
+            await saveRemoteProfile(result.user.uid, name, memberNo);
 
             navigate('/dashboard');
         } catch (error) {
@@ -120,30 +166,40 @@ export function LoginPage() {
                 <section className={styles.card}>
                     <div className={styles.cardHeader}>
                         <div>
-                            <p className={styles.cardLabel}>ログイン</p>
                             <h2 className={styles.cardTitle}>{welcomeMessage}</h2>
                         </div>
-                        <span className={styles.status}>会員番号 or メール</span>
                     </div>
 
-                    <div className={styles.modeTabs}>
-                        <button
-                            type="button"
-                            className={`${styles.modeTab} ${mode === 'login' ? styles.activeTab : ''}`}
-                            onClick={() => setMode('login')}
-                        >
-                            ログイン
-                        </button>
-                        <button
-                            type="button"
-                            className={`${styles.modeTab} ${mode === 'signup' ? styles.activeTab : ''}`}
-                            onClick={() => setMode('signup')}
-                        >
-                            新規登録
-                        </button>
-                    </div>
+                    {!hasActiveSession && (
+                        <div className={styles.modeTabs}>
+                            <button
+                                type="button"
+                                className={`${styles.modeTab} ${mode === 'login' ? styles.activeTab : ''}`}
+                                onClick={() => setMode('login')}
+                            >
+                                ログイン
+                            </button>
+                            <button
+                                type="button"
+                                className={`${styles.modeTab} ${mode === 'signup' ? styles.activeTab : ''}`}
+                                onClick={() => setMode('signup')}
+                            >
+                                新規登録
+                            </button>
+                        </div>
+                    )}
 
-                    {mode === 'login' ? (
+                    {hasActiveSession ? (
+                        <div className={styles.actions}>
+                            <div className={styles.inputHelp}>現在のログイン: {sessionLabel}</div>
+                            <Button size="lg" fullWidth type="button" onClick={handleContinue}>
+                                {sessionLabel}として続ける
+                            </Button>
+                            <Button size="lg" variant="secondary" fullWidth type="button" onClick={handleLogout}>
+                                ログアウト
+                            </Button>
+                        </div>
+                    ) : mode === 'login' ? (
                         <form className={styles.actions} onSubmit={handleLoginSubmit}>
                             <label className={styles.inputLabel} htmlFor="login-id">
                                 会員番号またはメールアドレス
@@ -158,8 +214,6 @@ export function LoginPage() {
                                 autoComplete="username"
                                 required
                             />
-                            <p className={styles.inputHelp}>会員番号は自動採番した番号、メールは登録時のものです。</p>
-
                             <label className={styles.inputLabel} htmlFor="login-password">
                                 パスワード
                             </label>
@@ -190,7 +244,7 @@ export function LoginPage() {
                     ) : (
                         <form className={styles.actions} onSubmit={handleSignupSubmit}>
                             <label className={styles.inputLabel} htmlFor="signup-id">
-                                会員番号（空欄なら自動採番）またはメールアドレス
+                                メールアドレス
                             </label>
                             <input
                                 id="signup-id"
@@ -198,10 +252,10 @@ export function LoginPage() {
                                 type="text"
                                 value={loginId}
                                 onChange={(event) => setLoginId(event.target.value)}
-                                placeholder="空欄で自動採番"
+                                placeholder="例: user@example.com"
                                 autoComplete="username"
+                                required
                             />
-                            <p className={styles.inputHelp}>会員番号で登録すると、管理者が用意した表示名が反映されます。</p>
 
                             <label className={styles.inputLabel} htmlFor="signup-name">
                                 表示名（任意）

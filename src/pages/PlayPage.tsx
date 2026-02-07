@@ -277,6 +277,7 @@ export function PlayPage() {
                     partId: selectedPart,
                     sectionId: selectedSection,
                     label: selectedSectionLabel || selectedSection,
+                    mode: 'typing',
                 }
                 : undefined;
 

@@ -166,6 +166,7 @@ export function ChoicePage() {
                     partId: selectedPart,
                     sectionId: selectedSection,
                     label: sectionLabel || selectedSection,
+                    mode: 'choice',
                 }
                 : undefined;
 

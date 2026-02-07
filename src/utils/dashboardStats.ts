@@ -28,6 +28,7 @@ export interface SectionMeta {
     partId: string;
     sectionId: string;
     label: string;
+    mode?: SessionMode;
 }
 
 export interface SessionSummary {

@@ -228,6 +228,12 @@
     gap: var(--space-lg);
 }
 
+.sideColumn {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+}
+
 .dashboardCard {
     background: #ffffffcc;
     backdrop-filter: blur(6px);
@@ -256,6 +262,12 @@
     display: flex;
     gap: var(--space-sm);
     flex-wrap: wrap;
+}
+
+.quickMeta {
+    margin-top: var(--space-sm);
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
 }
 
 .statItem {
