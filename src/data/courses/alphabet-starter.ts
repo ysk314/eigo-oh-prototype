@@ -30,123 +30,149 @@ type UnitDef = {
     parts: PartDef[];
 };
 
+type CasePair = {
+    upper: string;
+    lower: string;
+};
+
 const courseName = 'Alphabet Starter';
+
+const casePairs: CasePair[] = [
+    { upper: 'A', lower: 'a' },
+    { upper: 'B', lower: 'b' },
+    { upper: 'C', lower: 'c' },
+    { upper: 'D', lower: 'd' },
+    { upper: 'E', lower: 'e' },
+    { upper: 'F', lower: 'f' },
+    { upper: 'G', lower: 'g' },
+    { upper: 'H', lower: 'h' },
+    { upper: 'I', lower: 'i' },
+    { upper: 'J', lower: 'j' },
+    { upper: 'K', lower: 'k' },
+    { upper: 'L', lower: 'l' },
+    { upper: 'M', lower: 'm' },
+    { upper: 'N', lower: 'n' },
+    { upper: 'O', lower: 'o' },
+    { upper: 'P', lower: 'p' },
+    { upper: 'Q', lower: 'q' },
+    { upper: 'R', lower: 'r' },
+    { upper: 'S', lower: 's' },
+    { upper: 'T', lower: 't' },
+    { upper: 'U', lower: 'u' },
+    { upper: 'V', lower: 'v' },
+    { upper: 'W', lower: 'w' },
+    { upper: 'X', lower: 'x' },
+    { upper: 'Y', lower: 'y' },
+    { upper: 'Z', lower: 'z' },
+];
+
+function pairByUpper(upper: string): CasePair {
+    const pair = casePairs.find((item) => item.upper === upper);
+    if (!pair) {
+        throw new Error(`Unknown alphabet pair: ${upper}`);
+    }
+    return pair;
+}
+
+function buildCaseDrill(uppers: string[], rounds = 2): Seed[] {
+    const pairs = uppers.map((upper) => pairByUpper(upper));
+    const seeds: Seed[] = [];
+
+    for (let round = 0; round < rounds; round += 1) {
+        pairs.forEach(({ upper, lower }) => {
+            seeds.push({ promptJp: `${upper} と同じ小文字`, answerEn: lower });
+            seeds.push({ promptJp: `${lower} と同じ大文字`, answerEn: upper });
+        });
+    }
+
+    pairs.forEach(({ upper, lower }) => {
+        seeds.push({ promptJp: `大文字 ${upper}`, answerEn: upper });
+        seeds.push({ promptJp: `小文字 ${lower}`, answerEn: lower });
+    });
+
+    return seeds;
+}
+
+function buildConfusableDrill(groupA: string, groupB: string, rounds = 3): Seed[] {
+    const seeds: Seed[] = [];
+
+    for (let round = 0; round < rounds; round += 1) {
+        seeds.push({ promptJp: `${groupA} を入力`, answerEn: groupA });
+        seeds.push({ promptJp: `${groupB} を入力`, answerEn: groupB });
+        seeds.push({ promptJp: `${groupA}${groupB} の順`, answerEn: `${groupA}${groupB}` });
+        seeds.push({ promptJp: `${groupB}${groupA} の順`, answerEn: `${groupB}${groupA}` });
+    }
+
+    return seeds;
+}
+
+function buildMixedRecognition(uppers: string[], rounds = 2): Seed[] {
+    const pairs = uppers.map((upper) => pairByUpper(upper));
+    const seeds: Seed[] = [];
+
+    for (let round = 0; round < rounds; round += 1) {
+        pairs.forEach(({ upper, lower }, index) => {
+            if ((round + index) % 2 === 0) {
+                seeds.push({ promptJp: `${upper} の小文字`, answerEn: lower });
+                seeds.push({ promptJp: `${lower} の大文字`, answerEn: upper });
+            } else {
+                seeds.push({ promptJp: `${lower} を入力`, answerEn: lower });
+                seeds.push({ promptJp: `${upper} を入力`, answerEn: upper });
+            }
+        });
+    }
+
+    return seeds;
+}
 
 const units: UnitDef[] = [
     {
         id: 'alp-unit-1',
-        name: 'Unit 1: 形の認識（大文字）',
+        name: 'Unit 1: アルファベット対応（A-I）',
         parts: [
             {
                 id: 'alp-unit-1-part-1',
-                label: '直線系',
-                pos: 'alphabet-upper-linear',
-                category: ['alphabet', 'recognition', 'upper'],
+                label: '母音と基本形',
+                pos: 'alphabet-case-basic',
+                category: ['alphabet', 'recognition', 'case-link'],
                 sections: [
                     {
                         id: 'alp-unit-1-part-1-section-1',
                         type: 'alp-unit-1-part-1-section-1',
-                        label: 'A E F',
-                        seeds: [
-                            { promptJp: '大文字 A', answerEn: 'A' },
-                            { promptJp: '大文字 E', answerEn: 'E' },
-                            { promptJp: '大文字 F', answerEn: 'F' },
-                        ],
+                        label: 'A/a E/e I/i',
+                        seeds: buildCaseDrill(['A', 'E', 'I'], 2),
                     },
                     {
                         id: 'alp-unit-1-part-1-section-2',
                         type: 'alp-unit-1-part-1-section-2',
-                        label: 'H I L',
-                        seeds: [
-                            { promptJp: '大文字 H', answerEn: 'H' },
-                            { promptJp: '大文字 I', answerEn: 'I' },
-                            { promptJp: '大文字 L', answerEn: 'L' },
-                        ],
+                        label: 'O/o U/u C/c',
+                        seeds: buildCaseDrill(['O', 'U', 'C'], 2),
                     },
                     {
                         id: 'alp-unit-1-part-1-section-3',
                         type: 'alp-unit-1-part-1-section-3',
-                        label: 'T',
-                        seeds: [
-                            { promptJp: '大文字 T', answerEn: 'T' },
-                        ],
+                        label: 'F/f H/h L/l T/t',
+                        seeds: buildCaseDrill(['F', 'H', 'L', 'T'], 2),
                     },
                 ],
             },
             {
                 id: 'alp-unit-1-part-2',
-                label: '曲線系',
-                pos: 'alphabet-upper-curve',
-                category: ['alphabet', 'recognition', 'upper'],
+                label: 'A-I 復習ループ',
+                pos: 'alphabet-case-review-a-i',
+                category: ['alphabet', 'review', 'spiral'],
                 sections: [
                     {
                         id: 'alp-unit-1-part-2-section-1',
                         type: 'alp-unit-1-part-2-section-1',
-                        label: 'B C D',
-                        seeds: [
-                            { promptJp: '大文字 B', answerEn: 'B' },
-                            { promptJp: '大文字 C', answerEn: 'C' },
-                            { promptJp: '大文字 D', answerEn: 'D' },
-                        ],
+                        label: 'A-I 総合1',
+                        seeds: buildMixedRecognition(['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I'], 2),
                     },
                     {
                         id: 'alp-unit-1-part-2-section-2',
                         type: 'alp-unit-1-part-2-section-2',
-                        label: 'G J O',
-                        seeds: [
-                            { promptJp: '大文字 G', answerEn: 'G' },
-                            { promptJp: '大文字 J', answerEn: 'J' },
-                            { promptJp: '大文字 O', answerEn: 'O' },
-                        ],
-                    },
-                    {
-                        id: 'alp-unit-1-part-2-section-3',
-                        type: 'alp-unit-1-part-2-section-3',
-                        label: 'P Q R S U',
-                        seeds: [
-                            { promptJp: '大文字 P', answerEn: 'P' },
-                            { promptJp: '大文字 Q', answerEn: 'Q' },
-                            { promptJp: '大文字 R', answerEn: 'R' },
-                            { promptJp: '大文字 S', answerEn: 'S' },
-                            { promptJp: '大文字 U', answerEn: 'U' },
-                        ],
-                    },
-                ],
-            },
-            {
-                id: 'alp-unit-1-part-3',
-                label: '斜線系',
-                pos: 'alphabet-upper-diagonal',
-                category: ['alphabet', 'recognition', 'upper'],
-                sections: [
-                    {
-                        id: 'alp-unit-1-part-3-section-1',
-                        type: 'alp-unit-1-part-3-section-1',
-                        label: 'K M N',
-                        seeds: [
-                            { promptJp: '大文字 K', answerEn: 'K' },
-                            { promptJp: '大文字 M', answerEn: 'M' },
-                            { promptJp: '大文字 N', answerEn: 'N' },
-                        ],
-                    },
-                    {
-                        id: 'alp-unit-1-part-3-section-2',
-                        type: 'alp-unit-1-part-3-section-2',
-                        label: 'V W X',
-                        seeds: [
-                            { promptJp: '大文字 V', answerEn: 'V' },
-                            { promptJp: '大文字 W', answerEn: 'W' },
-                            { promptJp: '大文字 X', answerEn: 'X' },
-                        ],
-                    },
-                    {
-                        id: 'alp-unit-1-part-3-section-3',
-                        type: 'alp-unit-1-part-3-section-3',
-                        label: 'Y Z',
-                        seeds: [
-                            { promptJp: '大文字 Y', answerEn: 'Y' },
-                            { promptJp: '大文字 Z', answerEn: 'Z' },
-                        ],
+                        label: 'A-I 総合2',
+                        seeds: buildCaseDrill(['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I'], 1),
                     },
                 ],
             },
@@ -154,90 +180,100 @@ const units: UnitDef[] = [
     },
     {
         id: 'alp-unit-2',
-        name: 'Unit 2: 形の認識（小文字）',
+        name: 'Unit 2: まぎらわしい文字の見分け',
         parts: [
             {
                 id: 'alp-unit-2-part-1',
-                label: '形が近い小文字',
-                pos: 'alphabet-lower-similar',
-                category: ['alphabet', 'recognition', 'lower'],
+                label: 'b/d と p/q',
+                pos: 'alphabet-lower-confusable-core',
+                category: ['alphabet', 'confusable', 'lower'],
                 sections: [
                     {
                         id: 'alp-unit-2-part-1-section-1',
                         type: 'alp-unit-2-part-1-section-1',
-                        label: 'a c e o u',
+                        label: 'b と d',
+                        seeds: buildConfusableDrill('b', 'd', 4),
+                    },
+                    {
+                        id: 'alp-unit-2-part-1-section-2',
+                        type: 'alp-unit-2-part-1-section-2',
+                        label: 'p と q',
+                        seeds: buildConfusableDrill('p', 'q', 4),
+                    },
+                    {
+                        id: 'alp-unit-2-part-1-section-3',
+                        type: 'alp-unit-2-part-1-section-3',
+                        label: 'b d p q ミックス',
                         seeds: [
-                            { promptJp: '小文字 a', answerEn: 'a' },
-                            { promptJp: '小文字 c', answerEn: 'c' },
-                            { promptJp: '小文字 e', answerEn: 'e' },
-                            { promptJp: '小文字 o', answerEn: 'o' },
-                            { promptJp: '小文字 u', answerEn: 'u' },
+                            ...buildConfusableDrill('bd', 'pq', 2),
+                            ...buildConfusableDrill('bp', 'dq', 2),
+                            ...buildCaseDrill(['B', 'D', 'P', 'Q'], 1),
                         ],
                     },
                 ],
             },
             {
                 id: 'alp-unit-2-part-2',
-                label: '似やすいペア',
-                pos: 'alphabet-lower-confusable',
-                category: ['alphabet', 'recognition', 'lower'],
+                label: '細部の差（i/l/j, m/n/h/r, u/v/w/y）',
+                pos: 'alphabet-lower-confusable-extended',
+                category: ['alphabet', 'confusable', 'shape'],
                 sections: [
                     {
                         id: 'alp-unit-2-part-2-section-1',
                         type: 'alp-unit-2-part-2-section-1',
-                        label: 'b d p q',
+                        label: 'i l j',
                         seeds: [
-                            { promptJp: '小文字 b', answerEn: 'b' },
-                            { promptJp: '小文字 d', answerEn: 'd' },
-                            { promptJp: '小文字 p', answerEn: 'p' },
-                            { promptJp: '小文字 q', answerEn: 'q' },
+                            ...buildConfusableDrill('i', 'l', 3),
+                            ...buildConfusableDrill('i', 'j', 2),
+                            ...buildCaseDrill(['I', 'L', 'J'], 1),
                         ],
                     },
                     {
                         id: 'alp-unit-2-part-2-section-2',
                         type: 'alp-unit-2-part-2-section-2',
-                        label: 'i l',
+                        label: 'm n h r',
                         seeds: [
-                            { promptJp: '小文字 i', answerEn: 'i' },
-                            { promptJp: '小文字 l', answerEn: 'l' },
+                            ...buildConfusableDrill('m', 'n', 2),
+                            ...buildConfusableDrill('n', 'h', 2),
+                            ...buildConfusableDrill('h', 'r', 2),
+                            ...buildCaseDrill(['M', 'N', 'H', 'R'], 1),
                         ],
                     },
                     {
                         id: 'alp-unit-2-part-2-section-3',
                         type: 'alp-unit-2-part-2-section-3',
-                        label: 'n h m',
+                        label: 'u v w y',
                         seeds: [
-                            { promptJp: '小文字 n', answerEn: 'n' },
-                            { promptJp: '小文字 h', answerEn: 'h' },
-                            { promptJp: '小文字 m', answerEn: 'm' },
+                            ...buildConfusableDrill('u', 'v', 2),
+                            ...buildConfusableDrill('v', 'w', 2),
+                            ...buildConfusableDrill('w', 'y', 2),
+                            ...buildCaseDrill(['U', 'V', 'W', 'Y'], 1),
                         ],
                     },
                 ],
             },
             {
                 id: 'alp-unit-2-part-3',
-                label: '斜線・特殊形',
-                pos: 'alphabet-lower-diagonal-special',
-                category: ['alphabet', 'recognition', 'lower'],
+                label: '見分け総合復習',
+                pos: 'alphabet-confusable-review',
+                category: ['alphabet', 'review', 'confusable'],
                 sections: [
                     {
                         id: 'alp-unit-2-part-3-section-1',
                         type: 'alp-unit-2-part-3-section-1',
-                        label: 'k v w',
+                        label: 'まぎらわし総合1',
                         seeds: [
-                            { promptJp: '小文字 k', answerEn: 'k' },
-                            { promptJp: '小文字 v', answerEn: 'v' },
-                            { promptJp: '小文字 w', answerEn: 'w' },
+                            ...buildMixedRecognition(['B', 'D', 'P', 'Q', 'I', 'L', 'J'], 2),
+                            ...buildConfusableDrill('bd', 'pq', 2),
                         ],
                     },
                     {
                         id: 'alp-unit-2-part-3-section-2',
                         type: 'alp-unit-2-part-3-section-2',
-                        label: 'x y z',
+                        label: 'まぎらわし総合2',
                         seeds: [
-                            { promptJp: '小文字 x', answerEn: 'x' },
-                            { promptJp: '小文字 y', answerEn: 'y' },
-                            { promptJp: '小文字 z', answerEn: 'z' },
+                            ...buildMixedRecognition(['M', 'N', 'H', 'R', 'U', 'V', 'W', 'Y'], 2),
+                            ...buildConfusableDrill('mn', 'hr', 2),
                         ],
                     },
                 ],
@@ -246,124 +282,93 @@ const units: UnitDef[] = [
     },
     {
         id: 'alp-unit-3',
-        name: 'Unit 3: 大文字⇄小文字対応',
+        name: 'Unit 3: 全26スパイラル復習',
         parts: [
             {
                 id: 'alp-unit-3-part-1',
-                label: '同形寄り',
-                pos: 'alphabet-case-similar',
-                category: ['alphabet', 'case-match'],
+                label: 'A-M 対応定着',
+                pos: 'alphabet-spiral-a-m',
+                category: ['alphabet', 'review', 'a-m'],
                 sections: [
                     {
                         id: 'alp-unit-3-part-1-section-1',
                         type: 'alp-unit-3-part-1-section-1',
-                        label: 'C/c O/o S/s',
-                        seeds: [
-                            { promptJp: 'C の小文字', answerEn: 'c' },
-                            { promptJp: 'o の大文字', answerEn: 'O' },
-                            { promptJp: 'S の小文字', answerEn: 's' },
-                        ],
+                        label: 'A-F',
+                        seeds: buildMixedRecognition(['A', 'B', 'C', 'D', 'E', 'F'], 3),
                     },
                     {
                         id: 'alp-unit-3-part-1-section-2',
                         type: 'alp-unit-3-part-1-section-2',
-                        label: 'V/v W/w X/x',
-                        seeds: [
-                            { promptJp: 'v の大文字', answerEn: 'V' },
-                            { promptJp: 'W の小文字', answerEn: 'w' },
-                            { promptJp: 'x の大文字', answerEn: 'X' },
-                        ],
+                        label: 'G-M',
+                        seeds: buildMixedRecognition(['G', 'H', 'I', 'J', 'K', 'L', 'M'], 3),
                     },
                     {
                         id: 'alp-unit-3-part-1-section-3',
                         type: 'alp-unit-3-part-1-section-3',
-                        label: 'Z/z',
-                        seeds: [
-                            { promptJp: 'Z の小文字', answerEn: 'z' },
-                            { promptJp: 'z の大文字', answerEn: 'Z' },
-                        ],
+                        label: 'A-M ミックス',
+                        seeds: buildCaseDrill(['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M'], 1),
                     },
                 ],
             },
             {
                 id: 'alp-unit-3-part-2',
-                label: '形が違うペア',
-                pos: 'alphabet-case-different',
-                category: ['alphabet', 'case-match'],
+                label: 'N-Z 対応定着',
+                pos: 'alphabet-spiral-n-z',
+                category: ['alphabet', 'review', 'n-z'],
                 sections: [
                     {
                         id: 'alp-unit-3-part-2-section-1',
                         type: 'alp-unit-3-part-2-section-1',
-                        label: 'A/a B/b D/d',
-                        seeds: [
-                            { promptJp: 'A の小文字', answerEn: 'a' },
-                            { promptJp: 'b の大文字', answerEn: 'B' },
-                            { promptJp: 'D の小文字', answerEn: 'd' },
-                        ],
+                        label: 'N-S',
+                        seeds: buildMixedRecognition(['N', 'O', 'P', 'Q', 'R', 'S'], 3),
                     },
                     {
                         id: 'alp-unit-3-part-2-section-2',
                         type: 'alp-unit-3-part-2-section-2',
-                        label: 'G/g Q/q R/r',
-                        seeds: [
-                            { promptJp: 'g の大文字', answerEn: 'G' },
-                            { promptJp: 'Q の小文字', answerEn: 'q' },
-                            { promptJp: 'r の大文字', answerEn: 'R' },
-                        ],
+                        label: 'T-Z',
+                        seeds: buildMixedRecognition(['T', 'U', 'V', 'W', 'X', 'Y', 'Z'], 3),
+                    },
+                    {
+                        id: 'alp-unit-3-part-2-section-3',
+                        type: 'alp-unit-3-part-2-section-3',
+                        label: 'N-Z ミックス',
+                        seeds: buildCaseDrill(['N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'], 1),
                     },
                 ],
             },
             {
                 id: 'alp-unit-3-part-3',
-                label: '混在ランダム（全26）',
-                pos: 'alphabet-case-random',
-                category: ['alphabet', 'case-match', 'mixed'],
+                label: '最終復習（全26 + まぎらわし）',
+                pos: 'alphabet-final-review',
+                category: ['alphabet', 'review', 'final'],
                 sections: [
                     {
                         id: 'alp-unit-3-part-3-section-1',
                         type: 'alp-unit-3-part-3-section-1',
-                        label: 'A-I',
-                        seeds: [
-                            { promptJp: 'a の大文字', answerEn: 'A' },
-                            { promptJp: 'B の小文字', answerEn: 'b' },
-                            { promptJp: 'c の大文字', answerEn: 'C' },
-                            { promptJp: 'D の小文字', answerEn: 'd' },
-                            { promptJp: 'e の大文字', answerEn: 'E' },
-                            { promptJp: 'F の小文字', answerEn: 'f' },
-                            { promptJp: 'g の大文字', answerEn: 'G' },
-                            { promptJp: 'H の小文字', answerEn: 'h' },
-                            { promptJp: 'i の大文字', answerEn: 'I' },
-                        ],
+                        label: '全26対応',
+                        seeds: buildMixedRecognition(
+                            ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'],
+                            1,
+                        ),
                     },
                     {
                         id: 'alp-unit-3-part-3-section-2',
                         type: 'alp-unit-3-part-3-section-2',
-                        label: 'J-R',
+                        label: 'まぎらわし集中',
                         seeds: [
-                            { promptJp: 'J の小文字', answerEn: 'j' },
-                            { promptJp: 'k の大文字', answerEn: 'K' },
-                            { promptJp: 'L の小文字', answerEn: 'l' },
-                            { promptJp: 'm の大文字', answerEn: 'M' },
-                            { promptJp: 'N の小文字', answerEn: 'n' },
-                            { promptJp: 'o の大文字', answerEn: 'O' },
-                            { promptJp: 'P の小文字', answerEn: 'p' },
-                            { promptJp: 'q の大文字', answerEn: 'Q' },
-                            { promptJp: 'R の小文字', answerEn: 'r' },
+                            ...buildConfusableDrill('b', 'd', 3),
+                            ...buildConfusableDrill('p', 'q', 3),
+                            ...buildConfusableDrill('m', 'n', 2),
+                            ...buildConfusableDrill('u', 'v', 2),
                         ],
                     },
                     {
                         id: 'alp-unit-3-part-3-section-3',
                         type: 'alp-unit-3-part-3-section-3',
-                        label: 'S-Z',
+                        label: '総合チェック',
                         seeds: [
-                            { promptJp: 's の大文字', answerEn: 'S' },
-                            { promptJp: 'T の小文字', answerEn: 't' },
-                            { promptJp: 'u の大文字', answerEn: 'U' },
-                            { promptJp: 'V の小文字', answerEn: 'v' },
-                            { promptJp: 'w の大文字', answerEn: 'W' },
-                            { promptJp: 'X の小文字', answerEn: 'x' },
-                            { promptJp: 'y の大文字', answerEn: 'Y' },
-                            { promptJp: 'Z の小文字', answerEn: 'z' },
+                            ...buildCaseDrill(['A', 'E', 'I', 'O', 'U', 'B', 'D', 'P', 'Q', 'M', 'N', 'V', 'W', 'X', 'Y', 'Z'], 1),
+                            ...buildMixedRecognition(['C', 'F', 'G', 'H', 'J', 'K', 'L', 'R', 'S', 'T'], 1),
                         ],
                     },
                 ],
