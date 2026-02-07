@@ -31,6 +31,8 @@ export function LoginPage() {
     const [loginId, setLoginId] = useState('');
     const [password, setPassword] = useState('');
     const [displayName, setDisplayName] = useState('');
+    const [familyName, setFamilyName] = useState('');
+    const [givenName, setGivenName] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
     const [isLoading, setIsLoading] = useState(false);
     const [authUser, setAuthUser] = useState<User | null>(null);
@@ -64,6 +66,8 @@ export function LoginPage() {
         setLoginId('');
         setPassword('');
         setDisplayName('');
+        setFamilyName('');
+        setGivenName('');
         setErrorMessage('');
     };
 
@@ -90,7 +94,12 @@ export function LoginPage() {
         setIsLoading(true);
         try {
             const result = await signInAnonymously(auth);
-            await saveRemoteProfile(result.user.uid, 'ゲスト');
+            await saveRemoteProfile(result.user.uid, 'ゲスト', undefined, {
+                accountType: 'guest',
+                status: 'active',
+                billing: { plan: 'free', status: 'active' },
+                entitlements: { typing: true, flashMentalMath: false, reading: false },
+            });
             navigate('/dashboard');
         } catch (error) {
             console.error(error);
@@ -147,17 +156,21 @@ export function LoginPage() {
         }
     };
 
-    const handleSignupSubmit = async (event: FormEvent) => {
-        event.preventDefault();
-        setErrorMessage('');
+        const handleSignupSubmit = async (event: FormEvent) => {
+            event.preventDefault();
+            setErrorMessage('');
 
-        if (!loginId.trim()) {
-            setErrorMessage('メールアドレスを入力してください。');
-            return;
-        }
+            if (!loginId.trim()) {
+                setErrorMessage('メールアドレスを入力してください。');
+                return;
+            }
 
         if (displayName.trim() && containsBannedWords(displayName.trim())) {
             setErrorMessage('表示名に不適切な表現が含まれています。');
+            return;
+        }
+        if (!familyName.trim() || !givenName.trim()) {
+            setErrorMessage('姓と名を入力してください。');
             return;
         }
 
@@ -171,8 +184,15 @@ export function LoginPage() {
             const email = loginId.trim();
             const result = await createUserWithEmailAndPassword(auth, email, password);
             const memberNo = await generateMemberNo();
-            const name = displayName.trim() || email.split('@')[0] || 'ユーザー';
-            await saveRemoteProfile(result.user.uid, name, memberNo);
+            const fallbackName = `${familyName.trim()} ${givenName.trim()}`.trim();
+            const name = displayName.trim() || fallbackName || email.split('@')[0] || 'ユーザー';
+            await saveRemoteProfile(result.user.uid, name, memberNo, {
+                name: { family: familyName.trim(), given: givenName.trim() },
+                accountType: 'consumer',
+                status: 'active',
+                billing: { plan: 'free', status: 'active' },
+                entitlements: { typing: true, flashMentalMath: false, reading: false },
+            });
             if (result.user.email) {
                 await saveMemberLoginMap(memberNo, result.user.uid, result.user.email);
             }
@@ -298,6 +318,30 @@ export function LoginPage() {
                                 value={displayName}
                                 onChange={(event) => setDisplayName(event.target.value)}
                                 placeholder="例: さくら"
+                            />
+                            <label className={styles.inputLabel} htmlFor="signup-family-name">
+                                姓
+                            </label>
+                            <input
+                                id="signup-family-name"
+                                className={styles.input}
+                                type="text"
+                                value={familyName}
+                                onChange={(event) => setFamilyName(event.target.value)}
+                                placeholder="例: 山田"
+                                required
+                            />
+                            <label className={styles.inputLabel} htmlFor="signup-given-name">
+                                名
+                            </label>
+                            <input
+                                id="signup-given-name"
+                                className={styles.input}
+                                type="text"
+                                value={givenName}
+                                onChange={(event) => setGivenName(event.target.value)}
+                                placeholder="例: 花子"
+                                required
                             />
 
                             <label className={styles.inputLabel} htmlFor="signup-password">

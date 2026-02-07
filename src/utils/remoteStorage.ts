@@ -39,6 +39,8 @@ export async function loadRemoteProfile(uid: string): Promise<User | null> {
         displayName?: string;
         createdAt?: unknown;
         memberNo?: string;
+        name?: { family?: string; given?: string };
+        accountType?: 'guest' | 'consumer' | 'b2b2c';
     };
 
     const createdAt = typeof data.createdAt === 'string'
@@ -52,14 +54,42 @@ export async function loadRemoteProfile(uid: string): Promise<User | null> {
         name: data.displayName ?? 'ゲスト',
         createdAt,
         memberNo: data.memberNo ?? undefined,
+        familyName: data.name?.family ?? undefined,
+        givenName: data.name?.given ?? undefined,
+        accountType: data.accountType ?? undefined,
     };
 }
 
-export async function saveRemoteProfile(uid: string, displayName: string, memberNo?: string): Promise<void> {
+export type SaveProfileOptions = {
+    name?: { family?: string; given?: string };
+    accountType?: 'guest' | 'consumer' | 'b2b2c';
+    status?: 'active' | 'inactive' | 'archived' | 'pending';
+    billing?: {
+        plan: 'free' | 'paid';
+        status: 'active' | 'past_due' | 'canceled' | 'trial';
+    };
+    entitlements?: {
+        typing: boolean;
+        flashMentalMath: boolean;
+        reading: boolean;
+    };
+};
+
+export async function saveRemoteProfile(
+    uid: string,
+    displayName: string,
+    memberNo?: string,
+    options?: SaveProfileOptions
+): Promise<void> {
     await setDoc(userDocRef(uid), {
         uid,
         displayName,
         memberNo: memberNo ?? null,
+        name: options?.name ?? null,
+        accountType: options?.accountType ?? null,
+        status: options?.status ?? null,
+        billing: options?.billing ?? null,
+        entitlements: options?.entitlements ?? null,
         createdAt: serverTimestamp(),
         updatedAt: serverTimestamp(),
     }, { merge: true });

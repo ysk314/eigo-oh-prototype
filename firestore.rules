@@ -20,10 +20,18 @@ service cloud.firestore {
 
     match /users/{userId} {
       allow read: if (request.auth != null && request.auth.uid == userId) || isAdmin();
-      allow write: if isAdmin()
+      allow create: if request.auth != null && request.auth.uid == userId;
+      allow update: if isAdmin()
         || (request.auth != null
             && request.auth.uid == userId
-            && (resource == null || request.resource.data.memberNo == resource.data.memberNo));
+            && request.resource.data.memberNo == resource.data.memberNo
+            && request.resource.data.accountType == resource.data.accountType
+            && request.resource.data.orgId == resource.data.orgId
+            && request.resource.data.classroomId == resource.data.classroomId
+            && request.resource.data.status == resource.data.status
+            && request.resource.data.billing == resource.data.billing
+            && request.resource.data.entitlements == resource.data.entitlements);
+      allow delete: if false;
     }
 
     match /users/{userId}/{document=**} {
