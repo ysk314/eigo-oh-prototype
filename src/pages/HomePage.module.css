@@ -359,18 +359,6 @@
     gap: var(--space-md);
 }
 
-.quickActions {
-    display: flex;
-    gap: var(--space-sm);
-    flex-wrap: wrap;
-}
-
-.quickMeta {
-    margin-top: var(--space-sm);
-    font-size: var(--font-size-sm);
-    color: var(--color-text-secondary);
-}
-
 .statItem {
     background: var(--color-bg-base);
     border-radius: var(--radius-md);

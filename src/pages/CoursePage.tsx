@@ -2,7 +2,7 @@
 // Course Page
 // ================================
 
-import { useMemo, useEffect, useRef, useState } from 'react';
+import { useMemo, useEffect, useRef, useState, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { flushSync } from 'react-dom';
 import { useApp } from '@/context/AppContext';
@@ -26,9 +26,15 @@ export function CoursePage() {
         loading: courseLoading,
         error: courseError,
     } = useCourseBundle(state.selectedCourse);
+    const formatUnitLabel = useCallback((name?: string | null) => {
+        if (!name) return '';
+        const stripped = name.replace(/^unit\s*\d+\s*[:：]\s*/i, '').trim();
+        return stripped || name;
+    }, []);
     const units = useMemo(() => currentCourse?.units ?? [], [currentCourse]);
     const selectedUnitId = state.selectedUnit || units[0]?.id || null;
     const selectedUnit = units.find((unit) => unit.id === selectedUnitId) || units[0] || null;
+    const selectedUnitLabel = formatUnitLabel(selectedUnit?.name);
     const selectedPartId = state.selectedPart || selectedUnit?.parts[0]?.id || null;
     const selectedPartLabel = selectedUnit?.parts.find((part) => part.id === selectedPartId)?.label || '';
     const [openUnitId, setOpenUnitId] = useState<string | null>(null);
@@ -404,7 +410,7 @@ export function CoursePage() {
         <div className={styles.page}>
             <div className={styles.stickyHeader}>
                 <Header
-                    breadcrumb={[currentCourse?.name || '', selectedUnit?.name || '', selectedPartLabel]}
+                    breadcrumb={[currentCourse?.name || '', selectedUnitLabel || '', selectedPartLabel]}
                     showShuffleToggle
                     showBackButton
                     showStudyModeToggle
@@ -418,7 +424,7 @@ export function CoursePage() {
                         <div>
                             <h2 className={styles.flowTitle}>学習ナビ</h2>
                             <p className={styles.flowSub}>
-                                {selectedUnit?.name || '-'} / {selectedPartLabel || '-'}
+                                {selectedUnitLabel || '-'} / {selectedPartLabel || '-'}
                             </p>
                         </div>
                         <div className={styles.flowActions}>
@@ -486,7 +492,7 @@ export function CoursePage() {
                                     aria-expanded={isOpen}
                                     aria-controls={`unit-panel-${unit.id}`}
                                 >
-                                    <span className={styles.accordionTitle}>{unit.name}</span>
+                                    <span className={styles.accordionTitle}>{formatUnitLabel(unit.name)}</span>
                                     <span className={styles.accordionMeta}>
                                         {isEmpty ? '-' : `${totalQuestions}問`}
                                     </span>
@@ -557,7 +563,7 @@ export function CoursePage() {
                                                 disabled={isEmpty}
                                                 aria-current={isSelected ? 'page' : undefined}
                                             >
-                                                <span className={styles.navLabel}>{unit.name}</span>
+                                                <span className={styles.navLabel}>{formatUnitLabel(unit.name)}</span>
                                                 <span className={styles.navCount}>
                                                     {isEmpty ? '-' : `${totalQuestions}問`}
                                                 </span>

@@ -47,6 +47,7 @@
     margin: 4px 0 0;
     color: var(--color-text-secondary);
     font-size: var(--font-size-sm);
+    overflow-wrap: anywhere;
 }
 
 .flowActions {
@@ -109,6 +110,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: var(--space-sm);
     padding: var(--space-md) var(--space-lg);
     border: none;
     background: rgba(255, 255, 255, 0.9);
@@ -130,11 +132,17 @@
 .accordionTitle {
     font-size: var(--font-size-base);
     font-weight: var(--font-weight-semibold);
+    min-width: 0;
+    flex: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .accordionMeta {
     font-size: var(--font-size-sm);
     color: var(--color-text-secondary);
+    flex-shrink: 0;
 }
 
 .accordionPanel {
@@ -229,6 +237,8 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: var(--space-sm);
+    min-width: 0;
     padding: var(--space-md) var(--space-lg);
     background: rgba(255, 255, 255, 0.4);
     border: none;
@@ -262,6 +272,10 @@
 .navLabel {
     font-size: var(--font-size-base);
     font-weight: var(--font-weight-semibold);
+    min-width: 0;
+    flex: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
     white-space: nowrap;
 }
 
@@ -269,6 +283,10 @@
     font-size: var(--font-size-sm);
     opacity: 0.8;
     white-space: nowrap;
+    flex-shrink: 0;
+    max-width: 45%;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 /* Main */
@@ -315,6 +333,13 @@
     .flowActions > * {
         flex: 1;
         min-width: 0;
+    }
+
+    .accordionTitle,
+    .navLabel {
+        white-space: normal;
+        overflow-wrap: anywhere;
+        line-height: 1.3;
     }
 
     .flowStats {

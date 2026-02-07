@@ -166,7 +166,6 @@ export function HomePage() {
     const latestSession = recentSessions[0];
     const latestRecentSection = recentSections[0];
     const latestRecentInfo = latestRecentSection ? resolveSectionInfo(latestRecentSection) : null;
-    const latestModeLabel = latestRecentSection?.mode === 'choice' ? '選択' : 'タイピング';
     const nextCourseId = latestRecentSection?.courseId ?? courseCatalog[0]?.id;
     const missionTitle = latestRecentSection
         ? '前回の続きから再開'
@@ -196,20 +195,6 @@ export function HomePage() {
                         <p className={styles.memberNo}>会員番号: {state.currentUser.memberNo}</p>
                     )}
                     <div className={styles.heroActions}>
-                        <Button
-                            variant="primary"
-                            size="sm"
-                            className={styles.heroActionButton}
-                            onClick={() => {
-                                if (latestRecentSection) {
-                                    handleOpenRecentSection(latestRecentSection);
-                                } else if (nextCourseId) {
-                                    handleCourseSelect(nextCourseId);
-                                }
-                            }}
-                        >
-                            {latestRecentSection ? '30秒で再開' : '今すぐ始める'}
-                        </Button>
                         <Button
                             variant="secondary"
                             size="sm"
@@ -374,32 +359,6 @@ export function HomePage() {
                     </div>
 
                     <div className={styles.sideColumn}>
-                        <Card className={styles.dashboardCard} padding="lg">
-                            <div className={styles.sectionHeader}>
-                                <h2 className={styles.sectionTitle}>クイックスタート</h2>
-                                <span className={styles.sectionNote}>前回から再開</span>
-                            </div>
-                            <div className={styles.quickActions}>
-                                <Button
-                                    variant="primary"
-                                    onClick={() => {
-                                        if (latestRecentSection) {
-                                            handleOpenRecentSection(latestRecentSection);
-                                        } else if (courseCatalog[0]) {
-                                            handleCourseSelect(courseCatalog[0].id);
-                                        }
-                                    }}
-                                >
-                                    {latestRecentSection ? '前回のセクションへ' : '最初のコースへ'}
-                                </Button>
-                            </div>
-                            {latestRecentSection && latestRecentInfo && (
-                                <div className={styles.quickMeta}>
-                                    {latestRecentInfo.partLabel} / {latestRecentInfo.sectionLabel} · {latestModeLabel}
-                                </div>
-                            )}
-                        </Card>
-
                         <Card className={styles.courseCard} padding="lg">
                             <details
                                 className={styles.accordion}

@@ -87,6 +87,7 @@ type ClassroomItem = {
 
 type SortKey = 'name' | 'memberNo' | 'lastActive' | 'progress' | 'createdAt';
 type ColumnKey = 'memberNo' | 'uid' | 'progress' | 'lastActive' | 'lastSection' | 'createdAt';
+type AccountTypeFilter = 'guest' | 'consumer' | 'b2b2c';
 
 function normalize(value: string) {
     return value.trim().toLowerCase();
@@ -173,6 +174,12 @@ function normalizeAdminId(value: string) {
     return `${trimmed}@admin.tap-type.invalid`;
 }
 
+const accountTypeLabels: Record<AccountTypeFilter, string> = {
+    guest: 'ゲスト',
+    consumer: '一般',
+    b2b2c: '法人',
+};
+
 export function AdminPage() {
     const navigate = useNavigate();
     const [authLoading, setAuthLoading] = useState(true);
@@ -190,6 +197,11 @@ export function AdminPage() {
     const [selectedUserId, setSelectedUserId] = useState<string | null>(null);
     const [activityFilter, setActivityFilter] = useState<'all' | 'active7' | 'inactive30'>('all');
     const [progressFilter, setProgressFilter] = useState<'all' | 'zero' | 'low' | 'mid' | 'complete'>('all');
+    const [accountTypeFilter, setAccountTypeFilter] = useState<Record<AccountTypeFilter, boolean>>({
+        guest: true,
+        consumer: true,
+        b2b2c: true,
+    });
     const [sortKey, setSortKey] = useState<SortKey>('lastActive');
     const [sortDir, setSortDir] = useState<'asc' | 'desc'>('desc');
     const [visibleColumns, setVisibleColumns] = useState<Record<ColumnKey, boolean>>({
@@ -589,6 +601,9 @@ export function AdminPage() {
             : users;
 
         return base.filter((user) => {
+            const normalizedAccountType = user.accountType ?? 'consumer';
+            if (!accountTypeFilter[normalizedAccountType]) return false;
+
             const ratio = getProgressRatio(user.stats);
             const daysSince = getDaysSince(user.stats?.lastActiveAt);
 
@@ -609,7 +624,7 @@ export function AdminPage() {
 
             return true;
         });
-    }, [users, searchTerm, activityFilter, progressFilter]);
+    }, [users, searchTerm, activityFilter, progressFilter, accountTypeFilter]);
 
     const sortedUsers = useMemo(() => {
         const getSortValue = (user: AdminUser) => {
@@ -796,6 +811,11 @@ export function AdminPage() {
         setSearchTerm('');
         setActivityFilter('all');
         setProgressFilter('all');
+        setAccountTypeFilter({
+            guest: true,
+            consumer: true,
+            b2b2c: true,
+        });
     };
 
     const handleSort = (key: SortKey) => {
@@ -1408,6 +1428,24 @@ export function AdminPage() {
                                 >
                                     100%
                                 </button>
+                            </div>
+                            <div className={styles.filterGroup}>
+                                <span className={styles.filterLabel}>種別</span>
+                                {(Object.keys(accountTypeLabels) as AccountTypeFilter[]).map((type) => (
+                                    <label key={type} className={styles.columnToggle}>
+                                        <input
+                                            type="checkbox"
+                                            checked={accountTypeFilter[type]}
+                                            onChange={() =>
+                                                setAccountTypeFilter((prev) => ({
+                                                    ...prev,
+                                                    [type]: !prev[type],
+                                                }))
+                                            }
+                                        />
+                                        {accountTypeLabels[type]}
+                                    </label>
+                                ))}
                             </div>
                         </div>
                         <div className={styles.filterSection}>
