@@ -4,9 +4,23 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-    <title>Eigo-Oh! - 英語タイピング学習</title>
+    <title>Tap! Type! English! - 英語タイピング学習</title>
   </head>
   <body>
+    <script>
+      (function () {
+        var search = window.location.search;
+        if (!search) return;
+        var params = new URLSearchParams(search);
+        var redirectPath = params.get('p');
+        if (!redirectPath) return;
+        var redirectQuery = params.get('q');
+        var basePath = window.location.pathname.replace(/\/$/, '');
+        var query = redirectQuery ? '?' + redirectQuery.replace(/~and~/g, '&') : '';
+        var nextPath = (basePath || '') + redirectPath + query + window.location.hash;
+        window.history.replaceState(null, '', nextPath);
+      })();
+    </script>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>

@@ -4,10 +4,10 @@
 
 import { AppState, User, UserProgress, SectionProgress } from '@/types';
 
-const STORAGE_KEY = 'eigo-typing-app';
-const SCHEMA_VERSION = 2;
+const STORAGE_KEY = 'tap-type-english';
+export const SCHEMA_VERSION = 2;
 
-interface StorageData {
+export interface StorageData {
     version: number;
     users: User[];
     currentUserId: string | null;
@@ -23,14 +23,8 @@ interface StorageData {
 function getDefaultStorageData(): StorageData {
     return {
         version: SCHEMA_VERSION,
-        users: [
-            {
-                id: 'user-1',
-                name: '田中太郎さん',
-                createdAt: new Date().toISOString(),
-            },
-        ],
-        currentUserId: 'user-1',
+        users: [],
+        currentUserId: null,
         userProgress: {},
         sectionProgress: {},
         settings: {

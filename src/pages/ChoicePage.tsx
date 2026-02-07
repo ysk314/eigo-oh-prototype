@@ -10,11 +10,16 @@ import { Card } from '@/components/Card';
 import { Button } from '@/components/Button';
 import { AudioPlayer } from '@/components/AudioPlayer';
 import { GameHeader } from '@/components/GameHeader';
+import { Confetti } from '@/components/Confetti';
 import { courses, getCourseById, getQuestionsBySection, getSectionsByPart } from '@/data/questions';
 import { buildScoreResult, ScoreResult } from '@/utils/score';
 import { playSound } from '@/utils/sound';
 import { getRankMessage } from '@/utils/result';
 import { useCountdown } from '@/hooks/useCountdown';
+import { logEvent } from '@/utils/analytics';
+import { recordProgressSnapshot, recordSessionSummary, type SessionSummary, type SectionMeta } from '@/utils/dashboardStats';
+import { buildSectionProgressTotals, buildUserProgressTotals, getTotalSectionsCount } from '@/utils/progressSummary';
+import { useSelectedLabels } from '@/hooks/useSelectedLabels';
 import styles from './ChoicePage.module.css';
 
 type ChoiceState = {
@@ -52,7 +57,7 @@ function stripTags(text: string): string {
 
 export function ChoicePage() {
     const navigate = useNavigate();
-    const { state, setChoiceRank } = useApp();
+    const { state, setChoiceRank, beginSectionSession, completeSectionSession, abortSectionSession } = useApp();
     const { selectedCourse, selectedPart, selectedSection, selectedChoiceLevel } = state;
     const currentCourse = getCourseById(selectedCourse) ?? courses[0];
 
@@ -73,6 +78,7 @@ export function ChoicePage() {
     const [timeLeft, setTimeLeft] = useState(0);
     const [timeUp, setTimeUp] = useState(false);
     const timeUpRef = useRef(false);
+    const sessionIdRef = useRef('');
     const { countdown, isCountingDown, start: startCountdown } = useCountdown(3, () => playSound('countdown'));
 
     const currentQuestion = questions[currentIndex];
@@ -96,6 +102,7 @@ export function ChoicePage() {
     useEffect(() => {
         if (questions.length === 0) return;
         const limit = Math.max(1, questions.length * 5);
+        sessionIdRef.current = `choice-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`;
         setCurrentIndex(0);
         setIsFinished(false);
         setTimeUp(false);
@@ -105,29 +112,124 @@ export function ChoicePage() {
         setTimeLimit(limit);
         setTimeLeft(limit);
         startCountdown(3);
-    }, [questions, startCountdown]);
+        beginSectionSession();
 
-    const finishSession = useCallback((timeUpFlag: boolean) => {
+        logEvent({
+            eventType: 'session_started',
+            userId: state.currentUser?.id ?? null,
+            payload: {
+                sessionId: sessionIdRef.current,
+                mode: 'choice',
+                questionCount: questions.length,
+                level: selectedChoiceLevel,
+                startedAt: new Date().toISOString(),
+            },
+        }).catch(() => {});
+    }, [questions, startCountdown, selectedChoiceLevel, state.currentUser?.id, beginSectionSession]);
+
+    const finishSession = useCallback(() => {
         setIsFinished(true);
+        const total = correctCount + missCount;
+        const accuracy = total > 0 ? Math.round((correctCount / total) * 100) : 0;
         const score = buildScoreResult({
-            missCount,
+            accuracy,
             timeLeft,
             timeLimit,
-            timeUp: timeUpFlag,
+            isPerfect: missCount === 0,
         });
         setScoreResult(score);
+        const totalTimeMs = (timeLimit - timeLeft) * 1000;
+        const sectionLabel = selectedSection && selectedPart
+            ? getSectionsByPart(selectedPart, currentCourse?.id)
+                .find((item) => item.id === selectedSection)?.label
+            : undefined;
+        logEvent({
+            eventType: 'session_ended',
+            userId: state.currentUser?.id ?? null,
+            payload: {
+                sessionId: sessionIdRef.current,
+                mode: 'choice',
+                totalQuestions: questions.length,
+                correctCount,
+                missCount,
+                totalTimeMs,
+                accuracy,
+                rank: score.rank,
+                level: selectedChoiceLevel,
+            },
+        }).catch(() => {});
+
+        if (state.currentUser?.id) {
+            const sectionMeta: SectionMeta | undefined = selectedCourse && state.selectedUnit && selectedPart && selectedSection
+                ? {
+                    courseId: selectedCourse,
+                    unitId: state.selectedUnit,
+                    partId: selectedPart,
+                    sectionId: selectedSection,
+                    label: sectionLabel || selectedSection,
+                    mode: 'choice' as const,
+                }
+                : undefined;
+
+            const sessionSummary: SessionSummary = {
+                sessionId: sessionIdRef.current,
+                mode: 'choice',
+                accuracy,
+                missCount,
+                totalTimeMs,
+                rank: score.rank,
+                level: selectedChoiceLevel,
+                playedAt: new Date().toISOString(),
+            };
+
+            recordSessionSummary(state.currentUser.id, sessionSummary, sectionMeta).catch(() => {});
+
+            const progressTotals = buildUserProgressTotals(state.userProgress, state.currentUser.id);
+            const sectionTotals = buildSectionProgressTotals(state.sectionProgress, state.currentUser.id);
+            recordProgressSnapshot(state.currentUser.id, {
+                ...progressTotals,
+                clearedSectionsCount: sectionTotals.clearedSectionsCount,
+                totalSectionsCount: getTotalSectionsCount(),
+                lastMode: 'choice',
+                lastActiveAt: new Date().toISOString(),
+                lastSectionId: selectedSection ?? undefined,
+                lastSectionLabel: sectionLabel ?? selectedSection ?? undefined,
+                lastCourseId: selectedCourse ?? undefined,
+                lastUnitId: state.selectedUnit ?? undefined,
+                lastPartId: selectedPart ?? undefined,
+            }).catch(() => {});
+        }
+
+        completeSectionSession();
+
         playSound(score.rank === 'S' ? 'fanfare' : 'try-again');
         if (selectedSection) {
             setChoiceRank(selectedSection, selectedChoiceLevel, score.rank);
         }
-    }, [missCount, timeLeft, timeLimit, selectedSection, selectedChoiceLevel, setChoiceRank]);
+    }, [
+        correctCount,
+        missCount,
+        timeLeft,
+        timeLimit,
+        questions.length,
+        selectedCourse,
+        selectedPart,
+        selectedSection,
+        selectedChoiceLevel,
+        setChoiceRank,
+        state.currentUser?.id,
+        state.selectedUnit,
+        state.sectionProgress,
+        currentCourse?.id,
+        completeSectionSession,
+    ]);
 
     useEffect(() => {
         if (isCountingDown || isFinished || timeLimit === 0) return;
         if (timeLeft <= 0) {
             if (!timeUp) {
                 setTimeUp(true);
-                finishSession(true);
+                finishSession();
             }
             return;
         }
@@ -219,17 +321,26 @@ export function ChoicePage() {
                     setCurrentIndex((prev) => prev + 1);
                     return;
                 }
-                finishSession(timeUpRef.current);
+                finishSession();
             }, 400);
         } else {
             playSound('error');
             setMissCount((prev) => prev + 1);
             setLastWrong(answer);
+            logEvent({
+                eventType: 'question_answered',
+                userId: state.currentUser?.id ?? null,
+                payload: {
+                    sessionId: sessionIdRef.current,
+                    questionId: currentQuestion?.id ?? null,
+                    missCount: 1,
+                },
+            }).catch(() => {});
             window.setTimeout(() => {
                 setLastWrong(null);
             }, 300);
         }
-    }, [choiceState, selected, isFinished, currentIndex, questions.length, isCountingDown, finishSession]);
+    }, [choiceState, selected, isFinished, currentIndex, questions.length, isCountingDown, finishSession, currentQuestion?.id, state.currentUser?.id]);
 
     useEffect(() => {
         if (!choiceState || isFinished) return;
@@ -247,23 +358,8 @@ export function ChoicePage() {
         return () => window.removeEventListener('keydown', handler);
     }, [choiceState, handleChoice, selected, isFinished]);
 
-    const selectedUnitLabel = useMemo(() => {
-        if (!state.selectedUnit) return '';
-        return currentCourse?.units.find((unit) => unit.id === state.selectedUnit)?.name || '';
-    }, [state.selectedUnit, currentCourse?.id]);
-
-    const selectedPartLabelText = useMemo(() => {
-        if (!state.selectedPart) return '';
-        const part = currentCourse?.units.flatMap((unit) => unit.parts).find((item) => item.id === state.selectedPart);
-        return part?.label || '';
-    }, [state.selectedPart, currentCourse?.id]);
-
-    const selectedSectionLabel = useMemo(() => {
-        if (!state.selectedPart || !state.selectedSection) return '';
-        const section = getSectionsByPart(state.selectedPart, currentCourse?.id)
-            .find((item) => item.id === state.selectedSection);
-        return section?.label || '';
-    }, [state.selectedPart, state.selectedSection, currentCourse?.id]);
+    const { unitLabel: selectedUnitLabel, partLabel: selectedPartLabelText, sectionLabel: selectedSectionLabel } =
+        useSelectedLabels(currentCourse, state.selectedUnit, state.selectedPart, state.selectedSection);
 
     const selectedLevelLabel = useMemo(() => {
         switch (selectedChoiceLevel) {
@@ -287,8 +383,9 @@ export function ChoicePage() {
             const confirmLeave = window.confirm('中断してコース画面に戻りますか？');
             if (!confirmLeave) return;
         }
+        abortSectionSession();
         navigate('/course');
-    }, [isFinished, navigate]);
+    }, [isFinished, navigate, abortSectionSession]);
 
     const handleRetry = useCallback(() => {
         if (questions.length === 0) return;
@@ -302,7 +399,8 @@ export function ChoicePage() {
         setLastWrong(null);
         setTimeLeft(timeLimit);
         startCountdown(3);
-    }, [questions.length, timeLimit, startCountdown]);
+        beginSectionSession();
+    }, [questions.length, timeLimit, startCountdown, beginSectionSession]);
 
     if (isFinished && scoreResult) {
         const total = correctCount + missCount;
@@ -317,26 +415,11 @@ export function ChoicePage() {
                 />
                 <main className={styles.resultMain}>
                     {scoreResult.rank === 'S' && (
-                        <div className={styles.confettiWrapper} aria-hidden="true">
-                            {Array.from({ length: 24 }).map((_, i) => {
-                                const colors = ['#FFC107', '#2196F3', '#4CAF50', '#E91E63'];
-                                const left = `${Math.random() * 100}%`;
-                                const delay = `${Math.random()}s`;
-                                const duration = `${2 + Math.random() * 2}s`;
-                                return (
-                                    <span
-                                        key={i}
-                                        className={styles.confetti}
-                                        style={{
-                                            left,
-                                            backgroundColor: colors[i % colors.length],
-                                            animationDelay: delay,
-                                            animationDuration: duration,
-                                        }}
-                                    />
-                                );
-                            })}
-                        </div>
+                        <Confetti
+                            count={24}
+                            wrapperClassName={styles.confettiWrapper}
+                            itemClassName={styles.confetti}
+                        />
                     )}
                     <Card className={styles.resultCard} padding="lg">
                         <h2 className={styles.resultTitle}>

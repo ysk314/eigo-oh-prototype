@@ -1,0 +1,226 @@
+.page {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background:
+        radial-gradient(circle at top right, rgba(255, 198, 120, 0.35), transparent 45%),
+        radial-gradient(circle at bottom left, rgba(102, 197, 255, 0.35), transparent 40%),
+        linear-gradient(135deg, var(--color-bg-gradient-start) 0%, var(--color-bg-gradient-end) 100%);
+}
+
+.main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-2xl) var(--space-xl);
+    gap: var(--space-2xl);
+    text-align: center;
+}
+
+.hero {
+    max-width: 620px;
+}
+
+.badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6px 16px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.8);
+    color: var(--color-primary);
+    font-weight: var(--font-weight-bold);
+    letter-spacing: 0.04em;
+    margin-bottom: var(--space-md);
+}
+
+.title {
+    font-size: clamp(2.2rem, 5vw, 3.6rem);
+    color: var(--color-text-primary);
+    margin-bottom: var(--space-sm);
+}
+
+.card {
+    width: min(520px, 92vw);
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: var(--radius-xl);
+    padding: var(--space-2xl);
+    box-shadow: var(--shadow-lg);
+    backdrop-filter: blur(8px);
+    text-align: left;
+}
+
+.cardHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-lg);
+    margin-bottom: var(--space-lg);
+}
+
+.cardLabel {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-muted);
+    margin-bottom: var(--space-xs);
+}
+
+.cardTitle {
+    font-size: var(--font-size-2xl);
+    color: var(--color-text-primary);
+}
+
+.status {
+    font-size: var(--font-size-xs);
+    color: var(--color-text-secondary);
+    padding: 6px 10px;
+    border-radius: var(--radius-pill);
+    background: var(--color-bg-base);
+    border: 1px solid var(--color-bg-base);
+    white-space: nowrap;
+}
+
+.modeTabs {
+    display: flex;
+    gap: var(--space-sm);
+    margin-bottom: var(--space-lg);
+}
+
+.modeTab {
+    flex: 1;
+    padding: 8px 12px;
+    border-radius: var(--radius-pill);
+    border: 1px solid var(--color-bg-base);
+    background: #fff;
+    color: var(--color-text-secondary);
+    font-weight: var(--font-weight-medium);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.activeTab {
+    background: var(--color-primary);
+    color: #fff;
+    border-color: transparent;
+}
+
+.actions {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+}
+
+.inputLabel {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+}
+
+.input {
+    padding: var(--space-sm);
+    border: 1px solid var(--color-text-muted);
+    border-radius: var(--radius-sm);
+    font-size: var(--font-size-base);
+}
+
+.inputHelp {
+    font-size: var(--font-size-xs);
+    color: var(--color-text-muted);
+    margin-top: -4px;
+}
+
+.error {
+    color: #c0392b;
+    font-size: var(--font-size-sm);
+    margin-top: -4px;
+}
+
+.errorBox {
+    background: rgba(192, 57, 43, 0.08);
+    border: 1px solid rgba(192, 57, 43, 0.2);
+    border-radius: var(--radius-sm);
+    padding: var(--space-sm);
+}
+
+.note {
+    margin-top: var(--space-lg);
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+    line-height: 1.5;
+}
+
+.adminLink {
+    margin-top: var(--space-sm);
+    font-size: var(--font-size-xs);
+    text-align: right;
+}
+
+.adminLink a {
+    color: var(--color-text-muted);
+    text-decoration: none;
+}
+
+.adminLink a:hover {
+    text-decoration: underline;
+    color: var(--color-text-secondary);
+}
+
+.modalOverlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-lg);
+    z-index: 20;
+}
+
+.modal {
+    width: min(520px, 92vw);
+    background: #fff;
+    border-radius: var(--radius-xl);
+    padding: var(--space-xl);
+    box-shadow: var(--shadow-lg);
+    text-align: left;
+}
+
+.modalTitle {
+    font-size: var(--font-size-xl);
+    margin-bottom: var(--space-sm);
+}
+
+.modalText {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+    margin-bottom: var(--space-lg);
+}
+
+.modalForm {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+}
+
+.modalActions {
+    display: flex;
+    gap: var(--space-sm);
+    justify-content: flex-end;
+    margin-top: var(--space-sm);
+}
+
+@media (max-width: 640px) {
+    .cardHeader {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .card {
+        padding: var(--space-xl);
+    }
+
+    .modalActions {
+        flex-direction: column;
+        align-items: stretch;
+    }
+}

@@ -11,41 +11,33 @@ export interface ScoreResult {
     rank: Rank;
 }
 
-export function calculateAccuracyScore(missCount: number): number {
-    return Math.max(0, 100 - missCount * 5);
+export function calculateAccuracyScore(accuracy: number): number {
+    return Math.max(0, Math.min(100, Math.round(accuracy)));
 }
 
-export function calculateTimeScore(
-    timeLeft: number,
-    timeLimit: number,
-    missCount: number
-): number {
+export function calculateTimeScore(timeLeft: number, timeLimit: number): number {
     if (timeLimit <= 0) return 0;
-    if (missCount > 0) return 0;
-    return Math.floor((timeLeft / timeLimit) * 50);
+    const ratio = Math.max(0, Math.min(1, timeLeft / timeLimit));
+    return Math.round(ratio * 100);
 }
 
-export function calculateRank(totalScore: number, timeUp: boolean): Rank {
-    if (!timeUp && totalScore >= 100) return 'S';
-    if (!timeUp && totalScore >= 80) return 'A';
-    if (!timeUp && totalScore >= 60) return 'B';
+export function calculateRank(totalScore: number): Rank {
+    if (totalScore >= 90) return 'S';
+    if (totalScore >= 75) return 'A';
+    if (totalScore >= 60) return 'B';
     return 'C';
 }
 
 export function buildScoreResult(params: {
-    missCount: number;
+    accuracy: number;
     timeLeft: number;
     timeLimit: number;
-    timeUp: boolean;
+    isPerfect?: boolean;
 }): ScoreResult {
-    const accuracyScore = calculateAccuracyScore(params.missCount);
-    const timeScore = calculateTimeScore(
-        params.timeLeft,
-        params.timeLimit,
-        params.missCount
-    );
-    const totalScore = accuracyScore + timeScore;
-    const rank = calculateRank(totalScore, params.timeUp);
+    const accuracyScore = calculateAccuracyScore(params.accuracy);
+    const timeScore = calculateTimeScore(params.timeLeft, params.timeLimit);
+    const totalScore = Math.round(accuracyScore * 0.7 + timeScore * 0.3);
+    const rank = params.isPerfect ? 'S' : calculateRank(totalScore);
 
     return { accuracyScore, timeScore, totalScore, rank };
 }

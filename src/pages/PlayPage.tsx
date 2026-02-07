@@ -11,7 +11,8 @@ import { QuestionDisplay } from '@/components/QuestionDisplay';
 import { TypingInput } from '@/components/TypingInput';
 import { Button } from '@/components/Button';
 import { Card } from '@/components/Card';
-import { courses, getCourseById, getQuestionsBySection, getSectionsByPart } from '@/data/questions';
+import { Confetti } from '@/components/Confetti';
+import { courses, getCourseById, getQuestionsBySection } from '@/data/questions';
 import { shuffleWithNoConsecutive } from '@/utils/shuffle';
 import { UserProgress } from '@/types';
 import { buildScoreResult, ScoreResult } from '@/utils/score';
@@ -19,6 +20,10 @@ import { calculateTimeLimit, calculateTotalChars } from '@/utils/timer';
 import { playSound } from '@/utils/sound';
 import { useCountdown } from '@/hooks/useCountdown';
 import { getRankMessage } from '@/utils/result';
+import { logEvent } from '@/utils/analytics';
+import { recordProgressSnapshot, recordSessionSummary, type SessionSummary, type SectionMeta } from '@/utils/dashboardStats';
+import { buildSectionProgressTotals, buildUserProgressTotals, getTotalSectionsCount } from '@/utils/progressSummary';
+import { useSelectedLabels } from '@/hooks/useSelectedLabels';
 import styles from './PlayPage.module.css';
 
 export function PlayPage() {
@@ -29,6 +34,9 @@ export function PlayPage() {
         setQuestionIndex,
         markSectionCleared,
         setSectionRank,
+        beginSectionSession,
+        completeSectionSession,
+        abortSectionSession,
     } = useApp();
 
     const { selectedCourse, selectedPart, selectedSection, selectedMode, currentUser, shuffleMode } = state;
@@ -65,6 +73,7 @@ export function PlayPage() {
     const isAdvancingRef = useRef(false);
     const timeUpRef = useRef(false);
     const isFinishedRef = useRef(false);
+    const sessionIdRef = useRef(`typing-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`);
 
     const currentQuestion = questions[currentIndex];
     // 初期化チェック
@@ -94,7 +103,19 @@ export function PlayPage() {
         setTimeLimit(limit);
         setTimeLeft(limit);
         startCountdown(3);
-    }, [questions, startCountdown]);
+        beginSectionSession();
+
+        logEvent({
+            eventType: 'session_started',
+            userId: currentUser?.id ?? null,
+            payload: {
+                sessionId: sessionIdRef.current,
+                mode: 'typing',
+                questionCount: questions.length,
+                startedAt: new Date().toISOString(),
+            },
+        }).catch(() => {});
+    }, [questions, startCountdown, currentUser?.id, beginSectionSession]);
 
     // タイマー処理
     useEffect(() => {
@@ -103,7 +124,7 @@ export function PlayPage() {
         if (timeLeft <= 0) {
             if (!timeUp && !isFinished) {
                 setTimeUp(true);
-                finishSession(true);
+                finishSession();
             }
             return;
         }
@@ -130,13 +151,17 @@ export function PlayPage() {
     const finalScore = useMemo(() => {
         if (!isFinished) return null;
         const totalMiss = sessionResults.reduce((acc, cur) => acc + cur.missCount, 0);
+        const totalChars = questions.reduce((acc, q) => acc + q.answerEn.length, 0);
+        const accuracy = totalChars > 0
+            ? Math.round((totalChars / (totalChars + totalMiss)) * 100)
+            : 0;
         return scoreResult ?? buildScoreResult({
-            missCount: totalMiss,
+            accuracy,
             timeLeft,
             timeLimit,
-            timeUp,
+            isPerfect: totalMiss === 0,
         });
-    }, [isFinished, scoreResult, sessionResults, timeLeft, timeLimit, timeUp]);
+    }, [isFinished, scoreResult, sessionResults, timeLeft, timeLimit, questions]);
 
     useEffect(() => {
         if (!isFinished || !finalScore || !selectedSection) return;
@@ -165,6 +190,19 @@ export function PlayPage() {
             missCount: result.missCount,
         });
 
+        if (result.missCount > 0) {
+            logEvent({
+                eventType: 'question_answered',
+                userId: currentUser?.id ?? null,
+                payload: {
+                    sessionId: sessionIdRef.current,
+                    questionId: currentQuestion.id,
+                    missCount: result.missCount,
+                    timeMs: result.timeMs,
+                },
+            }).catch(() => {});
+        }
+
         // セッション結果を記録（後でクリア判定に使用）
         const nextResult: UserProgress = {
             questionId: currentQuestion.id,
@@ -192,22 +230,89 @@ export function PlayPage() {
                 setQuestionIndex(currentIndex + 1);
                 return;
             }
-            finishSession(timeUpRef.current, nextResults);
+            finishSession(nextResults);
         }, 800);
-    }, [currentQuestion, currentIndex, questions.length, updateProgress, setQuestionIndex, selectedMode, isFinished, timeUp]);
+    }, [currentQuestion, currentIndex, questions.length, updateProgress, setQuestionIndex, selectedMode, isFinished, timeUp, currentUser?.id]);
 
     // セッション完了処理
-    const finishSession = (timeUpFlag: boolean, resultsOverride?: UserProgress[]) => {
+    const finishSession = (resultsOverride?: UserProgress[]) => {
         setIsFinished(true);
         const results = resultsOverride ?? sessionResultsRef.current;
         const totalMiss = results.reduce((acc, cur) => acc + cur.missCount, 0);
+        const totalChars = questions.reduce((acc, q) => acc + q.answerEn.length, 0);
+        const accuracy = totalChars > 0
+            ? Math.round((totalChars / (totalChars + totalMiss)) * 100)
+            : 0;
         const score = buildScoreResult({
-            missCount: totalMiss,
+            accuracy,
             timeLeft,
             timeLimit,
-            timeUp: timeUpFlag,
+            isPerfect: totalMiss === 0,
         });
         setScoreResult(score);
+
+        const totalTimeMs = (timeLimit - timeLeft) * 1000;
+        const totalCorrectChars = Math.max(0, totalChars - totalMiss);
+        const wpm = totalTimeMs > 0 ? Math.round((totalCorrectChars / 5) / (totalTimeMs / 60000)) : 0;
+        logEvent({
+            eventType: 'session_ended',
+            userId: currentUser?.id ?? null,
+            payload: {
+                sessionId: sessionIdRef.current,
+                mode: 'typing',
+                totalQuestions: questions.length,
+                totalMiss,
+                totalChars,
+                totalCorrectChars,
+                totalTimeMs,
+                accuracy,
+                wpm,
+                rank: score.rank,
+            },
+        }).catch(() => {});
+
+        if (currentUser?.id) {
+            const sectionMeta: SectionMeta | undefined = selectedCourse && state.selectedUnit && selectedPart && selectedSection
+                ? {
+                    courseId: selectedCourse,
+                    unitId: state.selectedUnit,
+                    partId: selectedPart,
+                    sectionId: selectedSection,
+                    label: selectedSectionLabel || selectedSection,
+                    mode: 'typing' as const,
+                }
+                : undefined;
+
+            const sessionSummary: SessionSummary = {
+                sessionId: sessionIdRef.current,
+                mode: 'typing',
+                accuracy,
+                wpm,
+                missCount: totalMiss,
+                totalTimeMs,
+                rank: score.rank,
+                playedAt: new Date().toISOString(),
+            };
+
+            recordSessionSummary(currentUser.id, sessionSummary, sectionMeta).catch(() => {});
+
+            const progressTotals = buildUserProgressTotals(state.userProgress, currentUser.id);
+            const sectionTotals = buildSectionProgressTotals(state.sectionProgress, currentUser.id);
+            recordProgressSnapshot(currentUser.id, {
+                ...progressTotals,
+                clearedSectionsCount: sectionTotals.clearedSectionsCount,
+                totalSectionsCount: getTotalSectionsCount(),
+                lastMode: 'typing',
+                lastActiveAt: new Date().toISOString(),
+                lastSectionId: selectedSection ?? undefined,
+                lastSectionLabel: selectedSectionLabel ?? selectedSection ?? undefined,
+                lastCourseId: selectedCourse ?? undefined,
+                lastUnitId: state.selectedUnit ?? undefined,
+                lastPartId: selectedPart ?? undefined,
+            }).catch(() => {});
+        }
+
+        completeSectionSession();
 
         if (score.rank === 'S') {
             playSound('fanfare');
@@ -227,11 +332,13 @@ export function PlayPage() {
         setTimeUp(false);
         setTimeLeft(timeLimit);
         startCountdown(3);
+        beginSectionSession();
     };
 
     const handleBack = () => {
         const confirm = window.confirm('学習を中断して戻りますか？');
         if (confirm) {
+            abortSectionSession();
             navigate('/course');
         }
     };
@@ -303,24 +410,8 @@ export function PlayPage() {
         { id: 'right-pinky', label: '右小指' },
     ];
 
-    const selectedUnitLabel = useMemo(() => {
-        if (!state.selectedUnit) return '';
-        return currentCourse?.units.find((unit) => unit.id === state.selectedUnit)?.name || '';
-    }, [state.selectedUnit, currentCourse?.id]);
-
-    const selectedPartLabelText = useMemo(() => {
-        if (!state.selectedPart) return '';
-        const part =
-            currentCourse?.units.flatMap((unit) => unit.parts).find((item) => item.id === state.selectedPart);
-        return part?.label || '';
-    }, [state.selectedPart, currentCourse?.id]);
-
-    const selectedSectionLabel = useMemo(() => {
-        if (!state.selectedPart || !state.selectedSection) return '';
-        const section = getSectionsByPart(state.selectedPart, currentCourse?.id)
-            .find((item) => item.id === state.selectedSection);
-        return section?.label || '';
-    }, [state.selectedPart, state.selectedSection, currentCourse?.id]);
+    const { unitLabel: selectedUnitLabel, partLabel: selectedPartLabelText, sectionLabel: selectedSectionLabel } =
+        useSelectedLabels(currentCourse, state.selectedUnit, state.selectedPart, state.selectedSection);
 
     const selectedModeLabel = useMemo(() => {
         switch (selectedMode) {
@@ -357,26 +448,11 @@ export function PlayPage() {
                 <Header title="結果発表" showUserSelect={false} showBackButton onBack={handleBack} />
                 <main className={styles.resultMain}>
                     {finalScore.rank === 'S' && (
-                        <div className={styles.confettiWrapper} aria-hidden="true">
-                            {Array.from({ length: 30 }).map((_, i) => {
-                                const colors = ['#FFC107', '#2196F3', '#4CAF50', '#E91E63'];
-                                const left = `${Math.random() * 100}%`;
-                                const delay = `${Math.random() * 2}s`;
-                                const duration = `${2 + Math.random() * 3}s`;
-                                return (
-                                    <span
-                                        key={i}
-                                        className={styles.confetti}
-                                        style={{
-                                            left,
-                                            backgroundColor: colors[i % colors.length],
-                                            animationDelay: delay,
-                                            animationDuration: duration,
-                                        }}
-                                    />
-                                );
-                            })}
-                        </div>
+                        <Confetti
+                            count={30}
+                            wrapperClassName={styles.confettiWrapper}
+                            itemClassName={styles.confetti}
+                        />
                     )}
                     <Card className={styles.resultCard} padding="lg">
                         <h2 className={styles.resultTitle}>

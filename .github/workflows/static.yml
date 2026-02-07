@@ -2,9 +2,9 @@
 name: Deploy static content to Pages
 
 on:
-  # Runs on pushes targeting the default branch
+  # Runs on pushes targeting the version-v2 branch
   push:
-    branches: ["main", "version-v2"]
+    branches: ["version-v2"]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -43,7 +43,7 @@ jobs:
       - name: Build
         run: npm run build
         env:
-          VITE_BASE_URL: /eigo-oh-prototype/
+          VITE_BASE_URL: /tap-type-english/
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:

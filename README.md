@@ -1,60 +1,171 @@
-# eigo-oh-prototype
-英語タイピング学習アプリ（React + Vite + TypeScript）
+# tap-type-english
+Tap! Type! English! / 英語タイピング学習アプリ（React + Vite + TypeScript）
 
 ## 概要
-日本語のプロンプトに対して英語タイピングを行う学習アプリ。  
-ユーザー選択、コース/ページ/セクション選択、3つの学習モード、ローカル保存の進捗管理を備えています。
+英語タイピング + 4択の語彙学習を提供する学習アプリです。Firebase Auth + Firestore を使い、
+ログイン（会員番号 or メール + パスワード / ゲスト）と進捗のクラウド保存に対応しています。
+
+---
+
+# 最近の変更（2026-02-06）
+- Course 画面: Section リスト描画を共通化し、進捗表示を `userProgress` から計算。
+- Play / Choice 画面: 選択中ラベル計算を共通フック化。
+- 結果画面: 紙吹雪レンダリングを共通コンポーネント化。
+- 追加された共通モジュール:
+  - `/Users/yasuki/Documents/GitHub/tap-type-english/src/hooks/useSelectedLabels.ts`
+  - `/Users/yasuki/Documents/GitHub/tap-type-english/src/components/Confetti/Confetti.tsx`
+
+# 仕様書
+# 仕様書
+
+## 目的・対象
+- 目的: 英語の語彙・綴りを「タイピング」と「4択」学習で定着させる。音声再生とタイピング補助で学習効率を上げる。
+- 対象: 会員番号・メールで登録済みの学習者、またはゲスト利用者。
 
 ## 画面構成
-- Home: ユーザー選択 + コース選択
-- Course: ページ一覧 + セクション選択 + 学習モード選択
-- Play: タイピング学習 + 進捗表示 + 結果画面
+- **Login**: ログイン（会員番号 or メール）/ 新規登録 / ゲスト開始 / 管理者ページ入口。
+- **Dashboard**: 学習サマリー（直近7日）、直近セッション、直近セクション、コース選択。
+- **Course**: Unit/Part/Section の選択、学習モード（タイピング/4択）切替、学習開始。
+- **Play**: タイピング学習（問題表示・入力・タイマー）。
+- **Choice**: 4択学習（出題・選択・タイマー）。
+- **Admin**: 管理権限保持ユーザー向けのユーザー一覧。
 
 ## ルーティング
-- `/` Home: `src/pages/HomePage.tsx`
+- `/` Login: `src/pages/LoginPage.tsx`
+- `/dashboard` Dashboard: `src/pages/HomePage.tsx`
 - `/course` Course: `src/pages/CoursePage.tsx`
-- `/play` Play: `src/pages/PlayPage.tsx`
-- その他は `/` にリダイレクト（`src/App.tsx`）
+- `/play` Typing: `src/pages/PlayPage.tsx`
+- `/choice` 4択: `src/pages/ChoicePage.tsx`
+- `/admin` 管理画面: `src/pages/AdminPage.tsx`
+
+## 認証・ユーザー
+- **ログイン**: 会員番号 or メール + パスワード（Firebase Auth）。
+- **新規登録**:
+  - 会員番号入力なしの場合は自動採番（年 + 6桁）。
+  - 会員番号入力時は `s{番号}@students.tap-type.invalid` に正規化。
+  - 表示名未入力時は `会員{番号}` or メールのローカル部を使用。
+- **ゲスト**: 匿名ログインを行い、プロフィールを「ゲスト」で登録。
+- **管理者**:
+  - `/admin` では管理者用の ID/PASS でログイン（Firebase Auth のメール/パスワードを使用）。
+  - 管理者の権限は `admin_roles/{uid}` の `role` で判定（`owner` / `admin` / `staff`）。
 
 ## 学習モード
-- モード1: 音あり / スペルあり
-- モード2: 音あり / スペルなし
-- モード3: 音なし / スペルなし
+### タイピング（3モード）
+1. 音あり / スペルあり
+2. 音あり / スペルなし
+3. 音なし / スペルなし
 
-## データ構造
-- 型定義: `src/types/index.ts`
-- 問題データ + コース構造: `src/data/questions.ts`
-  - `questions[]` が問題一覧
-  - `courseStructure` が Unit/Part/Section 構成
-  - `getQuestionById`, `getQuestionsBySection`, `getSectionsByPart` などのヘルパー
+### 4択（4レベル）
+1. 英語 → 日本語（音声あり）
+2. 日本語 → 英語
+3. 英語 → 日本語（マスク）※レベル1で S 取得後に解放
+4. 日本語 → 英語（マスク）※レベル2で S 取得後に解放
 
-## 状態管理（Context/Reducer）
-- `src/context/AppContext.tsx`: Context Provider、localStorage 連携、便利メソッド
-- `src/context/AppReducer.ts`: state 更新ロジック
-- 主な state
-  - ユーザー: `currentUser`, `users`
-  - 選択状態: `selectedCourse`, `selectedUnit`, `selectedPart`, `selectedSection`, `selectedMode`
-  - プレイ状態: `currentQuestionIndex`, `shuffleMode`, `shuffledQuestionIds`
-  - 進捗: `userProgress`, `sectionProgress`
-  - 設定: `autoPlayAudio`
+## 出題データ・コース構成
+- **コース**: 「あいキャン」「ゲットスルー2600」2コース。
+- **構造**: Course → Unit → Part → Section → Question。
+- **セクション**: Section は `questionIds` を持ち、表示ラベルとタイプを保持。
+- **出題順**:
+  - シャッフルモード ON 時は「同一語の連続」を避けるシャッフル。
+  - OFF 時は `orderIndex` 昇順。
 
-## 主要コンポーネント
-- `Header`: ユーザー選択/シャッフル切替/パンくず/戻る
-- `PartList`: Unit/Part 一覧 + 進捗表示
-- `SectionCard`: セクション + モード選択（ロック表示あり）
-- `QuestionDisplay`: 日本語プロンプト + 英語表示 + 音声
-- `TypingInput`: タイピング判定 + ヒント + ミス数 + 完了表示
-- `ProgressBar`, `QuestionNav`, `AudioPlayer`, `Button`, `Card`, `ModeButton`
+## タイピング学習の挙動
+- **入力**:
+  - 入力は英語文字列を正規化（連続スペース→1つ、trim）。
+  - 1文字ずつ判定し、正解時のみ次の文字へ進む。
+  - ミス時はエラー演出、ミス数を累計。
+- **ヒント**:
+  - モード1は常時ヒント（現在文字）表示。
+  - モード2/3は連続ミス2回でヒント解禁。
+- **キーボードガイド**:
+  - モード1のみ表示。次に入力すべき指・キーをハイライト。
+- **完了条件**:
+  - セクション内の全問題を回答、またはタイムアップで終了。
 
-## ユーティリティ
-- `src/utils/typing.ts`: 文字入力判定/正規化/表示状態/ハイライト
-- `src/utils/shuffle.ts`: シャッフル/連続重複回避
-- `src/utils/progress.ts`: 正答率計算/クリア判定
-- `src/utils/storage.ts`: localStorage 永続化
+## 4択学習の挙動
+- **選択肢**:
+  - 同一品詞 (pos) を優先し、足りない場合は全体から補完。
+  - 重複表示を避け、4件までシャッフル。
+- **マスク**:
+  - マスクレベルは英語/日本語の表示を `_` で伏せ字。
+- **入力**:
+  - マウス選択 + キーボード `1~4` をサポート。
+- **音声**:
+  - 英語→日本語レベル1のみ音声自動再生。
 
-## スタイル
-- グローバル: `src/styles/global.css`, `src/styles/variables.css`
-- コンポーネント/ページごとに `*.module.css`
+## セッション・スコア
+- **カウントダウン**: 開始前に 3 秒カウント。
+- **時間制限**:
+  - タイピング: `総文字数 × 1秒 + 10秒`。
+  - 4択: `問題数 × 5秒`。
+- **正答率**:
+  - タイピング: `総文字数 / (総文字数 + 総ミス)`。
+  - 4択: `正解数 / (正解数 + ミス数)`。
+- **ランク**:
+  - S: 90 以上 / A: 75 以上 / B: 60 以上 / C: それ未満。
+  - スコア = 正答率スコア 70% + 時間スコア 30%。
+- **WPM**:
+  - タイピングのみ算出（5文字=1ワード）。
+
+## 進捗・アンロック
+- **タイピング**:
+  - モード2はモード1で S 取得後に解放。
+  - モード3はモード2で S 取得後に解放。
+- **4択**:
+  - レベル3はレベル1で S 取得後に解放。
+  - レベル4はレベル2で S 取得後に解放。
+- **進捗キー**:
+  - `userId-questionId` / `userId-sectionId` 形式。
+
+## ダッシュボード集計
+- **集計値**: 直近7日/28日学習時間、WPM 平均・ベスト、正答率平均。
+- **履歴**:
+  - 直近セクション 5件、直近セッション 3件を保持。
+
+## 永続化・同期
+- **LocalStorage**: `tap-type-english` に保存（ユーザー、進捗、設定）。
+- **Firestore**:
+  - `admin_roles/{uid}`: 管理者権限（`role` を保持）
+  - `users/{uid}`: プロフィール
+  - `users/{uid}/userProgress/*`: 問題別進捗
+  - `users/{uid}/sectionProgress/*`: セクション進捗
+  - `member_counters/{yearId}`: 会員番号採番
+  - `analytics_events/*`: イベントログ
+  - `user_stats/{uid}`: ダッシュボード集計
+  - `user_recent_sections/{uid}`: 直近セクション
+  - `user_recent_sessions/{uid}`: 直近セッション
+
+## 設定・テーマ
+- **シャッフルモード**: Course 画面のトグルで切替。
+- **自動音声再生**: 設定は LocalStorage に保存。
+- **テーマ**: `studyMode` に応じて `data-theme` を切替（タイピング/4択）。
+
+## 管理画面
+- 管理権限が無い場合は「管理者権限が必要です」を表示。
+- 権限ありの場合のみユーザー一覧（検索・詳細）を表示。
+
+## エラーハンドリング・ガード
+- セクション未選択時は Course へ戻す。
+- 学習中に戻る操作は confirm ダイアログで確認。
+- Firestore 読み書きエラーは console に出力。
+
+---
+
+# 仕様チェック結果（本番サイト）
+対象: https://ysk314.github.io/tap-type-english/
+
+| 項目 | 期待 | 実測 | 結果 | 備考 |
+| --- | --- | --- | --- | --- |
+| Login 画面表示 | ヒーロー/ログインUI表示 | 表示される | ✅ | 画面文言を確認 |
+| ゲスト開始 | ゲストで Dashboard へ遷移 | 遷移する | ✅ | ログイン後 Dashboard へ |
+| Dashboard サマリー | 学習サマリー/直近セクション/コース選択 | 表示される | ✅ | コース選択が可能 |
+| Course 画面 | Unit/Part/Section + モードボタン表示 | 表示される | ✅ | タイピング/4択切替あり |
+| Typing モード開始 | モード1で Play へ遷移 | 遷移する | ✅ | 戻るボタンで Course へ戻れる |
+| Choice モード開始 | 4択レベル1で Choice へ遷移 | 遷移する | ✅ | 戻るボタンで Course へ戻れる |
+| Admin 画面（内部遷移） | 管理権限なし時はゲート表示 | 表示される | ✅ | Login 画面のリンクから遷移 |
+| Admin 画面（直URL） | 直接 /admin にアクセス | 404 (GitHub Pages) | ⚠️ | SPA 直URLは 404。内部リンクは動作 |
+
+---
 
 ## 開発
 ```bash

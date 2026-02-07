@@ -6,7 +6,7 @@ import { useMemo, useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useApp } from '@/context/AppContext';
 import { Header } from '@/components/Header';
-import { SectionCard } from '@/components/SectionCard';
+import { SectionList } from '@/components/SectionList';
 import { courses, getCourseById, getQuestionsByCourseId, getSectionsByPart } from '@/data/questions';
 import { LearningMode, ChoiceLevel } from '@/types';
 import styles from './CoursePage.module.css';
@@ -32,6 +32,11 @@ export function CoursePage() {
         () => getQuestionsByCourseId(currentCourse?.id),
         [currentCourse?.id]
     );
+
+    useEffect(() => {
+        if (typeof window === 'undefined') return;
+        window.scrollTo(0, 0);
+    }, []);
 
     const questionIdToPartId = useMemo(() => {
         const map = new Map<string, string>();
@@ -90,6 +95,16 @@ export function CoursePage() {
         selectedPartId ? getSectionsByPart(selectedPartId, currentCourse?.id) : [],
         [selectedPartId, currentCourse?.id]
     );
+
+    const progressQuestionIds = useMemo(() => {
+        if (!state.currentUser) return new Set<string>();
+        const prefix = `${state.currentUser.id}-`;
+        return new Set(
+            Object.keys(state.userProgress)
+                .filter((key) => key.startsWith(prefix))
+                .map((key) => key.slice(prefix.length))
+        );
+    }, [state.currentUser, state.userProgress]);
 
     useEffect(() => {
         if (state.selectedCourse || !courses[0]) return;
@@ -237,12 +252,19 @@ export function CoursePage() {
     };
 
     const handleBack = () => {
-        navigate('/');
+        navigate('/dashboard');
     };
 
-    const getCompletedCount = (_partId: string) => {
-        // TODO: 進捗から完了数を計算
-        return 0;
+    const getCompletedCount = (partId: string) => {
+        const partSections = getSectionsByPart(partId, currentCourse?.id);
+        return partSections.reduce((sum, section) => {
+            const completed = section.questionIds.filter((questionId) => progressQuestionIds.has(questionId)).length;
+            return sum + completed;
+        }, 0);
+    };
+
+    const getSectionCompletedCount = (questionIds: string[]) => {
+        return questionIds.filter((questionId) => progressQuestionIds.has(questionId)).length;
     };
 
     const getUnitTotalQuestions = (unitId: string) => {
@@ -334,24 +356,15 @@ export function CoursePage() {
                                             })}
                                         </div>
 
-                                        <div className={styles.sections}>
-                        {sections.length > 0 ? (
-                            sections.map((section) => (
-                                <SectionCard
-                                    key={section.id}
-                                    section={section}
-                                    completedCount={0}
-                                    onModeSelect={handleModeSelect}
-                                    onChoiceSelect={handleChoiceSelect}
-                                    modeType={state.studyMode}
-                                />
-                            ))
-                        ) : (
-                            <div className={styles.emptyState}>
-                                <p>このパートにはまだ問題がありません</p>
-                            </div>
-                        )}
-                                        </div>
+                                        <SectionList
+                                            sections={sections}
+                                            modeType={state.studyMode}
+                                            onModeSelect={handleModeSelect}
+                                            onChoiceSelect={handleChoiceSelect}
+                                            getCompletedCount={getSectionCompletedCount}
+                                            className={styles.sections}
+                                            emptyClassName={styles.emptyState}
+                                        />
                                     </div>
                                 </div>
                             </section>
@@ -420,24 +433,15 @@ export function CoursePage() {
                     {/* メインエリア: セクションカード */}
                     <main className={styles.main}>
                         {/* セクションリスト */}
-                        <div className={styles.sections}>
-                            {sections.length > 0 ? (
-                                sections.map((section) => (
-                                    <SectionCard
-                                        key={section.id}
-                                        section={section}
-                                        completedCount={0}
-                                        onModeSelect={handleModeSelect}
-                                        onChoiceSelect={handleChoiceSelect}
-                                        modeType={state.studyMode}
-                                    />
-                                ))
-                            ) : (
-                                <div className={styles.emptyState}>
-                                    <p>このパートにはまだ問題がありません</p>
-                                </div>
-                            )}
-                        </div>
+                        <SectionList
+                            sections={sections}
+                            modeType={state.studyMode}
+                            onModeSelect={handleModeSelect}
+                            onChoiceSelect={handleChoiceSelect}
+                            getCompletedCount={getSectionCompletedCount}
+                            className={styles.sections}
+                            emptyClassName={styles.emptyState}
+                        />
                     </main>
                 </div>
             </div>

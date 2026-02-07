@@ -93,6 +93,10 @@ export interface User {
     id: string;
     name: string;
     createdAt: string;
+    memberNo?: string;
+    familyName?: string;
+    givenName?: string;
+    accountType?: 'guest' | 'consumer' | 'b2b2c';
 }
 
 // App State
