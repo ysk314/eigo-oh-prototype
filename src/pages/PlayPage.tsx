@@ -21,7 +21,7 @@ import { playSound } from '@/utils/sound';
 import { useCountdown } from '@/hooks/useCountdown';
 import { getRankMessage } from '@/utils/result';
 import { logEvent } from '@/utils/analytics';
-import { recordProgressSnapshot, recordSessionSummary, type SessionSummary } from '@/utils/dashboardStats';
+import { recordProgressSnapshot, recordSessionSummary, type SessionSummary, type SectionMeta } from '@/utils/dashboardStats';
 import { buildSectionProgressTotals, buildUserProgressTotals, getTotalSectionsCount } from '@/utils/progressSummary';
 import { useSelectedLabels } from '@/hooks/useSelectedLabels';
 import styles from './PlayPage.module.css';
