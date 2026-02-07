@@ -14,9 +14,11 @@ import {
 } from 'firebase/auth';
 import { Button } from '@/components/Button';
 import { useApp } from '@/context/AppContext';
-import { auth } from '@/firebase';
+import { doc, getDoc } from 'firebase/firestore';
+import { auth, db } from '@/firebase';
 import { saveRemoteProfile } from '@/utils/remoteStorage';
 import { generateMemberNo, normalizeLoginId } from '@/utils/memberId';
+import { loadMemberLoginEmail, saveMemberLoginMap } from '@/utils/memberLoginMap';
 import styles from './LoginPage.module.css';
 
 type LoginMode = 'login' | 'signup';
@@ -108,8 +110,34 @@ export function LoginPage() {
 
         setIsLoading(true);
         try {
-            const normalized = normalizeLoginId(loginId);
-            await signInWithEmailAndPassword(auth, normalized, password);
+            const input = loginId.trim();
+            const isMemberNo = !input.includes('@');
+            if (isMemberNo) {
+                if (!auth.currentUser) {
+                    await signInAnonymously(auth);
+                }
+                const email = await loadMemberLoginEmail(input);
+                if (!email) {
+                    if (auth.currentUser?.isAnonymous) {
+                        await signOut(auth);
+                    }
+                    setErrorMessage('会員番号でログインできません。メールアドレスでログインしてください。');
+                    return;
+                }
+                await signInWithEmailAndPassword(auth, email, password);
+            } else {
+                const normalized = normalizeLoginId(input);
+                await signInWithEmailAndPassword(auth, normalized, password);
+                const current = auth.currentUser;
+                if (current?.uid && current.email) {
+                    const profileSnap = await getDoc(doc(db, 'users', current.uid));
+                    const profile = profileSnap.exists() ? (profileSnap.data() as { memberNo?: string | null }) : null;
+                    const memberNo = profile?.memberNo ?? null;
+                    if (memberNo) {
+                        await saveMemberLoginMap(memberNo, current.uid, current.email);
+                    }
+                }
+            }
             navigate('/dashboard');
         } catch (error) {
             console.error(error);
@@ -145,6 +173,9 @@ export function LoginPage() {
             const memberNo = await generateMemberNo();
             const name = displayName.trim() || email.split('@')[0] || 'ユーザー';
             await saveRemoteProfile(result.user.uid, name, memberNo);
+            if (result.user.email) {
+                await saveMemberLoginMap(memberNo, result.user.uid, result.user.email);
+            }
 
             navigate('/dashboard');
         } catch (error) {
