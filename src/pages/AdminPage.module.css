@@ -326,11 +326,18 @@
     border-top: 1px solid rgba(229, 115, 115, 0.12);
 }
 
+.tableDesktop {
+    display: block;
+}
+
 .table {
     width: 100%;
     border-collapse: collapse;
     font-size: var(--font-size-sm);
-    min-width: 900px;
+    table-layout: fixed;
+    min-width: 980px;
+    --name-col-width: 240px;
+    --member-col-width: 136px;
 }
 
 .th {
@@ -340,7 +347,7 @@
     text-align: left;
     padding: var(--space-sm) var(--space-lg);
     border-bottom: 1px solid rgba(229, 115, 115, 0.2);
-    z-index: 1;
+    z-index: 3;
 }
 
 .sortButton {
@@ -368,38 +375,55 @@
     box-shadow: 6px 0 0 rgba(255, 255, 255, 0.9);
 }
 
+.stickyColSecondary {
+    position: sticky;
+    left: var(--name-col-width);
+    z-index: 2;
+    background: #fff;
+    box-shadow: 6px 0 0 rgba(255, 255, 255, 0.9);
+}
+
+.th.stickyCol {
+    z-index: 5;
+}
+
+.th.stickyColSecondary {
+    z-index: 4;
+}
+
 .colName {
-    min-width: 220px;
-    width: 28%;
+    min-width: var(--name-col-width);
+    width: var(--name-col-width);
 }
 
 .colMemberNo {
-    min-width: 120px;
-    width: 12%;
+    min-width: var(--member-col-width);
+    width: var(--member-col-width);
 }
 
 .colProgress {
-    min-width: 150px;
-    width: 18%;
+    min-width: 180px;
+    width: 180px;
 }
 
 .colLastActive {
-    min-width: 170px;
-    width: 18%;
+    min-width: 190px;
+    width: 190px;
 }
 
 .colLastSection {
-    min-width: 180px;
-    width: 16%;
+    min-width: 220px;
+    width: 220px;
 }
 
 .colCreatedAt {
-    min-width: 130px;
-    width: 12%;
+    min-width: 140px;
+    width: 140px;
 }
 
 .colUid {
-    min-width: 220px;
+    min-width: 240px;
+    width: 240px;
 }
 
 .tr {
@@ -416,6 +440,13 @@
     background: var(--color-primary-soft);
 }
 
+.tr:hover .stickyCol,
+.tr:hover .stickyColSecondary,
+.activeRow .stickyCol,
+.activeRow .stickyColSecondary {
+    background: var(--color-primary-soft);
+}
+
 .td,
 .tdPrimary,
 .tdMono {
@@ -423,6 +454,7 @@
     color: var(--color-text-secondary);
     vertical-align: middle;
     white-space: nowrap;
+    max-width: 0;
     overflow: hidden;
     text-overflow: ellipsis;
 }
@@ -447,6 +479,48 @@
     overflow: hidden;
     clip: rect(0, 0, 0, 0);
     border: 0;
+}
+
+.mobileTableList {
+    display: none;
+}
+
+.mobileUserCard {
+    width: 100%;
+    border: 1px solid rgba(229, 115, 115, 0.18);
+    border-radius: var(--radius-md);
+    background: #fff;
+    text-align: left;
+    padding: var(--space-sm) var(--space-md);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+}
+
+.mobileUserCardActive {
+    border-color: rgba(229, 115, 115, 0.55);
+    background: var(--color-primary-soft);
+}
+
+.mobileUserHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-sm);
+}
+
+.mobileUserName {
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-primary);
+}
+
+.mobileUserMeta {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-xs);
 }
 
 .listItem {
@@ -701,8 +775,10 @@
     }
 
     .table {
-        min-width: 760px;
+        min-width: 860px;
         font-size: var(--font-size-xs);
+        --name-col-width: 200px;
+        --member-col-width: 120px;
     }
 
     .th,
@@ -731,12 +807,19 @@
         font-size: 11px;
     }
 
-    .table {
-        min-width: 620px;
+    .tableWrap {
+        max-height: none;
+        overflow: visible;
     }
 
-    .colCreatedAt,
-    .colMemberNo {
+    .tableDesktop {
         display: none;
+    }
+
+    .mobileTableList {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-xs);
+        padding: var(--space-sm);
     }
 }

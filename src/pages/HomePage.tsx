@@ -8,7 +8,7 @@ import { doc, getDoc } from 'firebase/firestore';
 import { useApp } from '@/context/AppContext';
 import { Card } from '@/components/Card';
 import { Button } from '@/components/Button';
-import { courses } from '@/data/questions';
+import { courseCatalog, preloadCourse } from '@/data/questions';
 import { db } from '@/firebase';
 import { logEvent } from '@/utils/analytics';
 import styles from './HomePage.module.css';
@@ -19,6 +19,8 @@ type DashboardStats = {
     avgWpm_7d?: number;
     bestWpm_7d?: number;
     avgAccuracy_7d?: number;
+    clearedSectionsCount?: number;
+    totalSectionsCount?: number;
 };
 
 type RecentSectionItem = {
@@ -79,44 +81,22 @@ export function HomePage() {
         navigate('/');
     };
 
-    const sectionIndex = useMemo(() => {
-        const map = new Map();
-        courses.forEach((course) => {
-            course.units.forEach((unit) => {
-                unit.parts.forEach((part) => {
-                    part.sections.forEach((section) => {
-                        map.set(section.id, {
-                            courseName: course.name,
-                            unitName: unit.name,
-                            partLabel: part.label,
-                            sectionLabel: section.label,
-                        });
-                    });
-                });
-            });
-        });
-        return map;
-    }, []);
-
     const resolveSectionInfo = (item: RecentSectionItem) => {
-        const info = sectionIndex.get(item.sectionId);
+        const courseName = courseCatalog.find((course) => course.id === item.courseId)?.name;
         return {
-            courseName: info?.courseName ?? item.courseId,
-            unitName: info?.unitName ?? item.unitId,
-            partLabel: info?.partLabel ?? item.partId,
-            sectionLabel: info?.sectionLabel ?? item.label,
+            courseName: courseName ?? item.courseId,
+            unitName: item.unitId,
+            partLabel: item.partId,
+            sectionLabel: item.label,
         };
     };
 
-    const totalSections = useMemo(() => {
-        return courses.reduce((acc, course) => {
-            const count = course.units.flatMap((unit) => unit.parts).flatMap((part) => part.sections).length;
-            return acc + count;
-        }, 0);
-    }, []);
-
-    const clearedSections = useMemo(() => {
-        return Object.values(state.sectionProgress).filter((progress) =>
+    const fallbackClearedSections = useMemo(() => {
+        const currentUserId = state.currentUser?.id;
+        const entries = currentUserId
+            ? Object.entries(state.sectionProgress).filter(([key]) => key.startsWith(`${currentUserId}-`))
+            : Object.entries(state.sectionProgress);
+        return entries.filter(([, progress]) =>
             progress.mode1Cleared ||
             progress.mode2Cleared ||
             progress.mode3Cleared ||
@@ -125,7 +105,10 @@ export function HomePage() {
             progress.choice3Rank ||
             progress.choice4Rank
         ).length;
-    }, [state.sectionProgress]);
+    }, [state.sectionProgress, state.currentUser?.id]);
+
+    const clearedSections = stats?.clearedSectionsCount ?? fallbackClearedSections;
+    const totalSections = stats?.totalSectionsCount ?? 0;
 
     const progressRate = totalSections > 0
         ? Math.round((clearedSections / totalSections) * 100)
@@ -184,6 +167,13 @@ export function HomePage() {
     const latestRecentSection = recentSections[0];
     const latestRecentInfo = latestRecentSection ? resolveSectionInfo(latestRecentSection) : null;
     const latestModeLabel = latestRecentSection?.mode === 'choice' ? '選択' : 'タイピング';
+    const nextCourseId = latestRecentSection?.courseId ?? courseCatalog[0]?.id;
+    const missionTitle = latestRecentSection
+        ? '前回の続きから再開'
+        : '最初のセクションを始める';
+    const missionMeta = latestRecentInfo
+        ? `${latestRecentInfo.courseName} / ${latestRecentInfo.partLabel} / ${latestRecentInfo.sectionLabel}`
+        : 'まずは好きなコースを選んで、1セクション完了を目標にしましょう。';
 
     const handleOpenRecentSection = (item: RecentSectionItem) => {
         setCourse(item.courseId);
@@ -197,29 +187,81 @@ export function HomePage() {
         <div className={styles.page}>
             <main className={styles.main}>
                 <div className={styles.hero}>
-                    <h1 className={styles.title}>Welcome to Tap! Type! English!</h1>
-                    <div className={styles.versionBadge}>v2</div>
+                    <div className={styles.heroTopRow}>
+                        <h1 className={styles.title}>Welcome to Tap! Type! English!</h1>
+                        <div className={styles.versionBadge}>v2</div>
+                    </div>
                     <p className={styles.subtitle}>楽しく英語タイピングをマスターしよう</p>
                     {state.currentUser?.memberNo && (
                         <p className={styles.memberNo}>会員番号: {state.currentUser.memberNo}</p>
                     )}
-                    <Button
-                        variant="ghost"
-                        size="sm"
-                        className={styles.backButton}
-                        onClick={handleBackToLogin}
-                    >
-                        ログイン画面に戻る
-                    </Button>
-                    <Button
-                        variant="secondary"
-                        size="sm"
-                        className={styles.profileButton}
-                        onClick={() => navigate('/account')}
-                    >
-                        会員情報を変更
-                    </Button>
+                    <div className={styles.heroActions}>
+                        <Button
+                            variant="primary"
+                            size="sm"
+                            className={styles.heroActionButton}
+                            onClick={() => {
+                                if (latestRecentSection) {
+                                    handleOpenRecentSection(latestRecentSection);
+                                } else if (nextCourseId) {
+                                    handleCourseSelect(nextCourseId);
+                                }
+                            }}
+                        >
+                            {latestRecentSection ? '30秒で再開' : '今すぐ始める'}
+                        </Button>
+                        <Button
+                            variant="secondary"
+                            size="sm"
+                            className={`${styles.profileButton} ${styles.heroActionButton}`}
+                            onClick={() => navigate('/account')}
+                        >
+                            会員情報を変更
+                        </Button>
+                        <Button
+                            variant="ghost"
+                            size="sm"
+                            className={`${styles.backButton} ${styles.heroActionButton}`}
+                            onClick={handleBackToLogin}
+                        >
+                            ログイン画面に戻る
+                        </Button>
+                    </div>
                 </div>
+
+                <Card className={styles.missionCard} padding="lg">
+                    <div className={styles.missionHeader}>
+                        <span className={styles.missionBadge}>Today</span>
+                        <span className={styles.sectionNote}>{loading ? '更新中…' : '学習ガイド'}</span>
+                    </div>
+                    <h2 className={styles.missionTitle}>{missionTitle}</h2>
+                    <p className={styles.missionMeta}>{missionMeta}</p>
+                    <div className={styles.missionActions}>
+                        <Button
+                            variant="primary"
+                            onClick={() => {
+                                if (latestRecentSection) {
+                                    handleOpenRecentSection(latestRecentSection);
+                                } else if (nextCourseId) {
+                                    handleCourseSelect(nextCourseId);
+                                }
+                            }}
+                        >
+                            {latestRecentSection ? 'この続きへ' : 'コースを開く'}
+                        </Button>
+                        <Button
+                            variant="secondary"
+                            onClick={() => {
+                                setCoursesOpen(true);
+                                if (window.matchMedia('(max-width: 768px)').matches) {
+                                    window.scrollTo({ top: 520, behavior: 'smooth' });
+                                }
+                            }}
+                        >
+                            コース一覧を見る
+                        </Button>
+                    </div>
+                </Card>
 
                 <div className={styles.container}>
                     <div className={styles.dashboardColumn}>
@@ -343,8 +385,8 @@ export function HomePage() {
                                     onClick={() => {
                                         if (latestRecentSection) {
                                             handleOpenRecentSection(latestRecentSection);
-                                        } else if (courses[0]) {
-                                            handleCourseSelect(courses[0].id);
+                                        } else if (courseCatalog[0]) {
+                                            handleCourseSelect(courseCatalog[0].id);
                                         }
                                     }}
                                 >
@@ -370,18 +412,25 @@ export function HomePage() {
                                 </summary>
                                 <div className={styles.accordionBody}>
                                     <div className={styles.courseList}>
-                                        {courses.map((course) => (
-                                            <div
+                                        {courseCatalog.map((course) => (
+                                            <button
                                                 key={course.id}
+                                                type="button"
                                                 className={styles.courseItem}
                                                 onClick={() => handleCourseSelect(course.id)}
+                                                onMouseEnter={() => {
+                                                    void preloadCourse(course.id);
+                                                }}
+                                                onFocus={() => {
+                                                    void preloadCourse(course.id);
+                                                }}
                                             >
                                                 <div className={styles.courseIcon}>📚</div>
                                                 <div className={styles.courseInfo}>
                                                     <h3 className={styles.courseName}>{course.name}</h3>
                                                 </div>
                                                 <div className={styles.arrow}>→</div>
-                                            </div>
+                                            </button>
                                         ))}
                                     </div>
                                 </div>

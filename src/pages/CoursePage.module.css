@@ -18,6 +18,78 @@
     gap: var(--space-lg);
 }
 
+.flowPanel {
+    margin: var(--space-lg) var(--space-lg) 0;
+    padding: var(--space-lg);
+    border-radius: var(--radius-xl);
+    border: 1px solid rgba(229, 115, 115, 0.2);
+    background:
+        radial-gradient(circle at top right, rgba(229, 115, 115, 0.16), transparent 52%),
+        linear-gradient(135deg, rgba(255, 255, 255, 0.96), rgba(255, 247, 240, 0.94));
+    box-shadow: var(--shadow-sm);
+}
+
+.flowHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: var(--space-md);
+    flex-wrap: wrap;
+}
+
+.flowTitle {
+    margin: 0;
+    font-size: var(--font-size-2xl);
+    color: var(--color-text-primary);
+}
+
+.flowSub {
+    margin: 4px 0 0;
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-sm);
+}
+
+.flowActions {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    flex-wrap: wrap;
+}
+
+.flowStats {
+    margin-top: var(--space-md);
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--space-sm);
+}
+
+.flowStat {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: var(--space-sm) var(--space-md);
+    border-radius: var(--radius-md);
+    border: 1px solid rgba(229, 115, 115, 0.18);
+    background: rgba(255, 255, 255, 0.82);
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-xs);
+}
+
+.flowStat strong {
+    font-size: var(--font-size-xl);
+    color: var(--color-text-primary);
+}
+
+.flowNext {
+    margin-top: var(--space-md);
+    padding: var(--space-sm) var(--space-md);
+    border-radius: var(--radius-md);
+    border: 1px dashed rgba(229, 115, 115, 0.35);
+    background: rgba(255, 255, 255, 0.82);
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-sm);
+}
+
 .mobileAccordion {
     display: none;
     flex-direction: column;
@@ -226,6 +298,37 @@
 
 /* Responsive */
 @media (max-width: 768px) {
+    .flowPanel {
+        margin: var(--space-md) var(--space-md) 0;
+        padding: var(--space-md);
+    }
+
+    .flowHeader {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .flowActions {
+        width: 100%;
+    }
+
+    .flowActions > * {
+        flex: 1;
+        min-width: 0;
+    }
+
+    .flowStats {
+        grid-template-columns: repeat(3, minmax(84px, 1fr));
+    }
+
+    .flowStat {
+        padding: var(--space-xs) var(--space-sm);
+    }
+
+    .flowStat strong {
+        font-size: var(--font-size-lg);
+    }
+
     .mobileAccordion {
         display: flex;
     }

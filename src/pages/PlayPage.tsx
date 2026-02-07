@@ -12,7 +12,7 @@ import { TypingInput } from '@/components/TypingInput';
 import { Button } from '@/components/Button';
 import { Card } from '@/components/Card';
 import { Confetti } from '@/components/Confetti';
-import { courses, getCourseById, getQuestionsBySection } from '@/data/questions';
+import { useCourseBundle } from '@/hooks/useCourseBundle';
 import { shuffleWithNoConsecutive } from '@/utils/shuffle';
 import { UserProgress } from '@/types';
 import { buildScoreResult, ScoreResult } from '@/utils/score';
@@ -40,7 +40,11 @@ export function PlayPage() {
     } = useApp();
 
     const { selectedCourse, selectedPart, selectedSection, selectedMode, currentUser, shuffleMode } = state;
-    const currentCourse = getCourseById(selectedCourse) ?? courses[0];
+    const {
+        course: currentCourse,
+        questions: courseQuestions,
+        loading: courseLoading,
+    } = useCourseBundle(selectedCourse);
 
     useEffect(() => {
         if (state.studyMode === 'choice') {
@@ -51,13 +55,15 @@ export function PlayPage() {
     // セクションの問題をロード & シャッフル
     const questions = useMemo(() => {
         if (!selectedPart || !selectedSection) return [];
-        const baseQuestions = getQuestionsBySection(selectedPart, selectedSection, currentCourse?.id);
+        const baseQuestions = courseQuestions.filter(
+            (question) => question.partId === selectedPart && question.section === selectedSection
+        );
 
         if (shuffleMode) {
             return shuffleWithNoConsecutive(baseQuestions, (q) => q.answerEn);
         }
         return baseQuestions.sort((a, b) => a.orderIndex - b.orderIndex);
-    }, [selectedPart, selectedSection, shuffleMode, currentCourse?.id]);
+    }, [selectedPart, selectedSection, shuffleMode, courseQuestions]);
 
     // 現在の状態
     const [currentIndex, setCurrentIndex] = useState(0);
@@ -78,10 +84,11 @@ export function PlayPage() {
     const currentQuestion = questions[currentIndex];
     // 初期化チェック
     useEffect(() => {
+        if (courseLoading) return;
         if (!selectedSection || questions.length === 0) {
             navigate('/course'); // 何も選択されてなければ戻る
         }
-    }, [selectedSection, questions, navigate]);
+    }, [selectedSection, questions, navigate, courseLoading]);
 
     useEffect(() => {
         window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
@@ -272,44 +279,47 @@ export function PlayPage() {
         }).catch(() => {});
 
         if (currentUser?.id) {
-            const sectionMeta: SectionMeta | undefined = selectedCourse && state.selectedUnit && selectedPart && selectedSection
-                ? {
-                    courseId: selectedCourse,
-                    unitId: state.selectedUnit,
-                    partId: selectedPart,
-                    sectionId: selectedSection,
-                    label: selectedSectionLabel || selectedSection,
-                    mode: 'typing' as const,
-                }
-                : undefined;
+            void (async () => {
+                const sectionMeta: SectionMeta | undefined = selectedCourse && state.selectedUnit && selectedPart && selectedSection
+                    ? {
+                        courseId: selectedCourse,
+                        unitId: state.selectedUnit,
+                        partId: selectedPart,
+                        sectionId: selectedSection,
+                        label: selectedSectionLabel || selectedSection,
+                        mode: 'typing' as const,
+                    }
+                    : undefined;
 
-            const sessionSummary: SessionSummary = {
-                sessionId: sessionIdRef.current,
-                mode: 'typing',
-                accuracy,
-                wpm,
-                missCount: totalMiss,
-                totalTimeMs,
-                rank: score.rank,
-                playedAt: new Date().toISOString(),
-            };
+                const sessionSummary: SessionSummary = {
+                    sessionId: sessionIdRef.current,
+                    mode: 'typing',
+                    accuracy,
+                    wpm,
+                    missCount: totalMiss,
+                    totalTimeMs,
+                    rank: score.rank,
+                    playedAt: new Date().toISOString(),
+                };
 
-            recordSessionSummary(currentUser.id, sessionSummary, sectionMeta).catch(() => {});
+                recordSessionSummary(currentUser.id, sessionSummary, sectionMeta).catch(() => {});
 
-            const progressTotals = buildUserProgressTotals(state.userProgress, currentUser.id);
-            const sectionTotals = buildSectionProgressTotals(state.sectionProgress, currentUser.id);
-            recordProgressSnapshot(currentUser.id, {
-                ...progressTotals,
-                clearedSectionsCount: sectionTotals.clearedSectionsCount,
-                totalSectionsCount: getTotalSectionsCount(),
-                lastMode: 'typing',
-                lastActiveAt: new Date().toISOString(),
-                lastSectionId: selectedSection ?? undefined,
-                lastSectionLabel: selectedSectionLabel ?? selectedSection ?? undefined,
-                lastCourseId: selectedCourse ?? undefined,
-                lastUnitId: state.selectedUnit ?? undefined,
-                lastPartId: selectedPart ?? undefined,
-            }).catch(() => {});
+                const progressTotals = buildUserProgressTotals(state.userProgress, currentUser.id);
+                const sectionTotals = buildSectionProgressTotals(state.sectionProgress, currentUser.id);
+                const totalSectionsCount = await getTotalSectionsCount();
+                recordProgressSnapshot(currentUser.id, {
+                    ...progressTotals,
+                    clearedSectionsCount: sectionTotals.clearedSectionsCount,
+                    totalSectionsCount,
+                    lastMode: 'typing',
+                    lastActiveAt: new Date().toISOString(),
+                    lastSectionId: selectedSection ?? undefined,
+                    lastSectionLabel: selectedSectionLabel ?? selectedSection ?? undefined,
+                    lastCourseId: selectedCourse ?? undefined,
+                    lastUnitId: state.selectedUnit ?? undefined,
+                    lastPartId: selectedPart ?? undefined,
+                }).catch(() => {});
+            })();
         }
 
         completeSectionSession();

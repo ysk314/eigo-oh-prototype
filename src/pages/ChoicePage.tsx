@@ -11,7 +11,7 @@ import { Button } from '@/components/Button';
 import { AudioPlayer } from '@/components/AudioPlayer';
 import { GameHeader } from '@/components/GameHeader';
 import { Confetti } from '@/components/Confetti';
-import { courses, getCourseById, getQuestionsBySection, getSectionsByPart } from '@/data/questions';
+import { useCourseBundle } from '@/hooks/useCourseBundle';
 import { buildScoreResult, ScoreResult } from '@/utils/score';
 import { playSound } from '@/utils/sound';
 import { getRankMessage } from '@/utils/result';
@@ -59,12 +59,18 @@ export function ChoicePage() {
     const navigate = useNavigate();
     const { state, setChoiceRank, beginSectionSession, completeSectionSession, abortSectionSession } = useApp();
     const { selectedCourse, selectedPart, selectedSection, selectedChoiceLevel } = state;
-    const currentCourse = getCourseById(selectedCourse) ?? courses[0];
+    const {
+        course: currentCourse,
+        questions: courseQuestions,
+        loading: courseLoading,
+    } = useCourseBundle(selectedCourse);
 
     const questions = useMemo(() => {
         if (!selectedPart || !selectedSection) return [];
-        return getQuestionsBySection(selectedPart, selectedSection, currentCourse?.id);
-    }, [selectedPart, selectedSection, currentCourse?.id]);
+        return courseQuestions.filter(
+            (question) => question.partId === selectedPart && question.section === selectedSection
+        );
+    }, [selectedPart, selectedSection, courseQuestions]);
 
     const [currentIndex, setCurrentIndex] = useState(0);
     const [choiceState, setChoiceState] = useState<ChoiceState | null>(null);
@@ -84,10 +90,11 @@ export function ChoicePage() {
     const currentQuestion = questions[currentIndex];
 
     useEffect(() => {
+        if (courseLoading) return;
         if (!selectedSection || questions.length === 0) {
             navigate('/course');
         }
-    }, [selectedSection, questions, navigate]);
+    }, [selectedSection, questions, navigate, courseLoading]);
 
     useEffect(() => {
         window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
@@ -140,8 +147,11 @@ export function ChoicePage() {
         setScoreResult(score);
         const totalTimeMs = (timeLimit - timeLeft) * 1000;
         const sectionLabel = selectedSection && selectedPart
-            ? getSectionsByPart(selectedPart, currentCourse?.id)
-                .find((item) => item.id === selectedSection)?.label
+            ? currentCourse?.units
+                .flatMap((unit) => unit.parts)
+                .find((part) => part.id === selectedPart)
+                ?.sections.find((item) => item.id === selectedSection)
+                ?.label
             : undefined;
         logEvent({
             eventType: 'session_ended',
@@ -160,6 +170,7 @@ export function ChoicePage() {
         }).catch(() => {});
 
         if (state.currentUser?.id) {
+            const currentUserId = state.currentUser.id;
             const sectionMeta: SectionMeta | undefined = selectedCourse && state.selectedUnit && selectedPart && selectedSection
                 ? {
                     courseId: selectedCourse,
@@ -182,22 +193,25 @@ export function ChoicePage() {
                 playedAt: new Date().toISOString(),
             };
 
-            recordSessionSummary(state.currentUser.id, sessionSummary, sectionMeta).catch(() => {});
+            recordSessionSummary(currentUserId, sessionSummary, sectionMeta).catch(() => {});
 
-            const progressTotals = buildUserProgressTotals(state.userProgress, state.currentUser.id);
-            const sectionTotals = buildSectionProgressTotals(state.sectionProgress, state.currentUser.id);
-            recordProgressSnapshot(state.currentUser.id, {
-                ...progressTotals,
-                clearedSectionsCount: sectionTotals.clearedSectionsCount,
-                totalSectionsCount: getTotalSectionsCount(),
-                lastMode: 'choice',
-                lastActiveAt: new Date().toISOString(),
-                lastSectionId: selectedSection ?? undefined,
-                lastSectionLabel: sectionLabel ?? selectedSection ?? undefined,
-                lastCourseId: selectedCourse ?? undefined,
-                lastUnitId: state.selectedUnit ?? undefined,
-                lastPartId: selectedPart ?? undefined,
-            }).catch(() => {});
+            void (async () => {
+                const progressTotals = buildUserProgressTotals(state.userProgress, currentUserId);
+                const sectionTotals = buildSectionProgressTotals(state.sectionProgress, currentUserId);
+                const totalSectionsCount = await getTotalSectionsCount();
+                recordProgressSnapshot(currentUserId, {
+                    ...progressTotals,
+                    clearedSectionsCount: sectionTotals.clearedSectionsCount,
+                    totalSectionsCount,
+                    lastMode: 'choice',
+                    lastActiveAt: new Date().toISOString(),
+                    lastSectionId: selectedSection ?? undefined,
+                    lastSectionLabel: sectionLabel ?? selectedSection ?? undefined,
+                    lastCourseId: selectedCourse ?? undefined,
+                    lastUnitId: state.selectedUnit ?? undefined,
+                    lastPartId: selectedPart ?? undefined,
+                }).catch(() => {});
+            })();
         }
 
         completeSectionSession();
@@ -217,10 +231,11 @@ export function ChoicePage() {
         selectedSection,
         selectedChoiceLevel,
         setChoiceRank,
-        state.currentUser?.id,
+        state.currentUser,
         state.selectedUnit,
         state.sectionProgress,
-        currentCourse?.id,
+        state.userProgress,
+        currentCourse?.units,
         completeSectionSession,
     ]);
 

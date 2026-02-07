@@ -4,7 +4,6 @@
 
 import { useMemo } from 'react';
 import type { Course } from '@/types';
-import { getSectionsByPart } from '@/data/questions';
 
 interface SelectedLabels {
     unitLabel: string;
@@ -31,10 +30,13 @@ export function useSelectedLabels(
 
     const sectionLabel = useMemo(() => {
         if (!selectedPartId || !selectedSectionId) return '';
-        const section = getSectionsByPart(selectedPartId, course?.id)
+        const section = course?.units
+            .flatMap((unit) => unit.parts)
+            .find((part) => part.id === selectedPartId)
+            ?.sections
             .find((item) => item.id === selectedSectionId);
         return section?.label || '';
-    }, [selectedPartId, selectedSectionId, course?.id]);
+    }, [selectedPartId, selectedSectionId, course]);
 
     return { unitLabel, partLabel, sectionLabel };
 }
