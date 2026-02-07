@@ -13,8 +13,6 @@ import {
     serverTimestamp,
     query,
     where,
-    orderBy,
-    Timestamp,
 } from 'firebase/firestore';
 import { onAuthStateChanged, signInWithEmailAndPassword, signOut, type User } from 'firebase/auth';
 import { Button } from '@/components/Button';
@@ -510,9 +508,7 @@ export function AdminPage() {
             const start30 = new Date(todayStart.getTime() - 29 * 86400000);
             const usageQuery = query(
                 collection(db, 'analytics_events'),
-                where('eventType', '==', 'admin_users_loaded'),
-                where('createdAt', '>=', Timestamp.fromDate(start30)),
-                orderBy('createdAt', 'asc')
+                where('eventType', '==', 'admin_users_loaded')
             );
             const snap = await getDocs(usageQuery);
 
@@ -522,7 +518,8 @@ export function AdminPage() {
             let count30d = 0;
 
             snap.forEach((docSnap) => {
-                const data = docSnap.data() as { createdAt?: { toDate?: () => Date } | null };
+                const data = docSnap.data() as { createdAt?: { toDate?: () => Date } | null; eventType?: string };
+                if (data.eventType !== 'admin_users_loaded') return;
                 const createdAt = data.createdAt?.toDate ? data.createdAt.toDate() : null;
                 if (!createdAt) return;
                 const diff = diffDaysFromToday(createdAt, now);
@@ -1042,13 +1039,10 @@ export function AdminPage() {
                         <Button variant="secondary" onClick={handleBack}>
                             ログインへ戻る
                         </Button>
-                        <Button variant="primary" onClick={loadUsers} isLoading={loading}>
-                            再読み込み
-                        </Button>
                     </div>
                 </header>
 
-                <section className={styles.metricsSection}>
+                <section className={styles.toolbar}>
                     <Card className={styles.metricsCard} variant="outlined">
                         <div className={styles.listHeader}>運用指標（Admin 利用回数）</div>
                         {usageHidden ? (
@@ -1088,97 +1082,100 @@ export function AdminPage() {
                                         </div>
                                     </div>
                                 )}
-                                <div className={styles.metricsActions}>
-                                    <Button variant="secondary" onClick={loadUsageSummary} isLoading={usageLoading}>
-                                        指標更新
-                                    </Button>
-                                </div>
                             </>
                         )}
                     </Card>
-                </section>
-
-                <section className={styles.searchSection}>
-                    <input
-                        className={styles.searchInput}
-                        type="text"
-                        placeholder="表示名 / 会員番号 / UID で検索"
-                        value={searchTerm}
-                        onChange={(event) => setSearchTerm(event.target.value)}
-                    />
-                    <span className={styles.count}>表示 {filteredUsers.length} / 全 {users.length}</span>
-                </section>
-
-                <section className={styles.filterSection}>
-                    <div className={styles.filterGroup}>
-                        <span className={styles.filterLabel}>アクティブ</span>
-                        <button
-                            type="button"
-                            className={`${styles.filterButton} ${activityFilter === 'all' ? styles.filterButtonActive : ''}`}
-                            aria-pressed={activityFilter === 'all'}
-                            onClick={() => setActivityFilter('all')}
-                        >
-                            すべて
-                        </button>
-                        <button
-                            type="button"
-                            className={`${styles.filterButton} ${activityFilter === 'active7' ? styles.filterButtonActive : ''}`}
-                            aria-pressed={activityFilter === 'active7'}
-                            onClick={() => setActivityFilter('active7')}
-                        >
-                            7日以内
-                        </button>
-                        <button
-                            type="button"
-                            className={`${styles.filterButton} ${activityFilter === 'inactive30' ? styles.filterButtonActive : ''}`}
-                            aria-pressed={activityFilter === 'inactive30'}
-                            onClick={() => setActivityFilter('inactive30')}
-                        >
-                            30日以上未学習
-                        </button>
-                    </div>
-                    <div className={styles.filterGroup}>
-                        <span className={styles.filterLabel}>進捗</span>
-                        <button
-                            type="button"
-                            className={`${styles.filterButton} ${progressFilter === 'all' ? styles.filterButtonActive : ''}`}
-                            aria-pressed={progressFilter === 'all'}
-                            onClick={() => setProgressFilter('all')}
-                        >
-                            すべて
-                        </button>
-                        <button
-                            type="button"
-                            className={`${styles.filterButton} ${progressFilter === 'zero' ? styles.filterButtonActive : ''}`}
-                            aria-pressed={progressFilter === 'zero'}
-                            onClick={() => setProgressFilter('zero')}
-                        >
-                            0%
-                        </button>
-                        <button
-                            type="button"
-                            className={`${styles.filterButton} ${progressFilter === 'low' ? styles.filterButtonActive : ''}`}
-                            aria-pressed={progressFilter === 'low'}
-                            onClick={() => setProgressFilter('low')}
-                        >
-                            1-49%
-                        </button>
-                        <button
-                            type="button"
-                            className={`${styles.filterButton} ${progressFilter === 'mid' ? styles.filterButtonActive : ''}`}
-                            aria-pressed={progressFilter === 'mid'}
-                            onClick={() => setProgressFilter('mid')}
-                        >
-                            50-99%
-                        </button>
-                        <button
-                            type="button"
-                            className={`${styles.filterButton} ${progressFilter === 'complete' ? styles.filterButtonActive : ''}`}
-                            aria-pressed={progressFilter === 'complete'}
-                            onClick={() => setProgressFilter('complete')}
-                        >
-                            100%
-                        </button>
+                    <div className={styles.toolbarControls}>
+                        <div className={styles.searchSection}>
+                            <input
+                                className={styles.searchInput}
+                                type="text"
+                                placeholder="表示名 / 会員番号 / UID で検索"
+                                value={searchTerm}
+                                onChange={(event) => setSearchTerm(event.target.value)}
+                            />
+                            <span className={styles.count}>表示 {filteredUsers.length} / 全 {users.length}</span>
+                        </div>
+                        <div className={styles.filterSection}>
+                            <div className={styles.filterGroup}>
+                                <span className={styles.filterLabel}>アクティブ</span>
+                                <button
+                                    type="button"
+                                    className={`${styles.filterButton} ${activityFilter === 'all' ? styles.filterButtonActive : ''}`}
+                                    aria-pressed={activityFilter === 'all'}
+                                    onClick={() => setActivityFilter('all')}
+                                >
+                                    すべて
+                                </button>
+                                <button
+                                    type="button"
+                                    className={`${styles.filterButton} ${activityFilter === 'active7' ? styles.filterButtonActive : ''}`}
+                                    aria-pressed={activityFilter === 'active7'}
+                                    onClick={() => setActivityFilter('active7')}
+                                >
+                                    7日以内
+                                </button>
+                                <button
+                                    type="button"
+                                    className={`${styles.filterButton} ${activityFilter === 'inactive30' ? styles.filterButtonActive : ''}`}
+                                    aria-pressed={activityFilter === 'inactive30'}
+                                    onClick={() => setActivityFilter('inactive30')}
+                                >
+                                    30日以上未学習
+                                </button>
+                            </div>
+                            <div className={styles.filterGroup}>
+                                <span className={styles.filterLabel}>進捗</span>
+                                <button
+                                    type="button"
+                                    className={`${styles.filterButton} ${progressFilter === 'all' ? styles.filterButtonActive : ''}`}
+                                    aria-pressed={progressFilter === 'all'}
+                                    onClick={() => setProgressFilter('all')}
+                                >
+                                    すべて
+                                </button>
+                                <button
+                                    type="button"
+                                    className={`${styles.filterButton} ${progressFilter === 'zero' ? styles.filterButtonActive : ''}`}
+                                    aria-pressed={progressFilter === 'zero'}
+                                    onClick={() => setProgressFilter('zero')}
+                                >
+                                    0%
+                                </button>
+                                <button
+                                    type="button"
+                                    className={`${styles.filterButton} ${progressFilter === 'low' ? styles.filterButtonActive : ''}`}
+                                    aria-pressed={progressFilter === 'low'}
+                                    onClick={() => setProgressFilter('low')}
+                                >
+                                    1-49%
+                                </button>
+                                <button
+                                    type="button"
+                                    className={`${styles.filterButton} ${progressFilter === 'mid' ? styles.filterButtonActive : ''}`}
+                                    aria-pressed={progressFilter === 'mid'}
+                                    onClick={() => setProgressFilter('mid')}
+                                >
+                                    50-99%
+                                </button>
+                                <button
+                                    type="button"
+                                    className={`${styles.filterButton} ${progressFilter === 'complete' ? styles.filterButtonActive : ''}`}
+                                    aria-pressed={progressFilter === 'complete'}
+                                    onClick={() => setProgressFilter('complete')}
+                                >
+                                    100%
+                                </button>
+                            </div>
+                        </div>
+                        <div className={styles.toolbarActions}>
+                            <Button variant="secondary" onClick={loadUsageSummary} isLoading={usageLoading}>
+                                指標更新
+                            </Button>
+                            <Button variant="primary" onClick={loadUsers} isLoading={loading}>
+                                再読み込み
+                            </Button>
+                        </div>
                     </div>
                 </section>
 
