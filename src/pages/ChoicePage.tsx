@@ -135,6 +135,7 @@ export function ChoicePage() {
             accuracy,
             timeLeft,
             timeLimit,
+            isPerfect: missCount === 0,
         });
         setScoreResult(score);
         const totalTimeMs = (timeLimit - timeLeft) * 1000;

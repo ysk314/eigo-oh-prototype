@@ -159,6 +159,7 @@ export function PlayPage() {
             accuracy,
             timeLeft,
             timeLimit,
+            isPerfect: totalMiss === 0,
         });
     }, [isFinished, scoreResult, sessionResults, timeLeft, timeLimit, questions]);
 
@@ -246,6 +247,7 @@ export function PlayPage() {
             accuracy,
             timeLeft,
             timeLimit,
+            isPerfect: totalMiss === 0,
         });
         setScoreResult(score);
 

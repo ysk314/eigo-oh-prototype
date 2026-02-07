@@ -32,11 +32,12 @@ export function buildScoreResult(params: {
     accuracy: number;
     timeLeft: number;
     timeLimit: number;
+    isPerfect?: boolean;
 }): ScoreResult {
     const accuracyScore = calculateAccuracyScore(params.accuracy);
     const timeScore = calculateTimeScore(params.timeLeft, params.timeLimit);
     const totalScore = Math.round(accuracyScore * 0.7 + timeScore * 0.3);
-    const rank = calculateRank(totalScore);
+    const rank = params.isPerfect ? 'S' : calculateRank(totalScore);
 
     return { accuracyScore, timeScore, totalScore, rank };
 }
