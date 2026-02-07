@@ -504,8 +504,6 @@ export function AdminPage() {
         setUsageError(null);
         try {
             const now = new Date();
-            const todayStart = startOfDayLocal(now);
-            const start30 = new Date(todayStart.getTime() - 29 * 86400000);
             const usageQuery = query(
                 collection(db, 'analytics_events'),
                 where('eventType', '==', 'admin_users_loaded')
