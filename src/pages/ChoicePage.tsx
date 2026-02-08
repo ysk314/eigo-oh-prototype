@@ -43,6 +43,9 @@ const rankMasteryXp: Record<Rank, number> = {
     B: 30,
     C: 15,
 };
+function isAdvanceRank(rank: Rank | null | undefined): boolean {
+    return rank === 'S' || rank === 'A';
+}
 
 type XpSection = {
     sectionId: string;
@@ -271,6 +274,18 @@ function stripTags(text: string): string {
     return text.replace(/\[[^\]]+\]/g, '').trim();
 }
 
+function isTypingOnlyQuestion(question: { category?: string[] }): boolean {
+    return question.category?.includes('typing-only') ?? false;
+}
+
+function hasChoiceLevelTag(question: { category?: string[] }): boolean {
+    return question.category?.some((item) => /^choice-l[1234]$/.test(item)) ?? false;
+}
+
+function getChoiceLevelTag(level: ChoiceLevel): string {
+    return `choice-l${level}`;
+}
+
 export function ChoicePage() {
     const navigate = useNavigate();
     const location = useLocation();
@@ -312,10 +327,21 @@ export function ChoicePage() {
 
     const questions = useMemo(() => {
         if (!activePartId || !activeSectionId) return [];
-        return courseQuestions.filter(
-            (question) => question.partId === activePartId && question.section === activeSectionId
+        const sectionPool = courseQuestions.filter(
+            (question) =>
+                question.partId === activePartId &&
+                question.section === activeSectionId &&
+                !isTypingOnlyQuestion(question)
         );
-    }, [activePartId, activeSectionId, courseQuestions]);
+        if (sectionPool.length === 0) return [];
+
+        const levelTag = getChoiceLevelTag(activeChoiceLevel);
+        const hasLevelSpecific = sectionPool.some((question) => hasChoiceLevelTag(question));
+        if (!hasLevelSpecific) return sectionPool;
+
+        const matched = sectionPool.filter((question) => question.category?.includes(levelTag));
+        return matched.length > 0 ? matched : sectionPool;
+    }, [activePartId, activeSectionId, activeChoiceLevel, courseQuestions]);
 
     const [currentIndex, setCurrentIndex] = useState(0);
     const [choiceState, setChoiceState] = useState<ChoiceState | null>(null);
@@ -569,7 +595,13 @@ export function ChoicePage() {
 
         completeSectionSession();
 
-        playSound(score.rank === 'S' ? 'fanfare' : 'try-again');
+        if (score.rank === 'S') {
+            playSound('fanfare');
+        } else if (score.rank === 'A' || score.rank === 'B') {
+            playSound('success');
+        } else {
+            playSound('try-again');
+        }
         if (activeSectionId) {
             setChoiceRank(activeSectionId, activeChoiceLevel, score.rank);
         }
@@ -914,7 +946,7 @@ export function ChoicePage() {
         const total = correctCount + missCount;
         const accuracy = total > 0 ? Math.round((correctCount / total) * 100) : 0;
         const missionBonusEarned = (xpSummary?.gainedMissionXp ?? 0) > 0;
-        const isCleared = scoreResult.rank === 'S';
+        const isCleared = isAdvanceRank(scoreResult.rank);
         const sectionFlow = (currentCourse?.units ?? []).flatMap((unit) =>
             unit.parts.flatMap((part) =>
                 part.sections.map((section) => ({
@@ -1126,6 +1158,7 @@ export function ChoicePage() {
                                 audioUrl={currentQuestion.audioUrl}
                                 autoPlay={state.autoPlayAudio && !isCountingDown}
                                 size="sm"
+                                speakAsLetters={currentQuestion.course === 'Typing Foundation'}
                             />
                         </div>
                     )}

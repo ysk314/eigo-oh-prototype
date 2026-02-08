@@ -50,6 +50,11 @@ const courseManifest: CourseManifestItem[] = [
         load: async () => import('./courses/alphabet-starter'),
     },
     {
+        id: 'course-alphabet-bridge',
+        name: 'Alphabet Bridge',
+        load: async () => import('./courses/alphabet-bridge'),
+    },
+    {
         id: 'course-typing-foundation',
         name: 'Typing Foundation',
         load: async () => import('./courses/typing-foundation'),

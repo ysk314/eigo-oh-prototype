@@ -27,6 +27,7 @@ export function QuestionDisplay({
     const isAudioEnabled = mode !== 3;
     const isSpellingVisible = mode === 1;
     const hasHighlights = question.highlightTokens && question.highlightTokens.length > 0;
+    const speakAsLetters = question.course === 'Typing Foundation';
 
     // ハイライト処理
     const renderEnglishText = () => {
@@ -67,6 +68,7 @@ export function QuestionDisplay({
                     disabled={!isAudioEnabled}
                     autoPlay={autoPlayAudio && isAudioEnabled}
                     size="lg"
+                    speakAsLetters={speakAsLetters}
                 />
 
                 {/* 英語テキスト / 入力 */}

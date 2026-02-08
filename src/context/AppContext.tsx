@@ -386,9 +386,9 @@ export function AppProvider({ children }: AppProviderProps) {
 
         switch (mode) {
             case 2:
-                return progress.mode1Rank === 'S' || progress.mode1Cleared;
+                return progress.mode1Rank === 'S' || progress.mode1Rank === 'A' || progress.mode1Cleared;
             case 3:
-                return progress.mode2Rank === 'S' || progress.mode2Cleared;
+                return progress.mode2Rank === 'S' || progress.mode2Rank === 'A' || progress.mode2Cleared;
             default:
                 return false;
         }

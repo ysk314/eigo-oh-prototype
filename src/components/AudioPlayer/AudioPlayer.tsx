@@ -11,6 +11,7 @@ interface AudioPlayerProps {
     disabled?: boolean;
     autoPlay?: boolean;
     size?: 'sm' | 'md' | 'lg';
+    speakAsLetters?: boolean;
 }
 
 export function AudioPlayer({
@@ -19,6 +20,7 @@ export function AudioPlayer({
     disabled = false,
     autoPlay = false,
     size = 'md',
+    speakAsLetters = false,
 }: AudioPlayerProps) {
     const [isPlaying, setIsPlaying] = useState(false);
     const audioRef = useRef<HTMLAudioElement | null>(null);
@@ -88,8 +90,23 @@ export function AudioPlayer({
         }
     }, [audioUrl, text, disabled]);
 
+    const buildUtteranceText = useCallback(() => {
+        if (!speakAsLetters) return text;
+        return text
+            .split(/(\s+)/)
+            .map((token) => {
+                if (!/[a-z]/i.test(token)) return token;
+                return token
+                    .split('')
+                    .map((char) => (/[a-z]/i.test(char) ? char.toLowerCase() : char))
+                    .join(', ');
+            })
+            .join('');
+    }, [text, speakAsLetters]);
+
     const playTTS = useCallback(() => {
-        const utterance = new SpeechSynthesisUtterance(text);
+        const utteranceText = buildUtteranceText();
+        const utterance = new SpeechSynthesisUtterance(utteranceText);
         utterance.lang = 'en-US';
         utterance.rate = 1.0;
         utterance.pitch = 1.0;
@@ -104,7 +121,7 @@ export function AudioPlayer({
 
         synthRef.current = utterance;
         window.speechSynthesis.speak(utterance);
-    }, [text]);
+    }, [buildUtteranceText]);
 
     const stop = useCallback(() => {
         if (audioRef.current) {

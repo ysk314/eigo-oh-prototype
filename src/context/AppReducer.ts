@@ -218,6 +218,7 @@ export function appReducer(state: AppState, action: AppAction): AppState {
             const currentRank = currentProgress[rankKey] as Rank | null;
             const isBetter =
                 !currentRank || rankOrder.indexOf(rank) < rankOrder.indexOf(currentRank);
+            const isUnlockRank = rankOrder.indexOf(rank) <= rankOrder.indexOf('A');
 
             return {
                 ...state,
@@ -226,7 +227,7 @@ export function appReducer(state: AppState, action: AppAction): AppState {
                     [key]: {
                         ...currentProgress,
                         [rankKey]: isBetter ? rank : currentRank,
-                        [clearedKey]: rank === 'S' ? true : currentProgress[clearedKey],
+                        [clearedKey]: isUnlockRank ? true : currentProgress[clearedKey],
                     },
                 },
             };
@@ -309,9 +310,9 @@ export function isModeAvailable(
         case 1:
             return true;
         case 2:
-            return progress?.mode1Cleared ?? false;
+            return Boolean(progress?.mode1Cleared || progress?.mode1Rank === 'S' || progress?.mode1Rank === 'A');
         case 3:
-            return progress?.mode2Cleared ?? false;
+            return Boolean(progress?.mode2Cleared || progress?.mode2Rank === 'S' || progress?.mode2Rank === 'A');
         default:
             return false;
     }

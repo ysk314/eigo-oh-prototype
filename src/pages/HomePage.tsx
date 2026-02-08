@@ -122,6 +122,10 @@ const rankMasteryXp: Record<Rank, number> = {
     B: 30,
     C: 15,
 };
+function isUnlockRank(rank: Rank | null | undefined): boolean {
+    if (!rank) return false;
+    return rank === 'S' || rank === 'A';
+}
 
 const MISSION_PROGRESS_PREFIX = 'mission:';
 const MISSION_COMPLETE_XP = 50;
@@ -687,9 +691,9 @@ export function HomePage() {
 
     const getNextTypingMode = useMemo(() => (sectionId: string): LearningMode | null => {
         const progress = sectionProgressMap.get(sectionId);
-        if (!progress || progress.mode1Rank !== 'S') return 1;
-        if (progress.mode2Rank !== 'S') return 2;
-        if (progress.mode3Rank !== 'S') return 3;
+        if (!progress || !isUnlockRank(progress.mode1Rank)) return 1;
+        if (!isUnlockRank(progress.mode2Rank)) return 2;
+        if (!isUnlockRank(progress.mode3Rank)) return 3;
         return null;
     }, [sectionProgressMap]);
 
@@ -768,7 +772,7 @@ export function HomePage() {
             descriptor: nextTarget,
             mode: 'typing',
             typingMode: path.typingMode,
-            caption: 'S達成済みなら次のモード・次のセクションへ',
+            caption: 'A以上達成済みなら次のモード・次のセクションへ',
         };
     }, [missionEligibleSections, attemptedQuestionIds, recentSections, resolveDescriptorFromRecent, resolveTypingPath, monthlyRankingConfig.courseId]);
 

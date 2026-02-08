@@ -52,6 +52,9 @@ const rankMasteryXp: Record<Rank, number> = {
     B: 30,
     C: 15,
 };
+function isAdvanceRank(rank: Rank | null | undefined): boolean {
+    return rank === 'S' || rank === 'A';
+}
 
 const MISSION_PROGRESS_PREFIX = 'mission:';
 const MISSION_COMPLETE_XP = 50;
@@ -274,6 +277,18 @@ function pickRandomQuestions(questions: Question[], count: number, seed: number)
     return pool.slice(0, count);
 }
 
+function isChoiceOnlyQuestion(question: Question): boolean {
+    return question.category?.includes('choice-only') ?? false;
+}
+
+function hasTypingLevelTag(question: Question): boolean {
+    return question.category?.some((item) => /^typing-l[123]$/.test(item)) ?? false;
+}
+
+function getTypingLevelTag(mode: LearningMode): string {
+    return `typing-l${mode}`;
+}
+
 export function PlayPage() {
     const navigate = useNavigate();
     const location = useLocation();
@@ -332,21 +347,36 @@ export function PlayPage() {
 
     // セクションの問題をロード & シャッフル
     const questions = useMemo(() => {
+        const pickTypingPool = (basePool: Question[]): Question[] => {
+            const typingPool = basePool.filter((question) => !isChoiceOnlyQuestion(question));
+            if (typingPool.length === 0) return [];
+
+            const levelTag = getTypingLevelTag(activeMode);
+            const hasLevelSpecific = typingPool.some((question) => hasTypingLevelTag(question));
+            if (!hasLevelSpecific) return typingPool;
+
+            const matched = typingPool.filter((question) => question.category?.includes(levelTag));
+            return matched.length > 0 ? matched : typingPool;
+        };
+
         if (isRankingChallenge) {
-            const rankingPool = courseQuestions;
+            const rankingPool = pickTypingPool(courseQuestions);
             if (rankingPool.length === 0) return [];
             return pickRandomQuestions(rankingPool, rankingQuestionCount, rankingQuestionSeed);
         }
         if (!activePartId || !activeSectionId) return [];
-        const baseQuestions = courseQuestions.filter(
-            (question) => question.partId === activePartId && question.section === activeSectionId
+        const sectionPool = courseQuestions.filter(
+            (question) =>
+                question.partId === activePartId &&
+                question.section === activeSectionId
         );
+        const baseQuestions = pickTypingPool(sectionPool);
 
         if (shuffleMode) {
             return shuffleWithNoConsecutive(baseQuestions, (q) => q.answerEn);
         }
         return baseQuestions.sort((a, b) => a.orderIndex - b.orderIndex);
-    }, [activePartId, activeSectionId, shuffleMode, courseQuestions, isRankingChallenge, rankingQuestionCount, rankingQuestionSeed]);
+    }, [activePartId, activeSectionId, activeMode, shuffleMode, courseQuestions, isRankingChallenge, rankingQuestionCount, rankingQuestionSeed]);
 
     // 現在の状態
     const [currentIndex, setCurrentIndex] = useState(0);
@@ -752,7 +782,7 @@ export function PlayPage() {
 
     useEffect(() => {
         if (!isFinished || !finalScore || !activeSectionId) return;
-        if (finalScore.rank === 'S') {
+        if (isAdvanceRank(finalScore.rank)) {
             markSectionCleared(activeSectionId, activeMode);
         }
         setSectionRank(activeSectionId, activeMode, finalScore.rank);
@@ -1302,10 +1332,10 @@ export function PlayPage() {
 
         if (!finalScore) return null;
         const isRankingResult = isRankingChallenge;
-        const isCleared = finalScore.rank === 'S';
+        const isCleared = isAdvanceRank(finalScore.rank);
         const resultMessage = isRankingResult
             ? `${rankingStateBefore.activeLeague.label}リーグの自己ベスト更新に挑戦！`
-            : finalScore.rank === 'S'
+            : isCleared
             ? (activeMode === 3
                 ? '最高！次のセクションに進もう！'
                 : '目標達成！次のモードが解放されました！')

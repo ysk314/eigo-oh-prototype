@@ -39,8 +39,14 @@ export function SectionCard({
     };
 
     const isChoiceUnlocked = (level: ChoiceLevel) => {
-        if (level === 3) return getRankForChoice(1) === 'S';
-        if (level === 4) return getRankForChoice(2) === 'S';
+        if (level === 3) {
+            const rank = getRankForChoice(1);
+            return rank === 'S' || rank === 'A';
+        }
+        if (level === 4) {
+            const rank = getRankForChoice(2);
+            return rank === 'S' || rank === 'A';
+        }
         return true;
     };
 
