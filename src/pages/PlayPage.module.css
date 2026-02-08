@@ -12,7 +12,7 @@
     align-items: center;
     justify-content: flex-start;
     padding: var(--space-md);
-    padding-top: calc(var(--game-header-height, 0px) + env(safe-area-inset-top) + var(--space-md));
+    padding-top: calc(var(--game-header-height, 0px) + env(safe-area-inset-top) + var(--space-md) + 24px);
     gap: var(--space-lg);
     max-width: 1000px;
     margin: 0 auto;
@@ -167,20 +167,22 @@
 .resultMain {
     flex: 1;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
     padding: var(--space-lg);
     position: relative;
-    overflow: hidden;
+    overflow-y: auto;
 }
 
 .resultCard {
-    max-width: 500px;
+    width: 100%;
+    max-width: 540px;
     text-align: center;
     display: flex;
     flex-direction: column;
     gap: var(--space-xl);
     padding: var(--space-2xl) !important;
+    margin: 0 auto;
 }
 
 .resultTitle {
@@ -239,10 +241,153 @@
     line-height: 1.5;
 }
 
+.missionBonusBadge {
+    align-self: center;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6px 14px;
+    border-radius: 999px;
+    background: rgba(76, 175, 80, 0.14);
+    color: #2f7a35;
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-semibold);
+    letter-spacing: 0.01em;
+}
+
+.rankingSummaryCard {
+    border: 1px solid rgba(229, 115, 115, 0.22);
+    border-radius: var(--radius-lg);
+    background: rgba(255, 255, 255, 0.88);
+    padding: var(--space-md);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.rankingSummaryHead {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-sm);
+    font-size: var(--font-size-sm);
+    color: var(--color-text-primary);
+}
+
+.rankingSummaryHead strong {
+    color: var(--color-primary);
+    font-size: var(--font-size-lg);
+}
+
+.rankingSummaryMeta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 12px;
+    font-size: var(--font-size-xs);
+    color: var(--color-text-secondary);
+}
+
+.rankingPromotedBadge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    align-self: flex-start;
+    padding: 4px 10px;
+    border-radius: 999px;
+    background: rgba(255, 193, 7, 0.22);
+    color: #9c6a00;
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-semibold);
+}
+
+.rankingTitleRow {
+    font-size: var(--font-size-xs);
+    color: var(--color-text-secondary);
+    line-height: 1.4;
+}
+
+.xpSummaryCard {
+    border: 1px solid rgba(229, 115, 115, 0.2);
+    border-radius: var(--radius-lg);
+    background: rgba(255, 248, 242, 0.92);
+    padding: var(--space-md);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.xpSummaryHead {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: var(--space-sm);
+    color: var(--color-text-primary);
+    font-size: var(--font-size-sm);
+}
+
+.xpSummaryHead strong {
+    font-size: var(--font-size-xl);
+    color: var(--color-primary);
+}
+
+.xpSummaryBreakdown {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px 12px;
+    font-size: var(--font-size-xs);
+    color: var(--color-text-secondary);
+}
+
+.xpSummaryLevel {
+    display: flex;
+    justify-content: space-between;
+    gap: var(--space-sm);
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+}
+
+.xpTrack {
+    width: 100%;
+    height: 10px;
+    border-radius: 999px;
+    background: rgba(229, 115, 115, 0.15);
+    overflow: hidden;
+}
+
+.xpTrackFill {
+    display: block;
+    height: 100%;
+    border-radius: 999px;
+    background: linear-gradient(90deg, #ff9f6e 0%, #ff7f50 50%, #ff5f45 100%);
+    transition: width 0.8s ease;
+}
+
+.xpSummaryNext {
+    font-size: var(--font-size-xs);
+    color: var(--color-text-secondary);
+}
+
+.levelUpBadge {
+    align-self: flex-start;
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-bold);
+    color: #1c6b3f;
+    background: rgba(129, 199, 132, 0.3);
+    border-radius: 999px;
+    padding: 4px 10px;
+}
+
 .actions {
     display: flex;
     gap: var(--space-md);
     justify-content: center;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.actions > button {
+    flex: 1 1 180px;
+    min-width: 180px;
 }
 
 .confettiWrapper {
@@ -258,6 +403,35 @@
     width: 10px;
     height: 10px;
     animation: confettiFall 3s linear infinite;
+}
+
+.levelUpFx {
+    position: absolute;
+    top: 12%;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: clamp(1.5rem, 4.2vw, 2.4rem);
+    font-weight: 800;
+    color: #ff7043;
+    text-shadow: 0 8px 20px rgba(255, 112, 67, 0.4);
+    letter-spacing: 0.05em;
+    animation: levelPop 1s ease-out;
+    z-index: 3;
+}
+
+@keyframes levelPop {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, 16px) scale(0.8);
+    }
+    20% {
+        opacity: 1;
+        transform: translate(-50%, 0) scale(1.06);
+    }
+    100% {
+        opacity: 0;
+        transform: translate(-50%, -12px) scale(1);
+    }
 }
 
 @keyframes confettiFall {
@@ -288,6 +462,48 @@
     animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
+.exitOverlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(17, 17, 17, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    padding: var(--space-lg);
+}
+
+.exitDialog {
+    width: min(420px, 92vw);
+    background: #fff;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+    padding: var(--space-lg);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+}
+
+.exitTitle {
+    margin: 0;
+    font-size: var(--font-size-xl);
+    color: var(--color-text-primary);
+}
+
+.exitText {
+    margin: 0;
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+}
+
+.exitActions {
+    margin-top: var(--space-xs);
+    display: flex;
+    justify-content: flex-end;
+    gap: var(--space-sm);
+    flex-wrap: wrap;
+}
+
 @keyframes popIn {
     from {
         transform: scale(0.5);
@@ -303,8 +519,8 @@
 @media (max-width: 768px) {
     .playMain {
         padding: var(--space-sm);
-        padding-top: calc(var(--game-header-height, 0px) + env(safe-area-inset-top) + var(--space-sm));
-        gap: var(--space-md);
+        padding-top: calc(var(--game-header-height, 0px) + env(safe-area-inset-top) + var(--space-sm) + 14px);
+        gap: var(--space-sm);
     }
 
     .keyboardRow {
@@ -312,7 +528,11 @@
     }
 
     .resultCard {
-        padding: var(--space-xl) !important;
+        width: 100%;
+        max-height: calc(100dvh - var(--game-header-height, 0px) - env(safe-area-inset-top) - 12px);
+        overflow-y: auto;
+        padding: var(--space-lg) !important;
+        gap: var(--space-md);
     }
 
     .resultTitle {
@@ -328,5 +548,25 @@
         grid-template-columns: repeat(2, minmax(0, 1fr));
         padding: var(--space-md);
         gap: var(--space-sm);
+    }
+
+    .actions {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: var(--space-sm);
+    }
+
+    .actions > button {
+        width: 100%;
+        min-width: 0;
+    }
+
+    .resultMain {
+        align-items: flex-start;
+        padding: 6px;
+    }
+
+    .levelUpFx {
+        top: 6%;
     }
 }

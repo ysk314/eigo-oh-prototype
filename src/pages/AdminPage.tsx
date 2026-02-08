@@ -88,6 +88,7 @@ type ClassroomItem = {
 type SortKey = 'name' | 'memberNo' | 'lastActive' | 'progress' | 'createdAt';
 type ColumnKey = 'memberNo' | 'uid' | 'progress' | 'lastActive' | 'lastSection' | 'createdAt';
 type AccountTypeFilter = 'guest' | 'consumer' | 'b2b2c';
+type ActivityFilter = 'all' | 'active7' | 'inactive30' | 'needsFollowup';
 
 function normalize(value: string) {
     return value.trim().toLowerCase();
@@ -195,7 +196,7 @@ export function AdminPage() {
     const [error, setError] = useState<string | null>(null);
     const [searchTerm, setSearchTerm] = useState('');
     const [selectedUserId, setSelectedUserId] = useState<string | null>(null);
-    const [activityFilter, setActivityFilter] = useState<'all' | 'active7' | 'inactive30'>('all');
+    const [activityFilter, setActivityFilter] = useState<ActivityFilter>('all');
     const [progressFilter, setProgressFilter] = useState<'all' | 'zero' | 'low' | 'mid' | 'complete'>('all');
     const [accountTypeFilter, setAccountTypeFilter] = useState<Record<AccountTypeFilter, boolean>>({
         guest: true,
@@ -613,6 +614,10 @@ export function AdminPage() {
             if (activityFilter === 'inactive30') {
                 if (daysSince === null || daysSince <= 30) return false;
             }
+            if (activityFilter === 'needsFollowup') {
+                const isNeedsFollowup = (daysSince !== null && daysSince > 30) || ratio === 0;
+                if (!isNeedsFollowup) return false;
+            }
 
             if (progressFilter !== 'all') {
                 if (ratio === null) return false;
@@ -665,6 +670,7 @@ export function AdminPage() {
         let inactive30 = 0;
         let zeroProgress = 0;
         let complete = 0;
+        let needsFollowupTotal = 0;
         let progressSum = 0;
         let progressCount = 0;
         const riskItems: Array<{ user: AdminUser; daysSince: number | null; ratio: number | null }> = [];
@@ -688,6 +694,7 @@ export function AdminPage() {
             }
 
             if ((daysSince !== null && daysSince > 30) || ratio === 0) {
+                needsFollowupTotal += 1;
                 riskItems.push({ user, daysSince, ratio });
             }
         });
@@ -710,6 +717,7 @@ export function AdminPage() {
             inactive30,
             zeroProgress,
             complete,
+            needsFollowupTotal,
             avgProgress,
             atRiskUsers,
             recentActiveUsers,
@@ -816,6 +824,99 @@ export function AdminPage() {
             consumer: true,
             b2b2c: true,
         });
+    };
+
+    const applyQuickFilter = (preset: 'needsFollowup' | 'zeroProgress' | 'active7') => {
+        setSearchTerm('');
+        setAccountTypeFilter({
+            guest: true,
+            consumer: true,
+            b2b2c: true,
+        });
+
+        if (preset === 'needsFollowup') {
+            setActivityFilter('needsFollowup');
+            setProgressFilter('all');
+            if (dashboardStats.atRiskUsers[0]?.user.uid) {
+                setSelectedUserId(dashboardStats.atRiskUsers[0].user.uid);
+            }
+        } else if (preset === 'zeroProgress') {
+            setActivityFilter('all');
+            setProgressFilter('zero');
+            const zeroUser = users.find((user) => getProgressRatio(user.stats) === 0);
+            if (zeroUser) {
+                setSelectedUserId(zeroUser.uid);
+            }
+        } else {
+            setActivityFilter('active7');
+            setProgressFilter('all');
+            const activeUser = users.find((user) => {
+                const daysSince = getDaysSince(user.stats?.lastActiveAt);
+                return daysSince !== null && daysSince <= 7;
+            });
+            if (activeUser) {
+                setSelectedUserId(activeUser.uid);
+            }
+        }
+
+        logEvent({
+            eventType: 'admin_quick_filter_applied',
+            userId: currentUser?.uid ?? null,
+            payload: {
+                preset,
+            },
+        }).catch(() => {});
+    };
+
+    const handleExportCsv = () => {
+        const header = [
+            '表示名',
+            '会員番号',
+            'UID',
+            '進捗(%)',
+            '進捗詳細',
+            '最終学習',
+            '直近セクション',
+            '作成日',
+        ];
+        const rows = sortedUsers.map((user) => {
+            const ratio = getProgressRatio(user.stats);
+            const progressPercent = ratio === null ? '' : String(Math.round(ratio * 100));
+            const progressText = formatProgress(user.stats?.clearedSectionsCount, user.stats?.totalSectionsCount);
+            return [
+                user.displayName ?? '',
+                user.memberNo ?? '',
+                user.uid ?? '',
+                progressPercent,
+                progressText,
+                formatDateTime(user.stats?.lastActiveAt),
+                user.stats?.lastSectionLabel || user.stats?.lastSectionId || '',
+                formatDate(user.createdAt),
+            ];
+        });
+
+        const csv = [header, ...rows]
+            .map((columns) => columns.map((value) => `"${String(value).replace(/"/g, '""')}"`).join(','))
+            .join('\n');
+
+        const blob = new Blob([`\uFEFF${csv}`], { type: 'text/csv;charset=utf-8;' });
+        const url = URL.createObjectURL(blob);
+        const anchor = document.createElement('a');
+        anchor.href = url;
+        anchor.download = `lets-users-${new Date().toISOString().slice(0, 10)}.csv`;
+        anchor.click();
+        URL.revokeObjectURL(url);
+
+        logEvent({
+            eventType: 'admin_export_csv',
+            userId: currentUser?.uid ?? null,
+            payload: {
+                rowCount: rows.length,
+                activityFilter,
+                progressFilter,
+                searchTerm,
+            },
+        }).catch(() => {});
     };
 
     const handleSort = (key: SortKey) => {
@@ -1333,6 +1434,35 @@ export function AdminPage() {
                             </div>
                         </Card>
                     </div>
+                    <Card className={styles.quickActionCard} variant="outlined">
+                        <div className={styles.listHeader}>業務置換クイック操作</div>
+                        <div className={styles.quickActionGrid}>
+                            <button
+                                type="button"
+                                className={styles.quickActionButton}
+                                onClick={() => applyQuickFilter('needsFollowup')}
+                            >
+                                <strong>要フォローを抽出</strong>
+                                <span>{dashboardStats.needsFollowupTotal}名</span>
+                            </button>
+                            <button
+                                type="button"
+                                className={styles.quickActionButton}
+                                onClick={() => applyQuickFilter('zeroProgress')}
+                            >
+                                <strong>未着手ユーザーを抽出</strong>
+                                <span>{dashboardStats.zeroProgress}名</span>
+                            </button>
+                            <button
+                                type="button"
+                                className={styles.quickActionButton}
+                                onClick={() => applyQuickFilter('active7')}
+                            >
+                                <strong>7日以内アクティブを抽出</strong>
+                                <span>{dashboardStats.active7}名</span>
+                            </button>
+                        </div>
+                    </Card>
                 </section>
 
                 <section className={styles.toolbar}>
@@ -1384,6 +1514,14 @@ export function AdminPage() {
                                     onClick={() => setActivityFilter('inactive30')}
                                 >
                                     30日以上未学習
+                                </button>
+                                <button
+                                    type="button"
+                                    className={`${styles.filterButton} ${activityFilter === 'needsFollowup' ? styles.filterButtonActive : ''}`}
+                                    aria-pressed={activityFilter === 'needsFollowup'}
+                                    onClick={() => setActivityFilter('needsFollowup')}
+                                >
+                                    要フォロー
                                 </button>
                             </div>
                             <div className={styles.filterGroup}>
@@ -1502,6 +1640,9 @@ export function AdminPage() {
                             </div>
                         </div>
                         <div className={styles.toolbarActions}>
+                            <Button variant="secondary" onClick={handleExportCsv}>
+                                CSV出力
+                            </Button>
                             <Button variant="primary" onClick={loadUsers} isLoading={loading}>
                                 再読み込み
                             </Button>

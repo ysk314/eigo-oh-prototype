@@ -126,6 +126,14 @@ export function appReducer(state: AppState, action: AppAction): AppState {
                 clearedMode: 0 as const,
             };
 
+            const attemptsDelta = progressData.attemptsCount ?? 0;
+            const correctDelta = progressData.correctCount ?? 0;
+            const missDelta = progressData.missCount ?? 0;
+            let nextClearedMode = currentProgress.clearedMode;
+            if (progressData.clearedMode !== undefined && progressData.clearedMode > nextClearedMode) {
+                nextClearedMode = progressData.clearedMode;
+            }
+
             return {
                 ...state,
                 userProgress: {
@@ -133,6 +141,10 @@ export function appReducer(state: AppState, action: AppAction): AppState {
                     [key]: {
                         ...currentProgress,
                         ...progressData,
+                        attemptsCount: Math.max(0, currentProgress.attemptsCount + attemptsDelta),
+                        correctCount: Math.max(0, currentProgress.correctCount + correctDelta),
+                        missCount: Math.max(0, currentProgress.missCount + missDelta),
+                        clearedMode: nextClearedMode,
                         lastPlayedAt: new Date().toISOString(),
                     },
                 },

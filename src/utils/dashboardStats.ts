@@ -41,6 +41,10 @@ export interface SessionSummary {
     totalTimeMs: number;
     rank: string;
     level?: number;
+    sectionId?: string;
+    partId?: string;
+    courseId?: string;
+    missionOption?: string;
     playedAt: string;
 }
 
@@ -201,7 +205,7 @@ async function updateRecentSessions(uid: string, summary: SessionSummary): Promi
             const bTime = Date.parse(b.playedAt);
             return (Number.isNaN(bTime) ? 0 : bTime) - (Number.isNaN(aTime) ? 0 : aTime);
         })
-        .slice(0, 3);
+        .slice(0, 10);
 
     await setDoc(
         ref,

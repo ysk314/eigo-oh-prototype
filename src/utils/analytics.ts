@@ -10,11 +10,15 @@ export type AnalyticsEventType =
     | 'session_ended'
     | 'question_answered'
     | 'admin_users_loaded'
+    | 'admin_quick_filter_applied'
+    | 'admin_export_csv'
     | 'guest_started'
+    | 'trial_cta_clicked'
     | 'login_success'
     | 'signup_success'
     | 'dashboard_viewed'
-    | 'section_launch_clicked';
+    | 'section_launch_clicked'
+    | 'daily_mission_selected';
 
 export interface AnalyticsEvent {
     eventType: AnalyticsEventType;

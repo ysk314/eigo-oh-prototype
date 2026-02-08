@@ -176,6 +176,46 @@
     gap: var(--space-lg);
 }
 
+.quickActionCard {
+    padding-bottom: var(--space-sm);
+}
+
+.quickActionGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: var(--space-md);
+    padding: var(--space-md) var(--space-lg) var(--space-lg);
+}
+
+.quickActionButton {
+    border: 1px solid rgba(229, 115, 115, 0.2);
+    border-radius: var(--radius-md);
+    background: #fff;
+    padding: var(--space-md);
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+    cursor: pointer;
+    transition: border-color var(--transition-fast), background var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.quickActionButton:hover {
+    border-color: rgba(229, 115, 115, 0.55);
+    background: var(--color-primary-soft);
+    box-shadow: var(--shadow-sm);
+}
+
+.quickActionButton strong {
+    font-size: var(--font-size-base);
+    color: var(--color-text-primary);
+}
+
+.quickActionButton span {
+    font-size: var(--font-size-xs);
+    color: var(--color-text-secondary);
+}
+
 .alertCard {
     padding-bottom: var(--space-sm);
 }
@@ -703,7 +743,7 @@
 
 .error {
     padding: var(--space-md) var(--space-lg);
-    color: var(--color-danger);
+    color: var(--color-error);
     font-weight: var(--font-weight-bold);
 }
 

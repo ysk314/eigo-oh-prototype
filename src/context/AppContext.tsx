@@ -38,6 +38,7 @@ import {
 import {
     loadRemoteProfile,
     loadRemoteProgress,
+    saveRemoteProfile,
     saveRemoteUserProgress,
     saveRemoteSectionProgress,
     seedRemoteProgress,
@@ -97,6 +98,10 @@ export function AppProvider({ children }: AppProviderProps) {
     const initialStorageRef = useRef<StorageData | null>(null);
     const prevUserProgressRef = useRef<Record<string, UserProgress>>({});
     const prevSectionProgressRef = useRef<Record<string, SectionProgress>>({});
+    const sessionSnapshotRef = useRef<{
+        userProgress: Record<string, UserProgress>;
+        sectionProgress: Record<string, SectionProgress>;
+    } | null>(null);
 
     // Load from storage on mount
     useEffect(() => {
@@ -126,13 +131,31 @@ export function AppProvider({ children }: AppProviderProps) {
                     loadRemoteProgress(user.uid),
                 ]);
 
-                if (profile) {
-                    dispatch({
-                        type: 'LOAD_STATE',
-                        payload: {
-                            currentUser: profile,
-                            users: [profile],
-                        },
+                const resolvedProfile: User = profile
+                    ? { ...profile, id: user.uid }
+                    : {
+                        id: user.uid,
+                        name: user.displayName?.trim() || (user.isAnonymous ? 'ゲスト' : 'ユーザー'),
+                        createdAt: new Date().toISOString(),
+                        accountType: user.isAnonymous ? 'guest' : 'consumer',
+                    };
+
+                dispatch({
+                    type: 'LOAD_STATE',
+                    payload: {
+                        currentUser: resolvedProfile,
+                        users: [resolvedProfile],
+                    },
+                });
+
+                if (!profile) {
+                    saveRemoteProfile(user.uid, resolvedProfile.name, undefined, {
+                        accountType: resolvedProfile.accountType === 'guest' ? 'guest' : 'consumer',
+                        status: 'active',
+                        billing: { plan: 'free', status: 'active' },
+                        entitlements: { typing: true, flashMentalMath: false, reading: false },
+                    }).catch((error) => {
+                        console.error('Failed to bootstrap remote profile:', error);
                     });
                 }
 
@@ -224,10 +247,15 @@ export function AppProvider({ children }: AppProviderProps) {
 
     // Convenience methods
     const beginSectionSession = useCallback(() => {
+        sessionSnapshotRef.current = {
+            userProgress: state.userProgress,
+            sectionProgress: state.sectionProgress,
+        };
         setDeferRemoteSync(true);
-    }, []);
+    }, [state.userProgress, state.sectionProgress]);
 
     const completeSectionSession = useCallback(() => {
+        sessionSnapshotRef.current = null;
         if (!remoteSyncEnabled || !remoteUid) {
             setDeferRemoteSync(false);
             return;
@@ -253,10 +281,21 @@ export function AppProvider({ children }: AppProviderProps) {
     }, [remoteSyncEnabled, remoteUid, state.userProgress, state.sectionProgress]);
 
     const abortSectionSession = useCallback(() => {
-        prevUserProgressRef.current = state.userProgress;
-        prevSectionProgressRef.current = state.sectionProgress;
+        const snapshot = sessionSnapshotRef.current;
+        if (snapshot) {
+            dispatch({
+                type: 'LOAD_STATE',
+                payload: {
+                    userProgress: snapshot.userProgress,
+                    sectionProgress: snapshot.sectionProgress,
+                },
+            });
+            prevUserProgressRef.current = snapshot.userProgress;
+            prevSectionProgressRef.current = snapshot.sectionProgress;
+            sessionSnapshotRef.current = null;
+        }
         setDeferRemoteSync(false);
-    }, [state.userProgress, state.sectionProgress]);
+    }, [dispatch]);
 
     const setUser = useCallback((user: User) => {
         dispatch({ type: 'SET_USER', payload: user });

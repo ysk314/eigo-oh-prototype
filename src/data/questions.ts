@@ -20,6 +20,11 @@ type CourseManifestItem = CourseCatalogItem & {
 
 const courseManifest: CourseManifestItem[] = [
     {
+        id: 'course-monthly-ranking-2026-02',
+        name: '2月のランキング',
+        load: async () => import('./courses/monthly-ranking-2026-02'),
+    },
+    {
         id: 'course-1',
         name: 'あいキャン',
         load: async () => import('./courses/ai-can'),

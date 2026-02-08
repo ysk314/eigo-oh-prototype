@@ -125,20 +125,23 @@
 .resultMain {
     flex: 1;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
     padding: var(--space-lg);
     position: relative;
-    overflow: hidden;
+    overflow-y: auto;
 }
 
 .resultCard {
-    max-width: 520px;
+    width: 100%;
+    max-width: 540px;
     text-align: center;
     display: flex;
     flex-direction: column;
-    gap: var(--space-lg);
+    gap: var(--space-xl);
     background: #FFFDF1;
+    padding: var(--space-2xl) !important;
+    margin: 0 auto;
 }
 
 
@@ -161,6 +164,10 @@
     display: grid;
     grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: var(--space-md);
+    align-items: stretch;
+    background: var(--color-bg-base);
+    padding: var(--space-lg);
+    border-radius: var(--radius-lg);
 }
 
 .statItem {
@@ -184,16 +191,143 @@
     font-variant-numeric: tabular-nums;
 }
 
+.success {
+    color: var(--color-success);
+}
+
 .actions {
     display: flex;
-    justify-content: center;
     gap: var(--space-md);
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.actions > button {
+    flex: 1 1 180px;
+    min-width: 180px;
 }
 
 .message {
     font-size: var(--font-size-lg);
     font-weight: var(--font-weight-medium);
     line-height: 1.5;
+}
+
+.missionBonusBadge {
+    align-self: center;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6px 14px;
+    border-radius: 999px;
+    background: rgba(76, 175, 80, 0.14);
+    color: #2f7a35;
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-semibold);
+    letter-spacing: 0.01em;
+}
+
+.xpSummaryCard {
+    border: 1px solid rgba(229, 115, 115, 0.2);
+    border-radius: var(--radius-lg);
+    background: rgba(255, 248, 242, 0.92);
+    padding: var(--space-md);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.xpSummaryHead {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: var(--space-sm);
+    color: var(--color-text-primary);
+    font-size: var(--font-size-sm);
+}
+
+.xpSummaryHead strong {
+    font-size: var(--font-size-xl);
+    color: var(--color-primary);
+}
+
+.xpSummaryBreakdown {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px 12px;
+    font-size: var(--font-size-xs);
+    color: var(--color-text-secondary);
+}
+
+.xpSummaryLevel {
+    display: flex;
+    justify-content: space-between;
+    gap: var(--space-sm);
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+}
+
+.xpTrack {
+    width: 100%;
+    height: 10px;
+    border-radius: 999px;
+    background: rgba(229, 115, 115, 0.15);
+    overflow: hidden;
+}
+
+.xpTrackFill {
+    display: block;
+    height: 100%;
+    border-radius: 999px;
+    background: linear-gradient(90deg, #ff9f6e 0%, #ff7f50 50%, #ff5f45 100%);
+    transition: width 0.8s ease;
+}
+
+.xpSummaryNext {
+    font-size: var(--font-size-xs);
+    color: var(--color-text-secondary);
+}
+
+.exitOverlay {
+    position: fixed;
+    inset: 0;
+    z-index: 1100;
+    background: rgba(0, 0, 0, 0.45);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-md);
+}
+
+.exitDialog {
+    width: min(420px, 100%);
+    border-radius: var(--radius-lg);
+    background: #fff;
+    box-shadow: var(--shadow-lg);
+    padding: var(--space-lg);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+}
+
+.exitTitle {
+    margin: 0;
+    font-size: var(--font-size-xl);
+    color: var(--color-text-primary);
+}
+
+.exitText {
+    margin: 0;
+    color: var(--color-text-secondary);
+    line-height: 1.5;
+}
+
+.exitActions {
+    display: flex;
+    gap: var(--space-sm);
+    justify-content: flex-end;
+    flex-wrap: wrap;
 }
 
 .confettiWrapper {
@@ -250,5 +384,19 @@
 
     .stats {
         grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .resultCard {
+        padding: var(--space-lg) !important;
+        gap: var(--space-lg);
+    }
+
+    .actions {
+        gap: var(--space-sm);
+    }
+
+    .actions > button {
+        flex: 1 1 100%;
+        min-width: 0;
     }
 }

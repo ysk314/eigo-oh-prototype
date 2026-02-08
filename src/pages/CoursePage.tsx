@@ -113,15 +113,16 @@ export function CoursePage() {
         [selectedUnit, selectedPartId]
     );
 
-    const progressQuestionIds = useMemo(() => {
-        if (!state.currentUser) return new Set<string>();
-        const prefix = `${state.currentUser.id}-`;
+    const mode2ClearedSectionIds = useMemo(() => {
+        const entries = state.currentUser
+            ? Object.entries(state.sectionProgress).filter(([key]) => key.startsWith(`${state.currentUser?.id}-`))
+            : Object.entries(state.sectionProgress);
         return new Set(
-            Object.keys(state.userProgress)
-                .filter((key) => key.startsWith(prefix))
-                .map((key) => key.slice(prefix.length))
+            entries
+                .filter(([, progress]) => Boolean(progress?.mode2Cleared || progress?.mode3Cleared))
+                .map(([, progress]) => progress.sectionId)
         );
-    }, [state.currentUser, state.userProgress]);
+    }, [state.currentUser, state.sectionProgress]);
 
     useEffect(() => {
         if (state.selectedCourse || !courseCatalog[0]) return;
@@ -276,6 +277,7 @@ export function CoursePage() {
                 partId: selectedPartId,
                 sectionId,
                 mode,
+                returnTo: '/course',
             },
         });
     };
@@ -312,6 +314,7 @@ export function CoursePage() {
                 partId: selectedPartId,
                 sectionId,
                 level,
+                returnTo: '/course',
             },
         });
     };
@@ -326,22 +329,33 @@ export function CoursePage() {
             .find((part) => part.id === partId)
             ?.sections ?? [];
         return partSections.reduce((sum, section) => {
-            const completed = section.questionIds.filter((questionId) => progressQuestionIds.has(questionId)).length;
+            const completed = mode2ClearedSectionIds.has(section.id) ? section.questionIds.length : 0;
             return sum + completed;
         }, 0);
     };
 
     const getSectionCompletedCount = (questionIds: string[]) => {
-        return questionIds.filter((questionId) => progressQuestionIds.has(questionId)).length;
+        const sectionId = questionIds.length > 0 ? questionIdToSectionIdInView.get(questionIds[0]) : null;
+        if (!sectionId) return 0;
+        return mode2ClearedSectionIds.has(sectionId) ? questionIds.length : 0;
     };
 
     const sectionProgressRows = useMemo(() => {
         return sections.map((section) => ({
             section,
-            completed: section.questionIds.filter((questionId) => progressQuestionIds.has(questionId)).length,
+            completed: mode2ClearedSectionIds.has(section.id) ? section.questionIds.length : 0,
             total: section.questionIds.length,
         }));
-    }, [sections, progressQuestionIds]);
+    }, [sections, mode2ClearedSectionIds]);
+    const questionIdToSectionIdInView = useMemo(() => {
+        const map = new Map<string, string>();
+        sections.forEach((section) => {
+            section.questionIds.forEach((questionId) => {
+                map.set(questionId, section.id);
+            });
+        });
+        return map;
+    }, [sections]);
 
     const startedSectionsCount = sectionProgressRows.filter((row) => row.completed > 0).length;
     const completedSectionsCount = sectionProgressRows.filter((row) => row.completed === row.total && row.total > 0).length;

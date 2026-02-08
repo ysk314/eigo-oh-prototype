@@ -35,13 +35,8 @@ export function buildSectionProgressTotals(
             acc.totalCorrect += progress.totalCorrect || 0;
             acc.totalMiss += progress.totalMiss || 0;
             const isCleared =
-                progress.mode1Cleared ||
                 progress.mode2Cleared ||
-                progress.mode3Cleared ||
-                progress.choice1Rank ||
-                progress.choice2Rank ||
-                progress.choice3Rank ||
-                progress.choice4Rank;
+                progress.mode3Cleared;
             if (isCleared) {
                 acc.clearedSectionsCount += 1;
             }
