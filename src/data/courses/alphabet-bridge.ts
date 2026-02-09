@@ -50,9 +50,10 @@ type LetterCard = {
 
 const courseName = 'Alphabet Bridge';
 
+// 幼児〜小学生でも扱いやすい語を優先
 const cards: LetterCard[] = [
     { upper: 'A', lower: 'a', nameJp: 'エー', keywordEn: 'apple', keywordJp: 'りんご' },
-    { upper: 'B', lower: 'b', nameJp: 'ビー', keywordEn: 'book', keywordJp: 'ほん' },
+    { upper: 'B', lower: 'b', nameJp: 'ビー', keywordEn: 'ball', keywordJp: 'ボール' },
     { upper: 'C', lower: 'c', nameJp: 'シー', keywordEn: 'cat', keywordJp: 'ねこ' },
     { upper: 'D', lower: 'd', nameJp: 'ディー', keywordEn: 'dog', keywordJp: 'いぬ' },
     { upper: 'E', lower: 'e', nameJp: 'イー', keywordEn: 'egg', keywordJp: 'たまご' },
@@ -60,69 +61,69 @@ const cards: LetterCard[] = [
     { upper: 'G', lower: 'g', nameJp: 'ジー', keywordEn: 'grape', keywordJp: 'ぶどう' },
     { upper: 'H', lower: 'h', nameJp: 'エイチ', keywordEn: 'hat', keywordJp: 'ぼうし' },
     { upper: 'I', lower: 'i', nameJp: 'アイ', keywordEn: 'ice', keywordJp: 'こおり' },
-    { upper: 'J', lower: 'j', nameJp: 'ジェイ', keywordEn: 'juice', keywordJp: 'ジュース' },
+    { upper: 'J', lower: 'j', nameJp: 'ジェイ', keywordEn: 'jam', keywordJp: 'ジャム' },
     { upper: 'K', lower: 'k', nameJp: 'ケイ', keywordEn: 'key', keywordJp: 'かぎ' },
-    { upper: 'L', lower: 'l', nameJp: 'エル', keywordEn: 'leaf', keywordJp: 'はっぱ' },
+    { upper: 'L', lower: 'l', nameJp: 'エル', keywordEn: 'lion', keywordJp: 'ライオン' },
     { upper: 'M', lower: 'm', nameJp: 'エム', keywordEn: 'milk', keywordJp: 'ミルク' },
-    { upper: 'N', lower: 'n', nameJp: 'エヌ', keywordEn: 'nest', keywordJp: 'す' },
+    { upper: 'N', lower: 'n', nameJp: 'エヌ', keywordEn: 'nose', keywordJp: 'はな' },
     { upper: 'O', lower: 'o', nameJp: 'オー', keywordEn: 'orange', keywordJp: 'オレンジ' },
     { upper: 'P', lower: 'p', nameJp: 'ピー', keywordEn: 'pen', keywordJp: 'ペン' },
-    { upper: 'Q', lower: 'q', nameJp: 'キュー', keywordEn: 'queen', keywordJp: 'おうじょ' },
-    { upper: 'R', lower: 'r', nameJp: 'アール', keywordEn: 'robot', keywordJp: 'ロボット' },
+    { upper: 'Q', lower: 'q', nameJp: 'キュー', keywordEn: 'queen', keywordJp: 'クイーン' },
+    { upper: 'R', lower: 'r', nameJp: 'アール', keywordEn: 'rabbit', keywordJp: 'うさぎ' },
     { upper: 'S', lower: 's', nameJp: 'エス', keywordEn: 'sun', keywordJp: 'たいよう' },
-    { upper: 'T', lower: 't', nameJp: 'ティー', keywordEn: 'train', keywordJp: 'でんしゃ' },
+    { upper: 'T', lower: 't', nameJp: 'ティー', keywordEn: 'tiger', keywordJp: 'とら' },
     { upper: 'U', lower: 'u', nameJp: 'ユー', keywordEn: 'umbrella', keywordJp: 'かさ' },
-    { upper: 'V', lower: 'v', nameJp: 'ブイ', keywordEn: 'violin', keywordJp: 'バイオリン' },
+    { upper: 'V', lower: 'v', nameJp: 'ブイ', keywordEn: 'van', keywordJp: 'バン' },
     { upper: 'W', lower: 'w', nameJp: 'ダブリュー', keywordEn: 'watch', keywordJp: 'とけい' },
-    { upper: 'X', lower: 'x', nameJp: 'エックス', keywordEn: 'xylophone', keywordJp: 'もっきん' },
-    { upper: 'Y', lower: 'y', nameJp: 'ワイ', keywordEn: 'yogurt', keywordJp: 'ヨーグルト' },
+    { upper: 'X', lower: 'x', nameJp: 'エックス', keywordEn: 'xray', keywordJp: 'エックスせん' },
+    { upper: 'Y', lower: 'y', nameJp: 'ワイ', keywordEn: 'yoyo', keywordJp: 'ヨーヨー' },
     { upper: 'Z', lower: 'z', nameJp: 'ゼット', keywordEn: 'zebra', keywordJp: 'しまうま' },
 ];
 
 const defaultTypingRounds: Record<TypingLevel, number> = {
     1: 2,
-    2: 2,
+    2: 1,
     3: 1,
 };
 
 const defaultChoiceRounds: Record<ChoiceLevel, number> = {
     1: 2,
-    2: 2,
+    2: 1,
     3: 1,
     4: 1,
 };
 
 const typingTemplates: Record<TypingLevel, Array<(card: LetterCard) => string>> = {
     1: [
-        (card) => `【L1】文字名「${card.nameJp}」の小文字を入力`,
-        (card) => `【L1】${card.keywordJp} の頭文字（小文字）を入力`,
+        (card) => `文字名「${card.nameJp}」の大文字を入力`,
+        (card) => `「${card.keywordJp}」の頭文字（大文字）を入力`,
     ],
     2: [
-        (card) => `【L2】文字名「${card.nameJp}」の大文字を入力`,
-        (card) => `【L2】${card.keywordEn} の頭文字（大文字）を入力`,
+        (card) => `文字名「${card.nameJp}」の小文字を入力`,
+        (card) => `「${card.keywordJp}」の頭文字（小文字）を入力`,
     ],
     3: [
-        (card) => `【L3】${card.keywordEn} の文字セット（大→小）を入力`,
-        (card) => `【L3】${card.keywordJp} の文字セット（大→小）を入力`,
+        (card) => `文字名「${card.nameJp}」のセット（大→小）を入力`,
+        (card) => `「${card.keywordEn}」のセット（大→小）を入力`,
     ],
 };
 
 const choiceTemplates: Record<ChoiceLevel, Array<(card: LetterCard) => { promptJp: string; answerEn: string }>> = {
     1: [
         (card) => ({ promptJp: `文字名「${card.nameJp}」`, answerEn: card.upper }),
-        (card) => ({ promptJp: `小文字は「${card.lower}」`, answerEn: card.upper }),
+        (card) => ({ promptJp: `「${card.keywordJp}」の頭文字（大文字）`, answerEn: card.upper }),
     ],
     2: [
-        (card) => ({ promptJp: `文字名「${card.nameJp}」の大文字`, answerEn: card.upper }),
-        (card) => ({ promptJp: `${card.keywordJp} の頭文字（大文字）`, answerEn: card.upper }),
+        (card) => ({ promptJp: `文字名「${card.nameJp}」の小文字`, answerEn: card.lower }),
+        (card) => ({ promptJp: `「${card.keywordJp}」の頭文字（小文字）`, answerEn: card.lower }),
     ],
     3: [
-        (card) => ({ promptJp: `キーワード「${card.keywordJp}」`, answerEn: card.keywordEn }),
-        (card) => ({ promptJp: `文字名「${card.nameJp}」の英単語`, answerEn: card.keywordEn }),
+        (card) => ({ promptJp: `文字名「${card.nameJp}」のキーワード`, answerEn: card.keywordEn }),
+        (card) => ({ promptJp: `「${card.upper}${card.lower}」のキーワード`, answerEn: card.keywordEn }),
     ],
     4: [
         (card) => ({ promptJp: `「${card.keywordJp}」の英語`, answerEn: card.keywordEn }),
-        (card) => ({ promptJp: `「${card.nameJp}」のキーワード`, answerEn: card.keywordEn }),
+        (card) => ({ promptJp: `文字名「${card.nameJp}」のキーワード英語`, answerEn: card.keywordEn }),
     ],
 };
 
@@ -135,8 +136,8 @@ function getCard(upper: string): LetterCard {
 }
 
 function buildTypingAnswer(card: LetterCard, level: TypingLevel): string {
-    if (level === 1) return card.lower;
-    if (level === 2) return card.upper;
+    if (level === 1) return card.upper;
+    if (level === 2) return card.lower;
     return `${card.upper}${card.lower}`;
 }
 
@@ -209,76 +210,55 @@ function buildSectionSeeds(section: SectionDef): Seed[] {
 const units: UnitDef[] = [
     {
         id: 'alpb-unit-1',
-        name: 'Unit 1: A-M ペアカード',
+        name: 'Unit 1: 基礎（大文字の定着）',
         parts: [
             {
                 id: 'alpb-unit-1-part-1',
-                label: 'A-M 導入',
-                pos: 'alphabet-bridge-a-m-core',
-                category: ['alphabet', 'bridge', 'duolingo-abc-pattern'],
+                label: 'A-L',
+                pos: 'alphabet-foundation-a-l',
+                category: ['alphabet', 'foundation', 'uppercase-first'],
                 sections: [
                     {
                         id: 'alpb-unit-1-part-1-section-1',
                         type: 'alpb-unit-1-part-1-section-1',
-                        label: 'A-F',
-                        uppers: ['A', 'B', 'C', 'D', 'E', 'F'],
+                        label: 'A-D',
+                        uppers: ['A', 'B', 'C', 'D'],
                     },
                     {
                         id: 'alpb-unit-1-part-1-section-2',
                         type: 'alpb-unit-1-part-1-section-2',
-                        label: 'G-M',
-                        uppers: ['G', 'H', 'I', 'J', 'K', 'L', 'M'],
-                        typingOffset: 1,
-                        choiceOffset: 1,
+                        label: 'E-H',
+                        uppers: ['E', 'F', 'G', 'H'],
+                    },
+                    {
+                        id: 'alpb-unit-1-part-1-section-3',
+                        type: 'alpb-unit-1-part-1-section-3',
+                        label: 'I-L',
+                        uppers: ['I', 'J', 'K', 'L'],
                     },
                 ],
             },
             {
                 id: 'alpb-unit-1-part-2',
-                label: 'A-M 定着',
-                pos: 'alphabet-bridge-a-m-spiral',
-                category: ['alphabet', 'bridge', 'spiral'],
+                label: 'M-Z',
+                pos: 'alphabet-foundation-m-z',
+                category: ['alphabet', 'foundation', 'uppercase-first'],
                 sections: [
                     {
                         id: 'alpb-unit-1-part-2-section-1',
                         type: 'alpb-unit-1-part-2-section-1',
-                        label: 'A-M 反復1',
-                        uppers: ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M'],
-                        typingOffset: 2,
-                        choiceOffset: 2,
-                        typingRounds: { 3: 2 },
+                        label: 'M-P',
+                        uppers: ['M', 'N', 'O', 'P'],
                     },
                     {
                         id: 'alpb-unit-1-part-2-section-2',
                         type: 'alpb-unit-1-part-2-section-2',
-                        label: 'A-M 反復2',
-                        uppers: ['M', 'L', 'K', 'J', 'I', 'H', 'G', 'F', 'E', 'D', 'C', 'B', 'A'],
-                        typingRounds: { 1: 1, 2: 1, 3: 1 },
-                        choiceRounds: { 1: 1, 2: 1, 3: 1, 4: 1 },
-                    },
-                ],
-            },
-        ],
-    },
-    {
-        id: 'alpb-unit-2',
-        name: 'Unit 2: N-Z ペアカード',
-        parts: [
-            {
-                id: 'alpb-unit-2-part-1',
-                label: 'N-Z 導入',
-                pos: 'alphabet-bridge-n-z-core',
-                category: ['alphabet', 'bridge', 'duolingo-abc-pattern'],
-                sections: [
-                    {
-                        id: 'alpb-unit-2-part-1-section-1',
-                        type: 'alpb-unit-2-part-1-section-1',
-                        label: 'N-T',
-                        uppers: ['N', 'O', 'P', 'Q', 'R', 'S', 'T'],
+                        label: 'Q-T',
+                        uppers: ['Q', 'R', 'S', 'T'],
                     },
                     {
-                        id: 'alpb-unit-2-part-1-section-2',
-                        type: 'alpb-unit-2-part-1-section-2',
+                        id: 'alpb-unit-1-part-2-section-3',
+                        type: 'alpb-unit-1-part-2-section-3',
                         label: 'U-Z',
                         uppers: ['U', 'V', 'W', 'X', 'Y', 'Z'],
                         typingOffset: 1,
@@ -286,28 +266,79 @@ const units: UnitDef[] = [
                     },
                 ],
             },
+        ],
+    },
+    {
+        id: 'alpb-unit-2',
+        name: 'Unit 2: 橋渡し（小文字・ペア・形の違い）',
+        parts: [
+            {
+                id: 'alpb-unit-2-part-1',
+                label: '小文字フォーカス',
+                pos: 'alphabet-bridge-lowercase',
+                category: ['alphabet', 'bridge', 'lowercase'],
+                sections: [
+                    {
+                        id: 'alpb-unit-2-part-1-section-1',
+                        type: 'alpb-unit-2-part-1-section-1',
+                        label: 'A-L 小文字',
+                        uppers: ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L'],
+                        typingRounds: { 1: 1, 2: 2, 3: 1 },
+                        choiceRounds: { 1: 1, 2: 2, 3: 1, 4: 1 },
+                    },
+                    {
+                        id: 'alpb-unit-2-part-1-section-2',
+                        type: 'alpb-unit-2-part-1-section-2',
+                        label: 'M-Z 小文字',
+                        uppers: ['M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'],
+                        typingRounds: { 1: 1, 2: 2, 3: 1 },
+                        choiceRounds: { 1: 1, 2: 2, 3: 1, 4: 1 },
+                        typingOffset: 1,
+                        choiceOffset: 1,
+                    },
+                ],
+            },
             {
                 id: 'alpb-unit-2-part-2',
-                label: 'N-Z 定着',
-                pos: 'alphabet-bridge-n-z-spiral',
-                category: ['alphabet', 'bridge', 'spiral'],
+                label: 'ペア入力フォーカス',
+                pos: 'alphabet-bridge-pair',
+                category: ['alphabet', 'bridge', 'pair'],
                 sections: [
                     {
                         id: 'alpb-unit-2-part-2-section-1',
                         type: 'alpb-unit-2-part-2-section-1',
-                        label: 'N-Z 反復1',
-                        uppers: ['N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'],
+                        label: 'A-L ペア',
+                        uppers: ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L'],
+                        typingRounds: { 1: 1, 2: 1, 3: 2 },
+                        choiceRounds: { 1: 1, 2: 1, 3: 1, 4: 1 },
                         typingOffset: 2,
                         choiceOffset: 2,
-                        typingRounds: { 3: 2 },
                     },
                     {
                         id: 'alpb-unit-2-part-2-section-2',
                         type: 'alpb-unit-2-part-2-section-2',
-                        label: 'N-Z 反復2',
-                        uppers: ['Z', 'Y', 'X', 'W', 'V', 'U', 'T', 'S', 'R', 'Q', 'P', 'O', 'N'],
-                        typingRounds: { 1: 1, 2: 1, 3: 1 },
+                        label: 'M-Z ペア',
+                        uppers: ['M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'],
+                        typingRounds: { 1: 1, 2: 1, 3: 2 },
                         choiceRounds: { 1: 1, 2: 1, 3: 1, 4: 1 },
+                        typingOffset: 1,
+                        choiceOffset: 1,
+                    },
+                ],
+            },
+            {
+                id: 'alpb-unit-2-part-3',
+                label: 'まぎらわし文字',
+                pos: 'alphabet-bridge-confusable',
+                category: ['alphabet', 'bridge', 'confusable'],
+                sections: [
+                    {
+                        id: 'alpb-unit-2-part-3-section-1',
+                        type: 'alpb-unit-2-part-3-section-1',
+                        label: 'B/D/P/Q + I/L/J/T + U/V/W/Y',
+                        uppers: ['B', 'D', 'P', 'Q', 'I', 'L', 'J', 'T', 'U', 'V', 'W', 'Y'],
+                        typingRounds: { 1: 2, 2: 2, 3: 2 },
+                        choiceRounds: { 1: 2, 2: 2, 3: 2, 4: 2 },
                     },
                 ],
             },
@@ -315,39 +346,39 @@ const units: UnitDef[] = [
     },
     {
         id: 'alpb-unit-3',
-        name: 'Unit 3: まぎらわし対策 + 全体復習',
+        name: 'Unit 3: 運用（取り出しと定着）',
         parts: [
             {
                 id: 'alpb-unit-3-part-1',
-                label: 'まぎらわし集中',
-                pos: 'alphabet-bridge-confusable',
-                category: ['alphabet', 'bridge', 'confusable'],
+                label: 'キーワード連結',
+                pos: 'alphabet-application-keyword',
+                category: ['alphabet', 'application', 'keyword-link'],
                 sections: [
                     {
                         id: 'alpb-unit-3-part-1-section-1',
                         type: 'alpb-unit-3-part-1-section-1',
-                        label: 'B/D/P/Q',
-                        uppers: ['B', 'D', 'P', 'Q'],
-                        typingRounds: { 1: 3, 2: 3, 3: 2 },
-                        choiceRounds: { 1: 3, 2: 3, 3: 2, 4: 2 },
+                        label: 'A-I',
+                        uppers: ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I'],
+                        typingRounds: { 1: 1, 2: 1, 3: 2 },
+                        choiceRounds: { 1: 1, 2: 1, 3: 2, 4: 2 },
                     },
                     {
                         id: 'alpb-unit-3-part-1-section-2',
                         type: 'alpb-unit-3-part-1-section-2',
-                        label: 'I/L/J/T',
-                        uppers: ['I', 'L', 'J', 'T'],
-                        typingRounds: { 1: 3, 2: 3, 3: 2 },
-                        choiceRounds: { 1: 3, 2: 3, 3: 2, 4: 2 },
+                        label: 'J-R',
+                        uppers: ['J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R'],
+                        typingRounds: { 1: 1, 2: 1, 3: 2 },
+                        choiceRounds: { 1: 1, 2: 1, 3: 2, 4: 2 },
                         typingOffset: 1,
                         choiceOffset: 1,
                     },
                     {
                         id: 'alpb-unit-3-part-1-section-3',
                         type: 'alpb-unit-3-part-1-section-3',
-                        label: 'M/N/U/V/W/Y',
-                        uppers: ['M', 'N', 'U', 'V', 'W', 'Y'],
-                        typingRounds: { 1: 2, 2: 2, 3: 2 },
-                        choiceRounds: { 1: 2, 2: 2, 3: 2, 4: 2 },
+                        label: 'S-Z',
+                        uppers: ['S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'],
+                        typingRounds: { 1: 1, 2: 1, 3: 2 },
+                        choiceRounds: { 1: 1, 2: 1, 3: 2, 4: 2 },
                         typingOffset: 2,
                         choiceOffset: 2,
                     },
@@ -355,37 +386,19 @@ const units: UnitDef[] = [
             },
             {
                 id: 'alpb-unit-3-part-2',
-                label: '全26スパイラル',
-                pos: 'alphabet-bridge-all-letters',
-                category: ['alphabet', 'bridge', 'all'],
+                label: '総合マスター',
+                pos: 'alphabet-application-mastery',
+                category: ['alphabet', 'application', 'mastery'],
                 sections: [
                     {
                         id: 'alpb-unit-3-part-2-section-1',
                         type: 'alpb-unit-3-part-2-section-1',
-                        label: '全26チェック1',
+                        label: '全26ミックス',
                         uppers: ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'],
-                        typingRounds: { 1: 1, 2: 1, 3: 1 },
-                        choiceRounds: { 1: 1, 2: 1, 3: 1, 4: 1 },
-                    },
-                    {
-                        id: 'alpb-unit-3-part-2-section-2',
-                        type: 'alpb-unit-3-part-2-section-2',
-                        label: '全26チェック2',
-                        uppers: ['Z', 'Y', 'X', 'W', 'V', 'U', 'T', 'S', 'R', 'Q', 'P', 'O', 'N', 'M', 'L', 'K', 'J', 'I', 'H', 'G', 'F', 'E', 'D', 'C', 'B', 'A'],
                         typingRounds: { 1: 1, 2: 1, 3: 1 },
                         choiceRounds: { 1: 1, 2: 1, 3: 1, 4: 1 },
                         typingOffset: 1,
                         choiceOffset: 1,
-                    },
-                    {
-                        id: 'alpb-unit-3-part-2-section-3',
-                        type: 'alpb-unit-3-part-2-section-3',
-                        label: '総合ミックス',
-                        uppers: ['A', 'E', 'I', 'O', 'U', 'B', 'D', 'P', 'Q', 'M', 'N', 'V', 'W', 'X', 'Y', 'Z'],
-                        typingRounds: { 1: 2, 2: 2, 3: 2 },
-                        choiceRounds: { 1: 2, 2: 2, 3: 2, 4: 2 },
-                        typingOffset: 2,
-                        choiceOffset: 2,
                     },
                 ],
             },
