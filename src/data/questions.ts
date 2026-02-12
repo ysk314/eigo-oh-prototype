@@ -59,6 +59,11 @@ const courseManifest: CourseManifestItem[] = [
         name: 'Typing Foundation',
         load: async () => import('./courses/typing-foundation'),
     },
+    {
+        id: 'course-toeic-starter',
+        name: 'TOEIC Starter',
+        load: async () => import('./courses/toeic-starter'),
+    },
 ];
 
 const manifestByCourseId = new Map(courseManifest.map((item) => [item.id, item]));
