@@ -49,6 +49,28 @@
     color: var(--color-text-primary);
 }
 
+.metaText {
+    margin: 0;
+    align-self: center;
+    max-width: min(960px, 100%);
+    border-radius: 999px;
+    border: 1px solid rgba(229, 115, 115, 0.2);
+    background: rgba(255, 255, 255, 0.86);
+    color: var(--color-text-secondary);
+    font-size: 11px;
+    line-height: 1.35;
+    padding: 5px 10px;
+    white-space: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+}
+
+.metaText::-webkit-scrollbar {
+    display: none;
+}
+
 @media (max-width: 768px) {
     .playHeader {
         padding: calc(var(--space-xs) + env(safe-area-inset-top)) var(--space-md) var(--space-xs);
@@ -66,5 +88,9 @@
 
     .backButton {
         padding: var(--space-xs);
+    }
+
+    .metaText {
+        width: 100%;
     }
 }

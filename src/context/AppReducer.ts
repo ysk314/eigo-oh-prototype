@@ -48,6 +48,9 @@ export function appReducer(state: AppState, action: AppAction): AppState {
             };
 
         case 'SET_UNIT':
+            if (state.selectedUnit === action.payload) {
+                return state;
+            }
             return {
                 ...state,
                 selectedUnit: action.payload,
@@ -57,6 +60,9 @@ export function appReducer(state: AppState, action: AppAction): AppState {
             };
 
         case 'SET_PART':
+            if (state.selectedPart === action.payload) {
+                return state;
+            }
             return {
                 ...state,
                 selectedPart: action.payload,
@@ -120,6 +126,14 @@ export function appReducer(state: AppState, action: AppAction): AppState {
                 clearedMode: 0 as const,
             };
 
+            const attemptsDelta = progressData.attemptsCount ?? 0;
+            const correctDelta = progressData.correctCount ?? 0;
+            const missDelta = progressData.missCount ?? 0;
+            let nextClearedMode = currentProgress.clearedMode;
+            if (progressData.clearedMode !== undefined && progressData.clearedMode > nextClearedMode) {
+                nextClearedMode = progressData.clearedMode;
+            }
+
             return {
                 ...state,
                 userProgress: {
@@ -127,6 +141,10 @@ export function appReducer(state: AppState, action: AppAction): AppState {
                     [key]: {
                         ...currentProgress,
                         ...progressData,
+                        attemptsCount: Math.max(0, currentProgress.attemptsCount + attemptsDelta),
+                        correctCount: Math.max(0, currentProgress.correctCount + correctDelta),
+                        missCount: Math.max(0, currentProgress.missCount + missDelta),
+                        clearedMode: nextClearedMode,
                         lastPlayedAt: new Date().toISOString(),
                     },
                 },
@@ -200,6 +218,7 @@ export function appReducer(state: AppState, action: AppAction): AppState {
             const currentRank = currentProgress[rankKey] as Rank | null;
             const isBetter =
                 !currentRank || rankOrder.indexOf(rank) < rankOrder.indexOf(currentRank);
+            const isUnlockRank = rankOrder.indexOf(rank) <= rankOrder.indexOf('A');
 
             return {
                 ...state,
@@ -208,7 +227,7 @@ export function appReducer(state: AppState, action: AppAction): AppState {
                     [key]: {
                         ...currentProgress,
                         [rankKey]: isBetter ? rank : currentRank,
-                        [clearedKey]: rank === 'S' ? true : currentProgress[clearedKey],
+                        [clearedKey]: isUnlockRank ? true : currentProgress[clearedKey],
                     },
                 },
             };
@@ -291,9 +310,9 @@ export function isModeAvailable(
         case 1:
             return true;
         case 2:
-            return progress?.mode1Cleared ?? false;
+            return Boolean(progress?.mode1Cleared || progress?.mode1Rank === 'S' || progress?.mode1Rank === 'A');
         case 3:
-            return progress?.mode2Cleared ?? false;
+            return Boolean(progress?.mode2Cleared || progress?.mode2Rank === 'S' || progress?.mode2Rank === 'A');
         default:
             return false;
     }

@@ -2,7 +2,7 @@
 // Progress Summary Utilities
 // ================================
 
-import { courses } from '@/data/questions';
+import { countTotalSectionsAcrossCourses } from '@/data/questions';
 import type { SectionProgress } from '@/types';
 
 export type ProgressTotals = {
@@ -12,13 +12,12 @@ export type ProgressTotals = {
     clearedSectionsCount: number;
 };
 
-const totalSectionsCount = courses.reduce((acc, course) => {
-    const count = course.units.flatMap((unit) => unit.parts).flatMap((part) => part.sections).length;
-    return acc + count;
-}, 0);
+let totalSectionsCountCache: number | null = null;
 
-export function getTotalSectionsCount(): number {
-    return totalSectionsCount;
+export async function getTotalSectionsCount(): Promise<number> {
+    if (totalSectionsCountCache !== null) return totalSectionsCountCache;
+    totalSectionsCountCache = await countTotalSectionsAcrossCourses();
+    return totalSectionsCountCache;
 }
 
 export function buildSectionProgressTotals(
@@ -36,13 +35,8 @@ export function buildSectionProgressTotals(
             acc.totalCorrect += progress.totalCorrect || 0;
             acc.totalMiss += progress.totalMiss || 0;
             const isCleared =
-                progress.mode1Cleared ||
                 progress.mode2Cleared ||
-                progress.mode3Cleared ||
-                progress.choice1Rank ||
-                progress.choice2Rank ||
-                progress.choice3Rank ||
-                progress.choice4Rank;
+                progress.mode3Cleared;
             if (isCleared) {
                 acc.clearedSectionsCount += 1;
             }

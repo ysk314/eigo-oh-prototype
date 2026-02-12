@@ -11,6 +11,7 @@ interface GameHeaderProps {
     total: number;
     userName?: string | null;
     onBack: () => void;
+    metaText?: string;
     timeLeft?: number;
     timeLimit?: number;
     timerMaxWidth?: number;
@@ -22,6 +23,7 @@ export function GameHeader({
     total,
     userName,
     onBack,
+    metaText,
     timeLeft,
     timeLimit,
     timerMaxWidth,
@@ -48,6 +50,9 @@ export function GameHeader({
                     maxWidth={timerMaxWidth}
                     dangerThreshold={dangerThreshold}
                 />
+            )}
+            {metaText && (
+                <p className={styles.metaText}>{metaText}</p>
             )}
         </header>
     );

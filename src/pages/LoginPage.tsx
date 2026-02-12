@@ -19,13 +19,15 @@ import { auth, db } from '@/firebase';
 import { saveRemoteProfile } from '@/utils/remoteStorage';
 import { generateMemberNo, normalizeLoginId } from '@/utils/memberId';
 import { loadMemberLoginEmail, saveMemberLoginMap } from '@/utils/memberLoginMap';
+import { logEvent } from '@/utils/analytics';
+import { clearStorage } from '@/utils/storage';
 import styles from './LoginPage.module.css';
 
 type LoginMode = 'login' | 'signup';
 
 export function LoginPage() {
     const navigate = useNavigate();
-    const { state } = useApp();
+    const { state, dispatch } = useApp();
 
     const [mode, setMode] = useState<LoginMode>('login');
     const [loginId, setLoginId] = useState('');
@@ -33,10 +35,10 @@ export function LoginPage() {
     const [displayName, setDisplayName] = useState('');
     const [familyName, setFamilyName] = useState('');
     const [givenName, setGivenName] = useState('');
+    const [trialNickname, setTrialNickname] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
     const [isLoading, setIsLoading] = useState(false);
     const [authUser, setAuthUser] = useState<User | null>(null);
-    const [authReady, setAuthReady] = useState(false);
 
     const welcomeMessage = useMemo(() => {
         const name = state.currentUser?.name?.trim();
@@ -49,20 +51,21 @@ export function LoginPage() {
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (user) => {
             setAuthUser(user);
-            setAuthReady(true);
         });
         return () => unsubscribe();
     }, []);
 
-    const hasActiveSession = authReady && !!authUser;
-    const sessionLabel = state.currentUser?.name?.trim() || 'ゲスト';
+    const hasActiveSession = Boolean(authUser);
+    const sessionLabel = state.currentUser?.name?.trim() || authUser?.displayName?.trim() || 'ゲスト';
 
     const handleContinue = () => {
         navigate('/dashboard');
     };
 
     const handleLogout = async () => {
-        await signOut(auth);
+        await signOut(auth).catch(() => {});
+        dispatch({ type: 'RESET_STATE' });
+        clearStorage();
         setLoginId('');
         setPassword('');
         setDisplayName('');
@@ -89,17 +92,25 @@ export function LoginPage() {
         return blacklist.some((word) => lowered.includes(word.toLowerCase()));
     };
 
-    const handleGuestStart = async () => {
+    const handleGuestStart = async (nickname?: string) => {
         setErrorMessage('');
         setIsLoading(true);
         try {
+            const guestName = (nickname || '').trim() || 'ゲスト';
             const result = await signInAnonymously(auth);
-            await saveRemoteProfile(result.user.uid, 'ゲスト', undefined, {
+            await saveRemoteProfile(result.user.uid, guestName, undefined, {
                 accountType: 'guest',
                 status: 'active',
                 billing: { plan: 'free', status: 'active' },
                 entitlements: { typing: true, flashMentalMath: false, reading: false },
             });
+            logEvent({
+                eventType: 'guest_started',
+                userId: result.user.uid,
+                payload: {
+                    source: 'login',
+                },
+            }).catch(() => {});
             navigate('/dashboard');
         } catch (error) {
             console.error(error);
@@ -107,6 +118,23 @@ export function LoginPage() {
         } finally {
             setIsLoading(false);
         }
+    };
+
+    const handleTrialStart = async () => {
+        const nickname = trialNickname.trim();
+        if (nickname && containsBannedWords(nickname)) {
+            setErrorMessage('ニックネームに不適切な表現が含まれています。');
+            return;
+        }
+        logEvent({
+            eventType: 'trial_cta_clicked',
+            userId: auth.currentUser?.uid ?? null,
+            payload: {
+                source: 'login_trial_panel',
+                hasNickname: Boolean(nickname),
+            },
+        }).catch(() => {});
+        await handleGuestStart(nickname);
     };
 
     const handleLoginSubmit = async (event: FormEvent) => {
@@ -147,6 +175,13 @@ export function LoginPage() {
                     }
                 }
             }
+            logEvent({
+                eventType: 'login_success',
+                userId: auth.currentUser?.uid ?? null,
+                payload: {
+                    method: isMemberNo ? 'member_no' : 'email',
+                },
+            }).catch(() => {});
             navigate('/dashboard');
         } catch (error) {
             console.error(error);
@@ -196,6 +231,13 @@ export function LoginPage() {
             if (result.user.email) {
                 await saveMemberLoginMap(memberNo, result.user.uid, result.user.email);
             }
+            logEvent({
+                eventType: 'signup_success',
+                userId: result.user.uid,
+                payload: {
+                    accountType: 'consumer',
+                },
+            }).catch(() => {});
 
             navigate('/dashboard');
         } catch (error) {
@@ -288,9 +330,6 @@ export function LoginPage() {
                             <Button size="lg" fullWidth type="submit" isLoading={isLoading}>
                                 ログイン
                             </Button>
-                            <Button size="lg" variant="secondary" fullWidth type="button" onClick={handleGuestStart}>
-                                ゲストで練習
-                            </Button>
                         </form>
                     ) : (
                         <form className={styles.actions} onSubmit={handleSignupSubmit}>
@@ -366,16 +405,31 @@ export function LoginPage() {
                             <Button size="lg" fullWidth type="submit" isLoading={isLoading}>
                                 登録する
                             </Button>
-                            <Button size="lg" variant="secondary" fullWidth type="button" onClick={handleGuestStart}>
-                                ゲストで練習
-                            </Button>
                         </form>
                     )}
 
-                    <p className={styles.note}>
-                        ゲストの進捗はこの端末・ブラウザに保存されます。
-                        端末を変えると引き継げないため、必要になったら本登録に切り替えてください。
-                    </p>
+                    <div className={styles.trialPanel}>
+                        <h3 className={styles.trialTitle}>ゲストとしてはじめる</h3>
+                        <label className={styles.trialInputLabel} htmlFor="trial-nickname">
+                            ニックネーム（任意）
+                        </label>
+                        <input
+                            id="trial-nickname"
+                            className={styles.trialInput}
+                            type="text"
+                            value={trialNickname}
+                            onChange={(event) => setTrialNickname(event.target.value)}
+                            placeholder="例: さくら"
+                            maxLength={24}
+                        />
+                        <ul className={styles.trialList}>
+                            <li>ゲストの進捗記録は一定期間保管されます。</li>
+                            <li>体験後に無料会員登録を行うことで記録を引き継ぎます。</li>
+                        </ul>
+                        <Button size="md" variant="primary" fullWidth type="button" onClick={handleTrialStart}>
+                            今すぐ無料体験を始める
+                        </Button>
+                    </div>
                     <div className={styles.adminLink}>
                         <Link to="/admin">管理者ページはこちら</Link>
                     </div>

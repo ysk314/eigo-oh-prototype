@@ -9,6 +9,7 @@ import styles from './Header.module.css';
 interface HeaderProps {
     title?: string;
     breadcrumb?: string[];
+    metaText?: string;
     showUserSelect?: boolean;
     showShuffleToggle?: boolean;
     showBackButton?: boolean;
@@ -20,6 +21,7 @@ interface HeaderProps {
 export function Header({
     title,
     breadcrumb = [],
+    metaText,
     showUserSelect = true,
     showShuffleToggle = false,
     showBackButton = false,
@@ -63,7 +65,10 @@ export function Header({
                         ))}
                     </nav>
                 ) : title ? (
-                    <h1 className={styles.title}>{title}</h1>
+                    <div className={styles.titleBlock}>
+                        <h1 className={styles.title}>{title}</h1>
+                        {metaText && <p className={styles.metaText}>{metaText}</p>}
+                    </div>
                 ) : null}
             </div>
 

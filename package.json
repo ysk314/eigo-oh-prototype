@@ -6,7 +6,9 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
+    "perf:budget": "node scripts/perf-budget.mjs",
     "lint": "eslint .",
+    "quality:check": "npm run lint && npm run build && npm run perf:budget",
     "preview": "vite preview"
   },
   "dependencies": {
